@@ -1,0 +1,28 @@
+format: jb-book
+root: index.md
+parts:
+  - caption: Specific Aims
+    chapters:
+      - file: 1_MethylData_PreProcessing.ipynb
+      - file: 2_MethylData_Processing.ipynb
+      - file: 3_ClinicalData_Processing.ipynb
+      - file: 4_Dimension_Reduction.ipynb
+      - file: 5.1_Methylome_Bokeh.ipynb
+      - file: 5_Methylome_Visualization.ipynb
+      - file: 6_Survival_Analysis.ipynb
+      - file: 7_Score_Visualization.ipynb
+      - file: 8_PacMAP_Nanopore.ipynb
+#   - caption: Manuscripts
+
+#     chapters:
+#       - file: docs/Part2_Review_Article/Chapter1
+#       - file: docs/Part2_Review_Article/Chapter2
+
+#   - caption: Aim 1
+
+#     chapters:
+#       - file: docs/Part3_Aim1/Chapter1_Overview
+#       - file: docs/Part3_Aim1/Chapter2_Introduction
+#       - file: docs/Part3_Aim1/Chapter3_Data_Processing
+#       - file: docs/Part3_Aim1/Chapter4_EDA
+#       - file: docs/Part3_Aim1/Chapter5_Survival_Analysis

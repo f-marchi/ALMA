@@ -1,0 +1,39 @@
+title: Lamba Lab
+author: Lamba Lab @ University of Florida
+logo: "_logos/dna1.gif"
+exclude_patterns: [.venv, .venv_data_vizualization, .venv_pacmap, .venv_sklearn,
+                  Code_past, Benchmarking]
+only_build_toc_files: true
+
+# Short description about the book
+description: >-
+  This is Francisco Marchi's electronic notebook, which belongs to Lamba Lab at UF.
+
+execute:
+  execute_notebooks: cache
+  exclude_patterns: [.venv, .venv_data_vizualization, .venv_pacmap, .venv_sklearn,
+                  Code_past, Benchmarking]
+  timeout: 1000
+# HTML-specific settings
+html:
+  home_page_in_navbar: false
+
+# Interact link settings
+notebook_interface: "notebook"
+
+# Launch button settings
+#repository:
+#  url: https://github.com/executablebooks/quantecon-mini-example
+#  path_to_book: "book"
+
+# LaTeX settings
+bibtex_bibfiles:
+  - _bibliography/references.bib
+latex:
+  latex_engine: "xelatex"
+  latex_documents:
+    targetname: book.tex
+
+html:
+  comments:
+    hypothesis: true
