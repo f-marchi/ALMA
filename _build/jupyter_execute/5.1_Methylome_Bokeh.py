@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # PaCMAP Visualization
+# # PaCMAP Interactive Visualization
 
 # ## Where the data at?
 

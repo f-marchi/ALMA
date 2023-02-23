@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Data Processing
+# # Methyl Array Data Processing
 
 # ## Data Sources
 
@@ -10,7 +10,7 @@
 # 1. AAML1031 ([GSE190931](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE190931)), __n=1048__
 # 2. AAML0531 ([GSE124413](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE124413)), __n=500__
 # 3. Japanese AML-05 ([GSE133986](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE133986)), __n=64__
-# 4. AML_TARGET450K from Genomic Data Commons, __n=317__
+# 4. AML_TARGET450K from [Genomic Data Commons](https://portal.gdc.cancer.gov/), __n=317__
 # 5. AML02,08, liver and control samples from Dr. Jatinder Lamba's Repository, __n=324__
 
 # ## Load Data

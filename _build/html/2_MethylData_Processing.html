@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Data Processing &#8212; Lamba Lab</title>
+    <title>Methyl Array Data Processing &#8212; Lamba Lab</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Data Processing" href="3_ClinicalData_Processing.html" />
+    <link rel="next" title="Clinical Data Processing" href="3_ClinicalData_Processing.html" />
     <link rel="prev" title="Data Download and Initial Processing" href="1_MethylData_PreProcessing.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -119,6 +119,30 @@ const thebe_selector_output = ".output, .cell_output"
   Specific Aims
  </span>
 </p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/Specific_Aims.html">
+   Specific Aims
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Manuscripts
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/Intro_to_Methylation.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Code
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="1_MethylData_PreProcessing.html">
@@ -127,22 +151,17 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Data Processing
+   Methyl Array Data Processing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="3_ClinicalData_Processing.html">
-   Data Processing
+   Clinical Data Processing
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="4_Dimension_Reduction.html">
-   Dimension Reduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="5.1_Methylome_Bokeh.html">
-   PaCMAP Visualization
+   Dimension Reduction with PaCMAP
   </a>
  </li>
  <li class="toctree-l1">
@@ -151,18 +170,23 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="5.1_Methylome_Bokeh.html">
+   PaCMAP Interactive Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="6_Survival_Analysis.html">
-   Survival Analysis
+   Survival Analysis FM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6.1_Survival_Analysis_FS.html">
+   Survival Analysis FS
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="7_Score_Visualization.html">
-   Score Visualization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="8_PacMAP_Nanopore.html">
-   Stacking Ensemble Machine Learning
+   Kaplan Meiers, Forest Plots, Patient Characteristics
   </a>
  </li>
 </ul>
@@ -407,7 +431,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Data Processing</h1>
+                <h1>Methyl Array Data Processing</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -499,8 +523,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="data-processing">
-<h1>Data Processing<a class="headerlink" href="#data-processing" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="methyl-array-data-processing">
+<h1>Methyl Array Data Processing<a class="headerlink" href="#methyl-array-data-processing" title="Permalink to this headline">#</a></h1>
 <section id="data-sources">
 <h2>Data Sources<a class="headerlink" href="#data-sources" title="Permalink to this headline">#</a></h2>
 <p>Here is a summary of the datasets used:</p>
@@ -508,7 +532,7 @@ title="Print to PDF"
 <li><p>AAML1031 (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE190931">GSE190931</a>), <strong>n=1048</strong></p></li>
 <li><p>AAML0531 (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE124413">GSE124413</a>), <strong>n=500</strong></p></li>
 <li><p>Japanese AML-05 (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE133986">GSE133986</a>), <strong>n=64</strong></p></li>
-<li><p>AML_TARGET450K from Genomic Data Commons, <strong>n=317</strong></p></li>
+<li><p>AML_TARGET450K from <a class="reference external" href="https://portal.gdc.cancer.gov/">Genomic Data Commons</a>, <strong>n=317</strong></p></li>
 <li><p>AML02,08, liver and control samples from Dr. Jatinder Lamba’s Repository, <strong>n=324</strong></p></li>
 </ol>
 </section>
@@ -1290,7 +1314,7 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
     <a class='right-next' id="next-link" href="3_ClinicalData_Processing.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data Processing</p>
+        <p class="prev-next-title">Clinical Data Processing</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

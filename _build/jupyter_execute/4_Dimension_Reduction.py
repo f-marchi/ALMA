@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Dimension Reduction
+# # Dimension Reduction with PaCMAP
 
 # ## Where the data at?
 
