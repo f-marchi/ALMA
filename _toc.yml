@@ -1,5 +1,5 @@
 format: jb-book
-root: index.md
+root: README.md
 parts:
   - caption: Specific Aims
     chapters:
