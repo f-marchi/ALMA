@@ -5,20 +5,25 @@ parts:
     chapters:
       - file: docs/Specific_Aims.md
 
-  - caption: Manuscripts
+  - caption: Introduction
 
     chapters:
       - file: docs/Intro_to_Methylation.md
 
-  - caption: Code
+  - caption: Data Preparation
 
     chapters:
       - file: 1_MethylData_PreProcessing.ipynb
       - file: 2_MethylData_Processing.ipynb
       - file: 3_ClinicalData_Processing.ipynb
+
+  - caption: Analyses
+
+    chapters:
       - file: 4_Dimension_Reduction.ipynb
       - file: 5_Methylome_Visualization.ipynb
       - file: 5.1_Methylome_Bokeh.ipynb
       - file: 6_Survival_Analysis.ipynb
       - file: 6.1_Survival_Analysis_FS.ipynb
       - file: 7_Score_Visualization.ipynb
+      - file: 8_Immune_Cell_Deconvolution

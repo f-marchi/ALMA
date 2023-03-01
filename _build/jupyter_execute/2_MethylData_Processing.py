@@ -237,8 +237,6 @@ df5 = df4.interpolate(axis=0).interpolate(axis=0, limit_direction='backward').ro
 print(f' Merged df5 dataset contains {df5.shape[0]}'
 + f' rows (CpG probes) and {df5.shape[1]} columns (samples).')
 
-df5
-
 
 # ## Step 6. Add Sample Metadata and Clinical Data
 

@@ -90,7 +90,7 @@ df_ = pd.concat([df, control_0531['Sample Type'].to_frame()],axis=0,join='outer'
 df1 = df_[~df_['Sample Type'].isin(['Relapse','Recurrent Blood Derived Cancer - Bone Marrow',
                                  'Recurrent Blood Derived Cancer - Peripheral Blood'
                                   ])]
-print(f'COG: Of {df_.shape[0]} samples, {df_.shape[0]-df1.shape[0]} matched, yielding {df1.shape[0]} samples after filtering')
+print(f'Of {df_.shape[0]} samples, {df_.shape[0]-df1.shape[0]} matched, yielding {df1.shape[0]} samples after filtering')
 
 
 # ### Remove Normal Samples
@@ -99,7 +99,7 @@ print(f'COG: Of {df_.shape[0]} samples, {df_.shape[0]-df1.shape[0]} matched, yie
 
 
 df2 = df1[~df1['Sample Type'].isin(['Bone Marrow Normal','Blood Derived Normal'])]
-print(f'COG: Of {df1.shape[0]} samples, {df1.shape[0]-df2.shape[0]} matched, yielding {df2.shape[0]} samples after filtering')
+print(f'Of {df1.shape[0]} samples, {df1.shape[0]-df2.shape[0]} matched, yielding {df2.shape[0]} samples after filtering')
 
 
 # ### Remove Duplicate Samples
@@ -108,7 +108,7 @@ print(f'COG: Of {df1.shape[0]} samples, {df1.shape[0]-df2.shape[0]} matched, yie
 
 
 df3 = df2[~df2['Patient_ID'].duplicated(keep='last')]
-print(f'COG: Of {df2.shape[0]} samples, {df2.shape[0]-df3.shape[0]} matched, yielding {df3.shape[0]} samples after filtering')
+print(f'Of {df2.shape[0]} samples, {df2.shape[0]-df3.shape[0]} matched, yielding {df3.shape[0]} samples after filtering')
 
 
 # ### Remove Samples from AAML03P1 and CCG2961
@@ -117,7 +117,7 @@ print(f'COG: Of {df2.shape[0]} samples, {df2.shape[0]-df3.shape[0]} matched, yie
 
 
 # df4 = df3[df3['Clinical Trial'].isin(['AAML1031','AAML0531','AML02','AML08'])]
-# print(f'COG: Of {df3.shape[0]} samples, {df3.shape[0]-df4.shape[0]} matched, yielding {df4.shape[0]} samples after filtering')
+# print(f'Of {df3.shape[0]} samples, {df3.shape[0]-df4.shape[0]} matched, yielding {df4.shape[0]} samples after filtering')
 
 
 # ### Select Control samples
@@ -130,7 +130,7 @@ print(f'COG: Of {df2.shape[0]} samples, {df2.shape[0]-df3.shape[0]} matched, yie
 # # Combine control samples with clinical trial samples
 # df4 = pd.concat([df3,controls],axis=0,join='outer')
 
-# print(f'COG: Of {df3.shape[0]} samples, {df3.shape[0]-df4.shape[0]} matched, yielding {df4.shape[0]} samples after filtering')
+# print(f'Of {df3.shape[0]} samples, {df3.shape[0]-df4.shape[0]} matched, yielding {df4.shape[0]} samples after filtering')
 
 
 # ## Save Files

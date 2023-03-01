@@ -190,6 +190,11 @@ const thebe_selector_output = ".output, .cell_output"
    Kaplan Meiers, Forest Plots, Patient Characteristics
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="8_Immune_Cell_Deconvolution.html">
+   Immune Cell Deconvolution
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -593,12 +598,12 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">df_</span><span class="p">[</span><span class="o">~</span><span class="n">df_</span><span class="p">[</span><span class="s1">&#39;Sample Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Relapse&#39;</span><span class="p">,</span><span class="s1">&#39;Recurrent Blood Derived Cancer - Bone Marrow&#39;</span><span class="p">,</span>
                                  <span class="s1">&#39;Recurrent Blood Derived Cancer - Peripheral Blood&#39;</span>
                                   <span class="p">])]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;COG: Of </span><span class="si">{</span><span class="n">df_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples, </span><span class="si">{</span><span class="n">df_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">df1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> matched, yielding </span><span class="si">{</span><span class="n">df1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples after filtering&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Of </span><span class="si">{</span><span class="n">df_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples, </span><span class="si">{</span><span class="n">df_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">df1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> matched, yielding </span><span class="si">{</span><span class="n">df1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples after filtering&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>COG: Of 1762 samples, 248 matched, yielding 1514 samples after filtering
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Of 1762 samples, 248 matched, yielding 1514 samples after filtering
 </pre></div>
 </div>
 </div>
@@ -609,12 +614,12 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="o">~</span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;Sample Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Bone Marrow Normal&#39;</span><span class="p">,</span><span class="s1">&#39;Blood Derived Normal&#39;</span><span class="p">])]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;COG: Of </span><span class="si">{</span><span class="n">df1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples, </span><span class="si">{</span><span class="n">df1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> matched, yielding </span><span class="si">{</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples after filtering&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Of </span><span class="si">{</span><span class="n">df1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples, </span><span class="si">{</span><span class="n">df1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> matched, yielding </span><span class="si">{</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples after filtering&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>COG: Of 1514 samples, 154 matched, yielding 1360 samples after filtering
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Of 1514 samples, 154 matched, yielding 1360 samples after filtering
 </pre></div>
 </div>
 </div>
@@ -625,12 +630,12 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="o">~</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Patient_ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">)]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;COG: Of </span><span class="si">{</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples, </span><span class="si">{</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">df3</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> matched, yielding </span><span class="si">{</span><span class="n">df3</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples after filtering&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Of </span><span class="si">{</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples, </span><span class="si">{</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">df3</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> matched, yielding </span><span class="si">{</span><span class="n">df3</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples after filtering&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>COG: Of 1360 samples, 14 matched, yielding 1346 samples after filtering
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Of 1360 samples, 14 matched, yielding 1346 samples after filtering
 </pre></div>
 </div>
 </div>
@@ -641,7 +646,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df4 = df3[df3[&#39;Clinical Trial&#39;].isin([&#39;AAML1031&#39;,&#39;AAML0531&#39;,&#39;AML02&#39;,&#39;AML08&#39;])]</span>
-<span class="c1"># print(f&#39;COG: Of {df3.shape[0]} samples, {df3.shape[0]-df4.shape[0]} matched, yielding {df4.shape[0]} samples after filtering&#39;)</span>
+<span class="c1"># print(f&#39;Of {df3.shape[0]} samples, {df3.shape[0]-df4.shape[0]} matched, yielding {df4.shape[0]} samples after filtering&#39;)</span>
 </pre></div>
 </div>
 </div>
@@ -656,7 +661,7 @@ title="Print to PDF"
 <span class="c1"># # Combine control samples with clinical trial samples</span>
 <span class="c1"># df4 = pd.concat([df3,controls],axis=0,join=&#39;outer&#39;)</span>
 
-<span class="c1"># print(f&#39;COG: Of {df3.shape[0]} samples, {df3.shape[0]-df4.shape[0]} matched, yielding {df4.shape[0]} samples after filtering&#39;)</span>
+<span class="c1"># print(f&#39;Of {df3.shape[0]} samples, {df3.shape[0]-df4.shape[0]} matched, yielding {df4.shape[0]} samples after filtering&#39;)</span>
 </pre></div>
 </div>
 </div>

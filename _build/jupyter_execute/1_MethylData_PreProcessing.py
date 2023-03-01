@@ -19,31 +19,48 @@
 # This pipeline has been adapted from python's [methylsuite](https://pypi.org/project/methylsuite/).
 # ```
 
-# ## Download and Pre-Process Raw Data from Gene Expression Omnibus (GEO)
+# ## Download and Pre-Process Raw Data from GEO
 
 # 
-# Below is the implementation of the above diagram to this project:
+# 1. Install Python
 # 
-# 1. Create a virtual environmnet with python 3.7:
+#     - Go to python.org and download the appropriate version of python
+#     - During install, click on the box to enable it on PATH
+# 
+# 2. Open a terminal (Windows: git bash, Linux/Mac: terminal)
+# 
+#     - Move to the directory/folder where your code files will be stored
+# 
+# 
+# 3. Create a virtual environment with python 3.7 using either pip or conda:
 # 
 # ```bash
-# conda create --n <name> python=3.7
+# python37 -m venv <venv_name>
+# ```
+# or, if python37 location cannot be found:
+# 
+# ```bash
+#  ~/AppData/Local/Programs/Python/Python37/python.exe -m venv <venv_name>
 # ```
 # 
-# 2. In a linux shell, activate environment:
+# 4. Then activate the environment:
+#     - If using Mac/Linux:
+#     ```bash
+#     source activate <venv_name>
+#     ```
+#     - If using Windows (git bash):
+#     ```bash
+#     source <venv_name>/Scripts/activate
+#     ```
+# 
+# 5. Install methylsuite and dependencies:
 # 
 # ```bash
-# source activate methylsuite
-# ```
-# 
-# 3. Install methylsuite and dependencies:
-# 
-# ```bash
-# conda install statsmodels
+# pip install statsmodels
 # pip install methylsuite
 # ```
 # 
-# 4. Download dataset directly from GEO:
+# 6. Download dataset directly from GEO:
 # 
 # ```bash
 # python -m methylprep beta_bake -i <GEO series> -d <directory> 
@@ -58,7 +75,6 @@
 # ```{note}
 # If files are larger than RAM, specify batches
 # Full ```methylprep``` API can be found [here](https://life-epigenetics-methylprep.readthedocs-hosted.com/en/latest/docs/cli.html)
-# ```
 
 # 
 # ## Download and Pre-Process Raw Data from Genomic Data Commons (GDC)
