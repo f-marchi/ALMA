@@ -319,7 +319,7 @@ def draw_boxplot(df, x, y, order, trialname, hue=None, save_plot=False, figsize=
     return (plt.show())
 
 
-def draw_heatmaps(fig_title, t1, t2, df1, df2, fig_number, save_plot=False):
+def draw_heatmaps(fig_title, t1, t2, df1, df2, fig_number, save_plot=False, figsize=(9, 7)):
     """
     Generates a double-heatmap based on two datasets.
 
@@ -340,6 +340,8 @@ def draw_heatmaps(fig_title, t1, t2, df1, df2, fig_number, save_plot=False):
     save_plot: bool, default=False
         Set to True if you wish to save the plot.
         Note: It will be saved under "../Figures/Heatmaps/"
+    figsize: tuple, default=(9, 7)
+        Tuple containing the figsize. Select None for automatic size selection.
 
 
     Returns:
@@ -351,7 +353,7 @@ def draw_heatmaps(fig_title, t1, t2, df1, df2, fig_number, save_plot=False):
     _, (ax1, ax2, axcb) = plt.subplots(1, 3,
                                        gridspec_kw={
                                            'width_ratios': [1, 1, 0.06]},
-                                       figsize=(9, 7))
+                                       figsize=figsize)
 
     def draw_ax(df, ax, y_label, t):
 
