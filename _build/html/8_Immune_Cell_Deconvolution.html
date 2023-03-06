@@ -54,6 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Deconvolution Visualization" href="8.1_Deconvolution_Visualization.html" />
     <link rel="prev" title="Kaplan Meiers, Forest Plots, Patient Characteristics" href="7_Score_Visualization.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -128,22 +129,22 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Manuscripts
+  Introduction
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="docs/Intro_to_Methylation.html">
-   Introduction
+   Understanding DNA Methylation
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Code
+  Data Preparation
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="1_MethylData_PreProcessing.html">
    Data Download and Initial Processing
@@ -159,6 +160,13 @@ const thebe_selector_output = ".output, .cell_output"
    Clinical Data Processing
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  AML Diagnostic Map
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="4_Dimension_Reduction.html">
    Dimension Reduction with PaCMAP
@@ -189,9 +197,21 @@ const thebe_selector_output = ".output, .cell_output"
    Kaplan Meiers, Forest Plots, Patient Characteristics
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Immune Cell Deconvolution
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Immune Cell Deconvolution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="8.1_Deconvolution_Visualization.html">
+   Deconvolution Visualization
   </a>
  </li>
 </ul>
@@ -385,6 +405,11 @@ title="Print to PDF"
    Immune Cell Deconvolution with ARIC
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#watermark">
+   Watermark
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -434,6 +459,11 @@ title="Print to PDF"
    Immune Cell Deconvolution with ARIC
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#watermark">
+   Watermark
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -451,7 +481,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/&#39;</span>
-<span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/Blood_Deconvolution_ARIC/&#39;</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/Cell_Deconvolution/&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -459,12 +489,19 @@ title="Print to PDF"
 </section>
 <section id="load-aml-dataset">
 <h2>Load AML Dataset<a class="headerlink" href="#load-aml-dataset" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;x.pkl&#39;</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;y.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; Dataset (df) contains </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (CpG probes) and </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns (samples).&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Dataset (df) contains 1346 rows (CpG probes) and 310545 columns (samples).
 </pre></div>
 </div>
 </div>
@@ -535,25 +572,37 @@ Adjusting the Data
 <li><p><strong>GEO</strong>: <a class="reference external" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE110554">GSE110554</a></p></li>
 <li><p><strong>PMID</strong>: <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pubmed/29843789">29843789</a></p></li>
 <li><p><strong>Description</strong>:  Bisulphite converted DNA from neutrophils (Neu, n=6), monocytes (Mono, n=6), B-lymphocytes (Bcells, n=6), CD4+ T-cells (CD4T, n=7, six samples and one technical replicate), CD8+ T-cells (CD8T, n=6), Natural Killer cells (NK, n=6), and 12 DNA artificial mixtures (labeled as MIX in the dataset) were hybridised to the Illumina Infinium HumanMethylationEPIC Beadchip v1.0_B4</p></li>
+<li><p><strong>External Validation</strong>: <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/36280888/">Significant variation in the performance of DNA methylation predictors across data preprocessing and normalization strategies</a></p></li>
 <li><p><strong>CSV file</strong>: <a class="reference external" href="https://static-content.springer.com/esm/art%3A10.1186%2Fs13059-018-1448-7/MediaObjects/13059_2018_1448_MOESM4_ESM.csv">Download</a></p></li>
 </ul>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ref</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://static-content.springer.com/esm/art%3A10.1186</span><span class="si">%2F</span><span class="s1">s13059-018-1448-7/MediaObjects/13059_2018_1448_MOESM4_ESM.csv&#39;</span><span class="p">,</span>
                   <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)[[</span><span class="s1">&#39;CD8T&#39;</span><span class="p">,</span><span class="s1">&#39;CD4T&#39;</span><span class="p">,</span><span class="s1">&#39;NK&#39;</span><span class="p">,</span><span class="s1">&#39;Bcell&#39;</span><span class="p">,</span><span class="s1">&#39;Mono&#39;</span><span class="p">,</span><span class="s1">&#39;Neu&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ref</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;paper_defined_immune_reference.pkl&#39;</span><span class="p">)</span>
+<span class="c1"># remove index name</span>
+<span class="n">ref</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="c1"># remove duplicates from index</span>
+<span class="n">ref</span> <span class="o">=</span> <span class="n">ref</span><span class="p">[</span><span class="o">~</span><span class="n">ref</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)]</span>
 
-<span class="c1"># File has also been downloaded locally under &quot;.../Data/Blood_Reference_PMID29843789&quot; as backup in case Springer link is down</span>
-
-<span class="n">mix</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">T</span>
-<span class="n">merge</span> <span class="o">=</span> <span class="n">ref</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mix</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+<span class="c1"># Harmonize index of reference data with our data</span>
+<span class="n">merge</span> <span class="o">=</span> <span class="n">ref</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
 
 <span class="c1"># update ref and mix with merge index</span>
 <span class="n">ref</span> <span class="o">=</span> <span class="n">ref</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">merge</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
-<span class="n">mix</span> <span class="o">=</span> <span class="n">mix</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">merge</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+<span class="n">mix</span> <span class="o">=</span> <span class="n">x_train2</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">merge</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+<span class="n">mix_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">merge</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
 
 <span class="c1"># save ref and mix to csv</span>
-<span class="n">ref</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;ref.csv&#39;</span><span class="p">)</span>
-<span class="n">mix</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;mix.csv&#39;</span><span class="p">)</span>
+<span class="n">ref</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;ReferenceData_ARIC.csv&#39;</span><span class="p">)</span>
+<span class="n">mix</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;Input_TrainData_ARIC.csv&#39;</span><span class="p">)</span>
+<span class="n">mix_test</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;Input_TestData_ARIC.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -571,8 +620,17 @@ Adjusting the Data
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ARIC</span> <span class="kn">import</span> <span class="o">*</span>
 
-<span class="n">ARIC</span><span class="p">(</span><span class="n">mix_path</span><span class="o">=</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;mix.csv&#39;</span><span class="p">,</span> <span class="n">ref_path</span><span class="o">=</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;ref.csv&#39;</span><span class="p">,</span>
-     <span class="n">is_methylation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">unknown</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># Run cell deconvolution on train data</span>
+<span class="n">ARIC</span><span class="p">(</span><span class="n">mix_path</span><span class="o">=</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;Input_TrainData_ARIC.csv&#39;</span><span class="p">,</span>
+     <span class="n">ref_path</span><span class="o">=</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;ReferenceData_ARIC.csv&#39;</span><span class="p">,</span>
+     <span class="n">is_methylation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+     <span class="n">save_path</span><span class="o">=</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;Results_TrainData_ARIC.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Run cell deconvolution on test data</span>
+<span class="n">ARIC</span><span class="p">(</span><span class="n">mix_path</span><span class="o">=</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;Input_TestData_ARIC.csv&#39;</span><span class="p">,</span>
+     <span class="n">ref_path</span><span class="o">=</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;ReferenceData_ARIC.csv&#39;</span><span class="p">,</span>
+     <span class="n">is_methylation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+     <span class="n">save_path</span><span class="o">=</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;Results_TestData_ARIC.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -584,7 +642,19 @@ Data reading finished!
 ARIC Engines Start, Please Wait......
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1142/1142 [00:26&lt;00:00, 43.70it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1142/1142 [03:23&lt;00:00,  5.60it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Deconvo Results Saving!
+Finished!
+---------------------------------------------
+--------------WELCOME TO ARIC----------------
+---------------------------------------------
+Data reading finished!
+ARIC Engines Start, Please Wait......
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 204/204 [00:38&lt;00:00,  5.31it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Deconvo Results Saving!
@@ -596,120 +666,28 @@ Finished!
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read deconvolution results</span>
+</section>
+<section id="watermark">
+<h2>Watermark<a class="headerlink" href="#watermark" title="Permalink to this headline">#</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The watermark extension is already loaded. To reload it, use:
+  %reload_ext watermark
+Python implementation: CPython
+Python version       : 3.10.9
+IPython version      : 8.8.0
 
-<span class="n">deconv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;mix_prop.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="c1"># Get basic statistics of deconvolution results</span>
-<span class="nb">round</span><span class="p">(</span><span class="n">deconv</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">describe</span><span class="p">(),</span><span class="mi">2</span><span class="p">)</span>
+numpy     : 1.24.1
+pandas    : 1.5.2
+matplotlib: 3.6.2
+seaborn   : 0.12.2
+scipy     : 1.10.0
+sklearn   : 0.0.post1
+combat    : 0.3.3
+ARIC      : 1.0.0
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>cell types</th>
-      <th>CD8T</th>
-      <th>CD4T</th>
-      <th>NK</th>
-      <th>Bcell</th>
-      <th>Mono</th>
-      <th>Neu</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>1142.00</td>
-      <td>1142.00</td>
-      <td>1142.00</td>
-      <td>1142.00</td>
-      <td>1142.00</td>
-      <td>1142.00</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>0.08</td>
-      <td>0.15</td>
-      <td>0.09</td>
-      <td>0.13</td>
-      <td>0.33</td>
-      <td>0.22</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>0.06</td>
-      <td>0.05</td>
-      <td>0.05</td>
-      <td>0.07</td>
-      <td>0.08</td>
-      <td>0.08</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>0.00</td>
-      <td>0.03</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>0.03</td>
-      <td>0.00</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>0.04</td>
-      <td>0.12</td>
-      <td>0.06</td>
-      <td>0.08</td>
-      <td>0.29</td>
-      <td>0.17</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>0.07</td>
-      <td>0.15</td>
-      <td>0.08</td>
-      <td>0.11</td>
-      <td>0.33</td>
-      <td>0.23</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>0.11</td>
-      <td>0.18</td>
-      <td>0.11</td>
-      <td>0.17</td>
-      <td>0.38</td>
-      <td>0.27</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>0.40</td>
-      <td>0.50</td>
-      <td>0.31</td>
-      <td>0.59</td>
-      <td>0.83</td>
-      <td>0.49</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </section>
 </section>
@@ -747,6 +725,13 @@ Finished!
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Kaplan Meiers, Forest Plots, Patient Characteristics</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="8.1_Deconvolution_Visualization.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Deconvolution Visualization</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

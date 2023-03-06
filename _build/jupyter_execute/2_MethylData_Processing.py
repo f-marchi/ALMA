@@ -49,7 +49,7 @@ betas5 = methylcheck.load(filepath5) # Load data and metadata
 
 # ## Joining Dataframes
 
-# In[2]:
+# In[10]:
 
 
 import pandas as pd
@@ -59,7 +59,7 @@ betas = pd.concat([betas1,betas2,betas3,betas4, betas5],
                     'GSE133986_AML05','GDC_TARGET_AML','StJude_AML02_AML08'],
                     join='inner', axis=1)
 
-print(f' Dataset (df) contains {betas.shape[0]} rows (CpG probes) and {betas.shape[1]} columns (samples).')
+print(f' Dataset (df) contains {betas.shape[0]} rows (mC sites) and {betas.shape[1]} columns (samples).')
 
 
 # ## Step 1. Filtering Sub-Optimally Designed Probes
@@ -74,7 +74,7 @@ print(f' Dataset (df) contains {betas.shape[0]} rows (CpG probes) and {betas.sha
 # 
 # Please see function below `exclude_suboptimal_probes()` for paper information and where to find the annotations.
 
-# In[3]:
+# In[11]:
 
 
 def exclude_suboptimal_probes(betas):
@@ -94,18 +94,12 @@ def exclude_suboptimal_probes(betas):
     print(f'Of {betas.shape[0]} probes, {betas.shape[0]-betas_.shape[0]} matched, yielding {betas_.shape[0]} after filtering')
     return(betas_)
 
-
-# With the function that we created above, we can now remove suboptimal probes:
-
-# In[4]:
-
-
 df1 = exclude_suboptimal_probes(betas)
 
 
 # ## Step 2. Filtering sex-linked probes and control probes
 
-# In[5]:
+# In[12]:
 
 
 df2 = methylcheck.exclude_sex_control_probes(df1, '450k', no_sex=True, no_control=True, verbose=True)
@@ -126,7 +120,7 @@ df2 = methylcheck.exclude_sex_control_probes(df1, '450k', no_sex=True, no_contro
 # 
 # QC reports are saved as excel sheets in each _filepath_ directory.
 
-# In[6]:
+# In[13]:
 
 
 # File path for 1031 has to be uploaded separately since it was processed in batches due to size
@@ -134,16 +128,6 @@ df2 = methylcheck.exclude_sex_control_probes(df1, '450k', no_sex=True, no_contro
 filepath2_1 = Path('../Data/Raw_Data/COG_AAML1031_GSE190931/GPL21145_1')
 filepath2_2 = Path('../Data/Raw_Data/COG_AAML1031_GSE190931/GPL21145_2')
 filepath2_3 = Path('../Data/Raw_Data/COG_AAML1031_GSE190931/GPL21145_3')
-
-
-# Note: the cell below will generate Illumina's QC report for all datasets and save them in their respective filepaths.
-# 
-# ```{note}
-# It may take >5min to run the cell below. If you don't need the reports in excel format (if they are already there), then skip the cell below.
-# ```
-
-# In[7]:
-
 
 # # AAML0531 QC Report
 # methylcheck.controls_report(filepath=filepath1)
@@ -161,7 +145,7 @@ filepath2_3 = Path('../Data/Raw_Data/COG_AAML1031_GSE190931/GPL21145_3')
 
 # ### Load QC Reports
 
-# In[8]:
+# In[14]:
 
 
 # Load QC reports
@@ -185,33 +169,29 @@ qc_table = pd.concat([qc_table1.iloc[1:], qc_table2_1.iloc[1:],qc_table2_2.iloc[
 # 
 # In other words, we will exclude samples that Illumina QC categorizes as FAIL(pval) for __not__ meeting the condition: (pOOBAH ≤ 0.05) > 80% probes
 
-# In[9]:
+# In[15]:
 
 
 qc_failed = qc_table[qc_table['Result'].str.contains('pval')][["Result", 'Why Failed']]
 qc_failed
 
 
-# In[10]:
+# In[16]:
 
 
 df3 = df2.drop(list(qc_failed.index),level=1, axis=1)
-print(f'COG: {df2.shape[1] - df3.shape[1]} sample(s) removed because: (pOOBAH ≤ 0.05) > 80% probes')
+print(f'{df2.shape[1] - df3.shape[1]} sample(s) removed because: (pOOBAH ≤ 0.05) > 80% probes')
 
 
 # ## Step 4. Exclude CpG probes that contain more than 5% of missing values
 
-# In[11]:
+# In[17]:
 
 
 def probe_cutoff(qc_betas, threshold):
     qc_betas2 = qc_betas.dropna(axis=0, thresh = int(threshold*qc_betas.shape[1]))
     print(f'{qc_betas.shape[0] - qc_betas2.shape[0]} probe(s) removed because of >5% missing values')
     return(qc_betas2)
-
-
-# In[12]:
-
 
 df4 = probe_cutoff(df3, threshold=0.95)
 
@@ -220,39 +200,30 @@ df4 = probe_cutoff(df3, threshold=0.95)
 
 # 
 # We still have probes with missing values that are below our 5% threshold. To fix that, we interpolate remaining beta values values linearly.
-# - Linear interpolation means that a missing CpG value for a particular sample will be filled with the median of the values of the two adjacent samples. The reason behind this is the high concordance _usually_ seen in the methylation profile of neighboring samples.
+# - Linear interpolation means that a missing mC value for a particular sample will be filled with the median of the values of the two adjacent samples. The reason behind this is the high concordance _usually_ seen in the methylation profile of neighboring samples.
 # - Inevitably, this step adds arbitration to the data cleaning process.
 
-# In[13]:
+# In[18]:
 
 
 df5 = df4.interpolate(axis=0).interpolate(axis=0, limit_direction='backward').round(3)
 
-
-# Great! In summary:
-
-# In[14]:
+print(f' Interpolated dataset contains {df5.shape[0]}'
++ f' rows (mC probes) and {df5.shape[1]} columns (samples).')
 
 
-print(f' Merged df5 dataset contains {df5.shape[0]}'
-+ f' rows (CpG probes) and {df5.shape[1]} columns (samples).')
+# ## Save Dataset
 
-
-# ## Step 6. Add Sample Metadata and Clinical Data
-
-# In[15]:
-
-
-from FM_Functions.Clinical_Data_CleanUp import *
-clinical_data = combine_and_index_clinicaldata() # Load and merge all clinical data
-
-
-# ## Save Files
-
-# In[17]:
+# In[20]:
 
 
 df5.to_pickle('../Data/Processed_Data/2_MethylData_Processing_Output.pkl')
 
 
-# ## End
+# ## Watermark
+
+# In[1]:
+
+
+get_ipython().run_line_magic('watermark', '-v -p methylcheck,pandas')
+

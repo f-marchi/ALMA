@@ -5,16 +5,16 @@
 
 # ## Where the data at?
 
-# In[3]:
+# In[12]:
 
 
 input_path = '../Data/Processed_Data/'
-output_path = '../Data/Processed_Data/Blood_Deconvolution_ARIC/'
+output_path = '../Data/Processed_Data/Cell_Deconvolution/'
 
 
 # ## Load AML Dataset
 
-# In[4]:
+# In[13]:
 
 
 import pandas as pd
@@ -22,12 +22,14 @@ import pandas as pd
 x = pd.read_pickle(input_path+'x.pkl')
 y = pd.read_csv(input_path+'y.csv', index_col=0)
 
+print(f' Dataset (df) contains {x.shape[0]} rows (CpG probes) and {x.shape[1]} columns (samples).')
+
 
 # ## Train-Test Split
 
 # To avoid data leakage and maximize the independence of the validation cohort (test dataset), we will split the data by clinical trial. The validation cohort will be St. Jude Children's led trials (AML02 and AML08), and the training cohort will be all other trials.
 
-# In[5]:
+# In[14]:
 
 
 # Split data into training and test sets by clinical trial
@@ -49,7 +51,7 @@ y['Clinical Trial'].value_counts(dropna=False)
 # 
 # - __Paper__: [bioRxiv](https://doi.org/10.1101/2020.03.17.995431)
 
-# In[6]:
+# In[15]:
 
 
 from combat.pycombat import pycombat
@@ -67,26 +69,38 @@ x_train2 = data_corrected.T
 # 
 # - __Description__:  Bisulphite converted DNA from neutrophils (Neu, n=6), monocytes (Mono, n=6), B-lymphocytes (Bcells, n=6), CD4+ T-cells (CD4T, n=7, six samples and one technical replicate), CD8+ T-cells (CD8T, n=6), Natural Killer cells (NK, n=6), and 12 DNA artificial mixtures (labeled as MIX in the dataset) were hybridised to the Illumina Infinium HumanMethylationEPIC Beadchip v1.0_B4
 # 
+# - __External Validation__: [Significant variation in the performance of DNA methylation predictors across data preprocessing and normalization strategies](https://pubmed.ncbi.nlm.nih.gov/36280888/)
+# 
 # - __CSV file__: [Download](https://static-content.springer.com/esm/art%3A10.1186%2Fs13059-018-1448-7/MediaObjects/13059_2018_1448_MOESM4_ESM.csv)
 
-# In[7]:
+# In[16]:
 
 
 ref = pd.read_csv('https://static-content.springer.com/esm/art%3A10.1186%2Fs13059-018-1448-7/MediaObjects/13059_2018_1448_MOESM4_ESM.csv',
                   index_col=0, skiprows=1)[['CD8T','CD4T','NK','Bcell','Mono','Neu']]
 
-# File has also been downloaded locally under ".../Data/Blood_Reference_PMID29843789" as backup in case Springer link is down
 
-mix = x_train.T
-merge = ref.join(mix, how='inner')
+# In[17]:
+
+
+ref = pd.read_pickle(output_path+'paper_defined_immune_reference.pkl')
+# remove index name
+ref.index.name = None
+# remove duplicates from index
+ref = ref[~ref.index.duplicated(keep='first')]
+
+# Harmonize index of reference data with our data
+merge = ref.join(x.T, how='inner')
 
 # update ref and mix with merge index
 ref = ref.loc[merge.index]
-mix = mix.loc[merge.index]
+mix = x_train2.T.loc[merge.index]
+mix_test = x_test.T.loc[merge.index]
 
 # save ref and mix to csv
-ref.to_csv(output_path+'ref.csv')
-mix.to_csv(output_path+'mix.csv')
+ref.to_csv(output_path+'ReferenceData_ARIC.csv')
+mix.to_csv(output_path+'Input_TrainData_ARIC.csv')
+mix_test.to_csv(output_path+'Input_TestData_ARIC.csv')
 
 
 # ## Immune Cell Deconvolution with ARIC
@@ -99,22 +113,29 @@ mix.to_csv(output_path+'mix.csv')
 # 
 # - __External Validation__: [A systematic assessment of cell type deconvolution algorithms for DNA methylation data](https://doi.org/10.1093/bib/bbac449)
 
-# In[8]:
+# In[18]:
 
 
 from ARIC import *
 
-ARIC(mix_path=output_path+'mix.csv', ref_path=output_path+'ref.csv',
-     is_methylation=True, unknown=False)
+# Run cell deconvolution on train data
+ARIC(mix_path=output_path+'Input_TrainData_ARIC.csv',
+     ref_path=output_path+'ReferenceData_ARIC.csv',
+     is_methylation=True,
+     save_path=output_path+'Results_TrainData_ARIC.csv')
+
+# Run cell deconvolution on test data
+ARIC(mix_path=output_path+'Input_TestData_ARIC.csv',
+     ref_path=output_path+'ReferenceData_ARIC.csv',
+     is_methylation=True,
+     save_path=output_path+'Results_TestData_ARIC.csv')
 
 
-# In[16]:
+# ## Watermark
+
+# In[19]:
 
 
-# Read deconvolution results
-
-deconv = pd.read_csv(output_path+'mix_prop.csv', index_col=0)
-
-# Get basic statistics of deconvolution results
-round(deconv.T.describe(),2)
+get_ipython().run_line_magic('load_ext', 'watermark')
+get_ipython().run_line_magic('watermark', '-v -p numpy,pandas,matplotlib,seaborn,scipy,sklearn,combat,ARIC')
 

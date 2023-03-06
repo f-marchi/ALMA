@@ -17,7 +17,7 @@ parts:
       - file: 2_MethylData_Processing.ipynb
       - file: 3_ClinicalData_Processing.ipynb
 
-  - caption: Analyses
+  - caption: AML Diagnostic Map
 
     chapters:
       - file: 4_Dimension_Reduction.ipynb
@@ -26,4 +26,9 @@ parts:
       - file: 6_Survival_Analysis.ipynb
       - file: 6.1_Survival_Analysis_FS.ipynb
       - file: 7_Score_Visualization.ipynb
+
+  - caption: Immune Cell Deconvolution
+
+    chapters:
       - file: 8_Immune_Cell_Deconvolution
+      - file: 8.1_Deconvolution_Visualization

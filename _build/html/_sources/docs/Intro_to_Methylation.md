@@ -1,5 +1,6 @@
 (practical-intro1)=
-# Introduction
+
+# Understanding DNA Methylation
 
 This section offers a *practical* introduction to DNA methylation analyses by Illumina's EPIC and 450k platforms.
 

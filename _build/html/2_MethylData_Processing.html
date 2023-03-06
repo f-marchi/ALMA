@@ -129,19 +129,19 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Manuscripts
+  Introduction
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="docs/Intro_to_Methylation.html">
-   Introduction
+   Understanding DNA Methylation
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Code
+  Data Preparation
  </span>
 </p>
 <ul class="current nav bd-sidenav">
@@ -160,6 +160,13 @@ const thebe_selector_output = ".output, .cell_output"
    Clinical Data Processing
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  AML Diagnostic Map
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="4_Dimension_Reduction.html">
    Dimension Reduction with PaCMAP
@@ -190,9 +197,21 @@ const thebe_selector_output = ".output, .cell_output"
    Kaplan Meiers, Forest Plots, Patient Characteristics
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Immune Cell Deconvolution
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="8_Immune_Cell_Deconvolution.html">
    Immune Cell Deconvolution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="8.1_Deconvolution_Visualization.html">
+   Deconvolution Visualization
   </a>
  </li>
 </ul>
@@ -414,18 +433,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-6-add-sample-metadata-and-clinical-data">
-   Step 6. Add Sample Metadata and Clinical Data
+  <a class="reference internal nav-link" href="#save-dataset">
+   Save Dataset
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#save-files">
-   Save Files
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#end">
-   End
+  <a class="reference internal nav-link" href="#watermark">
+   Watermark
   </a>
  </li>
 </ul>
@@ -505,18 +519,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-6-add-sample-metadata-and-clinical-data">
-   Step 6. Add Sample Metadata and Clinical Data
+  <a class="reference internal nav-link" href="#save-dataset">
+   Save Dataset
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#save-files">
-   Save Files
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#end">
-   End
+  <a class="reference internal nav-link" href="#watermark">
+   Watermark
   </a>
  </li>
 </ul>
@@ -577,16 +586,16 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████| 1/1 [00:17&lt;00:00, 17.39s/it]
-INFO:methylcheck.load_processed:loaded data (865859, 500) from 1 pickled files (1.109s)
-Files: 100%|██████████| 3/3 [00:37&lt;00:00, 12.45s/it]
-INFO:methylcheck.load_processed:loaded data (865859, 1039) from 3 pickled files (2.859s)
-Files: 100%|██████████| 1/1 [00:02&lt;00:00,  2.47s/it]
-INFO:methylcheck.load_processed:loaded data (865859, 64) from 1 pickled files (0.203s)
-Files: 100%|██████████| 1/1 [00:06&lt;00:00,  6.26s/it]
-INFO:methylcheck.load_processed:loaded data (485512, 317) from 1 pickled files (0.469s)
-Files: 100%|██████████| 1/1 [00:06&lt;00:00,  6.44s/it]
-INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (0.438s)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████| 1/1 [00:01&lt;00:00,  1.54s/it]
+INFO:methylcheck.load_processed:loaded data (865859, 500) from 1 pickled files (1.266s)
+Files: 100%|██████████| 3/3 [00:03&lt;00:00,  1.13s/it]
+INFO:methylcheck.load_processed:loaded data (865859, 1039) from 3 pickled files (2.656s)
+Files: 100%|██████████| 1/1 [00:00&lt;00:00,  3.52it/s]
+INFO:methylcheck.load_processed:loaded data (865859, 64) from 1 pickled files (0.266s)
+Files: 100%|██████████| 1/1 [00:00&lt;00:00,  1.65it/s]
+INFO:methylcheck.load_processed:loaded data (485512, 317) from 1 pickled files (0.484s)
+Files: 100%|██████████| 1/1 [00:00&lt;00:00,  1.71it/s]
+INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (0.5s)
 </pre></div>
 </div>
 </div>
@@ -594,7 +603,7 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 </section>
 <section id="joining-dataframes">
 <h2>Joining Dataframes<a class="headerlink" href="#joining-dataframes" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
@@ -603,12 +612,12 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
                     <span class="s1">&#39;GSE133986_AML05&#39;</span><span class="p">,</span><span class="s1">&#39;GDC_TARGET_AML&#39;</span><span class="p">,</span><span class="s1">&#39;StJude_AML02_AML08&#39;</span><span class="p">],</span>
                     <span class="n">join</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; Dataset (df) contains </span><span class="si">{</span><span class="n">betas</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (CpG probes) and </span><span class="si">{</span><span class="n">betas</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns (samples).&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; Dataset (df) contains </span><span class="si">{</span><span class="n">betas</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (mC sites) and </span><span class="si">{</span><span class="n">betas</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns (samples).&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Dataset (df) contains 452453 rows (CpG probes) and 2244 columns (samples).
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Dataset (df) contains 452453 rows (mC sites) and 2244 columns (samples).
 </pre></div>
 </div>
 </div>
@@ -623,7 +632,7 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 </ul>
 <p>We will remove probes based on <em>Zhou et. al., 2016</em>. See figure 5 of their paper for detailed description.</p>
 <p>Please see function below <code class="docutils literal notranslate"><span class="pre">exclude_suboptimal_probes()</span></code> for paper information and where to find the annotations.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">exclude_suboptimal_probes</span><span class="p">(</span><span class="n">betas</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;This function removes proves listed as sub-optimal according to:</span>
@@ -641,14 +650,8 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
     <span class="n">betas_</span> <span class="o">=</span> <span class="n">betas</span><span class="p">[</span><span class="o">~</span><span class="n">betas</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">unreliable_probes</span><span class="p">)]</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Of </span><span class="si">{</span><span class="n">betas</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> probes, </span><span class="si">{</span><span class="n">betas</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">betas_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> matched, yielding </span><span class="si">{</span><span class="n">betas_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> after filtering&#39;</span><span class="p">)</span>
     <span class="k">return</span><span class="p">(</span><span class="n">betas_</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>With the function that we created above, we can now remove suboptimal probes:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">exclude_suboptimal_probes</span><span class="p">(</span><span class="n">betas</span><span class="p">)</span>
+
+<span class="n">df1</span> <span class="o">=</span> <span class="n">exclude_suboptimal_probes</span><span class="p">(</span><span class="n">betas</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -661,7 +664,7 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 </section>
 <section id="step-2-filtering-sex-linked-probes-and-control-probes">
 <h2>Step 2. Filtering sex-linked probes and control probes<a class="headerlink" href="#step-2-filtering-sex-linked-probes-and-control-probes" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">methylcheck</span><span class="o">.</span><span class="n">exclude_sex_control_probes</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="s1">&#39;450k&#39;</span><span class="p">,</span> <span class="n">no_sex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">no_control</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -686,25 +689,15 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 <h3>Run Illumina’s Quality Control (QC)<a class="headerlink" href="#run-illumina-s-quality-control-qc" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">methylcheck</span></code> is geared toward quality control of processed data. To this end, there is a helpful function that summarizes performance of control probes (<a class="reference external" href="https://support.illumina.com/content/dam/illumina-support/documents/documentation/chemistry_documentation/infinium_assays/infinium_hd_methylation/beadarray-controls-reporter-user-guide-1000000004009-00.pdf">details on control probes here</a>). To run this function, the control_probes.pkl file output from <code class="docutils literal notranslate"><span class="pre">methylprep</span></code> is required. This report ensures that the chemistry (bisulfite conversion, target specificity, hybridization, staining, etc.) and machine readings are acceptable.</p>
 <p>QC reports are saved as excel sheets in each <em>filepath</em> directory.</p>
-<div class="cell docutils container">
+<div class="cell tag_remove-output tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># File path for 1031 has to be uploaded separately since it was processed in batches due to size</span>
 
 <span class="n">filepath2_1</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;../Data/Raw_Data/COG_AAML1031_GSE190931/GPL21145_1&#39;</span><span class="p">)</span>
 <span class="n">filepath2_2</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;../Data/Raw_Data/COG_AAML1031_GSE190931/GPL21145_2&#39;</span><span class="p">)</span>
 <span class="n">filepath2_3</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;../Data/Raw_Data/COG_AAML1031_GSE190931/GPL21145_3&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Note: the cell below will generate Illumina’s QC report for all datasets and save them in their respective filepaths.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>It may take &gt;5min to run the cell below. If you don’t need the reports in excel format (if they are already there), then skip the cell below.</p>
-</div>
-<div class="cell tag_remove-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # AAML0531 QC Report</span>
+
+<span class="c1"># # AAML0531 QC Report</span>
 <span class="c1"># methylcheck.controls_report(filepath=filepath1)</span>
 <span class="c1"># # AAML1031 QC Report</span>
 <span class="c1"># methylcheck.controls_report(filepath=filepath2_1)</span>
@@ -846,12 +839,12 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">qc_failed</span><span class="o">.</span><span class="n">index</span><span class="p">),</span><span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;COG: </span><span class="si">{</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">df3</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> sample(s) removed because: (pOOBAH ≤ 0.05) &gt; 80% probes&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">df3</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> sample(s) removed because: (pOOBAH ≤ 0.05) &gt; 80% probes&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>COG: 364 sample(s) removed because: (pOOBAH ≤ 0.05) &gt; 80% probes
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>364 sample(s) removed because: (pOOBAH ≤ 0.05) &gt; 80% probes
 </pre></div>
 </div>
 </div>
@@ -866,13 +859,8 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
     <span class="n">qc_betas2</span> <span class="o">=</span> <span class="n">qc_betas</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">thresh</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">threshold</span><span class="o">*</span><span class="n">qc_betas</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">qc_betas</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">qc_betas2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> probe(s) removed because of &gt;5% missing values&#39;</span><span class="p">)</span>
     <span class="k">return</span><span class="p">(</span><span class="n">qc_betas2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df4</span> <span class="o">=</span> <span class="n">probe_cutoff</span><span class="p">(</span><span class="n">df3</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span>
+
+<span class="n">df4</span> <span class="o">=</span> <span class="n">probe_cutoff</span><span class="p">(</span><span class="n">df3</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -887,387 +875,27 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 <h2>Step 5. Interpolate remaining missing values linearly<a class="headerlink" href="#step-5-interpolate-remaining-missing-values-linearly" title="Permalink to this headline">#</a></h2>
 <p>We still have probes with missing values that are below our 5% threshold. To fix that, we interpolate remaining beta values values linearly.</p>
 <ul class="simple">
-<li><p>Linear interpolation means that a missing CpG value for a particular sample will be filled with the median of the values of the two adjacent samples. The reason behind this is the high concordance <em>usually</em> seen in the methylation profile of neighboring samples.</p></li>
+<li><p>Linear interpolation means that a missing mC value for a particular sample will be filled with the median of the values of the two adjacent samples. The reason behind this is the high concordance <em>usually</em> seen in the methylation profile of neighboring samples.</p></li>
 <li><p>Inevitably, this step adds arbitration to the data cleaning process.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df5</span> <span class="o">=</span> <span class="n">df4</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">limit_direction</span><span class="o">=</span><span class="s1">&#39;backward&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Great! In summary:</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; Merged df5 dataset contains </span><span class="si">{</span><span class="n">df5</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
-<span class="o">+</span> <span class="sa">f</span><span class="s1">&#39; rows (CpG probes) and </span><span class="si">{</span><span class="n">df5</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns (samples).&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df5</span> <span class="o">=</span> <span class="n">df4</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">limit_direction</span><span class="o">=</span><span class="s1">&#39;backward&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; Interpolated dataset contains </span><span class="si">{</span><span class="n">df5</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="o">+</span> <span class="sa">f</span><span class="s1">&#39; rows (mC probes) and </span><span class="si">{</span><span class="n">df5</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns (samples).&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Merged df5 dataset contains 310545 rows (CpG probes) and 1880 columns (samples).
-</pre></div>
-</div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead tr th {
-        text-align: left;
-    }
-
-    .dataframe thead tr:last-of-type th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr>
-      <th></th>
-      <th colspan="10" halign="left">GSE124413_AAML0531</th>
-      <th>...</th>
-      <th colspan="10" halign="left">StJude_AML02_AML08</th>
-    </tr>
-    <tr>
-      <th></th>
-      <th>200973410077_R01C01</th>
-      <th>200973410077_R02C01</th>
-      <th>200973410077_R03C01</th>
-      <th>200973410077_R04C01</th>
-      <th>200973410077_R05C01</th>
-      <th>200973410077_R06C01</th>
-      <th>200973410077_R08C01</th>
-      <th>200973410079_R01C01</th>
-      <th>200973410079_R02C01</th>
-      <th>200973410079_R03C01</th>
-      <th>...</th>
-      <th>9426021149_R02C01</th>
-      <th>9426021149_R02C02</th>
-      <th>9426021149_R03C01</th>
-      <th>9426021149_R03C02</th>
-      <th>9426021149_R04C01</th>
-      <th>9426021149_R04C02</th>
-      <th>9426021149_R05C01</th>
-      <th>9426021149_R05C02</th>
-      <th>9426021149_R06C01</th>
-      <th>9426021149_R06C02</th>
-    </tr>
-    <tr>
-      <th>IlmnID</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>cg00000109</th>
-      <td>0.898</td>
-      <td>0.920</td>
-      <td>0.907</td>
-      <td>0.925</td>
-      <td>0.912</td>
-      <td>0.901</td>
-      <td>0.903</td>
-      <td>0.932</td>
-      <td>0.948</td>
-      <td>0.939</td>
-      <td>...</td>
-      <td>0.941</td>
-      <td>0.918</td>
-      <td>0.939</td>
-      <td>0.935</td>
-      <td>0.909</td>
-      <td>0.930</td>
-      <td>0.925</td>
-      <td>0.894</td>
-      <td>0.925</td>
-      <td>0.935</td>
-    </tr>
-    <tr>
-      <th>cg00000292</th>
-      <td>0.741</td>
-      <td>0.946</td>
-      <td>0.273</td>
-      <td>0.784</td>
-      <td>0.254</td>
-      <td>0.723</td>
-      <td>0.759</td>
-      <td>0.752</td>
-      <td>0.821</td>
-      <td>0.913</td>
-      <td>...</td>
-      <td>0.845</td>
-      <td>0.803</td>
-      <td>0.778</td>
-      <td>0.778</td>
-      <td>0.550</td>
-      <td>0.822</td>
-      <td>0.754</td>
-      <td>0.853</td>
-      <td>0.704</td>
-      <td>0.687</td>
-    </tr>
-    <tr>
-      <th>cg00000363</th>
-      <td>0.447</td>
-      <td>0.312</td>
-      <td>0.207</td>
-      <td>0.673</td>
-      <td>0.202</td>
-      <td>0.356</td>
-      <td>0.218</td>
-      <td>0.337</td>
-      <td>0.235</td>
-      <td>0.418</td>
-      <td>...</td>
-      <td>0.625</td>
-      <td>0.407</td>
-      <td>0.283</td>
-      <td>0.292</td>
-      <td>0.569</td>
-      <td>0.418</td>
-      <td>0.500</td>
-      <td>0.488</td>
-      <td>0.558</td>
-      <td>0.353</td>
-    </tr>
-    <tr>
-      <th>cg00000622</th>
-      <td>0.022</td>
-      <td>0.022</td>
-      <td>0.022</td>
-      <td>0.022</td>
-      <td>0.020</td>
-      <td>0.020</td>
-      <td>0.019</td>
-      <td>0.017</td>
-      <td>0.017</td>
-      <td>0.018</td>
-      <td>...</td>
-      <td>0.015</td>
-      <td>0.018</td>
-      <td>0.013</td>
-      <td>0.019</td>
-      <td>0.015</td>
-      <td>0.016</td>
-      <td>0.015</td>
-      <td>0.015</td>
-      <td>0.015</td>
-      <td>0.013</td>
-    </tr>
-    <tr>
-      <th>cg00000658</th>
-      <td>0.802</td>
-      <td>0.816</td>
-      <td>0.786</td>
-      <td>0.834</td>
-      <td>0.810</td>
-      <td>0.785</td>
-      <td>0.814</td>
-      <td>0.814</td>
-      <td>0.809</td>
-      <td>0.823</td>
-      <td>...</td>
-      <td>0.893</td>
-      <td>0.871</td>
-      <td>0.904</td>
-      <td>0.855</td>
-      <td>0.887</td>
-      <td>0.863</td>
-      <td>0.867</td>
-      <td>0.829</td>
-      <td>0.907</td>
-      <td>0.883</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>ch.9.88862796F</th>
-      <td>0.068</td>
-      <td>0.045</td>
-      <td>0.061</td>
-      <td>0.048</td>
-      <td>0.054</td>
-      <td>0.056</td>
-      <td>0.034</td>
-      <td>0.038</td>
-      <td>0.034</td>
-      <td>0.038</td>
-      <td>...</td>
-      <td>0.027</td>
-      <td>0.033</td>
-      <td>0.030</td>
-      <td>0.029</td>
-      <td>0.031</td>
-      <td>0.033</td>
-      <td>0.034</td>
-      <td>0.027</td>
-      <td>0.030</td>
-      <td>0.024</td>
-    </tr>
-    <tr>
-      <th>ch.9.90287778F</th>
-      <td>0.077</td>
-      <td>0.055</td>
-      <td>0.071</td>
-      <td>0.059</td>
-      <td>0.054</td>
-      <td>0.058</td>
-      <td>0.049</td>
-      <td>0.079</td>
-      <td>0.041</td>
-      <td>0.062</td>
-      <td>...</td>
-      <td>0.034</td>
-      <td>0.035</td>
-      <td>0.032</td>
-      <td>0.034</td>
-      <td>0.038</td>
-      <td>0.042</td>
-      <td>0.038</td>
-      <td>0.038</td>
-      <td>0.029</td>
-      <td>0.029</td>
-    </tr>
-    <tr>
-      <th>ch.9.90621653R</th>
-      <td>0.049</td>
-      <td>0.043</td>
-      <td>0.044</td>
-      <td>0.040</td>
-      <td>0.035</td>
-      <td>0.038</td>
-      <td>0.037</td>
-      <td>0.042</td>
-      <td>0.045</td>
-      <td>0.035</td>
-      <td>...</td>
-      <td>0.033</td>
-      <td>0.029</td>
-      <td>0.027</td>
-      <td>0.028</td>
-      <td>0.030</td>
-      <td>0.034</td>
-      <td>0.032</td>
-      <td>0.029</td>
-      <td>0.029</td>
-      <td>0.026</td>
-    </tr>
-    <tr>
-      <th>ch.9.93402636R</th>
-      <td>0.046</td>
-      <td>0.037</td>
-      <td>0.052</td>
-      <td>0.029</td>
-      <td>0.031</td>
-      <td>0.043</td>
-      <td>0.024</td>
-      <td>0.034</td>
-      <td>0.033</td>
-      <td>0.036</td>
-      <td>...</td>
-      <td>0.029</td>
-      <td>0.025</td>
-      <td>0.025</td>
-      <td>0.024</td>
-      <td>0.031</td>
-      <td>0.027</td>
-      <td>0.025</td>
-      <td>0.026</td>
-      <td>0.023</td>
-      <td>0.019</td>
-    </tr>
-    <tr>
-      <th>ch.9.98463211R</th>
-      <td>0.046</td>
-      <td>0.038</td>
-      <td>0.048</td>
-      <td>0.042</td>
-      <td>0.043</td>
-      <td>0.047</td>
-      <td>0.035</td>
-      <td>0.036</td>
-      <td>0.034</td>
-      <td>0.035</td>
-      <td>...</td>
-      <td>0.026</td>
-      <td>0.027</td>
-      <td>0.030</td>
-      <td>0.023</td>
-      <td>0.024</td>
-      <td>0.027</td>
-      <td>0.030</td>
-      <td>0.026</td>
-      <td>0.024</td>
-      <td>0.022</td>
-    </tr>
-  </tbody>
-</table>
-<p>310545 rows × 1880 columns</p>
-</div></div></div>
-</div>
-</section>
-<section id="step-6-add-sample-metadata-and-clinical-data">
-<h2>Step 6. Add Sample Metadata and Clinical Data<a class="headerlink" href="#step-6-add-sample-metadata-and-clinical-data" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">FM_Functions.Clinical_Data_CleanUp</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="n">clinical_data</span> <span class="o">=</span> <span class="n">combine_and_index_clinicaldata</span><span class="p">()</span> <span class="c1"># Load and merge all clinical data</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Interpolated dataset contains 310545 rows (mC probes) and 1880 columns (samples).
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="save-files">
-<h2>Save Files<a class="headerlink" href="#save-files" title="Permalink to this headline">#</a></h2>
+<section id="save-dataset">
+<h2>Save Dataset<a class="headerlink" href="#save-dataset" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df5</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s1">&#39;../Data/Processed_Data/2_MethylData_Processing_Output.pkl&#39;</span><span class="p">)</span>
@@ -1276,8 +904,15 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 </div>
 </div>
 </section>
-<section id="end">
-<h2>End<a class="headerlink" href="#end" title="Permalink to this headline">#</a></h2>
+<section id="watermark">
+<h2>Watermark<a class="headerlink" href="#watermark" title="Permalink to this headline">#</a></h2>
+<div class="cell tag_remove-input tag_hide-output docutils container">
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UsageError: Line magic function `%watermark` not found.
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
