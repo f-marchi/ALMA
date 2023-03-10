@@ -222,6 +222,12 @@ df5.to_pickle('../Data/Processed_Data/2_MethylData_Processing_Output.pkl')
 
 # ## Watermark
 
+# In[ ]:
+
+
+get_ipython().run_line_magic('load_ext', 'watermark')
+
+
 # In[1]:
 
 

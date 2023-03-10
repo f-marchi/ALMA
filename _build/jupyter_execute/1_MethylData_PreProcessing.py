@@ -8,12 +8,12 @@
 # 
 # This is a comprehensive chapter on the pipeline utilized to download and process raw methylation array data from _Infinium MethylationEPIC_ and _Infinium HumanMethylation450_:
 # 
-# 1. Download raw datasets from GEO or GDC using ```methylprep```
-# 2. Pre-process raw data using ```methylprep```, 
+# 1. Download raw methylation array datasets from GEO or GDC using ```methylprep```
+# 2. Pre-process raw files using ```methylprep```, 
 #     which is a python library that offers R's [SeSAMe](https://www.bioconductor.org/packages/release/bioc/html/sesame.html) as the backend analysis suite.
 # 2. Process data exclusion criteria using ```methylcheck```
 # 3. Run Illumina's Quality Control
-# 4. Prepare data for analysis
+# 4. Clean up clinical data for downstream analysis
 # 
 # ```{note}
 # This pipeline has been adapted from python's [methylsuite](https://pypi.org/project/methylsuite/).
@@ -73,7 +73,7 @@
 #     ```
 # 
 # ```{note}
-# If files are larger than RAM, specify batches
+# If files are larger than RAM, specify batches.
 # Full ```methylprep``` API can be found [here](https://life-epigenetics-methylprep.readthedocs-hosted.com/en/latest/docs/cli.html)
 
 # 
@@ -115,7 +115,6 @@
 #     python -m methylprep -v process --array_type 450k -d <path to data and samplesheet.csv> --all
 #     ```
 #     ```{note}
-#     - If files are larger than your RAM memory, you will need to run in batches (check methylprep's documentation).
-#     - Be mindful of \ and / differences if working in a windows machine through git bash. Some of methylprep code may break on Windows. Use a linux, Mac, or WSL if possible.
+#         Be mindful of \ and / differences if working in a windows machine through git bash. Some of methylprep code may break on Windows. Use a linux, Mac, or WSL if possible.
 #     ```
 # - Fantastic, files are now processed and ready for next steps!

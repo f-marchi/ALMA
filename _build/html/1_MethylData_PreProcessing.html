@@ -205,11 +205,6 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="8_Immune_Cell_Deconvolution.html">
-   Immune Cell Deconvolution
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="8.1_Deconvolution_Visualization.html">
    Deconvolution Visualization
   </a>
@@ -440,12 +435,12 @@ title="Print to PDF"
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h2>
 <p>This is a comprehensive chapter on the pipeline utilized to download and process raw methylation array data from <em>Infinium MethylationEPIC</em> and <em>Infinium HumanMethylation450</em>:</p>
 <ol class="simple">
-<li><p>Download raw datasets from GEO or GDC using <code class="docutils literal notranslate"><span class="pre">methylprep</span></code></p></li>
-<li><p>Pre-process raw data using <code class="docutils literal notranslate"><span class="pre">methylprep</span></code>,
+<li><p>Download raw methylation array datasets from GEO or GDC using <code class="docutils literal notranslate"><span class="pre">methylprep</span></code></p></li>
+<li><p>Pre-process raw files using <code class="docutils literal notranslate"><span class="pre">methylprep</span></code>,
 which is a python library that offers R’s <a class="reference external" href="https://www.bioconductor.org/packages/release/bioc/html/sesame.html">SeSAMe</a> as the backend analysis suite.</p></li>
 <li><p>Process data exclusion criteria using <code class="docutils literal notranslate"><span class="pre">methylcheck</span></code></p></li>
 <li><p>Run Illumina’s Quality Control</p></li>
-<li><p>Prepare data for analysis</p></li>
+<li><p>Clean up clinical data for downstream analysis</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -510,7 +505,7 @@ pip<span class="w"> </span>install<span class="w"> </span>methylsuite
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If files are larger than RAM, specify batches
+<p>If files are larger than RAM, specify batches.
 Full <code class="docutils literal notranslate"><span class="pre">methylprep</span></code> API can be found <a class="reference external" href="https://life-epigenetics-methylprep.readthedocs-hosted.com/en/latest/docs/cli.html">here</a></p>
 </div>
 </section>
@@ -557,10 +552,9 @@ Full <code class="docutils literal notranslate"><span class="pre">methylprep</sp
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<ul class="simple">
-<li><p>If files are larger than your RAM memory, you will need to run in batches (check methylprep’s documentation).</p></li>
-<li><p>Be mindful of \ and / differences if working in a windows machine through git bash. Some of methylprep code may break on Windows. Use a linux, Mac, or WSL if possible.</p></li>
-</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Be mindful of \ and / differences if working in a windows machine through git bash. Some of methylprep code may break on Windows. Use a linux, Mac, or WSL if possible.
+</pre></div>
+</div>
 </div>
 </li>
 <li><p>Fantastic, files are now processed and ready for next steps!</p></li>

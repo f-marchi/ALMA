@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Immune Cell Deconvolution" href="8_Immune_Cell_Deconvolution.html" />
+    <link rel="prev" title="Kaplan Meiers, Forest Plots, Patient Characteristics" href="7_Score_Visualization.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -203,11 +203,6 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="8_Immune_Cell_Deconvolution.html">
-   Immune Cell Deconvolution
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Deconvolution Visualization
@@ -460,7 +455,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get basic statistics of deconvolution results</span>
 <span class="nb">round</span><span class="p">(</span><span class="n">deconv</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">describe</span><span class="p">(),</span><span class="mi">2</span><span class="p">)</span>
@@ -797,7 +792,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">deconv</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="n">deconv_test</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
@@ -809,13 +804,13 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8.1_Deconvolution_Visualization_10_0.png" src="_images/8.1_Deconvolution_Visualization_10_0.png" />
+<img alt="_images/8.1_Deconvolution_Visualization_9_0.png" src="_images/8.1_Deconvolution_Visualization_9_0.png" />
 </div>
 </div>
 </section>
 <section id="import-cibersortx-results">
 <h2>Import CIBERSORTx Results<a class="headerlink" href="#import-cibersortx-results" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;COG_clinicaldata_ciberscore_FMcleaned.csv&#39;</span><span class="p">)</span>
 <span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;AML02_clinicaldata_ciberscore_FMcleaned.csv&#39;</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">22</span><span class="p">]</span>
@@ -857,6 +852,31 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># y3 = y2.join(df[[&#39;LSC6&#39;,&#39;pLSC6_gb&#39;]], how=&#39;left&#39;, on=&#39;Patient_ID&#39;, rsuffix=&#39;_&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Concat deconv and deconv_test</span>
+<span class="c1"># mC_deconv = pd.concat([deconv.T, deconv_test.T], axis=0)</span>
+
+<span class="c1"># # Merge mC_deconv with y</span>
+<span class="c1"># y2 = y.join(mC_deconv, how=&#39;inner&#39;)</span>
+
+<span class="c1"># # Merge y2 with LSC6 info </span>
+
+<span class="c1"># y3 = y2.join(df[[&#39;LSC6&#39;,&#39;pLSC6_gb&#39;]], how=&#39;left&#39;, on=&#39;Patient_ID&#39;, rsuffix=&#39;_&#39;)</span>
+
+<span class="c1"># # Save y2</span>
+<span class="c1"># y3.to_csv(output_path+&#39;y_plus_cibersortx_ARICresults.csv&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -901,27 +921,27 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                                                                           | 0/12 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                                     | 0/12 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 12/12 [00:00&lt;00:00, 308.04it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                                                                           | 0/12 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 12/12 [00:00&lt;00:00, 352.92it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|███████████████████████████████████████████████████████████████████████████████████████████| 12/12 [00:00&lt;00:00, 304.40it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                                     | 0/12 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|███████████████████████████████████████████████████████████████████████████████████████████| 12/12 [00:00&lt;00:00, 285.70it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
 </div>
 </div>
-<div class="cell docutils container">
+</div>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -984,7 +1004,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8.1_Deconvolution_Visualization_15_0.png" src="_images/8.1_Deconvolution_Visualization_15_0.png" />
+<img alt="_images/8.1_Deconvolution_Visualization_16_0.png" src="_images/8.1_Deconvolution_Visualization_16_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -994,7 +1014,446 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8.1_Deconvolution_Visualization_16_0.png" src="_images/8.1_Deconvolution_Visualization_16_0.png" />
+<img alt="_images/8.1_Deconvolution_Visualization_17_0.png" src="_images/8.1_Deconvolution_Visualization_17_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Concat mC_deconv and mRNA deconv</span>
+<span class="n">mC_mRNA_deconv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">mC_deconv</span><span class="p">,</span> <span class="n">mRNA_deconv</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+<span class="n">mC_mRNA_deconv_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">mC_deconv_test</span><span class="p">,</span> <span class="n">mRNA_deconv_test</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mC_mRNA_deconv</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Bas</th>
+      <th>Bmem</th>
+      <th>Bnv</th>
+      <th>CD4mem</th>
+      <th>CD4nv</th>
+      <th>CD8mem</th>
+      <th>CD8nv</th>
+      <th>Eos</th>
+      <th>Mono</th>
+      <th>NK</th>
+      <th>...</th>
+      <th>Monocytes</th>
+      <th>Macrophages M0</th>
+      <th>Macrophages M1</th>
+      <th>Macrophages M2</th>
+      <th>Dendritic cells resting</th>
+      <th>Dendritic cells activated</th>
+      <th>Mast cells resting</th>
+      <th>Mast cells activated</th>
+      <th>Eosinophils</th>
+      <th>Neutrophils</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>201005010090_R03C01</th>
+      <td>0.018571</td>
+      <td>0.097482</td>
+      <td>0.050667</td>
+      <td>0.000155</td>
+      <td>0.060141</td>
+      <td>0.023198</td>
+      <td>0.005343</td>
+      <td>0.026312</td>
+      <td>0.583287</td>
+      <td>0.060481</td>
+      <td>...</td>
+      <td>0.174146</td>
+      <td>0.000000</td>
+      <td>0.001035</td>
+      <td>0.070450</td>
+      <td>0.000000</td>
+      <td>0.004721</td>
+      <td>0.018085</td>
+      <td>0.006314</td>
+      <td>0.142891</td>
+      <td>0.004537</td>
+    </tr>
+    <tr>
+      <th>201005010034_R05C01</th>
+      <td>0.067585</td>
+      <td>0.002435</td>
+      <td>0.234741</td>
+      <td>0.013072</td>
+      <td>0.029850</td>
+      <td>0.005613</td>
+      <td>0.060804</td>
+      <td>0.037241</td>
+      <td>0.265242</td>
+      <td>0.060201</td>
+      <td>...</td>
+      <td>0.125846</td>
+      <td>0.014879</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.005531</td>
+      <td>0.083392</td>
+      <td>0.130835</td>
+      <td>0.271948</td>
+      <td>0.054850</td>
+    </tr>
+    <tr>
+      <th>201005010090_R02C01</th>
+      <td>0.174972</td>
+      <td>0.045204</td>
+      <td>0.174080</td>
+      <td>0.010962</td>
+      <td>0.062962</td>
+      <td>0.000000</td>
+      <td>0.095039</td>
+      <td>0.053509</td>
+      <td>0.118253</td>
+      <td>0.151103</td>
+      <td>...</td>
+      <td>0.183342</td>
+      <td>0.000000</td>
+      <td>0.002471</td>
+      <td>0.028794</td>
+      <td>0.004481</td>
+      <td>0.000000</td>
+      <td>0.165865</td>
+      <td>0.033646</td>
+      <td>0.087662</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>201005010034_R06C01</th>
+      <td>0.085150</td>
+      <td>0.033223</td>
+      <td>0.131001</td>
+      <td>0.025426</td>
+      <td>0.036023</td>
+      <td>0.031154</td>
+      <td>0.083808</td>
+      <td>0.090728</td>
+      <td>0.300941</td>
+      <td>0.050988</td>
+      <td>...</td>
+      <td>0.465513</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.095440</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.040288</td>
+      <td>0.008254</td>
+      <td>0.076989</td>
+      <td>0.061646</td>
+    </tr>
+    <tr>
+      <th>201005010090_R04C01</th>
+      <td>0.154857</td>
+      <td>0.013059</td>
+      <td>0.109019</td>
+      <td>0.023014</td>
+      <td>0.000000</td>
+      <td>0.052289</td>
+      <td>0.028277</td>
+      <td>0.039576</td>
+      <td>0.319903</td>
+      <td>0.058640</td>
+      <td>...</td>
+      <td>0.270368</td>
+      <td>0.000000</td>
+      <td>0.009317</td>
+      <td>0.068413</td>
+      <td>0.000000</td>
+      <td>0.023050</td>
+      <td>0.000000</td>
+      <td>0.122364</td>
+      <td>0.175985</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>02b94d3d-2b6f-4c7a-9554-8e6256ddc791_noid</th>
+      <td>0.092219</td>
+      <td>0.026523</td>
+      <td>0.192480</td>
+      <td>0.015959</td>
+      <td>0.043589</td>
+      <td>0.000000</td>
+      <td>0.038094</td>
+      <td>0.044729</td>
+      <td>0.210119</td>
+      <td>0.089210</td>
+      <td>...</td>
+      <td>0.288100</td>
+      <td>0.000000</td>
+      <td>0.004592</td>
+      <td>0.075718</td>
+      <td>0.000000</td>
+      <td>0.001027</td>
+      <td>0.000000</td>
+      <td>0.048436</td>
+      <td>0.147923</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>0066d4af-8019-46a0-ba29-d2962c9537a7_noid</th>
+      <td>0.114704</td>
+      <td>0.041093</td>
+      <td>0.154764</td>
+      <td>0.018060</td>
+      <td>0.135336</td>
+      <td>0.000174</td>
+      <td>0.030928</td>
+      <td>0.006422</td>
+      <td>0.188139</td>
+      <td>0.143315</td>
+      <td>...</td>
+      <td>0.071742</td>
+      <td>0.000000</td>
+      <td>0.007779</td>
+      <td>0.057803</td>
+      <td>0.019072</td>
+      <td>0.000000</td>
+      <td>0.100177</td>
+      <td>0.000000</td>
+      <td>0.219573</td>
+      <td>0.011373</td>
+    </tr>
+    <tr>
+      <th>e844b417-c4ad-41db-b361-e93e3c88d3f3_noid</th>
+      <td>0.011145</td>
+      <td>0.056362</td>
+      <td>0.065166</td>
+      <td>0.017337</td>
+      <td>0.059695</td>
+      <td>0.005207</td>
+      <td>0.090886</td>
+      <td>0.006766</td>
+      <td>0.609452</td>
+      <td>0.033873</td>
+      <td>...</td>
+      <td>0.547315</td>
+      <td>0.001495</td>
+      <td>0.000000</td>
+      <td>0.024435</td>
+      <td>0.000000</td>
+      <td>0.004484</td>
+      <td>0.008354</td>
+      <td>0.000000</td>
+      <td>0.133112</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2483113d-8f2a-4a3c-b394-b734019c9c41_noid</th>
+      <td>0.063665</td>
+      <td>0.000000</td>
+      <td>0.176353</td>
+      <td>0.000000</td>
+      <td>0.022453</td>
+      <td>0.000000</td>
+      <td>0.058100</td>
+      <td>0.006671</td>
+      <td>0.457912</td>
+      <td>0.041548</td>
+      <td>...</td>
+      <td>0.298019</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.015906</td>
+      <td>0.000000</td>
+      <td>0.004651</td>
+      <td>0.000022</td>
+      <td>0.030713</td>
+      <td>0.050097</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>46bb9fca-6d17-4c35-a800-bf590c12edf1_noid</th>
+      <td>0.127551</td>
+      <td>0.040289</td>
+      <td>0.132544</td>
+      <td>0.020641</td>
+      <td>0.074930</td>
+      <td>0.008205</td>
+      <td>0.040858</td>
+      <td>0.075969</td>
+      <td>0.256002</td>
+      <td>0.080982</td>
+      <td>...</td>
+      <td>0.212893</td>
+      <td>0.013453</td>
+      <td>0.000141</td>
+      <td>0.014126</td>
+      <td>0.001277</td>
+      <td>0.003421</td>
+      <td>0.092049</td>
+      <td>0.015162</td>
+      <td>0.120695</td>
+      <td>0.006009</td>
+    </tr>
+  </tbody>
+</table>
+<p>1021 rows × 34 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mRNA_deconv</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;B cells naive&#39;,
+ &#39;B cells memory&#39;,
+ &#39;Plasma cells&#39;,
+ &#39;T cells CD8&#39;,
+ &#39;T cells CD4 naive&#39;,
+ &#39;T cells CD4 memory resting&#39;,
+ &#39;T cells CD4 memory activated&#39;,
+ &#39;T cells follicular helper&#39;,
+ &#39;T cells regulatory (Tregs)&#39;,
+ &#39;T cells gamma delta&#39;,
+ &#39;NK cells resting&#39;,
+ &#39;NK cells activated&#39;,
+ &#39;Monocytes&#39;,
+ &#39;Macrophages M0&#39;,
+ &#39;Macrophages M1&#39;,
+ &#39;Macrophages M2&#39;,
+ &#39;Dendritic cells resting&#39;,
+ &#39;Dendritic cells activated&#39;,
+ &#39;Mast cells resting&#39;,
+ &#39;Mast cells activated&#39;,
+ &#39;Eosinophils&#39;,
+ &#39;Neutrophils&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mC_deconv</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Bas&#39;,
+ &#39;Bmem&#39;,
+ &#39;Bnv&#39;,
+ &#39;CD4mem&#39;,
+ &#39;CD4nv&#39;,
+ &#39;CD8mem&#39;,
+ &#39;CD8nv&#39;,
+ &#39;Eos&#39;,
+ &#39;Mono&#39;,
+ &#39;NK&#39;,
+ &#39;Neu&#39;,
+ &#39;Treg&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_scatterplot</span><span class="p">(</span><span class="n">df_train</span><span class="o">=</span><span class="n">mC_mRNA_deconv</span><span class="p">,</span><span class="n">df_test</span><span class="o">=</span><span class="n">mC_mRNA_deconv_test</span><span class="p">,</span>
+                <span class="n">x</span><span class="o">=</span><span class="s1">&#39;NK cells activated&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;NK&#39;</span><span class="p">,</span>
+                <span class="n">hue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8.1_Deconvolution_Visualization_22_0.png" src="_images/8.1_Deconvolution_Visualization_22_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mC_mRNA_deconv_test</span><span class="p">[</span><span class="s1">&#39;NK cells activated&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    140.000000
+mean       0.002646
+std        0.011337
+min        0.000000
+25%        0.000000
+50%        0.000000
+75%        0.000000
+max        0.078050
+Name: NK cells activated, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_scatterplot</span><span class="p">(</span><span class="n">df_train</span><span class="o">=</span><span class="n">mC_mRNA_deconv</span><span class="p">,</span><span class="n">df_test</span><span class="o">=</span><span class="n">mC_mRNA_deconv_test</span><span class="p">,</span>
+                <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Neutrophils&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Neu&#39;</span><span class="p">,</span>
+                <span class="n">hue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8.1_Deconvolution_Visualization_24_0.png" src="_images/8.1_Deconvolution_Visualization_24_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_scatterplot</span><span class="p">(</span><span class="n">df_train</span><span class="o">=</span><span class="n">mC_mRNA_deconv</span><span class="p">,</span><span class="n">df_test</span><span class="o">=</span><span class="n">mC_mRNA_deconv_test</span><span class="p">,</span>
+                <span class="n">x</span><span class="o">=</span><span class="s1">&#39;NK cells activated&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;NK&#39;</span><span class="p">,</span>
+                <span class="n">hue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8.1_Deconvolution_Visualization_25_0.png" src="_images/8.1_Deconvolution_Visualization_25_0.png" />
 </div>
 </div>
 </section>
@@ -1027,11 +1486,11 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="8_Immune_Cell_Deconvolution.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="7_Score_Visualization.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Immune Cell Deconvolution</p>
+            <p class="prev-next-title">Kaplan Meiers, Forest Plots, Patient Characteristics</p>
         </div>
     </a>
 </div>

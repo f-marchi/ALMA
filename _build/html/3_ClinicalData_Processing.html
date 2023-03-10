@@ -205,11 +205,6 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="8_Immune_Cell_Deconvolution.html">
-   Immune Cell Deconvolution
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="8.1_Deconvolution_Visualization.html">
    Deconvolution Visualization
   </a>
@@ -401,23 +396,13 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#remove-normal-samples">
-     Remove Normal Samples
+    <a class="reference internal nav-link" href="#remove-control-normal-samples">
+     Remove Control/Normal Samples
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#remove-duplicate-samples">
      Remove Duplicate Samples
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#remove-samples-from-aaml03p1-and-ccg2961">
-     Remove Samples from AAML03P1 and CCG2961
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#select-control-samples">
-     Select Control samples
     </a>
    </li>
   </ul>
@@ -426,10 +411,17 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#save-files">
    Save Files
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#save-control-and-relapse-data-separately">
+     Save Control and Relapse Data Separately
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-end">
-   The End
+  <a class="reference internal nav-link" href="#watermark">
+   Watermark
   </a>
  </li>
 </ul>
@@ -477,23 +469,13 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#remove-normal-samples">
-     Remove Normal Samples
+    <a class="reference internal nav-link" href="#remove-control-normal-samples">
+     Remove Control/Normal Samples
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#remove-duplicate-samples">
      Remove Duplicate Samples
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#remove-samples-from-aaml03p1-and-ccg2961">
-     Remove Samples from AAML03P1 and CCG2961
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#select-control-samples">
-     Select Control samples
     </a>
    </li>
   </ul>
@@ -502,10 +484,17 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#save-files">
    Save Files
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#save-control-and-relapse-data-separately">
+     Save Control and Relapse Data Separately
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-end">
-   The End
+  <a class="reference internal nav-link" href="#watermark">
+   Watermark
   </a>
  </li>
 </ul>
@@ -534,11 +523,19 @@ title="Print to PDF"
 </section>
 <section id="load-methyl-data">
 <h2>Load Methyl Data<a class="headerlink" href="#load-methyl-data" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">df_methyl</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">input_path</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;Batch&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39; Dataset (df) contains </span><span class="si">{</span><span class="n">df_methyl</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (mC sites) and </span><span class="si">{</span><span class="n">df_methyl</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns (samples).&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Dataset (df) contains 310546 rows (mC sites) and 1880 columns (samples).
 </pre></div>
 </div>
 </div>
@@ -546,63 +543,45 @@ title="Print to PDF"
 </section>
 <section id="add-labels-clinical-outcome-data">
 <h2>Add Labels/Clinical Outcome Data<a class="headerlink" href="#add-labels-clinical-outcome-data" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">FM_Functions.Clinical_Data_CleanUp</span> <span class="kn">import</span> <span class="o">*</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels_cog</span><span class="p">,</span><span class="n">labels_aml02</span><span class="p">,</span><span class="n">labels_aml08</span><span class="p">,</span><span class="n">labels_aml05</span> <span class="o">=</span> <span class="n">combine_and_index_clinicaldata</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels_aml02</span> <span class="o">=</span> <span class="n">clean_aml02</span><span class="p">(</span><span class="n">labels_aml02</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import functions to clean up clinical data</span>
+<span class="kn">from</span> <span class="nn">FM_Functions.Clinical_Data_CleanUp</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># Combine all clinical data files into one dataframe and indexes it by the sample ID</span>
+<span class="n">labels_cog</span><span class="p">,</span> <span class="n">labels_aml02</span><span class="p">,</span> <span class="n">labels_aml08</span><span class="p">,</span> <span class="n">labels_aml05</span> <span class="o">=</span> <span class="n">combine_and_index_clinicaldata</span><span class="p">()</span>
+
+<span class="c1"># Clean up and adjust clinical data labels</span>
+<span class="n">labels_aml02</span> <span class="o">=</span> <span class="n">clean_aml02</span><span class="p">(</span><span class="n">labels_aml02</span><span class="p">)</span>
 <span class="n">labels_aml08</span> <span class="o">=</span> <span class="n">clean_aml08</span><span class="p">(</span><span class="n">labels_aml08</span><span class="p">)</span>
 <span class="n">labels_cog</span> <span class="o">=</span> <span class="n">clean_cog</span><span class="p">(</span><span class="n">labels_cog</span><span class="p">)</span>
 <span class="n">labels_aml05</span> <span class="o">=</span> <span class="n">clean_aml05</span><span class="p">(</span><span class="n">labels_aml05</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Combine all clinical data labels</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">labels_aml02</span><span class="p">,</span><span class="n">labels_aml08</span><span class="p">,</span><span class="n">labels_cog</span><span class="p">,</span><span class="n">labels_aml05</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">match_methyldata</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Remove samples that are not in the methyl data&quot;&quot;&quot;</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df_methyl</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
-    <span class="k">return</span> <span class="n">df</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">match_methyldata</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select only samples from the AML0531 clinical trial (GSE124413)</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">df_methyl</span><span class="p">[</span><span class="n">df_methyl</span><span class="p">[</span><span class="s1">&#39;Batch&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;GSE124413_AAML0531&#39;</span><span class="p">])]</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
+<span class="c1"># Combine all clinical data labels</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">labels_aml02</span><span class="p">,</span> <span class="n">labels_aml08</span><span class="p">,</span> <span class="n">labels_cog</span><span class="p">,</span>
+               <span class="n">labels_aml05</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
 
-<span class="c1"># Select control samples from GSE124413</span>
-<span class="n">control_0531</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="o">~</span><span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
+<span class="c1"># Remove samples that are not in the methyl dataset</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df_methyl</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
 
-<span class="n">control_0531</span><span class="p">[</span><span class="s1">&#39;Sample Type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Bone Marrow Normal&#39;</span>
+<span class="c1"># Label control samples from the AML0531 clinical trial (GSE124413) as &#39;Bone Marrow Normal&#39;</span>
 
-<span class="c1"># Combine control samples with clinical trial samples</span>
-<span class="n">df_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">control_0531</span><span class="p">[</span><span class="s1">&#39;Sample Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">label_control_samples</span><span class="p">(</span><span class="n">df_methyl</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function labels control samples from the AML0531 clinical trial (GSE124413) as &#39;Bone Marrow Normal&#39;</span>
+<span class="sd">    and combines them with the clinical trial samples.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">df_methyl</span><span class="p">[</span><span class="n">df_methyl</span><span class="p">[</span><span class="s1">&#39;Batch&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;GSE124413_AAML0531&#39;</span><span class="p">])]</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
+    <span class="n">control_0531</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="o">~</span><span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
+    <span class="n">control_0531</span><span class="p">[</span><span class="s1">&#39;Sample Type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Bone Marrow Normal&#39;</span>
+    <span class="n">df_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">df</span><span class="p">,</span> <span class="n">control_0531</span><span class="p">[</span><span class="s1">&#39;Sample Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df_</span>
+
+
+<span class="n">df_</span> <span class="o">=</span> <span class="n">label_control_samples</span><span class="p">(</span><span class="n">df_methyl</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -614,31 +593,34 @@ title="Print to PDF"
 <h3>Remove Relapse Samples<a class="headerlink" href="#remove-relapse-samples" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">df_</span><span class="p">[</span><span class="o">~</span><span class="n">df_</span><span class="p">[</span><span class="s1">&#39;Sample Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Relapse&#39;</span><span class="p">,</span><span class="s1">&#39;Recurrent Blood Derived Cancer - Bone Marrow&#39;</span><span class="p">,</span>
-                                 <span class="s1">&#39;Recurrent Blood Derived Cancer - Peripheral Blood&#39;</span>
-                                  <span class="p">])]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Of </span><span class="si">{</span><span class="n">df_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples, </span><span class="si">{</span><span class="n">df_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">df1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> matched, yielding </span><span class="si">{</span><span class="n">df1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples after filtering&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">df_</span><span class="p">[</span><span class="o">~</span><span class="n">df_</span><span class="p">[</span><span class="s1">&#39;Sample Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Relapse&#39;</span><span class="p">,</span> <span class="s1">&#39;Recurrent Blood Derived Cancer - Bone Marrow&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;Recurrent Blood Derived Cancer - Peripheral Blood&#39;</span><span class="p">])]</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;Out of </span><span class="si">{</span><span class="n">df_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples, </span><span class="si">{</span><span class="n">df_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">df1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> matched, yielding </span><span class="si">{</span><span class="n">df1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples after filtering&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Of 1762 samples, 248 matched, yielding 1514 samples after filtering
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Out of 1762 samples, 248 matched, yielding 1514 samples after filtering
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="remove-normal-samples">
-<h3>Remove Normal Samples<a class="headerlink" href="#remove-normal-samples" title="Permalink to this headline">#</a></h3>
-<div class="cell docutils container">
+<section id="remove-control-normal-samples">
+<h3>Remove Control/Normal Samples<a class="headerlink" href="#remove-control-normal-samples" title="Permalink to this headline">#</a></h3>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="o">~</span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;Sample Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Bone Marrow Normal&#39;</span><span class="p">,</span><span class="s1">&#39;Blood Derived Normal&#39;</span><span class="p">])]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Of </span><span class="si">{</span><span class="n">df1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples, </span><span class="si">{</span><span class="n">df1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> matched, yielding </span><span class="si">{</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples after filtering&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="o">~</span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;Sample Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;Bone Marrow Normal&#39;</span><span class="p">,</span> <span class="s1">&#39;Blood Derived Normal&#39;</span><span class="p">])]</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;Out of </span><span class="si">{</span><span class="n">df1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples, </span><span class="si">{</span><span class="n">df1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> matched, yielding </span><span class="si">{</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples after filtering&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Of 1514 samples, 154 matched, yielding 1360 samples after filtering
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Out of 1514 samples, 154 matched, yielding 1360 samples after filtering
 </pre></div>
 </div>
 </div>
@@ -646,41 +628,16 @@ title="Print to PDF"
 </section>
 <section id="remove-duplicate-samples">
 <h3>Remove Duplicate Samples<a class="headerlink" href="#remove-duplicate-samples" title="Permalink to this headline">#</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="o">~</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Patient_ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">)]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Of </span><span class="si">{</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples, </span><span class="si">{</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">df3</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> matched, yielding </span><span class="si">{</span><span class="n">df3</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples after filtering&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;Out of </span><span class="si">{</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples, </span><span class="si">{</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">df3</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> matched, yielding </span><span class="si">{</span><span class="n">df3</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples after filtering&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Of 1360 samples, 14 matched, yielding 1346 samples after filtering
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="remove-samples-from-aaml03p1-and-ccg2961">
-<h3>Remove Samples from AAML03P1 and CCG2961<a class="headerlink" href="#remove-samples-from-aaml03p1-and-ccg2961" title="Permalink to this headline">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df4 = df3[df3[&#39;Clinical Trial&#39;].isin([&#39;AAML1031&#39;,&#39;AAML0531&#39;,&#39;AML02&#39;,&#39;AML08&#39;])]</span>
-<span class="c1"># print(f&#39;Of {df3.shape[0]} samples, {df3.shape[0]-df4.shape[0]} matched, yielding {df4.shape[0]} samples after filtering&#39;)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="select-control-samples">
-<h3>Select Control samples<a class="headerlink" href="#select-control-samples" title="Permalink to this headline">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># controls = df_[df_[&#39;Sample Type&#39;].isin([&#39;Bone Marrow Normal&#39;])]</span>
-
-<span class="c1"># # Combine control samples with clinical trial samples</span>
-<span class="c1"># df4 = pd.concat([df3,controls],axis=0,join=&#39;outer&#39;)</span>
-
-<span class="c1"># print(f&#39;Of {df3.shape[0]} samples, {df3.shape[0]-df4.shape[0]} matched, yielding {df4.shape[0]} samples after filtering&#39;)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Out of 1360 samples, 14 matched, yielding 1346 samples after filtering
 </pre></div>
 </div>
 </div>
@@ -689,66 +646,74 @@ title="Print to PDF"
 </section>
 <section id="save-files">
 <h2>Save Files<a class="headerlink" href="#save-files" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span><span class="p">[</span><span class="s1">&#39;Sample Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">df3</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_methyl</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span> <span class="c1"># Join clinical data with methyl data</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">df3</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span> <span class="c1"># Select only methyl data</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="n">df3</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Select only clinical data</span>
+
+<span class="n">x</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;x.pkl&#39;</span><span class="p">)</span> <span class="c1"># Save methyl data</span>
+<span class="n">y</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;y.csv&#39;</span><span class="p">)</span> <span class="c1"># Save clinical data</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;Successfuly saved x.pkl and y.csv to </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Diagnosis                                          1234
-Primary Blood Derived Cancer - Bone Marrow           90
-Primary Blood Derived Cancer - Peripheral Blood      22
-Name: Sample Type, dtype: int64
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved x.pkl and y.csv to ../Data/Processed_Data/
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<section id="save-control-and-relapse-data-separately">
+<h3>Save Control and Relapse Data Separately<a class="headerlink" href="#save-control-and-relapse-data-separately" title="Permalink to this headline">#</a></h3>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">controls</span> <span class="o">=</span> <span class="n">df_</span><span class="p">[</span><span class="n">df_</span><span class="p">[</span><span class="s1">&#39;Sample Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Bone Marrow Normal&#39;</span><span class="p">])]</span>
+
+<span class="n">relapse</span> <span class="o">=</span> <span class="n">df_</span><span class="p">[</span><span class="n">df_</span><span class="p">[</span><span class="s1">&#39;Sample Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Relapse&#39;</span><span class="p">,</span> <span class="s1">&#39;Recurrent Blood Derived Cancer - Bone Marrow&#39;</span><span class="p">,</span>
+                                       <span class="s1">&#39;Recurrent Blood Derived Cancer - Peripheral Blood&#39;</span><span class="p">])]</span>
+
+<span class="c1"># Merge control and relapse samples</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">controls</span><span class="p">,</span> <span class="n">relapse</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span>
+              <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Control&#39;</span><span class="p">,</span> <span class="s1">&#39;Relapse&#39;</span><span class="p">])</span>
+
+<span class="c1"># Join clinical data with methyl data</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="n">df_methyl</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+
+<span class="c1"># Save merged control and relapse samples</span>
+<span class="n">t2</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;control_relapse.pkl&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;Successfuly saved </span><span class="si">{</span><span class="n">controls</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> control samples and </span><span class="si">{</span><span class="n">relapse</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> relapse samples to </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAML1031    520
-AAML0531    508
-AML02       162
-AML05        64
-AML08        42
-AAML03P1     36
-CCG2961      14
-Name: Clinical Trial, dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">df3</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_methyl</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">df3</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="n">df3</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;x.pkl&#39;</span><span class="p">)</span>
-<span class="n">y</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;y.csv&#39;</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved 147 control samples and 248 relapse samples to ../Data/Processed_Data/
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="the-end">
-<h2>The End<a class="headerlink" href="#the-end" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="watermark">
+<h2>Watermark<a class="headerlink" href="#watermark" title="Permalink to this headline">#</a></h2>
+<div class="cell tag_remove-input tag_remove-output docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
+Python version       : 3.10.9
+IPython version      : 8.8.0
+
+pandas: 1.5.2
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 

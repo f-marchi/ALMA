@@ -26,12 +26,6 @@ deconv = pd.read_csv(output_path+'Results_TrainData_ARIC.csv', index_col=0)
 deconv_test = pd.read_csv(output_path+'Results_TestData_ARIC.csv', index_col=0)
 
 
-# In[ ]:
-
-
-
-
-
 # In[3]:
 
 
@@ -108,6 +102,29 @@ mC_deconv_test.index.name = None
 # In[8]:
 
 
+# y3 = y2.join(df[['LSC6','pLSC6_gb']], how='left', on='Patient_ID', rsuffix='_')
+
+
+# In[9]:
+
+
+# # Concat deconv and deconv_test
+# mC_deconv = pd.concat([deconv.T, deconv_test.T], axis=0)
+
+# # Merge mC_deconv with y
+# y2 = y.join(mC_deconv, how='inner')
+
+# # Merge y2 with LSC6 info 
+
+# y3 = y2.join(df[['LSC6','pLSC6_gb']], how='left', on='Patient_ID', rsuffix='_')
+
+# # Save y2
+# y3.to_csv(output_path+'y_plus_cibersortx_ARICresults.csv')
+
+
+# In[10]:
+
+
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
@@ -149,7 +166,7 @@ df_corr = compute_correlation(mC_deconv, mRNA_deconv)
 df_corr_test = compute_correlation(mC_deconv_test, mRNA_deconv_test)
 
 
-# In[9]:
+# In[11]:
 
 
 import matplotlib.pyplot as plt
@@ -204,14 +221,70 @@ def plot_correlation_matrix(df_corr, num_samples):
     plt.xlabel('mRNA Deconvolution', fontsize='medium', fontweight='bold')
 
 
-# In[10]:
+# In[12]:
 
 
 plot_correlation_matrix(df_corr, num_samples=len(mRNA_deconv))
 
 
-# In[11]:
+# In[13]:
 
 
 plot_correlation_matrix(df_corr_test, num_samples=len(mRNA_deconv_test))
+
+
+# In[14]:
+
+
+# Concat mC_deconv and mRNA deconv
+mC_mRNA_deconv = pd.concat([mC_deconv, mRNA_deconv], axis=1, join='inner')
+mC_mRNA_deconv_test = pd.concat([mC_deconv_test, mRNA_deconv_test], axis=1)
+
+
+# In[15]:
+
+
+mC_mRNA_deconv
+
+
+# In[16]:
+
+
+mRNA_deconv.columns.to_list()
+
+
+# In[17]:
+
+
+mC_deconv.columns.to_list()
+
+
+# In[18]:
+
+
+draw_scatterplot(df_train=mC_mRNA_deconv,df_test=mC_mRNA_deconv_test,
+                x='NK cells activated',y='NK',
+                hue=None, s=25, save_plot=False)
+
+
+# In[19]:
+
+
+mC_mRNA_deconv_test['NK cells activated'].describe()
+
+
+# In[20]:
+
+
+draw_scatterplot(df_train=mC_mRNA_deconv,df_test=mC_mRNA_deconv_test,
+                x='Neutrophils',y='Neu',
+                hue=None, s=25, save_plot=False)
+
+
+# In[21]:
+
+
+draw_scatterplot(df_train=mC_mRNA_deconv,df_test=mC_mRNA_deconv_test,
+                x='NK cells activated',y='NK',
+                hue=None, s=25, save_plot=False)
 

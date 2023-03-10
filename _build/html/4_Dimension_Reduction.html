@@ -205,11 +205,6 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="8_Immune_Cell_Deconvolution.html">
-   Immune Cell Deconvolution
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="8.1_Deconvolution_Visualization.html">
    Deconvolution Visualization
   </a>
@@ -386,8 +381,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#test-train-split">
-   Test Train Split
+  <a class="reference internal nav-link" href="#train-test-split">
+   Train-Test Split
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -399,13 +394,6 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#id1">
    Dimension Reduction with PaCMAP
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#define">
-     Define
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#save-embedding">
@@ -413,8 +401,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-nanopore-sample">
-   Define Nanopore Sample
+  <a class="reference internal nav-link" href="#watermark">
+   Watermark
   </a>
  </li>
 </ul>
@@ -447,8 +435,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#test-train-split">
-   Test Train Split
+  <a class="reference internal nav-link" href="#train-test-split">
+   Train-Test Split
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -460,13 +448,6 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#id1">
    Dimension Reduction with PaCMAP
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#define">
-     Define
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#save-embedding">
@@ -474,8 +455,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#define-nanopore-sample">
-   Define Nanopore Sample
+  <a class="reference internal nav-link" href="#watermark">
+   Watermark
   </a>
  </li>
 </ul>
@@ -503,87 +484,63 @@ title="Print to PDF"
 </section>
 <section id="load-datasets">
 <h2>Load Datasets<a class="headerlink" href="#load-datasets" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;x.pkl&#39;</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;y.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39; Dataset (df) contains </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (mC sites) and </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns (samples).&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nanopore_sample</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;deci_flongle_runs.pkl&#39;</span><span class="p">)</span>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Dataset (df) contains 310545 rows (mC sites) and 1346 columns (samples).
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="test-train-split">
-<h2>Test Train Split<a class="headerlink" href="#test-train-split" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
+<section id="train-test-split">
+<h2>Train-Test Split<a class="headerlink" href="#train-test-split" title="Permalink to this headline">#</a></h2>
+<p>Here we will split the data into a training/discovery and testing/validation set.</p>
+<p>We will use <code class="docutils literal notranslate"><span class="pre">y_train</span></code> to denote the training set, and <code class="docutils literal notranslate"><span class="pre">y_test</span></code> to denote the testing set.</p>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAML1031    520
-AAML0531    508
-AML02       162
-AML05        64
-AML08        42
-AAML03P1     36
-CCG2961      14
-Name: Clinical Trial, dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_train</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="o">~</span><span class="n">y</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;AML02&#39;</span><span class="p">,</span><span class="s1">&#39;AML08&#39;</span><span class="p">])]</span>
-<span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;AML02&#39;</span><span class="p">,</span><span class="s1">&#39;AML08&#39;</span><span class="p">])]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAML1031    520
-AAML0531    508
-AML05        64
-AAML03P1     36
-CCG2961      14
-Name: Clinical Trial, dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select samples in x that are in y_train</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split train and test by clinical trial</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="o">~</span><span class="n">y</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;AML02&#39;</span><span class="p">,</span> <span class="s1">&#39;AML08&#39;</span><span class="p">])]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;AML02&#39;</span><span class="p">,</span> <span class="s1">&#39;AML08&#39;</span><span class="p">])]</span>
+
+<span class="c1"># Select samples in x that are in y_train</span>
 <span class="n">x_train</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">y_train</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
 <span class="n">x_test</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">y_test</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">x_test</span><span class="o">.</span><span class="n">shape</span>
+
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;Discovery dataset (train) contains </span><span class="si">{</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> rows (mC sites) and </span><span class="si">{</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> columns (samples)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">to_string</span><span class="p">()</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;Validation dataset (test) contains </span><span class="si">{</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> rows (mC sites) and </span><span class="si">{</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> columns (samples).&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">y_test</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">to_string</span><span class="p">()</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((1142, 310545), (204, 310545))
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discovery dataset (train) contains 310545 rows (mC sites) and 1142 columns (samples)
+
+AAML1031    520
+AAML0531    508
+AML05        64
+AAML03P1     36
+CCG2961      14
+
+Validation dataset (test) contains 310545 rows (mC sites) and 204 columns (samples).
+
+AML02    162
+AML08     42
 </pre></div>
 </div>
 </div>
@@ -591,11 +548,19 @@ Name: Clinical Trial, dtype: int64
 </section>
 <section id="batch-correction-with-pycombat">
 <h2>Batch Correction with pyCombat<a class="headerlink" href="#batch-correction-with-pycombat" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
+<ul class="simple">
+<li><p><strong>pyCombat</strong>: a Python tool for batch effects correction in high-throughput molecular data using empirical Bayes methods</p></li>
+<li><p><strong>Github</strong>: <a class="reference external" href="https://epigenelabs.github.io/pyComBat/">https://epigenelabs.github.io/pyComBat/</a></p></li>
+<li><p><strong>Paper</strong>: <a class="reference external" href="https://doi.org/10.1101/2020.03.17.995431">bioRxiv</a></p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">combat.pycombat</span> <span class="kn">import</span> <span class="n">pycombat</span>
-<span class="n">data_corrected</span> <span class="o">=</span> <span class="n">pycombat</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;Batch&#39;</span><span class="p">])</span>
-<span class="n">x_train2</span> <span class="o">=</span> <span class="n">data_corrected</span><span class="o">.</span><span class="n">T</span>
+
+<span class="c1"># Correct batch effects in the training dataset</span>
+<span class="n">x_train2</span> <span class="o">=</span> <span class="n">pycombat</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;Batch&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Succesfully corrected batch effects in the training dataset.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -606,6 +571,7 @@ Standardizing Data across genes.
 Fitting L/S model and finding priors.
 Finding parametric adjustments.
 Adjusting the Data
+Succesfully corrected batch effects in the training dataset
 </pre></div>
 </div>
 </div>
@@ -613,115 +579,112 @@ Adjusting the Data
 </section>
 <section id="id1">
 <h2>Dimension Reduction with PaCMAP<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
-<section id="define">
-<h3>Define<a class="headerlink" href="#define" title="Permalink to this headline">#</a></h3>
-<div class="cell docutils container">
+<ul class="simple">
+<li><p><strong>PaCMAP</strong>: Large-scale Dimension Reduction Technique Preserving Both Global and Local Structure</p></li>
+<li><p><strong>Github</strong>: <a class="reference external" href="https://github.com/YingfanWang/PaCMAP">https://github.com/YingfanWang/PaCMAP</a></p></li>
+<li><p><strong>Paper</strong>: <a class="reference external" href="https://jmlr.org/papers/v22/20-1061.html">Journal of Machine Learning Research</a></p></li>
+</ul>
+<div class="cell tag_hide-input tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pacmap</span>
-<span class="n">reducer</span> <span class="o">=</span> <span class="n">pacmap</span><span class="o">.</span><span class="n">PaCMAP</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> 
-                            <span class="n">MN_ratio</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">FP_ratio</span><span class="o">=</span><span class="mf">16.0</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+
+
+<span class="k">def</span> <span class="nf">run_pacmap</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Run PaCMAP on the training dataset and apply the learned parameters to the train and test datasets.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x_train : pandas.DataFrame</span>
+<span class="sd">        Training dataset.</span>
+<span class="sd">    x_test : pandas.DataFrame</span>
+<span class="sd">        Test dataset.</span>
+<span class="sd">    n_components : int, optional</span>
+<span class="sd">        Number of components. The default is 2.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    embedding : numpy.ndarray</span>
+<span class="sd">        Embedding of the training dataset.</span>
+<span class="sd">    embedding_test : numpy.ndarray</span>
+<span class="sd">        Embedding of the test dataset.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Initialize PaCMAP. Note: hyperparameter tuning has been performed.</span>
+    <span class="n">reducer</span> <span class="o">=</span> <span class="n">pacmap</span><span class="o">.</span><span class="n">PaCMAP</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">n_components</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+                            <span class="n">MN_ratio</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">FP_ratio</span><span class="o">=</span><span class="mf">16.0</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
                             <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">num_iters</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_pacmap\lib\site-packages\pacmap\pacmap.py:819: UserWarning: Warning: random state is set to 42
-  warnings.warn(f&#39;Warning: random state is set to {_RANDOM_STATE}&#39;)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import pacmap</span>
-<span class="c1"># reducer = pacmap.PaCMAP(n_components=2, n_neighbors=15, </span>
-<span class="c1">#                             MN_ratio=0.5, FP_ratio=10.0,random_state=42,</span>
-<span class="c1">#                             lr=0.1, num_iters=4500)</span>
+
+    <span class="c1"># Fit (estimate) parameters to the training dataset to learn the embedding</span>
+    <span class="n">embedding</span> <span class="o">=</span> <span class="n">reducer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+
+    <span class="c1"># Transform (apply) parameters to the test dataset</span>
+    <span class="n">embedding_test</span> <span class="o">=</span> <span class="n">reducer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="n">x_train</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">embedding</span><span class="p">,</span> <span class="n">embedding_test</span>
+
+
+<span class="n">embedding</span><span class="p">,</span> <span class="n">embedding_test</span> <span class="o">=</span> <span class="n">run_pacmap</span><span class="p">(</span><span class="n">x_train2</span><span class="p">,</span> <span class="n">x_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embedding</span> <span class="o">=</span> <span class="n">reducer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x_train2</span><span class="p">)</span>
-</pre></div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Understanding Machine Learning<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">You may have noticed that we called two methods in the PaCMAP class: <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">transform</span></code>:</p>
+<ul class="simple">
+<li><p class="sd-card-text"><strong>fit</strong>: Learn the parameters of a model <em>from</em> a dataset.</p></li>
+<li><p class="sd-card-text"><strong>transform</strong>: Apply the learned parameters <em>to</em> a dataset.</p></li>
+</ul>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embedding_test</span> <span class="o">=</span> <span class="n">reducer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="n">x_train2</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
+</details></section>
 <section id="save-embedding">
 <h2>Save Embedding<a class="headerlink" href="#save-embedding" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embedding</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">embedding</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">x_train2</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PaCMAP 1&#39;</span><span class="p">,</span><span class="s1">&#39;PaCMAP 2&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Transform df to pandas dataframe format</span>
+<span class="n">embedding</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">embedding</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">x_train2</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PaCMAP 1&#39;</span><span class="p">,</span> <span class="s1">&#39;PaCMAP 2&#39;</span><span class="p">])</span>
+<span class="n">embedding_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">embedding_test</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">x_test</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                              <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PaCMAP 1&#39;</span><span class="p">,</span> <span class="s1">&#39;PaCMAP 2&#39;</span><span class="p">])</span>
+
+<span class="c1"># Save embeddings</span>
 <span class="n">embedding</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;embedding.pkl&#39;</span><span class="p">)</span>
+<span class="n">embedding_test</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;embedding_test.pkl&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;Successfuly saved </span><span class="si">{</span><span class="n">embedding</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> x_train samples and </span><span class="si">{</span><span class="n">embedding_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> x_test samples to </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embedding_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">embedding_test</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">x_test</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PaCMAP 1&#39;</span><span class="p">,</span><span class="s1">&#39;PaCMAP 2&#39;</span><span class="p">])</span>
-<span class="n">embedding_test</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;embedding_test.pkl&#39;</span><span class="p">)</span>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved 1142 x_train samples and 204 x_test samples to ../Data/Processed_Data/
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="define-nanopore-sample">
-<h2>Define Nanopore Sample<a class="headerlink" href="#define-nanopore-sample" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kasumi2</span> <span class="o">=</span> <span class="n">nanopore_sample</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">),</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-</pre></div>
+<section id="watermark">
+<h2>Watermark<a class="headerlink" href="#watermark" title="Permalink to this headline">#</a></h2>
+<div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train_nano</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">x_train2</span><span class="p">,</span><span class="n">nanopore_sample</span><span class="p">[</span><span class="s1">&#39;Deci0-Flongle-1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Deci0-Flongle-1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">],</span>
-                            <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">join</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reducer_nano</span> <span class="o">=</span> <span class="n">pacmap</span><span class="o">.</span><span class="n">PaCMAP</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> 
-                            <span class="n">MN_ratio</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">FP_ratio</span><span class="o">=</span><span class="mf">16.0</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
-                            <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">num_iters</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
-<span class="c1"># Fit the training set</span>
-<span class="n">embedding2</span> <span class="o">=</span> <span class="n">reducer_nano</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x_train_nano</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_pacmap\lib\site-packages\pacmap\pacmap.py:819: UserWarning: Warning: random state is set to 42
-  warnings.warn(f&#39;Warning: random state is set to {_RANDOM_STATE}&#39;)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># embedding2_test2 = reducer_nano.transform(kasumi2.T[&#39;Deci0-Flongle-1&#39;].dropna().to_frame().T, </span>
-<span class="c1">#                                             basis=x_train_nano.copy())</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embedding2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">embedding2</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">x_train_nano</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PaCMAP 1&#39;</span><span class="p">,</span><span class="s1">&#39;PaCMAP 2&#39;</span><span class="p">])</span>
-<span class="n">embedding2</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;embedding_nano.pkl&#39;</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
+Python version       : 3.10.9
+IPython version      : 8.8.0
+
+numpy  : 1.23.5
+pandas : 1.5.2
+sklearn: 1.2.0
+combat : 0.3.3
+pacmap : 0.7.0
 </pre></div>
 </div>
 </div>
