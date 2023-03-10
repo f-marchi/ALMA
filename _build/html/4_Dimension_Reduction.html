@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Dimension Reduction with PaCMAP &#8212; Lamba Lab</title>
+    <title>Dimension Reduction with PaCMAP &#8212; Lamba Lab at UF</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -99,7 +99,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="_static/dna1.gif" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">Lamba Lab</h1>
+      <h1 class="site-logo" id="site-title">Lamba Lab at UF</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -207,6 +207,16 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="8.1_Deconvolution_Visualization.html">
    Deconvolution Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="8.2_Survival_Analysis_AML02score.html">
+   Survival Analysis of AML02 OS
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="8.3_Data_Visualization_AML02score.html">
+   Data Visualization
   </a>
  </li>
 </ul>
@@ -476,7 +486,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/&#39;</span>
-<span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/&#39;</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/PaCMAP_Results/&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -551,7 +561,8 @@ AML08     42
 <ul class="simple">
 <li><p><strong>pyCombat</strong>: a Python tool for batch effects correction in high-throughput molecular data using empirical Bayes methods</p></li>
 <li><p><strong>Github</strong>: <a class="reference external" href="https://epigenelabs.github.io/pyComBat/">https://epigenelabs.github.io/pyComBat/</a></p></li>
-<li><p><strong>Paper</strong>: <a class="reference external" href="https://doi.org/10.1101/2020.03.17.995431">bioRxiv</a></p></li>
+<li><p><strong>Implementation Paper</strong>: <a class="reference external" href="https://doi.org/10.1101/2020.03.17.995431">bioRxiv</a></p></li>
+<li><p><strong>Original Paper</strong>: <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/16632515/">Biostatistics</a></p></li>
 </ul>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
@@ -571,7 +582,7 @@ Standardizing Data across genes.
 Fitting L/S model and finding priors.
 Finding parametric adjustments.
 Adjusting the Data
-Succesfully corrected batch effects in the training dataset
+Succesfully corrected batch effects in the training dataset.
 </pre></div>
 </div>
 </div>
@@ -591,7 +602,7 @@ Succesfully corrected batch effects in the training dataset
 
 <span class="k">def</span> <span class="nf">run_pacmap</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Run PaCMAP on the training dataset and apply the learned parameters to the train and test datasets.</span>
+<span class="sd">    Run PaCMAP on the training dataset apply learned parameters to the train and test.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -630,20 +641,15 @@ Succesfully corrected batch effects in the training dataset
 </div>
 </div>
 </div>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Understanding Machine Learning<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">You may have noticed that we called two methods in the PaCMAP class: <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">transform</span></code>:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may have noticed that we called two methods in the PaCMAP class: <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">transform</span></code>.</p>
 <ul class="simple">
-<li><p class="sd-card-text"><strong>fit</strong>: Learn the parameters of a model <em>from</em> a dataset.</p></li>
-<li><p class="sd-card-text"><strong>transform</strong>: Apply the learned parameters <em>to</em> a dataset.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fit</span></code> means to learn the parameters of a model <em>from</em> a dataset.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">transform</span></code> means to apply the learned parameters <em>to</em> a dataset.</p></li>
 </ul>
 </div>
-</details></section>
+</section>
 <section id="save-embedding">
 <h2>Save Embedding<a class="headerlink" href="#save-embedding" title="Permalink to this headline">#</a></h2>
 <div class="cell tag_hide-input docutils container">
@@ -664,7 +670,7 @@ Understanding Machine Learning<div class="sd-summary-down docutils">
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved 1142 x_train samples and 204 x_test samples to ../Data/Processed_Data/
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved 1142 x_train samples and 204 x_test samples to ../Data/Processed_Data/PaCMAP_Results/
 </pre></div>
 </div>
 </div>
@@ -740,7 +746,7 @@ pacmap : 0.7.0
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By Lamba Lab @ University of Florida<br/>
+    By Francisco Marchi<br/>
   
       &copy; Copyright 2022.<br/>
 </p>

@@ -23,6 +23,10 @@ parts:
       - file: 4_Dimension_Reduction.ipynb
       - file: 5_Methylome_Visualization.ipynb
       - file: 5.1_Methylome_Bokeh.ipynb
+  
+    - caption: Survival Analyses
+
+    chapters:
       - file: 6_Survival_Analysis.ipynb
       - file: 6.1_Survival_Analysis_FS.ipynb
       - file: 7_Score_Visualization.ipynb
@@ -30,5 +34,7 @@ parts:
   - caption: Immune Cell Deconvolution
 
     chapters:
-      - file: 8_Immune_Cell_Deconvolution
+      - file: 8.0_Immune_Cell_Deconvolution
       - file: 8.1_Deconvolution_Visualization
+      - file: 8.2_Survival_Analysis_AML02score.ipynb
+      - file: 8.3_Data_Visualization_AML02score.ipynb

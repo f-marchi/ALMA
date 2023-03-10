@@ -1,5 +1,5 @@
-title: Lamba Lab
-author: Lamba Lab @ University of Florida
+title: Lamba Lab at UF
+author: Francisco Marchi
 logo: "_logos/dna1.gif"
 exclude_patterns: [.venv, .venv_data_vizualization, .venv_pacmap, .venv_sklearn,
                   Code_past, Benchmarking]
@@ -13,7 +13,7 @@ execute:
   execute_notebooks: cache
   exclude_patterns: [.venv, .venv_data_vizualization, .venv_pacmap, .venv_sklearn,
                   Code_past, Benchmarking]
-  timeout: 1000
+  timeout: 10000
 # HTML-specific settings
 html:
   home_page_in_navbar: false

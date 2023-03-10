@@ -5,7 +5,7 @@
 
 # We propose to leverage machine learning tools to develop DNA methylation-based signatures of clinical utility in pediatric AML.
 
-# In[3]:
+# In[1]:
 
 
 import pandas as pd
@@ -38,7 +38,7 @@ from bokeh.io import curdoc, output_notebook
 output_notebook()
 
 
-# In[4]:
+# In[2]:
 
 
 list = ['Primary Cytogenetic Code', 'Vital Status', 'FLT3 ITD',

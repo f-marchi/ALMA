@@ -5,16 +5,16 @@
 
 # ## Where the data at?
 
-# In[7]:
+# In[12]:
 
 
 input_path = '../Data/Processed_Data/'
-output_path = '../Data/Processed_Data/'
+output_path = '../Data/Processed_Data/PaCMAP_Results/'
 
 
 # ## Load Datasets
 
-# In[8]:
+# In[7]:
 
 
 import pandas as pd
@@ -32,7 +32,7 @@ print(
 # 
 # We will use ```y_train``` to denote the training set, and ```y_test``` to denote the testing set. 
 
-# In[40]:
+# In[8]:
 
 
 # Split train and test by clinical trial
@@ -59,9 +59,11 @@ print(f"\n{y_test['Clinical Trial'].value_counts(dropna=False).to_string()}\n")
 # 
 # - __Github__: [https://epigenelabs.github.io/pyComBat/](https://epigenelabs.github.io/pyComBat/)
 # 
-# - __Paper__: [bioRxiv](https://doi.org/10.1101/2020.03.17.995431)
+# - __Implementation Paper__: [bioRxiv](https://doi.org/10.1101/2020.03.17.995431)
+# 
+# - __Original Paper__: [Biostatistics](https://pubmed.ncbi.nlm.nih.gov/16632515/)
 
-# In[43]:
+# In[9]:
 
 
 from combat.pycombat import pycombat
@@ -80,7 +82,7 @@ print('Succesfully corrected batch effects in the training dataset.')
 # 
 # - __Paper__: [Journal of Machine Learning Research](https://jmlr.org/papers/v22/20-1061.html)
 
-# In[56]:
+# In[10]:
 
 
 import pacmap
@@ -88,7 +90,7 @@ import pacmap
 
 def run_pacmap(x_train, x_test, n_components=2):
     """
-    Run PaCMAP on the training dataset and apply the learned parameters to the train and test datasets.
+    Run PaCMAP on the training dataset apply learned parameters to the train and test.
 
     Parameters
     ----------
@@ -125,18 +127,18 @@ def run_pacmap(x_train, x_test, n_components=2):
 embedding, embedding_test = run_pacmap(x_train2, x_test)
 
 
-# ```{dropdown} Understanding Machine Learning
+# ```{note}
 # 
-# You may have noticed that we called two methods in the PaCMAP class: ```fit``` and ```transform```:
+# You may have noticed that we called two methods in the PaCMAP class: ```fit``` and ```transform```.
 # 
-# - __fit__: Learn the parameters of a model _from_ a dataset.
+# - ```fit``` means to learn the parameters of a model _from_ a dataset.
 # 
-# - __transform__: Apply the learned parameters _to_ a dataset.
+# - ```transform``` means to apply the learned parameters _to_ a dataset.
 # ```
 
 # ## Save Embedding
 
-# In[59]:
+# In[13]:
 
 
 # Transform df to pandas dataframe format
@@ -155,13 +157,13 @@ print(
 
 # ## Watermark
 
-# In[47]:
+# In[14]:
 
 
 get_ipython().run_line_magic('load_ext', 'watermark')
 
 
-# In[58]:
+# In[15]:
 
 
 # produce a list of the loaded modules
