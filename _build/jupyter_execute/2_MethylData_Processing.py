@@ -49,7 +49,7 @@ betas5 = methylcheck.load(filepath5) # Load data and metadata
 
 # ## Joining Dataframes
 
-# In[10]:
+# In[2]:
 
 
 import pandas as pd
@@ -74,7 +74,7 @@ print(f' Dataset (df) contains {betas.shape[0]} rows (mC sites) and {betas.shape
 # 
 # Please see function below `exclude_suboptimal_probes()` for paper information and where to find the annotations.
 
-# In[11]:
+# In[3]:
 
 
 def exclude_suboptimal_probes(betas):
@@ -99,7 +99,7 @@ df1 = exclude_suboptimal_probes(betas)
 
 # ## Step 2. Filtering sex-linked probes and control probes
 
-# In[12]:
+# In[4]:
 
 
 df2 = methylcheck.exclude_sex_control_probes(df1, '450k', no_sex=True, no_control=True, verbose=True)
@@ -120,7 +120,7 @@ df2 = methylcheck.exclude_sex_control_probes(df1, '450k', no_sex=True, no_contro
 # 
 # QC reports are saved as excel sheets in each _filepath_ directory.
 
-# In[13]:
+# In[5]:
 
 
 # File path for 1031 has to be uploaded separately since it was processed in batches due to size
@@ -145,7 +145,7 @@ filepath2_3 = Path('../Data/Raw_Data/COG_AAML1031_GSE190931/GPL21145_3')
 
 # ### Load QC Reports
 
-# In[14]:
+# In[6]:
 
 
 # Load QC reports
@@ -169,14 +169,14 @@ qc_table = pd.concat([qc_table1.iloc[1:], qc_table2_1.iloc[1:],qc_table2_2.iloc[
 # 
 # In other words, we will exclude samples that Illumina QC categorizes as FAIL(pval) for __not__ meeting the condition: (pOOBAH ≤ 0.05) > 80% probes
 
-# In[15]:
+# In[7]:
 
 
 qc_failed = qc_table[qc_table['Result'].str.contains('pval')][["Result", 'Why Failed']]
 qc_failed
 
 
-# In[16]:
+# In[8]:
 
 
 df3 = df2.drop(list(qc_failed.index),level=1, axis=1)
@@ -185,7 +185,7 @@ print(f'{df2.shape[1] - df3.shape[1]} sample(s) removed because: (pOOBAH ≤ 0.0
 
 # ## Step 4. Exclude CpG probes that contain more than 5% of missing values
 
-# In[17]:
+# In[9]:
 
 
 def probe_cutoff(qc_betas, threshold):
@@ -203,7 +203,7 @@ df4 = probe_cutoff(df3, threshold=0.95)
 # - Linear interpolation means that a missing mC value for a particular sample will be filled with the median of the values of the two adjacent samples. The reason behind this is the high concordance _usually_ seen in the methylation profile of neighboring samples.
 # - Inevitably, this step adds arbitration to the data cleaning process.
 
-# In[18]:
+# In[10]:
 
 
 df5 = df4.interpolate(axis=0).interpolate(axis=0, limit_direction='backward').round(3)
@@ -214,21 +214,26 @@ print(f' Interpolated dataset contains {df5.shape[0]}'
 
 # ## Save Dataset
 
-# In[20]:
+# In[16]:
 
 
-df5.to_pickle('../Data/Processed_Data/2_MethylData_Processing_Output.pkl')
+output_path = '../Data/Processed_Data/Methyl_Array_Processed/'
+
+df5.to_pickle(output_path + '2_MethylData_Processing_Output.pkl')
+
+print(
+    f'Successfuly saved processed methyl dataset.\nPath: {output_path}')
 
 
 # ## Watermark
 
-# In[ ]:
+# In[14]:
 
 
 get_ipython().run_line_magic('load_ext', 'watermark')
 
 
-# In[1]:
+# In[15]:
 
 
 get_ipython().run_line_magic('watermark', '-v -p methylcheck,pandas')

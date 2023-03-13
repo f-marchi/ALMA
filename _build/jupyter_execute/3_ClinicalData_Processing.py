@@ -8,7 +8,7 @@
 # In[1]:
 
 
-input_path = '../Data/Processed_Data/2_MethylData_Processing_Output.pkl'
+input_path = '../Data/Processed_Data/Methyl_Array_Processed/'
 clinicaldata_path = '../Data/Raw_Data/Clinical_Data/'
 output_path = '../Data/Processed_Data/'
 
@@ -20,7 +20,8 @@ output_path = '../Data/Processed_Data/'
 
 import pandas as pd
 
-df_methyl = pd.read_pickle(input_path).T.reset_index(level=0, names='Batch')
+df_methyl = pd.read_pickle(
+    input_path+'2_MethylData_Processing_Output.pkl').T.reset_index(level=0, names='Batch')
 
 print(
     f' Dataset (df) contains {df_methyl.shape[1]} rows (mC sites) and {df_methyl.shape[0]} columns (samples).')
@@ -119,7 +120,7 @@ x.to_pickle(output_path+'x.pkl') # Save methyl data
 y.to_csv(output_path+'y.csv') # Save clinical data
 
 print(
-    f'Successfuly saved x.pkl and y.csv to {output_path}')
+    f'Successfuly saved methyl data in x.pkl and clinical data in y.csv.\nPath: {output_path}')
 
 
 # ### Save Control and Relapse Data Separately
@@ -143,7 +144,7 @@ t2 = df_methyl.join(t, how='right')
 t2.to_pickle(output_path+'control_relapse.pkl')
 
 print(
-    f'Successfuly saved {controls.shape[0]} control samples and {relapse.shape[0]} relapse samples to {output_path}')
+    f'Successfuly saved {controls.shape[0]} control samples and {relapse.shape[0]} relapse samples.\nPath: {output_path}')
 
 
 # ## Watermark

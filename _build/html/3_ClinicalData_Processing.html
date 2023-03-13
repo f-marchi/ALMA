@@ -182,6 +182,13 @@ const thebe_selector_output = ".output, .cell_output"
    PaCMAP Interactive Visualization
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Survival Analyses
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="6_Survival_Analysis.html">
    Survival Analysis FM
@@ -204,6 +211,11 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="8.0_Immune_Cell_Deconvolution.html">
+   Immune Cell Deconvolution
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="8.1_Deconvolution_Visualization.html">
    Deconvolution Visualization
@@ -523,7 +535,7 @@ title="Print to PDF"
 <h2>Where the data at?<a class="headerlink" href="#where-the-data-at" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/2_MethylData_Processing_Output.pkl&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/Methyl_Array_Processed/&#39;</span>
 <span class="n">clinicaldata_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Raw_Data/Clinical_Data/&#39;</span>
 <span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/&#39;</span>
 </pre></div>
@@ -537,7 +549,8 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">df_methyl</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">input_path</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;Batch&#39;</span><span class="p">)</span>
+<span class="n">df_methyl</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span>
+    <span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;2_MethylData_Processing_Output.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;Batch&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span>
     <span class="sa">f</span><span class="s1">&#39; Dataset (df) contains </span><span class="si">{</span><span class="n">df_methyl</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (mC sites) and </span><span class="si">{</span><span class="n">df_methyl</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns (samples).&#39;</span><span class="p">)</span>
@@ -667,12 +680,13 @@ title="Print to PDF"
 <span class="n">y</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;y.csv&#39;</span><span class="p">)</span> <span class="c1"># Save clinical data</span>
 
 <span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s1">&#39;Successfuly saved x.pkl and y.csv to </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="sa">f</span><span class="s1">&#39;Successfuly saved methyl data in x.pkl and clinical data in y.csv.</span><span class="se">\n</span><span class="s1">Path: </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved x.pkl and y.csv to ../Data/Processed_Data/
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved methyl data in x.pkl and clinical data in y.csv.
+Path: ../Data/Processed_Data/
 </pre></div>
 </div>
 </div>
@@ -697,12 +711,13 @@ title="Print to PDF"
 <span class="n">t2</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;control_relapse.pkl&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s1">&#39;Successfuly saved </span><span class="si">{</span><span class="n">controls</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> control samples and </span><span class="si">{</span><span class="n">relapse</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> relapse samples to </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="sa">f</span><span class="s1">&#39;Successfuly saved </span><span class="si">{</span><span class="n">controls</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> control samples and </span><span class="si">{</span><span class="n">relapse</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> relapse samples.</span><span class="se">\n</span><span class="s1">Path: </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved 147 control samples and 248 relapse samples to ../Data/Processed_Data/
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved 147 control samples and 248 relapse samples.
+Path: ../Data/Processed_Data/
 </pre></div>
 </div>
 </div>

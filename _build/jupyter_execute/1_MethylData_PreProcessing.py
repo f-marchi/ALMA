@@ -74,7 +74,7 @@
 # 
 # ```{note}
 # If files are larger than RAM, specify batches.
-# Full ```methylprep``` API can be found [here](https://life-epigenetics-methylprep.readthedocs-hosted.com/en/latest/docs/cli.html)
+# Full ```methylprep``` API can be found [here](https://life-epigenetics-methylprep.readthedocs-hosted.com/en/latest/docs/cli.html).
 
 # 
 # ## Download and Pre-Process Raw Data from Genomic Data Commons (GDC)
@@ -90,9 +90,6 @@
 #     in ["TARGET-AML"] and files.data_format in ["idat"] and 
 #     files.experimental_strategy in ["Methylation Array"] and 
 #     files.platform in ["illumina human methylation 450"]
-#     ```
-#     ```{note}
-#     Most (if not all?) methylation data available through GDC is publicly available, so no access to controlled data is necessary!
 #     ```
 # - Once you have a selection of your samples, add them all to _cart_, which you can do by clicking on the _cart_ symbol in the header of the first column
 # - Then go to the top right corner of the screen and click on _cart_
@@ -115,6 +112,6 @@
 #     python -m methylprep -v process --array_type 450k -d <path to data and samplesheet.csv> --all
 #     ```
 #     ```{note}
-#         Be mindful of \ and / differences if working in a windows machine through git bash. Some of methylprep code may break on Windows. Use a linux, Mac, or WSL if possible.
+#     Be mindful of \ and / differences if working in a windows machine through git bash.
+#     Some of methylprep code may break on Windows. Use a linux, Mac, or WSL if possible.
 #     ```
-# - Fantastic, files are now processed and ready for next steps!

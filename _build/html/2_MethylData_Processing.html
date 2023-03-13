@@ -182,6 +182,13 @@ const thebe_selector_output = ".output, .cell_output"
    PaCMAP Interactive Visualization
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Survival Analyses
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="6_Survival_Analysis.html">
    Survival Analysis FM
@@ -204,6 +211,11 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="8.0_Immune_Cell_Deconvolution.html">
+   Immune Cell Deconvolution
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="8.1_Deconvolution_Visualization.html">
    Deconvolution Visualization
@@ -591,16 +603,16 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████| 1/1 [00:01&lt;00:00,  1.54s/it]
-INFO:methylcheck.load_processed:loaded data (865859, 500) from 1 pickled files (1.266s)
-Files: 100%|██████████| 3/3 [00:03&lt;00:00,  1.13s/it]
-INFO:methylcheck.load_processed:loaded data (865859, 1039) from 3 pickled files (2.656s)
-Files: 100%|██████████| 1/1 [00:00&lt;00:00,  3.52it/s]
-INFO:methylcheck.load_processed:loaded data (865859, 64) from 1 pickled files (0.266s)
-Files: 100%|██████████| 1/1 [00:00&lt;00:00,  1.65it/s]
-INFO:methylcheck.load_processed:loaded data (485512, 317) from 1 pickled files (0.484s)
-Files: 100%|██████████| 1/1 [00:00&lt;00:00,  1.71it/s]
-INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (0.5s)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████| 1/1 [00:01&lt;00:00,  1.87s/it]
+INFO:methylcheck.load_processed:loaded data (865859, 500) from 1 pickled files (1.562s)
+Files: 100%|██████████| 3/3 [00:04&lt;00:00,  1.39s/it]
+INFO:methylcheck.load_processed:loaded data (865859, 1039) from 3 pickled files (3.719s)
+Files: 100%|██████████| 1/1 [00:00&lt;00:00,  3.17it/s]
+INFO:methylcheck.load_processed:loaded data (865859, 64) from 1 pickled files (0.281s)
+Files: 100%|██████████| 1/1 [00:00&lt;00:00,  1.57it/s]
+INFO:methylcheck.load_processed:loaded data (485512, 317) from 1 pickled files (0.531s)
+Files: 100%|██████████| 1/1 [00:00&lt;00:00,  1.52it/s]
+INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (0.594s)
 </pre></div>
 </div>
 </div>
@@ -901,9 +913,20 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 </section>
 <section id="save-dataset">
 <h2>Save Dataset<a class="headerlink" href="#save-dataset" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df5</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s1">&#39;../Data/Processed_Data/2_MethylData_Processing_Output.pkl&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/Methyl_Array_Processed/&#39;</span>
+
+<span class="n">df5</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;2_MethylData_Processing_Output.pkl&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;Successfuly saved processed methyl dataset.</span><span class="se">\n</span><span class="s1">Path: </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved processed methyl dataset.
+Path: ../Data/Processed_Data/Methyl_Array_Processed/
 </pre></div>
 </div>
 </div>
@@ -913,9 +936,14 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 <h2>Watermark<a class="headerlink" href="#watermark" title="Permalink to this headline">#</a></h2>
 <div class="cell tag_remove-input tag_remove-output docutils container">
 </div>
-<div class="cell tag_remove-input tag_hide-output docutils container">
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UsageError: Line magic function `%watermark` not found.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
+Python version       : 3.7.9
+IPython version      : 7.34.0
+
+methylcheck: 0.8.5
+pandas     : 1.3.5
 </pre></div>
 </div>
 </div>

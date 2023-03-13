@@ -22,8 +22,6 @@ import pandas as pd
 x_train = pd.read_pickle(input_path+'embedding.pkl')
 x_test = pd.read_pickle(input_path+'embedding_test.pkl')
 
-nanopore_sample = pd.read_pickle(input_path+'embedding_nano.pkl')
-
 y = pd.read_csv(input_path+'y.csv', index_col=0)
 
 labels = pd.read_excel('../Data/Raw_Data/Clinical_Data/labelsCOG_WHOClass.xlsx', index_col=0)

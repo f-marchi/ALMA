@@ -182,6 +182,13 @@ const thebe_selector_output = ".output, .cell_output"
    PaCMAP Interactive Visualization
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Survival Analyses
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="6_Survival_Analysis.html">
    Survival Analysis FM
@@ -204,6 +211,11 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="8.0_Immune_Cell_Deconvolution.html">
+   Immune Cell Deconvolution
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="8.1_Deconvolution_Visualization.html">
    Deconvolution Visualization
@@ -516,7 +528,7 @@ pip<span class="w"> </span>install<span class="w"> </span>methylsuite
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If files are larger than RAM, specify batches.
-Full <code class="docutils literal notranslate"><span class="pre">methylprep</span></code> API can be found <a class="reference external" href="https://life-epigenetics-methylprep.readthedocs-hosted.com/en/latest/docs/cli.html">here</a></p>
+Full <code class="docutils literal notranslate"><span class="pre">methylprep</span></code> API can be found <a class="reference external" href="https://life-epigenetics-methylprep.readthedocs-hosted.com/en/latest/docs/cli.html">here</a>.</p>
 </div>
 </section>
 <section id="download-and-pre-process-raw-data-from-genomic-data-commons-gdc">
@@ -532,10 +544,6 @@ Full <code class="docutils literal notranslate"><span class="pre">methylprep</sp
 <span class="n">files</span><span class="o">.</span><span class="n">experimental_strategy</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Methylation Array&quot;</span><span class="p">]</span> <span class="ow">and</span> 
 <span class="n">files</span><span class="o">.</span><span class="n">platform</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;illumina human methylation 450&quot;</span><span class="p">]</span>
 </pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Most (if not all?) methylation data available through GDC is publicly available, so no access to controlled data is necessary!</p>
 </div>
 </li>
 <li><p>Once you have a selection of your samples, add them all to <em>cart</em>, which you can do by clicking on the <em>cart</em> symbol in the header of the first column</p></li>
@@ -562,12 +570,10 @@ Full <code class="docutils literal notranslate"><span class="pre">methylprep</sp
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Be mindful of \ and / differences if working in a windows machine through git bash. Some of methylprep code may break on Windows. Use a linux, Mac, or WSL if possible.
-</pre></div>
-</div>
+<p>Be mindful of \ and / differences if working in a windows machine through git bash.
+Some of methylprep code may break on Windows. Use a linux, Mac, or WSL if possible.</p>
 </div>
 </li>
-<li><p>Fantastic, files are now processed and ready for next steps!</p></li>
 </ul>
 </section>
 </section>

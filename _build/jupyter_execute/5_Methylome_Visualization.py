@@ -5,34 +5,26 @@
 
 # ## Where the data at?
 
-# In[1]:
+# In[6]:
 
 
-input_path = '../Data/Processed_Data/'
-output_path = '../Data/Processed_Data/'
+input_path = '../Data/Processed_Data/PaCMAP_Results/'
+clinical_data_path = '../Data/Processed_Data/'
 
 
 # ## Load Datasets
 
-# In[2]:
+# In[7]:
 
 
 import pandas as pd
 
 x_train = pd.read_pickle(input_path+'embedding.pkl')
 x_test = pd.read_pickle(input_path+'embedding_test.pkl')
+y = pd.read_csv(clinical_data_path+'y.csv', index_col=0)
 
-
-# In[3]:
-
-
-nanopore_sample = pd.read_pickle(input_path+'embedding_nano.pkl')
-
-
-# In[4]:
-
-
-y = pd.read_csv(input_path+'y.csv', index_col=0)
+print(
+    f'Successfuly loaded {x_train.shape[0]} x_train samples and {x_test.shape[0]} x_test samples')
 
 
 # In[5]:
@@ -99,13 +91,13 @@ y_test = y[y['Clinical Trial'].isin(['AML02','AML08'])]
 from FM_Functions.Data_Visualization import draw_pacmap
 
 
-# In[11]:
+# In[30]:
 
 
 draw_pacmap(x_train.to_numpy(), y_train, 'Vital Status', test_sample=None, panel_size=50, legend=True)
 
 
-# In[12]:
+# In[11]:
 
 
 draw_pacmap(x_train.to_numpy(), y_train, 'KMT2A Rearrangement', test_sample=None, panel_size=50)
@@ -116,13 +108,13 @@ draw_pacmap(x_train.to_numpy(), y_train, 't(16;21)', test_sample=None, panel_siz
 draw_pacmap(x_train.to_numpy(), y_train, 't(8;16)', test_sample=None, panel_size=50)
 
 
-# In[13]:
+# In[12]:
 
 
 y['WHO Classification'].value_counts()
 
 
-# In[14]:
+# In[13]:
 
 
 list = [None,'WHO Classification', 'Methyl Class', 'Vital Status',
@@ -134,7 +126,7 @@ for i in list:
     draw_pacmap(x_train.to_numpy(), y_train, i, test_sample=None, panel_size=50)
 
 
-# In[15]:
+# In[14]:
 
 
 list = [None,'Vital Status', 'Primary Cytogenetic Code','Primarydiagnosis' ,'FAB',]
@@ -143,7 +135,7 @@ for i in list:
     draw_pacmap(x_test.to_numpy(), y_test, i, test_sample=None, panel_size=50,s=20)
 
 
-# In[16]:
+# In[15]:
 
 
 def select_range(df, x_range, y_range):
@@ -171,26 +163,26 @@ def select_range(df, x_range, y_range):
 #cluster = select_range(df=y, x_range=(20, 40), y_range=(-40,-20))
 
 
-# In[17]:
+# In[16]:
 
 
 y2 = y.join(x_train)
 
 
-# In[18]:
+# In[17]:
 
 
 kmt2a_top = select_range(df=y2, x_range=(-10, 10), y_range=(20,40))['KMT2A Fusions'].dropna().value_counts()
 kmt2a_south = select_range(df=y2, x_range=(20, 50), y_range=(-0,-40))['KMT2A Fusions'].dropna().value_counts()
 
 
-# In[19]:
+# In[18]:
 
 
 kmt2a_south
 
 
-# In[20]:
+# In[19]:
 
 
 kmt2a_top
@@ -204,7 +196,7 @@ kmt2a_top
 
 # ## Bokeh
 
-# In[21]:
+# In[20]:
 
 
 # from bokeh.io import push_notebook, show, output_notebook
@@ -214,7 +206,7 @@ kmt2a_top
 # output_notebook()
 
 
-# In[22]:
+# In[21]:
 
 
 # p = figure(title = "Title")
@@ -223,7 +215,7 @@ kmt2a_top
 # show(p)
 
 
-# In[23]:
+# In[22]:
 
 
 # from bokeh.plotting import figure
@@ -248,13 +240,13 @@ kmt2a_top
 
 # ## Nanopore Sample
 
-# In[24]:
+# In[23]:
 
 
 y_nano = y_train.append(nanopore_sample.iloc[-1:,:])
 
 
-# In[25]:
+# In[24]:
 
 
 nanopore_sample.iloc[-1:,:].values
@@ -262,19 +254,19 @@ nanopore_sample.iloc[-1:,:].values
 nanopore_sample.iloc[-1:,:].values[0].tolist()
 
 
-# In[26]:
+# In[25]:
 
 
 print(26.496603, -17.835085)
 
 
-# In[27]:
+# In[26]:
 
 
 draw_pacmap(x_train.to_numpy(), y_train, 'WHO Classification', panel_size=50)
 
 
-# In[28]:
+# In[27]:
 
 
 draw_pacmap(nanopore_sample.to_numpy(), y_nano, 'WHO Classification',
@@ -282,7 +274,7 @@ draw_pacmap(nanopore_sample.to_numpy(), y_nano, 'WHO Classification',
             panel_size=50)
 
 
-# In[29]:
+# In[28]:
 
 
 list = [None,'WHO Classification', 'Methyl Class', 'Vital Status', 'Complex Karyotype','FLT3 ITD','Risk Group','Age (years)', 'Gene Fusion', 'FAB Category']
@@ -291,13 +283,13 @@ for i in list:
     draw_pacmap(nanopore_sample.to_numpy(), y_nano, i, test_sample=None, panel_size=50)
 
 
-# In[30]:
+# In[29]:
 
 
 cluster = select_range(df=x_train, x_range=(20, 40), y_range=(-40,-10))
 
 
-# In[31]:
+# In[30]:
 
 
 y_train[y_train.index.isin(cluster.index)].to_excel(input_path+'cluster.xlsx')

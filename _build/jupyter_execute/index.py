@@ -10,20 +10,21 @@
 
 import pandas as pd
 
+PaCMAP_path = '../Data/Processed_Data/PaCMAP_Results/'
 input_path = '../Data/Processed_Data/'
 output_path = '../Data/Processed_Data/'
 
-x_train = pd.read_pickle(input_path+'embedding.pkl')
-x_test = pd.read_pickle(input_path+'embedding_test.pkl')
-
-nanopore_sample = pd.read_pickle(input_path+'embedding_nano.pkl')
+x_train = pd.read_pickle(PaCMAP_path+'embedding.pkl')
+x_test = pd.read_pickle(PaCMAP_path+'embedding_test.pkl')
 
 y = pd.read_csv(input_path+'y.csv', index_col=0)
 
-labels = pd.read_excel('../Data/Raw_Data/Clinical_Data/labelsCOG_WHOClass.xlsx', index_col=0)
+labels = pd.read_excel(input_path+'y_plus_WHOclass.xlsx', index_col=0)
 labels = pd.concat([y, labels], axis=1)
 labels = labels[labels.index.isin(x_train.index)]['WHO Classification']
+
 y = y.join(labels.to_frame('WHO Classification'))
+y['KMT2A Fusions'] = y[y['WHO Classification'].isin(['AML with KMT2A-rearrangement'])]['Gene Fusion'] 
 
 y_train = y[~y['Clinical Trial'].isin(['AML02','AML08'])]
 y_test = y[y['Clinical Trial'].isin(['AML02','AML08'])]
@@ -41,8 +42,8 @@ output_notebook()
 # In[2]:
 
 
-list = ['Primary Cytogenetic Code', 'Vital Status', 'FLT3 ITD',
-       'Sex','Batch', 'WHO Classification']
+list = ['Primary Cytogenetic Code', 'FAB', 'FLT3 ITD','Age group (years)',
+       'WHO Classification','Complex Karyotype', 'Karyotype']
 
 df = x_train.join(y_train[list]).reset_index() # join embedding with labels
 df['PaCMAP Output'] = 'PaCMAP Output'
@@ -63,7 +64,8 @@ def fig():
            tools="pan,wheel_zoom, reset, save",
            active_drag="pan",
            active_scroll="wheel_zoom",
-           tooltips=[("WHO Classification", "@{WHO Classification}")])
+           tooltips=[("Sample", "@index"),
+                     ("Karyotype", "@Karyotype"),])
 
     return(fig)
 
@@ -101,13 +103,13 @@ tab1 = TabPanel(child=p1, title='PaCMAP Output')
 p1.toolbar.logo = None
 
 p2 = fig()
-points2 = scatter(df, p2, hue='Vital Status')
-tab2 = TabPanel(child=p2, title="Vital Status")
+points2 = scatter(df, p2, hue='FAB')
+tab2 = TabPanel(child=p2, title="FAB")
 p2.toolbar.logo = None
 
 p3 = fig()
-points3 = scatter(df, p3, hue='Batch')
-tab3 = TabPanel(child=p3, title="Batch")
+points3 = scatter(df, p3, hue='Complex Karyotype')
+tab3 = TabPanel(child=p3, title="Complex Karyotype")
 p3.toolbar.logo = None
 
 p4 = fig()
@@ -121,11 +123,19 @@ tab5 = TabPanel(child=p5, title='Primary Cytogenetic Code')
 p5.toolbar.logo = None
 
 p6 = fig()
-points6 = scatter(df, p6, hue='Sex')
-tab6 = TabPanel(child=p6, title='Sex')
+points6 = scatter(df, p6, hue='WHO Classification')
+tab6 = TabPanel(child=p6, title='WHO Classification')
 p6.toolbar.logo = None
+# Remove legend
+p6.legend.visible = False
 
-tabs = Tabs(tabs=[tab1, tab2, tab3, tab4, tab5, tab6])
+p7 = fig()
+points7 = scatter(df, p7, hue='Age group (years)')
+tab7 = TabPanel(child=p7, title='Age group (years)')
+p7.toolbar.logo = None
+
+
+tabs = Tabs(tabs=[tab1, tab2, tab3, tab4, tab5, tab6, tab7], tabs_location='left')
 
 div = Div(
     text="""

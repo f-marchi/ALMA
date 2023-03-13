@@ -182,6 +182,13 @@ const thebe_selector_output = ".output, .cell_output"
    PaCMAP Interactive Visualization
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Survival Analyses
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="6_Survival_Analysis.html">
    Survival Analysis FM
@@ -204,6 +211,11 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="8.0_Immune_Cell_Deconvolution.html">
+   Immune Cell Deconvolution
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="8.1_Deconvolution_Visualization.html">
    Deconvolution Visualization
@@ -465,8 +477,8 @@ title="Print to PDF"
 <h2>Where the data at?<a class="headerlink" href="#where-the-data-at" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/&#39;</span>
-<span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/PaCMAP_Results/&#39;</span>
+<span class="n">clinical_data_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -474,26 +486,21 @@ title="Print to PDF"
 </section>
 <section id="load-datasets">
 <h2>Load Datasets<a class="headerlink" href="#load-datasets" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">x_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;embedding.pkl&#39;</span><span class="p">)</span>
 <span class="n">x_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;embedding_test.pkl&#39;</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">clinical_data_path</span><span class="o">+</span><span class="s1">&#39;y.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;Successfuly loaded </span><span class="si">{</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> x_train samples and </span><span class="si">{</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> x_test samples&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nanopore_sample</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;embedding_nano.pkl&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;y.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly loaded 1142 x_train samples and 204 x_test samples
 </pre></div>
 </div>
 </div>
@@ -576,7 +583,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5_Methylome_Visualization_14_0.png" src="_images/5_Methylome_Visualization_14_0.png" />
+<img alt="_images/5_Methylome_Visualization_12_0.png" src="_images/5_Methylome_Visualization_12_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -591,12 +598,12 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5_Methylome_Visualization_15_0.png" src="_images/5_Methylome_Visualization_15_0.png" />
-<img alt="_images/5_Methylome_Visualization_15_1.png" src="_images/5_Methylome_Visualization_15_1.png" />
-<img alt="_images/5_Methylome_Visualization_15_2.png" src="_images/5_Methylome_Visualization_15_2.png" />
-<img alt="_images/5_Methylome_Visualization_15_3.png" src="_images/5_Methylome_Visualization_15_3.png" />
-<img alt="_images/5_Methylome_Visualization_15_4.png" src="_images/5_Methylome_Visualization_15_4.png" />
-<img alt="_images/5_Methylome_Visualization_15_5.png" src="_images/5_Methylome_Visualization_15_5.png" />
+<img alt="_images/5_Methylome_Visualization_13_0.png" src="_images/5_Methylome_Visualization_13_0.png" />
+<img alt="_images/5_Methylome_Visualization_13_1.png" src="_images/5_Methylome_Visualization_13_1.png" />
+<img alt="_images/5_Methylome_Visualization_13_2.png" src="_images/5_Methylome_Visualization_13_2.png" />
+<img alt="_images/5_Methylome_Visualization_13_3.png" src="_images/5_Methylome_Visualization_13_3.png" />
+<img alt="_images/5_Methylome_Visualization_13_4.png" src="_images/5_Methylome_Visualization_13_4.png" />
+<img alt="_images/5_Methylome_Visualization_13_5.png" src="_images/5_Methylome_Visualization_13_5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -642,21 +649,21 @@ Name: WHO Classification, dtype: int64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
 </pre></div>
 </div>
-<img alt="_images/5_Methylome_Visualization_17_1.png" src="_images/5_Methylome_Visualization_17_1.png" />
-<img alt="_images/5_Methylome_Visualization_17_2.png" src="_images/5_Methylome_Visualization_17_2.png" />
-<img alt="_images/5_Methylome_Visualization_17_3.png" src="_images/5_Methylome_Visualization_17_3.png" />
-<img alt="_images/5_Methylome_Visualization_17_4.png" src="_images/5_Methylome_Visualization_17_4.png" />
-<img alt="_images/5_Methylome_Visualization_17_5.png" src="_images/5_Methylome_Visualization_17_5.png" />
-<img alt="_images/5_Methylome_Visualization_17_6.png" src="_images/5_Methylome_Visualization_17_6.png" />
-<img alt="_images/5_Methylome_Visualization_17_7.png" src="_images/5_Methylome_Visualization_17_7.png" />
-<img alt="_images/5_Methylome_Visualization_17_8.png" src="_images/5_Methylome_Visualization_17_8.png" />
-<img alt="_images/5_Methylome_Visualization_17_9.png" src="_images/5_Methylome_Visualization_17_9.png" />
-<img alt="_images/5_Methylome_Visualization_17_10.png" src="_images/5_Methylome_Visualization_17_10.png" />
-<img alt="_images/5_Methylome_Visualization_17_11.png" src="_images/5_Methylome_Visualization_17_11.png" />
-<img alt="_images/5_Methylome_Visualization_17_12.png" src="_images/5_Methylome_Visualization_17_12.png" />
-<img alt="_images/5_Methylome_Visualization_17_13.png" src="_images/5_Methylome_Visualization_17_13.png" />
-<img alt="_images/5_Methylome_Visualization_17_14.png" src="_images/5_Methylome_Visualization_17_14.png" />
-<img alt="_images/5_Methylome_Visualization_17_15.png" src="_images/5_Methylome_Visualization_17_15.png" />
+<img alt="_images/5_Methylome_Visualization_15_1.png" src="_images/5_Methylome_Visualization_15_1.png" />
+<img alt="_images/5_Methylome_Visualization_15_2.png" src="_images/5_Methylome_Visualization_15_2.png" />
+<img alt="_images/5_Methylome_Visualization_15_3.png" src="_images/5_Methylome_Visualization_15_3.png" />
+<img alt="_images/5_Methylome_Visualization_15_4.png" src="_images/5_Methylome_Visualization_15_4.png" />
+<img alt="_images/5_Methylome_Visualization_15_5.png" src="_images/5_Methylome_Visualization_15_5.png" />
+<img alt="_images/5_Methylome_Visualization_15_6.png" src="_images/5_Methylome_Visualization_15_6.png" />
+<img alt="_images/5_Methylome_Visualization_15_7.png" src="_images/5_Methylome_Visualization_15_7.png" />
+<img alt="_images/5_Methylome_Visualization_15_8.png" src="_images/5_Methylome_Visualization_15_8.png" />
+<img alt="_images/5_Methylome_Visualization_15_9.png" src="_images/5_Methylome_Visualization_15_9.png" />
+<img alt="_images/5_Methylome_Visualization_15_10.png" src="_images/5_Methylome_Visualization_15_10.png" />
+<img alt="_images/5_Methylome_Visualization_15_11.png" src="_images/5_Methylome_Visualization_15_11.png" />
+<img alt="_images/5_Methylome_Visualization_15_12.png" src="_images/5_Methylome_Visualization_15_12.png" />
+<img alt="_images/5_Methylome_Visualization_15_13.png" src="_images/5_Methylome_Visualization_15_13.png" />
+<img alt="_images/5_Methylome_Visualization_15_14.png" src="_images/5_Methylome_Visualization_15_14.png" />
+<img alt="_images/5_Methylome_Visualization_15_15.png" src="_images/5_Methylome_Visualization_15_15.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -672,11 +679,11 @@ Name: WHO Classification, dtype: int64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
 </pre></div>
 </div>
-<img alt="_images/5_Methylome_Visualization_18_1.png" src="_images/5_Methylome_Visualization_18_1.png" />
-<img alt="_images/5_Methylome_Visualization_18_2.png" src="_images/5_Methylome_Visualization_18_2.png" />
-<img alt="_images/5_Methylome_Visualization_18_3.png" src="_images/5_Methylome_Visualization_18_3.png" />
-<img alt="_images/5_Methylome_Visualization_18_4.png" src="_images/5_Methylome_Visualization_18_4.png" />
-<img alt="_images/5_Methylome_Visualization_18_5.png" src="_images/5_Methylome_Visualization_18_5.png" />
+<img alt="_images/5_Methylome_Visualization_16_1.png" src="_images/5_Methylome_Visualization_16_1.png" />
+<img alt="_images/5_Methylome_Visualization_16_2.png" src="_images/5_Methylome_Visualization_16_2.png" />
+<img alt="_images/5_Methylome_Visualization_16_3.png" src="_images/5_Methylome_Visualization_16_3.png" />
+<img alt="_images/5_Methylome_Visualization_16_4.png" src="_images/5_Methylome_Visualization_16_4.png" />
+<img alt="_images/5_Methylome_Visualization_16_5.png" src="_images/5_Methylome_Visualization_16_5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -845,7 +852,7 @@ Name: KMT2A Fusions, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5_Methylome_Visualization_33_0.png" src="_images/5_Methylome_Visualization_33_0.png" />
+<img alt="_images/5_Methylome_Visualization_31_0.png" src="_images/5_Methylome_Visualization_31_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -857,7 +864,7 @@ Name: KMT2A Fusions, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5_Methylome_Visualization_34_0.png" src="_images/5_Methylome_Visualization_34_0.png" />
+<img alt="_images/5_Methylome_Visualization_32_0.png" src="_images/5_Methylome_Visualization_32_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -873,16 +880,16 @@ Name: KMT2A Fusions, dtype: int64
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
 </pre></div>
 </div>
-<img alt="_images/5_Methylome_Visualization_35_1.png" src="_images/5_Methylome_Visualization_35_1.png" />
-<img alt="_images/5_Methylome_Visualization_35_2.png" src="_images/5_Methylome_Visualization_35_2.png" />
-<img alt="_images/5_Methylome_Visualization_35_3.png" src="_images/5_Methylome_Visualization_35_3.png" />
-<img alt="_images/5_Methylome_Visualization_35_4.png" src="_images/5_Methylome_Visualization_35_4.png" />
-<img alt="_images/5_Methylome_Visualization_35_5.png" src="_images/5_Methylome_Visualization_35_5.png" />
-<img alt="_images/5_Methylome_Visualization_35_6.png" src="_images/5_Methylome_Visualization_35_6.png" />
-<img alt="_images/5_Methylome_Visualization_35_7.png" src="_images/5_Methylome_Visualization_35_7.png" />
-<img alt="_images/5_Methylome_Visualization_35_8.png" src="_images/5_Methylome_Visualization_35_8.png" />
-<img alt="_images/5_Methylome_Visualization_35_9.png" src="_images/5_Methylome_Visualization_35_9.png" />
-<img alt="_images/5_Methylome_Visualization_35_10.png" src="_images/5_Methylome_Visualization_35_10.png" />
+<img alt="_images/5_Methylome_Visualization_33_1.png" src="_images/5_Methylome_Visualization_33_1.png" />
+<img alt="_images/5_Methylome_Visualization_33_2.png" src="_images/5_Methylome_Visualization_33_2.png" />
+<img alt="_images/5_Methylome_Visualization_33_3.png" src="_images/5_Methylome_Visualization_33_3.png" />
+<img alt="_images/5_Methylome_Visualization_33_4.png" src="_images/5_Methylome_Visualization_33_4.png" />
+<img alt="_images/5_Methylome_Visualization_33_5.png" src="_images/5_Methylome_Visualization_33_5.png" />
+<img alt="_images/5_Methylome_Visualization_33_6.png" src="_images/5_Methylome_Visualization_33_6.png" />
+<img alt="_images/5_Methylome_Visualization_33_7.png" src="_images/5_Methylome_Visualization_33_7.png" />
+<img alt="_images/5_Methylome_Visualization_33_8.png" src="_images/5_Methylome_Visualization_33_8.png" />
+<img alt="_images/5_Methylome_Visualization_33_9.png" src="_images/5_Methylome_Visualization_33_9.png" />
+<img alt="_images/5_Methylome_Visualization_33_10.png" src="_images/5_Methylome_Visualization_33_10.png" />
 </div>
 </div>
 <div class="cell docutils container">

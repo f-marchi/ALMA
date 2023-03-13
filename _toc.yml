@@ -23,8 +23,8 @@ parts:
       - file: 4_Dimension_Reduction.ipynb
       - file: 5_Methylome_Visualization.ipynb
       - file: 5.1_Methylome_Bokeh.ipynb
-  
-    - caption: Survival Analyses
+
+  - caption: Survival Analyses
 
     chapters:
       - file: 6_Survival_Analysis.ipynb

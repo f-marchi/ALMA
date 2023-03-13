@@ -5,7 +5,7 @@
 
 # ## Where the data at?
 
-# In[12]:
+# In[1]:
 
 
 input_path = '../Data/Processed_Data/'
@@ -14,7 +14,7 @@ output_path = '../Data/Processed_Data/PaCMAP_Results/'
 
 # ## Load Datasets
 
-# In[7]:
+# In[2]:
 
 
 import pandas as pd
@@ -32,7 +32,7 @@ print(
 # 
 # We will use ```y_train``` to denote the training set, and ```y_test``` to denote the testing set. 
 
-# In[8]:
+# In[3]:
 
 
 # Split train and test by clinical trial
@@ -63,7 +63,7 @@ print(f"\n{y_test['Clinical Trial'].value_counts(dropna=False).to_string()}\n")
 # 
 # - __Original Paper__: [Biostatistics](https://pubmed.ncbi.nlm.nih.gov/16632515/)
 
-# In[9]:
+# In[4]:
 
 
 from combat.pycombat import pycombat
@@ -82,7 +82,7 @@ print('Succesfully corrected batch effects in the training dataset.')
 # 
 # - __Paper__: [Journal of Machine Learning Research](https://jmlr.org/papers/v22/20-1061.html)
 
-# In[10]:
+# In[5]:
 
 
 import pacmap
@@ -133,12 +133,12 @@ embedding, embedding_test = run_pacmap(x_train2, x_test)
 # 
 # - ```fit``` means to learn the parameters of a model _from_ a dataset.
 # 
-# - ```transform``` means to apply the learned parameters _to_ a dataset.
+# - ```transform``` means to apply the learned parameters of a model _to_ a dataset.
 # ```
 
 # ## Save Embedding
 
-# In[13]:
+# In[11]:
 
 
 # Transform df to pandas dataframe format
@@ -152,18 +152,18 @@ embedding.to_pickle(output_path+'embedding.pkl')
 embedding_test.to_pickle(output_path+'embedding_test.pkl')
 
 print(
-    f'Successfuly saved {embedding.shape[0]} x_train samples and {embedding_test.shape[0]} x_test samples to {output_path}')
+    f'Successfuly saved {embedding.shape[0]} x_train samples and {embedding_test.shape[0]} x_test samples.\nPath: {output_path}')
 
 
 # ## Watermark
 
-# In[14]:
+# In[7]:
 
 
 get_ipython().run_line_magic('load_ext', 'watermark')
 
 
-# In[15]:
+# In[8]:
 
 
 # produce a list of the loaded modules

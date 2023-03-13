@@ -133,9 +133,14 @@ ARIC(mix_path=output_path+'Input_TestData_ARIC.csv',
 
 # ## Watermark
 
-# In[19]:
+# In[ ]:
 
 
 get_ipython().run_line_magic('load_ext', 'watermark')
+
+
+# In[19]:
+
+
 get_ipython().run_line_magic('watermark', '-v -p numpy,pandas,matplotlib,seaborn,scipy,sklearn,combat,ARIC')
 
