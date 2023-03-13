@@ -149,7 +149,9 @@ def clean_aml02(df):
                             'WBC': 'WBC Count (10⁹/L)', 'age.dx': 'Age (years)', 'ARM': 'Study Arm',
                             'SEX': 'Sex', 'RACE': 'Race', 'ETHNICITY_CD': 'Ethnicity',
                             'DXCBCBLASTS': 'Peripheral blasts (%)', 'JL.id.x': 'Patient_ID',
-                            'DXBMBLAST': 'BM Leukemic blasts (%)'})  # Note that patient ID column is JL.id.x
+                            'DXBMBLAST': 'BM Leukemic blasts (%)', 'REASONOFFSTUDY_02': 'Reasonoffstudy',
+                            'CAUSEOFDEATH': 'Causeofdeath', 'dx02': 'Primarydiagnosis',
+                            'FULLKARYOTYPE': 'Karyotype'})  # Note that patient ID column is JL.id.x
 
     df['FLT3 Status'] = df['FLT3 Status'].replace({'Wild type': 'Wild Type'})
     df['Ethnicity'] = df['Ethnicity'].replace({'Non Hispanic or Latino': 'Not Hispanic or Latino',
@@ -205,7 +207,7 @@ def clean_aml08(df):
                             'Dxcbcblast': 'Peripheral blasts (%)', 'Gender': 'Sex',
                             'Age': 'Age (years)', 'Wbc': 'WBC Count (10⁹/L)',
                             'Flt3': 'FLT3 Status', 'Aml08.Sp.Id': 'Patient_ID',
-                            })
+                            'Fullkaryotypetesting': 'Karyotype'})
     df['Ethnicity'] = df['Ethnicity'].replace({'Non Spanish speaking, Non Hispanic': 'Not Hispanic or Latino',
                                                'NOS Spanish,Hispanic,Latino': 'Hispanic or Latino'})
     df['os.time'] = df['os.time.days'].astype(float).apply(lambda x: x/365)
@@ -269,7 +271,8 @@ def clean_cog(df):
     df = df.rename(columns={'FLT3/ITD positive?': 'FLT3 ITD', 'Gender': 'Sex', 'Race': 'Race or ethnic group',
                             'Ethnicity': 'Hispanic or Latino ethnic group',
                             'Bone marrow leukemic blast percentage (%)': 'BM Leukemic blasts (%)',
-                            'Protocol': 'Clinical Trial', 'WBC at Diagnosis': 'WBC Count (10⁹/L)'})
+                            'Protocol': 'Clinical Trial', 'WBC at Diagnosis': 'WBC Count (10⁹/L)',
+                            'ISCN': 'Karyotype', 'FAB Category': 'FAB'})
     df['CNS disease'] = df[~df['Clinical Trial'].isin(
         ['AAML1031'])]['CNS disease']
     df['Karyotype Complexity 3'] = pd.to_numeric(df['Cytogenetic Complexity'].replace({'>6': 6, 'More than 6': 6, '4 or more': 4}),
@@ -278,6 +281,9 @@ def clean_cog(df):
                                                  errors='ignore').replace({range(4, 100): '4 or more'})
     df['Karyotype Complexity 6'] = pd.to_numeric(df['Cytogenetic Complexity'].replace({'>6': 6, 'More than 6': 6, '4 or more': 4}),
                                                  errors='ignore').replace({range(6, 100): '6 or more'})
+    df['Complex Karyotype'] = df[df['Karyotype Complexity 4'].isin(
+        ['4 or more'])]['Karyotype Complexity 4']
+    df['Complex Karyotype'] = df['Complex Karyotype'].fillna('Less than 4')
     df['Hispanic or Latino ethnic group'] = df['Hispanic or Latino ethnic group'].replace({
         'Not Hispanic or Latino': 'Not Hispanic or Latino',
         'Hispanic or Latino': 'Hispanic or Latino'})
