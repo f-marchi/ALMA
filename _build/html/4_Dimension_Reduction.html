@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Dimension Reduction with PaCMAP &#8212; Lamba Lab at UF</title>
   
@@ -45,7 +45,6 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -68,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="DNA methylation-based diagnosis and prognosis of pediatric AML" href="5_PaCMAP_Visualization.html" />
     <link rel="prev" title="Clinical Data Processing" href="3_ClinicalData_Processing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -353,9 +352,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="dimension-reduction-with-pacmap">
-<h1>Dimension Reduction with PaCMAP<a class="headerlink" href="#dimension-reduction-with-pacmap" title="Permalink to this heading">#</a></h1>
+<h1>Dimension Reduction with PaCMAP<a class="headerlink" href="#dimension-reduction-with-pacmap" title="Permalink to this headline">#</a></h1>
 <section id="where-the-data-at">
-<h2>Where the data at?<a class="headerlink" href="#where-the-data-at" title="Permalink to this heading">#</a></h2>
+<h2>Where the data at?<a class="headerlink" href="#where-the-data-at" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/&#39;</span>
@@ -366,7 +365,7 @@ document.write(`
 </div>
 </section>
 <section id="load-datasets">
-<h2>Load Datasets<a class="headerlink" href="#load-datasets" title="Permalink to this heading">#</a></h2>
+<h2>Load Datasets<a class="headerlink" href="#load-datasets" title="Permalink to this headline">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -393,7 +392,7 @@ document.write(`
 </div>
 </section>
 <section id="train-test-split">
-<h2>Train-Test Split<a class="headerlink" href="#train-test-split" title="Permalink to this heading">#</a></h2>
+<h2>Train-Test Split<a class="headerlink" href="#train-test-split" title="Permalink to this headline">#</a></h2>
 <p>Here we will split the data into a training/discovery and testing/validation set.</p>
 <p>We will use <code class="docutils literal notranslate"><span class="pre">y_train</span></code> to denote the training set, and <code class="docutils literal notranslate"><span class="pre">y_test</span></code> to denote the testing set.</p>
 <div class="cell tag_hide-input docutils container">
@@ -442,7 +441,7 @@ AML08     42
 </div>
 </section>
 <section id="batch-correction-with-pycombat">
-<h2>Batch Correction with pyCombat<a class="headerlink" href="#batch-correction-with-pycombat" title="Permalink to this heading">#</a></h2>
+<h2>Batch Correction with pyCombat<a class="headerlink" href="#batch-correction-with-pycombat" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><strong>pyCombat</strong>: a Python tool for batch effects correction in high-throughput molecular data using empirical Bayes methods</p></li>
 <li><p><strong>Github</strong>: <a class="reference external" href="https://epigenelabs.github.io/pyComBat/">https://epigenelabs.github.io/pyComBat/</a></p></li>
@@ -481,7 +480,7 @@ AML08     42
 </div>
 </section>
 <section id="id1">
-<h2>Dimension Reduction with PaCMAP<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>Dimension Reduction with PaCMAP<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><strong>PaCMAP</strong>: Large-scale Dimension Reduction Technique Preserving Both Global and Local Structure</p></li>
 <li><p><strong>Github</strong>: <a class="github reference external" href="https://github.com/YingfanWang/PaCMAP">YingfanWang/PaCMAP</a></p></li>
@@ -549,7 +548,7 @@ AML08     42
 </div>
 </section>
 <section id="save-embedding">
-<h2>Save Embedding<a class="headerlink" href="#save-embedding" title="Permalink to this heading">#</a></h2>
+<h2>Save Embedding<a class="headerlink" href="#save-embedding" title="Permalink to this headline">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -582,7 +581,7 @@ Path: ../Data/Processed_Data/PaCMAP_Results/
 </div>
 </section>
 <section id="watermark">
-<h2>Watermark<a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
+<h2>Watermark<a class="headerlink" href="#watermark" title="Permalink to this headline">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython

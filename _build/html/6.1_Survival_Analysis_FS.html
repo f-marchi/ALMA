@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Survival Analysis FS &#8212; Lamba Lab at UF</title>
   
@@ -45,7 +45,6 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -68,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Kaplan Meiers, Forest Plots, Patient Characteristics" href="7_Score_Visualization.html" />
     <link rel="prev" title="Survival Analysis FM" href="6_Survival_Analysis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -363,9 +362,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="survival-analysis-fs">
-<h1>Survival Analysis FS<a class="headerlink" href="#survival-analysis-fs" title="Permalink to this heading">#</a></h1>
+<h1>Survival Analysis FS<a class="headerlink" href="#survival-analysis-fs" title="Permalink to this headline">#</a></h1>
 <section id="import-libraries">
-<h2>Import Libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h2>
+<h2>Import Libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Code source: Gaël Varoquaux</span>
@@ -423,7 +422,7 @@ document.write(`
 </div>
 </section>
 <section id="load-datasets">
-<h2>Load Datasets<a class="headerlink" href="#load-datasets" title="Permalink to this heading">#</a></h2>
+<h2>Load Datasets<a class="headerlink" href="#load-datasets" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/&#39;</span>
@@ -461,9 +460,9 @@ document.write(`
 </div>
 </section>
 <section id="hyperparameter-tuning-by-gridsearch">
-<h2>Hyperparameter Tuning by GridSearch<a class="headerlink" href="#hyperparameter-tuning-by-gridsearch" title="Permalink to this heading">#</a></h2>
+<h2>Hyperparameter Tuning by GridSearch<a class="headerlink" href="#hyperparameter-tuning-by-gridsearch" title="Permalink to this headline">#</a></h2>
 <section id="nearest-neighbors">
-<h3>Nearest Neighbors<a class="headerlink" href="#nearest-neighbors" title="Permalink to this heading">#</a></h3>
+<h3>Nearest Neighbors<a class="headerlink" href="#nearest-neighbors" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
@@ -506,7 +505,7 @@ document.write(`
 </div>
 </section>
 <section id="radial-basis-function-rbf-svm">
-<h3>Radial Basis Function (RBF) SVM<a class="headerlink" href="#radial-basis-function-rbf-svm" title="Permalink to this heading">#</a></h3>
+<h3>Radial Basis Function (RBF) SVM<a class="headerlink" href="#radial-basis-function-rbf-svm" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
@@ -549,7 +548,7 @@ document.write(`
 </div>
 </section>
 <section id="gaussian-process">
-<h3>Gaussian Process<a class="headerlink" href="#gaussian-process" title="Permalink to this heading">#</a></h3>
+<h3>Gaussian Process<a class="headerlink" href="#gaussian-process" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
@@ -592,7 +591,7 @@ document.write(`
 </div>
 </section>
 <section id="random-forest">
-<h3>Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this heading">#</a></h3>
+<h3>Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
@@ -639,7 +638,7 @@ document.write(`
 </div>
 </section>
 <section id="neural-net">
-<h3>Neural Net<a class="headerlink" href="#neural-net" title="Permalink to this heading">#</a></h3>
+<h3>Neural Net<a class="headerlink" href="#neural-net" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
@@ -687,7 +686,7 @@ document.write(`
 </div>
 </section>
 <section id="naive-bayes">
-<h3>Naive Bayes<a class="headerlink" href="#naive-bayes" title="Permalink to this heading">#</a></h3>
+<h3>Naive Bayes<a class="headerlink" href="#naive-bayes" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
@@ -729,7 +728,7 @@ document.write(`
 </div>
 </section>
 <section id="quadratic-discriminant-analysis">
-<h3>Quadratic Discriminant Analysis<a class="headerlink" href="#quadratic-discriminant-analysis" title="Permalink to this heading">#</a></h3>
+<h3>Quadratic Discriminant Analysis<a class="headerlink" href="#quadratic-discriminant-analysis" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
@@ -773,7 +772,7 @@ document.write(`
 </div>
 </section>
 <section id="xgboost">
-<h3>XGBoost<a class="headerlink" href="#xgboost" title="Permalink to this heading">#</a></h3>
+<h3>XGBoost<a class="headerlink" href="#xgboost" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
@@ -837,7 +836,7 @@ document.write(`
 </div>
 </section>
 <section id="logistic-regression">
-<h3>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this heading">#</a></h3>
+<h3>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
@@ -884,10 +883,10 @@ document.write(`
 </section>
 </section>
 <section id="define-classifiers">
-<h2>Define Classifiers<a class="headerlink" href="#define-classifiers" title="Permalink to this heading">#</a></h2>
+<h2>Define Classifiers<a class="headerlink" href="#define-classifiers" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="id1">
-<h2>XGBoost<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>XGBoost<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
@@ -960,7 +959,7 @@ StJude OS ROC AUC: 0.676
 </div>
 </section>
 <section id="plot-classifiers">
-<h2>Plot classifiers<a class="headerlink" href="#plot-classifiers" title="Permalink to this heading">#</a></h2>
+<h2>Plot classifiers<a class="headerlink" href="#plot-classifiers" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cm_bright</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">([</span><span class="s1">&#39;#1f77b4&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff7f0e&#39;</span><span class="p">])</span>

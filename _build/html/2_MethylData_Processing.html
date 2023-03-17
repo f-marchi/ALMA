@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Methyl Array Data Processing &#8212; Lamba Lab at UF</title>
   
@@ -45,7 +45,6 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -68,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Clinical Data Processing" href="3_ClinicalData_Processing.html" />
     <link rel="prev" title="Data Download and Initial Processing" href="1_MethylData_PreProcessing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -361,9 +360,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="methyl-array-data-processing">
-<h1>Methyl Array Data Processing<a class="headerlink" href="#methyl-array-data-processing" title="Permalink to this heading">#</a></h1>
+<h1>Methyl Array Data Processing<a class="headerlink" href="#methyl-array-data-processing" title="Permalink to this headline">#</a></h1>
 <section id="data-sources">
-<h2>Data Sources<a class="headerlink" href="#data-sources" title="Permalink to this heading">#</a></h2>
+<h2>Data Sources<a class="headerlink" href="#data-sources" title="Permalink to this headline">#</a></h2>
 <p>Here is a summary of the datasets used:</p>
 <ol class="arabic simple">
 <li><p>AAML1031 (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE190931">GSE190931</a>), <strong>n=1048</strong></p></li>
@@ -374,7 +373,7 @@ document.write(`
 </ol>
 </section>
 <section id="load-data">
-<h2>Load Data<a class="headerlink" href="#load-data" title="Permalink to this heading">#</a></h2>
+<h2>Load Data<a class="headerlink" href="#load-data" title="Permalink to this headline">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -428,7 +427,7 @@ document.write(`
 </div>
 </section>
 <section id="joining-dataframes">
-<h2>Joining Dataframes<a class="headerlink" href="#joining-dataframes" title="Permalink to this heading">#</a></h2>
+<h2>Joining Dataframes<a class="headerlink" href="#joining-dataframes" title="Permalink to this headline">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -456,7 +455,7 @@ document.write(`
 </div>
 </section>
 <section id="step-1-filtering-sub-optimally-designed-probes">
-<h2>Step 1. Filtering Sub-Optimally Designed Probes<a class="headerlink" href="#step-1-filtering-sub-optimally-designed-probes" title="Permalink to this heading">#</a></h2>
+<h2>Step 1. Filtering Sub-Optimally Designed Probes<a class="headerlink" href="#step-1-filtering-sub-optimally-designed-probes" title="Permalink to this headline">#</a></h2>
 <p>There are several critera for exclusion of probes: Areas that have polymorphisms, cross-hybridization, repeat sequence elements, or base color changes can affect probe quality.</p>
 <p>Below are publications that have benchmarked probe quality and have provided lists of probes to exclude:</p>
 <ul class="simple">
@@ -501,7 +500,7 @@ document.write(`
 </div>
 </section>
 <section id="step-2-filtering-sex-linked-probes-and-control-probes">
-<h2>Step 2. Filtering sex-linked probes and control probes<a class="headerlink" href="#step-2-filtering-sex-linked-probes-and-control-probes" title="Permalink to this heading">#</a></h2>
+<h2>Step 2. Filtering sex-linked probes and control probes<a class="headerlink" href="#step-2-filtering-sex-linked-probes-and-control-probes" title="Permalink to this headline">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -522,7 +521,7 @@ document.write(`
 </div>
 </section>
 <section id="step-3-exclude-samples-that-illumina-qc-categorizes-as-fail-pval">
-<h2>Step 3. Exclude samples that Illumina QC categorizes as FAIL(pval)<a class="headerlink" href="#step-3-exclude-samples-that-illumina-qc-categorizes-as-fail-pval" title="Permalink to this heading">#</a></h2>
+<h2>Step 3. Exclude samples that Illumina QC categorizes as FAIL(pval)<a class="headerlink" href="#step-3-exclude-samples-that-illumina-qc-categorizes-as-fail-pval" title="Permalink to this headline">#</a></h2>
 <p>Here we will:</p>
 <ol class="arabic simple">
 <li><p>Run Illumina’s quality control and save reports as excel files</p></li>
@@ -530,7 +529,7 @@ document.write(`
 <li><p>Exclude samples that Illumina categorizes as FAIL(pval) for not meeting the condition: (p ≤ 0.05) &gt; 80% probes</p></li>
 </ol>
 <section id="run-illumina-s-quality-control-qc">
-<h3>Run Illumina’s Quality Control (QC)<a class="headerlink" href="#run-illumina-s-quality-control-qc" title="Permalink to this heading">#</a></h3>
+<h3>Run Illumina’s Quality Control (QC)<a class="headerlink" href="#run-illumina-s-quality-control-qc" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">methylcheck</span></code> is geared toward quality control of processed data. To this end, there is a helpful function that summarizes performance of control probes (<a class="reference external" href="https://support.illumina.com/content/dam/illumina-support/documents/documentation/chemistry_documentation/infinium_assays/infinium_hd_methylation/beadarray-controls-reporter-user-guide-1000000004009-00.pdf">details on control probes here</a>). To run this function, the control_probes.pkl file output from <code class="docutils literal notranslate"><span class="pre">methylprep</span></code> is required. This report ensures that the chemistry (bisulfite conversion, target specificity, hybridization, staining, etc.) and machine readings are acceptable.</p>
 <p>QC reports are saved as excel sheets in each <em>filepath</em> directory.</p>
 <div class="cell tag_remove-output tag_hide-input docutils container">
@@ -565,7 +564,7 @@ document.write(`
 </div>
 </section>
 <section id="load-qc-reports">
-<h3>Load QC Reports<a class="headerlink" href="#load-qc-reports" title="Permalink to this heading">#</a></h3>
+<h3>Load QC Reports<a class="headerlink" href="#load-qc-reports" title="Permalink to this headline">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -593,7 +592,7 @@ document.write(`
 </div>
 </section>
 <section id="exclude-samples-that-failed-illumina-s-qc">
-<h3>Exclude Samples that Failed Illumina’s QC<a class="headerlink" href="#exclude-samples-that-failed-illumina-s-qc" title="Permalink to this heading">#</a></h3>
+<h3>Exclude Samples that Failed Illumina’s QC<a class="headerlink" href="#exclude-samples-that-failed-illumina-s-qc" title="Permalink to this headline">#</a></h3>
 <p>Below, you will find the samples that failed QC, along with some description. This column is calculated by checking that all of the QC columns are above a minimum threshold. This threshold is adjustable with the passing argument (set to 0.7 by default). However, this criteria seems to be too unforgiving, so we will disregard it as it seems that core research facilities do not follow it. Another strict metric implemented by Illumina is FAIL by pval, which happens if the pOOBAH (detection p-values) in more than 20% of probes fail. Recall that pOOBAH simply measures how likely it is that a given signal is background fluorescence. There are a few methods of calculating these detection p-values.  <code class="docutils literal notranslate"><span class="pre">SeSAMe</span></code> and <code class="docutils literal notranslate"><span class="pre">methylprep</span></code> implement this method, known as P value Out Of Band probes for Array Hybridization, where they use the OOB signal of all type I probes to calculate an empirical cumulative distribution function.</p>
 <p>In other words, we will exclude samples that Illumina QC categorizes as FAIL(pval) for <strong>not</strong> meeting the condition: (pOOBAH ≤ 0.05) &gt; 80% probes</p>
 <div class="cell tag_hide-input docutils container">
@@ -720,7 +719,7 @@ document.write(`
 </section>
 </section>
 <section id="step-4-exclude-cpg-probes-that-contain-more-than-5-of-missing-values">
-<h2>Step 4. Exclude CpG probes that contain more than 5% of missing values<a class="headerlink" href="#step-4-exclude-cpg-probes-that-contain-more-than-5-of-missing-values" title="Permalink to this heading">#</a></h2>
+<h2>Step 4. Exclude CpG probes that contain more than 5% of missing values<a class="headerlink" href="#step-4-exclude-cpg-probes-that-contain-more-than-5-of-missing-values" title="Permalink to this headline">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -746,7 +745,7 @@ document.write(`
 </div>
 </section>
 <section id="step-5-interpolate-remaining-missing-values-linearly">
-<h2>Step 5. Interpolate remaining missing values linearly<a class="headerlink" href="#step-5-interpolate-remaining-missing-values-linearly" title="Permalink to this heading">#</a></h2>
+<h2>Step 5. Interpolate remaining missing values linearly<a class="headerlink" href="#step-5-interpolate-remaining-missing-values-linearly" title="Permalink to this headline">#</a></h2>
 <p>We still have probes with missing values that are below our 5% threshold. To fix that, we interpolate remaining beta values values linearly.</p>
 <ul class="simple">
 <li><p>Linear interpolation means that a missing mC value for a particular sample will be filled with the median of the values of the two adjacent samples. The reason behind this is the high concordance <em>usually</em> seen in the methylation profile of neighboring samples.</p></li>
@@ -775,7 +774,7 @@ document.write(`
 </div>
 </section>
 <section id="save-dataset">
-<h2>Save Dataset<a class="headerlink" href="#save-dataset" title="Permalink to this heading">#</a></h2>
+<h2>Save Dataset<a class="headerlink" href="#save-dataset" title="Permalink to this headline">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -802,7 +801,7 @@ Path: ../Data/Processed_Data/Methyl_Array_Processed/
 </div>
 </section>
 <section id="watermark">
-<h2>Watermark<a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
+<h2>Watermark<a class="headerlink" href="#watermark" title="Permalink to this headline">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython

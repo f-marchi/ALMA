@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Survival Analysis FM &#8212; Lamba Lab at UF</title>
   
@@ -45,7 +45,6 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -68,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Survival Analysis FS" href="6.1_Survival_Analysis_FS.html" />
     <link rel="prev" title="DNA methylation-based diagnosis and prognosis of pediatric AML" href="5_PaCMAP_Visualization.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -353,9 +352,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="survival-analysis-fm">
-<h1>Survival Analysis FM<a class="headerlink" href="#survival-analysis-fm" title="Permalink to this heading">#</a></h1>
+<h1>Survival Analysis FM<a class="headerlink" href="#survival-analysis-fm" title="Permalink to this headline">#</a></h1>
 <section id="where-the-data-at">
-<h2>Where the data at?<a class="headerlink" href="#where-the-data-at" title="Permalink to this heading">#</a></h2>
+<h2>Where the data at?<a class="headerlink" href="#where-the-data-at" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/&#39;</span>
@@ -366,7 +365,7 @@ document.write(`
 </div>
 </section>
 <section id="load-datasets">
-<h2>Load Datasets<a class="headerlink" href="#load-datasets" title="Permalink to this heading">#</a></h2>
+<h2>Load Datasets<a class="headerlink" href="#load-datasets" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -440,7 +439,7 @@ document.write(`
 </div>
 </section>
 <section id="xgboost">
-<h2>XGBoost<a class="headerlink" href="#xgboost" title="Permalink to this heading">#</a></h2>
+<h2>XGBoost<a class="headerlink" href="#xgboost" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
@@ -512,7 +511,7 @@ StJude OS ROC AUC: 0.676
 </div>
 </section>
 <section id="grid-search">
-<h2>Grid Search<a class="headerlink" href="#grid-search" title="Permalink to this heading">#</a></h2>
+<h2>Grid Search<a class="headerlink" href="#grid-search" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Code source: Gaël Varoquaux</span>
@@ -680,7 +679,7 @@ StJude OS ROC AUC: 0.676
 </div>
 </section>
 <section id="model-evaluation">
-<h2>Model Evaluation<a class="headerlink" href="#model-evaluation" title="Permalink to this heading">#</a></h2>
+<h2>Model Evaluation<a class="headerlink" href="#model-evaluation" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.gaussian_process</span> <span class="kn">import</span> <span class="n">GaussianProcessClassifier</span>
@@ -738,7 +737,7 @@ StJude OS ROC AUC: 0.755
 </div>
 </section>
 <section id="save-predictions">
-<h2>Save Predictions<a class="headerlink" href="#save-predictions" title="Permalink to this heading">#</a></h2>
+<h2>Save Predictions<a class="headerlink" href="#save-predictions" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">score_name</span> <span class="o">=</span> <span class="s2">&quot;MethylScore&quot;</span>
@@ -783,7 +782,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </section>
 <section id="save-file">
-<h2>Save File<a class="headerlink" href="#save-file" title="Permalink to this heading">#</a></h2>
+<h2>Save File<a class="headerlink" href="#save-file" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save y_train and y_test in the same file</span>
