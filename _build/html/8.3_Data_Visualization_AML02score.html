@@ -1,50 +1,61 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Data Visualization &#8212; Lamba Lab at UF</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,60 +63,92 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '8.3_Data_Visualization_AML02score';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Survival Analysis of AML02 OS" href="8.2_Survival_Analysis_AML02score.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/dna1.gif" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Lamba Lab at UF</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/dna1.gif" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/dna1.gif" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -114,416 +157,208 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Specific Aims
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Specific Aims</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/Specific_Aims.html">
-   Specific Aims
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="docs/Specific_Aims.html">Specific Aims</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/Intro_to_Methylation.html">
-   Understanding DNA Methylation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="docs/Intro_to_Methylation.html">Understanding DNA Methylation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Data Preparation
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Preparation</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="1_MethylData_PreProcessing.html">
-   Data Download and Initial Processing
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="2_MethylData_Processing.html">
-   Methyl Array Data Processing
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="3_ClinicalData_Processing.html">
-   Clinical Data Processing
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="1_MethylData_PreProcessing.html">Data Download and Initial Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_MethylData_Processing.html">Methyl Array Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_ClinicalData_Processing.html">Clinical Data Processing</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  AML Diagnostic Map
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">AML Diagnostic Map</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="4_Dimension_Reduction.html">
-   Dimension Reduction with PaCMAP
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="5_Methylome_Visualization.html">
-   PaCMAP Visualization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="5.1_Methylome_Bokeh.html">
-   PaCMAP Interactive Visualization
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="4_Dimension_Reduction.html">Dimension Reduction with PaCMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_PaCMAP_Visualization.html">DNA methylation-based diagnosis and prognosis of pediatric AML</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Survival Analyses
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Survival Analyses</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="6_Survival_Analysis.html">
-   Survival Analysis FM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="6.1_Survival_Analysis_FS.html">
-   Survival Analysis FS
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="7_Score_Visualization.html">
-   Kaplan Meiers, Forest Plots, Patient Characteristics
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="6_Survival_Analysis.html">Survival Analysis FM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6.1_Survival_Analysis_FS.html">Survival Analysis FS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_Score_Visualization.html">Kaplan Meiers, Forest Plots, Patient Characteristics</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Immune Cell Deconvolution
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Immune Cell Deconvolution</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="8.0_Immune_Cell_Deconvolution.html">
-   Immune Cell Deconvolution
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="8.1_Deconvolution_Visualization.html">
-   Deconvolution Visualization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="8.2_Survival_Analysis_AML02score.html">
-   Survival Analysis of AML02 OS
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Data Visualization
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="8.0_Immune_Cell_Deconvolution.html">Immune Cell Deconvolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8.1_Deconvolution_Visualization.html">Deconvolution Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8.2_Survival_Analysis_AML02score.html">Survival Analysis of AML02 OS</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Visualization</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/8.3_Data_Visualization_AML02score.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/8.3_Data_Visualization_AML02score.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/8.3_Data_Visualization_AML02score.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#where-the-data-at">
-   Where the data at?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#which-score-is-this">
-   Which score is this?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-libraries">
-   Import Libraries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-datasets">
-   Load Datasets
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#kaplan-meiers">
-   Kaplan Meiers
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#forest-plots">
-   Forest Plots
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#patient-characteristics-table">
-   Patient Characteristics Table
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bar-plots">
-   Bar Plots
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#box-plots">
-   Box Plots
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#end">
-   End
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Data Visualization</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#where-the-data-at">
-   Where the data at?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#which-score-is-this">
-   Which score is this?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-libraries">
-   Import Libraries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-datasets">
-   Load Datasets
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#kaplan-meiers">
-   Kaplan Meiers
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#forest-plots">
-   Forest Plots
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#patient-characteristics-table">
-   Patient Characteristics Table
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bar-plots">
-   Bar Plots
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#box-plots">
-   Box Plots
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#end">
-   End
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data Visualization</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-the-data-at">Where the data at?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#which-score-is-this">Which score is this?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-datasets">Load Datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kaplan-meiers">Kaplan Meiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forest-plots">Forest Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#patient-characteristics-table">Patient Characteristics Table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-plots">Bar Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#box-plots">Box Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#end">End</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="data-visualization">
-<h1>Data Visualization<a class="headerlink" href="#data-visualization" title="Permalink to this headline">#</a></h1>
+<h1>Data Visualization<a class="headerlink" href="#data-visualization" title="Permalink to this heading">#</a></h1>
 <section id="where-the-data-at">
-<h2>Where the data at?<a class="headerlink" href="#where-the-data-at" title="Permalink to this headline">#</a></h2>
+<h2>Where the data at?<a class="headerlink" href="#where-the-data-at" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Where the data at?</span>
@@ -535,7 +370,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="which-score-is-this">
-<h2>Which score is this?<a class="headerlink" href="#which-score-is-this" title="Permalink to this headline">#</a></h2>
+<h2>Which score is this?<a class="headerlink" href="#which-score-is-this" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">score_name</span> <span class="o">=</span> <span class="s1">&#39;ARIC_mC_score&#39;</span>
@@ -545,7 +380,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="import-libraries">
-<h2>Import Libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">#</a></h2>
+<h2>Import Libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -562,7 +397,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="load-datasets">
-<h2>Load Datasets<a class="headerlink" href="#load-datasets" title="Permalink to this headline">#</a></h2>
+<h2>Load Datasets<a class="headerlink" href="#load-datasets" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -595,43 +430,40 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">File c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib\site-packages\pandas\core\indexes\base.py:3803,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3802</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">3803</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3804</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="nn">c:\users\flourenco\appdata\local\programs\python\python37\lib\site-packages\pandas\core\indexes\base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3360</span>             <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">3361</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3362</span>             <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
 
-<span class="nn">File c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib\site-packages\pandas\_libs\index.pyx:138,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+<span class="nn">c:\users\flourenco\appdata\local\programs\python\python37\lib\site-packages\pandas\_libs\index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
 
-<span class="nn">File c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib\site-packages\pandas\_libs\index.pyx:165,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+<span class="nn">c:\users\flourenco\appdata\local\programs\python\python37\lib\site-packages\pandas\_libs\index.pyx</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
 
-<span class="nn">File pandas\_libs\hashtable_class_helper.pxi:5745,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+<span class="nn">pandas\_libs\hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
 
-<span class="nn">File pandas\_libs\hashtable_class_helper.pxi:5753,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+<span class="nn">pandas\_libs\hashtable_class_helper.pxi</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
 
 <span class="ne">KeyError</span>: &#39;NK Cells Activated&#39;
 
 <span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
 
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_1216</span>\<span class="mf">1737373248.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">y_test</span><span class="p">[</span><span class="s1">&#39;NK Cells Activated&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 
-<span class="nn">File c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib\site-packages\pandas\core\frame.py:3805,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3803</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">nlevels</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">3804</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">3805</span> <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3806</span> <span class="k">if</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">indexer</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">3807</span>     <span class="n">indexer</span> <span class="o">=</span> <span class="p">[</span><span class="n">indexer</span><span class="p">]</span>
+<span class="nn">c:\users\flourenco\appdata\local\programs\python\python37\lib\site-packages\pandas\core\frame.py</span> in <span class="ni">__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3456</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">nlevels</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3457</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3458</span>             <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3459</span>             <span class="k">if</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">indexer</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">3460</span>                 <span class="n">indexer</span> <span class="o">=</span> <span class="p">[</span><span class="n">indexer</span><span class="p">]</span>
 
-<span class="nn">File c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib\site-packages\pandas\core\indexes\base.py:3805,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3803</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3804</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">3805</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
-<span class="g g-Whitespace">   </span><span class="mi">3806</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">3807</span>     <span class="c1"># If we have a listlike key, _check_indexing_error will raise</span>
-<span class="g g-Whitespace">   </span><span class="mi">3808</span>     <span class="c1">#  InvalidIndexError. Otherwise we fall through and re-raise</span>
-<span class="g g-Whitespace">   </span><span class="mi">3809</span>     <span class="c1">#  the TypeError.</span>
-<span class="g g-Whitespace">   </span><span class="mi">3810</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_check_indexing_error</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="nn">c:\users\flourenco\appdata\local\programs\python\python37\lib\site-packages\pandas\core\indexes\base.py</span> in <span class="ni">get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3361</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3362</span>             <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">3363</span>                 <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+<span class="g g-Whitespace">   </span><span class="mi">3364</span> 
+<span class="g g-Whitespace">   </span><span class="mi">3365</span>         <span class="k">if</span> <span class="n">is_scalar</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="ow">and</span> <span class="n">isna</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">hasnans</span><span class="p">:</span>
 
 <span class="ne">KeyError</span>: &#39;NK Cells Activated&#39;
 </pre></div>
@@ -674,7 +506,7 @@ Name: NK Cell +, dtype: int64
 </div>
 </section>
 <section id="kaplan-meiers">
-<h2>Kaplan Meiers<a class="headerlink" href="#kaplan-meiers" title="Permalink to this headline">#</a></h2>
+<h2>Kaplan Meiers<a class="headerlink" href="#kaplan-meiers" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">scorename</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
@@ -698,19 +530,19 @@ c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib
   other = LooseVersion(other)
 </pre></div>
 </div>
-<img alt="_images/8.3_Data_Visualization_AML02score_14_1.png" src="_images/8.3_Data_Visualization_AML02score_14_1.png" />
+<img alt="_images/efe941777f65a246955ea69fab0083169fbeca23c610f19c79400735beb7a4de.png" src="_images/efe941777f65a246955ea69fab0083169fbeca23c610f19c79400735beb7a4de.png" />
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib\site-packages\seaborn\rcmod.py:400: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
   if LooseVersion(mpl.__version__) &gt;= &quot;3.0&quot;:
 c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib\site-packages\setuptools\_distutils\version.py:346: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
   other = LooseVersion(other)
 </pre></div>
 </div>
-<img alt="_images/8.3_Data_Visualization_AML02score_14_3.png" src="_images/8.3_Data_Visualization_AML02score_14_3.png" />
+<img alt="_images/6973c93e4da856da053e76b697482f39058fe3a271dfc50b533a066522bb8fff.png" src="_images/6973c93e4da856da053e76b697482f39058fe3a271dfc50b533a066522bb8fff.png" />
 </div>
 </div>
 </section>
 <section id="forest-plots">
-<h2>Forest Plots<a class="headerlink" href="#forest-plots" title="Permalink to this headline">#</a></h2>
+<h2>Forest Plots<a class="headerlink" href="#forest-plots" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_forest_plot</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;os.time&#39;</span><span class="p">,</span>
@@ -729,8 +561,8 @@ c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8.3_Data_Visualization_AML02score_16_0.png" src="_images/8.3_Data_Visualization_AML02score_16_0.png" />
-<img alt="_images/8.3_Data_Visualization_AML02score_16_1.png" src="_images/8.3_Data_Visualization_AML02score_16_1.png" />
+<img alt="_images/e538b533e0fbadce3f22d30b2f610b54170568742fec900f1fa218cba86f376b.png" src="_images/e538b533e0fbadce3f22d30b2f610b54170568742fec900f1fa218cba86f376b.png" />
+<img alt="_images/e33e246d19097bf76d7c6993c0be11cc52be0cf042bb610979ec08da9c506d38.png" src="_images/e33e246d19097bf76d7c6993c0be11cc52be0cf042bb610979ec08da9c506d38.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -751,13 +583,13 @@ c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8.3_Data_Visualization_AML02score_17_0.png" src="_images/8.3_Data_Visualization_AML02score_17_0.png" />
-<img alt="_images/8.3_Data_Visualization_AML02score_17_1.png" src="_images/8.3_Data_Visualization_AML02score_17_1.png" />
+<img alt="_images/3883d158d019bd4c596764efef6a42ff98453a6e6cdd2500bd3d8df9751a0eb0.png" src="_images/3883d158d019bd4c596764efef6a42ff98453a6e6cdd2500bd3d8df9751a0eb0.png" />
+<img alt="_images/4d68a5afdfbfd856e9395b7be7d1dbebb51d16a47b12a1a4dd74bbd198698051.png" src="_images/4d68a5afdfbfd856e9395b7be7d1dbebb51d16a47b12a1a4dd74bbd198698051.png" />
 </div>
 </div>
 </section>
 <section id="patient-characteristics-table">
-<h2>Patient Characteristics Table<a class="headerlink" href="#patient-characteristics-table" title="Permalink to this headline">#</a></h2>
+<h2>Patient Characteristics Table<a class="headerlink" href="#patient-characteristics-table" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tableone</span> <span class="kn">import</span> <span class="n">TableOne</span>
@@ -965,7 +797,7 @@ c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib
 </div>
 </section>
 <section id="bar-plots">
-<h2>Bar Plots<a class="headerlink" href="#bar-plots" title="Permalink to this headline">#</a></h2>
+<h2>Bar Plots<a class="headerlink" href="#bar-plots" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1012,12 +844,12 @@ c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib
   other = LooseVersion(other)
 </pre></div>
 </div>
-<img alt="_images/8.3_Data_Visualization_AML02score_29_1.png" src="_images/8.3_Data_Visualization_AML02score_29_1.png" />
+<img alt="_images/6b8e8639306e3ddac87e2f06cc449a1f6730434b21e0bbb4a680f2a28e2fca61.png" src="_images/6b8e8639306e3ddac87e2f06cc449a1f6730434b21e0bbb4a680f2a28e2fca61.png" />
 </div>
 </div>
 </section>
 <section id="box-plots">
-<h2>Box Plots<a class="headerlink" href="#box-plots" title="Permalink to this headline">#</a></h2>
+<h2>Box Plots<a class="headerlink" href="#box-plots" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_boxplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
@@ -1055,7 +887,7 @@ Standard Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between
 High Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:2.802e-03 Stat=1.095e+01
 </pre></div>
 </div>
-<img alt="_images/8.3_Data_Visualization_AML02score_31_2.png" src="_images/8.3_Data_Visualization_AML02score_31_2.png" />
+<img alt="_images/3f25a4a372203b57813be08cbdb7f05300339d8178f6327a79d74b5e3f9e3629.png" src="_images/3f25a4a372203b57813be08cbdb7f05300339d8178f6327a79d74b5e3f9e3629.png" />
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib\site-packages\seaborn\rcmod.py:400: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
   if LooseVersion(mpl.__version__) &gt;= &quot;3.0&quot;:
 c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib\site-packages\setuptools\_distutils\version.py:346: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
@@ -1078,7 +910,7 @@ Standard Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between
 High Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:2.032e-01 Stat=3.337e+00
 </pre></div>
 </div>
-<img alt="_images/8.3_Data_Visualization_AML02score_31_5.png" src="_images/8.3_Data_Visualization_AML02score_31_5.png" />
+<img alt="_images/ffa6c43dfcd12b6a0dfd3e6e1d730304f9360e0265a9bcc54185477af603f343.png" src="_images/ffa6c43dfcd12b6a0dfd3e6e1d730304f9360e0265a9bcc54185477af603f343.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1116,7 +948,7 @@ c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib
 Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:1.449e-02 Stat=5.978e+00
 </pre></div>
 </div>
-<img alt="_images/8.3_Data_Visualization_AML02score_32_2.png" src="_images/8.3_Data_Visualization_AML02score_32_2.png" />
+<img alt="_images/f54bccddeedf69711ae440969193893623b373cf692d1758e805c8d482097a49.png" src="_images/f54bccddeedf69711ae440969193893623b373cf692d1758e805c8d482097a49.png" />
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib\site-packages\seaborn\rcmod.py:400: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
   if LooseVersion(mpl.__version__) &gt;= &quot;3.0&quot;:
 c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib\site-packages\setuptools\_distutils\version.py:346: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
@@ -1137,7 +969,7 @@ c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib
 Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:6.231e-03 Stat=7.482e+00
 </pre></div>
 </div>
-<img alt="_images/8.3_Data_Visualization_AML02score_32_5.png" src="_images/8.3_Data_Visualization_AML02score_32_5.png" />
+<img alt="_images/6932520e3e1420ee3f7c1f97c2f7502c0650e5e49bfba5760129ee350f33f92f.png" src="_images/6932520e3e1420ee3f7c1f97c2f7502c0650e5e49bfba5760129ee350f33f92f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1165,7 +997,7 @@ c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib
   other = LooseVersion(other)
 </pre></div>
 </div>
-<img alt="_images/8.3_Data_Visualization_AML02score_33_1.png" src="_images/8.3_Data_Visualization_AML02score_33_1.png" />
+<img alt="_images/5e0594111069eae1c54921c98f31427fead07a5d53c1f407398e99a3972f1904.png" src="_images/5e0594111069eae1c54921c98f31427fead07a5d53c1f407398e99a3972f1904.png" />
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib\site-packages\seaborn\rcmod.py:400: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
   if LooseVersion(mpl.__version__) &gt;= &quot;3.0&quot;:
 c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib\site-packages\setuptools\_distutils\version.py:346: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
@@ -1176,12 +1008,12 @@ c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib
   other = LooseVersion(other)
 </pre></div>
 </div>
-<img alt="_images/8.3_Data_Visualization_AML02score_33_3.png" src="_images/8.3_Data_Visualization_AML02score_33_3.png" />
+<img alt="_images/ff610e7434b89ded1c1937f11177ca4ae09725671ee727023c705d5c6e3ea67a.png" src="_images/ff610e7434b89ded1c1937f11177ca4ae09725671ee727023c705d5c6e3ea67a.png" />
 </div>
 </div>
 </section>
 <section id="end">
-<h2>End<a class="headerlink" href="#end" title="Permalink to this headline">#</a></h2>
+<h2>End<a class="headerlink" href="#end" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -1205,43 +1037,99 @@ c:\Users\flourenco\Desktop\Methylation_Project\Code\.venv_data_vizualization\lib
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="8.2_Survival_Analysis_AML02score.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Survival Analysis of AML02 OS</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="8.2_Survival_Analysis_AML02score.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Survival Analysis of AML02 OS</p>
+      </div>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-the-data-at">Where the data at?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#which-score-is-this">Which score is this?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-datasets">Load Datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kaplan-meiers">Kaplan Meiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forest-plots">Forest Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#patient-characteristics-table">Patient Characteristics Table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-plots">Bar Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#box-plots">Box Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#end">End</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
   
-    By Francisco Marchi<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
-</div>
+<p class="component-author">
+By Francisco Marchi
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
 
-      </div>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

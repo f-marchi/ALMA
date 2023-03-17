@@ -1,50 +1,61 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Methyl Array Data Processing &#8212; Lamba Lab at UF</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,61 +63,93 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2_MethylData_Processing';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Clinical Data Processing" href="3_ClinicalData_Processing.html" />
     <link rel="prev" title="Data Download and Initial Processing" href="1_MethylData_PreProcessing.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/dna1.gif" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Lamba Lab at UF</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/dna1.gif" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/dna1.gif" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -115,452 +158,215 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Specific Aims
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Specific Aims</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/Specific_Aims.html">
-   Specific Aims
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="docs/Specific_Aims.html">Specific Aims</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/Intro_to_Methylation.html">
-   Understanding DNA Methylation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="docs/Intro_to_Methylation.html">Understanding DNA Methylation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Data Preparation
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Preparation</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="1_MethylData_PreProcessing.html">
-   Data Download and Initial Processing
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Methyl Array Data Processing
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="3_ClinicalData_Processing.html">
-   Clinical Data Processing
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="1_MethylData_PreProcessing.html">Data Download and Initial Processing</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Methyl Array Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_ClinicalData_Processing.html">Clinical Data Processing</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  AML Diagnostic Map
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">AML Diagnostic Map</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="4_Dimension_Reduction.html">
-   Dimension Reduction with PaCMAP
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="5_Methylome_Visualization.html">
-   PaCMAP Visualization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="5.1_Methylome_Bokeh.html">
-   PaCMAP Interactive Visualization
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="4_Dimension_Reduction.html">Dimension Reduction with PaCMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_PaCMAP_Visualization.html">DNA methylation-based diagnosis and prognosis of pediatric AML</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Survival Analyses
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Survival Analyses</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="6_Survival_Analysis.html">
-   Survival Analysis FM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="6.1_Survival_Analysis_FS.html">
-   Survival Analysis FS
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="7_Score_Visualization.html">
-   Kaplan Meiers, Forest Plots, Patient Characteristics
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="6_Survival_Analysis.html">Survival Analysis FM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6.1_Survival_Analysis_FS.html">Survival Analysis FS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_Score_Visualization.html">Kaplan Meiers, Forest Plots, Patient Characteristics</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Immune Cell Deconvolution
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Immune Cell Deconvolution</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="8.0_Immune_Cell_Deconvolution.html">
-   Immune Cell Deconvolution
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="8.1_Deconvolution_Visualization.html">
-   Deconvolution Visualization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="8.2_Survival_Analysis_AML02score.html">
-   Survival Analysis of AML02 OS
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="8.3_Data_Visualization_AML02score.html">
-   Data Visualization
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="8.0_Immune_Cell_Deconvolution.html">Immune Cell Deconvolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8.1_Deconvolution_Visualization.html">Deconvolution Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8.2_Survival_Analysis_AML02score.html">Survival Analysis of AML02 OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8.3_Data_Visualization_AML02score.html">Data Visualization</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/2_MethylData_Processing.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/2_MethylData_Processing.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/2_MethylData_Processing.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-sources">
-   Data Sources
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-data">
-   Load Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#joining-dataframes">
-   Joining Dataframes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-1-filtering-sub-optimally-designed-probes">
-   Step 1. Filtering Sub-Optimally Designed Probes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-2-filtering-sex-linked-probes-and-control-probes">
-   Step 2. Filtering sex-linked probes and control probes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-3-exclude-samples-that-illumina-qc-categorizes-as-fail-pval">
-   Step 3. Exclude samples that Illumina QC categorizes as FAIL(pval)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#run-illumina-s-quality-control-qc">
-     Run Illumina’s Quality Control (QC)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#load-qc-reports">
-     Load QC Reports
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exclude-samples-that-failed-illumina-s-qc">
-     Exclude Samples that Failed Illumina’s QC
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-4-exclude-cpg-probes-that-contain-more-than-5-of-missing-values">
-   Step 4. Exclude CpG probes that contain more than 5% of missing values
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-5-interpolate-remaining-missing-values-linearly">
-   Step 5. Interpolate remaining missing values linearly
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#save-dataset">
-   Save Dataset
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#watermark">
-   Watermark
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Methyl Array Data Processing</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-sources">
-   Data Sources
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-data">
-   Load Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#joining-dataframes">
-   Joining Dataframes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-1-filtering-sub-optimally-designed-probes">
-   Step 1. Filtering Sub-Optimally Designed Probes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-2-filtering-sex-linked-probes-and-control-probes">
-   Step 2. Filtering sex-linked probes and control probes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-3-exclude-samples-that-illumina-qc-categorizes-as-fail-pval">
-   Step 3. Exclude samples that Illumina QC categorizes as FAIL(pval)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#run-illumina-s-quality-control-qc">
-     Run Illumina’s Quality Control (QC)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#load-qc-reports">
-     Load QC Reports
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exclude-samples-that-failed-illumina-s-qc">
-     Exclude Samples that Failed Illumina’s QC
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-4-exclude-cpg-probes-that-contain-more-than-5-of-missing-values">
-   Step 4. Exclude CpG probes that contain more than 5% of missing values
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-5-interpolate-remaining-missing-values-linearly">
-   Step 5. Interpolate remaining missing values linearly
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#save-dataset">
-   Save Dataset
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#watermark">
-   Watermark
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Methyl Array Data Processing</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-sources">Data Sources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joining-dataframes">Joining Dataframes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-filtering-sub-optimally-designed-probes">Step 1. Filtering Sub-Optimally Designed Probes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-filtering-sex-linked-probes-and-control-probes">Step 2. Filtering sex-linked probes and control probes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-exclude-samples-that-illumina-qc-categorizes-as-fail-pval">Step 3. Exclude samples that Illumina QC categorizes as FAIL(pval)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-illumina-s-quality-control-qc">Run Illumina’s Quality Control (QC)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-qc-reports">Load QC Reports</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exclude-samples-that-failed-illumina-s-qc">Exclude Samples that Failed Illumina’s QC</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-exclude-cpg-probes-that-contain-more-than-5-of-missing-values">Step 4. Exclude CpG probes that contain more than 5% of missing values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-interpolate-remaining-missing-values-linearly">Step 5. Interpolate remaining missing values linearly</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-dataset">Save Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="methyl-array-data-processing">
-<h1>Methyl Array Data Processing<a class="headerlink" href="#methyl-array-data-processing" title="Permalink to this headline">#</a></h1>
+<h1>Methyl Array Data Processing<a class="headerlink" href="#methyl-array-data-processing" title="Permalink to this heading">#</a></h1>
 <section id="data-sources">
-<h2>Data Sources<a class="headerlink" href="#data-sources" title="Permalink to this headline">#</a></h2>
+<h2>Data Sources<a class="headerlink" href="#data-sources" title="Permalink to this heading">#</a></h2>
 <p>Here is a summary of the datasets used:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>AAML1031 (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE190931">GSE190931</a>), <strong>n=1048</strong></p></li>
 <li><p>AAML0531 (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE124413">GSE124413</a>), <strong>n=500</strong></p></li>
 <li><p>Japanese AML-05 (<a class="reference external" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE133986">GSE133986</a>), <strong>n=64</strong></p></li>
@@ -569,8 +375,13 @@ title="Print to PDF"
 </ol>
 </section>
 <section id="load-data">
-<h2>Load Data<a class="headerlink" href="#load-data" title="Permalink to this headline">#</a></h2>
+<h2>Load Data<a class="headerlink" href="#load-data" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">methylcheck</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
@@ -602,25 +413,91 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████| 1/1 [00:01&lt;00:00,  1.87s/it]
-INFO:methylcheck.load_processed:loaded data (865859, 500) from 1 pickled files (1.562s)
-Files: 100%|██████████| 3/3 [00:04&lt;00:00,  1.39s/it]
-INFO:methylcheck.load_processed:loaded data (865859, 1039) from 3 pickled files (3.719s)
-Files: 100%|██████████| 1/1 [00:00&lt;00:00,  3.17it/s]
-INFO:methylcheck.load_processed:loaded data (865859, 64) from 1 pickled files (0.281s)
-Files: 100%|██████████| 1/1 [00:00&lt;00:00,  1.57it/s]
-INFO:methylcheck.load_processed:loaded data (485512, 317) from 1 pickled files (0.531s)
-Files: 100%|██████████| 1/1 [00:00&lt;00:00,  1.52it/s]
-INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (0.594s)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files:   0%|                                                                                                          | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:01&lt;00:00,  1.54s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:01&lt;00:00,  1.55s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:methylcheck.load_processed:loaded data (865859, 500) from 1 pickled files (1.25s)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files:   0%|                                                                                                          | 0/3 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files:  33%|████████████████████████████████▋                                                                 | 1/3 [00:01&lt;00:03,  1.64s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files:  67%|█████████████████████████████████████████████████████████████████▎                                | 2/3 [00:02&lt;00:01,  1.45s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:03&lt;00:00,  1.04s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:03&lt;00:00,  1.17s/it]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:methylcheck.load_processed:loaded data (865859, 1039) from 3 pickled files (2.953s)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files:   0%|                                                                                                          | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  3.65it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  3.63it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:methylcheck.load_processed:loaded data (865859, 64) from 1 pickled files (0.25s)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files:   0%|                                                                                                          | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.67it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.66it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:methylcheck.load_processed:loaded data (485512, 317) from 1 pickled files (0.5s)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files:   0%|                                                                                                          | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.67it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.66it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (0.516s)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="joining-dataframes">
-<h2>Joining Dataframes<a class="headerlink" href="#joining-dataframes" title="Permalink to this headline">#</a></h2>
+<h2>Joining Dataframes<a class="headerlink" href="#joining-dataframes" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
@@ -633,6 +510,7 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Dataset (df) contains 452453 rows (mC sites) and 2244 columns (samples).
 </pre></div>
@@ -641,7 +519,7 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 </div>
 </section>
 <section id="step-1-filtering-sub-optimally-designed-probes">
-<h2>Step 1. Filtering Sub-Optimally Designed Probes<a class="headerlink" href="#step-1-filtering-sub-optimally-designed-probes" title="Permalink to this headline">#</a></h2>
+<h2>Step 1. Filtering Sub-Optimally Designed Probes<a class="headerlink" href="#step-1-filtering-sub-optimally-designed-probes" title="Permalink to this heading">#</a></h2>
 <p>There are several critera for exclusion of probes: Areas that have polymorphisms, cross-hybridization, repeat sequence elements, or base color changes can affect probe quality.</p>
 <p>Below are publications that have benchmarked probe quality and have provided lists of probes to exclude:</p>
 <ul class="simple">
@@ -650,6 +528,11 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 <p>We will remove probes based on <em>Zhou et. al., 2016</em>. See figure 5 of their paper for detailed description.</p>
 <p>Please see function below <code class="docutils literal notranslate"><span class="pre">exclude_suboptimal_probes()</span></code> for paper information and where to find the annotations.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">exclude_suboptimal_probes</span><span class="p">(</span><span class="n">betas</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;This function removes proves listed as sub-optimal according to:</span>
@@ -672,6 +555,7 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Of 452453 probes, 47382 matched, yielding 405071 after filtering
 </pre></div>
@@ -680,13 +564,19 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 </div>
 </section>
 <section id="step-2-filtering-sex-linked-probes-and-control-probes">
-<h2>Step 2. Filtering sex-linked probes and control probes<a class="headerlink" href="#step-2-filtering-sex-linked-probes-and-control-probes" title="Permalink to this headline">#</a></h2>
+<h2>Step 2. Filtering sex-linked probes and control probes<a class="headerlink" href="#step-2-filtering-sex-linked-probes-and-control-probes" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">methylcheck</span><span class="o">.</span><span class="n">exclude_sex_control_probes</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="s1">&#39;450k&#39;</span><span class="p">,</span> <span class="n">no_sex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">no_control</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>450k: Removed 9570 sex-linked probes from 2244 samples. 395501 probes remaining.
 </pre></div>
@@ -695,18 +585,23 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 </div>
 </section>
 <section id="step-3-exclude-samples-that-illumina-qc-categorizes-as-fail-pval">
-<h2>Step 3. Exclude samples that Illumina QC categorizes as FAIL(pval)<a class="headerlink" href="#step-3-exclude-samples-that-illumina-qc-categorizes-as-fail-pval" title="Permalink to this headline">#</a></h2>
+<h2>Step 3. Exclude samples that Illumina QC categorizes as FAIL(pval)<a class="headerlink" href="#step-3-exclude-samples-that-illumina-qc-categorizes-as-fail-pval" title="Permalink to this heading">#</a></h2>
 <p>Here we will:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Run Illumina’s quality control and save reports as excel files</p></li>
 <li><p>Load QC reports</p></li>
 <li><p>Exclude samples that Illumina categorizes as FAIL(pval) for not meeting the condition: (p ≤ 0.05) &gt; 80% probes</p></li>
 </ol>
 <section id="run-illumina-s-quality-control-qc">
-<h3>Run Illumina’s Quality Control (QC)<a class="headerlink" href="#run-illumina-s-quality-control-qc" title="Permalink to this headline">#</a></h3>
+<h3>Run Illumina’s Quality Control (QC)<a class="headerlink" href="#run-illumina-s-quality-control-qc" title="Permalink to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">methylcheck</span></code> is geared toward quality control of processed data. To this end, there is a helpful function that summarizes performance of control probes (<a class="reference external" href="https://support.illumina.com/content/dam/illumina-support/documents/documentation/chemistry_documentation/infinium_assays/infinium_hd_methylation/beadarray-controls-reporter-user-guide-1000000004009-00.pdf">details on control probes here</a>). To run this function, the control_probes.pkl file output from <code class="docutils literal notranslate"><span class="pre">methylprep</span></code> is required. This report ensures that the chemistry (bisulfite conversion, target specificity, hybridization, staining, etc.) and machine readings are acceptable.</p>
 <p>QC reports are saved as excel sheets in each <em>filepath</em> directory.</p>
 <div class="cell tag_remove-output tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># File path for 1031 has to be uploaded separately since it was processed in batches due to size</span>
 
@@ -729,11 +624,17 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="load-qc-reports">
-<h3>Load QC Reports<a class="headerlink" href="#load-qc-reports" title="Permalink to this headline">#</a></h3>
+<h3>Load QC Reports<a class="headerlink" href="#load-qc-reports" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load QC reports</span>
 <span class="n">qc_table1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">filepath1</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;/GSE124413_QC_Report.xlsx&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -751,19 +652,26 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="exclude-samples-that-failed-illumina-s-qc">
-<h3>Exclude Samples that Failed Illumina’s QC<a class="headerlink" href="#exclude-samples-that-failed-illumina-s-qc" title="Permalink to this headline">#</a></h3>
+<h3>Exclude Samples that Failed Illumina’s QC<a class="headerlink" href="#exclude-samples-that-failed-illumina-s-qc" title="Permalink to this heading">#</a></h3>
 <p>Below, you will find the samples that failed QC, along with some description. This column is calculated by checking that all of the QC columns are above a minimum threshold. This threshold is adjustable with the passing argument (set to 0.7 by default). However, this criteria seems to be too unforgiving, so we will disregard it as it seems that core research facilities do not follow it. Another strict metric implemented by Illumina is FAIL by pval, which happens if the pOOBAH (detection p-values) in more than 20% of probes fail. Recall that pOOBAH simply measures how likely it is that a given signal is background fluorescence. There are a few methods of calculating these detection p-values.  <code class="docutils literal notranslate"><span class="pre">SeSAMe</span></code> and <code class="docutils literal notranslate"><span class="pre">methylprep</span></code> implement this method, known as P value Out Of Band probes for Array Hybridization, where they use the OOB signal of all type I probes to calculate an empirical cumulative distribution function.</p>
 <p>In other words, we will exclude samples that Illumina QC categorizes as FAIL(pval) for <strong>not</strong> meeting the condition: (pOOBAH ≤ 0.05) &gt; 80% probes</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qc_failed</span> <span class="o">=</span> <span class="n">qc_table</span><span class="p">[</span><span class="n">qc_table</span><span class="p">[</span><span class="s1">&#39;Result&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;pval&#39;</span><span class="p">)][[</span><span class="s2">&quot;Result&quot;</span><span class="p">,</span> <span class="s1">&#39;Why Failed&#39;</span><span class="p">]]</span>
 <span class="n">qc_failed</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -854,12 +762,18 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 </div></div></div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">qc_failed</span><span class="o">.</span><span class="n">index</span><span class="p">),</span><span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">df3</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> sample(s) removed because: (pOOBAH ≤ 0.05) &gt; 80% probes&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>364 sample(s) removed because: (pOOBAH ≤ 0.05) &gt; 80% probes
 </pre></div>
@@ -869,8 +783,13 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 </section>
 </section>
 <section id="step-4-exclude-cpg-probes-that-contain-more-than-5-of-missing-values">
-<h2>Step 4. Exclude CpG probes that contain more than 5% of missing values<a class="headerlink" href="#step-4-exclude-cpg-probes-that-contain-more-than-5-of-missing-values" title="Permalink to this headline">#</a></h2>
+<h2>Step 4. Exclude CpG probes that contain more than 5% of missing values<a class="headerlink" href="#step-4-exclude-cpg-probes-that-contain-more-than-5-of-missing-values" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">probe_cutoff</span><span class="p">(</span><span class="n">qc_betas</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
     <span class="n">qc_betas2</span> <span class="o">=</span> <span class="n">qc_betas</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">thresh</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">threshold</span><span class="o">*</span><span class="n">qc_betas</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
@@ -881,6 +800,7 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>84956 probe(s) removed because of &gt;5% missing values
 </pre></div>
@@ -889,13 +809,18 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 </div>
 </section>
 <section id="step-5-interpolate-remaining-missing-values-linearly">
-<h2>Step 5. Interpolate remaining missing values linearly<a class="headerlink" href="#step-5-interpolate-remaining-missing-values-linearly" title="Permalink to this headline">#</a></h2>
+<h2>Step 5. Interpolate remaining missing values linearly<a class="headerlink" href="#step-5-interpolate-remaining-missing-values-linearly" title="Permalink to this heading">#</a></h2>
 <p>We still have probes with missing values that are below our 5% threshold. To fix that, we interpolate remaining beta values values linearly.</p>
 <ul class="simple">
 <li><p>Linear interpolation means that a missing mC value for a particular sample will be filled with the median of the values of the two adjacent samples. The reason behind this is the high concordance <em>usually</em> seen in the methylation profile of neighboring samples.</p></li>
 <li><p>Inevitably, this step adds arbitration to the data cleaning process.</p></li>
 </ul>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df5</span> <span class="o">=</span> <span class="n">df4</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">limit_direction</span><span class="o">=</span><span class="s1">&#39;backward&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 
@@ -904,6 +829,7 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Interpolated dataset contains 310545 rows (mC probes) and 1880 columns (samples).
 </pre></div>
@@ -912,8 +838,13 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 </div>
 </section>
 <section id="save-dataset">
-<h2>Save Dataset<a class="headerlink" href="#save-dataset" title="Permalink to this headline">#</a></h2>
+<h2>Save Dataset<a class="headerlink" href="#save-dataset" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/Methyl_Array_Processed/&#39;</span>
 
@@ -924,6 +855,7 @@ INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved processed methyl dataset.
 Path: ../Data/Processed_Data/Methyl_Array_Processed/
@@ -933,9 +865,7 @@ Path: ../Data/Processed_Data/Methyl_Array_Processed/
 </div>
 </section>
 <section id="watermark">
-<h2>Watermark<a class="headerlink" href="#watermark" title="Permalink to this headline">#</a></h2>
-<div class="cell tag_remove-input tag_remove-output docutils container">
-</div>
+<h2>Watermark<a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
@@ -971,50 +901,113 @@ pandas     : 1.3.5
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="1_MethylData_PreProcessing.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Data Download and Initial Processing</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="1_MethylData_PreProcessing.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data Download and Initial Processing</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="3_ClinicalData_Processing.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="3_ClinicalData_Processing.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Clinical Data Processing</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-sources">Data Sources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joining-dataframes">Joining Dataframes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-filtering-sub-optimally-designed-probes">Step 1. Filtering Sub-Optimally Designed Probes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-filtering-sex-linked-probes-and-control-probes">Step 2. Filtering sex-linked probes and control probes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-exclude-samples-that-illumina-qc-categorizes-as-fail-pval">Step 3. Exclude samples that Illumina QC categorizes as FAIL(pval)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-illumina-s-quality-control-qc">Run Illumina’s Quality Control (QC)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-qc-reports">Load QC Reports</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exclude-samples-that-failed-illumina-s-qc">Exclude Samples that Failed Illumina’s QC</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-exclude-cpg-probes-that-contain-more-than-5-of-missing-values">Step 4. Exclude CpG probes that contain more than 5% of missing values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-interpolate-remaining-missing-values-linearly">Step 5. Interpolate remaining missing values linearly</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-dataset">Save Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
   
-    By Francisco Marchi<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
-</div>
+<p class="component-author">
+By Francisco Marchi
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
 
-      </div>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
