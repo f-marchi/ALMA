@@ -54,7 +54,6 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -133,7 +132,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="index.html">
+<a class="navbar-brand logo" href="5_PaCMAP_Visualization%20copy.html">
   
   
   
@@ -153,7 +152,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="index.html">
+                <a class="reference internal" href="5_PaCMAP_Visualization%20copy.html">
                     DNA methylation-based diagnosis and prognosis of pediatric AML
                 </a>
             </li>
@@ -387,23 +386,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_9716</span>\<span class="mf">237495134.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;x.pkl&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;y.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> 
-
-<span class="nn">c:\users\flourenco\appdata\local\programs\python\python37\lib\site-packages\pandas\io\pickle.py</span> in <span class="ni">read_pickle</span><span class="nt">(filepath_or_buffer, compression, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">215</span>                     <span class="c1"># RawIOBase, BufferedIOBase, TextIOBase, TextIOWrapper, mmap]&quot;;</span>
-<span class="g g-Whitespace">    </span><span class="mi">216</span>                     <span class="c1"># expected &quot;IO[bytes]&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">217</span>                     <span class="k">return</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span><span class="p">)</span>  <span class="c1"># type: ignore[arg-type]</span>
-<span class="g g-Whitespace">    </span><span class="mi">218</span>             <span class="k">except</span> <span class="n">excs_to_catch</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">219</span>                 <span class="c1"># e.g.</span>
-
-<span class="ne">ValueError</span>: unsupported pickle protocol: 5
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Dataset (df) contains 310545 rows (mC sites) and 1346 columns (samples).
 </pre></div>
 </div>
 </div>
@@ -484,13 +467,14 @@ AML08     42
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found 4 batches.
-Adjusting for 0 covariate(s) or covariate level(s).
-Standardizing Data across genes.
-Fitting L/S model and finding priors.
-Finding parametric adjustments.
-Adjusting the Data
-Succesfully corrected batch effects in the training dataset.
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">combat.pycombat</span> <span class="kn">import</span> <span class="n">pycombat</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Correct batch effects in the training dataset</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">x_train2</span> <span class="o">=</span> <span class="n">pycombat</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;Batch&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;combat&#39;
 </pre></div>
 </div>
 </div>
@@ -514,7 +498,7 @@ Succesfully corrected batch effects in the training dataset.
 
 
 <span class="k">def</span> <span class="nf">run_pacmap</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Run PaCMAP on the training dataset apply learned parameters to the train and test.</span>
 
 <span class="sd">    Parameters</span>

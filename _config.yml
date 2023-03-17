@@ -36,4 +36,4 @@ latex:
 
 html:
   comments:
-    hypothesis: true
+    hypothesis: False

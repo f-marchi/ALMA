@@ -54,7 +54,6 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -133,7 +132,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="index.html">
+<a class="navbar-brand logo" href="5_PaCMAP_Visualization%20copy.html">
   
   
   
@@ -153,7 +152,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="index.html">
+                <a class="reference internal" href="5_PaCMAP_Visualization%20copy.html">
                     DNA methylation-based diagnosis and prognosis of pediatric AML
                 </a>
             </li>
@@ -382,13 +381,13 @@ which is a python library that offers R’s <a class="reference external" href="
 </ul>
 </li>
 <li><p>Create a virtual environment with python 3.7 using either pip or conda:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python37<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>&lt;venv_name&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python37 -m venv &lt;venv_name&gt;
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>or, if python37 location cannot be found:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/AppData/Local/Programs/Python/Python37/python.exe<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>&lt;venv_name&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/AppData/Local/Programs/Python/Python37/python.exe -m venv &lt;venv_name&gt;
 </pre></div>
 </div>
 </li>
@@ -396,29 +395,29 @@ which is a python library that offers R’s <a class="reference external" href="
 <ul class="simple">
 <li><p>If using Mac/Linux:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>activate<span class="w"> </span>&lt;venv_name&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> activate &lt;venv_name&gt;
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>If using Windows (git bash):</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>&lt;venv_name&gt;/Scripts/activate
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> &lt;venv_name&gt;/Scripts/activate
 </pre></div>
 </div>
 </li>
 <li><p>Install methylsuite and dependencies:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>statsmodels
-pip<span class="w"> </span>install<span class="w"> </span>methylsuite
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install statsmodels
+pip install methylsuite
 </pre></div>
 </div>
 </li>
 <li><p>Download dataset directly from GEO:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>methylprep<span class="w"> </span>beta_bake<span class="w"> </span>-i<span class="w"> </span>&lt;GEO<span class="w"> </span>series&gt;<span class="w"> </span>-d<span class="w"> </span>&lt;directory&gt;<span class="w"> </span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m methylprep beta_bake -i &lt;GEO series&gt; -d &lt;directory&gt; 
 </pre></div>
 </div>
 </li>
 <li><p>Process dataset:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>methylprep<span class="w"> </span>-v<span class="w"> </span>process<span class="w"> </span>--array_type<span class="w"> </span>&lt;epic<span class="w"> </span>or<span class="w"> </span>450k&gt;<span class="w"> </span>-d<span class="w"> </span>&lt;directory&gt;<span class="w"> </span>--all<span class="w"> </span>--no_sample_sheet
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m methylprep -v process --array_type &lt;epic or 450k&gt; -d &lt;directory&gt; --all --no_sample_sheet
 </pre></div>
 </div>
 </li>

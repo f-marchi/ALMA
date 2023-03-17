@@ -54,7 +54,6 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -133,7 +132,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="index.html">
+<a class="navbar-brand logo" href="5_PaCMAP_Visualization%20copy.html">
   
   
   
@@ -153,7 +152,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="index.html">
+                <a class="reference internal" href="5_PaCMAP_Visualization%20copy.html">
                     DNA methylation-based diagnosis and prognosis of pediatric AML
                 </a>
             </li>
@@ -392,26 +391,47 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_2648</span>\<span class="mf">1083627060.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">x_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;embedding.pkl&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">x_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;embedding_test.pkl&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;y.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="nn">c:\users\flourenco\appdata\local\programs\python\python37\lib\site-packages\pandas\io\pickle.py</span> in <span class="ni">read_pickle</span><span class="nt">(filepath_or_buffer, compression, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">199</span>         <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">200</span>         <span class="n">is_text</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="ne">--&gt; </span><span class="mi">201</span>         <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">202</span>     <span class="p">)</span> <span class="k">as</span> <span class="n">handles</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">203</span> 
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\io\pickle.py:190,</span> in <span class="ni">read_pickle</span><span class="nt">(filepath_or_buffer, compression, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span> <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span><span class="sd"> Load pickled pandas object (or any object) from file.</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">187</span><span class="sd"> 4    4    9</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span> <span class="n">excs_to_catch</span> <span class="o">=</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">ImportError</span><span class="p">,</span> <span class="ne">ModuleNotFoundError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">190</span> <span class="k">with</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">191</span>     <span class="n">filepath_or_buffer</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">192</span>     <span class="s2">&quot;rb&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">193</span>     <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">194</span>     <span class="n">is_text</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span> <span class="p">)</span> <span class="k">as</span> <span class="n">handles</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span> 
+<span class="g g-Whitespace">    </span><span class="mi">198</span>     <span class="c1"># 1) try standard library Pickle</span>
+<span class="g g-Whitespace">    </span><span class="mi">199</span>     <span class="c1"># 2) try pickle_compat (older pandas version) to handle subclass changes</span>
+<span class="g g-Whitespace">    </span><span class="mi">200</span>     <span class="c1"># 3) try pickle_compat with latin-1 encoding upon a UnicodeDecodeError</span>
+<span class="g g-Whitespace">    </span><span class="mi">202</span>     <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">203</span>         <span class="c1"># TypeError for Cython complaints about object.__new__ vs Tick.__new__</span>
+<span class="g g-Whitespace">    </span><span class="mi">204</span>         <span class="k">try</span><span class="p">:</span>
 
-<span class="nn">c:\users\flourenco\appdata\local\programs\python\python37\lib\site-packages\pandas\io\common.py</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">709</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">710</span>             <span class="c1"># Binary mode</span>
-<span class="ne">--&gt; </span><span class="mi">711</span>             <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">712</span>         <span class="n">handles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">713</span> 
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\io\common.py:865,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">856</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">857</span>             <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">858</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">861</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">862</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">863</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">864</span>         <span class="c1"># Binary mode</span>
+<span class="ne">--&gt; </span><span class="mi">865</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">866</span>     <span class="n">handles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">868</span> <span class="c1"># Convert BytesIO or file objects passed with an encoding</span>
 
 <span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../Data/Processed_Data/embedding.pkl&#39;
 </pre></div>

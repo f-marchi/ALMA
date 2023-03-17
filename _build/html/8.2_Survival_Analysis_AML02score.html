@@ -54,7 +54,6 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -133,7 +132,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="index.html">
+<a class="navbar-brand logo" href="5_PaCMAP_Visualization%20copy.html">
   
   
   
@@ -153,7 +152,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="index.html">
+                <a class="reference internal" href="5_PaCMAP_Visualization%20copy.html">
                     DNA methylation-based diagnosis and prognosis of pediatric AML
                 </a>
             </li>
@@ -439,6 +438,37 @@ document.write(`
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">FM_Functions.Cox_Lasso_Function</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># raw_coefs = train_coxph_lasso(df=y_train,</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">#                                 event= &#39;os.evnt&#39;,</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1">#                                 time= &#39;os.time&#39;,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> 
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1"># raw_coefs.to_csv(output_path+&#39;ARIC_mC_score_Raw_Coefs.csv&#39;)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">raw_coefs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;ARIC_mC_score_Raw_Coefs.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">File</span> <span class="o">~</span>\<span class="n">Desktop</span>\<span class="n">Projects</span>\<span class="n">Methylation_Project_v2</span>\<span class="n">Code</span>\<span class="n">FM_Functions</span>\<span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">FM_Functions</span> <span class="kn">import</span> <span class="n">Cox_Lasso_Function</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">FM_Functions</span> <span class="kn">import</span> <span class="n">Clinical_Data_CleanUp</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">FM_Functions</span> <span class="kn">import</span> <span class="n">Data_Visualization</span>
+
+<span class="n">File</span> <span class="o">~</span>\<span class="n">Desktop</span>\<span class="n">Projects</span>\<span class="n">Methylation_Project_v2</span>\<span class="n">Code</span>\<span class="n">FM_Functions</span>\<span class="n">Data_Visualization</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># Import libraries</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="k">def</span> <span class="nf">draw_kaplan_meier</span><span class="p">(</span><span class="n">scorename</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>                       <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>                       <span class="n">trialname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <section id="set-threshold">
 <h3>Set Threshold<a class="headerlink" href="#set-threshold" title="Permalink to this heading">#</a></h3>
@@ -496,7 +526,7 @@ dtype: float64
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/5672d912add71adf4fdcc46f51721e26d19489805b9612de9f98bd91ce9774c5.png" src="_images/5672d912add71adf4fdcc46f51721e26d19489805b9612de9f98bd91ce9774c5.png" />
+<img alt="_images/5772927180f79324c58d42ca278ee7fc3dd95bfd5d65dd386b00a76c4afcce91.png" src="_images/5772927180f79324c58d42ca278ee7fc3dd95bfd5d65dd386b00a76c4afcce91.png" />
 </div>
 </div>
 </section>
