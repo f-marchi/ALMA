@@ -18,8 +18,6 @@ execute:
 # HTML-specific settings
 html:
   home_page_in_navbar: false
-  baseurl: "https://franciscomarchi.github.io/MethylScore/"  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
-
 
 # Interact link settings
 notebook_interface: "notebook"
