@@ -64,7 +64,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '4_Dimension_Reduction';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="DNA methylation-based diagnosis and prognosis of pediatric AML" href="5_PaCMAP_Visualization.html" />
     <link rel="prev" title="Clinical Data Processing" href="3_ClinicalData_Processing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -131,19 +130,13 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="5_PaCMAP_Visualization%20copy.html">
+<a class="navbar-brand logo" href="5_PaCMAP_Visualization.html">
   
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/dna1.gif" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/dna1.gif" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
+    <p class="title logo__title">Lamba Lab at UF</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -151,8 +144,8 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="5_PaCMAP_Visualization%20copy.html">
-                    DNA methylation-based diagnosis and prognosis of pediatric AML
+                <a class="reference internal" href="5_PaCMAP_Visualization.html">
+                    The Pediatric AML Methylome Atlas
                 </a>
             </li>
         </ul>
@@ -165,28 +158,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="docs/Intro_to_Methylation.html">Understanding DNA Methylation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Preparation</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_MethylData_PreProcessing.html">Data Download and Initial Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_MethylData_Processing.html">Methyl Array Data Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_ClinicalData_Processing.html">Clinical Data Processing</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">AML Diagnostic Map</span></p>
-<ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Dimension Reduction with PaCMAP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5_PaCMAP_Visualization.html">DNA methylation-based diagnosis and prognosis of pediatric AML</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Survival Analyses</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="6_Survival_Analysis.html">Survival Analysis FM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6.1_Survival_Analysis_FS.html">Survival Analysis FS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7_Score_Visualization.html">Kaplan Meiers, Forest Plots, Patient Characteristics</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Immune Cell Deconvolution</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="8.0_Immune_Cell_Deconvolution.html">Immune Cell Deconvolution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8.1_Deconvolution_Visualization.html">Deconvolution Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8.2_Survival_Analysis_AML02score.html">Survival Analysis of AML02 OS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8.3_Data_Visualization_AML02score.html">Data Visualization</a></li>
 </ul>
 
     </div>
@@ -466,14 +442,23 @@ AML08     42
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">combat.pycombat</span> <span class="kn">import</span> <span class="n">pycombat</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Correct batch effects in the training dataset</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">x_train2</span> <span class="o">=</span> <span class="n">pycombat</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;Batch&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;combat&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found 4 batches.
+Adjusting for 0 covariate(s) or covariate level(s).
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standardizing Data across genes.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting L/S model and finding priors.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Finding parametric adjustments.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Adjusting the Data
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Succesfully corrected batch effects in the training dataset.
 </pre></div>
 </div>
 </div>
@@ -637,15 +622,6 @@ pacmap : 0.7.0
         <p class="prev-next-title">Clinical Data Processing</p>
       </div>
     </a>
-    <a class="right-next"
-       href="5_PaCMAP_Visualization.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">DNA methylation-based diagnosis and prognosis of pediatric AML</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -691,7 +667,7 @@ By Francisco Marchi
     
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

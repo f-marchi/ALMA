@@ -131,19 +131,13 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="5_PaCMAP_Visualization%20copy.html">
+<a class="navbar-brand logo" href="5_PaCMAP_Visualization.html">
   
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/dna1.gif" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/dna1.gif" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
+    <p class="title logo__title">Lamba Lab at UF</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -151,8 +145,8 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="5_PaCMAP_Visualization%20copy.html">
-                    DNA methylation-based diagnosis and prognosis of pediatric AML
+                <a class="reference internal" href="5_PaCMAP_Visualization.html">
+                    The Pediatric AML Methylome Atlas
                 </a>
             </li>
         </ul>
@@ -169,24 +163,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Download and Initial Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_MethylData_Processing.html">Methyl Array Data Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_ClinicalData_Processing.html">Clinical Data Processing</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">AML Diagnostic Map</span></p>
-<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="4_Dimension_Reduction.html">Dimension Reduction with PaCMAP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5_PaCMAP_Visualization.html">DNA methylation-based diagnosis and prognosis of pediatric AML</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Survival Analyses</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="6_Survival_Analysis.html">Survival Analysis FM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6.1_Survival_Analysis_FS.html">Survival Analysis FS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7_Score_Visualization.html">Kaplan Meiers, Forest Plots, Patient Characteristics</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Immune Cell Deconvolution</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="8.0_Immune_Cell_Deconvolution.html">Immune Cell Deconvolution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8.1_Deconvolution_Visualization.html">Deconvolution Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8.2_Survival_Analysis_AML02score.html">Survival Analysis of AML02 OS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8.3_Data_Visualization_AML02score.html">Data Visualization</a></li>
 </ul>
 
     </div>
@@ -380,13 +357,13 @@ which is a python library that offers R’s <a class="reference external" href="
 </ul>
 </li>
 <li><p>Create a virtual environment with python 3.7 using either pip or conda:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python37 -m venv &lt;venv_name&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python37 -m venv .venv_py37
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>or, if python37 location cannot be found:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/AppData/Local/Programs/Python/Python37/python.exe -m venv &lt;venv_name&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/AppData/Local/Programs/Python/Python37/python.exe -m venv .venv_py37
 </pre></div>
 </div>
 </li>
@@ -394,13 +371,13 @@ which is a python library that offers R’s <a class="reference external" href="
 <ul class="simple">
 <li><p>If using Mac/Linux:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> activate &lt;venv_name&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> activate .venv_py37
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>If using Windows (git bash):</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> &lt;venv_name&gt;/Scripts/activate
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> .venv_py37/Scripts/activate
 </pre></div>
 </div>
 </li>
@@ -561,7 +538,7 @@ By Francisco Marchi
     
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

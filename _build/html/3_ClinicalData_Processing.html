@@ -131,19 +131,13 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="5_PaCMAP_Visualization%20copy.html">
+<a class="navbar-brand logo" href="5_PaCMAP_Visualization.html">
   
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/dna1.gif" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/dna1.gif" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
+    <p class="title logo__title">Lamba Lab at UF</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -151,8 +145,8 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="5_PaCMAP_Visualization%20copy.html">
-                    DNA methylation-based diagnosis and prognosis of pediatric AML
+                <a class="reference internal" href="5_PaCMAP_Visualization.html">
+                    The Pediatric AML Methylome Atlas
                 </a>
             </li>
         </ul>
@@ -169,24 +163,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="1_MethylData_PreProcessing.html">Data Download and Initial Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_MethylData_Processing.html">Methyl Array Data Processing</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Clinical Data Processing</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">AML Diagnostic Map</span></p>
-<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="4_Dimension_Reduction.html">Dimension Reduction with PaCMAP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5_PaCMAP_Visualization.html">DNA methylation-based diagnosis and prognosis of pediatric AML</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Survival Analyses</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="6_Survival_Analysis.html">Survival Analysis FM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6.1_Survival_Analysis_FS.html">Survival Analysis FS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7_Score_Visualization.html">Kaplan Meiers, Forest Plots, Patient Characteristics</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Immune Cell Deconvolution</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="8.0_Immune_Cell_Deconvolution.html">Immune Cell Deconvolution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8.1_Deconvolution_Visualization.html">Deconvolution Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8.2_Survival_Analysis_AML02score.html">Survival Analysis of AML02 OS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8.3_Data_Visualization_AML02score.html">Data Visualization</a></li>
 </ul>
 
     </div>
@@ -449,33 +426,6 @@ document.write(`
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [3],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Import functions to clean up clinical data</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">FM_Functions.Clinical_Data_CleanUp</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Combine all clinical data files into one dataframe and indexes it by the sample ID</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">labels_cog</span><span class="p">,</span> <span class="n">labels_aml02</span><span class="p">,</span> <span class="n">labels_aml08</span><span class="p">,</span> <span class="n">labels_aml05</span> <span class="o">=</span> <span class="n">combine_and_index_clinicaldata</span><span class="p">()</span>
-
-<span class="n">File</span> <span class="o">~</span>\<span class="n">Desktop</span>\<span class="n">Projects</span>\<span class="n">Methylation_Project_v2</span>\<span class="n">Code</span>\<span class="n">FM_Functions</span>\<span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">FM_Functions</span> <span class="kn">import</span> <span class="n">Cox_Lasso_Function</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">FM_Functions</span> <span class="kn">import</span> <span class="n">Clinical_Data_CleanUp</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">FM_Functions</span> <span class="kn">import</span> <span class="n">Data_Visualization</span>
-
-<span class="n">File</span> <span class="o">~</span>\<span class="n">Desktop</span>\<span class="n">Projects</span>\<span class="n">Methylation_Project_v2</span>\<span class="n">Code</span>\<span class="n">FM_Functions</span>\<span class="n">Data_Visualization</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># Import libraries</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="k">def</span> <span class="nf">draw_kaplan_meier</span><span class="p">(</span><span class="n">scorename</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>                       <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>                       <span class="n">trialname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="remove-samples-based-on-certain-clinical-features">
@@ -627,10 +577,10 @@ Path: ../Data/Processed_Data/
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
-Python version       : 3.10.9
-IPython version      : 8.8.0
+Python version       : 3.10.10
+IPython version      : 8.3.0
 
-pandas: 1.5.2
+pandas: 1.5.3
 </pre></div>
 </div>
 </div>
@@ -736,7 +686,7 @@ By Francisco Marchi
     
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

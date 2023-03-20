@@ -1,7 +1,8 @@
 title: Lamba Lab at UF
 author: Francisco Marchi
-logo: "_logos/dna1.gif"
-exclude_patterns: [.venv, .venv_data_vizualization, .venv_pacmap, .venv_sklearn,
+copyright: "2023"  # Copyright year to be placed in the footer
+#logo: "_logos/dna1.gif"
+exclude_patterns: [.venv,.venv_py37, .venv_data_vizualization, .venv_pacmap, .venv_sklearn,
                   Code_past, Benchmarking]
 only_build_toc_files: true
 
@@ -10,13 +11,15 @@ description: >-
   This is Francisco Marchi's electronic notebook, which belongs to Lamba Lab at UF.
 
 execute:
-  execute_notebooks: cache
+  execute_notebooks: "auto"
   exclude_patterns: [.venv, .venv_data_vizualization, .venv_pacmap, .venv_sklearn,
                   Code_past, Benchmarking]
   timeout: 10000
 # HTML-specific settings
 html:
   home_page_in_navbar: false
+  baseurl: "https://franciscomarchi.github.io/MethylScore/"  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
+
 
 # Interact link settings
 notebook_interface: "notebook"
@@ -27,12 +30,12 @@ notebook_interface: "notebook"
 #  path_to_book: "book"
 
 # LaTeX settings
-bibtex_bibfiles:
-  - _bibliography/references.bib
-latex:
-  latex_engine: "xelatex"
-  latex_documents:
-    targetname: book.tex
+# bibtex_bibfiles:
+#   - _bibliography/references.bib
+# latex:
+#   latex_engine: "xelatex"
+#   latex_documents:
+#     targetname: book.tex
 
 html:
   comments:

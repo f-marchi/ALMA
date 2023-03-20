@@ -1,5 +1,5 @@
 format: jb-book
-root: 5_PaCMAP_Visualization copy.ipynb
+root: 5_PaCMAP_Visualization.ipynb
 parts:
   - caption: Specific Aims
     chapters:
@@ -17,23 +17,23 @@ parts:
       - file: 2_MethylData_Processing.ipynb
       - file: 3_ClinicalData_Processing.ipynb
 
-  - caption: AML Diagnostic Map
+      # - caption: AML Diagnostic Map
 
-    chapters:
+      #   chapters:
       - file: 4_Dimension_Reduction.ipynb
-      - file: 5_PaCMAP_Visualization.ipynb
+  #     - file: 5_PaCMAP_Visualization.ipynb
 
-  - caption: Survival Analyses
+  # - caption: Survival Analyses
 
-    chapters:
-      - file: 6_Survival_Analysis.ipynb
-      - file: 6.1_Survival_Analysis_FS.ipynb
-      - file: 7_Score_Visualization.ipynb
+  #   chapters:
+  #     - file: 6_Survival_Analysis.ipynb
+  #     - file: 6.1_Survival_Analysis_FS.ipynb
+  #     - file: 7_Score_Visualization.ipynb
 
-  - caption: Immune Cell Deconvolution
+  # - caption: Immune Cell Deconvolution
 
-    chapters:
-      - file: 8.0_Immune_Cell_Deconvolution
-      - file: 8.1_Deconvolution_Visualization
-      - file: 8.2_Survival_Analysis_AML02score.ipynb
-      - file: 8.3_Data_Visualization_AML02score.ipynb
+  #   chapters:
+  #     - file: 8.0_Immune_Cell_Deconvolution
+  #     - file: 8.1_Deconvolution_Visualization
+  #     - file: 8.2_Survival_Analysis_AML02score.ipynb
+  #     - file: 8.3_Data_Visualization_AML02score.ipynb
