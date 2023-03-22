@@ -359,7 +359,7 @@ def draw_heatmaps(fig_title, t1, t2, df1, df2, fig_number, save_plot=False, figs
 
         sns.heatmap(df, ax=ax, xticklabels=False, yticklabels=y_label,
                     vmax=1, vmin=0, center=0.5, cbar_ax=axcb)
-        ax.set_xlabel('Diagnostic samples, n='+str(df.shape[1]), fontsize=10)
+        ax.set_xlabel('Patient samples, n='+str(df.shape[1]), fontsize=10)
         ax.set_title(t, fontsize=11, loc='center')
         return ()
 
