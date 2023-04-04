@@ -64,6 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '4_Dimension_Reduction';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Mutli-Class Classifier" href="6.1_MultiClass_Classifier.html" />
     <link rel="prev" title="Clinical Data Processing" href="3_ClinicalData_Processing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -130,7 +131,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="5_PaCMAP_Visualization%20copy.html">
+<a class="navbar-brand logo" href="5_PaCMAP_Visualization.html">
   
   
   
@@ -144,7 +145,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="5_PaCMAP_Visualization%20copy.html">
+                <a class="reference internal" href="5_PaCMAP_Visualization.html">
                     The Pediatric AML Methylome Atlas
                 </a>
             </li>
@@ -159,10 +160,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Preparation</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="1_MethylData_PreProcessing.html">Data Download and Initial Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_MethylData_PreProcessing.html">Data Sources and Download</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_MethylData_Processing.html">Methyl Array Data Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_ClinicalData_Processing.html">Clinical Data Processing</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Dimension Reduction with PaCMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6.1_MultiClass_Classifier.html">Mutli-Class Classifier</a></li>
 </ul>
 
     </div>
@@ -361,7 +363,27 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Dataset (df) contains 310545 rows (mC sites) and 1346 columns (samples).
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Dataset (df) contains 310545 rows (mC sites) and 1762 columns (samples).
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load control and relapse data</span>
+<span class="n">ctrl_rel</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;control_relapse.pkl&#39;</span><span class="p">)</span>
+
+<span class="c1"># Split control and relapse data into x and y</span>
+<span class="n">ctrl_rel_x</span> <span class="o">=</span> <span class="n">ctrl_rel</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+<span class="n">ctrl_rel_y</span> <span class="o">=</span> <span class="n">ctrl_rel</span><span class="p">[</span><span class="n">y</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+
+<span class="c1"># Split control and relapse data into control and relapse</span>
+<span class="n">ctrl_y</span> <span class="o">=</span> <span class="n">ctrl_rel_y</span><span class="p">[</span><span class="n">ctrl_rel_y</span><span class="p">[</span><span class="s1">&#39;Sample Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Bone Marrow Normal&#39;</span><span class="p">,</span><span class="s1">&#39;Blood Derived Normal&#39;</span><span class="p">])]</span>
+<span class="n">rel_y</span> <span class="o">=</span> <span class="n">ctrl_rel_y</span><span class="p">[</span><span class="o">~</span><span class="n">ctrl_rel_y</span><span class="p">[</span><span class="s1">&#39;Sample Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Bone Marrow Normal&#39;</span><span class="p">,</span><span class="s1">&#39;Blood Derived Normal&#39;</span><span class="p">])]</span>
+
+<span class="c1"># Apply to x</span>
+<span class="n">ctrl_x</span> <span class="o">=</span> <span class="n">ctrl_rel_x</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="n">ctrl_y</span><span class="o">.</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+<span class="n">rel_x</span> <span class="o">=</span> <span class="n">ctrl_rel_x</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="n">rel_y</span><span class="o">.</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
 </div>
 </div>
@@ -380,11 +402,19 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split train and test by clinical trial</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="o">~</span><span class="n">y</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;AML02&#39;</span><span class="p">,</span> <span class="s1">&#39;AML08&#39;</span><span class="p">])]</span>
+<span class="c1"># y_train = y_train[y_train[&#39;Sample Type&#39;].isin([&#39;Diagnosis&#39;,</span>
+<span class="c1">#        &#39;Primary Blood Derived Cancer - Bone Marrow&#39;, &#39;Bone Marrow Normal&#39;,</span>
+<span class="c1">#        &#39;Primary Blood Derived Cancer - Peripheral Blood&#39;,</span>
+<span class="c1">#        &#39;Blood Derived Normal&#39;])]</span>
+
 <span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;AML02&#39;</span><span class="p">,</span> <span class="s1">&#39;AML08&#39;</span><span class="p">])]</span>
 
 <span class="c1"># Select samples in x that are in y_train</span>
 <span class="n">x_train</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">y_train</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
 <span class="n">x_test</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">y_test</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+<span class="c1"># x_train = pd.concat([x_train, ctrl_x], axis=0)</span>
+<span class="c1"># y_train = pd.concat([y_train, ctrl_y], axis=0,keys=[&#39;Diagnosis&#39;,&#39;Control&#39;], names=[&#39;sample_type&#39;])</span>
 
 
 <span class="nb">print</span><span class="p">(</span>
@@ -399,17 +429,18 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discovery dataset (train) contains 310545 rows (mC sites) and 1142 columns (samples)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discovery dataset (train) contains 310545 rows (mC sites) and 1553 columns (samples)
 
-AAML1031    520
-AAML0531    508
+AAML1031    704
+AAML0531    630
+AAML03P1     72
 AML05        64
-AAML03P1     36
-CCG2961      14
+CCG2961      42
+NaN          41
 
-Validation dataset (test) contains 310545 rows (mC sites) and 204 columns (samples).
+Validation dataset (test) contains 310545 rows (mC sites) and 209 columns (samples).
 
-AML02    162
+AML02    167
 AML08     42
 </pre></div>
 </div>
@@ -455,10 +486,62 @@ Adjusting for 0 covariate(s) or covariate level(s).
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Finding parametric adjustments.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Adjusting the Data
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Succesfully corrected batch effects in the training dataset.
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">Input In [5],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">combat.pycombat</span> <span class="kn">import</span> <span class="n">pycombat</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Correct batch effects in the training dataset</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">x_train2</span> <span class="o">=</span> <span class="n">pycombat</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;Batch&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Succesfully corrected batch effects in the training dataset.&#39;</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\combat\pycombat.py:657,</span> in <span class="ni">pycombat</span><span class="nt">(data, batch, mod, par_prior, prior_plots, mean_only, ref_batch, precision, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">654</span> <span class="n">stand_mean</span> <span class="o">=</span> <span class="n">calculate_stand_mean</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">655</span>     <span class="n">grand_mean</span><span class="p">,</span> <span class="n">n_array</span><span class="p">,</span> <span class="n">design</span><span class="p">,</span> <span class="n">n_batch</span><span class="p">,</span> <span class="n">B_hat</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">656</span> <span class="n">s_data</span> <span class="o">=</span> <span class="n">standardise_data</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">stand_mean</span><span class="p">,</span> <span class="n">var_pooled</span><span class="p">,</span> <span class="n">n_array</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">657</span> <span class="n">gamma_star</span><span class="p">,</span> <span class="n">delta_star</span><span class="p">,</span> <span class="n">batch_design</span> <span class="o">=</span> <span class="n">fit_model</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">658</span>     <span class="n">design</span><span class="p">,</span> <span class="n">n_batch</span><span class="p">,</span> <span class="n">s_data</span><span class="p">,</span> <span class="n">batches</span><span class="p">,</span> <span class="n">mean_only</span><span class="p">,</span> <span class="n">par_prior</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">ref</span><span class="p">,</span> <span class="n">NAs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">659</span> <span class="n">bayes_data</span> <span class="o">=</span> <span class="n">adjust_data</span><span class="p">(</span><span class="n">s_data</span><span class="p">,</span> <span class="n">gamma_star</span><span class="p">,</span> <span class="n">delta_star</span><span class="p">,</span> <span class="n">batch_design</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">660</span>                         <span class="n">n_batches</span><span class="p">,</span> <span class="n">var_pooled</span><span class="p">,</span> <span class="n">stand_mean</span><span class="p">,</span> <span class="n">n_array</span><span class="p">,</span> <span class="n">ref</span><span class="p">,</span> <span class="n">batches</span><span class="p">,</span> <span class="n">dat</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">662</span> <span class="n">bayes_data_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">bayes_data</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">663</span>             <span class="n">columns</span> <span class="o">=</span> <span class="n">list_samples</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">664</span>             <span class="n">index</span> <span class="o">=</span> <span class="n">list_genes</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\combat\pycombat.py:541,</span> in <span class="ni">fit_model</span><span class="nt">(design, n_batch, s_data, batches, mean_only, par_prior, precision, ref, NAs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">538</span> <span class="k">if</span> <span class="n">par_prior</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">539</span>     <span class="c1"># use param_fun function for parametric adjustments (cf. function definition)</span>
+<span class="g g-Whitespace">    </span><span class="mi">540</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finding parametric adjustments.&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">541</span>     <span class="n">results</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">partial</span><span class="p">(</span><span class="n">param_fun</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">542</span>                                <span class="n">s_data</span><span class="o">=</span><span class="n">s_data</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">543</span>                                <span class="n">batches</span><span class="o">=</span><span class="n">batches</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">544</span>                                <span class="n">mean_only</span><span class="o">=</span><span class="n">mean_only</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">545</span>                                <span class="n">gamma_hat</span><span class="o">=</span><span class="n">gamma_hat</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">546</span>                                <span class="n">gamma_bar</span><span class="o">=</span><span class="n">gamma_bar</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">547</span>                                <span class="n">delta_hat</span><span class="o">=</span><span class="n">delta_hat</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">548</span>                                <span class="n">t2</span><span class="o">=</span><span class="n">t2</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">549</span>                                <span class="n">a_prior</span><span class="o">=</span><span class="n">a_prior</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">550</span>                                <span class="n">b_prior</span><span class="o">=</span><span class="n">b_prior</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_batch</span><span class="p">)))</span>
+<span class="g g-Whitespace">    </span><span class="mi">551</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">552</span>     <span class="c1"># use nonparam_fun for non-parametric adjustments (cf. function definition)</span>
+<span class="g g-Whitespace">    </span><span class="mi">553</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finding nonparametric adjustments&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\combat\pycombat.py:254,</span> in <span class="ni">param_fun</span><span class="nt">(i, s_data, batches, mean_only, gamma_hat, gamma_bar, delta_hat, t2, a_prior, b_prior)</span>
+<span class="g g-Whitespace">    </span><span class="mi">252</span>     <span class="n">delta_star</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">s_data</span><span class="p">)</span>  <span class="c1"># multiplicative batch effect</span>
+<span class="g g-Whitespace">    </span><span class="mi">253</span> <span class="k">else</span><span class="p">:</span>  <span class="c1"># if not(mean_only) then use it_solve</span>
+<span class="ne">--&gt; </span><span class="mi">254</span>     <span class="n">temp</span> <span class="o">=</span> <span class="n">it_sol</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">s_data</span><span class="p">)[</span>
+<span class="g g-Whitespace">    </span><span class="mi">255</span>                   <span class="n">batches</span><span class="p">[</span><span class="n">i</span><span class="p">]]),</span> <span class="n">g_hat</span><span class="p">,</span> <span class="n">delta_hat</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">gamma_bar</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">t2</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">a_prior</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">b_prior</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">256</span>     <span class="n">gamma_star</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># additive batch effect</span>
+<span class="g g-Whitespace">    </span><span class="mi">257</span>     <span class="n">delta_star</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># multiplicative batch effect</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python310\lib\site-packages\combat\pycombat.py:155,</span> in <span class="ni">it_sol</span><span class="nt">(sdat, g_hat, d_hat, g_bar, t2, a, b, conv, exit_iteration)</span>
+<span class="g g-Whitespace">    </span><span class="mi">153</span> <span class="k">while</span> <span class="p">(</span><span class="n">change</span> <span class="o">&gt;</span> <span class="n">conv</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">count</span> <span class="o">&lt;</span> <span class="n">exit_iteration</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">154</span>     <span class="n">g_new</span> <span class="o">=</span> <span class="n">postmean</span><span class="p">(</span><span class="n">g_bar</span><span class="p">,</span> <span class="n">d_old</span><span class="p">,</span> <span class="n">t2_n</span><span class="p">,</span> <span class="n">t2_n_g_hat</span><span class="p">)</span>  <span class="c1"># updated additive batch effect</span>
+<span class="ne">--&gt; </span><span class="mi">155</span>     <span class="n">sum2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">156</span>         <span class="n">sdat</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">g_new</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">sdat</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))))),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">157</span>     <span class="n">d_new</span> <span class="o">=</span> <span class="n">postvar</span><span class="p">(</span><span class="n">sum2</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># updated multiplicative batch effect</span>
+<span class="g g-Whitespace">    </span><span class="mi">158</span>     <span class="n">change</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">g_new</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">g_old</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">g_old</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">159</span>         <span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">d_new</span><span class="o">-</span><span class="n">d_old</span><span class="p">)</span><span class="o">/</span><span class="n">d_old</span><span class="p">))</span>  <span class="c1"># maximum difference between new and old estimate</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -517,7 +600,7 @@ Adjusting for 0 covariate(s) or covariate level(s).
     <span class="k">return</span> <span class="n">embedding</span><span class="p">,</span> <span class="n">embedding_test</span>
 
 
-<span class="n">embedding</span><span class="p">,</span> <span class="n">embedding_test</span> <span class="o">=</span> <span class="n">run_pacmap</span><span class="p">(</span><span class="n">x_train2</span><span class="p">,</span> <span class="n">x_test</span><span class="p">)</span>
+<span class="n">embedding</span><span class="p">,</span> <span class="n">embedding_test</span> <span class="o">=</span> <span class="n">run_pacmap</span><span class="p">(</span><span class="n">x_train2</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -543,9 +626,9 @@ Adjusting for 0 covariate(s) or covariate level(s).
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Transform df to pandas dataframe format</span>
 <span class="n">embedding</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">embedding</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">x_train2</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
-                         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PaCMAP 1&#39;</span><span class="p">,</span> <span class="s1">&#39;PaCMAP 2&#39;</span><span class="p">])</span>
+                         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PaCMAP 1&#39;</span><span class="p">,</span> <span class="s1">&#39;PaCMAP 2&#39;</span><span class="p">,</span> <span class="s1">&#39;PaCMAP 3&#39;</span><span class="p">])</span>
 <span class="n">embedding_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">embedding_test</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">x_test</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
-                              <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PaCMAP 1&#39;</span><span class="p">,</span> <span class="s1">&#39;PaCMAP 2&#39;</span><span class="p">])</span>
+                              <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PaCMAP 1&#39;</span><span class="p">,</span> <span class="s1">&#39;PaCMAP 2&#39;</span><span class="p">,</span> <span class="s1">&#39;PaCMAP 3&#39;</span><span class="p">])</span>
 
 <span class="c1"># Save embeddings</span>
 <span class="n">embedding</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;embedding.pkl&#39;</span><span class="p">)</span>
@@ -558,7 +641,7 @@ Adjusting for 0 covariate(s) or covariate level(s).
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved 1142 x_train samples and 204 x_test samples.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved 1553 x_train samples and 209 x_test samples.
 Path: ../Data/Processed_Data/PaCMAP_Results/
 </pre></div>
 </div>
@@ -570,7 +653,7 @@ Path: ../Data/Processed_Data/PaCMAP_Results/
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
-Python version       : 3.10.9
+Python version       : 3.10.10
 IPython version      : 8.8.0
 
 numpy  : 1.23.5
@@ -621,6 +704,15 @@ pacmap : 0.7.0
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Clinical Data Processing</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="6.1_MultiClass_Classifier.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Mutli-Class Classifier</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

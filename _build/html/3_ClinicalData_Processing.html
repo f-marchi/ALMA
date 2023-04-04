@@ -131,7 +131,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="5_PaCMAP_Visualization%20copy.html">
+<a class="navbar-brand logo" href="5_PaCMAP_Visualization.html">
   
   
   
@@ -145,7 +145,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="5_PaCMAP_Visualization%20copy.html">
+                <a class="reference internal" href="5_PaCMAP_Visualization.html">
                     The Pediatric AML Methylome Atlas
                 </a>
             </li>
@@ -160,10 +160,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Preparation</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="1_MethylData_PreProcessing.html">Data Download and Initial Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_MethylData_PreProcessing.html">Data Sources and Download</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_MethylData_Processing.html">Methyl Array Data Processing</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Clinical Data Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_Dimension_Reduction.html">Dimension Reduction with PaCMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6.1_MultiClass_Classifier.html">Mutli-Class Classifier</a></li>
 </ul>
 
     </div>
@@ -512,10 +513,10 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">df3</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_methyl</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span> <span class="c1"># Join clinical data with methyl data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">df_</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_methyl</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span> <span class="c1"># Join clinical data with methyl data</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">df3</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span> <span class="c1"># Select only methyl data</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="n">df3</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Select only clinical data</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">df_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span> <span class="c1"># Select only methyl data</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="n">df_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Select only clinical data</span>
 
 <span class="n">x</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;x.pkl&#39;</span><span class="p">)</span> <span class="c1"># Save methyl data</span>
 <span class="n">y</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;y.csv&#39;</span><span class="p">)</span> <span class="c1"># Save clinical data</span>

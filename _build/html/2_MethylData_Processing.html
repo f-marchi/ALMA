@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Clinical Data Processing" href="3_ClinicalData_Processing.html" />
-    <link rel="prev" title="Data Download and Initial Processing" href="1_MethylData_PreProcessing.html" />
+    <link rel="prev" title="Data Sources and Download" href="1_MethylData_PreProcessing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -131,7 +131,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="5_PaCMAP_Visualization%20copy.html">
+<a class="navbar-brand logo" href="5_PaCMAP_Visualization.html">
   
   
   
@@ -145,7 +145,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="5_PaCMAP_Visualization%20copy.html">
+                <a class="reference internal" href="5_PaCMAP_Visualization.html">
                     The Pediatric AML Methylome Atlas
                 </a>
             </li>
@@ -160,10 +160,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Preparation</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="1_MethylData_PreProcessing.html">Data Download and Initial Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_MethylData_PreProcessing.html">Data Sources and Download</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Methyl Array Data Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_ClinicalData_Processing.html">Clinical Data Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_Dimension_Reduction.html">Dimension Reduction with PaCMAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6.1_MultiClass_Classifier.html">Mutli-Class Classifier</a></li>
 </ul>
 
     </div>
@@ -390,76 +391,76 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files:   0%|                                                                                                  | 0/1 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files:   0%|                                                                                                                            | 0/1 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  2.01it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  2.05it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.99it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:methylcheck.load_processed:loaded data (865859, 500) from 1 pickled files (0.734s)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files:   0%|                                                                                                  | 0/3 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files:  33%|██████████████████████████████                                                            | 1/3 [00:00&lt;00:01,  1.82it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files:  67%|████████████████████████████████████████████████████████████                              | 2/3 [00:00&lt;00:00,  2.21it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:01&lt;00:00,  2.84it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:01&lt;00:00,  2.56it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  2.02it/s]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:methylcheck.load_processed:loaded data (865859, 1039) from 3 pickled files (1.688s)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:methylcheck.load_processed:loaded data (865859, 500) from 1 pickled files (0.719s)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files:   0%|                                                                                                  | 0/1 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files:   0%|                                                                                                                            | 0/3 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  8.26it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files:  33%|██████████████████████████████████████▋                                                                             | 1/3 [00:00&lt;00:01,  1.82it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  7.87it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files:  67%|█████████████████████████████████████████████████████████████████████████████▎                                      | 2/3 [00:00&lt;00:00,  2.22it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:methylcheck.load_processed:loaded data (865859, 64) from 1 pickled files (0.172s)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:01&lt;00:00,  2.92it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files:   0%|                                                                                                  | 0/1 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:01&lt;00:00,  2.61it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  5.29it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  5.13it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:methylcheck.load_processed:loaded data (865859, 1039) from 3 pickled files (1.641s)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:methylcheck.load_processed:loaded data (485512, 317) from 1 pickled files (0.266s)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files:   0%|                                                                                                                            | 0/1 [00:00&lt;?, ?it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files:   0%|                                                                                                  | 0/1 [00:00&lt;?, ?it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  8.97it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  4.67it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  8.67it/s]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|██████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  4.54it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:methylcheck.load_processed:loaded data (865859, 64) from 1 pickled files (0.141s)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (0.297s)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files:   0%|                                                                                                                            | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  5.13it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  4.95it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:methylcheck.load_processed:loaded data (485512, 317) from 1 pickled files (0.312s)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files:   0%|                                                                                                                            | 0/1 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  4.96it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  4.89it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:methylcheck.load_processed:loaded data (485512, 324) from 1 pickled files (0.281s)
 </pre></div>
 </div>
 </div>
@@ -805,11 +806,6 @@ document.write(`
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Interpolated dataset contains 310545 rows (mC probes) and 1880 columns (samples).
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="save-dataset">
@@ -844,11 +840,11 @@ Path: ../Data/Processed_Data/Methyl_Array_Processed/
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
-Python version       : 3.10.10
-IPython version      : 8.3.0
+Python version       : 3.7.9
+IPython version      : 7.34.0
 
 methylcheck: 0.8.5
-pandas     : 1.5.3
+pandas     : 1.3.5
 </pre></div>
 </div>
 </div>
@@ -890,7 +886,7 @@ pandas     : 1.5.3
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Data Download and Initial Processing</p>
+        <p class="prev-next-title">Data Sources and Download</p>
       </div>
     </a>
     <a class="right-next"

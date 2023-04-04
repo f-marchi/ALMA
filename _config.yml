@@ -11,10 +11,9 @@ description: >-
   This is Francisco Marchi's electronic notebook, which belongs to Lamba Lab at UF.
 
 execute:
-  execute_notebooks: "auto"
+  execute_notebooks: "off"
   exclude_patterns: [.venv, .venv_data_vizualization, .venv_pacmap, .venv_sklearn,
-                  Code_past, Benchmarking]
-  timeout: 10000
+                    Code_past, Benchmarking]
 # HTML-specific settings
 html:
   home_page_in_navbar: false

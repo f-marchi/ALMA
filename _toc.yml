@@ -21,12 +21,13 @@ parts:
 
       #   chapters:
       - file: 4_Dimension_Reduction.ipynb
-  #     - file: 5_PaCMAP_Visualization.ipynb
+      #     - file: 5_PaCMAP_Visualization.ipynb
 
-  # - caption: Survival Analyses
+      # - caption: Survival Analyses
 
-  #   chapters:
-  #     - file: 6_Survival_Analysis.ipynb
+      #   chapters:
+      #     - file: 6_Survival_Analysis.ipynb
+      - file: 6.1_MultiClass_Classifier.ipynb
   #     - file: 6.1_Survival_Analysis_FS.ipynb
   #     - file: 7_Score_Visualization.ipynb
 
