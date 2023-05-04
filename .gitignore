@@ -2,6 +2,8 @@
 ###################
 .venv
 .venv_py38
+.venv_py310
+.venv_py39
 .venv_py37
 .venv_data_vizualization
 .venv_pacmap
