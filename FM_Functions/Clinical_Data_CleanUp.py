@@ -10,12 +10,17 @@ __author__ = 'Francisco Marchi, Lamba Lab, University of Florida'
 __email__ = 'flourenco@ufl.edu'
 
 
-def combine_and_index_clinicaldata():
+def combine_and_index_clinicaldata(clinical_data_path='../Data/Raw_Data/Clinical_Data/'):
     """
     This function combines all clinical data files into one dataframe and indexes it by the sample ID.
 
     Note: If this function breaks, it is likely that one or more original clinical data files
     have been modified or removed from assigned directory: (../Data/Raw_Data/Clinical_Data/)
+
+    Parameters:
+    -----------
+    clinical_data_path: str
+        Path to the directory containing all clinical data files.
 
     Returns:
     --------
@@ -24,22 +29,22 @@ def combine_and_index_clinicaldata():
         Order: labels_cog, labels_aml02, labels_aml08, labels_aml05
     """
 
-    labels_0531 = pd.read_csv('../Data/Raw_Data/Clinical_Data/MarchiF_ClinicalData_AML0531_03P1.csv',
+    labels_0531 = pd.read_csv(clinical_data_path + 'MarchiF_ClinicalData_AML0531_03P1.csv',
                               index_col=67)
     labels_0531['Sample Type'] = 'Diagnosis'
 
-    labels2_1 = pd.read_csv('../Data/Raw_Data/Clinical_Data/MarchiF_ClinicalData_AAML1031.csv',
+    labels2_1 = pd.read_csv(clinical_data_path + 'MarchiF_ClinicalData_AAML1031.csv',
                             index_col=67).rename(columns={'Timepoint': 'Sample Type'})
-    labels2_2 = pd.read_excel('../Data/Raw_Data/Clinical_Data/COGAAML1031.v3.11.9.21.xlsx',
+    labels2_2 = pd.read_excel(clinical_data_path + 'COGAAML1031.v3.11.9.21.xlsx',
                               index_col=0)
 
     labels_1031 = labels2_1.join(labels2_2[['Treatment Arm', 'KRAS', 'Protocol risk group classification']],
                                  how='left', on='Patient_ID')
 
     labels3_1 = pd.read_csv(
-        '../Data/Raw_Data/GDC_TARGET_AML_Methyl450k/clinical_info_gdc_2022-06-28.tsv', sep='\t')
+        clinical_data_path + 'clinical_info_gdc_2022-06-28.tsv', sep='\t')
     COG_clinicaldata_all = pd.read_excel(
-        '../Data/Raw_Data/Clinical_Data/COG_raw_clinicaldata.xlsx', index_col=1)
+        clinical_data_path + 'COG_raw_clinicaldata.xlsx', index_col=1)
 
     def clean_TARGET450k(labels3, COG_clinicaldata_all):
         l1 = labels3['File Name'].str.rsplit('_', n=1, expand=True).rename({
@@ -58,19 +63,19 @@ def combine_and_index_clinicaldata():
     labels_gdc_target = clean_TARGET450k(labels3_1, COG_clinicaldata_all)
 
     labels_aml05 = pd.read_pickle(
-        '../Data/Raw_Data/AML05_JapaneseTrial_GSE133986/GSE133986_GPL21145_meta_data.pkl'
-    ).set_index('Sample_ID').rename(
+        clinical_data_path + 'AML05_sample_sheet_meta_data.pkl'
+    ).iloc[:,:-1].set_index('Sample_ID').rename(
         columns={'gender': 'Gender', 'age': 'Age (years)',
                  'source': 'Sample Type'})[['Gender', 'Sample_Name',
                                             'Age (years)', 'Sample Type']]
 
     # AML02
 
-    labels5_1 = pd.read_excel('../Data/Raw_Data/Clinical_Data/JLamba-AML02-data-2019-02-12_JKL.Francisco.xlsx',
+    labels5_1 = pd.read_excel(clinical_data_path + 'JLamba-AML02-data-2019-02-12_JKL.Francisco.xlsx',
                               index_col=94)  # main clinical data file
-    labels5_2 = pd.read_excel('../Data/Raw_Data/Clinical_Data/AML02_Clinical_Data_Mastersheet.xlsx',
+    labels5_2 = pd.read_excel(clinical_data_path + 'AML02_Clinical_Data_Mastersheet.xlsx',
                               index_col=0)  # only used to retrieve pLSC6 values
-    labels5_3 = pd.read_excel('../Data/Raw_Data/Clinical_Data/AML02methylation_Lamba_July25.2014Summary_FM_Cleaned.xlsx',
+    labels5_3 = pd.read_excel(clinical_data_path + 'AML02methylation_Lamba_July25.2014Summary_FM_Cleaned.xlsx',
                               index_col=1)  # used to merged clinical data with methyl
 
     # Drop column "DONOTUSE: ACCESSION_NBR" from labels5_1
@@ -110,11 +115,11 @@ def combine_and_index_clinicaldata():
 
     labels_aml02 = clean_aml02(labels5_1, labels5_2, labels5_3)
 
-    labels6_1 = pd.read_excel('../Data/Raw_Data/Clinical_Data/AML08-clinical-AEs-IDs-2022-06-01.xlsx',
+    labels6_1 = pd.read_excel(clinical_data_path + 'AML08-clinical-AEs-IDs-2022-06-01.xlsx',
                               sheet_name=[0, 2],
                               index_col=0)
 
-    labels6_2 = pd.read_csv('../Data/Raw_Data/Clinical_Data/AML02.AML08.PC.clin.rand.merge.N400.csv',
+    labels6_2 = pd.read_csv(clinical_data_path + 'AML02.AML08.PC.clin.rand.merge.N400.csv',
                             index_col=1)
     # Merge cleaned clinical data files with methylation data file
     labels6_1[0] = labels6_1[0].join(labels6_2['AGE'], how='left')
@@ -325,7 +330,7 @@ def clean_cog(df):
     return (df)
 
 
-def clean_aml05(df):
+def clean_aml05(df, clinical_data_path='../Data/Raw_Data/Clinical_Data/'):
     """
     This module cleans and adjusts clinical data files from AML05 trial.
 
@@ -333,6 +338,9 @@ def clean_aml05(df):
     -----------
     df:object
         AML05 clinical outcome dataframe.
+    
+    clinical_data_path: str
+        Path to the directory containing 'ClinicalData_AML05_JapaneseTrial_FromPaper.csv'.
 
     Returns:
     --------
@@ -347,7 +355,7 @@ def clean_aml05(df):
 
     # Load AML05 Clinical Data from Paper
     aml05 = pd.read_csv(
-        '../Data/Raw_Data/Clinical_Data/ClinicalData_AML05_JapaneseTrial_FromPaper.csv', index_col=0)
+        clinical_data_path + 'ClinicalData_AML05_JapaneseTrial_FromPaper.csv', index_col=0)
 
     # All 15 samples are positive for FLT3 ITD according to paper's table 1
     aml05['FLT3 ITD'] = 'Yes'
@@ -368,8 +376,7 @@ def clean_aml05(df):
                                      labels=['<10', '≥10'])
 
     df['Race or ethnic group'] = 'Asian'  # Need to verify this
-    # Need to verify this
-    df['Hispanic or Latino ethnic group'] = 'Not Hispanic or Latino'
+    df['Hispanic or Latino ethnic group'] = 'Not Hispanic or Latino'# Need to verify this
     df['Clinical Trial'] = 'AML05'
     df['Sample Type'] = 'Diagnosis'
 
