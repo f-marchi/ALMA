@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Mutli-Class Classifier &#8212; Lamba Lab at UF</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,12 +39,13 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -66,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Dimension Reduction with PaCMAP" href="4_Dimension_Reduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -159,9 +160,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Preparation</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="1_MethylData_PreProcessing.html">Data Sources and Download</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2_MethylData_Processing.html">Methyl Array Data Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_ClinicalData_Processing.html">Clinical Data Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_Data_Download_Process.html">From Raw Files to Processed Datasets in 10 Steps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_Dimension_Reduction.html">Dimension Reduction with PaCMAP</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Mutli-Class Classifier</a></li>
 </ul>
@@ -311,7 +310,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-datasets">Load Datasets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-classes">Define Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-data">Explore Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-and-test-classifier">Train and Test Classifier</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-results-by-class">Evaluate Results by Class</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-roc-auc-curves">Evaluate ROC AUC Curves</a></li>
@@ -328,9 +327,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="mutli-class-classifier">
-<h1>Mutli-Class Classifier<a class="headerlink" href="#mutli-class-classifier" title="Permalink to this headline">#</a></h1>
+<h1>Mutli-Class Classifier<a class="headerlink" href="#mutli-class-classifier" title="Permalink to this heading">#</a></h1>
 <section id="load-datasets">
-<h2>Load Datasets<a class="headerlink" href="#load-datasets" title="Permalink to this headline">#</a></h2>
+<h2>Load Datasets<a class="headerlink" href="#load-datasets" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -365,10 +364,77 @@ document.write(`
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">input_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/&#39;</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">x_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">PaCMAP_path</span><span class="o">+</span><span class="s1">&#39;embedding.pkl&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">x_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">PaCMAP_path</span><span class="o">+</span><span class="s1">&#39;embedding_test.pkl&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;y.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="nn">File ~/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/pandas/io/pickle.py:179,</span> in <span class="ni">read_pickle</span><span class="nt">(filepath_or_buffer, compression, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">116</span><span class="sd"> Load pickled pandas object (or any object) from file.</span>
+<span class="g g-Whitespace">    </span><span class="mi">117</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">176</span><span class="sd"> 4    4    9</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span> <span class="n">excs_to_catch</span> <span class="o">=</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">ImportError</span><span class="p">,</span> <span class="ne">ModuleNotFoundError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">179</span> <span class="k">with</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">180</span>     <span class="n">filepath_or_buffer</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span>     <span class="s2">&quot;rb&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span>     <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">183</span>     <span class="n">is_text</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">184</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span> <span class="p">)</span> <span class="k">as</span> <span class="n">handles</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="c1"># 1) try standard library Pickle</span>
+<span class="g g-Whitespace">    </span><span class="mi">187</span>     <span class="c1"># 2) try pickle_compat (older pandas version) to handle subclass changes</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span>     <span class="c1"># 3) try pickle_compat with latin-1 encoding upon a UnicodeDecodeError</span>
+<span class="g g-Whitespace">    </span><span class="mi">190</span>     <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">191</span>         <span class="c1"># TypeError for Cython complaints about object.__new__ vs Tick.__new__</span>
+<span class="g g-Whitespace">    </span><span class="mi">192</span>         <span class="k">try</span><span class="p">:</span>
+
+<span class="nn">File ~/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/pandas/io/common.py:868,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">859</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">860</span>             <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">861</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">864</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">865</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">866</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">867</span>         <span class="c1"># Binary mode</span>
+<span class="ne">--&gt; </span><span class="mi">868</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">869</span>     <span class="n">handles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">871</span> <span class="c1"># Convert BytesIO or file objects passed with an encoding</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../Data/Processed_Data/PaCMAP_Results/embedding.pkl&#39;
+</pre></div>
+</div>
+</div>
 </div>
 </section>
-<section id="define-classes">
-<h2>Define Classes<a class="headerlink" href="#define-classes" title="Permalink to this headline">#</a></h2>
+<section id="explore-data">
+<h2>Explore Data<a class="headerlink" href="#explore-data" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;Age (years)&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age (years)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of Age In COG and StJude Cohorts&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/73ed028c1e74d6e635927ef8b46290a671656a520369ced7bc8e6e386aeba77b.png" src="_images/73ed028c1e74d6e635927ef8b46290a671656a520369ced7bc8e6e386aeba77b.png" />
+</div>
+</div>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -403,7 +469,7 @@ Name: WHO Classification, dtype: int64
 </div>
 </section>
 <section id="train-and-test-classifier">
-<h2>Train and Test Classifier<a class="headerlink" href="#train-and-test-classifier" title="Permalink to this headline">#</a></h2>
+<h2>Train and Test Classifier<a class="headerlink" href="#train-and-test-classifier" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -438,8 +504,8 @@ Name: WHO Classification, dtype: int64
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
 
 <span class="c1"># print score of y_pred</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ROC AUC of GPC classifier on test set: </span><span class="si">{</span><span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">[</span><span class="s2">&quot;WHO Classification&quot;</span><span class="p">])</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ROC AUC of GPC classifier on train set: </span><span class="si">{</span><span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">[</span><span class="s2">&quot;WHO Classification&quot;</span><span class="p">])</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ROC AUC of GPC classifier on test set: </span><span class="si">{</span><span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_test</span><span class="p">[</span><span class="s2">&quot;WHO Classification&quot;</span><span class="p">])</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ROC AUC of GPC classifier on train set: </span><span class="si">{</span><span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span><span class="w"> </span><span class="n">y_train</span><span class="p">[</span><span class="s2">&quot;WHO Classification&quot;</span><span class="p">])</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -448,21 +514,19 @@ Name: WHO Classification, dtype: int64
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 3 folds for each of 1 candidates, totalling 3 fits
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\flourenco\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\model_selection\_search.py:952: UserWarning: One or more of the test scores are non-finite: [nan]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\flourenco\AppData\Local\Programs\Python\Python310\lib\site-packages\sklearn\model_selection\_search.py:952: UserWarning: One or more of the test scores are non-finite: [nan]
   warnings.warn(
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ROC AUC of GPC classifier on test set: 0.82
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ROC AUC of GPC classifier on train set: 0.92
+ROC AUC of GPC classifier on train set: 0.93
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="evaluate-results-by-class">
-<h2>Evaluate Results by Class<a class="headerlink" href="#evaluate-results-by-class" title="Permalink to this headline">#</a></h2>
+<h2>Evaluate Results by Class<a class="headerlink" href="#evaluate-results-by-class" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -497,7 +561,7 @@ Name: WHO Classification, dtype: int64
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/3b75dcbb6ab7a6e0a248dfae9e061e3a7b7ce987a5ff042e6e062a8354f9d329.png" src="_images/3b75dcbb6ab7a6e0a248dfae9e061e3a7b7ce987a5ff042e6e062a8354f9d329.png" />
+<img alt="_images/bb33c100610dfa2b0c324048750aa3462f827a866bf5f6577f5a8abc1de51fff.png" src="_images/bb33c100610dfa2b0c324048750aa3462f827a866bf5f6577f5a8abc1de51fff.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -531,12 +595,12 @@ Name: WHO Classification, dtype: int64
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/49a4026e7896ea5ce507979644b74a3e2ba952c80d5a2a298ccd428e186dc1dc.png" src="_images/49a4026e7896ea5ce507979644b74a3e2ba952c80d5a2a298ccd428e186dc1dc.png" />
+<img alt="_images/790322d2c30e3dcbe95da39718730dcbcc5c6edf13c8bc9cb2748c91a66858aa.png" src="_images/790322d2c30e3dcbe95da39718730dcbcc5c6edf13c8bc9cb2748c91a66858aa.png" />
 </div>
 </div>
 </section>
 <section id="evaluate-roc-auc-curves">
-<h2>Evaluate ROC AUC Curves<a class="headerlink" href="#evaluate-roc-auc-curves" title="Permalink to this headline">#</a></h2>
+<h2>Evaluate ROC AUC Curves<a class="headerlink" href="#evaluate-roc-auc-curves" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -614,13 +678,13 @@ Name: WHO Classification, dtype: int64
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/363dfbbf7ca4cd218fb77187c524c5d0a55efbeb30d7da9dd177d5aa2a6cf8a0.png" src="_images/363dfbbf7ca4cd218fb77187c524c5d0a55efbeb30d7da9dd177d5aa2a6cf8a0.png" />
-<img alt="_images/4d7d6007af5c1506fe89f902a8b6c61dfea9e4a52ff2ea7c72f5ea21e8d3f984.png" src="_images/4d7d6007af5c1506fe89f902a8b6c61dfea9e4a52ff2ea7c72f5ea21e8d3f984.png" />
+<img alt="_images/308d8d8b225ab48cc03bcaac03bfcadde60925f69fdba47fb4569a2b6f756c7e.png" src="_images/308d8d8b225ab48cc03bcaac03bfcadde60925f69fdba47fb4569a2b6f756c7e.png" />
+<img alt="_images/ce34811fa7d7d7b939ae5e9ae8525203c94a683337a955b00f4338b333ce4d7a.png" src="_images/ce34811fa7d7d7b939ae5e9ae8525203c94a683337a955b00f4338b333ce4d7a.png" />
 </div>
 </div>
 </section>
 <section id="evaluate-predictions-by-patients">
-<h2>Evaluate Predictions by Patients<a class="headerlink" href="#evaluate-predictions-by-patients" title="Permalink to this headline">#</a></h2>
+<h2>Evaluate Predictions by Patients<a class="headerlink" href="#evaluate-predictions-by-patients" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_score</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
@@ -690,12 +754,12 @@ Name: WHO Classification, dtype: int64
       <td>0.07</td>
       <td>0.07</td>
       <td>0.07</td>
-      <td>0.08</td>
       <td>0.07</td>
       <td>0.07</td>
-      <td>0.08</td>
       <td>0.07</td>
-      <td>0.09</td>
+      <td>0.07</td>
+      <td>0.07</td>
+      <td>0.10</td>
       <td>0.07</td>
       <td>0.09</td>
     </tr>
@@ -741,14 +805,147 @@ Name: WHO Classification, dtype: int64
       <td>0.07</td>
       <td>0.07</td>
       <td>0.07</td>
+      <td>0.07</td>
+      <td>0.07</td>
+      <td>0.07</td>
+      <td>0.07</td>
+      <td>0.07</td>
+      <td>0.09</td>
+      <td>0.07</td>
+      <td>0.10</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># normalize based on min max of each row</span>
+<span class="n">y_score</span> <span class="o">=</span> <span class="n">y_score</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">round</span><span class="p">(</span><span class="n">y_score</span><span class="o">.</span><span class="n">head</span><span class="p">(),</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AML with CBFA2T3::GLIS2 (inv(16)(p13q24))</th>
+      <th>AML with ETV6-fusion</th>
+      <th>AML with KMT2A-rearrangement</th>
+      <th>AML with NUP98-fusion</th>
+      <th>AML with bZIP mutated CEBPA</th>
+      <th>AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22); CBFB::MYH11</th>
+      <th>AML with inv(3)(q21q26)/t(3;3)(q21;q26); GATA2, RPN1::MECOM</th>
+      <th>AML with mutated NPM1</th>
+      <th>AML with myelodysplasia-related changes</th>
+      <th>AML with t(16;21)(p11;q22); FUS::ERG</th>
+      <th>AML with t(1;22)(p13.3;q13.1); RBM15::MKL1</th>
+      <th>AML with t(6;9)(p23;q34.1); DEK::NUP214</th>
+      <th>AML with t(8;16)(p11.2;p13.3); KAT6A::CREBBP</th>
+      <th>AML with t(8;21)(q22;q22); RUNX1::RUNX1T1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>1.0</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.00</td>
+      <td>0.04</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.28</td>
+      <td>0.00</td>
+      <td>1.00</td>
+      <td>0.00</td>
+      <td>0.89</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>1.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>1.0</td>
+      <td>0.39</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.01</td>
+      <td>0.16</td>
+      <td>0.0</td>
+      <td>0.01</td>
+      <td>0.01</td>
       <td>0.08</td>
-      <td>0.07</td>
-      <td>0.07</td>
-      <td>0.07</td>
-      <td>0.07</td>
-      <td>0.09</td>
-      <td>0.07</td>
-      <td>0.09</td>
+      <td>0.01</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.10</td>
+      <td>0.00</td>
+      <td>0.88</td>
+      <td>0.00</td>
+      <td>1.00</td>
     </tr>
   </tbody>
 </table>
@@ -764,7 +961,7 @@ Name: WHO Classification, dtype: int64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">113</span>
 <span class="n">y_score</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Prediction of WHO Classification for patient &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Normalized Probability&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Possible Diagnoses&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
 <span class="c1"># change figure size</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
@@ -775,7 +972,7 @@ Name: WHO Classification, dtype: int64
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/642974dfafb7738e25ac81de737a75885c9fe2bddcb674610b430485ef790242.png" src="_images/642974dfafb7738e25ac81de737a75885c9fe2bddcb674610b430485ef790242.png" />
+<img alt="_images/3020053feb49e8eea774c07e6caf6cba471c7dfbd44c8a1bf075c819a864a074.png" src="_images/3020053feb49e8eea774c07e6caf6cba471c7dfbd44c8a1bf075c819a864a074.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -788,7 +985,7 @@ Name: WHO Classification, dtype: int64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">y_score</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Prediction of WHO Classification for patient &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Normalized Probability&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Possible Diagnoses&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
 <span class="c1"># change figure size</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
@@ -799,7 +996,7 @@ Name: WHO Classification, dtype: int64
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/8664801a1df5b624d00b3a17a2813e5170539391272164bd8f85191d882aacc7.png" src="_images/8664801a1df5b624d00b3a17a2813e5170539391272164bd8f85191d882aacc7.png" />
+<img alt="_images/9b525a5f33df6389a6c37731b95e2a7d890fb57d67dbcd9f115021a89ebbb81b.png" src="_images/9b525a5f33df6389a6c37731b95e2a7d890fb57d67dbcd9f115021a89ebbb81b.png" />
 </div>
 </div>
 </section>
@@ -831,7 +1028,10 @@ Name: WHO Classification, dtype: int64
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="4_Dimension_Reduction.html"
@@ -842,7 +1042,10 @@ Name: WHO Classification, dtype: int64
         <p class="prev-next-title">Dimension Reduction with PaCMAP</p>
       </div>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -858,7 +1061,7 @@ Name: WHO Classification, dtype: int64
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-datasets">Load Datasets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-classes">Define Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-data">Explore Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-and-test-classifier">Train and Test Classifier</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-results-by-class">Evaluate Results by Class</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-roc-auc-curves">Evaluate ROC AUC Curves</a></li>
@@ -871,7 +1074,7 @@ Name: WHO Classification, dtype: int64
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -901,7 +1104,7 @@ By Francisco Marchi
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -910,8 +1113,8 @@ By Francisco Marchi
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -2,7 +2,7 @@ title: Lamba Lab at UF
 author: Francisco Marchi
 copyright: "2023"  # Copyright year to be placed in the footer
 #logo: "_logos/dna1.gif"
-exclude_patterns: [.venv,.venv_py37, .venv_data_vizualization, .venv_pacmap, .venv_sklearn,
+exclude_patterns: [.venv,.venv_py37,.venv_py38, .venv_data_vizualization, .venv_pacmap, .venv_sklearn,
                   Code_past, Benchmarking]
 only_build_toc_files: true
 
@@ -11,8 +11,8 @@ description: >-
   This is Francisco Marchi's electronic notebook, which belongs to Lamba Lab at UF.
 
 execute:
-  execute_notebooks: "off"
-  exclude_patterns: [.venv, .venv_data_vizualization, .venv_pacmap, .venv_sklearn,
+  execute_notebooks: "cache"
+  exclude_patterns: [.venv,.venv_py38, .venv_data_vizualization, .venv_pacmap, .venv_sklearn,
                     Code_past, Benchmarking]
 # HTML-specific settings
 html:

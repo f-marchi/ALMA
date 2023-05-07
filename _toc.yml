@@ -1,5 +1,5 @@
 format: jb-book
-root: 5_PaCMAP_Visualization.ipynb
+root: 1_Data_Download_Process.ipynb
 parts:
   - caption: Specific Aims
     chapters:
@@ -10,24 +10,22 @@ parts:
     chapters:
       - file: docs/Intro_to_Methylation.md
 
-  - caption: Data Preparation
+  # - caption: Data Preparation
 
-    chapters:
-      - file: 1_MethylData_PreProcessing.ipynb
-      - file: 2_MethylData_Processing.ipynb
-      - file: 3_ClinicalData_Processing.ipynb
+  #   chapters:
+  #     - file: 1_Data_Download_Process.ipynb
 
-      # - caption: AML Diagnostic Map
+  #     # - caption: AML Diagnostic Map
 
-      #   chapters:
-      - file: 4_Dimension_Reduction.ipynb
+  #     #   chapters:
+  #     - file: 4_Dimension_Reduction.ipynb
       #     - file: 5_PaCMAP_Visualization.ipynb
 
       # - caption: Survival Analyses
 
       #   chapters:
       #     - file: 6_Survival_Analysis.ipynb
-      - file: 6.1_MultiClass_Classifier.ipynb
+      # - file: 6.1_MultiClass_Classifier.ipynb
   #     - file: 6.1_Survival_Analysis_FS.ipynb
   #     - file: 7_Score_Visualization.ipynb
 
