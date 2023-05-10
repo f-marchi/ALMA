@@ -16,74 +16,61 @@ def combine_and_index_clinicaldata(clinical_data_path='../Data/Raw_Data/Clinical
 
     Note: If this function breaks, it is likely that one or more original clinical data files
     have been modified or removed from assigned directory: (../Data/Raw_Data/Clinical_Data/)
-
-    Parameters:
-    -----------
-    clinical_data_path: str
-        Path to the directory containing all clinical data files.
-
-    Returns:
-    --------
-    labels: pd.DataFrame
-        FOur dataframes containing all clinical data from all trials and indexed by the sample ID.
-        Order: labels_cog, labels_aml02, labels_aml08, labels_aml05
     """
 
-    labels_0531 = pd.read_csv(clinical_data_path + 'MarchiF_ClinicalData_AML0531_03P1.csv',
-                              index_col=67)
-    labels_0531['Sample Type'] = 'Diagnosis'
+    # COG/TARGET-AML
+    def merge_index_cog():
+        labels_0531 = pd.read_csv(clinical_data_path + 'MarchiF_ClinicalData_AML0531_03P1.csv',
+                                    index_col=67)
+        labels_0531['Sample Type'] = 'Diagnosis'
+        labels2_1 = pd.read_csv(clinical_data_path + 'MarchiF_ClinicalData_AAML1031.csv',
+                                index_col=67).rename(columns={'Timepoint': 'Sample Type'})
+        labels2_2 = pd.read_excel(clinical_data_path + 'COGAAML1031.v3.11.9.21.xlsx',
+                                    index_col=0)
+        labels_1031 = labels2_1.join(labels2_2[['Treatment Arm', 'KRAS', 'Protocol risk group classification']],
+                                how='left', on='Patient_ID')
+        labels3_1 = pd.read_csv(
+                                clinical_data_path + 'clinical_info_gdc_2022-06-28.tsv', sep='\t')
+        COG_clinicaldata_all = pd.read_excel(
+                                clinical_data_path + 'COG_raw_clinicaldata.xlsx', index_col=1)
 
-    labels2_1 = pd.read_csv(clinical_data_path + 'MarchiF_ClinicalData_AAML1031.csv',
-                            index_col=67).rename(columns={'Timepoint': 'Sample Type'})
-    labels2_2 = pd.read_excel(clinical_data_path + 'COGAAML1031.v3.11.9.21.xlsx',
-                              index_col=0)
+        def clean_TARGET450k(labels3, COG_clinicaldata_all):
+            l1 = labels3['File Name'].str.rsplit('_', n=1, expand=True).rename({
+                0: 'IlmnID'}, axis='columns')
+            l2 = l1.join(labels3)
+            l3 = l2[l2[1] == 'Grn.idat'].rename(
+                {'Case ID': 'TARGET USI'}, axis='columns')
+            l4 = l3[~l3['Sample Type'].isin(
+                ['Fibroblasts from Bone Marrow Normal'])]
+            l5 = l4.set_index('TARGET USI').join(COG_clinicaldata_all, how='left')
+            l6 = l5.drop(columns=[1, 'File ID', 'Data Type', 'Project ID',
+                                'Data Category', "Unnamed: 0",
+                                'File Name']).drop_duplicates(subset=['IlmnID'], keep='last').set_index('IlmnID')
+            return (l6)
 
-    labels_1031 = labels2_1.join(labels2_2[['Treatment Arm', 'KRAS', 'Protocol risk group classification']],
-                                 how='left', on='Patient_ID')
+        labels_gdc_target = clean_TARGET450k(labels3_1, COG_clinicaldata_all)
 
-    labels3_1 = pd.read_csv(
-        clinical_data_path + 'clinical_info_gdc_2022-06-28.tsv', sep='\t')
-    COG_clinicaldata_all = pd.read_excel(
-        clinical_data_path + 'COG_raw_clinicaldata.xlsx', index_col=1)
-
-    def clean_TARGET450k(labels3, COG_clinicaldata_all):
-        l1 = labels3['File Name'].str.rsplit('_', n=1, expand=True).rename({
-            0: 'IlmnID'}, axis='columns')
-        l2 = l1.join(labels3)
-        l3 = l2[l2[1] == 'Grn.idat'].rename(
-            {'Case ID': 'TARGET USI'}, axis='columns')
-        l4 = l3[~l3['Sample Type'].isin(
-            ['Fibroblasts from Bone Marrow Normal'])]
-        l5 = l4.set_index('TARGET USI').join(COG_clinicaldata_all, how='left')
-        l6 = l5.drop(columns=[1, 'File ID', 'Data Type', 'Project ID',
-                              'Data Category', "Unnamed: 0",
-                              'File Name']).drop_duplicates(subset=['IlmnID'], keep='last').set_index('IlmnID')
-        return (l6)
-
-    labels_gdc_target = clean_TARGET450k(labels3_1, COG_clinicaldata_all)
-
-    labels_aml05 = pd.read_pickle(
+        labels_cog = pd.concat(
+            [labels_0531, labels_1031, labels_gdc_target], axis=0, join='outer')
+        
+        return (labels_cog)
+    
+    # AML05
+    def merge_index_aml05():
+        labels_aml05 = pd.read_pickle(
         clinical_data_path + 'AML05_sample_sheet_meta_data.pkl'
-    ).iloc[:,:-1].set_index('Sample_ID').rename(
-        columns={'gender': 'Gender', 'age': 'Age (years)',
-                 'source': 'Sample Type'})[['Gender', 'Sample_Name',
-                                            'Age (years)', 'Sample Type']]
+        ).iloc[:,:-1].set_index('Sample_ID')
+        return (labels_aml05)
 
     # AML02
+    def merge_index_aml02():
 
-    labels5_1 = pd.read_excel(clinical_data_path + 'JLamba-AML02-data-2019-02-12_JKL.Francisco.xlsx',
-                              index_col=94)  # main clinical data file
-    labels5_2 = pd.read_excel(clinical_data_path + 'AML02_Clinical_Data_Mastersheet.xlsx',
+        labels5_1 = pd.read_excel(clinical_data_path + 'JLamba-AML02-data-2019-02-12_JKL.Francisco.xlsx',
+                              index_col=94).drop(columns=['DONOTUSE: ACCESSION_NBR'])  # main clinical data file
+        labels5_2 = pd.read_excel(clinical_data_path + 'AML02_Clinical_Data_Mastersheet.xlsx',
                               index_col=0)  # only used to retrieve pLSC6 values
-    labels5_3 = pd.read_excel(clinical_data_path + 'AML02methylation_Lamba_July25.2014Summary_FM_Cleaned.xlsx',
+        labels5_3 = pd.read_excel(clinical_data_path + 'AML02methylation_Lamba_July25.2014Summary_FM_Cleaned.xlsx',
                               index_col=1)  # used to merged clinical data with methyl
-
-    # Drop column "DONOTUSE: ACCESSION_NBR" from labels5_1
-
-    labels5_1 = labels5_1.drop(columns=['DONOTUSE: ACCESSION_NBR'])
-
-    def clean_aml02(labels5_1, labels5_2, labels5_3):
-
         # Join contents of two columns into one
 
         labels5_3['Sample'] = labels5_3['Sentrix Barcode'].astype(
@@ -113,25 +100,79 @@ def combine_and_index_clinicaldata(clinical_data_path='../Data/Raw_Data/Clinical
              'AML02_13_P022']).astype(int) == 0]
         return (labels5_6)
 
-    labels_aml02 = clean_aml02(labels5_1, labels5_2, labels5_3)
+    # AML08
+    def merge_index_aml08():
+        labels6_1 = pd.read_excel(clinical_data_path + 'AML08-clinical-AEs-IDs-2022-06-01.xlsx',
+                                sheet_name=[0, 2],
+                                index_col=0)
 
-    labels6_1 = pd.read_excel(clinical_data_path + 'AML08-clinical-AEs-IDs-2022-06-01.xlsx',
-                              sheet_name=[0, 2],
-                              index_col=0)
+        labels6_2 = pd.read_csv(clinical_data_path + 'AML02.AML08.PC.clin.rand.merge.N400.csv',
+                                index_col=1)
+        # Merge cleaned clinical data files with methylation data file
+        labels6_1[0] = labels6_1[0].join(labels6_2['AGE'], how='left')
+        labels_aml08 = labels6_1[2]['Meth.Sample.ID'].to_frame().join(labels6_1[0],
+                                                                    how='inner').reset_index(
+        ).set_index('Meth.Sample.ID')
+        labels_aml08.columns = labels_aml08.columns.str.title()
+        return (labels_aml08)
 
-    labels6_2 = pd.read_csv(clinical_data_path + 'AML02.AML08.PC.clin.rand.merge.N400.csv',
-                            index_col=1)
-    # Merge cleaned clinical data files with methylation data file
-    labels6_1[0] = labels6_1[0].join(labels6_2['AGE'], how='left')
-    labels_aml08 = labels6_1[2]['Meth.Sample.ID'].to_frame().join(labels6_1[0],
-                                                                  how='inner').reset_index(
-    ).set_index('Meth.Sample.ID')
-    labels_aml08.columns = labels_aml08.columns.str.title()
+    # BeatAML
+    def merge_index_beataml ():
+        meta = pd.read_pickle('../Data/Raw_Data/Methyl_Array_EPIC/GSE159907/sample_sheet_meta_data.pkl').iloc[:,:-1]
 
-    labels_cog = pd.concat(
-        [labels_0531, labels_1031, labels_gdc_target], axis=0, join='outer')
+        # Create a new column with only the content inside [] from column 'Sample_Name'
+        meta['LLS_SampleID'] = meta['Sample_Name'].str.extract(r"\[(.*?)\]", expand=False)
 
-    return (labels_cog, labels_aml02, labels_aml08, labels_aml05)
+        # Set the index to the new column
+        meta1 = meta[['tissue','disease_state','LLS_SampleID','Sample_ID']].set_index('LLS_SampleID')
+
+        # Read in the clinical data
+        meta2 = pd.read_excel('../Data/Raw_Data/Clinical_Data/BeatAML/BEAT_AML_Raw clinical data_702.Samples.Vizome.xlsx', index_col=3)
+
+        # Join the two dataframes
+        labels_beataml = meta1.join(meta2, how='left').reset_index().set_index('Sample_ID')
+
+        return labels_beataml
+
+    # AML-TCGA
+    def merge_index_amltcga():
+
+        # load clinical data from GDC
+        clinical_tsv = pd.read_csv('../Data/Raw_Data/Methyl_Array_450k/GDC_TCGA-AML/clinical.tsv', 
+                        sep='\t', index_col=0)[['case_submitter_id']].drop_duplicates()
+
+        # extract last 4 digits from case_id to get TCGA Patient ID
+        clinical_tsv['TCGA Patient ID'] = clinical_tsv['case_submitter_id'].str[-4:]
+
+        # set index to TCGA Patient ID
+        clinical_tsv = clinical_tsv.reset_index().set_index('TCGA Patient ID').sort_index()
+
+        # load meta data from NEJM 2013 paper
+        meta = pd.read_excel('../Data/Raw_Data/Clinical_Data/TCGA_LAML/SuppTable01_NEJM2013_TCGA_AML.Paper_Mutation data.xlsx',
+                            index_col=1).iloc[1:,:].sort_index()
+
+        # make meta index integers
+        meta.index = meta.index.astype(int)
+        clinical_tsv.index = clinical_tsv.index.astype(int)
+
+        # join clinical_tsv and meta
+        labels_amltcga = clinical_tsv.join(meta, how='left')
+
+        # set index to case_id
+        labels_amltcga = labels_amltcga.reset_index().set_index('case_id')
+        
+        return labels_amltcga
+
+    # Call functions to merge and index clinical data files
+    labels_aml02   = merge_index_aml02()
+    labels_aml08   = merge_index_aml08()
+    labels_aml05   = merge_index_aml05()
+    labels_cog     = merge_index_cog()
+    labels_beataml = merge_index_beataml()
+    labels_amltcga = merge_index_amltcga()
+
+    return (labels_cog, labels_aml02, labels_aml08, 
+            labels_aml05, labels_beataml, labels_amltcga)
 
 
 def clean_aml02(df):
@@ -347,6 +388,10 @@ def clean_aml05(df, clinical_data_path='../Data/Raw_Data/Clinical_Data/'):
         Cleaned and adjusted dataframe.
 
     """
+    df = df.rename(columns={'gender': 'Gender', 'age': 'Age (years)',
+                 'source': 'Sample Type'})[['Gender', 'Sample_Name',
+                                            'Age (years)', 'Sample Type']]
+    
     df = df.replace({'Unknown': np.nan, 'YES': 'Yes', 'NO': 'No', 'male': 'Male',
                      'female': 'Female', 'bone marrow': 'Bone Marrow'})
 
