@@ -163,6 +163,88 @@ def combine_and_index_clinicaldata(clinical_data_path='../Data/Raw_Data/Clinical
         
         return labels_amltcga
 
+    # Nordic ALL
+    def merge_index_nordic_all(): 
+        # Load meta data from GSE49031
+        meta = pd.read_pickle('../Data/Raw_Data/Methyl_Array_450k/GSE49031/sample_sheet_meta_data.pkl')\
+                                .iloc[:,:-1].set_index('Sample_ID')
+
+        # split meta `title` column by the last word
+        meta['title'] = meta['title'].str.split().str[-1]
+
+        # Set index to `title`
+        meta = meta.reset_index().set_index('title')
+
+        # Load clinical data from paper
+        paper = pd.read_excel('../Data/Raw_Data/Clinical_Data/Nordic_ALL/PMID_25729447_Supp_Clinical_Data.xlsx',
+                            index_col=0,header=2, sheet_name='Table S7- Verification summary')[['Karyotyping at diagnosisc']]
+
+        # Join meta and paper
+        meta = meta.join(paper)
+
+        # Reset index to `Sample_ID`
+        meta = meta.reset_index().set_index('Sample_ID')
+        return meta
+
+    # MDS_tAML
+    def merge_index_mds_taml():
+        meta = pd.read_pickle('../Data/Raw_Data/Methyl_Array_450k/GSE152710/sample_sheet_meta_data.pkl')\
+            .iloc[:,:-1].set_index('Sample_ID')
+        return meta
+    
+    # Tcell_ALL_GRAAL
+    def merge_index_tcell_all_graal():
+        meta = pd.read_pickle('../Data/Raw_Data/Methyl_Array_EPIC/GSE147667/sample_sheet_meta_data.pkl')\
+            .iloc[:,:-1].set_index('Sample_ID')
+        return meta
+        
+    # GDC_TARGET-ALL
+    # The clinical data for this dataset does not match the methylation data.
+    # It is likely that controlled TARGET access is required to access the correct clinical data.
+    def merge_index_target_all():
+
+        # Load clinical data from GDC
+        json_clinical_demographic = pd.read_json('../Data/Raw_Data/Methyl_Array_EPIC/GDC_TARGET-ALL/clinical.cases_selection.2023-05-12.json',
+                                    orient='values')
+        # flatten json
+        json_clinical_demographic = pd.json_normalize(json_clinical_demographic['demographic'].dropna())
+
+        # extract the second to last term from the `submitter_id` column
+        json_clinical_demographic['submitter_id'] = json_clinical_demographic['submitter_id'].str.split('-').str[-1]
+
+        # extract the first term from the `submitter_id` column by `_`
+        json_clinical_demographic['submitter_id'] = json_clinical_demographic['submitter_id'].str.split('_').str[0]
+
+        # change `submitter_id` column name to `Patient_ID`
+        json_clinical_demographic = json_clinical_demographic.rename(columns={'submitter_id':'Patient_ID'})
+
+        # Set index to `submitter_id`
+        json_clinical_demographic = json_clinical_demographic.set_index('demographic_id')['Patient_ID']
+
+        # Load clinical data from GDC
+        clinical_tsv = pd.read_csv('../Data/Raw_Data/Methyl_Array_EPIC/GDC_TARGET-ALL/clinical.tsv', 
+                                    sep='\t', index_col=0)
+
+        # Extract the last word from the `case_submitter_id` column by splitting by `-`
+        clinical_tsv['Patient_ID'] = clinical_tsv['case_submitter_id'].str.split('-').str[-1]
+
+        clinical_tsv = clinical_tsv['Patient_ID']
+
+        # concat clinical_tsv and json_clinical_demographic
+        clinical = pd.concat([clinical_tsv, json_clinical_demographic], axis=0, join='outer')
+
+        # Set index to `Patient_ID`
+        clinical = clinical.reset_index().set_index('Patient_ID')
+
+        # Load clinical data from paper
+        paper = pd.read_excel('../Data/Raw_Data/Clinical_Data/ALL_P3_TARGET/41586_2018_436_MOESM4_ESM.xlsx',
+                            sheet_name='ST2 Cohort', index_col=0)
+
+        # # Join clinical data from paper and GDC
+        labels_alltarget = clinical.join(paper, how='right')
+        
+        return labels_alltarget
+
     # Call functions to merge and index clinical data files
     labels_aml02   = merge_index_aml02()
     labels_aml08   = merge_index_aml08()
@@ -170,9 +252,14 @@ def combine_and_index_clinicaldata(clinical_data_path='../Data/Raw_Data/Clinical
     labels_cog     = merge_index_cog()
     labels_beataml = merge_index_beataml()
     labels_amltcga = merge_index_amltcga()
+    labels_nordic_all = merge_index_nordic_all()
+    labels_mds_taml = merge_index_mds_taml()
+    labels_tcell_all_graal = merge_index_tcell_all_graal()
 
     return (labels_cog, labels_aml02, labels_aml08, 
-            labels_aml05, labels_beataml, labels_amltcga)
+            labels_aml05, labels_beataml, 
+            labels_amltcga, labels_nordic_all,
+            labels_mds_taml, labels_tcell_all_graal)
 
 
 def clean_aml02(df):
