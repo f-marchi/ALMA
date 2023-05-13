@@ -236,6 +236,8 @@ def merge_index_target_all():
 
         # # Join clinical data from paper and GDC
         labels_alltarget = clinical.join(paper, how='right')
+
+        
         
         return labels_alltarget
 
