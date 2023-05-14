@@ -152,6 +152,9 @@ def merge_index_amltcga():
         # join clinical_tsv and meta
         labels_amltcga = clinical_tsv.join(meta, how='left')
 
+        # add `_noid` to end of case_id to match methylation samples
+        labels_amltcga['case_id'] = labels_amltcga['case_id']+'_noid'
+
         # set index to case_id
         labels_amltcga = labels_amltcga.reset_index().set_index('case_id')
         
@@ -197,49 +200,50 @@ def merge_index_all_graal():
 # It is likely that controlled TARGET access is required to access the correct clinical data.
 def merge_index_target_all():
 
-        # Load clinical data from GDC
-        json_clinical_demographic = pd.read_json('../Data/Raw_Data/Methyl_Array_EPIC/GDC_TARGET-ALL/clinical.cases_selection.2023-05-12.json',
-                                    orient='values')
-        # flatten json
-        json_clinical_demographic = pd.json_normalize(json_clinical_demographic['demographic'].dropna())
+        # # Load clinical data from GDC
+        # json_clinical_demographic = pd.read_json('../Data/Raw_Data/Methyl_Array_EPIC/GDC_TARGET-ALL/clinical.cases_selection.2023-05-12.json',
+        #                             orient='values')
+        # # flatten json
+        # json_clinical_demographic = pd.json_normalize(json_clinical_demographic['demographic'].dropna())
 
-        # extract the second to last term from the `submitter_id` column
-        json_clinical_demographic['submitter_id'] = json_clinical_demographic['submitter_id'].str.split('-').str[-1]
+        # # extract the second to last term from the `submitter_id` column
+        # json_clinical_demographic['submitter_id'] = json_clinical_demographic['submitter_id'].str.split('-').str[-1]
 
-        # extract the first term from the `submitter_id` column by `_`
-        json_clinical_demographic['submitter_id'] = json_clinical_demographic['submitter_id'].str.split('_').str[0]
+        # # extract the first term from the `submitter_id` column by `_`
+        # json_clinical_demographic['submitter_id'] = json_clinical_demographic['submitter_id'].str.split('_').str[0]
 
-        # change `submitter_id` column name to `Patient_ID`
-        json_clinical_demographic = json_clinical_demographic.rename(columns={'submitter_id':'Patient_ID'})
+        # # change `submitter_id` column name to `Patient_ID`
+        # json_clinical_demographic = json_clinical_demographic.rename(columns={'submitter_id':'Patient_ID'})
 
-        # Set index to `submitter_id`
-        json_clinical_demographic = json_clinical_demographic.set_index('demographic_id')['Patient_ID']
+        # # Set index to `submitter_id`
+        # json_clinical_demographic = json_clinical_demographic.set_index('demographic_id')['Patient_ID']
 
-        # Load clinical data from GDC
-        clinical_tsv = pd.read_csv('../Data/Raw_Data/Methyl_Array_EPIC/GDC_TARGET-ALL/clinical.tsv', 
-                                    sep='\t', index_col=0)
+        # # Load clinical data from GDC
+        # clinical_tsv = pd.read_csv('../Data/Raw_Data/Methyl_Array_EPIC/GDC_TARGET-ALL/clinical.tsv', 
+        #                             sep='\t', index_col=0)
 
-        # Extract the last word from the `case_submitter_id` column by splitting by `-`
-        clinical_tsv['Patient_ID'] = clinical_tsv['case_submitter_id'].str.split('-').str[-1]
+        # # Extract the last word from the `case_submitter_id` column by splitting by `-`
+        # clinical_tsv['Patient_ID'] = clinical_tsv['case_submitter_id'].str.split('-').str[-1]
 
-        clinical_tsv = clinical_tsv['Patient_ID']
+        # clinical_tsv = clinical_tsv['Patient_ID']
 
-        # concat clinical_tsv and json_clinical_demographic
-        clinical = pd.concat([clinical_tsv, json_clinical_demographic], axis=0, join='outer')
+        # # concat clinical_tsv and json_clinical_demographic
+        # clinical = pd.concat([clinical_tsv, json_clinical_demographic], axis=0, join='outer')
 
-        # Set index to `Patient_ID`
-        clinical = clinical.reset_index().set_index('Patient_ID')
+        # # Set index to `Patient_ID`
+        # clinical = clinical.reset_index().set_index('Patient_ID')
 
-        # Load clinical data from paper
-        paper = pd.read_excel('../Data/Raw_Data/Clinical_Data/ALL_P3_TARGET/41586_2018_436_MOESM4_ESM.xlsx',
-                            sheet_name='ST2 Cohort', index_col=0)
+        # # Load clinical data from paper
+        # paper = pd.read_excel('../Data/Raw_Data/Clinical_Data/ALL_P3_TARGET/41586_2018_436_MOESM4_ESM.xlsx',
+        #                     sheet_name='ST2 Cohort', index_col=0)
 
-        # # Join clinical data from paper and GDC
-        labels_alltarget = clinical.join(paper, how='right')
+        # # # Join clinical data from paper and GDC
+        # labels_alltarget = clinical.join(paper, how='right')
 
+        meta = pd.read_pickle('../Data/Raw_Data/Methyl_Array_EPIC/GDC_TARGET-ALL/sample_sheet_meta_data.pkl')\
+                              .set_index('Sample_ID')['Sentrix_ID'].to_frame()
         
-        
-        return labels_alltarget
+        return meta
 
 
 def clean_aml02(df):
@@ -489,7 +493,7 @@ def clean_aml05(df, clinical_data_path='../Data/Raw_Data/Clinical_Data/'):
 
     df['Race or ethnic group'] = 'Asian'  # Need to verify this
     df['Hispanic or Latino ethnic group'] = 'Not Hispanic or Latino'# Need to verify this
-    df['Clinical Trial'] = 'AML05'
+    df['Clinical Trial'] = 'Japanese AML05'
     df['Sample Type'] = 'Diagnosis'
 
     return (df)
@@ -503,7 +507,7 @@ def clean_beataml(df):
                             'WBC_Count':'WBC Count (10⁹/L)', 'WHO_Fusion':'Gene Fusion'})
     
     df = df.replace({'Unknown': np.nan, 'YES': 'Yes', 'NO': 'No', 'n':'No', 'y':'Yes'})
-    
+    df['Clinical Trial'] = 'Beat AML Consortium'
     return df
 
 
@@ -521,6 +525,8 @@ def clean_amltcga(df):
 
     # Add `AML with` to the beginning of the `Diagnosis` column for each value
     df['Diagnosis'] = 'AML with ' + df['Molecular Classification'].astype(str)
+    df['Clinical Trial'] = 'TCGA AML'
+    df['Sample Type'] = 'Diagnosis'
 
     return df
 
@@ -535,6 +541,7 @@ def clean_nordic_all(df):
 
     # Make `Diagnosis` column by concatenating `immunophenotype` and `subtype` columns
     df['Diagnosis'] = df['immunophenotype'] + ' ' + df['subtype'] 
+    df['Clinical Trial'] = 'NOPHO ALL92-2000'
 
     return df
 
@@ -545,18 +552,32 @@ def clean_mds_taml(df):
                             'treatment':'Treatment'})
     
     df = df.replace({'Unknown': np.nan, 'NA': np.nan,'YES': 'Yes', 'NO': 'No', 'n':'No', 'y':'Yes',
-                     'M':'Male','F':'Female', 'bone marrow aspirate': 'Bone Marrow'})
+                     'M':'Male','F':'Female', 'bone marrow aspirate': 'Bone Marrow', 'DX':'Diagnosis',
+                     'CTR':'Control (Healthy Donor)','POST TPH': 'Post Transplant'})
+    
+    df['Clinical Trial'] = 'CETLAM SMD-09 (MDS-tAML)'
+
 
     return df
 
 
 def clean_all_graal(df):
 
-    df = df.rename(columns={'source': 'Tissue', 'age': 'Age (years)','gender':'Gender',
+    df = df.rename(columns={'source': 'Sample Type', 'age': 'Age (years)','gender':'Gender',
                             'diagnosis':'Diagnosis'})
     
     df = df.replace({'Unknown': np.nan, 'NA': np.nan,'YES': 'Yes', 'NO': 'No', 'n':'No', 'y':'Yes',
-                     'M':'Male','F':'Female', 'Leukemic Bone Marrow': 'Bone Marrow'})
+                     'M':'Male','F':'Female', 'Leukemic Bone Marrow': 'Likely Diagnosis'})
+    df['Clinical Trial'] = 'French GRAALL 2003–2005'
+
+
+    return df
+
+
+def clean_target_all(df):
+      
+    df['Clinical Trial'] = 'TARGET ALL'
+    df['Sample Type'] = 'Unknown (TARGET-ALL)'
 
     return df
 
