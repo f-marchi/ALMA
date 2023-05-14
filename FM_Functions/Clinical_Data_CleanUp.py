@@ -12,6 +12,12 @@ __email__ = 'flourenco@ufl.edu'
 
 clinical_data_path='../Data/Raw_Data/Clinical_Data/'
 
+# Read 1031 clinical data
+def merge_index_1031():
+     
+     labels_1031 = pd.read_excel(clinical_data_path + '/TARGET/TARGET-AML/TARGET_AML_ClinicalData_AML1031_20221108.xlsx',
+                                 )
+
 # COG/TARGET-AML
 def merge_index_cog():
     labels_0531 = pd.read_csv(clinical_data_path + 'MarchiF_ClinicalData_AML0531_03P1.csv',
