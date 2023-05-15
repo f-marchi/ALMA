@@ -167,83 +167,43 @@ def merge_index_0531():
 
     return labels
 
-
-# COG/TARGET-AML
-# def merge_index_cog():
-#     labels_0531 = pd.read_csv(clinical_data_path + 'MarchiF_ClinicalData_AML0531_03P1.csv',
-#                                     index_col=67)
-#     labels_0531['Sample Type'] = 'Diagnosis'
-#     labels2_1 = pd.read_csv(clinical_data_path + 'MarchiF_ClinicalData_AAML1031.csv',
-#                                 index_col=67).rename(columns={'Timepoint': 'Sample Type'})
-#     labels2_2 = pd.read_excel(clinical_data_path + 'COGAAML1031.v3.11.9.21.xlsx',
-#                                     index_col=0)
-#     labels_1031 = labels2_1.join(labels2_2[['Treatment Arm', 'KRAS', 'Protocol risk group classification']],
-#                                 how='left', on='Patient_ID')
-#     labels3_1 = pd.read_csv(
-#                                 clinical_data_path + 'clinical_info_gdc_2022-06-28.tsv', sep='\t')
-#     COG_clinicaldata_all = pd.read_excel(
-#                                 clinical_data_path + 'COG_raw_clinicaldata.xlsx', index_col=1)
-
-#     def clean_TARGET450k(labels3, COG_clinicaldata_all):
-#         l1 = labels3['File Name'].str.rsplit('_', n=1, expand=True).rename({
-#                 0: 'IlmnID'}, axis='columns')
-#         l2 = l1.join(labels3)
-#         l3 = l2[l2[1] == 'Grn.idat'].rename(
-#                 {'Case ID': 'TARGET USI'}, axis='columns')
-#         l4 = l3[~l3['Sample Type'].isin(
-#                 ['Fibroblasts from Bone Marrow Normal'])]
-#         l5 = l4.set_index('TARGET USI').join(COG_clinicaldata_all, how='left')
-#         l6 = l5.drop(columns=[1, 'File ID', 'Data Type', 'Project ID',
-#                                 'Data Category', "Unnamed: 0",
-#                                 'File Name']).drop_duplicates(subset=['IlmnID'], keep='last').set_index('IlmnID')
-#         return (l6)
-
-#     labels_gdc_target = clean_TARGET450k(labels3_1, COG_clinicaldata_all)
-
-#     labels_cog = pd.concat(
-#             [labels_0531, labels_1031, labels_gdc_target], axis=0, join='outer')
-        
-#     return (labels_cog)
-    
 # AML05
 def merge_index_aml05():
     labels_aml05 = pd.read_pickle(
-    clinical_data_path + 'AML05_sample_sheet_meta_data.pkl'
+    clinical_data_path + 'Japanese_AML05/AML05_sample_sheet_meta_data.pkl'
         ).iloc[:,:-1].set_index('Sample_ID')
     return (labels_aml05)
 
 # AML02
 def merge_index_aml02():
 
-        labels5_1 = pd.read_excel(clinical_data_path + 'JLamba-AML02-data-2019-02-12_JKL.Francisco.xlsx',
+        labels5_1 = pd.read_excel(clinical_data_path + 'StJude_Trials/JLamba-AML02-data-2019-02-12_JKL.Francisco.xlsx',
                               index_col=94).drop(columns=['DONOTUSE: ACCESSION_NBR'])  # main clinical data file
-        labels5_2 = pd.read_excel(clinical_data_path + 'AML02_Clinical_Data_Mastersheet.xlsx',
+        labels5_2 = pd.read_excel(clinical_data_path + 'StJude_Trials/AML02_Clinical_Data_Mastersheet.xlsx',
                               index_col=0)  # only used to retrieve pLSC6 values
-        labels5_3 = pd.read_excel(clinical_data_path + 'AML02methylation_Lamba_July25.2014Summary_FM_Cleaned.xlsx',
+        labels5_3 = pd.read_excel(clinical_data_path + 'StJude_Trials/AML02methylation_Lamba_July25.2014Summary_FM_Cleaned.xlsx',
                               index_col=1)  # used to merged clinical data with methyl
+        
         # Join contents of two columns into one
-
         labels5_3['Sample'] = labels5_3['Sentrix Barcode'].astype(
             str) + '_' + labels5_3['Sample Section'].astype(str)
         labels5_4 = labels5_3[labels5_3['type'] ==
                               'AML02'].reset_index()
+        
         # Replace - with _ in Sample ID
-
         labels5_4['Sample ID'] = labels5_4['Sample ID'].str.replace(
             '-', '_')
+        
         # Set index to Sample ID
-
         labels5_4 = labels5_4.set_index('Sample ID')
 
         # Combine all clinical data files together
-
         labels5_5 = labels5_1.join(labels5_2[['pLSC6_gb', 'pLSC6_Score', 'DNMT3B']],
                                    how='left', on='U133A.Dx.ID').join(labels5_4['Sample'],
                                                                       how='inner', on='JL.id.x').reset_index(
         ).set_index('Sample')
 
         # Remove samples that Dr. Lamba requested to be removed
-
         labels5_6 = labels5_5[labels5_5['Meth450K.Array.ID'].isin(
             ['AML02_119_P022', 'AML02_147_P053', 'AML02_197_P022',
              'AML02_23_P022', 'AML02_39_P022', 'AML02_46_P022',
@@ -252,11 +212,11 @@ def merge_index_aml02():
 
 # AML08
 def merge_index_aml08():
-        labels6_1 = pd.read_excel(clinical_data_path + 'AML08-clinical-AEs-IDs-2022-06-01.xlsx',
+        labels6_1 = pd.read_excel(clinical_data_path + 'StJude_Trials/AML08-clinical-AEs-IDs-2022-06-01.xlsx',
                                 sheet_name=[0, 2],
                                 index_col=0)
 
-        labels6_2 = pd.read_csv(clinical_data_path + 'AML02.AML08.PC.clin.rand.merge.N400.csv',
+        labels6_2 = pd.read_csv(clinical_data_path + 'StJude_Trials/AML02.AML08.PC.clin.rand.merge.N400.csv',
                                 index_col=1)
         # Merge cleaned clinical data files with methylation data file
         labels6_1[0] = labels6_1[0].join(labels6_2['AGE'], how='left')
