@@ -12,8 +12,11 @@ __email__ = 'flourenco@ufl.edu'
 
 clinical_data_path='../Data/Raw_Data/Clinical_Data/'
 
-def merge_index_1031(filepath1 = '/TARGET/TARGET-AML/TARGET_AML_ClinicalData_AML1031_20221108.xlsx',
-                     filepath2 = '../Data/Raw_Data/Methyl_Array_EPIC/GSE190931/sample_sheet_meta_data.pkl'):
+# COG AAML1031
+def merge_index_1031():
+
+    filepath1 = '/TARGET/TARGET-AML/TARGET_AML_ClinicalData_AML1031_20221108.xlsx'
+    filepath2 = '../Data/Raw_Data/Methyl_Array_EPIC/GSE190931/sample_sheet_meta_data.pkl'
 
     # Load clinical data files
     labels_1031 = pd.read_excel(clinical_data_path + filepath1)
@@ -36,17 +39,21 @@ def merge_index_1031(filepath1 = '/TARGET/TARGET-AML/TARGET_AML_ClinicalData_AML
 
     return labels_1031
 
-def merge_index_0531(dir = '../Data/Raw_Data/Clinical_Data/TARGET/TARGET-AML/',
-                    filepath1 = 'TARGET_AML_ClinicalData_Discovery_20221108.xlsx',
-                    filepath2 = 'TARGET_AML_ClinicalData_Validation_20221108.xlsx',
-                    filepath3 = 'TARGET_AML_ClinicalData_LowDepthRNAseq_20221108.xlsx',
-                    filepath4 = '../Data/Raw_Data/Methyl_Array_EPIC/GSE124413/sample_sheet_meta_data.pkl',
-                    filepath5 = '../Data/Raw_Data/Methyl_Array_EPIC/GSE124413/GSE124413_series_matrix.csv'):
-    
+# COG TARGET-AML
+def merge_index_0531():
+    dir      = '../Data/Raw_Data/Clinical_Data/TARGET/TARGET-AML/'
+    filepath1 = 'TARGET_AML_ClinicalData_Discovery_20221108.xlsx'
+    filepath2 = 'TARGET_AML_ClinicalData_Validation_20221108.xlsx'
+    filepath3 = 'TARGET_AML_ClinicalData_LowDepthRNAseq_20221108.xlsx'
+    filepath4 = '../Data/Raw_Data/Methyl_Array_EPIC/GSE124413/sample_sheet_meta_data.pkl'
+    filepath5 = '../Data/Raw_Data/Methyl_Array_EPIC/GSE124413/GSE124413_series_matrix.csv'
+    filepath6 = 'gdc_sample_sheet.2023-05-13.tsv'
+
     # Load all clinical data files for 0531
-    labels_0531_1 = pd.read_excel(dir + filepath1, index_col=0)
-    labels_0531_2 = pd.read_excel(dir + filepath2, index_col=0)
-    labels_0531_3 = pd.read_excel(dir + filepath3, index_col=0)
+    labels_0531_1 = pd.read_excel (dir + filepath1, index_col=0)
+    labels_0531_2 = pd.read_excel (dir + filepath2, index_col=0)
+    labels_0531_3 = pd.read_excel (dir + filepath3, index_col=0)
+    labels_gdc    = pd.read_csv   (dir + filepath6, sep='\t')
     meta          = pd.read_pickle(filepath4)
     meta_matrix   = pd.read_csv(filepath5)
 
@@ -71,30 +78,50 @@ def merge_index_0531(dir = '../Data/Raw_Data/Clinical_Data/TARGET/TARGET-AML/',
         df = df.drop(columns='nan_count')
         return df
 
-    def clean_meta(meta_matrix, meta):
-        # Transpose the dataframe and reset index
-        transposed_meta = meta_matrix.T.reset_index()
+    def adjust_labels_gdc(labels_gdc):
+        '''
+        This function adjusts the labels_gdc dataframe to match the labels_0531 dataframe.
+        '''
 
-        # Split the index and join to dataframe
-        transposed_meta['new_index'] = transposed_meta['index'].str.rsplit(" ", n=1, expand=True)[1]
+        # Select only TARGET-AML samples
+        labels_gdc = labels_gdc[labels_gdc['Project ID'] == 'TARGET-AML']
+
+        # Select only rows in `File Name` column that contain `Grn.idat`
+        labels_gdc = labels_gdc[labels_gdc['File Name'].str.contains('Grn.idat')]
+
+        # Remove the `_Grn.idat` extension from `File Name` column
+        labels_gdc['File Name'] = labels_gdc['File Name'].str.replace('_Grn.idat', '')
+
+        # Select only relevant columns
+        labels_gdc = labels_gdc[['File Name', 'Case ID', 'Sample ID', 'Sample Type']]\
+                                .set_index('Case ID')
         
-        # Set new header
-        transposed_meta.columns = transposed_meta.iloc[0]
-        transposed_meta = transposed_meta.drop(transposed_meta.index[0])
-
-        # Rename columns and set index
-        transposed_meta = transposed_meta.rename(columns={'!Sample_geo_accession':'GSM_ID', None: 'Patient_ID'}).set_index('GSM_ID')
-
-        # Join with meta DataFrame, select columns and reset index
-        meta_cleaned = meta.set_index('GSM_ID').join(transposed_meta)[['Patient_ID', '!Sample_characteristics_ch1','Sample_ID']].reset_index().set_index('Patient_ID')
-
         # Rename columns
-        meta_cleaned.columns = ['GSM_ID', 'Sample Type', 'age','sex', 'Sample_ID']
+        labels_gdc = labels_gdc.rename(columns={'File Name': 'Sample_ID', 'Sample ID': 'Sample_ID_2'})
 
-        return meta_cleaned
+        return labels_gdc
 
-    # Adjust and clean metadata
-    meta_cleaned = clean_meta(meta_matrix, meta)
+    def clean_meta(meta_matrix, meta):
+            # Transpose the dataframe and reset index
+            transposed_meta = meta_matrix.T.reset_index()
+
+            # Split the index and join to dataframe
+            transposed_meta['new_index'] = transposed_meta['index'].str.rsplit(" ", n=1, expand=True)[1]
+            
+            # Set new header
+            transposed_meta.columns = transposed_meta.iloc[0]
+            transposed_meta = transposed_meta.drop(transposed_meta.index[0])
+
+            # Rename columns and set index
+            transposed_meta = transposed_meta.rename(columns={'!Sample_geo_accession':'GSM_ID', None: 'Patient_ID'}).set_index('GSM_ID')
+
+            # Join with meta DataFrame, select columns and reset index
+            meta_cleaned = meta.set_index('GSM_ID').join(transposed_meta)[['Patient_ID', '!Sample_characteristics_ch1','Sample_ID']].reset_index().set_index('Patient_ID')
+
+            # Rename columns
+            meta_cleaned.columns = ['GSM_ID', 'Sample Type', 'age','sex', 'Sample_ID']
+
+            return meta_cleaned
 
     # Remove duplicate samples by keeping the row with fewer NaNs
     labels_0531 = remove_the_duplicate_samples_with_more_nulls()
@@ -106,8 +133,21 @@ def merge_index_0531(dir = '../Data/Raw_Data/Clinical_Data/TARGET/TARGET-AML/',
     labels_0531['Tumor Code'] = labels_0531.index.str.split('-').str[1]
     labels_0531['Patient_ID'] = labels_0531.index.str.split('-').str[2]
 
+    # Adjust labels_gdc dataframe   
+    labels_gdc = adjust_labels_gdc(labels_gdc)
+
+    # Join labels_0531 and labels_gdc dataframes
+    labels_gdc = labels_0531.join(labels_gdc, how='right')\
+                            .reset_index()\
+                            .set_index('Sample_ID')
+
+    # Adjust and clean metadata
+    meta_cleaned = clean_meta(meta_matrix, meta)
+
     # drop duplicates in `Patient_ID` column
-    labels_0531 = labels_0531.drop_duplicates(subset='Patient_ID', keep='first').set_index('Patient_ID')
+    labels_0531 = labels_0531.drop_duplicates(subset='Patient_ID', keep='first')\
+        .reset_index()\
+        .set_index('Patient_ID')
 
     # join with meta_cleaned dataframe
     labels_0531 = labels_0531.join(meta_cleaned, how='right')
@@ -120,46 +160,50 @@ def merge_index_0531(dir = '../Data/Raw_Data/Clinical_Data/TARGET/TARGET-AML/',
                                                                     'group: normal': 'Bone Marrow Normal'})
 
     # Set index to `Sample_ID` to match methylation samples
-    labels_0531 = labels_0531.set_index('Sample_ID')
+    labels_0531 = labels_0531.reset_index().set_index('Sample_ID')
 
-    return labels_0531
+    # Concat labels_0531 and labels_gdc dataframes
+    labels = pd.concat([labels_0531, labels_gdc], axis=0, join='outer')
+
+    return labels
+
 
 # COG/TARGET-AML
-def merge_index_cog():
-    labels_0531 = pd.read_csv(clinical_data_path + 'MarchiF_ClinicalData_AML0531_03P1.csv',
-                                    index_col=67)
-    labels_0531['Sample Type'] = 'Diagnosis'
-    labels2_1 = pd.read_csv(clinical_data_path + 'MarchiF_ClinicalData_AAML1031.csv',
-                                index_col=67).rename(columns={'Timepoint': 'Sample Type'})
-    labels2_2 = pd.read_excel(clinical_data_path + 'COGAAML1031.v3.11.9.21.xlsx',
-                                    index_col=0)
-    labels_1031 = labels2_1.join(labels2_2[['Treatment Arm', 'KRAS', 'Protocol risk group classification']],
-                                how='left', on='Patient_ID')
-    labels3_1 = pd.read_csv(
-                                clinical_data_path + 'clinical_info_gdc_2022-06-28.tsv', sep='\t')
-    COG_clinicaldata_all = pd.read_excel(
-                                clinical_data_path + 'COG_raw_clinicaldata.xlsx', index_col=1)
+# def merge_index_cog():
+#     labels_0531 = pd.read_csv(clinical_data_path + 'MarchiF_ClinicalData_AML0531_03P1.csv',
+#                                     index_col=67)
+#     labels_0531['Sample Type'] = 'Diagnosis'
+#     labels2_1 = pd.read_csv(clinical_data_path + 'MarchiF_ClinicalData_AAML1031.csv',
+#                                 index_col=67).rename(columns={'Timepoint': 'Sample Type'})
+#     labels2_2 = pd.read_excel(clinical_data_path + 'COGAAML1031.v3.11.9.21.xlsx',
+#                                     index_col=0)
+#     labels_1031 = labels2_1.join(labels2_2[['Treatment Arm', 'KRAS', 'Protocol risk group classification']],
+#                                 how='left', on='Patient_ID')
+#     labels3_1 = pd.read_csv(
+#                                 clinical_data_path + 'clinical_info_gdc_2022-06-28.tsv', sep='\t')
+#     COG_clinicaldata_all = pd.read_excel(
+#                                 clinical_data_path + 'COG_raw_clinicaldata.xlsx', index_col=1)
 
-    def clean_TARGET450k(labels3, COG_clinicaldata_all):
-        l1 = labels3['File Name'].str.rsplit('_', n=1, expand=True).rename({
-                0: 'IlmnID'}, axis='columns')
-        l2 = l1.join(labels3)
-        l3 = l2[l2[1] == 'Grn.idat'].rename(
-                {'Case ID': 'TARGET USI'}, axis='columns')
-        l4 = l3[~l3['Sample Type'].isin(
-                ['Fibroblasts from Bone Marrow Normal'])]
-        l5 = l4.set_index('TARGET USI').join(COG_clinicaldata_all, how='left')
-        l6 = l5.drop(columns=[1, 'File ID', 'Data Type', 'Project ID',
-                                'Data Category', "Unnamed: 0",
-                                'File Name']).drop_duplicates(subset=['IlmnID'], keep='last').set_index('IlmnID')
-        return (l6)
+#     def clean_TARGET450k(labels3, COG_clinicaldata_all):
+#         l1 = labels3['File Name'].str.rsplit('_', n=1, expand=True).rename({
+#                 0: 'IlmnID'}, axis='columns')
+#         l2 = l1.join(labels3)
+#         l3 = l2[l2[1] == 'Grn.idat'].rename(
+#                 {'Case ID': 'TARGET USI'}, axis='columns')
+#         l4 = l3[~l3['Sample Type'].isin(
+#                 ['Fibroblasts from Bone Marrow Normal'])]
+#         l5 = l4.set_index('TARGET USI').join(COG_clinicaldata_all, how='left')
+#         l6 = l5.drop(columns=[1, 'File ID', 'Data Type', 'Project ID',
+#                                 'Data Category', "Unnamed: 0",
+#                                 'File Name']).drop_duplicates(subset=['IlmnID'], keep='last').set_index('IlmnID')
+#         return (l6)
 
-    labels_gdc_target = clean_TARGET450k(labels3_1, COG_clinicaldata_all)
+#     labels_gdc_target = clean_TARGET450k(labels3_1, COG_clinicaldata_all)
 
-    labels_cog = pd.concat(
-            [labels_0531, labels_1031, labels_gdc_target], axis=0, join='outer')
+#     labels_cog = pd.concat(
+#             [labels_0531, labels_1031, labels_gdc_target], axis=0, join='outer')
         
-    return (labels_cog)
+#     return (labels_cog)
     
 # AML05
 def merge_index_aml05():
