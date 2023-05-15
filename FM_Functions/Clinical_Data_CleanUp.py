@@ -12,11 +12,117 @@ __email__ = 'flourenco@ufl.edu'
 
 clinical_data_path='../Data/Raw_Data/Clinical_Data/'
 
-# Read 1031 clinical data
-def merge_index_1031():
-     
-     labels_1031 = pd.read_excel(clinical_data_path + '/TARGET/TARGET-AML/TARGET_AML_ClinicalData_AML1031_20221108.xlsx',
-                                 )
+def merge_index_1031(filepath1 = '/TARGET/TARGET-AML/TARGET_AML_ClinicalData_AML1031_20221108.xlsx',
+                     filepath2 = '../Data/Raw_Data/Methyl_Array_EPIC/GSE190931/sample_sheet_meta_data.pkl'):
+
+    # Load clinical data files
+    labels_1031 = pd.read_excel(clinical_data_path + filepath1)
+    meta        = pd.read_pickle(filepath2)
+
+    # Extract last term of `TARGET USI` by splitting on `-`
+    labels_1031['Patient_ID'] = labels_1031['TARGET USI'].str.split('-').str[2]
+
+    # extract patient name from `description` column by splitting on `\n` and then on `_`
+    meta['Patient_ID'] = meta['description'].str.split('\n').str[-1].str.split('_').str[-2]
+
+    # Set index to `Patient_ID` and selected only relevant columns
+    meta = meta.set_index('Patient_ID').iloc[:,:-1][['fusion','timepoint','Sample_ID']]
+
+    # Set index to `Patient_ID`
+    labels_1031 = labels_1031.set_index('Patient_ID')
+
+    # Join the two dataframes
+    labels_1031 = labels_1031.join(meta, how='right').set_index('Sample_ID')
+
+    return labels_1031
+
+def merge_index_0531(dir = '../Data/Raw_Data/Clinical_Data/TARGET/TARGET-AML/',
+                    filepath1 = 'TARGET_AML_ClinicalData_Discovery_20221108.xlsx',
+                    filepath2 = 'TARGET_AML_ClinicalData_Validation_20221108.xlsx',
+                    filepath3 = 'TARGET_AML_ClinicalData_LowDepthRNAseq_20221108.xlsx',
+                    filepath4 = '../Data/Raw_Data/Methyl_Array_EPIC/GSE124413/sample_sheet_meta_data.pkl',
+                    filepath5 = '../Data/Raw_Data/Methyl_Array_EPIC/GSE124413/GSE124413_series_matrix.csv'):
+    
+    # Load all clinical data files for 0531
+    labels_0531_1 = pd.read_excel(dir + filepath1, index_col=0)
+    labels_0531_2 = pd.read_excel(dir + filepath2, index_col=0)
+    labels_0531_3 = pd.read_excel(dir + filepath3, index_col=0)
+    meta          = pd.read_pickle(filepath4)
+    meta_matrix   = pd.read_csv(filepath5)
+
+    # Concatenate the two dataframes
+    labels_0531 = pd.concat([labels_0531_1, labels_0531_2], axis=0, join='outer').reset_index()
+
+    def remove_the_duplicate_samples_with_more_nulls(df=labels_0531):
+        ''' 
+        This function removes duplicate samples from the dataframe, keeping the row with fewer NaNs (null values).
+        '''    
+        # Adding a new column 'nan_count' which is the count of NaNs in each row
+        df = df.replace({'NA': np.nan, 'unknown': np.nan, 'Unknown': np.nan})
+        df['nan_count'] = df.isnull().sum(axis=1)
+
+        # Sort by 'nan_count' so that rows with fewer NaNs come first
+        df = df.sort_values('nan_count')
+
+        # Drop duplicates, keeping the first one (with fewer NaNs)
+        df = df.drop_duplicates(subset= 'TARGET USI', keep='first')
+
+        # Remove the 'nan_count' column
+        df = df.drop(columns='nan_count')
+        return df
+
+    def clean_meta(meta_matrix, meta):
+        # Transpose the dataframe and reset index
+        transposed_meta = meta_matrix.T.reset_index()
+
+        # Split the index and join to dataframe
+        transposed_meta['new_index'] = transposed_meta['index'].str.rsplit(" ", n=1, expand=True)[1]
+        
+        # Set new header
+        transposed_meta.columns = transposed_meta.iloc[0]
+        transposed_meta = transposed_meta.drop(transposed_meta.index[0])
+
+        # Rename columns and set index
+        transposed_meta = transposed_meta.rename(columns={'!Sample_geo_accession':'GSM_ID', None: 'Patient_ID'}).set_index('GSM_ID')
+
+        # Join with meta DataFrame, select columns and reset index
+        meta_cleaned = meta.set_index('GSM_ID').join(transposed_meta)[['Patient_ID', '!Sample_characteristics_ch1','Sample_ID']].reset_index().set_index('Patient_ID')
+
+        # Rename columns
+        meta_cleaned.columns = ['GSM_ID', 'Sample Type', 'age','sex', 'Sample_ID']
+
+        return meta_cleaned
+
+    # Adjust and clean metadata
+    meta_cleaned = clean_meta(meta_matrix, meta)
+
+    # Remove duplicate samples by keeping the row with fewer NaNs
+    labels_0531 = remove_the_duplicate_samples_with_more_nulls()
+
+    # Set index to `TARGET USI` and join with `Gene Fusion.1` column
+    labels_0531 = labels_0531.set_index('TARGET USI').join(labels_0531_3[['Gene Fusion.1']], how='outer')
+
+    # extract the last two words of `TARGET USI` by splitting on `-` 
+    labels_0531['Tumor Code'] = labels_0531.index.str.split('-').str[1]
+    labels_0531['Patient_ID'] = labels_0531.index.str.split('-').str[2]
+
+    # drop duplicates in `Patient_ID` column
+    labels_0531 = labels_0531.drop_duplicates(subset='Patient_ID', keep='first').set_index('Patient_ID')
+
+    # join with meta_cleaned dataframe
+    labels_0531 = labels_0531.join(meta_cleaned, how='right')
+
+    # drop columns that are not needed
+    labels_0531 = labels_0531.drop(columns=['age', 'sex', 'GSM_ID'])
+
+    # Rename values in `Sample Type` column
+    labels_0531['Sample Type'] = labels_0531['Sample Type'].replace({'group: tumor': 'Diagnosis',
+                                                                    'group: normal': 'Bone Marrow Normal'})
+
+    # Set index to `Sample_ID` to match methylation samples
+    labels_0531 = labels_0531.set_index('Sample_ID')
+
+    return labels_0531
 
 # COG/TARGET-AML
 def merge_index_cog():
