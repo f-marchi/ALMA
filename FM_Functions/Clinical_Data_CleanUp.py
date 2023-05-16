@@ -174,18 +174,18 @@ def merge_index_0531():
 # AML05
 def merge_index_aml05():
     labels_aml05 = pd.read_pickle(
-    clinical_data_path + 'Japanese_AML05/AML05_sample_sheet_meta_data.pkl'
+    clinical_data_path + '/Japanese_AML05/AML05_sample_sheet_meta_data.pkl'
         ).iloc[:,:-1].set_index('Sample_ID')
     return (labels_aml05)
 
 # AML02
 def merge_index_aml02():
 
-        labels5_1 = pd.read_excel(clinical_data_path + 'StJude_Trials/JLamba-AML02-data-2019-02-12_JKL.Francisco.xlsx',
+        labels5_1 = pd.read_excel(clinical_data_path + '/StJude_Trials/JLamba-AML02-data-2019-02-12_JKL.Francisco.xlsx',
                               index_col=94).drop(columns=['DONOTUSE: ACCESSION_NBR'])  # main clinical data file
-        labels5_2 = pd.read_excel(clinical_data_path + 'StJude_Trials/AML02_Clinical_Data_Mastersheet.xlsx',
+        labels5_2 = pd.read_excel(clinical_data_path + '/StJude_Trials/AML02_Clinical_Data_Mastersheet.xlsx',
                               index_col=0)  # only used to retrieve pLSC6 values
-        labels5_3 = pd.read_excel(clinical_data_path + 'StJude_Trials/AML02methylation_Lamba_July25.2014Summary_FM_Cleaned.xlsx',
+        labels5_3 = pd.read_excel(clinical_data_path + '/StJude_Trials/AML02methylation_Lamba_July25.2014Summary_FM_Cleaned.xlsx',
                               index_col=1)  # used to merged clinical data with methyl
         
         # Join contents of two columns into one
@@ -216,11 +216,11 @@ def merge_index_aml02():
 
 # AML08
 def merge_index_aml08():
-        labels6_1 = pd.read_excel(clinical_data_path + 'StJude_Trials/AML08-clinical-AEs-IDs-2022-06-01.xlsx',
+        labels6_1 = pd.read_excel(clinical_data_path + '/StJude_Trials/AML08-clinical-AEs-IDs-2022-06-01.xlsx',
                                 sheet_name=[0, 2],
                                 index_col=0)
 
-        labels6_2 = pd.read_csv(clinical_data_path + 'StJude_Trials/AML02.AML08.PC.clin.rand.merge.N400.csv',
+        labels6_2 = pd.read_csv(clinical_data_path + '/StJude_Trials/AML02.AML08.PC.clin.rand.merge.N400.csv',
                                 index_col=1)
         # Merge cleaned clinical data files with methylation data file
         labels6_1[0] = labels6_1[0].join(labels6_2['AGE'], how='left')
@@ -595,7 +595,7 @@ def clean_cog(df):
     return (df)
 
 
-def clean_aml05(df, clinical_data_path='../Data/Raw_Data/Clinical_Data/'):
+def clean_aml05(df, clinical_data_path='../Data/Raw_Data/Clinical_Data/Japanese_AML05'):
     """
     This module cleans and adjusts clinical data files from AML05 trial.
 
@@ -624,7 +624,7 @@ def clean_aml05(df, clinical_data_path='../Data/Raw_Data/Clinical_Data/'):
 
     # Load AML05 Clinical Data from Paper
     aml05 = pd.read_csv(
-        clinical_data_path + 'ClinicalData_AML05_JapaneseTrial_FromPaper.csv', index_col=0)
+        clinical_data_path + '/ClinicalData_AML05_JapaneseTrial_FromPaper.csv', index_col=0)
 
     # All 15 samples are positive for FLT3 ITD according to paper's table 1
     aml05['FLT3 ITD'] = 'Yes'
@@ -733,15 +733,15 @@ def clean_target_all(df):
 
     return df
 
-def label_control_samples(df_methyl, df):
-    """
-    This function labels control samples from the AML0531 clinical trial (GSE124413) as 'Bone Marrow Normal'
-    and combines them with the clinical trial samples.
-    """
-    a = df_methyl[df_methyl['Batch'].isin(['GSE124413'])]
-    b = df[df.index.isin(a.index)]
-    control_0531 = a[~a.index.isin(b.index)]
-    control_0531['Sample Type'] = 'Bone Marrow Normal'
-    df_ = pd.concat(
-        [df, control_0531['Sample Type'].to_frame()], axis=0, join='outer')
-    return df_
+# def label_control_samples(df_methyl, df):
+#     """
+#     This function labels control samples from the AML0531 clinical trial (GSE124413) as 'Bone Marrow Normal'
+#     and combines them with the clinical trial samples.
+#     """
+#     a = df_methyl[df_methyl['Batch'].isin(['GSE124413'])]
+#     b = df[df.index.isin(a.index)]
+#     control_0531 = a[~a.index.isin(b.index)]
+#     control_0531['Sample Type'] = 'Bone Marrow Normal'
+#     df_ = pd.concat(
+#         [df, control_0531['Sample Type'].to_frame()], axis=0, join='outer')
+#     return df_
