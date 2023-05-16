@@ -12,6 +12,10 @@ __email__ = 'flourenco@ufl.edu'
 
 clinical_data_path='../Data/Raw_Data/Clinical_Data/'
 
+##############################################################################################################
+# Merge and index clinical data files
+##############################################################################################################
+
 # COG AAML1031
 def merge_index_1031():
 
@@ -259,34 +263,59 @@ def merge_index_beataml():
 # AML-TCGA
 def merge_index_amltcga():
 
-        # load clinical data from GDC
-        clinical_tsv = pd.read_csv('../Data/Raw_Data/Methyl_Array_450k/GDC_TCGA-AML/clinical.tsv', 
-                        sep='\t', index_col=0)[['case_submitter_id']].drop_duplicates()
+    filepath1 = clinical_data_path +'/TCGA_LAML/SuppTable01_NEJM2013_TCGA_AML.Paper_Mutation data.xlsx'
+    filepath2 = clinical_data_path +'/TCGA_LAML/TCGA_Clinical data_NEJM 2013_Downloaded_Cbioportal_07-07-2020_Final.xlsx'
+    filepath3 = clinical_data_path + 'TCGA_LAML/gdc_sample_sheet.2023-05-13.tsv'
 
-        # extract last 4 digits from case_id to get TCGA Patient ID
-        clinical_tsv['TCGA Patient ID'] = clinical_tsv['case_submitter_id'].str[-4:]
+    # Load the clinical data
+    labels1    = pd.read_excel(filepath1, index_col=0).iloc[1:,:]
+    labels2    = pd.read_excel(filepath2, index_col=1)
+    labels_gdc = pd.read_csv(filepath3, sep='\t')
 
-        # set index to TCGA Patient ID
-        clinical_tsv = clinical_tsv.reset_index().set_index('TCGA Patient ID').sort_index()
+    def adjust_labels_gdc(labels_gdc):
+        '''
+        This function adjusts the labels_gdc dataframe to match the labels_0531 dataframe.
+        '''
 
-        # load meta data from NEJM 2013 paper
-        meta = pd.read_excel('../Data/Raw_Data/Clinical_Data/TCGA_LAML/SuppTable01_NEJM2013_TCGA_AML.Paper_Mutation data.xlsx',
-                            index_col=1).iloc[1:,:].sort_index()
+        # Select only TCGA-AML samples
+        labels_gdc = labels_gdc[labels_gdc['Project ID'] == 'TCGA-LAML']
 
-        # make meta index integers
-        meta.index = meta.index.astype(int)
-        clinical_tsv.index = clinical_tsv.index.astype(int)
+        # Select only rows in `File Name` column that contain `Grn.idat`
+        labels_gdc = labels_gdc[labels_gdc['File Name'].str.contains('Grn.idat')]
 
-        # join clinical_tsv and meta
-        labels_amltcga = clinical_tsv.join(meta, how='left')
+        # Remove the `_Grn.idat` extension from `File Name` column
+        labels_gdc['File Name'] = labels_gdc['File Name'].str.replace('_Grn.idat', '')
 
-        # add `_noid` to end of case_id to match methylation samples
-        labels_amltcga['case_id'] = labels_amltcga['case_id']+'_noid'
-
-        # set index to case_id
-        labels_amltcga = labels_amltcga.reset_index().set_index('case_id')
+        # Select only relevant columns
+        labels_gdc = labels_gdc[['File Name', 'Case ID', 'Sample ID', 'Sample Type']]\
+                                .set_index('Case ID')
         
-        return labels_amltcga
+        # Rename columns
+        labels_gdc = labels_gdc.rename(columns={'File Name': 'Sample_ID', 'Sample ID': 'Sample_ID_2'})
+
+        return labels_gdc
+
+    labels_gdc = adjust_labels_gdc(labels_gdc)
+
+    # Add `TCGA-AB-` prefix to `TCGA Patient ID` column in labels1
+    labels1['TCGA Patient ID'] = 'TCGA-AB-' + labels1['TCGA Patient ID'].astype(int).astype(str)
+
+    # Set `TCGA Patient ID` column as index
+    labels1 = labels1.reset_index().set_index('TCGA Patient ID')
+
+    # Join labels1 and labels2
+    labels = labels2.join(labels1, rsuffix='_dup', how='inner')
+
+    # Remove duplicate columns (i.e. columns with `_dup` suffix)
+    labels = labels.loc[:,~labels.columns.str.contains('_dup')]\
+                .drop(['Sample Type'], axis=1)
+
+    # Join labels and labels_gdc
+    labels_amltcga = labels_gdc.join(labels, how='inner')\
+                        .reset_index()\
+                        .set_index('Sample_ID')
+
+    return labels_amltcga
 
 # Nordic ALL
 def merge_index_nordic_all(): 
@@ -324,55 +353,51 @@ def merge_index_all_graal():
         return meta
         
 # GDC_TARGET-ALL
-# The clinical data for this dataset does not match the methylation data.
-# It is likely that controlled TARGET access is required to access the correct clinical data.
 def merge_index_target_all():
+    
+    filepath1 = clinical_data_path +'/TARGET/TARGET-ALL-P3/TARGET_ALL_ClinicalData_Phase_III_20221108.xlsx'
+    filepath2 = clinical_data_path + '/TARGET/TARGET-ALL-P3/gdc_sample_sheet.2023-05-13.tsv'
 
-        # # Load clinical data from GDC
-        # json_clinical_demographic = pd.read_json('../Data/Raw_Data/Methyl_Array_EPIC/GDC_TARGET-ALL/clinical.cases_selection.2023-05-12.json',
-        #                             orient='values')
-        # # flatten json
-        # json_clinical_demographic = pd.json_normalize(json_clinical_demographic['demographic'].dropna())
+    # Load the clinical data
+    labels1    = pd.read_excel(filepath1, index_col=0)
+    labels_gdc = pd.read_csv(filepath2, sep='\t')
 
-        # # extract the second to last term from the `submitter_id` column
-        # json_clinical_demographic['submitter_id'] = json_clinical_demographic['submitter_id'].str.split('-').str[-1]
+    def adjust_labels_gdc(labels_gdc):
+        '''
+        This function adjusts the labels_gdc dataframe to match the labels_0531 dataframe.
+        '''
 
-        # # extract the first term from the `submitter_id` column by `_`
-        # json_clinical_demographic['submitter_id'] = json_clinical_demographic['submitter_id'].str.split('_').str[0]
+        # Select only TCGA-AML samples
+        labels_gdc = labels_gdc[labels_gdc['Project ID'] == 'TARGET-ALL-P3']
 
-        # # change `submitter_id` column name to `Patient_ID`
-        # json_clinical_demographic = json_clinical_demographic.rename(columns={'submitter_id':'Patient_ID'})
+        # Select only rows in `File Name` column that contain `Grn.idat`
+        labels_gdc = labels_gdc[labels_gdc['File Name'].str.contains('Grn.idat')]
 
-        # # Set index to `submitter_id`
-        # json_clinical_demographic = json_clinical_demographic.set_index('demographic_id')['Patient_ID']
+        # Remove the `_Grn.idat` extension from `File Name` column
+        labels_gdc['File Name'] = labels_gdc['File Name'].str.replace('_Grn.idat', '')
 
-        # # Load clinical data from GDC
-        # clinical_tsv = pd.read_csv('../Data/Raw_Data/Methyl_Array_EPIC/GDC_TARGET-ALL/clinical.tsv', 
-        #                             sep='\t', index_col=0)
-
-        # # Extract the last word from the `case_submitter_id` column by splitting by `-`
-        # clinical_tsv['Patient_ID'] = clinical_tsv['case_submitter_id'].str.split('-').str[-1]
-
-        # clinical_tsv = clinical_tsv['Patient_ID']
-
-        # # concat clinical_tsv and json_clinical_demographic
-        # clinical = pd.concat([clinical_tsv, json_clinical_demographic], axis=0, join='outer')
-
-        # # Set index to `Patient_ID`
-        # clinical = clinical.reset_index().set_index('Patient_ID')
-
-        # # Load clinical data from paper
-        # paper = pd.read_excel('../Data/Raw_Data/Clinical_Data/ALL_P3_TARGET/41586_2018_436_MOESM4_ESM.xlsx',
-        #                     sheet_name='ST2 Cohort', index_col=0)
-
-        # # # Join clinical data from paper and GDC
-        # labels_alltarget = clinical.join(paper, how='right')
-
-        meta = pd.read_pickle('../Data/Raw_Data/Methyl_Array_EPIC/GDC_TARGET-ALL/sample_sheet_meta_data.pkl')\
-                              .set_index('Sample_ID')['Sentrix_ID'].to_frame()
+        # Select only relevant columns
+        labels_gdc = labels_gdc[['File Name', 'Case ID', 'Sample ID', 'Sample Type']]\
+                                .set_index('Case ID')
         
-        return meta
+        # Rename columns
+        labels_gdc = labels_gdc.rename(columns={'File Name': 'Sample_ID', 'Sample ID': 'Sample_ID_2'})
 
+        return labels_gdc
+
+    labels_gdc = adjust_labels_gdc(labels_gdc)
+
+    # Join labels and labels_gdc
+    labels_target_all = labels_gdc.join(labels1, how='left')\
+                        .reset_index()\
+                        .set_index('Sample_ID')
+
+    return labels_target_all
+
+
+##############################################################################################################
+# Clean clinical data files
+##############################################################################################################
 
 def clean_aml02(df):
     """
@@ -705,7 +730,6 @@ def clean_all_graal(df):
 def clean_target_all(df):
       
     df['Clinical Trial'] = 'TARGET ALL'
-    df['Sample Type'] = 'Unknown (TARGET-ALL)'
 
     return df
 
