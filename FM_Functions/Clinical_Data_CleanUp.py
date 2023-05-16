@@ -227,22 +227,34 @@ def merge_index_aml08():
         return (labels_aml08)
 
 # BeatAML
-def merge_index_beataml ():
-        meta = pd.read_pickle('../Data/Raw_Data/Methyl_Array_EPIC/GSE159907/sample_sheet_meta_data.pkl').iloc[:,:-1]
+def merge_index_beataml():
 
-        # Create a new column with only the content inside [] from column 'Sample_Name'
-        meta['LLS_SampleID'] = meta['Sample_Name'].str.extract(r"\[(.*?)\]", expand=False)
+    filepath1 = clinical_data_path +'BeatAML/BEAT_AML_Raw clinical data_702.Samples.Vizome.xlsx'
+    filepath2 = clinical_data_path +'BeatAML/Beat_AML_561 Unique Samples_Cbioportal_OSHU.xlsx'
+    filepath3 = '../Data/Raw_Data/Methyl_Array_EPIC/GSE159907/sample_sheet_meta_data.pkl'
 
-        # Set the index to the new column
-        meta1 = meta[['tissue','disease_state','LLS_SampleID','Sample_ID']].set_index('LLS_SampleID')
+    # Load the clinical data
+    labels1 = pd.read_excel(filepath1, index_col=3)
+    labels2 = pd.read_excel(filepath2)
+    meta = pd.read_pickle(filepath3).iloc[:,:-1]
 
-        # Read in the clinical data
-        meta2 = pd.read_excel('../Data/Raw_Data/Clinical_Data/BeatAML/BEAT_AML_Raw clinical data_702.Samples.Vizome.xlsx', index_col=3)
+    # Create a new column with only the content inside [] from column 'Sample_Name'
+    meta['LLS_SampleID'] = meta['Sample_Name'].str.extract(r"\[(.*?)\]", expand=False)
 
-        # Join the two dataframes
-        labels_beataml = meta1.join(meta2, how='left').reset_index().set_index('Sample_ID')
+    # Set the index to the new column
+    meta = meta[['tissue','disease_state','LLS_SampleID','Sample_ID']].set_index('LLS_SampleID')
 
-        return labels_beataml
+    # Extract the last word from the 'Sample ID' column by splitting on the underscore
+    labels2['LLS_SampleID'] = labels2['Sample ID'].str.split('_').str[-1]
+    labels2 = labels2.set_index('LLS_SampleID')
+
+    # Join the two dataframes
+    labels_beataml = labels1.join(labels2, how='outer')
+
+    # Join the two dataframes
+    labels_beataml = meta.join(labels_beataml, how='left').reset_index().set_index('Sample_ID')
+
+    return labels_beataml
 
 # AML-TCGA
 def merge_index_amltcga():
