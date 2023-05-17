@@ -41,6 +41,9 @@ def merge_index_1031():
     # Join the two dataframes
     labels_1031 = labels_1031.join(meta, how='right').set_index('Sample_ID')
 
+    # Rename columns
+    labels_1031 = labels_1031.rename(columns={'fusion':'Gene Fusion.1','timepoint':'Sample Type'})
+
     return labels_1031
 
 # COG TARGET-AML
@@ -689,7 +692,9 @@ def clean_nordic_all(df):
                             'Karyotyping at diagnosisc':'Karyotype'})
     
     df = df.replace({'Unknown': np.nan, 'NA': np.nan,'YES': 'Yes', 'NO': 'No', 'n':'No', 'y':'Yes',
-                     'M':'Male','F':'Female', 'ALL diagnosis':'Diagnosis', 'ALL relapse':'Relapse'})
+                     'M':'Male','F':'Female', 'ALL diagnosis':'Diagnosis', 'ALL relapse':'Relapse',
+                     'normal bone marrow':'Bone Marrow Normal','normal peripheral blood':'Peripheral Blood Normal',
+                     })
 
     # Make `Diagnosis` column by concatenating `immunophenotype` and `subtype` columns
     df['Diagnosis'] = df['immunophenotype'] + ' ' + df['subtype'] 
