@@ -595,7 +595,7 @@ def clean_cog(df):
     return (df)
 
 
-def clean_aml05(df, clinical_data_path='../Data/Raw_Data/Clinical_Data/Japanese_AML05'):
+def clean_aml05(df, clinical_data_path='../Data/Raw_Data/Clinical_Data/Japanese_AML05/'):
     """
     This module cleans and adjusts clinical data files from AML05 trial.
 
@@ -624,7 +624,7 @@ def clean_aml05(df, clinical_data_path='../Data/Raw_Data/Clinical_Data/Japanese_
 
     # Load AML05 Clinical Data from Paper
     aml05 = pd.read_csv(
-        clinical_data_path + '/ClinicalData_AML05_JapaneseTrial_FromPaper.csv', index_col=0)
+        clinical_data_path + 'ClinicalData_AML05_JapaneseTrial_FromPaper.csv', index_col=0)
 
     # All 15 samples are positive for FLT3 ITD according to paper's table 1
     aml05['FLT3 ITD'] = 'Yes'
@@ -655,8 +655,7 @@ def clean_aml05(df, clinical_data_path='../Data/Raw_Data/Clinical_Data/Japanese_
 def clean_beataml(df):
 
     df = df.rename(columns={'LLS_SampleID': 'Patient_ID', 'tissue':'Tissue', 'disease_state':'Sample Type',
-                            'CEBPA_Biallelic': 'CEBPA mutation', 'FAB_BlastMorphology':'FAB',
-                            'SpecificDxAtAcquisition':'Diagnosis','VitalStatus':'Vital Status',
+                            'CEBPA_Biallelic': 'CEBPA mutation','VitalStatus':'Vital Status',
                             'WBC_Count':'WBC Count (10⁹/L)', 'WHO_Fusion':'Gene Fusion'})
     
     df = df.replace({'Unknown': np.nan, 'YES': 'Yes', 'NO': 'No', 'n':'No', 'y':'Yes'})
