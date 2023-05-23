@@ -39,7 +39,7 @@ def merge_index_1031():
     labels_1031 = labels_1031.set_index('Patient_ID')
 
     # Join the two dataframes
-    labels_1031 = labels_1031.join(meta, how='right').set_index('Sample_ID')
+    labels_1031 = labels_1031.join(meta, how='right').reset_index().set_index('Sample_ID')
 
     # Rename columns
     labels_1031 = labels_1031.rename(columns={'fusion':'Gene Fusion.1','timepoint':'Sample Type'})
