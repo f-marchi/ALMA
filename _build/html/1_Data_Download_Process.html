@@ -309,12 +309,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-merge-dataframes">Load and Merge Dataframes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-remove-suboptimal-probes">Step 2. Remove Suboptimal Probes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-remove-suboptimal-probes">Step 2. Remove suboptimal probes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-remove-sex-linked-probes">Step 3. Remove sex-linked probes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-missing-values">Evaluate Missing Values</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-remove-non-hematopoietic-samples">Step 4. Remove Non-Hematopoietic Samples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-remove-non-hematopoietic-samples">Step 4. Remove non-hematopoietic samples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-exclude-samples-in-which-20-of-probes-have-failed-p-values">Step 5. Exclude samples in which &gt;20% of probes have failed p-values</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-exclude-cpg-probes-that-are-missing-in-5-of-samples">Step 6. Exclude CpG probes that are missing in &gt;5% of samples</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Evaluate Missing Values</a></li>
@@ -325,9 +325,15 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-remove-outliers-by-pca">Step 8. Remove outliers by PCA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-perform-batch-correction">Step 9. Perform batch correction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-perform-batch-correction">Step 9. Perform batch correction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-batch-effects">Evaluate batch effects</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-10-remove-samples-based-on-clinical-exclusion-criteria">Step 10. Remove samples based on clinical exclusion criteria</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-dataset">Save Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-dataset">Save dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-final-sample-size-by-batch">Evaluate final sample size by batch</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-1-how-to-download-data-from-geo-or-gdc">Appendix 1. How to download data from GEO or GDC</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gene-expression-omnibus-geo">Gene Expression Omnibus (GEO)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genomic-data-commons-gdc">Genomic Data Commons (GDC)</a></li>
@@ -359,13 +365,13 @@ document.write(`
 <li><p><a class="reference internal" href="#load-and-merge-dataframes" id="id7">Load and Merge Dataframes</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#step-2-remove-suboptimal-probes" id="id8">Step 2. Remove Suboptimal Probes</a></p></li>
+<li><p><a class="reference internal" href="#step-2-remove-suboptimal-probes" id="id8">Step 2. Remove suboptimal probes</a></p></li>
 <li><p><a class="reference internal" href="#step-3-remove-sex-linked-probes" id="id9">Step 3. Remove sex-linked probes</a></p>
 <ul>
 <li><p><a class="reference internal" href="#evaluate-missing-values" id="id10">Evaluate Missing Values</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#step-4-remove-non-hematopoietic-samples" id="id11">Step 4. Remove Non-Hematopoietic Samples</a></p></li>
+<li><p><a class="reference internal" href="#step-4-remove-non-hematopoietic-samples" id="id11">Step 4. Remove non-hematopoietic samples</a></p></li>
 <li><p><a class="reference internal" href="#step-5-exclude-samples-in-which-20-of-probes-have-failed-p-values" id="id12">Step 5. Exclude samples in which &gt;20% of probes have failed p-values</a></p></li>
 <li><p><a class="reference internal" href="#step-6-exclude-cpg-probes-that-are-missing-in-5-of-samples" id="id13">Step 6. Exclude CpG probes that are missing in &gt;5% of samples</a></p>
 <ul>
@@ -378,16 +384,24 @@ document.write(`
 </ul>
 </li>
 <li><p><a class="reference internal" href="#step-8-remove-outliers-by-pca" id="id17">Step 8. Remove outliers by PCA</a></p></li>
-<li><p><a class="reference internal" href="#step-9-perform-batch-correction" id="id18">Step 9. Perform batch correction</a></p></li>
-<li><p><a class="reference internal" href="#step-10-remove-samples-based-on-clinical-exclusion-criteria" id="id19">Step 10. Remove samples based on clinical exclusion criteria</a></p></li>
-<li><p><a class="reference internal" href="#save-dataset" id="id20">Save Dataset</a></p></li>
-<li><p><a class="reference internal" href="#appendix-1-how-to-download-data-from-geo-or-gdc" id="id21">Appendix 1. How to download data from GEO or GDC</a></p>
+<li><p><a class="reference internal" href="#step-9-perform-batch-correction" id="id18">Step 9. Perform batch correction</a></p>
 <ul>
-<li><p><a class="reference internal" href="#gene-expression-omnibus-geo" id="id22">Gene Expression Omnibus (GEO)</a></p></li>
-<li><p><a class="reference internal" href="#genomic-data-commons-gdc" id="id23">Genomic Data Commons (GDC)</a></p></li>
+<li><p><a class="reference internal" href="#evaluate-batch-effects" id="id19">Evaluate batch effects</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#watermark" id="id24">Watermark</a></p></li>
+<li><p><a class="reference internal" href="#step-10-remove-samples-based-on-clinical-exclusion-criteria" id="id20">Step 10. Remove samples based on clinical exclusion criteria</a></p></li>
+<li><p><a class="reference internal" href="#save-dataset" id="id21">Save dataset</a></p>
+<ul>
+<li><p><a class="reference internal" href="#evaluate-final-sample-size-by-batch" id="id22">Evaluate final sample size by batch</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#appendix-1-how-to-download-data-from-geo-or-gdc" id="id23">Appendix 1. How to download data from GEO or GDC</a></p>
+<ul>
+<li><p><a class="reference internal" href="#gene-expression-omnibus-geo" id="id24">Gene Expression Omnibus (GEO)</a></p></li>
+<li><p><a class="reference internal" href="#genomic-data-commons-gdc" id="id25">Genomic Data Commons (GDC)</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#watermark" id="id26">Watermark</a></p></li>
 </ul>
 </li>
 </ul>
@@ -499,9 +513,7 @@ document.write(`
 <h2><a class="toc-backref" href="#id5" role="doc-backlink">Step 1. Process raw data to get methylation beta values</a><a class="headerlink" href="#step-1-process-raw-data-to-get-methylation-beta-values" title="Permalink to this heading">#</a></h2>
 <p>This step will use SeSAMe (<a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/30085201/">Zhou et al. , 2018</a>) to take signal intensity data (red and green .idat files) and convert them to beta values, which represent the % of methylation for each CpG site.</p>
 <p>Process command:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```bash
-python -m methylprep -v process -d &lt;directory&gt; --all --batch_size 199
-```
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m methylprep -v process -d &lt;directory&gt; --all --batch_size 199
 </pre></div>
 </div>
 <div class="admonition note">
@@ -572,7 +584,7 @@ python -m methylprep -v process -d &lt;directory&gt; --all --batch_size 199
 </section>
 </section>
 <section id="step-2-remove-suboptimal-probes">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">Step 2. Remove Suboptimal Probes</a><a class="headerlink" href="#step-2-remove-suboptimal-probes" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Step 2. Remove suboptimal probes</a><a class="headerlink" href="#step-2-remove-suboptimal-probes" title="Permalink to this heading">#</a></h2>
 <p>There are several critera for exclusion of probes: Areas that have polymorphisms, cross-hybridization, repeat sequence elements, or base color changes can affect probe quality. Below are publications that have benchmarked probe quality and have provided lists of probes to exclude:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3592906/">Chen et al., 2013</a></p></li>
@@ -673,7 +685,7 @@ python -m methylprep -v process -d &lt;directory&gt; --all --batch_size 199
 </section>
 </section>
 <section id="step-4-remove-non-hematopoietic-samples">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">Step 4. Remove Non-Hematopoietic Samples</a><a class="headerlink" href="#step-4-remove-non-hematopoietic-samples" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Step 4. Remove non-hematopoietic samples</a><a class="headerlink" href="#step-4-remove-non-hematopoietic-samples" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -923,13 +935,20 @@ python -m methylprep -v process -d &lt;directory&gt; --all --batch_size 199
 </section>
 <section id="step-8-remove-outliers-by-pca">
 <h2><a class="toc-backref" href="#id17" role="doc-backlink">Step 8. Remove outliers by PCA</a><a class="headerlink" href="#step-8-remove-outliers-by-pca" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Define functions</span>
 
 <span class="k">def</span> <span class="nf">standardize_data</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Standardizes the data.&#39;&#39;&#39;</span>
@@ -950,20 +969,19 @@ python -m methylprep -v process -d &lt;directory&gt; --all --batch_size 199
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Filters the DataFrame by removing outliers.&#39;&#39;&#39;</span>
     <span class="n">outliers</span> <span class="o">=</span> <span class="n">principal_df</span><span class="p">[</span><span class="n">principal_df</span><span class="p">[</span><span class="s1">&#39;PC1&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
     <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">outliers</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    
+
+<span class="c1"># Execute functions</span>
+
 <span class="n">threshold</span> <span class="o">=</span> <span class="mi">4000</span>
 <span class="n">X_std</span> <span class="o">=</span> <span class="n">standardize_data</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="n">principal_components</span> <span class="o">=</span> <span class="n">perform_pca</span><span class="p">(</span><span class="n">X_std</span><span class="p">)</span>
 <span class="n">principal_df</span> <span class="o">=</span> <span class="n">create_principal_df</span><span class="p">(</span><span class="n">principal_components</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
 <span class="n">non_outliers</span> <span class="o">=</span> <span class="n">principal_df</span><span class="p">[</span><span class="n">principal_df</span><span class="p">[</span><span class="s1">&#39;PC1&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">]</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">filter_df</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">principal_df</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_data</span><span class="p">(</span><span class="n">principal_df</span><span class="p">,</span> <span class="n">non_outliers</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+
+<span class="c1"># Plot the PCA data</span>
+
+<span class="k">def</span> <span class="nf">plot_data</span><span class="p">(</span><span class="n">principal_df</span><span class="p">,</span> <span class="n">non_outliers</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Plots PCA data.&#39;&#39;&#39;</span>
     <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     
@@ -981,12 +999,14 @@ python -m methylprep -v process -d &lt;directory&gt; --all --batch_size 199
 <span class="n">plot_data</span><span class="p">(</span><span class="n">principal_df</span><span class="p">,</span> <span class="n">non_outliers</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Removed </span><span class="si">{</span><span class="n">principal_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> outliers. </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples remaining.&#39;</span><span class="p">)</span>
 
-<span class="c1"># List the outliers</span>
+<span class="c1"># List outliers</span>
+
 <span class="n">outliers</span> <span class="o">=</span> <span class="n">principal_df</span><span class="p">[</span><span class="n">principal_df</span><span class="p">[</span><span class="s1">&#39;PC1&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
 <span class="n">outliers</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/c165224ec465a440961d76b2f0369c386fe8292a256b38db47df492c552ea3b2.png" src="_images/c165224ec465a440961d76b2f0369c386fe8292a256b38db47df492c552ea3b2.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Removed 11 outliers. 3330 samples remaining.
@@ -1036,132 +1056,61 @@ python -m methylprep -v process -d &lt;directory&gt; --all --batch_size 199
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found 10 batches.
 Adjusting for 0 covariate(s) or covariate level(s).
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standardizing Data across genes.
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">combat.pycombat</span> <span class="kn">import</span> <span class="n">pycombat</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Correct batch effects in the training dataset</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pycombat</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">batch</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">droplevel</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Succesfully corrected batch effects in the training dataset.&#39;</span><span class="p">)</span>
-
-<span class="nn">File ~/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/combat/pycombat.py:656,</span> in <span class="ni">pycombat</span><span class="nt">(data, batch, mod, par_prior, prior_plots, mean_only, ref_batch, precision, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">652</span> <span class="n">B_hat</span><span class="p">,</span> <span class="n">grand_mean</span><span class="p">,</span> <span class="n">var_pooled</span> <span class="o">=</span> <span class="n">calculate_mean_var</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">653</span>     <span class="n">design</span><span class="p">,</span> <span class="n">batches</span><span class="p">,</span> <span class="n">ref</span><span class="p">,</span> <span class="n">dat</span><span class="p">,</span> <span class="n">NAs</span><span class="p">,</span> <span class="n">n_batches</span><span class="p">,</span> <span class="n">n_batch</span><span class="p">,</span> <span class="n">n_array</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">654</span> <span class="n">stand_mean</span> <span class="o">=</span> <span class="n">calculate_stand_mean</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">655</span>     <span class="n">grand_mean</span><span class="p">,</span> <span class="n">n_array</span><span class="p">,</span> <span class="n">design</span><span class="p">,</span> <span class="n">n_batch</span><span class="p">,</span> <span class="n">B_hat</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">656</span> <span class="n">s_data</span> <span class="o">=</span> <span class="n">standardise_data</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">stand_mean</span><span class="p">,</span> <span class="n">var_pooled</span><span class="p">,</span> <span class="n">n_array</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">657</span> <span class="n">gamma_star</span><span class="p">,</span> <span class="n">delta_star</span><span class="p">,</span> <span class="n">batch_design</span> <span class="o">=</span> <span class="n">fit_model</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">658</span>     <span class="n">design</span><span class="p">,</span> <span class="n">n_batch</span><span class="p">,</span> <span class="n">s_data</span><span class="p">,</span> <span class="n">batches</span><span class="p">,</span> <span class="n">mean_only</span><span class="p">,</span> <span class="n">par_prior</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">ref</span><span class="p">,</span> <span class="n">NAs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">659</span> <span class="n">bayes_data</span> <span class="o">=</span> <span class="n">adjust_data</span><span class="p">(</span><span class="n">s_data</span><span class="p">,</span> <span class="n">gamma_star</span><span class="p">,</span> <span class="n">delta_star</span><span class="p">,</span> <span class="n">batch_design</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">660</span>                         <span class="n">n_batches</span><span class="p">,</span> <span class="n">var_pooled</span><span class="p">,</span> <span class="n">stand_mean</span><span class="p">,</span> <span class="n">n_array</span><span class="p">,</span> <span class="n">ref</span><span class="p">,</span> <span class="n">batches</span><span class="p">,</span> <span class="n">dat</span><span class="p">)</span>
-
-<span class="nn">File ~/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/combat/pycombat.py:499,</span> in <span class="ni">standardise_data</span><span class="nt">(dat, stand_mean, var_pooled, n_array)</span>
-<span class="g g-Whitespace">    </span><span class="mi">486</span> <span class="k">def</span> <span class="nf">standardise_data</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">stand_mean</span><span class="p">,</span> <span class="n">var_pooled</span><span class="p">,</span> <span class="n">n_array</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">487</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;standardise the data: substract mean and divide by variance</span>
-<span class="g g-Whitespace">    </span><span class="mi">488</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">489</span><span class="sd">     Arguments:</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">496</span><span class="sd">         s_data {matrix} -- standardised data matrix</span>
-<span class="g g-Whitespace">    </span><span class="mi">497</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">498</span>     <span class="n">s_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">((</span><span class="n">dat</span> <span class="o">-</span> <span class="n">stand_mean</span><span class="p">),</span> \
-<span class="ne">--&gt; </span><span class="mi">499</span>         <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">var_pooled</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">n_array</span><span class="p">])))</span>
-<span class="g g-Whitespace">    </span><span class="mi">500</span>     <span class="k">return</span><span class="p">(</span><span class="n">s_data</span><span class="p">)</span>
-
-<span class="nn">File &lt;__array_function__ internals&gt;:200,</span> in <span class="ni">dot</span><span class="nt">(*args, **kwargs)</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
+Standardizing Data across genes.
+Fitting L/S model and finding priors.
+Finding parametric adjustments.
+Adjusting the Data
+Succesfully corrected batch effects in the training dataset.
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<section id="evaluate-batch-effects">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">Evaluate batch effects</a><a class="headerlink" href="#evaluate-batch-effects" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_std</span> <span class="o">=</span> <span class="n">standardize_data</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="n">principal_components</span> <span class="o">=</span> <span class="n">perform_pca</span><span class="p">(</span><span class="n">X_std</span><span class="p">)</span>
 <span class="n">principal_df</span> <span class="o">=</span> <span class="n">create_principal_df</span><span class="p">(</span><span class="n">principal_components</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_data</span><span class="p">(</span><span class="n">principal_df</span><span class="p">,</span> <span class="n">non_outliers</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Plots PCA data.&#39;&#39;&#39;</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">df</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">legend</span> <span class="ow">in</span> <span class="p">[(</span><span class="n">principal_df</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span>
+                                   <span class="s1">&#39;PCA after batch correction, n=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">principal_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s1">&#39;full&#39;</span><span class="p">),</span>
+                                  <span class="p">(</span><span class="n">non_outliers</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span>
+                                   <span class="s1">&#39;PCA before batch correction, n=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">non_outliers</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="kc">False</span><span class="p">)]:</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;PC2&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;hue&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="n">legend</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;PC 1&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;PC 2&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Batch&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plot_data</span><span class="p">(</span><span class="n">principal_df</span><span class="p">,</span> <span class="n">non_outliers</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/4bb8b21425c18eb6920dc86189651e393814b3a2d17fb68f6140d2be1a4bcd51.png" src="_images/4bb8b21425c18eb6920dc86189651e393814b3a2d17fb68f6140d2be1a4bcd51.png" />
 </div>
+</div>
+</section>
 </section>
 <section id="step-10-remove-samples-based-on-clinical-exclusion-criteria">
-<h2><a class="toc-backref" href="#id19" role="doc-backlink">Step 10. Remove samples based on clinical exclusion criteria</a><a class="headerlink" href="#step-10-remove-samples-based-on-clinical-exclusion-criteria" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;Batch&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import functions to clean up clinical data</span>
-<span class="kn">from</span> <span class="nn">FM_Functions.Clinical_Data_CleanUp</span> <span class="kn">import</span> <span class="o">*</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Call functions to merge, index and clean clinical data files</span>
-<span class="n">labels_0531</span>         <span class="o">=</span> <span class="n">clean_cog</span>       <span class="p">(</span><span class="n">merge_index_0531</span><span class="p">())</span>
-<span class="n">labels_1031</span>         <span class="o">=</span> <span class="n">clean_cog</span>       <span class="p">(</span><span class="n">merge_index_1031</span><span class="p">())</span>
-<span class="n">labels_aml05</span>        <span class="o">=</span> <span class="n">clean_aml05</span>     <span class="p">(</span><span class="n">merge_index_aml05</span><span class="p">())</span>
-<span class="n">labels_beataml</span>      <span class="o">=</span> <span class="n">clean_beataml</span>   <span class="p">(</span><span class="n">merge_index_beataml</span><span class="p">())</span>
-<span class="n">labels_amltcga</span>      <span class="o">=</span> <span class="n">clean_amltcga</span>   <span class="p">(</span><span class="n">merge_index_amltcga</span><span class="p">())</span>
-<span class="n">labels_nordic_all</span>   <span class="o">=</span> <span class="n">clean_nordic_all</span><span class="p">(</span><span class="n">merge_index_nordic_all</span><span class="p">())</span>
-<span class="n">labels_mds_taml</span>     <span class="o">=</span> <span class="n">clean_mds_taml</span>  <span class="p">(</span><span class="n">merge_index_mds_taml</span><span class="p">())</span>
-<span class="n">labels_all_graal</span>    <span class="o">=</span> <span class="n">clean_all_graal</span> <span class="p">(</span><span class="n">merge_index_all_graal</span><span class="p">())</span>
-<span class="n">labels_target_all</span>   <span class="o">=</span> <span class="n">clean_target_all</span><span class="p">(</span><span class="n">merge_index_target_all</span><span class="p">())</span>
-
-<span class="c1"># Combine all clinical data labels into one dataframe</span>
-<span class="n">labels_combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">labels_aml05</span><span class="p">,</span> <span class="n">labels_beataml</span><span class="p">,</span>
-                         <span class="n">labels_0531</span><span class="p">,</span> <span class="n">labels_amltcga</span><span class="p">,</span> <span class="n">labels_1031</span><span class="p">,</span>
-                        <span class="n">labels_nordic_all</span><span class="p">,</span> <span class="n">labels_mds_taml</span><span class="p">,</span>
-                        <span class="n">labels_all_graal</span><span class="p">,</span><span class="n">labels_target_all</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
-
-<span class="c1"># Remove samples that are not in the methyl dataset</span>
-<span class="n">labels_combined</span> <span class="o">=</span> <span class="n">labels_combined</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels_combined</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save each of the labels in excel format</span>
-<span class="c1"># labels_0531.to_excel(output_path + &#39;labels_0531.xlsx&#39;)</span>
-<span class="c1"># labels_1031.to_excel(output_path + &#39;labels_1031.xlsx&#39;)</span>
-<span class="c1"># labels_aml05.to_excel(output_path + &#39;labels_aml05.xlsx&#39;)</span>
-<span class="c1"># labels_beataml.to_excel(output_path + &#39;labels_beataml.xlsx&#39;)</span>
-<span class="c1"># labels_amltcga.to_excel(output_path + &#39;labels_amltcga.xlsx&#39;)</span>
-<span class="c1"># labels_nordic_all.to_excel(output_path + &#39;labels_nordic_all.xlsx&#39;)</span>
-<span class="c1"># labels_mds_taml.to_excel(output_path + &#39;labels_mds_taml.xlsx&#39;)</span>
-<span class="c1"># labels_all_graal.to_excel(output_path + &#39;labels_all_graal.xlsx&#39;)</span>
-<span class="c1"># labels_target_all.to_excel(output_path + &#39;labels_target_all.xlsx&#39;)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;FAB&#39;</span><span class="p">,</span> <span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">,</span> <span class="s1">&#39;Age group (years)&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;Complex Karyotype&#39;</span><span class="p">,</span><span class="s1">&#39;Primary Cytogenetic Code&#39;</span><span class="p">,</span> <span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;Leucocyte counts (10⁹/L)&#39;</span><span class="p">,</span> <span class="s1">&#39;Risk Group&#39;</span><span class="p">,</span><span class="s1">&#39;Race or ethnic group&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;Clinical Trial&#39;</span><span class="p">,</span><span class="s1">&#39;Vital Status&#39;</span><span class="p">,</span><span class="s1">&#39;Sample Type&#39;</span><span class="p">,</span><span class="s1">&#39;Karyotype&#39;</span><span class="p">]</span>
-
-<span class="n">labels_short</span> <span class="o">=</span> <span class="n">labels_combined</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
+<h2><a class="toc-backref" href="#id20" role="doc-backlink">Step 10. Remove samples based on clinical exclusion criteria</a><a class="headerlink" href="#step-10-remove-samples-based-on-clinical-exclusion-criteria" title="Permalink to this heading">#</a></h2>
+<p>Given that this step depends on the specific analysis being conducted, it will be addressed in the next notebook/chapter.</p>
 </section>
 <section id="save-dataset">
-<h2><a class="toc-backref" href="#id20" role="doc-backlink">Save Dataset</a><a class="headerlink" href="#save-dataset" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id21" role="doc-backlink">Save dataset</a><a class="headerlink" href="#save-dataset" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1172,7 +1121,7 @@ Adjusting for 0 covariate(s) or covariate level(s).
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;Batch&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s1">&#39;Dataset (df) contains </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (5mC sites/probes) and </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns (samples).&#39;</span><span class="p">)</span>
+    <span class="sa">f</span><span class="s1">&#39;Dataset (df) contains </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns (samples).&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;2_MethylData_Processing_Output.pkl&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span>
@@ -1182,18 +1131,50 @@ Adjusting for 0 covariate(s) or covariate level(s).
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Dataset (df) contains 333249 rows (mC sites) and 3357 columns (samples).
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset (df) contains 333352 rows (5mC nucleotides/probes) and 3330 columns (samples).
 Successfuly saved processed methyl dataset.
 Path: ../Data/Intermediate_Files/
 </pre></div>
 </div>
 </div>
 </div>
+<section id="evaluate-final-sample-size-by-batch">
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">Evaluate final sample size by batch</a><a class="headerlink" href="#evaluate-final-sample-size-by-batch" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Batch&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Batch
+GSE49031          933
+GSE190931         581
+GSE124413         495
+GSE159907         316
+GDC_TARGET-AML    287
+GDC_TCGA-AML      194
+GSE152710         166
+GSE147667         153
+GDC_TARGET-ALL    141
+GSE133986          64
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="appendix-1-how-to-download-data-from-geo-or-gdc">
-<h2><a class="toc-backref" href="#id21" role="doc-backlink">Appendix 1. How to download data from GEO or GDC</a><a class="headerlink" href="#appendix-1-how-to-download-data-from-geo-or-gdc" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id23" role="doc-backlink">Appendix 1. How to download data from GEO or GDC</a><a class="headerlink" href="#appendix-1-how-to-download-data-from-geo-or-gdc" title="Permalink to this heading">#</a></h2>
 <section id="gene-expression-omnibus-geo">
-<h3><a class="toc-backref" href="#id22" role="doc-backlink">Gene Expression Omnibus (GEO)</a><a class="headerlink" href="#gene-expression-omnibus-geo" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id24" role="doc-backlink">Gene Expression Omnibus (GEO)</a><a class="headerlink" href="#gene-expression-omnibus-geo" title="Permalink to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>Install Python3.7</p>
 <ul class="simple">
@@ -1222,12 +1203,12 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="nv">methy
 </div>
 </section>
 <section id="genomic-data-commons-gdc">
-<h3><a class="toc-backref" href="#id23" role="doc-backlink">Genomic Data Commons (GDC)</a><a class="headerlink" href="#genomic-data-commons-gdc" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id25" role="doc-backlink">Genomic Data Commons (GDC)</a><a class="headerlink" href="#genomic-data-commons-gdc" title="Permalink to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>Go to <a class="reference external" href="https://www.portal.gdc.cancer.gov/repository">GDC Repository</a>.</p></li>
 <li><p>Select the right filtering criteria for you (or click on one of the links from the table above).</p></li>
 <li><p>Once you have a selection of your samples, download the <em>Manisfest</em> file by clicking on the <em>Manifest</em> button.</p></li>
-<li><p>Under the <em>Cases</em> tab, you may find a button with the name <em>Clinical</em> that will download a .tsv file with the clinical data for the samples you selected.</p></li>
+<li><p>Load them samples into your cart, go to cart page and download the <em>Sample Sheet</em>. This step is crucial to link sample IDs to the .idat files.</p></li>
 <li><p>To download the data, you will need the GDC Data Transfer Tool (command-line) that you can find <a class="reference external" href="https://www.gdc.cancer.gov/access-data/gdc-data-transfer-tool">here</a>.</p></li>
 <li><p>Follow the instructions on the link about how to download the file and use it.</p></li>
 <li><p>As an example, on Windows, download the file and extract it to your data folder, then run:</p>
@@ -1236,27 +1217,20 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="nv">methy
 </div>
 </li>
 <li><p>When the .idat files are downloaded, move them to Linux file system (to be used with WSL). If working on a Mac or native Linux, ignore this step.</p></li>
-<li><p>Save the sample sheet file as <em>samplesheet.csv</em> in the directory where the data are located. You can do that through terminal:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">xzf</span> <span class="o">&lt;</span><span class="n">tar</span> <span class="n">file</span> <span class="n">name</span><span class="o">&gt;</span>
-<span class="n">sed</span> <span class="s1">&#39;s/</span><span class="se">\t</span><span class="s1">/,/g&#39;</span> <span class="n">clinical</span><span class="o">.</span><span class="n">tsv</span> <span class="o">&gt;</span> <span class="n">samplesheet</span><span class="o">.</span><span class="n">csv</span>
-</pre></div>
-</div>
-<p>Or you can open <code class="docutils literal notranslate"><span class="pre">clinical.tsv</span></code> in Excel and save it as <code class="docutils literal notranslate"><span class="pre">samplesheet.csv</span></code>.</p>
-<p>Note: for the samplesheet file to be recognized, it has to be name exactly <em>samplesheet.csv</em>. If that does not work, change the ‘open with’ to Excel and/or add ‘.csv’ to the end of the file name.</p>
-</li>
-<li><p>Extract idat files from folders and remove .parcel files and empty folders:</p>
+<li><p>Save the sample sheet file as <em>samplesheet.csv</em> in the directory where the data are located.</p></li>
+<li><p>Extract .idat files from folders and remove .parcel files and empty folders:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">mindepth</span> <span class="mi">2</span> <span class="o">-</span><span class="nb">type</span> <span class="n">f</span> <span class="o">-</span><span class="n">exec</span> <span class="n">mv</span> <span class="o">-</span><span class="n">t</span> <span class="o">.</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span> <span class="o">+</span><span class="p">;</span>
 <span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="nb">type</span> <span class="n">f</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;*.parcel&quot;</span> <span class="o">-</span><span class="n">exec</span> <span class="n">rm</span> <span class="o">-</span><span class="n">f</span> <span class="p">{}</span> \<span class="p">;</span>
 <span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">mindepth</span> <span class="mi">1</span> <span class="o">-</span><span class="nb">type</span> <span class="n">d</span> <span class="o">-</span><span class="n">exec</span> <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="p">{}</span> \<span class="p">;</span>
 </pre></div>
 </div>
 </li>
-<li><p>Congrats! You are ready to process the files using <code class="docutils literal notranslate"><span class="pre">methylprep</span></code>.</p></li>
 </ol>
+<p>Congrats! You are ready to process the files using <code class="docutils literal notranslate"><span class="pre">methylprep</span></code>.</p>
 </section>
 </section>
 <section id="watermark">
-<h2><a class="toc-backref" href="#id24" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id26" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 </div>
 <div class="cell tag_remove-input docutils container">
@@ -1352,12 +1326,12 @@ Architecture: 64bit
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-merge-dataframes">Load and Merge Dataframes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-remove-suboptimal-probes">Step 2. Remove Suboptimal Probes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-remove-suboptimal-probes">Step 2. Remove suboptimal probes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-remove-sex-linked-probes">Step 3. Remove sex-linked probes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-missing-values">Evaluate Missing Values</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-remove-non-hematopoietic-samples">Step 4. Remove Non-Hematopoietic Samples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-remove-non-hematopoietic-samples">Step 4. Remove non-hematopoietic samples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-exclude-samples-in-which-20-of-probes-have-failed-p-values">Step 5. Exclude samples in which &gt;20% of probes have failed p-values</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-exclude-cpg-probes-that-are-missing-in-5-of-samples">Step 6. Exclude CpG probes that are missing in &gt;5% of samples</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Evaluate Missing Values</a></li>
@@ -1368,9 +1342,15 @@ Architecture: 64bit
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-remove-outliers-by-pca">Step 8. Remove outliers by PCA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-perform-batch-correction">Step 9. Perform batch correction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-perform-batch-correction">Step 9. Perform batch correction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-batch-effects">Evaluate batch effects</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-10-remove-samples-based-on-clinical-exclusion-criteria">Step 10. Remove samples based on clinical exclusion criteria</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-dataset">Save Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-dataset">Save dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-final-sample-size-by-batch">Evaluate final sample size by batch</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-1-how-to-download-data-from-geo-or-gdc">Appendix 1. How to download data from GEO or GDC</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gene-expression-omnibus-geo">Gene Expression Omnibus (GEO)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genomic-data-commons-gdc">Genomic Data Commons (GDC)</a></li>
