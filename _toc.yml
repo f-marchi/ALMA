@@ -1,5 +1,5 @@
 format: jb-book
-root: 1_Data_Download_Process.ipynb
+root: 2_ClinicalData_Processing.ipynb
 parts:
   - caption: Specific Aims
     chapters:
@@ -10,10 +10,10 @@ parts:
     chapters:
       - file: docs/Intro_to_Methylation.md
 
-  # - caption: Data Preparation
+  - caption: Data Preparation
 
-  #   chapters:
-  #     - file: 1_Data_Download_Process.ipynb
+    chapters:
+      - file: 1_Data_Download_Process.ipynb
 
   #     # - caption: AML Diagnostic Map
 
