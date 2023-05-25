@@ -65,7 +65,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '1_Data_Download_Process';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="CoxPH-EWAS unadjusted with overall survival as outcome" href="2_Batch_Correction_Benchmark.html" />
     <link rel="prev" title="Understanding DNA Methylation" href="docs/Intro_to_Methylation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -132,7 +131,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="2_ClinicalData_Processing.html">
+<a class="navbar-brand logo" href="2_CoxPH-EWAS.html">
   
   
   
@@ -146,8 +145,8 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="2_ClinicalData_Processing.html">
-                    CoxPH-EWAS unadjusted with overall survival as outcome
+                <a class="reference internal" href="2_CoxPH-EWAS.html">
+                    CoxPH-EWAS unadjusted in COG trials with OS and EFS as outcome
                 </a>
             </li>
         </ul>
@@ -162,7 +161,6 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Preparation</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Methylation-based Classification and Prognosis of AML: Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2_Batch_Correction_Benchmark.html">CoxPH-EWAS unadjusted with overall survival as outcome</a></li>
 </ul>
 
     </div>
@@ -581,11 +579,6 @@ document.write(`
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Dataset (df) contains 452453 rows (5mC sites/probes) and 3845 columns (samples).
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
@@ -1113,7 +1106,49 @@ Succesfully corrected batch effects in the training dataset.
 </section>
 <section id="step-10-remove-samples-based-on-clinical-exclusion-criteria">
 <h2><a class="toc-backref" href="#id20" role="doc-backlink">Step 10. Remove samples based on clinical exclusion criteria</a><a class="headerlink" href="#step-10-remove-samples-based-on-clinical-exclusion-criteria" title="Permalink to this heading">#</a></h2>
-<p>Given that this step depends on the specific analysis being conducted, it will be addressed in the next notebook/chapter.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import functions to clean up clinical data</span>
+<span class="kn">from</span> <span class="nn">FM_Functions.Clinical_Data_CleanUp</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># Call functions to merge, index and clean clinical data files</span>
+<span class="n">labels_0531</span>         <span class="o">=</span> <span class="n">clean_cog</span>       <span class="p">(</span><span class="n">merge_index_0531</span><span class="p">())</span>
+<span class="n">labels_1031</span>         <span class="o">=</span> <span class="n">clean_cog</span>       <span class="p">(</span><span class="n">merge_index_1031</span><span class="p">())</span>
+<span class="n">labels_aml05</span>        <span class="o">=</span> <span class="n">clean_aml05</span>     <span class="p">(</span><span class="n">merge_index_aml05</span><span class="p">())</span>
+<span class="n">labels_beataml</span>      <span class="o">=</span> <span class="n">clean_beataml</span>   <span class="p">(</span><span class="n">merge_index_beataml</span><span class="p">())</span>
+<span class="n">labels_amltcga</span>      <span class="o">=</span> <span class="n">clean_amltcga</span>   <span class="p">(</span><span class="n">merge_index_amltcga</span><span class="p">())</span>
+<span class="n">labels_nordic_all</span>   <span class="o">=</span> <span class="n">clean_nordic_all</span><span class="p">(</span><span class="n">merge_index_nordic_all</span><span class="p">())</span>
+<span class="n">labels_mds_taml</span>     <span class="o">=</span> <span class="n">clean_mds_taml</span>  <span class="p">(</span><span class="n">merge_index_mds_taml</span><span class="p">())</span>
+<span class="n">labels_all_graal</span>    <span class="o">=</span> <span class="n">clean_all_graal</span> <span class="p">(</span><span class="n">merge_index_all_graal</span><span class="p">())</span>
+<span class="n">labels_target_all</span>   <span class="o">=</span> <span class="n">clean_target_all</span><span class="p">(</span><span class="n">merge_index_target_all</span><span class="p">())</span>
+
+<span class="c1"># Combine all clinical data labels into one dataframe</span>
+<span class="n">labels_combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">labels_aml05</span><span class="p">,</span> <span class="n">labels_beataml</span><span class="p">,</span>
+                        <span class="n">labels_0531</span><span class="p">,</span> <span class="n">labels_amltcga</span><span class="p">,</span> <span class="n">labels_1031</span><span class="p">,</span>
+                        <span class="n">labels_nordic_all</span><span class="p">,</span> <span class="n">labels_mds_taml</span><span class="p">,</span>
+                        <span class="n">labels_all_graal</span><span class="p">,</span><span class="n">labels_target_all</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
+
+<span class="c1"># Remove samples that are not in the methyl dataset</span>
+<span class="n">df_labels</span> <span class="o">=</span> <span class="n">labels_combined</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels_combined</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The clinical data has been indexed and cleaned.</span><span class="se">\n\</span>
+<span class="s1">Exclusion of samples may be applied depending on the analysis.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The clinical data has been indexed and cleaned.
+Exclusion of samples may be applied depending on the analysis.
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="save-dataset">
 <h2><a class="toc-backref" href="#id21" role="doc-backlink">Save dataset</a><a class="headerlink" href="#save-dataset" title="Permalink to this heading">#</a></h2>
@@ -1303,15 +1338,6 @@ Architecture: 64bit
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Understanding DNA Methylation</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="2_Batch_Correction_Benchmark.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">CoxPH-EWAS unadjusted with overall survival as outcome</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
