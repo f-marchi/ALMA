@@ -14,7 +14,7 @@ parts:
 
     chapters:
       - file: 1_Data_Download_Process.ipynb
-      - file: 2_Batch_Correction_Benchmark.ipynb
+      - file: 2_CoxPH-EWAS.ipynb
 
   #     # - caption: AML Diagnostic Map
 
