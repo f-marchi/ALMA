@@ -178,7 +178,7 @@ def draw_forest_plot(time, event, df, save_plot=False, trialname=None, scorename
                              'Leucocyte counts (10⁹/L)': 'WBC_count',
                              'Age group (years)': 'Age_group'})
 
-    res = smf.phreg(formula=time2 + " ~ C("+scorename+",Treatment(reference='Low')) + MRD_1_Status + C(Risk_Group,Treatment(reference='Low Risk')) + FLT3_ITD + WBC_count + Age_group",
+    res = smf.phreg(formula=time2 + " ~ C("+scorename+",Treatment(reference='Low')) + C(MRD_1_Status) + C(Risk_Group,Treatment(reference='Low Risk')) + C(FLT3_ITD) + C(WBC_count) + C(Age_group)",
                     data=fp2, status=event2).fit()
 
     res2 = res.summary(xname=[scorename+'-High',

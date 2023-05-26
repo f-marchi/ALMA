@@ -75,7 +75,7 @@ def train_coxph_lasso(df, event, time, train_x=None, cv_n_split=10, loops=10):
         f'Selected alpha value: {gcv.best_estimator_.named_steps["coxnetsurvivalanalysis"].alphas}')
     # Select non-zero features (those not brought to 0 by the L1 (lasso) penalty)
     coefs['nonzero_count'] = coefs.astype(bool).sum(axis=1)
-    coefs['nonzero_freq'] = coefs['nonzero_count']/b[-1]
+    coefs['nonzero_freq'] = coefs['nonzero_count']/loops
     coefs.sort_values(by=['nonzero_freq'], ascending=False, inplace=True)
     return (coefs)
 
