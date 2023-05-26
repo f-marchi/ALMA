@@ -10,7 +10,7 @@ import warnings
 warnings.simplefilter(action='ignore')
 
 
-def train_coxph_lasso(df, event, time, train_x=None, loops=10):
+def train_coxph_lasso(df, event, time, train_x=None, cv_n_split=10, loops=10):
     """
     Implements a Cox Proportional Hazard regression with regularization and loops.
     For more information, please check dependencies.
@@ -44,6 +44,8 @@ def train_coxph_lasso(df, event, time, train_x=None, loops=10):
     from sklearn.model_selection import GridSearchCV, KFold
     from sklearn.pipeline import make_pipeline
     from tqdm import tqdm
+    import warnings
+    warnings.simplefilter(action='ignore')
 
     print(f'Running Cox-Lasso through {loops} loops:')
 
@@ -61,7 +63,7 @@ def train_coxph_lasso(df, event, time, train_x=None, loops=10):
     b = np.arange(loops)
 
     for i in tqdm(b):
-        cv = KFold(n_splits=10, shuffle=True, random_state=i)
+        cv = KFold(n_splits=cv_n_split, shuffle=True, random_state=i)
         gcv = GridSearchCV(make_pipeline(CoxnetSurvivalAnalysis(l1_ratio=1.0)),
                            param_grid={"coxnetsurvivalanalysis__alphas": [
                                [v] for v in estimated_alphas]},
