@@ -536,7 +536,7 @@ def clean_cog(df):
 
     df = df.replace({'Unknown': np.nan, 'YES': 'Yes', 'NO': 'No', 'male': 'Male',
                     'female': 'Female', 'bone Marrow': 'Bone Marrow'})
-    df['Risk Group'] = df['Risk group'].replace({'10': np.nan, '30': np.nan})
+    df['Risk Group'] = df['Risk group'].replace({10: 'Low Risk', 30: 'High Risk'})
     df['First Event'] = df['First Event'].replace({'Induction failure': 'Induction Failure',
                                                    'Death without remission': 'Death without Remission'})
     df['Treatment Arm'] = df['Gemtuzumab ozogamicin treatment'].replace({'Gentuzumab ozogamicin treatment': 'Arm B',
