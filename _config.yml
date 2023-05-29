@@ -1,5 +1,5 @@
 title: Lamba Lab at UF
-author: Francisco Marchi
+author: Francisco Marchi @ Lamba Lab
 copyright: "2023"  # Copyright year to be placed in the footer
 #logo: "_logos/dna1.gif"
 exclude_patterns: [.venv,.venv_py37,.venv_py38, .venv_data_vizualization, .venv_pacmap, .venv_sklearn,
