@@ -160,7 +160,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Preparation</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="1_Data_Download_Process.html">Methylation-based Classification and Prognosis of AML: Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_Data_Download_Process.html">Data Download and Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_Univariate_CoxPH-EWAS.html">CoxPH-EWAS unadjusted in COG trials with OS and EFS as outcome</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">CoxPH-Lasso on top EWAS results</a></li>
 </ul>
@@ -323,6 +323,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#box-plots">Box Plots</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacked-bar-plots">Stacked Bar Plots</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fetch-gene-annotation">Fetch gene annotation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#patient-characteristics-table">Patient Characteristics Table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-progress">In progress</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
 </ul>
             </nav>
         </div>
@@ -357,6 +360,9 @@ document.write(`
 <li><p><a class="reference internal" href="#box-plots" id="id9">Box Plots</a></p></li>
 <li><p><a class="reference internal" href="#stacked-bar-plots" id="id10">Stacked Bar Plots</a></p></li>
 <li><p><a class="reference internal" href="#fetch-gene-annotation" id="id11">Fetch gene annotation</a></p></li>
+<li><p><a class="reference internal" href="#patient-characteristics-table" id="id12">Patient Characteristics Table</a></p></li>
+<li><p><a class="reference internal" href="#in-progress" id="id13">In progress</a></p></li>
+<li><p><a class="reference internal" href="#watermark" id="id14">Watermark</a></p></li>
 </ul>
 </li>
 </ul>
@@ -380,8 +386,7 @@ document.write(`
 <span class="n">df_methyl</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span>
     <span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;df_batch_uncorrected.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s1">&#39; Dataset (df) contains </span><span class="si">{</span><span class="n">df_methyl</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">df_methyl</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (samples).&#39;</span><span class="p">)</span>
+
 
 <span class="c1"># Import functions to clean up clinical data</span>
 <span class="kn">from</span> <span class="nn">FM_Functions.Clinical_Data_CleanUp</span> <span class="kn">import</span> <span class="o">*</span>
@@ -408,12 +413,15 @@ document.write(`
 
 <span class="c1"># Remove samples that are not in the methyl dataset</span>
 <span class="n">df_labels</span> <span class="o">=</span> <span class="n">labels_combined</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels_combined</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39; Dataset (df) contains </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (samples).&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Dataset (df) contains 333352 columns (5mC nucleotides/probes) and 3330 rows (samples).
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Dataset (df) contains 304 columns (5mC nucleotides/probes) and 924 rows (samples).
 </pre></div>
 </div>
 </div>
@@ -492,7 +500,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous score cut at the value of 0.4776
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous score cut at the value of 0.4776 (75.0%)
 </pre></div>
 </div>
 </div>
@@ -884,6 +892,120 @@ Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between grou
 </div></div></div>
 </div>
 </section>
+<section id="patient-characteristics-table">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Patient Characteristics Table</a><a class="headerlink" href="#patient-characteristics-table" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tableone</span> <span class="kn">import</span> <span class="n">TableOne</span>
+
+<span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Age (years)&#39;</span><span class="p">,</span><span class="s1">&#39;Age group (years)&#39;</span><span class="p">,</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span><span class="s1">&#39;Race or ethnic group&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Hispanic or Latino ethnic group&#39;</span><span class="p">,</span> <span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Leucocyte counts (10⁹/L)&#39;</span><span class="p">,</span> <span class="s1">&#39;BM Leukemic blasts (%)&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Risk Group&#39;</span><span class="p">,</span> <span class="s1">&#39;Clinical Trial&#39;</span><span class="p">,</span><span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">]</span>
+
+<span class="n">df_labels</span><span class="p">[</span><span class="s1">&#39;Age (years)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_labels</span><span class="p">[</span><span class="s1">&#39;Age (years)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">mytable_cog</span> <span class="o">=</span> <span class="n">TableOne</span><span class="p">(</span><span class="n">df_labels</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span>
+                        <span class="n">overall</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">pval</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">pval_adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">htest_name</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dip_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">tukey_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">normal_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+
+                        <span class="n">order</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">:[</span><span class="s1">&#39;Yes&#39;</span><span class="p">,</span><span class="s1">&#39;No&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Race or ethnic group&#39;</span><span class="p">:[</span><span class="s1">&#39;White&#39;</span><span class="p">,</span><span class="s1">&#39;Black or African American&#39;</span><span class="p">,</span><span class="s1">&#39;Asian&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Positive&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Risk Group&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;High Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard Risk&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Yes&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Leucocyte counts (10⁹/L)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;≥30&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Age group (years)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;≥10&#39;</span><span class="p">]},</span>
+                        <span class="n">groupby</span><span class="o">=</span><span class="n">score_name</span> <span class="o">+</span> <span class="s1">&#39; Categorical&#39;</span><span class="p">)</span>
+
+<span class="n">mytable_cog</span><span class="o">.</span><span class="n">tabulate</span><span class="p">(</span><span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;html&quot;</span><span class="p">,</span> 
+                        <span class="n">headers</span><span class="o">=</span><span class="p">[</span><span class="n">score_name</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s1">&#39;Missing&#39;</span><span class="p">,</span><span class="s1">&#39;High&#39;</span><span class="p">,</span><span class="s1">&#39;Low&#39;</span><span class="p">,</span><span class="s1">&#39;p-value&#39;</span><span class="p">,</span><span class="s1">&#39;Statistical Test&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead>
+<tr><th>MethylScore_CoxPH                     </th><th>                                         </th><th>Missing  </th><th>High       </th><th>Low        </th><th>p-value  </th><th>Statistical Test                         </th></tr>
+</thead>
+<tbody>
+<tr><td>n                                     </td><td>                                         </td><td>         </td><td>693        </td><td>231        </td><td>         </td><td>                                         </td></tr>
+<tr><td>Age (years), mean (SD)                </td><td>                                         </td><td>0        </td><td>9.7 (6.2)  </td><td>8.4 (6.5)  </td><td>0.008    </td><td>Two Sample T-test                        </td></tr>
+<tr><td>Age group (years), n (%)              </td><td>≥10                                      </td><td>0        </td><td>346 (49.9) </td><td>106 (45.9) </td><td>0.323    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>&lt;10                                      </td><td>         </td><td>347 (50.1) </td><td>125 (54.1) </td><td>         </td><td>                                         </td></tr>
+<tr><td>Sex, n (%)                            </td><td>Female                                   </td><td>0        </td><td>342 (49.4) </td><td>115 (49.8) </td><td>0.970    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>Male                                     </td><td>         </td><td>351 (50.6) </td><td>116 (50.2) </td><td>         </td><td>                                         </td></tr>
+<tr><td>Race or ethnic group, n (%)           </td><td>White                                    </td><td>63       </td><td>497 (77.3) </td><td>183 (83.9) </td><td>0.065    </td><td>Chi-squared (warning: expected count &lt; 5)</td></tr>
+<tr><td>                                      </td><td>Black or African American                </td><td>         </td><td>74 (11.5)  </td><td>26 (11.9)  </td><td>         </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>Asian                                    </td><td>         </td><td>38 (5.9)   </td><td>4 (1.8)    </td><td>         </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>American Indian or Alaska Native         </td><td>         </td><td>4 (0.6)    </td><td>1 (0.5)    </td><td>         </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>Native Hawaiian or other Pacific Islander</td><td>         </td><td>6 (0.9)    </td><td>           </td><td>         </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>Other                                    </td><td>         </td><td>24 (3.7)   </td><td>4 (1.8)    </td><td>         </td><td>                                         </td></tr>
+<tr><td>Hispanic or Latino ethnic group, n (%)</td><td>Hispanic or Latino                       </td><td>28       </td><td>135 (20.1) </td><td>44 (19.6)  </td><td>0.962    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>Not Hispanic or Latino                   </td><td>         </td><td>537 (79.9) </td><td>180 (80.4) </td><td>         </td><td>                                         </td></tr>
+<tr><td>MRD 1 Status, n (%)                   </td><td>Positive                                 </td><td>118      </td><td>169 (27.9) </td><td>82 (41.0)  </td><td>0.001    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>Negative                                 </td><td>         </td><td>437 (72.1) </td><td>118 (59.0) </td><td>         </td><td>                                         </td></tr>
+<tr><td>Leucocyte counts (10⁹/L), n (%)       </td><td>≥30                                      </td><td>0        </td><td>338 (48.8) </td><td>115 (49.8) </td><td>0.849    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>&lt;30                                      </td><td>         </td><td>355 (51.2) </td><td>116 (50.2) </td><td>         </td><td>                                         </td></tr>
+<tr><td>BM Leukemic blasts (%), mean (SD)     </td><td>                                         </td><td>65       </td><td>61.7 (24.8)</td><td>71.1 (21.7)</td><td>&lt;0.001   </td><td>Two Sample T-test                        </td></tr>
+<tr><td>Risk Group, n (%)                     </td><td>High Risk                                </td><td>14       </td><td>76 (11.2)  </td><td>50 (21.8)  </td><td>&lt;0.001   </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>Standard Risk                            </td><td>         </td><td>278 (40.8) </td><td>165 (72.1) </td><td>         </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>Low Risk                                 </td><td>         </td><td>327 (48.0) </td><td>14 (6.1)   </td><td>         </td><td>                                         </td></tr>
+<tr><td>Clinical Trial, n (%)                 </td><td>AAML03P1                                 </td><td>0        </td><td>24 (3.5)   </td><td>12 (5.2)   </td><td>0.234    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>AAML0531                                 </td><td>         </td><td>362 (52.2) </td><td>129 (55.8) </td><td>         </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>AAML1031                                 </td><td>         </td><td>307 (44.3) </td><td>90 (39.0)  </td><td>         </td><td>                                         </td></tr>
+<tr><td>FLT3 ITD, n (%)                       </td><td>Yes                                      </td><td>2        </td><td>121 (17.5) </td><td>41 (17.7)  </td><td>1.000    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>No                                       </td><td>         </td><td>570 (82.5) </td><td>190 (82.3) </td><td>         </td><td>                                         </td></tr>
+</tbody>
+</table></div></div>
+</div>
+</section>
+<section id="in-progress">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">In progress</a><a class="headerlink" href="#in-progress" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Add in validation dataset and validation plots (St. Jude’s AML02 and AML08)</p></li>
+<li><p>Add updated analysis venn diagram</p></li>
+<li><p>Get Dr. Lamba’s feedback on this.</p></li>
+</ol>
+</section>
+<section id="watermark">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Author: Francisco_Marchi@Lamba_Lab_UF
+
+Python implementation: CPython
+Python version       : 3.8.16
+IPython version      : 8.12.2
+
+pandas         : 2.0.1
+seaborn        : 0.11.2
+matplotlib     : 3.7.1
+tableone       : 0.7.12
+sklearn        : 1.2.2
+lifelines      : 0.27.7
+statannotations: 0.5.0
+
+Compiler    : GCC 11.3.0
+OS          : Linux
+Release     : 5.15.90.1-microsoft-standard-WSL2
+Machine     : x86_64
+Processor   : x86_64
+CPU cores   : 20
+Architecture: 64bit
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -958,6 +1080,9 @@ Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between grou
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#box-plots">Box Plots</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacked-bar-plots">Stacked Bar Plots</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fetch-gene-annotation">Fetch gene annotation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#patient-characteristics-table">Patient Characteristics Table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-progress">In progress</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
 </ul>
   </nav></div>
 

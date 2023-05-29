@@ -15,7 +15,7 @@ import methylprep
 from tqdm.autonotebook import tqdm
 
 # app
-from .survival_ewas_helpers import color_schemes, create_probe_chr_map, create_mapinfo
+from .helpers import color_schemes, create_probe_chr_map, create_mapinfo
 
 LOGGER = logging.getLogger(__name__)
 LOGGER.setLevel(logging.INFO)
@@ -152,7 +152,7 @@ Returns:
     warnings.filterwarnings("ignore") # exp(x) overflow error approximates to x=0
 
     allowed = ['verbose', 'alpha', 'fwer', 'column', 'covariates', 'solver', 'max_workers', 'debug',
-    'export', 'filename', 'q_cutoff']
+    'export', 'filename', 'q_cutoff', 'duration', 'event_observed']
     if any([k for k in kwargs if k not in allowed]):
         misspelled = ', '.join([k for k in kwargs if k not in allowed])
         raise KeyError(f"Unrecognized agument(s): {misspelled}")
@@ -161,6 +161,9 @@ Returns:
     alpha = kwargs.get('alpha',0.05)
     fwer = kwargs.get('fwer',0.05)
     q_cutoff = kwargs.get('q_cutoff',1)
+    duration = kwargs.get('duration', None)
+    event_observed = kwargs.get('event_observed',None)
+    
 
 
     # Check if pheno_data is a list, series, or dataframe
@@ -212,7 +215,7 @@ Returns:
             raise ValueError(f"pheno_data must be list-like, or if a DataFrame, specify the 'column' to use.")
 
     # Check that an available regression method has been selected
-    regression_options = ["logistic","linear"]
+    regression_options = ["logistic","linear","coxph"]
     if regression_method not in regression_options:
         raise ValueError("Either 'linear' or 'logistic' regression must be specified for this analysis.")
 
@@ -363,6 +366,65 @@ Returns:
             less stringent and increases the method’s power. As a result, more hypotheses may be rejected and more discoveries
             may be made. (From the Encyclopedia of Systems Biology: https://link.springer.com/referenceworkentry/10.1007%2F978-1-4419-9863-7_1215)
         """
+
+        # Correct all the p-values for multiple testing
+        probe_stats["FDR_QValue"] = sm.stats.multipletests(probe_stats["PValue"], alpha=fwer, method="fdr_bh")[1]
+        # Sort dataframe by q-value, ascending, to list most significant probes first
+        probe_stats = probe_stats.sort_values("FDR_QValue", axis=0)
+        # Limit dataframe to probes with q-values less than the specified cutoff
+        probe_stats = probe_stats.loc[probe_stats["FDR_QValue"] < q_cutoff]
+        # Alert the user if there are no significant DMPs within the cutoff range they specified
+        if probe_stats.shape[0] == 0:
+            print(f"No DMPs were found within the q < {q_cutoff} (the significance cutoff level specified).")
+
+    elif regression_method == "coxph":
+        # Check that durations and event_observed can be converted to a numeric array
+        try:
+            durations_array = np.array(duration, dtype="float_")
+            event_observed_array = np.array(event_observed, dtype="int_")
+        except:
+            raise ValueError("Durations and event observed data cannot be converted to numeric arrays.")
+            
+        ##Fit CoxPH regression to each probe of methylation data
+            ##Parallelize across all available cores using joblib
+        func = cox_ph_DMP_regression
+        n_jobs = cpu_count()
+        if kwargs.get('max_workers'):
+            n_jobs = int(kwargs['max_workers'])
+        
+        if kwargs.get('debug') == True:
+            print(f"DEBUG MODE using cox_ph_DMP_regression kwargs: {kwargs}")
+            probe_stats_rows = []
+            for x in tqdm(meth_data, total=len(all_probes), desc='Probes'):
+                probe_stats_row = func(meth_data[x], durations_array, event_observed_array)
+                probe_stats_rows.append(probe_stats_row)
+            print('Data processing done!')
+            coxph_probe_stats = pd.concat(probe_stats_rows, axis=1)
+        else:
+            func = delayed(func)
+            with Parallel(n_jobs=n_jobs) as parallel:
+                parallel_cleaned_list = []
+                multi_probe_errors = 0
+                # para_gen() generates all the data without loading into memory, and fixes mouse array redundancy
+                def para_gen(meth_data):
+                    for _probe in meth_data:
+                        probe_data = meth_data[_probe]
+                        if isinstance(probe_data, pd.DataFrame):
+                            # happens with mouse when multiple probes have the same name
+                            probe_data = probe_data.mean(axis='columns')
+                            probe_data.name = _probe
+                            multi_probe_errors += 1
+                        # columns are probes, so each probe passes in parallel
+                        yield probe_data
+                # Apply the CoxPH regression function to each column in meth_data (all use the same phenotype data array)
+                probe_stat_rows = parallel(func(probe_data, durations_array, event_observed_array) for probe_data in tqdm(para_gen(meth_data), total=len(all_probes), desc='Probes') )
+                # Concatenate the probes' statistics together into one dataframe
+                coxph_probe_stats = pd.concat(probe_stat_rows, axis=1)
+        
+        # Combine the parallel-processed CoxPH regression results into one pandas dataframe
+        # The concatenation after joblib's parallellization produced a dataframe with a column for each probe
+        # so transpose it to probes by rows instead
+        probe_stats = coxph_probe_stats.T
 
         # Correct all the p-values for multiple testing
         probe_stats["FDR_QValue"] = sm.stats.multipletests(probe_stats["PValue"], alpha=fwer, method="fdr_bh")[1]
@@ -839,6 +901,62 @@ Returns:
     return probe_stats_row
 
 
+from lifelines import CoxPHFitter
+
+def cox_ph_DMP_regression(probe_data, durations, event_observed):
+    """
+    This function performs a Cox Proportional Hazards regression on a single probe's worth of methylation
+    data (in the form of beta or M-values). It is called by the diff_meth_pos().
+
+    Inputs and Parameters:
+
+        probe_data:
+            A pandas Series for a single probe with a methylation M-value/beta-value
+            for each sample in the analysis. The Series name corresponds
+            to the probe ID, and the Series is extracted from the meth_data
+            DataFrame through a parallellized loop in diff_meth_pos().
+        durations:
+            A numpy array of durations for the event of interest. This could be, for instance,
+            the time until death for a survival analysis.
+        event_observed:
+            A binary numpy array indicating whether the event of interest was observed.
+            1 indicates that the event was observed, and 0 indicates that the event was censored.
+
+    Returns:
+
+        A pandas Series of regression statistics for the single probe analyzed.
+        The columns of regression statistics are as follows:
+            - regression coefficient (CoxPHFitter 'coef')
+            - standard error (CoxPHFitter 'se(coef)')
+            - z-score (CoxPHFitter 'z')
+            - p-value (CoxPHFitter 'p')
+    """
+    ##Find the probe name for the single pandas series of data contained in probe_data
+    probe_ID = probe_data.name
+
+    # Combine the probe data, phenotypes, durations, and event_observed into a DataFrame
+    df = pd.DataFrame({
+        'probe_data': probe_data,
+        'duration': durations,
+        'event': event_observed
+    })
+
+    cph = CoxPHFitter()
+    cph.fit(df, duration_col='duration', event_col='event')
+
+    probe_stats_row = pd.Series({
+        "Coefficient": cph.summary.loc['probe_data', 'coef'],
+        "StandardError": cph.summary.loc['probe_data', 'se(coef)'],
+        "HazardsRatio": cph.summary.loc['probe_data', 'exp(coef)'],
+        "95%CI_lower": cph.summary.loc['probe_data', 'exp(coef) lower 95%'],
+        "95%CI_upper": cph.summary.loc['probe_data', 'exp(coef) upper 95%'],
+        "ZScore": cph.summary.loc['probe_data', 'z'],
+        "PValue": cph.summary.loc['probe_data', 'p'],
+    }, name=probe_ID)
+
+    return probe_stats_row
+
+
 '''
 def scratch_logit(probe_series, pheno, verbose=False, train_fraction=0.9): # pragma: no cover
     """ from https://github.com/PedroDidier/Logistic_Regression/blob/master/DiabetesLogistic_Regression/Logistic_Regression_Diabetes.py
@@ -1284,7 +1402,7 @@ visualization kwargs
     allowed = ['verbose','width','height','fontsize','fdr','border','save','palette',
     'fwer','ymax','plot_cutoff_label','label_sig_probes','suggestive','significant','fdr',
     'bonferroni','explore','no_thresholds','plain','statsmode','genome_build','label_prefix',
-    'filename','save']
+    'filename','save','datapoint_size', 'cohorts']
     if any([k for k in kwargs if k not in allowed]):
         misspelled = ', '.join([k for k in kwargs if k not in allowed])
         raise KeyError(f"Unrecognized argument(s): {misspelled}")
@@ -1303,6 +1421,8 @@ visualization kwargs
     suggestive = kwargs.get('suggestive', 1e-5) # literature also uses 5e-7 here
     significant = kwargs.get('significant', 5e-8)
     fdr = kwargs.get('fdr', False)
+    datapoint_size = kwargs.get('datapoint_size', 3)
+    cohorts = kwargs.get('cohorts', None)
     bonferroni = kwargs.get('bonferroni', False)
     if kwargs.get('explore') == True:
         suggestive = kwargs.get('suggestive', 1e-5) # if explore is True and suggestive is False, it won't display.
@@ -1383,7 +1503,7 @@ visualization kwargs
     for num, (name, group) in enumerate(df_grouped):
         try:
             repeat_color = colors[num % len(colors)]
-            group.plot(kind='scatter', x='ind', y='minuslog10value', color=repeat_color, ax=ax)
+            group.plot(kind='scatter', x='ind', y='minuslog10value', color=repeat_color, ax=ax, s=datapoint_size)
             x_labels.append(name)
             x_labels_pos.append((group['ind'].iloc[-1] - (group['ind'].iloc[-1] - group['ind'].iloc[0])/2))
         except ValueError as e:
@@ -1411,7 +1531,8 @@ visualization kwargs
     if bonferroni:
         bonferroni_cutoff = sm.stats.multipletests(df["PValue"], alpha=fwer, method='bonferroni')[3]
         bonferroni_cutoff_label = "{:.2e}".format(bonferroni_cutoff)
-        add_cutoff_line(df, ax, arbitrary_value=bonferroni_cutoff, color='gray', label=f"Bonferroni: {bonferroni_cutoff_label}")
+        add_cutoff_line(df, ax, arbitrary_value=bonferroni_cutoff, color='gray',
+                        label=f"Bonferroni: {bonferroni_cutoff_label}")
     # find the p-value where FDR-Q ~ 0.05
     no_fdr_probes = None
     try:
@@ -1449,8 +1570,13 @@ visualization kwargs
     if pvalue_cutoff_y > ymax and verbose:
         LOGGER.warning(f"Adjusted significance line is above ymax, and won't appear.")
     ax.set_ylim([0, highest_value + 0.05 * highest_value])
-    ax.set_xlabel('Chromosome')
-    ax.set_ylabel('$-log_{10}$(p)')
+    ax.set_xlabel('Chromosome', fontsize=def_fontsize)
+    ax.set_ylabel('$-log_{10}$(p)', fontsize=def_fontsize)
+    # set font size for labels on axes
+    ax.tick_params(axis='both', which='major', labelsize=def_fontsize)
+    ax.tick_params(axis='both', which='minor', labelsize=def_fontsize)
+    ax.set_title(f"EWAS results from" + cohorts, fontsize=def_fontsize+1)
+
     # hide the border; unnecessary
     if border == False:
         ax.spines['top'].set_visible(False)

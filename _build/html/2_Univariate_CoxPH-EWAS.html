@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="CoxPH-Lasso on top EWAS results" href="3_Multivariate_CoxPH-Lasso.html" />
-    <link rel="prev" title="Methylation-based Classification and Prognosis of AML: Methods" href="1_Data_Download_Process.html" />
+    <link rel="prev" title="Data Download and Processing" href="1_Data_Download_Process.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -161,7 +161,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Preparation</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="1_Data_Download_Process.html">Methylation-based Classification and Prognosis of AML: Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_Data_Download_Process.html">Data Download and Processing</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">CoxPH-EWAS unadjusted in COG trials with OS and EFS as outcome</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_Multivariate_CoxPH-Lasso.html">CoxPH-Lasso on top EWAS results</a></li>
 </ul>
@@ -325,7 +325,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-ewas-os-with-batch-correction">Run EWAS OS with batch correction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-ewas-efs-with-batch-correction">Run EWAS EFS with batch correction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-probes-by-bonferroni-corrected-p-values">Select probes by Bonferroni-corrected p-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-probes-by-bonferroni-corrected-p-values-1-5-10e-7">Select probes by Bonferroni-corrected p-values (1.5*10e-7)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-probes-by-standard-genome-wide-significance-threshold-5-10e-8">Select probes by standard genome-wide significance threshold (5*10e-8)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fetch-gene-annotation">Fetch gene annotation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ewas-os">EWAS-OS</a></li>
@@ -338,7 +338,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">EWAS-EFS</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-multivariate-coxph-lasso-analysis">Perform multivariate CoxPH-Lasso analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardize-beta-values-and-save-top-probes">Standardize beta values and save top probes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
 </ul>
             </nav>
@@ -375,7 +375,7 @@ document.write(`
 </li>
 <li><p><a class="reference internal" href="#run-ewas-os-with-batch-correction" id="id13">Run EWAS OS with batch correction</a></p></li>
 <li><p><a class="reference internal" href="#run-ewas-efs-with-batch-correction" id="id14">Run EWAS EFS with batch correction</a></p></li>
-<li><p><a class="reference internal" href="#select-probes-by-bonferroni-corrected-p-values" id="id15">Select probes by Bonferroni-corrected p-values</a></p></li>
+<li><p><a class="reference internal" href="#select-probes-by-bonferroni-corrected-p-values-1-5-10e-7" id="id15">Select probes by Bonferroni-corrected p-values (1.5*10e-7)</a></p></li>
 <li><p><a class="reference internal" href="#select-probes-by-standard-genome-wide-significance-threshold-5-10e-8" id="id16">Select probes by standard genome-wide significance threshold (5*10e-8)</a></p></li>
 <li><p><a class="reference internal" href="#fetch-gene-annotation" id="id17">Fetch gene annotation</a></p>
 <ul>
@@ -390,7 +390,7 @@ document.write(`
 <li><p><a class="reference internal" href="#id2" id="id23">EWAS-EFS</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#perform-multivariate-coxph-lasso-analysis" id="id24">Perform multivariate CoxPH-Lasso analysis</a></p></li>
+<li><p><a class="reference internal" href="#standardize-beta-values-and-save-top-probes" id="id24">Standardize beta values and save top probes</a></p></li>
 <li><p><a class="reference internal" href="#watermark" id="id25">Watermark</a></p></li>
 </ul>
 </li>
@@ -624,8 +624,8 @@ document.write(`
 
     <span class="c1"># Save plot figure</span>
     
-    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../Figures/Beta_to_M_Values_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;_scatterplot&#39;</span> <span class="o">+</span> <span class="s1">&#39;.png&#39;</span><span class="p">,</span>
-                 <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    <span class="c1"># plt.savefig(&#39;../Figures/Beta_to_M_Values_&#39; + str(len(df)) + &#39;_scatterplot&#39; + &#39;.png&#39;,</span>
+    <span class="c1">#              bbox_inches=&#39;tight&#39;, dpi=300)</span>
 
     <span class="k">return</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">())</span>
 
@@ -852,8 +852,8 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </div>
 </section>
-<section id="select-probes-by-bonferroni-corrected-p-values">
-<h2><a class="toc-backref" href="#id15" role="doc-backlink">Select probes by Bonferroni-corrected p-values</a><a class="headerlink" href="#select-probes-by-bonferroni-corrected-p-values" title="Permalink to this heading">#</a></h2>
+<section id="select-probes-by-bonferroni-corrected-p-values-1-5-10e-7">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">Select probes by Bonferroni-corrected p-values (1.5*10e-7)</a><a class="headerlink" href="#select-probes-by-bonferroni-corrected-p-values-1-5-10e-7" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1989,17 +1989,14 @@ Number of CpG probes selected in EWAS OS and EFS: 304
 </div>
 </section>
 </section>
-<section id="perform-multivariate-coxph-lasso-analysis">
-<h2><a class="toc-backref" href="#id24" role="doc-backlink">Perform multivariate CoxPH-Lasso analysis</a><a class="headerlink" href="#perform-multivariate-coxph-lasso-analysis" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import functions to clean up clinical data</span>
-<span class="kn">from</span> <span class="nn">FM_Functions.Cox_Lasso_Function</span> <span class="kn">import</span> <span class="o">*</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
+<section id="standardize-beta-values-and-save-top-probes">
+<h2><a class="toc-backref" href="#id24" role="doc-backlink">Standardize beta values and save top probes</a><a class="headerlink" href="#standardize-beta-values-and-save-top-probes" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select only significant probes</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">df_batchcorrected</span><span class="p">[</span><span class="n">ewas_top2</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_list</span><span class="p">()]</span>
@@ -2010,237 +2007,13 @@ Number of CpG probes selected in EWAS OS and EFS: 304
 <span class="c1"># Save x to pickle in output_path</span>
 <span class="n">x</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;ewas_dmr/ewas_top_x.pkl&#39;</span><span class="p">)</span>
 
-<span class="c1"># Train Cox-PH model with LASSO</span>
-<span class="c1"># coefs = train_coxph_lasso(df=df3, event=&#39;os.evnt&#39;, time=&#39;os.time&#39;,</span>
-<span class="c1">#                           train_x=x.iloc[:,:100], cv_n_split=10, loops=10)</span>
+<span class="c1"># Print a statement saying that you have saved the data, the shape and the path</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Succesfully saved the data in &#39;</span> <span class="o">+</span> <span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;ewas_dmr/ewas_top_x.pkl&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The shape of the data is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coefs</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>coef_0</th>
-      <th>coef_1</th>
-      <th>coef_2</th>
-      <th>coef_3</th>
-      <th>coef_4</th>
-      <th>coef_5</th>
-      <th>coef_6</th>
-      <th>coef_7</th>
-      <th>coef_8</th>
-      <th>coef_9</th>
-      <th>nonzero_count</th>
-      <th>nonzero_freq</th>
-    </tr>
-    <tr>
-      <th>IlmnID</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>cg01543603</th>
-      <td>0.086266</td>
-      <td>0.086266</td>
-      <td>0.109460</td>
-      <td>0.086266</td>
-      <td>0.109460</td>
-      <td>0.093912</td>
-      <td>0.087532</td>
-      <td>0.086266</td>
-      <td>0.086266</td>
-      <td>0.101331</td>
-      <td>10</td>
-      <td>1.111111</td>
-    </tr>
-    <tr>
-      <th>cg25292309</th>
-      <td>-0.051902</td>
-      <td>-0.051902</td>
-      <td>-0.060176</td>
-      <td>-0.051902</td>
-      <td>-0.060176</td>
-      <td>-0.056824</td>
-      <td>-0.051847</td>
-      <td>-0.051902</td>
-      <td>-0.051902</td>
-      <td>-0.058593</td>
-      <td>10</td>
-      <td>1.111111</td>
-    </tr>
-    <tr>
-      <th>cg20310759</th>
-      <td>-0.048395</td>
-      <td>-0.048395</td>
-      <td>-0.088123</td>
-      <td>-0.048395</td>
-      <td>-0.088123</td>
-      <td>-0.073924</td>
-      <td>-0.046083</td>
-      <td>-0.048395</td>
-      <td>-0.048395</td>
-      <td>-0.081225</td>
-      <td>10</td>
-      <td>1.111111</td>
-    </tr>
-    <tr>
-      <th>cg10089193</th>
-      <td>0.079050</td>
-      <td>0.079050</td>
-      <td>0.105827</td>
-      <td>0.079050</td>
-      <td>0.105827</td>
-      <td>0.094449</td>
-      <td>0.076657</td>
-      <td>0.079050</td>
-      <td>0.079050</td>
-      <td>0.100569</td>
-      <td>10</td>
-      <td>1.111111</td>
-    </tr>
-    <tr>
-      <th>cg07660635</th>
-      <td>-0.010627</td>
-      <td>-0.010627</td>
-      <td>-0.052199</td>
-      <td>-0.010627</td>
-      <td>-0.052199</td>
-      <td>-0.038396</td>
-      <td>-0.008454</td>
-      <td>-0.010627</td>
-      <td>-0.010627</td>
-      <td>-0.045548</td>
-      <td>10</td>
-      <td>1.111111</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>cg20429981</th>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>cg12649208</th>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>cg14037250</th>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>cg00101457</th>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>cg02229288</th>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0</td>
-      <td>0.000000</td>
-    </tr>
-  </tbody>
-</table>
-<p>100 rows × 12 columns</p>
-</div></div></div>
+</details>
 </div>
 </section>
 <section id="watermark">
@@ -2307,7 +2080,7 @@ Architecture: 64bit
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Methylation-based Classification and Prognosis of AML: Methods</p>
+        <p class="prev-next-title">Data Download and Processing</p>
       </div>
     </a>
     <a class="right-next"
@@ -2352,7 +2125,7 @@ Architecture: 64bit
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-ewas-os-with-batch-correction">Run EWAS OS with batch correction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-ewas-efs-with-batch-correction">Run EWAS EFS with batch correction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-probes-by-bonferroni-corrected-p-values">Select probes by Bonferroni-corrected p-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-probes-by-bonferroni-corrected-p-values-1-5-10e-7">Select probes by Bonferroni-corrected p-values (1.5*10e-7)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-probes-by-standard-genome-wide-significance-threshold-5-10e-8">Select probes by standard genome-wide significance threshold (5*10e-8)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fetch-gene-annotation">Fetch gene annotation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ewas-os">EWAS-OS</a></li>
@@ -2365,7 +2138,7 @@ Architecture: 64bit
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">EWAS-EFS</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-multivariate-coxph-lasso-analysis">Perform multivariate CoxPH-Lasso analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardize-beta-values-and-save-top-probes">Standardize beta values and save top probes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
 </ul>
   </nav></div>

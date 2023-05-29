@@ -198,7 +198,7 @@ def generate_coxph_score(coef_mean, x, df, score_name, train_test='train',
     else:
         i = train_test
 
-    print(f'Continuous score cut at the value of {round(i,4)}')
+    print(f'Continuous score cut at the value of {round(i,4)} ({cutoff_train*100}%)')
 
     # Binarize score
     df[score_name + ' Categorical'] = pd.cut(df[score_name],
