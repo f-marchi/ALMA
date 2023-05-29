@@ -6,6 +6,8 @@ This module implements a Cox Proportional Hazard regression with regularization.
 import pandas as pd
 import numpy as np
 import warnings
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 warnings.simplefilter(action='ignore')
 
@@ -103,6 +105,47 @@ def set_cutoff(coefs, threshold):
     # Get the mean values of selected coefficients, ignoring 0s
     coef_mean = coefs2.mean(axis=1, skipna=True).sort_values(ascending=False)
     return (coef_mean)
+
+
+def plot_nonzero_coef_freq(raw_coefs, mean_coefs, threshold=0.85, savefig=False, fig_path=None):
+    
+    sns.set_theme(style='white')
+
+    # Larger figure size
+    fig, ax = plt.subplots(figsize=(12,6))
+
+    # Sorting the raw_coefs DataFrame by 'nonzero_freq'
+    raw_coefs = raw_coefs.sort_values('nonzero_freq', ascending=False)
+
+    # Plotting with a more pleasing color palette
+    sns.barplot(x=raw_coefs.index, y=raw_coefs['nonzero_freq'], palette='viridis', ax=ax)
+
+    # Adding y line
+    plt.axhline(threshold, linestyle="--", color="red", label=f"Threshold for selection ({int(threshold*100)}%)",
+                alpha=0.5)
+
+    # Adding labels and title
+    ax.set_xlabel("CpGs, n=" + str(len(raw_coefs)), fontsize=11)
+    ax.set_ylabel("Non-zero Coefficient Frequency", fontsize=11)
+
+    plt.title(f'{len(mean_coefs)} CpGs maintain significance in >{int(threshold*100)}% of model loops',
+              pad=20)
+
+    # Rotating x-axis labels for better readability if labels are overlapping
+    plt.xticks(rotation=90, fontsize=8)
+
+    # Legend
+    plt.legend()
+
+    # Tight layout
+    plt.tight_layout()
+
+    # Saving the figure
+    if savefig and fig_path:
+        plt.savefig(fig_path, bbox_inches='tight', dpi=300)
+
+    # Show the plot
+    plt.show()
 
 
 def generate_coxph_score(coef_mean, x, df, score_name, train_test='train',

@@ -319,6 +319,79 @@ def draw_boxplot(df, x, y, order, trialname, hue=None, save_plot=False, figsize=
     return (plt.show())
 
 
+def draw_stacked_barplot(df, x, y, order, trialname, hue=None, save_plot=False, figsize=None, fontsize=10):
+    """
+    Generates a custom stacked bar plot.
+
+    Parameters:
+    ----------
+    df: object
+        A dataframe containing the columns x, y,and hue.
+    x: str
+        Categorical variable for the x-axis of the plot.
+    y: str
+        Continuous variable for the y-axis of the plot.
+    hue: str, default=None
+        Optional variable to be used as hue.
+    save_plot: bool, default=False
+        Set to True if you wish to save the plot. It will be saved under "../Figures/Bar_Plots/"
+    figsize: tuple, default=None
+        Tuple containing the figsize. Select None for automatic size selection.
+
+
+    Returns:
+    --------
+        A magnificent bar plot.
+
+    """
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+    import matplotlib.ticker as mticker
+    import numpy as np
+    import pandas as pd
+
+    # Set up the matplotlib figure
+    sns.set_theme(style='white')
+    plt.subplots(figsize=figsize)
+
+    if order == 'auto':
+        order2 = list(df[x].value_counts().index)
+    else:
+        order2 = order.copy()
+
+    # Count the occurrences of each hue within each x value
+    hue_counts = df.groupby([x, hue])[y].count().unstack(fill_value=0)
+    # Convert these counts to proportions
+    hue_props = hue_counts.divide(hue_counts.sum(axis=1), axis=0)
+    
+    # Generate a stacked bar plot
+    hue_props.loc[order2, :].plot(kind='bar', stacked=True, ax=plt.gca())
+
+    # Annotate the bars with their percentage values
+    for rect in plt.gca().patches:
+        height = rect.get_height()
+        plt.gca().text(rect.get_x() + rect.get_width() / 2, rect.get_y() + height / 2,
+                       '{:.1f}%'.format(height * 100), ha='center', va='center', color='white', fontsize=fontsize)
+
+    plt.gca().yaxis.set_major_formatter(mticker.PercentFormatter(1))
+
+    # Tweak the visual presentation
+    plt.gca().xaxis.grid(False)
+
+    # Turn tick labels 90 degrees
+    plt.xticks(rotation=0,ha='center')
+
+    plt.title(y + ' by ' + x + ' in ' + trialname, fontsize='medium', y=1)
+    plt.legend(loc='center right', bbox_to_anchor=(1.25, 0.5))
+
+    # Save plot figure
+    if save_plot == True:
+        plt.savefig('../Figures/Bar_Plots/' + '_'.join(hue_props.columns.tolist()) + '_' + trialname + '_' + str(len(df)) + '_' + x + '.png',
+                    bbox_inches='tight', dpi=300)
+
+    return plt.show()
+
+
 def draw_heatmaps(fig_title, t1, t2, df1, df2, fig_number, save_plot=False, figsize=(9, 7)):
     """
     Generates a double-heatmap based on two datasets.
