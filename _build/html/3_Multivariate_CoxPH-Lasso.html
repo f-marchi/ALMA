@@ -1,0 +1,1014 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>CoxPH-Lasso on top EWAS results &#8212; Lamba Lab at UF</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '3_Multivariate_CoxPH-Lasso';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="CoxPH-EWAS unadjusted in COG trials with OS and EFS as outcome" href="2_Univariate_CoxPH-EWAS.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Lamba Lab at UF</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    DNA methylation-based diagnosis and prognosis of pediatric AML
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Specific Aims</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="docs/Specific_Aims.html">Specific Aims</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="docs/Intro_to_Methylation.html">Understanding DNA Methylation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Preparation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_Data_Download_Process.html">Methylation-based Classification and Prognosis of AML: Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_Univariate_CoxPH-EWAS.html">CoxPH-EWAS unadjusted in COG trials with OS and EFS as outcome</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">CoxPH-Lasso on top EWAS results</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/3_Multivariate_CoxPH-Lasso.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>CoxPH-Lasso on top EWAS results</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-survival-analysis">Perform Survival Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-threshold">Set Threshold</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-model-results">Generate Model Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discovery-dataset">Discovery Dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kaplan-meier-plots">Kaplan-Meier Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forest-plots">Forest Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#box-plots">Box Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacked-bar-plots">Stacked Bar Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fetch-gene-annotation">Fetch gene annotation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="coxph-lasso-on-top-ewas-results">
+<h1><a class="toc-backref" href="#id1" role="doc-backlink">CoxPH-Lasso on top EWAS results</a><a class="headerlink" href="#coxph-lasso-on-top-ewas-results" title="Permalink to this heading">#</a></h1>
+<nav class="contents" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#coxph-lasso-on-top-ewas-results" id="id1">CoxPH-Lasso on top EWAS results</a></p>
+<ul>
+<li><p><a class="reference internal" href="#load-data" id="id2">Load Data</a></p></li>
+<li><p><a class="reference internal" href="#perform-survival-analysis" id="id3">Perform Survival Analysis</a></p>
+<ul>
+<li><p><a class="reference internal" href="#set-threshold" id="id4">Set Threshold</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#generate-model-results" id="id5">Generate Model Results</a></p>
+<ul>
+<li><p><a class="reference internal" href="#discovery-dataset" id="id6">Discovery Dataset</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#kaplan-meier-plots" id="id7">Kaplan-Meier Plots</a></p></li>
+<li><p><a class="reference internal" href="#forest-plots" id="id8">Forest Plots</a></p></li>
+<li><p><a class="reference internal" href="#box-plots" id="id9">Box Plots</a></p></li>
+<li><p><a class="reference internal" href="#stacked-bar-plots" id="id10">Stacked Bar Plots</a></p></li>
+<li><p><a class="reference internal" href="#fetch-gene-annotation" id="id11">Fetch gene annotation</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="load-data">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Load Data</a><a class="headerlink" href="#load-data" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">input_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Intermediate_Files/&#39;</span>
+<span class="n">clinical_data_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Raw_Data/Clinical_Data/&#39;</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/&#39;</span>
+
+
+<span class="n">df_methyl</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span>
+    <span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;df_batch_uncorrected.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39; Dataset (df) contains </span><span class="si">{</span><span class="n">df_methyl</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">df_methyl</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (samples).&#39;</span><span class="p">)</span>
+
+<span class="c1"># Import functions to clean up clinical data</span>
+<span class="kn">from</span> <span class="nn">FM_Functions.Clinical_Data_CleanUp</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># Call functions to merge, index and clean clinical data files</span>
+<span class="n">labels_0531</span>         <span class="o">=</span> <span class="n">clean_cog</span>       <span class="p">(</span><span class="n">merge_index_0531</span><span class="p">())</span>
+<span class="n">labels_1031</span>         <span class="o">=</span> <span class="n">clean_cog</span>       <span class="p">(</span><span class="n">merge_index_1031</span><span class="p">())</span>
+<span class="n">labels_aml05</span>        <span class="o">=</span> <span class="n">clean_aml05</span>     <span class="p">(</span><span class="n">merge_index_aml05</span><span class="p">())</span>
+<span class="n">labels_beataml</span>      <span class="o">=</span> <span class="n">clean_beataml</span>   <span class="p">(</span><span class="n">merge_index_beataml</span><span class="p">())</span>
+<span class="n">labels_amltcga</span>      <span class="o">=</span> <span class="n">clean_amltcga</span>   <span class="p">(</span><span class="n">merge_index_amltcga</span><span class="p">())</span>
+<span class="n">labels_nordic_all</span>   <span class="o">=</span> <span class="n">clean_nordic_all</span><span class="p">(</span><span class="n">merge_index_nordic_all</span><span class="p">())</span>
+<span class="n">labels_mds_taml</span>     <span class="o">=</span> <span class="n">clean_mds_taml</span>  <span class="p">(</span><span class="n">merge_index_mds_taml</span><span class="p">())</span>
+<span class="n">labels_all_graal</span>    <span class="o">=</span> <span class="n">clean_all_graal</span> <span class="p">(</span><span class="n">merge_index_all_graal</span><span class="p">())</span>
+<span class="n">labels_target_all</span>   <span class="o">=</span> <span class="n">clean_target_all</span><span class="p">(</span><span class="n">merge_index_target_all</span><span class="p">())</span>
+
+<span class="c1"># Combine all clinical data labels into one dataframe</span>
+<span class="n">labels_combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">labels_aml05</span><span class="p">,</span> <span class="n">labels_beataml</span><span class="p">,</span>
+                         <span class="n">labels_0531</span><span class="p">,</span> <span class="n">labels_amltcga</span><span class="p">,</span> <span class="n">labels_1031</span><span class="p">,</span>
+                        <span class="n">labels_nordic_all</span><span class="p">,</span> <span class="n">labels_mds_taml</span><span class="p">,</span>
+                        <span class="n">labels_all_graal</span><span class="p">,</span><span class="n">labels_target_all</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
+
+<span class="c1"># read x_top from output file</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;ewas_dmr/ewas_top_x.pkl&#39;</span><span class="p">)</span>
+
+<span class="c1"># Remove samples that are not in the methyl dataset</span>
+<span class="n">df_labels</span> <span class="o">=</span> <span class="n">labels_combined</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels_combined</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Dataset (df) contains 333352 columns (5mC nucleotides/probes) and 3330 rows (samples).
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="perform-survival-analysis">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Perform Survival Analysis</a><a class="headerlink" href="#perform-survival-analysis" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import functions to clean up clinical data</span>
+<span class="kn">from</span> <span class="nn">FM_Functions.Cox_Lasso_Function</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># raw_coefs = train_coxph_lasso(df=df_labels,</span>
+<span class="c1">#                                 event= &#39;os.evnt&#39;,</span>
+<span class="c1">#                                 time= &#39;os.time&#39;,</span>
+<span class="c1">#                                 train_x=x.iloc[:,:100],</span>
+<span class="c1">#                                 cv_n_split=3,</span>
+<span class="c1">#                                 loops=10)</span>
+
+
+<span class="c1"># raw_coefs.to_csv(output_path + &#39;multivariate_cox_lasso/ewas_cog_os_raw_coefs.csv&#39;)</span>
+<span class="n">raw_coefs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;multivariate_cox_lasso/ewas_cog_os_raw_coefs.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="set-threshold">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Set Threshold</a><a class="headerlink" href="#set-threshold" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_coefs</span> <span class="o">=</span> <span class="n">set_cutoff</span><span class="p">(</span><span class="n">coefs</span><span class="o">=</span><span class="n">raw_coefs</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
+                                
+<span class="n">plot_nonzero_coef_freq</span><span class="p">(</span><span class="n">raw_coefs</span><span class="p">,</span> <span class="n">mean_coefs</span><span class="p">,</span> <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fig_path</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/5a885d477acdd6c2120ef153569b651583c6414207a49e4301036516f58ac426.png" src="_images/5a885d477acdd6c2120ef153569b651583c6414207a49e4301036516f58ac426.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="generate-model-results">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Generate Model Results</a><a class="headerlink" href="#generate-model-results" title="Permalink to this heading">#</a></h2>
+<section id="discovery-dataset">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Discovery Dataset</a><a class="headerlink" href="#discovery-dataset" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">score_name</span> <span class="o">=</span> <span class="s1">&#39;MethylScore_CoxPH&#39;</span>
+
+<span class="n">df</span><span class="p">,</span> <span class="n">methylscore_cutoff</span> <span class="o">=</span> <span class="n">generate_coxph_score</span><span class="p">(</span><span class="n">coef_mean</span><span class="o">=</span><span class="n">mean_coefs</span><span class="p">,</span>
+                                        <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">100</span><span class="p">],</span>
+                                        <span class="n">df</span><span class="o">=</span><span class="n">df_labels</span><span class="p">,</span>
+                                        <span class="n">score_name</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                                        <span class="n">train_test</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                                        <span class="n">cutoff_train</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous score cut at the value of 0.4776
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="kaplan-meier-plots">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Kaplan-Meier Plots</a><a class="headerlink" href="#kaplan-meier-plots" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import Plotting Functions</span>
+<span class="kn">from</span> <span class="nn">FM_Functions.Data_Visualization</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">scorename</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                        <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;COG trials&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/a5d4f0ace47ce390b37e56ff279a2e2f86331a63d393aa3e255bff2c201380bb.png" src="_images/a5d4f0ace47ce390b37e56ff279a2e2f86331a63d393aa3e255bff2c201380bb.png" />
+</div>
+</div>
+</section>
+<section id="forest-plots">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Forest Plots</a><a class="headerlink" href="#forest-plots" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_forest_plot</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;os.time&#39;</span><span class="p">,</span>
+                    <span class="n">event</span><span class="o">=</span><span class="s1">&#39;os.evnt&#39;</span><span class="p">,</span>
+                    <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+                    <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;COG trials&#39;</span><span class="p">,</span>
+                    <span class="n">scorename</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                    <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">draw_forest_plot</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;efs.time&#39;</span><span class="p">,</span>
+                    <span class="n">event</span><span class="o">=</span><span class="s1">&#39;efs.evnt&#39;</span><span class="p">,</span>
+                    <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+                    <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;COG trials&#39;</span><span class="p">,</span>
+                    <span class="n">scorename</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                    <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/cb4349541122ef89ba038d9b9a0a4f13de2c2f38749543e732bf3cc175046b2c.png" src="_images/cb4349541122ef89ba038d9b9a0a4f13de2c2f38749543e732bf3cc175046b2c.png" />
+<img alt="_images/55af936683a619d1cbed74c9b8ac6969105fe0148815e2c97a5fa7a23c12f410.png" src="_images/55af936683a619d1cbed74c9b8ac6969105fe0148815e2c97a5fa7a23c12f410.png" />
+</div>
+</div>
+</section>
+<section id="box-plots">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Box Plots</a><a class="headerlink" href="#box-plots" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_boxplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_labels</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;High Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Low Risk&#39;</span><span class="p">],</span>
+                <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;COG&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">score_name</span> <span class="o">+</span> <span class="s1">&#39; Categorical&#39;</span><span class="p">,</span>
+                <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">draw_boxplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_labels</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Positive&#39;</span><span class="p">,</span><span class="s1">&#39;Negative&#39;</span><span class="p">],</span>
+                <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;COG&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">score_name</span> <span class="o">+</span> <span class="s1">&#39; Categorical&#39;</span><span class="p">,</span>
+                <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">draw_boxplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_labels</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Primary Cytogenetic Code&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                <span class="n">order</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+                <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;COG&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">score_name</span> <span class="o">+</span> <span class="s1">&#39; Categorical&#39;</span><span class="p">,</span>
+                <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p-value annotation legend:
+      ns: p &lt;= 1.00e+00
+       *: 1.00e-02 &lt; p &lt;= 5.00e-02
+      **: 1.00e-03 &lt; p &lt;= 1.00e-02
+     ***: 1.00e-04 &lt; p &lt;= 1.00e-03
+    ****: p &lt;= 1.00e-04
+
+High Risk vs. Standard Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:1.000e+00 Stat=4.048e-01
+Standard Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:1.823e-81 Stat=3.677e+02
+High Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:2.730e-41 Stat=1.833e+02
+</pre></div>
+</div>
+<img alt="_images/f31307477b06743ee9d90ae7ad34dce0e2c6fdb300b93441c08af88942165ac5.png" src="_images/f31307477b06743ee9d90ae7ad34dce0e2c6fdb300b93441c08af88942165ac5.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p-value annotation legend:
+      ns: p &lt;= 1.00e+00
+       *: 1.00e-02 &lt; p &lt;= 5.00e-02
+      **: 1.00e-03 &lt; p &lt;= 1.00e-02
+     ***: 1.00e-04 &lt; p &lt;= 1.00e-03
+    ****: p &lt;= 1.00e-04
+
+Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:3.617e-08 Stat=3.034e+01
+</pre></div>
+</div>
+<img alt="_images/ca22834dd5e11bd2475611da40c66f39d8046a0ccd5303d56886729ba98172ad.png" src="_images/ca22834dd5e11bd2475611da40c66f39d8046a0ccd5303d56886729ba98172ad.png" />
+<img alt="_images/344958e74e3cd689ed3542ca9d3f73a9a1ceed0f5c794736559cbd4a86dbb688.png" src="_images/344958e74e3cd689ed3542ca9d3f73a9a1ceed0f5c794736559cbd4a86dbb688.png" />
+</div>
+</div>
+</section>
+<section id="stacked-bar-plots">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Stacked Bar Plots</a><a class="headerlink" href="#stacked-bar-plots" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_stacked_barplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_labels</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+             <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Positive&#39;</span><span class="p">,</span><span class="s1">&#39;Negative&#39;</span><span class="p">],</span>
+             <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;COG&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">score_name</span> <span class="o">+</span> <span class="s1">&#39; Categorical&#39;</span><span class="p">,</span>
+             <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">draw_stacked_barplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_labels</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;High Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Low Risk&#39;</span><span class="p">],</span>
+                <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;COG&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">score_name</span> <span class="o">+</span> <span class="s1">&#39; Categorical&#39;</span><span class="p">,</span>
+                <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+
+<span class="n">draw_stacked_barplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_labels</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Primary Cytogenetic Code&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                <span class="n">order</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+                <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;COG&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">score_name</span> <span class="o">+</span> <span class="s1">&#39; Categorical&#39;</span><span class="p">,</span>
+                <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/66c27b22bc1ad286023cc8c8351b13607c690988a7d278878fe124b86110dea3.png" src="_images/66c27b22bc1ad286023cc8c8351b13607c690988a7d278878fe124b86110dea3.png" />
+<img alt="_images/d81c68e776964fd1c6af15520255cce989dfad2609145fd9da9ba91c9f490bc3.png" src="_images/d81c68e776964fd1c6af15520255cce989dfad2609145fd9da9ba91c9f490bc3.png" />
+<img alt="_images/ec64cc4228201c64de8e1e3797a9d1b7f0cedd846ce48ec1ab8c2e64a2e3c697.png" src="_images/ec64cc4228201c64de8e1e3797a9d1b7f0cedd846ce48ec1ab8c2e64a2e3c697.png" />
+</div>
+</div>
+</section>
+<section id="fetch-gene-annotation">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Fetch gene annotation</a><a class="headerlink" href="#fetch-gene-annotation" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load manifest</span>
+<span class="n">zhou2016_probes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../Data/UnreliableProbesList_Zhou2016/EPIC.anno.GRCh38.tsv&#39;</span><span class="p">,</span>
+                              <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)[[</span><span class="s1">&#39;chrm&#39;</span><span class="p">,</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="s1">&#39;GeneNames&#39;</span><span class="p">,</span><span class="s1">&#39;GeneClasses&#39;</span><span class="p">,</span> <span class="s1">&#39;TranscriptIDs&#39;</span><span class="p">,</span><span class="s1">&#39;CGIPosition&#39;</span><span class="p">]]</span>
+
+<span class="c1"># Get probes from Zhou et al. (2016) that are in ewasOS_un.index</span>
+<span class="n">mean_coefs_genes</span> <span class="o">=</span> <span class="n">zhou2016_probes</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mean_coefs</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s1">&#39;MethylScore Coefficients&#39;</span><span class="p">),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;MethylScore Coefficients&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># `GeneNames`, `GeneClasses`, and `TranscriptIDs` columns contain multiple genes separated by `;` so we need to keep only the unique ones</span>
+<span class="n">mean_coefs_genes</span><span class="p">[</span><span class="s1">&#39;GeneNames&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_coefs_genes</span><span class="p">[</span><span class="s1">&#39;GeneNames&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">))))</span>
+<span class="n">mean_coefs_genes</span><span class="p">[</span><span class="s1">&#39;GeneClasses&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_coefs_genes</span><span class="p">[</span><span class="s1">&#39;GeneClasses&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">))))</span>
+<span class="n">mean_coefs_genes</span><span class="p">[</span><span class="s1">&#39;TranscriptIDs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_coefs_genes</span><span class="p">[</span><span class="s1">&#39;TranscriptIDs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">))))</span>
+
+<span class="n">mean_coefs_genes</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>chrm</th>
+      <th>start</th>
+      <th>end</th>
+      <th>GeneNames</th>
+      <th>GeneClasses</th>
+      <th>TranscriptIDs</th>
+      <th>CGIPosition</th>
+      <th>MethylScore Coefficients</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>cg20219911</th>
+      <td>chr3</td>
+      <td>52779635</td>
+      <td>52779637</td>
+      <td>ITIH1</td>
+      <td>protein_coding</td>
+      <td>ENST00000478667.4;ENST00000487686.4;ENST000002...</td>
+      <td>.</td>
+      <td>0.193547</td>
+    </tr>
+    <tr>
+      <th>cg17099306</th>
+      <td>chr13</td>
+      <td>49549508</td>
+      <td>49549510</td>
+      <td>RCBTB1</td>
+      <td>protein_coding</td>
+      <td>ENST00000378302.5;ENST00000258646.3</td>
+      <td>.</td>
+      <td>0.105642</td>
+    </tr>
+    <tr>
+      <th>cg01543603</th>
+      <td>chr16</td>
+      <td>89403132</td>
+      <td>89403134</td>
+      <td>ANKRD11;RP1-168P16.2</td>
+      <td>sense_intronic;protein_coding</td>
+      <td>ENST00000562211.1;ENST00000378330.5;ENST000005...</td>
+      <td>.</td>
+      <td>0.091378</td>
+    </tr>
+    <tr>
+      <th>cg10089193</th>
+      <td>chr16</td>
+      <td>1090938</td>
+      <td>1090940</td>
+      <td>C1QTNF8</td>
+      <td>protein_coding</td>
+      <td>ENST00000621771.1;ENST00000328449.5</td>
+      <td>S_Shore</td>
+      <td>0.083503</td>
+    </tr>
+    <tr>
+      <th>cg02678414</th>
+      <td>chr16</td>
+      <td>2159838</td>
+      <td>2159840</td>
+      <td>TRAF7</td>
+      <td>protein_coding</td>
+      <td>ENST00000569686.4;ENST00000564067.4;ENST000005...</td>
+      <td>S_Shelf</td>
+      <td>0.079688</td>
+    </tr>
+    <tr>
+      <th>cg05131266</th>
+      <td>chr14</td>
+      <td>91125543</td>
+      <td>91125545</td>
+      <td>SNORA11B;C14orf159</td>
+      <td>snoRNA;protein_coding</td>
+      <td>ENST00000523894.4;ENST00000518649.4;ENST000005...</td>
+      <td>.</td>
+      <td>0.077085</td>
+    </tr>
+    <tr>
+      <th>cg00192882</th>
+      <td>chr17</td>
+      <td>19387806</td>
+      <td>19387808</td>
+      <td>MFAP4</td>
+      <td>protein_coding</td>
+      <td>ENST00000299610.4;ENST00000497081.5;ENST000005...</td>
+      <td>.</td>
+      <td>0.059155</td>
+    </tr>
+    <tr>
+      <th>cg08329113</th>
+      <td>chr16</td>
+      <td>70737238</td>
+      <td>70737240</td>
+      <td>VAC14</td>
+      <td>protein_coding</td>
+      <td>ENST00000561879.1;ENST00000564685.4;ENST000005...</td>
+      <td>.</td>
+      <td>0.027522</td>
+    </tr>
+    <tr>
+      <th>cg18072388</th>
+      <td>chr19</td>
+      <td>10323084</td>
+      <td>10323086</td>
+      <td>RAVER1</td>
+      <td>protein_coding</td>
+      <td>ENST00000615032.3;ENST00000593136.2;ENST000006...</td>
+      <td>N_Shore</td>
+      <td>0.017603</td>
+    </tr>
+    <tr>
+      <th>cg07660635</th>
+      <td>chr16</td>
+      <td>85902540</td>
+      <td>85902542</td>
+      <td>IRF8</td>
+      <td>protein_coding</td>
+      <td>ENST00000268638.8;ENST00000564617.4;ENST000005...</td>
+      <td>S_Shelf</td>
+      <td>-0.020918</td>
+    </tr>
+    <tr>
+      <th>cg25292309</th>
+      <td>chr2</td>
+      <td>58762291</td>
+      <td>58762293</td>
+      <td>LINC01122</td>
+      <td>lincRNA</td>
+      <td>ENST00000422723.4;ENST00000429664.4;ENST000004...</td>
+      <td>.</td>
+      <td>-0.053502</td>
+    </tr>
+    <tr>
+      <th>cg20310759</th>
+      <td>chr1</td>
+      <td>87152629</td>
+      <td>87152631</td>
+      <td>LINC01140;RP5-1052I5.2</td>
+      <td>lincRNA;protein_coding</td>
+      <td>ENST00000490006.5;ENST00000469312.5;ENST000005...</td>
+      <td>S_Shore</td>
+      <td>-0.056282</td>
+    </tr>
+    <tr>
+      <th>cg06748884</th>
+      <td>chr16</td>
+      <td>11138900</td>
+      <td>11138902</td>
+      <td>CLEC16A</td>
+      <td>protein_coding</td>
+      <td>ENST00000459723.1;ENST00000436973.4;ENST000004...</td>
+      <td>.</td>
+      <td>-0.066351</td>
+    </tr>
+    <tr>
+      <th>cg04839706</th>
+      <td>chr16</td>
+      <td>46886162</td>
+      <td>46886164</td>
+      <td>GPT2</td>
+      <td>protein_coding</td>
+      <td>ENST00000562132.4;ENST00000340124.7;ENST000004...</td>
+      <td>S_Shore</td>
+      <td>-0.090482</td>
+    </tr>
+    <tr>
+      <th>cg14928764</th>
+      <td>chr20</td>
+      <td>23083970</td>
+      <td>23083972</td>
+      <td>CD93</td>
+      <td>protein_coding</td>
+      <td>ENST00000246006.4</td>
+      <td>.</td>
+      <td>-0.112784</td>
+    </tr>
+    <tr>
+      <th>cg08900363</th>
+      <td>chr7</td>
+      <td>597816</td>
+      <td>597818</td>
+      <td>PRKAR1B</td>
+      <td>protein_coding</td>
+      <td>ENST00000360274.7;ENST00000403562.4;ENST000004...</td>
+      <td>.</td>
+      <td>-0.137103</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2_Univariate_CoxPH-EWAS.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">CoxPH-EWAS unadjusted in COG trials with OS and EFS as outcome</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-survival-analysis">Perform Survival Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-threshold">Set Threshold</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-model-results">Generate Model Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discovery-dataset">Discovery Dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kaplan-meier-plots">Kaplan-Meier Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forest-plots">Forest Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#box-plots">Box Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacked-bar-plots">Stacked Bar Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fetch-gene-annotation">Fetch gene annotation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Francisco Marchi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

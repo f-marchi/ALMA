@@ -1,5 +1,5 @@
 format: jb-book
-root: 2_CoxPH-EWAS.ipynb
+root: index.md
 parts:
   - caption: Specific Aims
     chapters:
@@ -14,7 +14,8 @@ parts:
 
     chapters:
       - file: 1_Data_Download_Process.ipynb
-      # - file: 2_CoxPH-EWAS.ipynb
+      - file: 2_Univariate_CoxPH-EWAS.ipynb
+      - file: 3_Multivariate_CoxPH-Lasso.ipynb
 
   #     # - caption: AML Diagnostic Map
 
