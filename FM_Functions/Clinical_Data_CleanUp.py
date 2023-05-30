@@ -42,7 +42,9 @@ def merge_index_1031():
     labels_1031 = labels_1031.join(meta, how='right').reset_index().set_index('Sample_ID')
 
     # Rename columns
-    labels_1031 = labels_1031.rename(columns={'fusion':'Gene Fusion.1','timepoint':'Sample Type'})
+    labels_1031 = labels_1031\
+        .drop(columns=['Gene Fusion'])\
+        .rename(columns={'fusion':'Gene Fusion','timepoint':'Sample Type'})
 
     return labels_1031
 
@@ -171,6 +173,16 @@ def merge_index_0531():
 
     # Concat labels_0531 and labels_gdc dataframes
     labels = pd.concat([labels_0531, labels_gdc], axis=0, join='outer')
+
+    # Combine `Gene Fusion` and `Gene Fusion.1` columns with comma while ignoring NaNs/empty strings
+    labels['Gene Fusion'] = labels[['Gene Fusion', 'Gene Fusion.1']]\
+    .apply(lambda x: ','.join(filter(lambda i: i is not None and i==i, x)), axis=1)
+
+    # Replace '' with np.nan
+    labels['Gene Fusion'] = labels['Gene Fusion'].replace({'': np.nan})
+
+    # Drop `Gene Fusion.1` column
+    labels = labels.drop(columns=['Gene Fusion.1'])
 
     return labels
 
