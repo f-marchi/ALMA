@@ -331,13 +331,16 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Evaluate Missing Values</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-remove-outliers-by-pca">Step 8. Remove outliers by PCA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-perform-batch-correction">Step 9. Perform batch correction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-batch-effects">Evaluate batch effects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-remove-outliers-by-pca">Step 8. Remove outliers by PCA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-dataset-without-batch-correction">Save dataset without batch correction</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-10-remove-samples-based-on-clinical-exclusion-criteria">Step 10. Remove samples based on clinical exclusion criteria</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-dataset">Save dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-perform-batch-correction">Step 9. Perform batch correction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-batch-effects">Evaluate batch effects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-batch-corrected-dataset">Save batch-corrected dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-10-remove-samples-based-on-clinical-exclusion-criteria">Step 10. Remove samples based on clinical exclusion criteria</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-final-sample-size-by-batch">Evaluate final sample size by batch</a></li>
 </ul>
 </li>
@@ -346,6 +349,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genomic-data-commons-gdc">Genomic Data Commons (GDC)</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-2-how-to-create-this-electronic-notebook">Appendix 2. How to create this electronic notebook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
 </ul>
             </nav>
@@ -390,25 +394,30 @@ document.write(`
 <li><p><a class="reference internal" href="#id2" id="id16">Evaluate Missing Values</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#step-8-remove-outliers-by-pca" id="id17">Step 8. Remove outliers by PCA</a></p></li>
-<li><p><a class="reference internal" href="#step-9-perform-batch-correction" id="id18">Step 9. Perform batch correction</a></p>
+<li><p><a class="reference internal" href="#step-8-remove-outliers-by-pca" id="id17">Step 8. Remove outliers by PCA</a></p>
 <ul>
-<li><p><a class="reference internal" href="#evaluate-batch-effects" id="id19">Evaluate batch effects</a></p></li>
+<li><p><a class="reference internal" href="#save-dataset-without-batch-correction" id="id18">Save dataset without batch correction</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#step-10-remove-samples-based-on-clinical-exclusion-criteria" id="id20">Step 10. Remove samples based on clinical exclusion criteria</a></p></li>
-<li><p><a class="reference internal" href="#save-dataset" id="id21">Save dataset</a></p>
+<li><p><a class="reference internal" href="#step-9-perform-batch-correction" id="id19">Step 9. Perform batch correction</a></p>
 <ul>
-<li><p><a class="reference internal" href="#evaluate-final-sample-size-by-batch" id="id22">Evaluate final sample size by batch</a></p></li>
+<li><p><a class="reference internal" href="#evaluate-batch-effects" id="id20">Evaluate batch effects</a></p></li>
+<li><p><a class="reference internal" href="#save-batch-corrected-dataset" id="id21">Save batch-corrected dataset</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#appendix-1-how-to-download-data-from-geo-or-gdc" id="id23">Appendix 1. How to download data from GEO or GDC</a></p>
+<li><p><a class="reference internal" href="#step-10-remove-samples-based-on-clinical-exclusion-criteria" id="id22">Step 10. Remove samples based on clinical exclusion criteria</a></p>
 <ul>
-<li><p><a class="reference internal" href="#gene-expression-omnibus-geo" id="id24">Gene Expression Omnibus (GEO)</a></p></li>
-<li><p><a class="reference internal" href="#genomic-data-commons-gdc" id="id25">Genomic Data Commons (GDC)</a></p></li>
+<li><p><a class="reference internal" href="#evaluate-final-sample-size-by-batch" id="id23">Evaluate final sample size by batch</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#watermark" id="id26">Watermark</a></p></li>
+<li><p><a class="reference internal" href="#appendix-1-how-to-download-data-from-geo-or-gdc" id="id24">Appendix 1. How to download data from GEO or GDC</a></p>
+<ul>
+<li><p><a class="reference internal" href="#gene-expression-omnibus-geo" id="id25">Gene Expression Omnibus (GEO)</a></p></li>
+<li><p><a class="reference internal" href="#genomic-data-commons-gdc" id="id26">Genomic Data Commons (GDC)</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#appendix-2-how-to-create-this-electronic-notebook" id="id27">Appendix 2. How to create this electronic notebook</a></p></li>
+<li><p><a class="reference internal" href="#watermark" id="id28">Watermark</a></p></li>
 </ul>
 </li>
 </ul>
@@ -582,6 +591,11 @@ document.write(`
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Dataset (df) contains 452453 rows (5mC sites/probes) and 3845 columns (samples).
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1029,9 +1043,34 @@ document.write(`
 </div>
 </div>
 </div>
+<section id="save-dataset-without-batch-correction">
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">Save dataset without batch correction</a><a class="headerlink" href="#save-dataset-without-batch-correction" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_batch_uncorrected</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;Batch&#39;</span><span class="p">)</span>
+<span class="n">df_batch_uncorrected</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;df_batch_uncorrected.pkl&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;Successfuly saved in: </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">df_batch_uncorrected.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved in: ../Data/Intermediate_Files/df_batch_uncorrected.pkl
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="step-9-perform-batch-correction">
-<h2><a class="toc-backref" href="#id18" role="doc-backlink">Step 9. Perform batch correction</a><a class="headerlink" href="#step-9-perform-batch-correction" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">Step 9. Perform batch correction</a><a class="headerlink" href="#step-9-perform-batch-correction" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>pyCombat</strong>: a Python tool for batch effects correction in high-throughput molecular data using empirical Bayes methods</p></li>
 <li><p><strong>Github</strong>: <a class="reference external" href="https://epigenelabs.github.io/pyComBat/">https://epigenelabs.github.io/pyComBat/</a></p></li>
@@ -1068,7 +1107,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </div>
 <section id="evaluate-batch-effects">
-<h3><a class="toc-backref" href="#id19" role="doc-backlink">Evaluate batch effects</a><a class="headerlink" href="#evaluate-batch-effects" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">Evaluate batch effects</a><a class="headerlink" href="#evaluate-batch-effects" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1106,9 +1145,40 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </div>
 </section>
+<section id="save-batch-corrected-dataset">
+<h3><a class="toc-backref" href="#id21" role="doc-backlink">Save batch-corrected dataset</a><a class="headerlink" href="#save-batch-corrected-dataset" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;Batch&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;Dataset (df) contains </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns (samples).&#39;</span><span class="p">)</span>
+
+
+<span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;df_batch_corrected.pkl&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s1">&#39;Successfuly saved in: </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">df_batch_corrected.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset (df) contains 333352 rows (5mC nucleotides/probes) and 3330 columns (samples).
+Successfuly saved in: ../Data/Intermediate_Files/df_batch_corrected.pkl
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="step-10-remove-samples-based-on-clinical-exclusion-criteria">
-<h2><a class="toc-backref" href="#id20" role="doc-backlink">Step 10. Remove samples based on clinical exclusion criteria</a><a class="headerlink" href="#step-10-remove-samples-based-on-clinical-exclusion-criteria" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id22" role="doc-backlink">Step 10. Remove samples based on clinical exclusion criteria</a><a class="headerlink" href="#step-10-remove-samples-based-on-clinical-exclusion-criteria" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1136,8 +1206,14 @@ Succesfully corrected batch effects in the training dataset.
                         <span class="n">labels_nordic_all</span><span class="p">,</span> <span class="n">labels_mds_taml</span><span class="p">,</span>
                         <span class="n">labels_all_graal</span><span class="p">,</span><span class="n">labels_target_all</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
 
+<span class="c1"># Read df</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;df_batch_corrected.pkl&#39;</span><span class="p">)</span>
+
 <span class="c1"># Remove samples that are not in the methyl dataset</span>
 <span class="n">df_labels</span> <span class="o">=</span> <span class="n">labels_combined</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels_combined</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="c1"># Save the clinical data labels</span>
+<span class="n">df_labels</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;clinical_data.csv&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The clinical data has been indexed and cleaned.</span><span class="se">\n\</span>
 <span class="s1">Exclusion of samples may be applied depending on the analysis.&#39;</span><span class="p">)</span>
@@ -1152,38 +1228,8 @@ Exclusion of samples may be applied depending on the analysis.
 </div>
 </div>
 </div>
-</section>
-<section id="save-dataset">
-<h2><a class="toc-backref" href="#id21" role="doc-backlink">Save dataset</a><a class="headerlink" href="#save-dataset" title="Permalink to this heading">#</a></h2>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;Batch&#39;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s1">&#39;Dataset (df) contains </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns (samples).&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;df_batch_uncorrected.pkl&#39;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s1">&#39;Successfuly saved processed methyl dataset.</span><span class="se">\n</span><span class="s1">Path: </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset (df) contains 333352 rows (5mC nucleotides/probes) and 3330 columns (samples).
-Successfuly saved processed methyl dataset.
-Path: ../Data/Intermediate_Files/
-</pre></div>
-</div>
-</div>
-</div>
 <section id="evaluate-final-sample-size-by-batch">
-<h3><a class="toc-backref" href="#id22" role="doc-backlink">Evaluate final sample size by batch</a><a class="headerlink" href="#evaluate-final-sample-size-by-batch" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id23" role="doc-backlink">Evaluate final sample size by batch</a><a class="headerlink" href="#evaluate-final-sample-size-by-batch" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1216,9 +1262,9 @@ Name: count, dtype: int64
 </section>
 </section>
 <section id="appendix-1-how-to-download-data-from-geo-or-gdc">
-<h2><a class="toc-backref" href="#id23" role="doc-backlink">Appendix 1. How to download data from GEO or GDC</a><a class="headerlink" href="#appendix-1-how-to-download-data-from-geo-or-gdc" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id24" role="doc-backlink">Appendix 1. How to download data from GEO or GDC</a><a class="headerlink" href="#appendix-1-how-to-download-data-from-geo-or-gdc" title="Permalink to this heading">#</a></h2>
 <section id="gene-expression-omnibus-geo">
-<h3><a class="toc-backref" href="#id24" role="doc-backlink">Gene Expression Omnibus (GEO)</a><a class="headerlink" href="#gene-expression-omnibus-geo" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id25" role="doc-backlink">Gene Expression Omnibus (GEO)</a><a class="headerlink" href="#gene-expression-omnibus-geo" title="Permalink to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>Install Python3.7</p>
 <ul class="simple">
@@ -1247,7 +1293,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="nv">methy
 </div>
 </section>
 <section id="genomic-data-commons-gdc">
-<h3><a class="toc-backref" href="#id25" role="doc-backlink">Genomic Data Commons (GDC)</a><a class="headerlink" href="#genomic-data-commons-gdc" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id26" role="doc-backlink">Genomic Data Commons (GDC)</a><a class="headerlink" href="#genomic-data-commons-gdc" title="Permalink to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>Go to <a class="reference external" href="https://www.portal.gdc.cancer.gov/repository">GDC Repository</a>.</p></li>
 <li><p>Select the right filtering criteria for you (or click on one of the links from the table above).</p></li>
@@ -1273,8 +1319,47 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="nv">methy
 <p>Congrats! You are ready to process the files using <code class="docutils literal notranslate"><span class="pre">methylprep</span></code>.</p>
 </section>
 </section>
+<section id="appendix-2-how-to-create-this-electronic-notebook">
+<h2><a class="toc-backref" href="#id27" role="doc-backlink">Appendix 2. How to create this electronic notebook</a><a class="headerlink" href="#appendix-2-how-to-create-this-electronic-notebook" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Use Jupyter Book</p>
+<ul class="simple">
+<li><p>Go to <a class="reference external" href="https://jupyterbook.org">jupyterbook.org</a>.</p></li>
+<li><p>Follow the steps on their page.</p></li>
+</ul>
+</li>
+<li><p>Set up <code class="docutils literal notranslate"><span class="pre">toc.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> files</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">toc.yml</span></code> is the table of contents file. It contains the structure of the book.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> is the configuration file. It contains the configuration of the book.</p></li>
+</ul>
+</li>
+<li><p>Build the book</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jb<span class="w"> </span>build<span class="w"> </span>.
+</pre></div>
+</div>
+</li>
+<li><p>Push to Github</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;message&quot;</span>
+git<span class="w"> </span>push
+</pre></div>
+</div>
+<p>or do it through VSCode GUI.</p>
+</li>
+<li><p>Push to Github pages using <code class="docutils literal notranslate"><span class="pre">ghp-import</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ghp-import<span class="w"> </span>-n<span class="w"> </span>-p<span class="w"> </span>-f<span class="w"> </span>-o<span class="w"> </span>_build/html
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">jupyterbook</span></code> works best on Linux/Mac. If on Windows, use WSL.</p>
+</div>
+</section>
 <section id="watermark">
-<h2><a class="toc-backref" href="#id26" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id28" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 </div>
 <div class="cell tag_remove-input docutils container">
@@ -1390,13 +1475,16 @@ Architecture: 64bit
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Evaluate Missing Values</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-remove-outliers-by-pca">Step 8. Remove outliers by PCA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-perform-batch-correction">Step 9. Perform batch correction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-batch-effects">Evaluate batch effects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-remove-outliers-by-pca">Step 8. Remove outliers by PCA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-dataset-without-batch-correction">Save dataset without batch correction</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-10-remove-samples-based-on-clinical-exclusion-criteria">Step 10. Remove samples based on clinical exclusion criteria</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-dataset">Save dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-perform-batch-correction">Step 9. Perform batch correction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-batch-effects">Evaluate batch effects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-batch-corrected-dataset">Save batch-corrected dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-10-remove-samples-based-on-clinical-exclusion-criteria">Step 10. Remove samples based on clinical exclusion criteria</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-final-sample-size-by-batch">Evaluate final sample size by batch</a></li>
 </ul>
 </li>
@@ -1405,6 +1493,7 @@ Architecture: 64bit
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genomic-data-commons-gdc">Genomic Data Commons (GDC)</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-2-how-to-create-this-electronic-notebook">Appendix 2. How to create this electronic notebook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
 </ul>
   </nav></div>
@@ -1420,7 +1509,7 @@ Architecture: 64bit
   <div class="footer-item">
     
 <p class="component-author">
-By Francisco Marchi
+By Francisco Marchi @ Lamba Lab
 </p>
 
   </div>

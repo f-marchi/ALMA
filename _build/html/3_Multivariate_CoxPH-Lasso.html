@@ -310,7 +310,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-survival-analysis">Perform Survival Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-multivariate-coxph-lasso">Perform multivariate CoxPH-Lasso</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-threshold">Set Threshold</a></li>
 </ul>
 </li>
@@ -324,7 +324,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacked-bar-plots">Stacked Bar Plots</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fetch-gene-annotation">Fetch gene annotation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#patient-characteristics-table">Patient Characteristics Table</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-progress">In progress</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
 </ul>
             </nav>
@@ -345,7 +344,7 @@ document.write(`
 <li><p><a class="reference internal" href="#coxph-lasso-on-top-ewas-results" id="id1">CoxPH-Lasso on top EWAS results</a></p>
 <ul>
 <li><p><a class="reference internal" href="#load-data" id="id2">Load Data</a></p></li>
-<li><p><a class="reference internal" href="#perform-survival-analysis" id="id3">Perform Survival Analysis</a></p>
+<li><p><a class="reference internal" href="#perform-multivariate-coxph-lasso" id="id3">Perform multivariate CoxPH-Lasso</a></p>
 <ul>
 <li><p><a class="reference internal" href="#set-threshold" id="id4">Set Threshold</a></p></li>
 </ul>
@@ -361,8 +360,7 @@ document.write(`
 <li><p><a class="reference internal" href="#stacked-bar-plots" id="id10">Stacked Bar Plots</a></p></li>
 <li><p><a class="reference internal" href="#fetch-gene-annotation" id="id11">Fetch gene annotation</a></p></li>
 <li><p><a class="reference internal" href="#patient-characteristics-table" id="id12">Patient Characteristics Table</a></p></li>
-<li><p><a class="reference internal" href="#in-progress" id="id13">In progress</a></p></li>
-<li><p><a class="reference internal" href="#watermark" id="id14">Watermark</a></p></li>
+<li><p><a class="reference internal" href="#watermark" id="id13">Watermark</a></p></li>
 </ul>
 </li>
 </ul>
@@ -421,34 +419,118 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Dataset (df) contains 304 columns (5mC nucleotides/probes) and 924 rows (samples).
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Dataset (df) contains 167 columns (5mC nucleotides/probes) and 924 rows (samples).
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="perform-survival-analysis">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">Perform Survival Analysis</a><a class="headerlink" href="#perform-survival-analysis" title="Permalink to this heading">#</a></h2>
-<div class="cell tag_hide-input docutils container">
+<section id="perform-multivariate-coxph-lasso">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Perform multivariate CoxPH-Lasso</a><a class="headerlink" href="#perform-multivariate-coxph-lasso" title="Permalink to this heading">#</a></h2>
+<p>Here we will run on 167 CpGs that were selected from EWAS risk-adjusted OS at 1*10e-6 significance:</p>
+<div class="cell tag_hide-input tag_hide-output docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
 <span class="expanded">Hide code cell source</span>
 </summary>
-<div class="cell_input docutils container">
+<div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import functions to clean up clinical data</span>
 <span class="kn">from</span> <span class="nn">FM_Functions.Cox_Lasso_Function</span> <span class="kn">import</span> <span class="o">*</span>
 
-<span class="c1"># raw_coefs = train_coxph_lasso(df=df_labels,</span>
-<span class="c1">#                                 event= &#39;os.evnt&#39;,</span>
-<span class="c1">#                                 time= &#39;os.time&#39;,</span>
-<span class="c1">#                                 train_x=x.iloc[:,:100],</span>
-<span class="c1">#                                 cv_n_split=3,</span>
-<span class="c1">#                                 loops=10)</span>
+<span class="n">raw_coefs</span> <span class="o">=</span> <span class="n">train_coxph_lasso</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_labels</span><span class="p">,</span>
+                                <span class="n">event</span><span class="o">=</span> <span class="s1">&#39;os.evnt&#39;</span><span class="p">,</span>
+                                <span class="n">time</span><span class="o">=</span> <span class="s1">&#39;os.time&#39;</span><span class="p">,</span>
+                                <span class="n">train_x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+                                <span class="n">cv_n_split</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                                <span class="n">loops</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">raw_coefs</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;multivariate_cox_lasso/ewas_cog_os_raw_coefs.csv&#39;</span><span class="p">)</span>
 
 
-<span class="c1"># raw_coefs.to_csv(output_path + &#39;multivariate_cox_lasso/ewas_cog_os_raw_coefs.csv&#39;)</span>
 <span class="n">raw_coefs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;multivariate_cox_lasso/ewas_cog_os_raw_coefs.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Cox-Lasso through 10 loops:
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/10 [00:00&lt;?, ?it/s]/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+ 10%|█         | 1/10 [00:03&lt;00:29,  3.25s/it]/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+ 20%|██        | 2/10 [00:06&lt;00:26,  3.33s/it]/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+ 30%|███       | 3/10 [00:09&lt;00:23,  3.32s/it]/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+ 40%|████      | 4/10 [00:13&lt;00:20,  3.42s/it]/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+ 50%|█████     | 5/10 [00:16&lt;00:17,  3.44s/it]/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+ 60%|██████    | 6/10 [00:20&lt;00:13,  3.44s/it]/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+ 70%|███████   | 7/10 [00:23&lt;00:10,  3.46s/it]/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+ 80%|████████  | 8/10 [00:27&lt;00:06,  3.45s/it]/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+ 90%|█████████ | 9/10 [00:30&lt;00:03,  3.44s/it]/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+/home/fmarchi/projects/MethylScore/Code/.venv_py38/lib/python3.8/site-packages/sklearn/pipeline.py:405: UserWarning: all coefficients are zero, consider decreasing alpha.
+  self._final_estimator.fit(Xt, y, **fit_params_last_step)
+100%|██████████| 10/10 [00:34&lt;00:00,  3.42s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cox-Lasso Trained Successfuly!
+Selected alpha value: [0.021377780404390822]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -471,7 +553,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/5a885d477acdd6c2120ef153569b651583c6414207a49e4301036516f58ac426.png" src="_images/5a885d477acdd6c2120ef153569b651583c6414207a49e4301036516f58ac426.png" />
+<img alt="_images/bad0d4b38aa2e82658c7c59f74ee63125b9af395bacb77e9e41c0b68da6b5cc2.png" src="_images/bad0d4b38aa2e82658c7c59f74ee63125b9af395bacb77e9e41c0b68da6b5cc2.png" />
 </div>
 </div>
 </section>
@@ -490,7 +572,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">score_name</span> <span class="o">=</span> <span class="s1">&#39;MethylScore_CoxPH&#39;</span>
 
 <span class="n">df</span><span class="p">,</span> <span class="n">methylscore_cutoff</span> <span class="o">=</span> <span class="n">generate_coxph_score</span><span class="p">(</span><span class="n">coef_mean</span><span class="o">=</span><span class="n">mean_coefs</span><span class="p">,</span>
-                                        <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">100</span><span class="p">],</span>
+                                        <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
                                         <span class="n">df</span><span class="o">=</span><span class="n">df_labels</span><span class="p">,</span>
                                         <span class="n">score_name</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
                                         <span class="n">train_test</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
@@ -500,7 +582,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous score cut at the value of 0.4776 (75.0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous score cut at the value of 0.4564 (75.0%)
 </pre></div>
 </div>
 </div>
@@ -529,7 +611,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/a5d4f0ace47ce390b37e56ff279a2e2f86331a63d393aa3e255bff2c201380bb.png" src="_images/a5d4f0ace47ce390b37e56ff279a2e2f86331a63d393aa3e255bff2c201380bb.png" />
+<img alt="_images/3ae9f07f1c4f0537cba21d5f05ec544020e4b11a03694a0f91078f2058e1b6a8.png" src="_images/3ae9f07f1c4f0537cba21d5f05ec544020e4b11a03694a0f91078f2058e1b6a8.png" />
 </div>
 </div>
 </section>
@@ -560,8 +642,8 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/cb4349541122ef89ba038d9b9a0a4f13de2c2f38749543e732bf3cc175046b2c.png" src="_images/cb4349541122ef89ba038d9b9a0a4f13de2c2f38749543e732bf3cc175046b2c.png" />
-<img alt="_images/55af936683a619d1cbed74c9b8ac6969105fe0148815e2c97a5fa7a23c12f410.png" src="_images/55af936683a619d1cbed74c9b8ac6969105fe0148815e2c97a5fa7a23c12f410.png" />
+<img alt="_images/d217addb2d358d35a5bd2ecb237749d351ee8603a86d7dbf8f850a76588c98a9.png" src="_images/d217addb2d358d35a5bd2ecb237749d351ee8603a86d7dbf8f850a76588c98a9.png" />
+<img alt="_images/f072cf5aaa2cf92358049db48d53ddc98303686c5771f8e002cdc56f23c2d5be.png" src="_images/f072cf5aaa2cf92358049db48d53ddc98303686c5771f8e002cdc56f23c2d5be.png" />
 </div>
 </div>
 </section>
@@ -600,12 +682,12 @@ document.write(`
      ***: 1.00e-04 &lt; p &lt;= 1.00e-03
     ****: p &lt;= 1.00e-04
 
-High Risk vs. Standard Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:1.000e+00 Stat=4.048e-01
-Standard Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:1.823e-81 Stat=3.677e+02
-High Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:2.730e-41 Stat=1.833e+02
+High Risk vs. Standard Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:2.106e-05 Stat=2.019e+01
+Standard Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:1.124e-76 Stat=3.457e+02
+High Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:2.054e-27 Stat=1.198e+02
 </pre></div>
 </div>
-<img alt="_images/f31307477b06743ee9d90ae7ad34dce0e2c6fdb300b93441c08af88942165ac5.png" src="_images/f31307477b06743ee9d90ae7ad34dce0e2c6fdb300b93441c08af88942165ac5.png" />
+<img alt="_images/c2abed46789bcc8f7624df85e8f22c43e2d4e71911a81f3f5777c2789e637909.png" src="_images/c2abed46789bcc8f7624df85e8f22c43e2d4e71911a81f3f5777c2789e637909.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p-value annotation legend:
       ns: p &lt;= 1.00e+00
        *: 1.00e-02 &lt; p &lt;= 5.00e-02
@@ -613,11 +695,11 @@ High Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between gro
      ***: 1.00e-04 &lt; p &lt;= 1.00e-03
     ****: p &lt;= 1.00e-04
 
-Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:3.617e-08 Stat=3.034e+01
+Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:7.159e-06 Stat=2.015e+01
 </pre></div>
 </div>
-<img alt="_images/ca22834dd5e11bd2475611da40c66f39d8046a0ccd5303d56886729ba98172ad.png" src="_images/ca22834dd5e11bd2475611da40c66f39d8046a0ccd5303d56886729ba98172ad.png" />
-<img alt="_images/344958e74e3cd689ed3542ca9d3f73a9a1ceed0f5c794736559cbd4a86dbb688.png" src="_images/344958e74e3cd689ed3542ca9d3f73a9a1ceed0f5c794736559cbd4a86dbb688.png" />
+<img alt="_images/b61ddc6e2109504ea1a9219de461253ba9f2752feb06185f16e1f16b8ad2c387.png" src="_images/b61ddc6e2109504ea1a9219de461253ba9f2752feb06185f16e1f16b8ad2c387.png" />
+<img alt="_images/020c2f1d72e9409868e0eb1c43559059091b62cd278a9dfabad6a682efc07bf0.png" src="_images/020c2f1d72e9409868e0eb1c43559059091b62cd278a9dfabad6a682efc07bf0.png" />
 </div>
 </div>
 </section>
@@ -649,9 +731,9 @@ Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between grou
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/66c27b22bc1ad286023cc8c8351b13607c690988a7d278878fe124b86110dea3.png" src="_images/66c27b22bc1ad286023cc8c8351b13607c690988a7d278878fe124b86110dea3.png" />
-<img alt="_images/d81c68e776964fd1c6af15520255cce989dfad2609145fd9da9ba91c9f490bc3.png" src="_images/d81c68e776964fd1c6af15520255cce989dfad2609145fd9da9ba91c9f490bc3.png" />
-<img alt="_images/ec64cc4228201c64de8e1e3797a9d1b7f0cedd846ce48ec1ab8c2e64a2e3c697.png" src="_images/ec64cc4228201c64de8e1e3797a9d1b7f0cedd846ce48ec1ab8c2e64a2e3c697.png" />
+<img alt="_images/4a311ec826d7ef280a61dd50d32d0426a9a278fca512280e7b249d07c42a9c3d.png" src="_images/4a311ec826d7ef280a61dd50d32d0426a9a278fca512280e7b249d07c42a9c3d.png" />
+<img alt="_images/3cd1aaceaed30ee3f7f462999ceb1d03e1d4b4d0491a2701ac2ba88127d530bc.png" src="_images/3cd1aaceaed30ee3f7f462999ceb1d03e1d4b4d0491a2701ac2ba88127d530bc.png" />
+<img alt="_images/f6f482922a80a6bb44dba4b896f04cfe70ef5b37a0c385a93b345284ca455a16.png" src="_images/f6f482922a80a6bb44dba4b896f04cfe70ef5b37a0c385a93b345284ca455a16.png" />
 </div>
 </div>
 </section>
@@ -676,28 +758,38 @@ Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between grou
 <span class="n">mean_coefs_genes</span><span class="p">[</span><span class="s1">&#39;GeneClasses&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_coefs_genes</span><span class="p">[</span><span class="s1">&#39;GeneClasses&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">))))</span>
 <span class="n">mean_coefs_genes</span><span class="p">[</span><span class="s1">&#39;TranscriptIDs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_coefs_genes</span><span class="p">[</span><span class="s1">&#39;TranscriptIDs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">))))</span>
 
-<span class="n">mean_coefs_genes</span>
+<span class="kn">from</span> <span class="nn">itables</span> <span class="kn">import</span> <span class="n">show</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">mean_coefs_genes</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="s2">&quot;display nowrap cell-border&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output text_html"><style>.itables table td {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+.itables table th {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 
-    .dataframe thead th {
-        text-align: right;
-    }
+.itables thead input {
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+.itables tfoot input {
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+}
 </style>
-<table border="1" class="dataframe">
-  <thead>
+<div class="itables">
+<table id="128e9733-c749-4b7d-965d-c579cad3b653" class="display nowrap cell-border"style="table-layout:auto;width:auto;margin:auto;caption-side:bottom"><thead>
     <tr style="text-align: right;">
       <th></th>
       <th>chrm</th>
@@ -709,187 +801,28 @@ Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between grou
       <th>CGIPosition</th>
       <th>MethylScore Coefficients</th>
     </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>cg20219911</th>
-      <td>chr3</td>
-      <td>52779635</td>
-      <td>52779637</td>
-      <td>ITIH1</td>
-      <td>protein_coding</td>
-      <td>ENST00000478667.4;ENST00000487686.4;ENST000002...</td>
-      <td>.</td>
-      <td>0.193547</td>
-    </tr>
-    <tr>
-      <th>cg17099306</th>
-      <td>chr13</td>
-      <td>49549508</td>
-      <td>49549510</td>
-      <td>RCBTB1</td>
-      <td>protein_coding</td>
-      <td>ENST00000378302.5;ENST00000258646.3</td>
-      <td>.</td>
-      <td>0.105642</td>
-    </tr>
-    <tr>
-      <th>cg01543603</th>
-      <td>chr16</td>
-      <td>89403132</td>
-      <td>89403134</td>
-      <td>ANKRD11;RP1-168P16.2</td>
-      <td>sense_intronic;protein_coding</td>
-      <td>ENST00000562211.1;ENST00000378330.5;ENST000005...</td>
-      <td>.</td>
-      <td>0.091378</td>
-    </tr>
-    <tr>
-      <th>cg10089193</th>
-      <td>chr16</td>
-      <td>1090938</td>
-      <td>1090940</td>
-      <td>C1QTNF8</td>
-      <td>protein_coding</td>
-      <td>ENST00000621771.1;ENST00000328449.5</td>
-      <td>S_Shore</td>
-      <td>0.083503</td>
-    </tr>
-    <tr>
-      <th>cg02678414</th>
-      <td>chr16</td>
-      <td>2159838</td>
-      <td>2159840</td>
-      <td>TRAF7</td>
-      <td>protein_coding</td>
-      <td>ENST00000569686.4;ENST00000564067.4;ENST000005...</td>
-      <td>S_Shelf</td>
-      <td>0.079688</td>
-    </tr>
-    <tr>
-      <th>cg05131266</th>
-      <td>chr14</td>
-      <td>91125543</td>
-      <td>91125545</td>
-      <td>SNORA11B;C14orf159</td>
-      <td>snoRNA;protein_coding</td>
-      <td>ENST00000523894.4;ENST00000518649.4;ENST000005...</td>
-      <td>.</td>
-      <td>0.077085</td>
-    </tr>
-    <tr>
-      <th>cg00192882</th>
-      <td>chr17</td>
-      <td>19387806</td>
-      <td>19387808</td>
-      <td>MFAP4</td>
-      <td>protein_coding</td>
-      <td>ENST00000299610.4;ENST00000497081.5;ENST000005...</td>
-      <td>.</td>
-      <td>0.059155</td>
-    </tr>
-    <tr>
-      <th>cg08329113</th>
-      <td>chr16</td>
-      <td>70737238</td>
-      <td>70737240</td>
-      <td>VAC14</td>
-      <td>protein_coding</td>
-      <td>ENST00000561879.1;ENST00000564685.4;ENST000005...</td>
-      <td>.</td>
-      <td>0.027522</td>
-    </tr>
-    <tr>
-      <th>cg18072388</th>
-      <td>chr19</td>
-      <td>10323084</td>
-      <td>10323086</td>
-      <td>RAVER1</td>
-      <td>protein_coding</td>
-      <td>ENST00000615032.3;ENST00000593136.2;ENST000006...</td>
-      <td>N_Shore</td>
-      <td>0.017603</td>
-    </tr>
-    <tr>
-      <th>cg07660635</th>
-      <td>chr16</td>
-      <td>85902540</td>
-      <td>85902542</td>
-      <td>IRF8</td>
-      <td>protein_coding</td>
-      <td>ENST00000268638.8;ENST00000564617.4;ENST000005...</td>
-      <td>S_Shelf</td>
-      <td>-0.020918</td>
-    </tr>
-    <tr>
-      <th>cg25292309</th>
-      <td>chr2</td>
-      <td>58762291</td>
-      <td>58762293</td>
-      <td>LINC01122</td>
-      <td>lincRNA</td>
-      <td>ENST00000422723.4;ENST00000429664.4;ENST000004...</td>
-      <td>.</td>
-      <td>-0.053502</td>
-    </tr>
-    <tr>
-      <th>cg20310759</th>
-      <td>chr1</td>
-      <td>87152629</td>
-      <td>87152631</td>
-      <td>LINC01140;RP5-1052I5.2</td>
-      <td>lincRNA;protein_coding</td>
-      <td>ENST00000490006.5;ENST00000469312.5;ENST000005...</td>
-      <td>S_Shore</td>
-      <td>-0.056282</td>
-    </tr>
-    <tr>
-      <th>cg06748884</th>
-      <td>chr16</td>
-      <td>11138900</td>
-      <td>11138902</td>
-      <td>CLEC16A</td>
-      <td>protein_coding</td>
-      <td>ENST00000459723.1;ENST00000436973.4;ENST000004...</td>
-      <td>.</td>
-      <td>-0.066351</td>
-    </tr>
-    <tr>
-      <th>cg04839706</th>
-      <td>chr16</td>
-      <td>46886162</td>
-      <td>46886164</td>
-      <td>GPT2</td>
-      <td>protein_coding</td>
-      <td>ENST00000562132.4;ENST00000340124.7;ENST000004...</td>
-      <td>S_Shore</td>
-      <td>-0.090482</td>
-    </tr>
-    <tr>
-      <th>cg14928764</th>
-      <td>chr20</td>
-      <td>23083970</td>
-      <td>23083972</td>
-      <td>CD93</td>
-      <td>protein_coding</td>
-      <td>ENST00000246006.4</td>
-      <td>.</td>
-      <td>-0.112784</td>
-    </tr>
-    <tr>
-      <th>cg08900363</th>
-      <td>chr7</td>
-      <td>597816</td>
-      <td>597818</td>
-      <td>PRKAR1B</td>
-      <td>protein_coding</td>
-      <td>ENST00000360274.7;ENST00000403562.4;ENST000004...</td>
-      <td>.</td>
-      <td>-0.137103</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+  </thead><tbody><tr><td>Loading... (need <a href=https://mwouts.github.io/itables/troubleshooting.html>help</a>?)</td></tr></tbody></table>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+<script type="module">
+    // Import jquery and DataTable
+    import 'https://code.jquery.com/jquery-3.6.0.min.js';
+    import dt from 'https://cdn.datatables.net/1.12.1/js/jquery.dataTables.mjs';
+    dt($);
+
+    // Define the table data
+    const data = [["cg22855993", "chr1", 16071749, 16071751, "FAM131C", "protein_coding", "ENST00000494078.1;ENST00000375662.4", "N_Shore", 0.164666], ["cg17099306", "chr13", 49549508, 49549510, "RCBTB1", "protein_coding", "ENST00000258646.3;ENST00000378302.5", ".", 0.14937], ["cg10089193", "chr16", 1090938, 1090940, "C1QTNF8", "protein_coding", "ENST00000328449.5;ENST00000621771.1", "S_Shore", 0.088552], ["cg22162847", "chr1", 150562302, 150562304, "ADAMTSL4-AS1", "processed_transcript", "ENST00000615012.1;ENST00000617352.1;ENST00000369035.2", "S_Shore", 0.085336], ["cg09890699", "chr1", 54356179, 54356181, "SSBP3", "protein_coding", "ENST00000371319.6;ENST00000533946.4;ENST00000525990.1;ENST00000610401.3;ENST00000371320.6;ENST00000357475.7;ENST00000326956.10;ENST00000417664.5", "N_Shore", 0.076997], ["cg08329113", "chr16", 70737238, 70737240, "VAC14", "protein_coding", "ENST00000568548.4;ENST00000563662.2;ENST00000564685.4;ENST00000561879.1;ENST00000566416.1;ENST00000568886.4;ENST00000261776.8", ".", 0.073704], ["cg18072388", "chr19", 10323084, 10323086, "RAVER1", "protein_coding", "ENST00000592208.4;ENST00000615032.3;ENST00000617231.3;ENST00000611074.3;ENST00000293677.9;ENST00000593136.2", "N_Shore", 0.072048], ["cg00920892", "chr8", 37874705, 37874707, "RAB11FIP1", "protein_coding", "ENST00000522774.1;ENST00000522727.4;ENST00000330843.7;ENST00000524118.1;ENST00000523182.4;ENST00000287263.7", ".", 0.069866], ["cg19706516", "chr1", 151131392, 151131394, "RP11-68I18.10", "sense_overlapping", "ENST00000563624.1", "Island", 0.061193], ["cg17669009", "chr19", 51417630, 51417632, "SIGLEC10", "protein_coding", "ENST00000357375.4;ENST00000439889.5;ENST00000441969.6;ENST00000524527.1;ENST00000525998.4;ENST00000530476.1;ENST00000339313.8;ENST00000529627.1;ENST00000442846.6;ENST00000353836.8;ENST00000436984.5", ".", 0.056695], ["cg06142946", "chr11", 17351576, 17351578, "NCR3LG1", "protein_coding", "ENST00000338965.7;ENST00000530403.1", "Island", 0.049676], ["cg07143043", "chr10", 131970793, 131970795, "RP11-45A17.2;BNIP3", "protein_coding;antisense", "ENST00000368636.7;ENST00000614406.1;ENST00000540159.2", ".", 0.046249], ["cg14978242", "chr5", 80205311, 80205313, "SERINC5", "protein_coding", "ENST00000509193.4;ENST00000507668.5;ENST00000512721.2;ENST00000512972.5;ENST00000513907.1", ".", 0.044444], ["cg09411730", "chr11", 65423474, 65423476, "NEAT1;NEAT1_3;NEAT1_2", "misc_RNA;lincRNA", "ENST00000501122.2;ENST00000620525.1;ENST00000612303.1;ENST00000499732.2;ENST00000613347.1", "Island", 0.028957], ["cg05348324", "chr11", 119797455, 119797457, ".", ".", ".", ".", 0.021857], ["cg04516952", "chr19", 50968785, 50968787, "CTB-147C22.9;KLK6", "protein_coding;antisense", "ENST00000594512.1;ENST00000376851.6;ENST00000310157.5;ENST00000597379.4;ENST00000391808.4;ENST00000599690.1;ENST00000376853.7;ENST00000594641.1;ENST00000599881.4", ".", 0.001703], ["cg13213755", "chr15", 73634112, 73634114, "NPTN", "protein_coding", "ENST00000564551.1;ENST00000351217.9;ENST00000567198.1;ENST00000562924.4;ENST00000345330.7;ENST00000563753.1;ENST00000563691.4;ENST00000565282.4;ENST00000565325.4", "S_Shore", -0.002129], ["cg00059652", "chr17", 69609356, 69609358, "LINC01483", "lincRNA", "ENST00000588185.1;ENST00000433856.4;ENST00000591334.4;ENST00000588501.4", ".", -0.006467], ["cg10280339", "chr15", 65519989, 65519991, ".", ".", ".", "S_Shelf", -0.007706], ["cg13702536", "chr12", 122731005, 122731007, "HCAR1", "protein_coding", "ENST00000432564.2", ".", -0.01206], ["cg04543865", "chr16", 81313945, 81313947, "GAN;RP11-55K13.1", "protein_coding;antisense", "ENST00000570148.1;ENST00000568107.2", "N_Shore", -0.013974], ["cg18964582", "chr1", 236393881, 236393883, "EDARADD", "protein_coding", "ENST00000439430.4;ENST00000334232.7", "N_Shore", -0.020403], ["cg23458843", "chr12", 57742661, 57742663, "AGAP2;TSPAN31", "protein_coding", "ENST00000553221.4;ENST00000547311.4;ENST00000257897.6;ENST00000550528.4", "S_Shelf", -0.022546], ["cg10817441", "chr6", 32855950, 32855952, "PSMB9", "protein_coding", "ENST00000414474.4;ENST00000464863.1;ENST00000467593.1;ENST00000374859.2;ENST00000395330.4", "S_Shore", -0.023726], ["cg03601372", "chr19", 36776123, 36776125, "CTD-2162K18.4;CTD-2162K18.3", "lincRNA", "ENST00000588717.1;ENST00000590750.1", "Island", -0.0253], ["cg10805039", "chr17", 847000, 847002, "NXN", "protein_coding", "ENST00000575171.1;ENST00000575801.4;ENST00000577098.4;ENST00000336868.6;ENST00000571338.1;ENST00000537628.5;ENST00000575455.4", ".", -0.028819], ["cg01771213", "chr1", 57270164, 57270166, "DAB1", "protein_coding", "ENST00000473821.1;ENST00000371231.4;ENST00000371230.1;ENST00000371232.7;ENST00000371236.5;ENST00000332102.9;ENST00000414851.5;ENST00000485760.4;ENST00000420954.5", ".", -0.031826], ["cg01140244", "chr10", 132685455, 132685457, "INPP5A", "protein_coding", "ENST00000342652.6;ENST00000423490.4;ENST00000368594.6;ENST00000368593.6", ".", -0.033518], ["cg14928764", "chr20", 23083970, 23083972, "CD93", "protein_coding", "ENST00000246006.4", ".", -0.044442], ["cg21637653", "chr17", 17213452, 17213454, "FLCN;MPRIP;RP11-45M22.4", "protein_coding", "ENST00000427497.3;ENST00000578209.4;ENST00000285071.7", ".", -0.046524], ["cg26223555", "chr19", 51824187, 51824189, "FPR3", "protein_coding", "ENST00000339223.4;ENST00000595991.1", ".", -0.047462], ["cg17632028", "chr4", 652752, 652754, "PDE6B", "protein_coding", "ENST00000255622.9;ENST00000476034.4;ENST00000496514.4;ENST00000487902.4;ENST00000429163.5;ENST00000488061.4;ENST00000474251.4;ENST00000465426.4;ENST00000467152.1", "N_Shore", -0.059162], ["cg06748884", "chr16", 11138900, 11138902, "CLEC16A", "protein_coding", "ENST00000428742.5;ENST00000459723.1;ENST00000436973.4;ENST00000409790.4;ENST00000261657.5", ".", -0.063481], ["cg15538767", "chr5", 150490832, 150490834, "NDST1", "protein_coding", "ENST00000522491.1;ENST00000524161.1;ENST00000519157.1", ".", -0.063942], ["cg26846864", "chr16", 3257325, 3257327, "MEFV", "protein_coding", "ENST00000339854.7;ENST00000539145.4;ENST00000542898.4;ENST00000536980.4;ENST00000538326.4;ENST00000537682.4;ENST00000621655.1;ENST00000219596.4;ENST00000572244.4;ENST00000574583.4;ENST00000541159.4;ENST00000570511.4;ENST00000536379.4;ENST00000576315.4", "S_Shelf", -0.066467], ["cg23875404", "chr13", 36154731, 36154733, ".", ".", ".", "N_Shore", -0.070792], ["cg04839706", "chr16", 46886162, 46886164, "GPT2", "protein_coding", "ENST00000562132.4;ENST00000340124.7;ENST00000440783.2", "S_Shore", -0.071663], ["cg16424082", "chr12", 50929956, 50929958, "METTL7A", "protein_coding", "ENST00000547104.1;ENST00000548553.1;ENST00000332160.4;ENST00000550097.1", ".", -0.073244], ["cg06339275", "chr3", 62948996, 62948998, "LINC00698", "lincRNA", "ENST00000465262.4;ENST00000475886.4;ENST00000465684.4;ENST00000468072.1", ".", -0.086047], ["cg02918093", "chr16", 10624083, 10624085, ".", ".", ".", "N_Shelf", -0.109127]];
+
+    // Define the dt_args
+    let dt_args = {"order": []};
+    dt_args["data"] = data;
+
+    $(document).ready(function () {
+        
+        $('#128e9733-c749-4b7d-965d-c579cad3b653').DataTable(dt_args);
+    });
+</script>
+</div>
+</div></div>
 </div>
 </section>
 <section id="patient-characteristics-table">
@@ -938,46 +871,38 @@ Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between grou
 </thead>
 <tbody>
 <tr><td>n                                     </td><td>                                         </td><td>         </td><td>693        </td><td>231        </td><td>         </td><td>                                         </td></tr>
-<tr><td>Age (years), mean (SD)                </td><td>                                         </td><td>0        </td><td>9.7 (6.2)  </td><td>8.4 (6.5)  </td><td>0.008    </td><td>Two Sample T-test                        </td></tr>
-<tr><td>Age group (years), n (%)              </td><td>≥10                                      </td><td>0        </td><td>346 (49.9) </td><td>106 (45.9) </td><td>0.323    </td><td>Chi-squared                              </td></tr>
-<tr><td>                                      </td><td>&lt;10                                      </td><td>         </td><td>347 (50.1) </td><td>125 (54.1) </td><td>         </td><td>                                         </td></tr>
-<tr><td>Sex, n (%)                            </td><td>Female                                   </td><td>0        </td><td>342 (49.4) </td><td>115 (49.8) </td><td>0.970    </td><td>Chi-squared                              </td></tr>
-<tr><td>                                      </td><td>Male                                     </td><td>         </td><td>351 (50.6) </td><td>116 (50.2) </td><td>         </td><td>                                         </td></tr>
-<tr><td>Race or ethnic group, n (%)           </td><td>White                                    </td><td>63       </td><td>497 (77.3) </td><td>183 (83.9) </td><td>0.065    </td><td>Chi-squared (warning: expected count &lt; 5)</td></tr>
-<tr><td>                                      </td><td>Black or African American                </td><td>         </td><td>74 (11.5)  </td><td>26 (11.9)  </td><td>         </td><td>                                         </td></tr>
-<tr><td>                                      </td><td>Asian                                    </td><td>         </td><td>38 (5.9)   </td><td>4 (1.8)    </td><td>         </td><td>                                         </td></tr>
+<tr><td>Age (years), mean (SD)                </td><td>                                         </td><td>0        </td><td>9.7 (6.2)  </td><td>8.4 (6.5)  </td><td>0.010    </td><td>Two Sample T-test                        </td></tr>
+<tr><td>Age group (years), n (%)              </td><td>≥10                                      </td><td>0        </td><td>350 (50.5) </td><td>102 (44.2) </td><td>0.111    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>&lt;10                                      </td><td>         </td><td>343 (49.5) </td><td>129 (55.8) </td><td>         </td><td>                                         </td></tr>
+<tr><td>Sex, n (%)                            </td><td>Female                                   </td><td>0        </td><td>344 (49.6) </td><td>113 (48.9) </td><td>0.909    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>Male                                     </td><td>         </td><td>349 (50.4) </td><td>118 (51.1) </td><td>         </td><td>                                         </td></tr>
+<tr><td>Race or ethnic group, n (%)           </td><td>White                                    </td><td>63       </td><td>511 (79.1) </td><td>169 (78.6) </td><td>0.520    </td><td>Chi-squared (warning: expected count &lt; 5)</td></tr>
+<tr><td>                                      </td><td>Black or African American                </td><td>         </td><td>70 (10.8)  </td><td>30 (14.0)  </td><td>         </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>Asian                                    </td><td>         </td><td>32 (5.0)   </td><td>10 (4.7)   </td><td>         </td><td>                                         </td></tr>
 <tr><td>                                      </td><td>American Indian or Alaska Native         </td><td>         </td><td>4 (0.6)    </td><td>1 (0.5)    </td><td>         </td><td>                                         </td></tr>
 <tr><td>                                      </td><td>Native Hawaiian or other Pacific Islander</td><td>         </td><td>6 (0.9)    </td><td>           </td><td>         </td><td>                                         </td></tr>
-<tr><td>                                      </td><td>Other                                    </td><td>         </td><td>24 (3.7)   </td><td>4 (1.8)    </td><td>         </td><td>                                         </td></tr>
-<tr><td>Hispanic or Latino ethnic group, n (%)</td><td>Hispanic or Latino                       </td><td>28       </td><td>135 (20.1) </td><td>44 (19.6)  </td><td>0.962    </td><td>Chi-squared                              </td></tr>
-<tr><td>                                      </td><td>Not Hispanic or Latino                   </td><td>         </td><td>537 (79.9) </td><td>180 (80.4) </td><td>         </td><td>                                         </td></tr>
-<tr><td>MRD 1 Status, n (%)                   </td><td>Positive                                 </td><td>118      </td><td>169 (27.9) </td><td>82 (41.0)  </td><td>0.001    </td><td>Chi-squared                              </td></tr>
-<tr><td>                                      </td><td>Negative                                 </td><td>         </td><td>437 (72.1) </td><td>118 (59.0) </td><td>         </td><td>                                         </td></tr>
-<tr><td>Leucocyte counts (10⁹/L), n (%)       </td><td>≥30                                      </td><td>0        </td><td>338 (48.8) </td><td>115 (49.8) </td><td>0.849    </td><td>Chi-squared                              </td></tr>
-<tr><td>                                      </td><td>&lt;30                                      </td><td>         </td><td>355 (51.2) </td><td>116 (50.2) </td><td>         </td><td>                                         </td></tr>
-<tr><td>BM Leukemic blasts (%), mean (SD)     </td><td>                                         </td><td>65       </td><td>61.7 (24.8)</td><td>71.1 (21.7)</td><td>&lt;0.001   </td><td>Two Sample T-test                        </td></tr>
-<tr><td>Risk Group, n (%)                     </td><td>High Risk                                </td><td>14       </td><td>76 (11.2)  </td><td>50 (21.8)  </td><td>&lt;0.001   </td><td>Chi-squared                              </td></tr>
-<tr><td>                                      </td><td>Standard Risk                            </td><td>         </td><td>278 (40.8) </td><td>165 (72.1) </td><td>         </td><td>                                         </td></tr>
-<tr><td>                                      </td><td>Low Risk                                 </td><td>         </td><td>327 (48.0) </td><td>14 (6.1)   </td><td>         </td><td>                                         </td></tr>
-<tr><td>Clinical Trial, n (%)                 </td><td>AAML03P1                                 </td><td>0        </td><td>24 (3.5)   </td><td>12 (5.2)   </td><td>0.234    </td><td>Chi-squared                              </td></tr>
-<tr><td>                                      </td><td>AAML0531                                 </td><td>         </td><td>362 (52.2) </td><td>129 (55.8) </td><td>         </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>Other                                    </td><td>         </td><td>23 (3.6)   </td><td>5 (2.3)    </td><td>         </td><td>                                         </td></tr>
+<tr><td>Hispanic or Latino ethnic group, n (%)</td><td>Hispanic or Latino                       </td><td>28       </td><td>134 (20.0) </td><td>45 (20.0)  </td><td>1.000    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>Not Hispanic or Latino                   </td><td>         </td><td>537 (80.0) </td><td>180 (80.0) </td><td>         </td><td>                                         </td></tr>
+<tr><td>MRD 1 Status, n (%)                   </td><td>Positive                                 </td><td>118      </td><td>170 (27.9) </td><td>81 (41.1)  </td><td>0.001    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>Negative                                 </td><td>         </td><td>439 (72.1) </td><td>116 (58.9) </td><td>         </td><td>                                         </td></tr>
+<tr><td>Leucocyte counts (10⁹/L), n (%)       </td><td>≥30                                      </td><td>0        </td><td>345 (49.8) </td><td>108 (46.8) </td><td>0.470    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>&lt;30                                      </td><td>         </td><td>348 (50.2) </td><td>123 (53.2) </td><td>         </td><td>                                         </td></tr>
+<tr><td>BM Leukemic blasts (%), mean (SD)     </td><td>                                         </td><td>65       </td><td>61.5 (24.8)</td><td>71.7 (21.6)</td><td>&lt;0.001   </td><td>Two Sample T-test                        </td></tr>
+<tr><td>Risk Group, n (%)                     </td><td>High Risk                                </td><td>14       </td><td>95 (13.9)  </td><td>31 (13.7)  </td><td>&lt;0.001   </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>Standard Risk                            </td><td>         </td><td>259 (37.9) </td><td>184 (81.4) </td><td>         </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>Low Risk                                 </td><td>         </td><td>330 (48.2) </td><td>11 (4.9)   </td><td>         </td><td>                                         </td></tr>
+<tr><td>Clinical Trial, n (%)                 </td><td>AAML03P1                                 </td><td>0        </td><td>28 (4.0)   </td><td>8 (3.5)    </td><td>0.295    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>AAML0531                                 </td><td>         </td><td>358 (51.7) </td><td>133 (57.6) </td><td>         </td><td>                                         </td></tr>
 <tr><td>                                      </td><td>AAML1031                                 </td><td>         </td><td>307 (44.3) </td><td>90 (39.0)  </td><td>         </td><td>                                         </td></tr>
-<tr><td>FLT3 ITD, n (%)                       </td><td>Yes                                      </td><td>2        </td><td>121 (17.5) </td><td>41 (17.7)  </td><td>1.000    </td><td>Chi-squared                              </td></tr>
-<tr><td>                                      </td><td>No                                       </td><td>         </td><td>570 (82.5) </td><td>190 (82.3) </td><td>         </td><td>                                         </td></tr>
+<tr><td>FLT3 ITD, n (%)                       </td><td>Yes                                      </td><td>2        </td><td>142 (20.5) </td><td>20 (8.7)   </td><td>&lt;0.001   </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>No                                       </td><td>         </td><td>550 (79.5) </td><td>210 (91.3) </td><td>         </td><td>                                         </td></tr>
 </tbody>
 </table></div></div>
 </div>
 </section>
-<section id="in-progress">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">In progress</a><a class="headerlink" href="#in-progress" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Add in validation dataset and validation plots (St. Jude’s AML02 and AML08)</p></li>
-<li><p>Add updated analysis venn diagram</p></li>
-<li><p>Get Dr. Lamba’s feedback on this.</p></li>
-</ol>
-</section>
 <section id="watermark">
-<h2><a class="toc-backref" href="#id14" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Author: Francisco_Marchi@Lamba_Lab_UF
@@ -1067,7 +992,7 @@ Architecture: 64bit
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-survival-analysis">Perform Survival Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-multivariate-coxph-lasso">Perform multivariate CoxPH-Lasso</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-threshold">Set Threshold</a></li>
 </ul>
 </li>
@@ -1081,7 +1006,6 @@ Architecture: 64bit
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacked-bar-plots">Stacked Bar Plots</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fetch-gene-annotation">Fetch gene annotation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#patient-characteristics-table">Patient Characteristics Table</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-progress">In progress</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
 </ul>
   </nav></div>
@@ -1097,7 +1021,7 @@ Architecture: 64bit
   <div class="footer-item">
     
 <p class="component-author">
-By Francisco Marchi
+By Francisco Marchi @ Lamba Lab
 </p>
 
   </div>
