@@ -174,7 +174,7 @@ Returns:
                 covariate_data = pheno_data.drop(kwargs.get('column'), axis=1) #all but one
             elif isinstance(kwargs.get('covariates'), (list,tuple)):
                 try:
-                    covariate_data = pheno_data[[ covariates ]]
+                    covariate_data = pheno_data[[kwargs.get('covariates')]]
                 except KeyError:
                     raise KeyError(f"Your covariates list of labels must match your pheno_data columns exactly.")
             elif kwargs.get('covariates') == None:
@@ -186,6 +186,15 @@ Returns:
         pheno_data = pheno_data[ pheno_data.columns[0] ] # convert a single-Column DataFrame to Series
     elif isinstance(pheno_data, pd.DataFrame):
         raise ValueError("You must specify a column by name when passing in a DataFrame for pheno_data.")
+    
+    covariate_data = kwargs.get('covariates')
+
+    # Print covariates info
+    if covariate_data is not None:
+        if verbose: LOGGER.info(f"Using covariates {covariate_data.value_counts()}")
+    else:
+        if verbose: LOGGER.info(f"No covariates used.")
+
 
     # determine regression method, if not specified
     if not regression_method:
@@ -382,6 +391,7 @@ Returns:
         try:
             durations_array = np.array(duration, dtype="float_")
             event_observed_array = np.array(event_observed, dtype="int_")
+
         except:
             raise ValueError("Durations and event observed data cannot be converted to numeric arrays.")
             
@@ -396,7 +406,7 @@ Returns:
             print(f"DEBUG MODE using cox_ph_DMP_regression kwargs: {kwargs}")
             probe_stats_rows = []
             for x in tqdm(meth_data, total=len(all_probes), desc='Probes'):
-                probe_stats_row = func(meth_data[x], durations_array, event_observed_array)
+                probe_stats_row = func(meth_data[x], durations_array, event_observed_array, covariate_data)
                 probe_stats_rows.append(probe_stats_row)
             print('Data processing done!')
             coxph_probe_stats = pd.concat(probe_stats_rows, axis=1)
@@ -417,7 +427,9 @@ Returns:
                         # columns are probes, so each probe passes in parallel
                         yield probe_data
                 # Apply the CoxPH regression function to each column in meth_data (all use the same phenotype data array)
-                probe_stat_rows = parallel(func(probe_data, durations_array, event_observed_array) for probe_data in tqdm(para_gen(meth_data), total=len(all_probes), desc='Probes') )
+                #probe_stat_rows = parallel(func(probe_data, durations_array, event_observed_array) for probe_data in tqdm(para_gen(meth_data), total=len(all_probes), desc='Probes') )
+                probe_stat_rows = parallel(func(probe_data, durations_array, event_observed_array, covariate_data) for probe_data in tqdm(para_gen(meth_data), total=len(all_probes), desc='Probes') )
+
                 # Concatenate the probes' statistics together into one dataframe
                 coxph_probe_stats = pd.concat(probe_stat_rows, axis=1)
         
@@ -903,34 +915,14 @@ Returns:
 
 from lifelines import CoxPHFitter
 
-def cox_ph_DMP_regression(probe_data, durations, event_observed):
+def cox_ph_DMP_regression(probe_data, durations, event_observed, covariate_data):
     """
-    This function performs a Cox Proportional Hazards regression on a single probe's worth of methylation
-    data (in the form of beta or M-values). It is called by the diff_meth_pos().
-
-    Inputs and Parameters:
-
-        probe_data:
-            A pandas Series for a single probe with a methylation M-value/beta-value
-            for each sample in the analysis. The Series name corresponds
-            to the probe ID, and the Series is extracted from the meth_data
-            DataFrame through a parallellized loop in diff_meth_pos().
-        durations:
-            A numpy array of durations for the event of interest. This could be, for instance,
-            the time until death for a survival analysis.
-        event_observed:
-            A binary numpy array indicating whether the event of interest was observed.
-            1 indicates that the event was observed, and 0 indicates that the event was censored.
-
-    Returns:
-
-        A pandas Series of regression statistics for the single probe analyzed.
-        The columns of regression statistics are as follows:
-            - regression coefficient (CoxPHFitter 'coef')
-            - standard error (CoxPHFitter 'se(coef)')
-            - z-score (CoxPHFitter 'z')
-            - p-value (CoxPHFitter 'p')
+    ...
+    covariate_data:
+        A pandas DataFrame of covariates to be included in the model. Index should match the index of probe_data.
+    ...
     """
+
     ##Find the probe name for the single pandas series of data contained in probe_data
     probe_ID = probe_data.name
 
@@ -939,7 +931,35 @@ def cox_ph_DMP_regression(probe_data, durations, event_observed):
         'probe_data': probe_data,
         'duration': durations,
         'event': event_observed
+
     })
+
+    ### add covariates into the probe_data ###
+    # Make sure the covariate data is a DataFrame
+    covariate_data = pd.DataFrame(covariate_data)
+
+    if isinstance(covariate_data, pd.DataFrame):
+        # first, encode strings as ints for CoxPH.
+        for col in covariate_data.columns:
+            if covariate_data[col].dtype == 'O':
+                covariate_data[col] = covariate_data[col].astype('category').cat.codes
+                # normalize codes
+                covariate_data[col] = covariate_data[col].apply( lambda x: x/len(covariate_data[col].unique()) )
+            else:
+                try:
+                    # normalize, or, if every value is the same, like a constant with zero range, just set to 1.0
+                    cmin = covariate_data[col].min()
+                    cmax = covariate_data[col].max()
+                    if cmax > cmin:
+                        covariate_data[col] = (covariate_data[col] - cmin)/(cmax-cmin)
+                    else:
+                        covariate_data[col] = 1.0 # blanking a zero-variance column
+                except Exception as e:
+                    raise Exception(f"Encountered a covariate that could not be normalized: {e}\n{covariate_data[col]}")
+            df[col] = covariate_data[col]  # merge covariates with the DataFrame
+    elif covariate_data is not None and not isinstance(covariate_data, pd.DataFrame):
+        raise Exception(f"covariate data is not a DataFrame")
+
 
     cph = CoxPHFitter()
     cph.fit(df, duration_col='duration', event_col='event')
