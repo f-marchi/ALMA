@@ -336,19 +336,19 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-statistically-significant-cpgs">Select statistically significant CpGs</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-based-on-bonferroni-corrected-p-values-1-5-10e-7">Threshold based on Bonferroni-corrected p-values (1.5*10e-7)</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fetch-genes">Fetch genes</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#os-bonferroni-significant-probes">OS Bonferroni-significant probes:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#os-bonferroni-significant-probes">OS Bonferroni significant probes:</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#efs-bonferroni-significant-probes">EFS Bonferroni significant probes:</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-based-on-suggested-significance-p-values-1-10e-6">Threshold based on suggested-significance p-values (1*10e-6)</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Fetch genes</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">OS Bonferroni-significant probes:</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">EFS Bonferroni significant probes:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#os-suggested-significance-probes">OS suggested-significance probes:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#efs-suggested-significance-probes">EFS suggested-significance probes:</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardize-and-save-top-probes-adjusted-os-at-1-10e-6">Standardize and save top probes (adjusted OS at 1*10e-6)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardize-and-save-top-probes-risk-adjusted-os-at-1-10e-6">Standardize and save top probes (risk-adjusted OS at 1*10e-6)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
 </ul>
             </nav>
@@ -362,65 +362,65 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="coxph-ewas-unadjusted-in-cog-trials-with-os-and-efs-as-outcome">
-<h1><a class="toc-backref" href="#id6" role="doc-backlink">CoxPH-EWAS unadjusted in COG trials with OS and EFS as outcome</a><a class="headerlink" href="#coxph-ewas-unadjusted-in-cog-trials-with-os-and-efs-as-outcome" title="Permalink to this heading">#</a></h1>
+<h1><a class="toc-backref" href="#id4" role="doc-backlink">CoxPH-EWAS unadjusted in COG trials with OS and EFS as outcome</a><a class="headerlink" href="#coxph-ewas-unadjusted-in-cog-trials-with-os-and-efs-as-outcome" title="Permalink to this heading">#</a></h1>
 <nav class="contents" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#coxph-ewas-unadjusted-in-cog-trials-with-os-and-efs-as-outcome" id="id6">CoxPH-EWAS unadjusted in COG trials with OS and EFS as outcome</a></p>
+<li><p><a class="reference internal" href="#coxph-ewas-unadjusted-in-cog-trials-with-os-and-efs-as-outcome" id="id4">CoxPH-EWAS unadjusted in COG trials with OS and EFS as outcome</a></p>
 <ul>
-<li><p><a class="reference internal" href="#load-data" id="id7">Load data</a></p></li>
-<li><p><a class="reference internal" href="#remove-samples-based-on-certain-clinical-features" id="id8">Remove samples based on certain clinical features</a></p>
+<li><p><a class="reference internal" href="#load-data" id="id5">Load data</a></p></li>
+<li><p><a class="reference internal" href="#remove-samples-based-on-certain-clinical-features" id="id6">Remove samples based on certain clinical features</a></p>
 <ul>
-<li><p><a class="reference internal" href="#select-samples-from-aaml1031-0531-and-03p1-clinical-trials" id="id9">Select samples from AAML1031, 0531, and 03P1 clinical trials</a></p></li>
-<li><p><a class="reference internal" href="#select-diagnostic-bone-marrow-samples-only" id="id10">Select diagnostic bone marrow samples only</a></p></li>
-<li><p><a class="reference internal" href="#remove-duplicate-samples" id="id11">Remove duplicate samples</a></p></li>
-<li><p><a class="reference internal" href="#match-samples-in-clinical-data-to-samples-in-methylation-data" id="id12">Match samples in clinical data to samples in methylation data</a></p></li>
+<li><p><a class="reference internal" href="#select-samples-from-aaml1031-0531-and-03p1-clinical-trials" id="id7">Select samples from AAML1031, 0531, and 03P1 clinical trials</a></p></li>
+<li><p><a class="reference internal" href="#select-diagnostic-bone-marrow-samples-only" id="id8">Select diagnostic bone marrow samples only</a></p></li>
+<li><p><a class="reference internal" href="#remove-duplicate-samples" id="id9">Remove duplicate samples</a></p></li>
+<li><p><a class="reference internal" href="#match-samples-in-clinical-data-to-samples-in-methylation-data" id="id10">Match samples in clinical data to samples in methylation data</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#transform-to-m-values" id="id13">Transform to M-values</a></p></li>
-<li><p><a class="reference internal" href="#perform-batch-correction" id="id14">Perform batch correction</a></p>
+<li><p><a class="reference internal" href="#transform-to-m-values" id="id11">Transform to M-values</a></p></li>
+<li><p><a class="reference internal" href="#perform-batch-correction" id="id12">Perform batch correction</a></p>
 <ul>
-<li><p><a class="reference internal" href="#evaluate-batch-effects" id="id15">Evaluate batch effects</a></p></li>
+<li><p><a class="reference internal" href="#evaluate-batch-effects" id="id13">Evaluate batch effects</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#run-coxph-ewas-os" id="id16">Run CoxPH-EWAS OS</a></p>
+<li><p><a class="reference internal" href="#run-coxph-ewas-os" id="id14">Run CoxPH-EWAS OS</a></p>
 <ul>
-<li><p><a class="reference internal" href="#unadjusted" id="id17">Unadjusted</a></p></li>
-<li><p><a class="reference internal" href="#risk-group-adjusted" id="id18">Risk group adjusted</a></p></li>
+<li><p><a class="reference internal" href="#unadjusted" id="id15">Unadjusted</a></p></li>
+<li><p><a class="reference internal" href="#risk-group-adjusted" id="id16">Risk group adjusted</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#run-coxph-ewas-efs" id="id19">Run CoxPH-EWAS EFS</a></p>
+<li><p><a class="reference internal" href="#run-coxph-ewas-efs" id="id17">Run CoxPH-EWAS EFS</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id1" id="id20">Unadjusted</a></p></li>
-<li><p><a class="reference internal" href="#id2" id="id21">Risk group adjusted</a></p></li>
+<li><p><a class="reference internal" href="#id1" id="id18">Unadjusted</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id19">Risk group adjusted</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#select-statistically-significant-cpgs" id="id22">Select statistically significant CpGs</a></p>
+<li><p><a class="reference internal" href="#select-statistically-significant-cpgs" id="id20">Select statistically significant CpGs</a></p>
 <ul>
-<li><p><a class="reference internal" href="#threshold-based-on-bonferroni-corrected-p-values-1-5-10e-7" id="id23">Threshold based on Bonferroni-corrected p-values (1.5*10e-7)</a></p>
+<li><p><a class="reference internal" href="#threshold-based-on-bonferroni-corrected-p-values-1-5-10e-7" id="id21">Threshold based on Bonferroni-corrected p-values (1.5*10e-7)</a></p>
 <ul>
-<li><p><a class="reference internal" href="#fetch-genes" id="id24">Fetch genes</a></p></li>
-<li><p><a class="reference internal" href="#os-bonferroni-significant-probes" id="id25">OS Bonferroni-significant probes:</a></p></li>
-<li><p><a class="reference internal" href="#efs-bonferroni-significant-probes" id="id26">EFS Bonferroni significant probes:</a></p></li>
+<li><p><a class="reference internal" href="#fetch-genes" id="id22">Fetch genes</a></p></li>
+<li><p><a class="reference internal" href="#os-bonferroni-significant-probes" id="id23">OS Bonferroni significant probes:</a></p></li>
+<li><p><a class="reference internal" href="#efs-bonferroni-significant-probes" id="id24">EFS Bonferroni significant probes:</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#threshold-based-on-suggested-significance-p-values-1-10e-6" id="id27">Threshold based on suggested-significance p-values (1*10e-6)</a></p>
+<li><p><a class="reference internal" href="#threshold-based-on-suggested-significance-p-values-1-10e-6" id="id25">Threshold based on suggested-significance p-values (1*10e-6)</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id3" id="id28">Fetch genes</a></p></li>
-<li><p><a class="reference internal" href="#id4" id="id29">OS Bonferroni-significant probes:</a></p></li>
-<li><p><a class="reference internal" href="#id5" id="id30">EFS Bonferroni significant probes:</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id26">Fetch genes</a></p></li>
+<li><p><a class="reference internal" href="#os-suggested-significance-probes" id="id27">OS suggested-significance probes:</a></p></li>
+<li><p><a class="reference internal" href="#efs-suggested-significance-probes" id="id28">EFS suggested-significance probes:</a></p></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#standardize-and-save-top-probes-adjusted-os-at-1-10e-6" id="id31">Standardize and save top probes (adjusted OS at 1*10e-6)</a></p></li>
-<li><p><a class="reference internal" href="#watermark" id="id32">Watermark</a></p></li>
+<li><p><a class="reference internal" href="#standardize-and-save-top-probes-risk-adjusted-os-at-1-10e-6" id="id29">Standardize and save top probes (risk-adjusted OS at 1*10e-6)</a></p></li>
+<li><p><a class="reference internal" href="#watermark" id="id30">Watermark</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
 <section id="load-data">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">Load data</a><a class="headerlink" href="#load-data" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Load data</a><a class="headerlink" href="#load-data" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -454,9 +454,9 @@ document.write(`
 </div>
 </section>
 <section id="remove-samples-based-on-certain-clinical-features">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">Remove samples based on certain clinical features</a><a class="headerlink" href="#remove-samples-based-on-certain-clinical-features" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Remove samples based on certain clinical features</a><a class="headerlink" href="#remove-samples-based-on-certain-clinical-features" title="Permalink to this heading">#</a></h2>
 <section id="select-samples-from-aaml1031-0531-and-03p1-clinical-trials">
-<h3><a class="toc-backref" href="#id9" role="doc-backlink">Select samples from AAML1031, 0531, and 03P1 clinical trials</a><a class="headerlink" href="#select-samples-from-aaml1031-0531-and-03p1-clinical-trials" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Select samples from AAML1031, 0531, and 03P1 clinical trials</a><a class="headerlink" href="#select-samples-from-aaml1031-0531-and-03p1-clinical-trials" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -480,7 +480,7 @@ document.write(`
 </div>
 </section>
 <section id="select-diagnostic-bone-marrow-samples-only">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink">Select diagnostic bone marrow samples only</a><a class="headerlink" href="#select-diagnostic-bone-marrow-samples-only" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Select diagnostic bone marrow samples only</a><a class="headerlink" href="#select-diagnostic-bone-marrow-samples-only" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -505,7 +505,7 @@ document.write(`
 </div>
 </section>
 <section id="remove-duplicate-samples">
-<h3><a class="toc-backref" href="#id11" role="doc-backlink">Remove duplicate samples</a><a class="headerlink" href="#remove-duplicate-samples" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Remove duplicate samples</a><a class="headerlink" href="#remove-duplicate-samples" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -529,7 +529,7 @@ document.write(`
 </div>
 </section>
 <section id="match-samples-in-clinical-data-to-samples-in-methylation-data">
-<h3><a class="toc-backref" href="#id12" role="doc-backlink">Match samples in clinical data to samples in methylation data</a><a class="headerlink" href="#match-samples-in-clinical-data-to-samples-in-methylation-data" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Match samples in clinical data to samples in methylation data</a><a class="headerlink" href="#match-samples-in-clinical-data-to-samples-in-methylation-data" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -554,7 +554,7 @@ document.write(`
 </section>
 </section>
 <section id="transform-to-m-values">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">Transform to M-values</a><a class="headerlink" href="#transform-to-m-values" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Transform to M-values</a><a class="headerlink" href="#transform-to-m-values" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -636,7 +636,7 @@ document.write(`
 </div>
 </section>
 <section id="perform-batch-correction">
-<h2><a class="toc-backref" href="#id14" role="doc-backlink">Perform batch correction</a><a class="headerlink" href="#perform-batch-correction" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Perform batch correction</a><a class="headerlink" href="#perform-batch-correction" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>pyCombat</strong> is a Python tool for batch effects correction in high-throughput molecular data using empirical Bayes methods</p></li>
 <li><p><strong>Github</strong>: <a class="reference external" href="https://epigenelabs.github.io/pyComBat/">https://epigenelabs.github.io/pyComBat/</a></p></li>
@@ -673,7 +673,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </div>
 <section id="evaluate-batch-effects">
-<h3><a class="toc-backref" href="#id15" role="doc-backlink">Evaluate batch effects</a><a class="headerlink" href="#evaluate-batch-effects" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">Evaluate batch effects</a><a class="headerlink" href="#evaluate-batch-effects" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -743,9 +743,9 @@ Succesfully corrected batch effects in the training dataset.
 </section>
 </section>
 <section id="run-coxph-ewas-os">
-<h2><a class="toc-backref" href="#id16" role="doc-backlink">Run CoxPH-EWAS OS</a><a class="headerlink" href="#run-coxph-ewas-os" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Run CoxPH-EWAS OS</a><a class="headerlink" href="#run-coxph-ewas-os" title="Permalink to this heading">#</a></h2>
 <section id="unadjusted">
-<h3><a class="toc-backref" href="#id17" role="doc-backlink">Unadjusted</a><a class="headerlink" href="#unadjusted" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Unadjusted</a><a class="headerlink" href="#unadjusted" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -796,7 +796,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </section>
 <section id="risk-group-adjusted">
-<h3><a class="toc-backref" href="#id18" role="doc-backlink">Risk group adjusted</a><a class="headerlink" href="#risk-group-adjusted" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">Risk group adjusted</a><a class="headerlink" href="#risk-group-adjusted" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -852,9 +852,9 @@ Succesfully corrected batch effects in the training dataset.
 </section>
 </section>
 <section id="run-coxph-ewas-efs">
-<h2><a class="toc-backref" href="#id19" role="doc-backlink">Run CoxPH-EWAS EFS</a><a class="headerlink" href="#run-coxph-ewas-efs" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">Run CoxPH-EWAS EFS</a><a class="headerlink" href="#run-coxph-ewas-efs" title="Permalink to this heading">#</a></h2>
 <section id="id1">
-<h3><a class="toc-backref" href="#id20" role="doc-backlink">Unadjusted</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">Unadjusted</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -905,7 +905,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </section>
 <section id="id2">
-<h3><a class="toc-backref" href="#id21" role="doc-backlink">Risk group adjusted</a><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">Risk group adjusted</a><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -961,9 +961,9 @@ Succesfully corrected batch effects in the training dataset.
 </section>
 </section>
 <section id="select-statistically-significant-cpgs">
-<h2><a class="toc-backref" href="#id22" role="doc-backlink">Select statistically significant CpGs</a><a class="headerlink" href="#select-statistically-significant-cpgs" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id20" role="doc-backlink">Select statistically significant CpGs</a><a class="headerlink" href="#select-statistically-significant-cpgs" title="Permalink to this heading">#</a></h2>
 <section id="threshold-based-on-bonferroni-corrected-p-values-1-5-10e-7">
-<h3><a class="toc-backref" href="#id23" role="doc-backlink">Threshold based on Bonferroni-corrected p-values (1.5*10e-7)</a><a class="headerlink" href="#threshold-based-on-bonferroni-corrected-p-values-1-5-10e-7" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id21" role="doc-backlink">Threshold based on Bonferroni-corrected p-values (1.5*10e-7)</a><a class="headerlink" href="#threshold-based-on-bonferroni-corrected-p-values-1-5-10e-7" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1055,7 +1055,7 @@ Succesfully corrected batch effects in the training dataset.
 </div></div></div>
 </div>
 <section id="fetch-genes">
-<h4><a class="toc-backref" href="#id24" role="doc-backlink">Fetch genes</a><a class="headerlink" href="#fetch-genes" title="Permalink to this heading">#</a></h4>
+<h4><a class="toc-backref" href="#id22" role="doc-backlink">Fetch genes</a><a class="headerlink" href="#fetch-genes" title="Permalink to this heading">#</a></h4>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1089,7 +1089,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </section>
 <section id="os-bonferroni-significant-probes">
-<h4><a class="toc-backref" href="#id25" role="doc-backlink">OS Bonferroni-significant probes:</a><a class="headerlink" href="#os-bonferroni-significant-probes" title="Permalink to this heading">#</a></h4>
+<h4><a class="toc-backref" href="#id23" role="doc-backlink">OS Bonferroni significant probes:</a><a class="headerlink" href="#os-bonferroni-significant-probes" title="Permalink to this heading">#</a></h4>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1172,7 +1172,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </section>
 <section id="efs-bonferroni-significant-probes">
-<h4><a class="toc-backref" href="#id26" role="doc-backlink">EFS Bonferroni significant probes:</a><a class="headerlink" href="#efs-bonferroni-significant-probes" title="Permalink to this heading">#</a></h4>
+<h4><a class="toc-backref" href="#id24" role="doc-backlink">EFS Bonferroni significant probes:</a><a class="headerlink" href="#efs-bonferroni-significant-probes" title="Permalink to this heading">#</a></h4>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1254,7 +1254,7 @@ Succesfully corrected batch effects in the training dataset.
 </section>
 </section>
 <section id="threshold-based-on-suggested-significance-p-values-1-10e-6">
-<h3><a class="toc-backref" href="#id27" role="doc-backlink">Threshold based on suggested-significance p-values (1*10e-6)</a><a class="headerlink" href="#threshold-based-on-suggested-significance-p-values-1-10e-6" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id25" role="doc-backlink">Threshold based on suggested-significance p-values (1*10e-6)</a><a class="headerlink" href="#threshold-based-on-suggested-significance-p-values-1-10e-6" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1346,7 +1346,7 @@ Succesfully corrected batch effects in the training dataset.
 </div></div></div>
 </div>
 <section id="id3">
-<h4><a class="toc-backref" href="#id28" role="doc-backlink">Fetch genes</a><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<h4><a class="toc-backref" href="#id26" role="doc-backlink">Fetch genes</a><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1379,8 +1379,8 @@ Succesfully corrected batch effects in the training dataset.
 </details>
 </div>
 </section>
-<section id="id4">
-<h4><a class="toc-backref" href="#id29" role="doc-backlink">OS Bonferroni-significant probes:</a><a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
+<section id="os-suggested-significance-probes">
+<h4><a class="toc-backref" href="#id27" role="doc-backlink">OS suggested-significance probes:</a><a class="headerlink" href="#os-suggested-significance-probes" title="Permalink to this heading">#</a></h4>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1462,8 +1462,8 @@ Succesfully corrected batch effects in the training dataset.
 </div></div>
 </div>
 </section>
-<section id="id5">
-<h4><a class="toc-backref" href="#id30" role="doc-backlink">EFS Bonferroni significant probes:</a><a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<section id="efs-suggested-significance-probes">
+<h4><a class="toc-backref" href="#id28" role="doc-backlink">EFS suggested-significance probes:</a><a class="headerlink" href="#efs-suggested-significance-probes" title="Permalink to this heading">#</a></h4>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1545,8 +1545,8 @@ Succesfully corrected batch effects in the training dataset.
 </section>
 </section>
 </section>
-<section id="standardize-and-save-top-probes-adjusted-os-at-1-10e-6">
-<h2><a class="toc-backref" href="#id31" role="doc-backlink">Standardize and save top probes (adjusted OS at 1*10e-6)</a><a class="headerlink" href="#standardize-and-save-top-probes-adjusted-os-at-1-10e-6" title="Permalink to this heading">#</a></h2>
+<section id="standardize-and-save-top-probes-risk-adjusted-os-at-1-10e-6">
+<h2><a class="toc-backref" href="#id29" role="doc-backlink">Standardize and save top probes (risk-adjusted OS at 1*10e-6)</a><a class="headerlink" href="#standardize-and-save-top-probes-risk-adjusted-os-at-1-10e-6" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1579,7 +1579,7 @@ The shape of the data is (924, 167)
 </div>
 </section>
 <section id="watermark">
-<h2><a class="toc-backref" href="#id32" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id30" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Author: Francisco_Marchi@Lamba_Lab_UF
@@ -1698,19 +1698,19 @@ Architecture: 64bit
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-statistically-significant-cpgs">Select statistically significant CpGs</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-based-on-bonferroni-corrected-p-values-1-5-10e-7">Threshold based on Bonferroni-corrected p-values (1.5*10e-7)</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fetch-genes">Fetch genes</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#os-bonferroni-significant-probes">OS Bonferroni-significant probes:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#os-bonferroni-significant-probes">OS Bonferroni significant probes:</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#efs-bonferroni-significant-probes">EFS Bonferroni significant probes:</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-based-on-suggested-significance-p-values-1-10e-6">Threshold based on suggested-significance p-values (1*10e-6)</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Fetch genes</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">OS Bonferroni-significant probes:</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">EFS Bonferroni significant probes:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#os-suggested-significance-probes">OS suggested-significance probes:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#efs-suggested-significance-probes">EFS suggested-significance probes:</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardize-and-save-top-probes-adjusted-os-at-1-10e-6">Standardize and save top probes (adjusted OS at 1*10e-6)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standardize-and-save-top-probes-risk-adjusted-os-at-1-10e-6">Standardize and save top probes (risk-adjusted OS at 1*10e-6)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
 </ul>
   </nav></div>
