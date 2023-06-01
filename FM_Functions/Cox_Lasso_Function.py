@@ -107,12 +107,12 @@ def set_cutoff(coefs, threshold):
     return (coef_mean)
 
 
-def plot_nonzero_coef_freq(raw_coefs, mean_coefs, threshold=0.85, savefig=False, fig_path=None):
+def plot_nonzero_coef_freq(raw_coefs, mean_coefs, threshold=0.85, savefig=False, fig_path=None, figsize=(12,6)):
     
     sns.set_theme(style='white')
 
     # Larger figure size
-    fig, ax = plt.subplots(figsize=(12,6))
+    fig, ax = plt.subplots(figsize=figsize)
 
     # Sorting the raw_coefs DataFrame by 'nonzero_freq'
     raw_coefs = raw_coefs.sort_values('nonzero_freq', ascending=False)
