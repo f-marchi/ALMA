@@ -14,8 +14,8 @@ parts:
 
     chapters:
       - file: 1_Data_Download_Process.ipynb
-      - file: 2_Univariate_CoxPH-EWAS.ipynb
-      - file: 3_Multivariate_CoxPH-Lasso.ipynb
+      - file: 2_Univariate_CoxPH-EWAS_v2.ipynb
+      - file: 3_Multivariate_CoxPH-Lasso_v2.ipynb
 
   #     # - caption: AML Diagnostic Map
 
