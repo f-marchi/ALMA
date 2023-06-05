@@ -148,8 +148,7 @@ def plot_nonzero_coef_freq(raw_coefs, mean_coefs, threshold=0.85, savefig=False,
     plt.show()
 
 
-def generate_coxph_score(coef_mean, x, df, score_name, train_test='train',
-                         cutoff_train=0.5):
+def generate_coxph_score(coef_mean, x, df, score_name, train_test='train'):
     """Generates a dataframe with score/Cox PH predictions
 
     Parameters:
@@ -194,11 +193,23 @@ def generate_coxph_score(coef_mean, x, df, score_name, train_test='train',
 
     # Determine train
     if train_test == 'train':
-        i = np.quantile(df[score_name], cutoff_train)
+        
+        from sklearn.tree import DecisionTreeRegressor
+
+        X = df[[score_name]]
+        y = df['os.time']
+
+        # Build a decision tree
+        tree = DecisionTreeRegressor(max_depth=1)
+        tree.fit(X, y)
+
+        # Get the threshold value for split
+        i = tree.tree_.threshold[0]
+
     else:
         i = train_test
 
-    print(f'Continuous score cut at the value of {round(i,4)} ({cutoff_train*100}%)')
+    print(f'Continuous score cut at the value of {round(i,4)}')
 
     # Binarize score
     df[score_name + ' Categorical'] = pd.cut(df[score_name],
