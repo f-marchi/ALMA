@@ -125,14 +125,14 @@ def plot_nonzero_coef_freq(raw_coefs, mean_coefs, threshold=0.85, savefig=False,
                 alpha=0.5)
 
     # Adding labels and title
-    ax.set_xlabel("CpGs, n=" + str(len(raw_coefs)), fontsize=11)
+    ax.set_xlabel("CpG probes, n=" + str(len(raw_coefs)), fontsize=11)
     ax.set_ylabel("Non-zero Coefficient Frequency", fontsize=11)
 
     plt.title(f'{len(mean_coefs)} CpGs maintain significance in >{int(threshold*100)}% of model loops',
               pad=20)
 
-    # Rotating x-axis labels for better readability if labels are overlapping
-    plt.xticks(rotation=90, fontsize=8)
+    # Remove x ticks
+    ax.set_xticklabels([])
 
     # Legend
     plt.legend()
