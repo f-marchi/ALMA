@@ -148,7 +148,7 @@ def plot_nonzero_coef_freq(raw_coefs, mean_coefs, threshold=0.85, savefig=False,
     plt.show()
 
 
-def generate_coxph_score(coef_mean, x, df, score_name, train_test='train'):
+def generate_coxph_score(coef_mean, x, df, score_name, train_test='train', rpart_outcome='os.time'):
     """Generates a dataframe with score/Cox PH predictions
 
     Parameters:
@@ -165,10 +165,8 @@ def generate_coxph_score(coef_mean, x, df, score_name, train_test='train'):
     train_test: str | float, default = 'train' 
         Use 'train' or float between 0 and 1 for cutoff percentile.
         If test, use pre-determined number for binary threshold/cutoff.
-    cutoff: float, default=0.5
-        Cutoff only matters if 'train' is selected in 'train_test' arg.
-        cutoff is within (0,1) and defines cutoff percentile for
-        categorical score.
+    rpart_outcome: str, default = 'os.time'
+        Name of the outcome column.
 
     Returns:
     --------
@@ -197,7 +195,7 @@ def generate_coxph_score(coef_mean, x, df, score_name, train_test='train'):
         from sklearn.tree import DecisionTreeRegressor
 
         X = df[[score_name]]
-        y = df['os.time']
+        y = df[rpart_outcome]
 
         # Build a decision tree
         tree = DecisionTreeRegressor(max_depth=1)
@@ -209,7 +207,7 @@ def generate_coxph_score(coef_mean, x, df, score_name, train_test='train'):
     else:
         i = train_test
 
-    print(f'Continuous score cut at the value of {round(i,4)}')
+    print(f"Continuous score cut at the value of {round(i,4)} for {str(list(df['Primary Cytogenetic Code'].unique()))}")
 
     # Binarize score
     df[score_name + ' Categorical'] = pd.cut(df[score_name],
