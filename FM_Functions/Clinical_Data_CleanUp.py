@@ -329,6 +329,8 @@ def merge_index_amltcga():
     labels_amltcga = labels_gdc.join(labels, how='inner')\
                         .reset_index()\
                         .set_index('Sample_ID')
+    
+    labels_amltcga = labels_amltcga.rename(columns={'index': 'Patient_ID'})
 
     return labels_amltcga
 
