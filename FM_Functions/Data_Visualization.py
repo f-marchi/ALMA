@@ -71,19 +71,22 @@ def draw_kaplan_meier(scorename, df, save_plot=False,
         ax = kmf2.plot_survival_function(
             ax=i, show_censors=True, ci_show=show_ci)
 
-        # Calculate Hazard Ratio (HZ) and p-value (p)
-        X_CPH = df[[scorename + '_cat_bin', t, e]]
-        cph = CoxPHFitter()
-        HZ = cph.fit(X_CPH, t, event_col=e)
-        hz = HZ.hazard_ratios_[0]
-        p = HZ.summary['p'][0]
+        try:
+            # Calculate Hazard Ratio (HZ) and p-value (p)
+            X_CPH = df[[scorename + '_cat_bin', t, e]]
+            cph = CoxPHFitter()
+            HZ = cph.fit(X_CPH, t, event_col=e)
+            hz = HZ.hazard_ratios_[0]
+            p = HZ.summary['p'][0]
 
-        # Annotate HZ and p
-        i.annotate(f'Hazard Ratio: {hz:.4f}\np-value: {p:.4f}',
-                   xy=(9.75, 0.085), xycoords='data',
-                   ha='right', va='center', fontsize=11,
-                   bbox={'boxstyle': 'round', 'facecolor': 'none',
-                         'edgecolor': 'lightgray'})
+            # Annotate HZ and p
+            i.annotate(f'Hazard Ratio: {hz:.4f}\np-value: {p:.4f}',
+                    xy=(9.75, 0.085), xycoords='data',
+                    ha='right', va='center', fontsize=11,
+                    bbox={'boxstyle': 'round', 'facecolor': 'none',
+                            'edgecolor': 'lightgray'})
+        except:
+            pass
 
         # Add risk counts below the graph
         if add_risk_counts == True:
