@@ -24,7 +24,7 @@ parts:
   - caption: Aim 1b. PaCMAP + ML Classifier
   
     chapters:
-      - file: 4_PaCMAP_benchmark.ipynb
+      - file: 4_PaCMAP_benchmark_v2.ipynb
 
   #     # - caption: AML Diagnostic Map
 
