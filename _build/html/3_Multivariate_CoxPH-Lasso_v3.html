@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '3_Multivariate_CoxPH-Lasso_v3';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="PaCMAP Benchmark" href="4_PaCMAP_benchmark.html" />
+    <link rel="next" title="PaCMAP Benchmark" href="4_PaCMAP_benchmark_v2.html" />
     <link rel="prev" title="CoxPH-EWAS unadjusted in COG trials with OS and EFS as outcome" href="2_Univariate_CoxPH-EWAS_v2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -170,7 +170,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Aim 1b. PaCMAP + ML Classifier</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="4_PaCMAP_benchmark.html">PaCMAP Benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_PaCMAP_benchmark_v2.html">PaCMAP Benchmark</a></li>
 </ul>
 
     </div>
@@ -982,7 +982,7 @@ Name: count, dtype: int64
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fec8a904df0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7ff92f0d2220&gt;
 </pre></div>
 </div>
 <img alt="_images/bcfe851ddf1cea9b3fe825350830a972303ffac20ab58407f2b1dd0293ab71ca.png" src="_images/bcfe851ddf1cea9b3fe825350830a972303ffac20ab58407f2b1dd0293ab71ca.png" />
@@ -1007,7 +1007,7 @@ Name: count, dtype: int64
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fec91a9da60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7ff938351220&gt;
 </pre></div>
 </div>
 <img alt="_images/0ac2f97fbd93f1c1d317ecb282feab31a266bef351753dd5e7cae0b754230270.png" src="_images/0ac2f97fbd93f1c1d317ecb282feab31a266bef351753dd5e7cae0b754230270.png" />
@@ -1032,7 +1032,7 @@ Name: count, dtype: int64
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fec8a96f5e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7ff92f533730&gt;
 </pre></div>
 </div>
 <img alt="_images/cf95eb9b3b848308fa5b01f9f108fa3f7b624346cbae32c3e1080be877894b53.png" src="_images/cf95eb9b3b848308fa5b01f9f108fa3f7b624346cbae32c3e1080be877894b53.png" />
@@ -1057,7 +1057,7 @@ Name: count, dtype: int64
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fec8a9fdee0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7ff938351610&gt;
 </pre></div>
 </div>
 <img alt="_images/818feb1e3236874f8ecd6e319487a35ce1310370dc3ce71456c76e54c902743b.png" src="_images/818feb1e3236874f8ecd6e319487a35ce1310370dc3ce71456c76e54c902743b.png" />
@@ -1255,6 +1255,9 @@ Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between grou
 <span class="n">mean_coefs_genes</span><span class="p">[</span><span class="s1">&#39;GeneNames&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_coefs_genes</span><span class="p">[</span><span class="s1">&#39;GeneNames&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">))))</span>
 <span class="n">mean_coefs_genes</span><span class="p">[</span><span class="s1">&#39;GeneClasses&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_coefs_genes</span><span class="p">[</span><span class="s1">&#39;GeneClasses&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">))))</span>
 
+<span class="c1"># Save the dataframe to a CSV file</span>
+<span class="n">mean_coefs_genes</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/methylScore_coxph_35_cpg_signature.csv&#39;</span><span class="p">)</span>
+
 <span class="kn">from</span> <span class="nn">itables</span> <span class="kn">import</span> <span class="n">show</span>
 
 <span class="n">show</span><span class="p">(</span><span class="n">mean_coefs_genes</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="s2">&quot;display nowrap cell-border&quot;</span><span class="p">)</span>
@@ -1286,7 +1289,7 @@ Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between grou
 }
 </style>
 <div class="itables">
-<table id="8829cdd3-4061-4f46-94f7-27d2e5afafad" class="display nowrap cell-border"style="table-layout:auto;width:auto;margin:auto;caption-side:bottom"><thead>
+<table id="ed9becdd-ba7f-4f52-b1a8-d391f8647594" class="display nowrap cell-border"style="table-layout:auto;width:auto;margin:auto;caption-side:bottom"><thead>
     <tr style="text-align: right;">
       <th></th>
       <th>chrm</th>
@@ -1306,7 +1309,7 @@ Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between grou
     dt($);
 
     // Define the table data
-    const data = [["cg22855993", "chr1", 16071749, 16071751, "FAM131C", "protein_coding", "N_Shore", 0.164903], ["cg17099306", "chr13", 49549508, 49549510, "RCBTB1", "protein_coding", ".", 0.150585], ["cg10089193", "chr16", 1090938, 1090940, "C1QTNF8", "protein_coding", "S_Shore", 0.089058], ["cg22162847", "chr1", 150562302, 150562304, "ADAMTSL4-AS1", "processed_transcript", "S_Shore", 0.086697], ["cg09890699", "chr1", 54356179, 54356181, "SSBP3", "protein_coding", "N_Shore", 0.077382], ["cg08329113", "chr16", 70737238, 70737240, "VAC14", "protein_coding", ".", 0.07355], ["cg18072388", "chr19", 10323084, 10323086, "RAVER1", "protein_coding", "N_Shore", 0.073201], ["cg00920892", "chr8", 37874705, 37874707, "RAB11FIP1", "protein_coding", ".", 0.072263], ["cg19706516", "chr1", 151131392, 151131394, "RP11-68I18.10", "sense_overlapping", "Island", 0.062809], ["cg17669009", "chr19", 51417630, 51417632, "SIGLEC10", "protein_coding", ".", 0.056796], ["cg06142946", "chr11", 17351576, 17351578, "NCR3LG1", "protein_coding", "Island", 0.048525], ["cg07143043", "chr10", 131970793, 131970795, "BNIP3;RP11-45A17.2", "protein_coding;antisense", ".", 0.048089], ["cg14978242", "chr5", 80205311, 80205313, "SERINC5", "protein_coding", ".", 0.045868], ["cg09411730", "chr11", 65423474, 65423476, "NEAT1_2;NEAT1_3;NEAT1", "misc_RNA;lincRNA", "Island", 0.03028], ["cg05348324", "chr11", 119797455, 119797457, ".", ".", ".", 0.022253], ["cg13213755", "chr15", 73634112, 73634114, "NPTN", "protein_coding", "S_Shore", -0.002808], ["cg10280339", "chr15", 65519989, 65519991, ".", ".", "S_Shelf", -0.008283], ["cg13702536", "chr12", 122731005, 122731007, "HCAR1", "protein_coding", ".", -0.013434], ["cg23458843", "chr12", 57742661, 57742663, "TSPAN31;AGAP2", "protein_coding", "S_Shelf", -0.022953], ["cg18964582", "chr1", 236393881, 236393883, "EDARADD", "protein_coding", "N_Shore", -0.023012], ["cg03601372", "chr19", 36776123, 36776125, "CTD-2162K18.4;CTD-2162K18.3", "lincRNA", "Island", -0.025899], ["cg10817441", "chr6", 32855950, 32855952, "PSMB9", "protein_coding", "S_Shore", -0.026268], ["cg10805039", "chr17", 847000, 847002, "NXN", "protein_coding", ".", -0.029879], ["cg01771213", "chr1", 57270164, 57270166, "DAB1", "protein_coding", ".", -0.032153], ["cg14928764", "chr20", 23083970, 23083972, "CD93", "protein_coding", ".", -0.045346], ["cg21637653", "chr17", 17213452, 17213454, "FLCN;MPRIP;RP11-45M22.4", "protein_coding", ".", -0.047542], ["cg26223555", "chr19", 51824187, 51824189, "FPR3", "protein_coding", ".", -0.048636], ["cg17632028", "chr4", 652752, 652754, "PDE6B", "protein_coding", "N_Shore", -0.060051], ["cg06748884", "chr16", 11138900, 11138902, "CLEC16A", "protein_coding", ".", -0.063771], ["cg26846864", "chr16", 3257325, 3257327, "MEFV", "protein_coding", "S_Shelf", -0.069062], ["cg04839706", "chr16", 46886162, 46886164, "GPT2", "protein_coding", "S_Shore", -0.07115], ["cg23875404", "chr13", 36154731, 36154733, ".", ".", "N_Shore", -0.071194], ["cg16424082", "chr12", 50929956, 50929958, "METTL7A", "protein_coding", ".", -0.073138], ["cg06339275", "chr3", 62948996, 62948998, "LINC00698", "lincRNA", ".", -0.087628], ["cg02918093", "chr16", 10624083, 10624085, ".", ".", "N_Shelf", -0.108928]];
+    const data = [["cg22855993", "chr1", 16071749, 16071751, "FAM131C", "protein_coding", "N_Shore", 0.164903], ["cg17099306", "chr13", 49549508, 49549510, "RCBTB1", "protein_coding", ".", 0.150585], ["cg10089193", "chr16", 1090938, 1090940, "C1QTNF8", "protein_coding", "S_Shore", 0.089058], ["cg22162847", "chr1", 150562302, 150562304, "ADAMTSL4-AS1", "processed_transcript", "S_Shore", 0.086697], ["cg09890699", "chr1", 54356179, 54356181, "SSBP3", "protein_coding", "N_Shore", 0.077382], ["cg08329113", "chr16", 70737238, 70737240, "VAC14", "protein_coding", ".", 0.07355], ["cg18072388", "chr19", 10323084, 10323086, "RAVER1", "protein_coding", "N_Shore", 0.073201], ["cg00920892", "chr8", 37874705, 37874707, "RAB11FIP1", "protein_coding", ".", 0.072263], ["cg19706516", "chr1", 151131392, 151131394, "RP11-68I18.10", "sense_overlapping", "Island", 0.062809], ["cg17669009", "chr19", 51417630, 51417632, "SIGLEC10", "protein_coding", ".", 0.056796], ["cg06142946", "chr11", 17351576, 17351578, "NCR3LG1", "protein_coding", "Island", 0.048525], ["cg07143043", "chr10", 131970793, 131970795, "BNIP3;RP11-45A17.2", "antisense;protein_coding", ".", 0.048089], ["cg14978242", "chr5", 80205311, 80205313, "SERINC5", "protein_coding", ".", 0.045868], ["cg09411730", "chr11", 65423474, 65423476, "NEAT1_3;NEAT1_2;NEAT1", "misc_RNA;lincRNA", "Island", 0.03028], ["cg05348324", "chr11", 119797455, 119797457, ".", ".", ".", 0.022253], ["cg13213755", "chr15", 73634112, 73634114, "NPTN", "protein_coding", "S_Shore", -0.002808], ["cg10280339", "chr15", 65519989, 65519991, ".", ".", "S_Shelf", -0.008283], ["cg13702536", "chr12", 122731005, 122731007, "HCAR1", "protein_coding", ".", -0.013434], ["cg23458843", "chr12", 57742661, 57742663, "TSPAN31;AGAP2", "protein_coding", "S_Shelf", -0.022953], ["cg18964582", "chr1", 236393881, 236393883, "EDARADD", "protein_coding", "N_Shore", -0.023012], ["cg03601372", "chr19", 36776123, 36776125, "CTD-2162K18.4;CTD-2162K18.3", "lincRNA", "Island", -0.025899], ["cg10817441", "chr6", 32855950, 32855952, "PSMB9", "protein_coding", "S_Shore", -0.026268], ["cg10805039", "chr17", 847000, 847002, "NXN", "protein_coding", ".", -0.029879], ["cg01771213", "chr1", 57270164, 57270166, "DAB1", "protein_coding", ".", -0.032153], ["cg14928764", "chr20", 23083970, 23083972, "CD93", "protein_coding", ".", -0.045346], ["cg21637653", "chr17", 17213452, 17213454, "RP11-45M22.4;MPRIP;FLCN", "protein_coding", ".", -0.047542], ["cg26223555", "chr19", 51824187, 51824189, "FPR3", "protein_coding", ".", -0.048636], ["cg17632028", "chr4", 652752, 652754, "PDE6B", "protein_coding", "N_Shore", -0.060051], ["cg06748884", "chr16", 11138900, 11138902, "CLEC16A", "protein_coding", ".", -0.063771], ["cg26846864", "chr16", 3257325, 3257327, "MEFV", "protein_coding", "S_Shelf", -0.069062], ["cg04839706", "chr16", 46886162, 46886164, "GPT2", "protein_coding", "S_Shore", -0.07115], ["cg23875404", "chr13", 36154731, 36154733, ".", ".", "N_Shore", -0.071194], ["cg16424082", "chr12", 50929956, 50929958, "METTL7A", "protein_coding", ".", -0.073138], ["cg06339275", "chr3", 62948996, 62948998, "LINC00698", "lincRNA", ".", -0.087628], ["cg02918093", "chr16", 10624083, 10624085, ".", ".", "N_Shelf", -0.108928]];
 
     // Define the dt_args
     let dt_args = {"order": []};
@@ -1314,12 +1317,14 @@ Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between grou
 
     $(document).ready(function () {
         
-        $('#8829cdd3-4061-4f46-94f7-27d2e5afafad').DataTable(dt_args);
+        $('#ed9becdd-ba7f-4f52-b1a8-d391f8647594').DataTable(dt_args);
     });
 </script>
 </div>
 </div></div>
 </div>
+<p>Download file:
+<a class="reference external" href="https://github.com/FranciscoMarchi/MethylScore/blob/main/data/methylScore_coxph_35_cpg_signature.csv">methylScore_coxph_35_cpg_signature.csv</a></p>
 </section>
 <section id="id6">
 <h2><a class="toc-backref" href="#id28" role="doc-backlink">Patient Characteristics Table</a><a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
@@ -1499,7 +1504,7 @@ Architecture: 64bit
       </div>
     </a>
     <a class="right-next"
-       href="4_PaCMAP_benchmark.html"
+       href="4_PaCMAP_benchmark_v2.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
