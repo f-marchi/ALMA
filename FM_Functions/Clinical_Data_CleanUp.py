@@ -735,19 +735,22 @@ def clean_mds_taml(df):
 def clean_all_graal(df):
 
     df = df.rename(columns={'source': 'Sample Type', 'age': 'Age (years)','gender':'Gender',
-                            'diagnosis':'Diagnosis'})
+                            'diagnosis':'Diagnosis', 'Sample_Name': 'Patient_ID'})
     
     df = df.replace({'Unknown': np.nan, 'NA': np.nan,'YES': 'Yes', 'NO': 'No', 'n':'No', 'y':'Yes',
                      'M':'Male','F':'Female', 'Leukemic Bone Marrow': 'Likely Diagnosis'})
     df['Clinical Trial'] = 'French GRAALL 2003–2005'
 
-
     return df
 
 
 def clean_target_all(df):
+
+    df = df.rename(columns={'Case ID': 'Patient_ID'})
       
     df['Clinical Trial'] = 'TARGET ALL'
+
+
 
     return df
 
