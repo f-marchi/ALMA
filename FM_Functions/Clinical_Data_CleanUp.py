@@ -712,7 +712,7 @@ def clean_nordic_all(df):
                      })
 
     # Make `Diagnosis` column by concatenating `immunophenotype` and `subtype` columns
-    df['Diagnosis'] = df['immunophenotype'] + ' ' + df['subtype'] 
+    df['Immunophenotype_Subtype'] = df['immunophenotype'] + ' ' + df['subtype'] 
     df['Clinical Trial'] = 'NOPHO ALL92-2000'
 
     return df
