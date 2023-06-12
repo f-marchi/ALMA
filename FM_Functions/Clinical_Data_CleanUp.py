@@ -673,7 +673,8 @@ def clean_beataml(df):
 
     df = df.rename(columns={'LLS_SampleID': 'Patient_ID', 'tissue':'Tissue', 'disease_state':'Sample Type',
                             'CEBPA_Biallelic': 'CEBPA mutation','VitalStatus':'Vital Status',
-                            'WBC_Count':'WBC Count (10⁹/L)', 'WHO_Fusion':'Gene Fusion'})
+                            'WBC_Count':'WBC Count (10⁹/L)', 'WHO_Fusion':'Gene Fusion', 
+                            'Age at Diagnosis': 'Age (years)'})
     
     df = df.replace({'Unknown': np.nan, 'YES': 'Yes', 'NO': 'No', 'n':'No', 'y':'Yes'})
     df['Clinical Trial'] = 'Beat AML Consortium'
@@ -750,7 +751,16 @@ def clean_target_all(df):
       
     df['Clinical Trial'] = 'TARGET ALL'
 
-
+    df['Age (years)'] = df["Age at Diagnosis in Days"].astype(
+                        float).apply(lambda x: x/365)
+    df['efs.time'] = df['Event Free Survival Time in Days'].astype(
+                        float).apply(lambda x: x/365)
+    df['os.time'] = df['Overall Survival Time in Days'].astype(
+                        float).apply(lambda x: x/365)
+    df['os.evnt'] = df['Vital Status'].map({'Alive': 0, 'Dead': 1})
+    df['efs.evnt'] = df['First Event'].isin(
+                        ['Relapse', 'Induction Failure', 'Death', 
+                        'Death without Remission']).astype(int)
 
     return df
 
