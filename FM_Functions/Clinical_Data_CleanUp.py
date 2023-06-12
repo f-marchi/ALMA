@@ -359,9 +359,22 @@ def merge_index_nordic_all():
 
 # MDS_tAML
 def merge_index_mds_taml():
-        meta = pd.read_pickle('../Data/Raw_Data/Methyl_Array_450k/GSE152710/sample_sheet_meta_data.pkl')\
-            .iloc[:,:-1].set_index('Sample_ID')
-        return meta
+
+    # Load meta data from GSE152710
+    meta = pd.read_pickle('../Data/Raw_Data/Methyl_Array_450k/GSE152710/sample_sheet_meta_data.pkl')\
+            .iloc[:,:-1].set_index('description')[['tissue','response','Sample_ID','time_afer_diagnosis']]
+        
+    # Read clinical data from supplemental info from paper
+    df = pd.read_excel('../Data/Raw_Data/Clinical_Data/MDS_tAML/PMID33446256_clinical_data_extracted_from_paper_supplement.xlsx',
+                           index_col=1)
+    
+    # Join meta and df
+    meta = meta.join(df, how='left')
+
+    # Set index to `Sample_ID`
+    meta = meta.reset_index().set_index('Sample_ID')        
+
+    return meta
     
 # Tcell_ALL_GRAAL
 def merge_index_all_graal():
@@ -720,8 +733,7 @@ def clean_nordic_all(df):
 
 def clean_mds_taml(df):
 
-    df = df.rename(columns={'tissue': 'Tissue','diagnosis': 'Diagnosis', 'time_afer_diagnosis':'Sample Type',
-                            'treatment':'Treatment'})
+    df = df.rename(columns={'description': 'Patient_ID','tissue': 'Tissue', 'time_afer_diagnosis': 'Sample Type'})
     
     df = df.replace({'Unknown': np.nan, 'NA': np.nan,'YES': 'Yes', 'NO': 'No', 'n':'No', 'y':'Yes',
                      'M':'Male','F':'Female', 'bone marrow aspirate': 'Bone Marrow', 'DX':'Diagnosis',
@@ -729,17 +741,20 @@ def clean_mds_taml(df):
     
     df['Clinical Trial'] = 'CETLAM SMD-09 (MDS-tAML)'
 
-
     return df
 
 
 def clean_all_graal(df):
 
-    df = df.rename(columns={'source': 'Sample Type', 'age': 'Age (years)','gender':'Gender',
+    df = df.rename(columns={'source': 'Tissue', 'age': 'Age (years)','gender':'Gender',
                             'diagnosis':'Diagnosis', 'Sample_Name': 'Patient_ID'})
     
     df = df.replace({'Unknown': np.nan, 'NA': np.nan,'YES': 'Yes', 'NO': 'No', 'n':'No', 'y':'Yes',
-                     'M':'Male','F':'Female', 'Leukemic Bone Marrow': 'Likely Diagnosis'})
+                     'M':'Male','F':'Female', 'Leukemic Bone Marrow': 'Bone Marrow',
+                     'normal': 'Otherwise-Normal Control'})
+    
+    
+    df['Sample Type'] = 'Diagnosis'
     df['Clinical Trial'] = 'French GRAALL 2003–2005'
 
     return df
@@ -764,15 +779,3 @@ def clean_target_all(df):
 
     return df
 
-# def label_control_samples(df_methyl, df):
-#     """
-#     This function labels control samples from the AML0531 clinical trial (GSE124413) as 'Bone Marrow Normal'
-#     and combines them with the clinical trial samples.
-#     """
-#     a = df_methyl[df_methyl['Batch'].isin(['GSE124413'])]
-#     b = df[df.index.isin(a.index)]
-#     control_0531 = a[~a.index.isin(b.index)]
-#     control_0531['Sample Type'] = 'Bone Marrow Normal'
-#     df_ = pd.concat(
-#         [df, control_0531['Sample Type'].to_frame()], axis=0, join='outer')
-#     return df_
