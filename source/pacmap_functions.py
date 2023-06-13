@@ -108,7 +108,7 @@ class BokehPlotter:
             self.tabs.tabs[i].child.output_backend = "svg"
 
     def create_slider(self):
-        self.slider = Slider(title="Adjust datapoint size", start=0, end=20, step=1, value=self.points[0][0][0].glyph.size)
+        self.slider = Slider(title="Adjust datapoint size", start=0, end=10, step=1, value=self.points[0][0][0].glyph.size)
         for i in range(len(self.points)): 
             for r in self.points[i][0]: 
                 self.slider.js_link("value", r.glyph, "size")
@@ -140,25 +140,21 @@ def get_custom_color_palette():
     '#8c564b',  # Brown
     '#f7b6d2',  # Light pink
     '#c49c94',  # Light brown
-    '#e377c2',   # Pink
+    '#a2769e',   # Soft purple
     '#dbdb8d',  # Pale yellow
     '#9edae5',  # Pale cyan
     '#c5b0d5',  # Pale purple
     '#c7c7c7',  # Light gray
     '#ff9896',  # Light red
-    '#1f77b4',  # Vivid blue
+    '#637939',  # Dark olive
     '#aec7e8',  # Light blue
     '#ffbb78',  # Light orange
     '#98df8a',  # Light green
-    '#d62728',  # Vivid red
-    '#2ca02c',  # Vivid green
-    '#ff7f0e',  # Vivid orange
-    '#9467bd',  # Vivid purple
-    '#8c564b',  # Brown
-    '#e377c2'   # Pink
-]
-
-# Reference: 
-# https://github.com/d3/d3-3.x-api-reference/blob/master/Ordinal-Scales.md#categorical-colors
-
+    '#7c231e',  # Dark red
+    '#3d6a3d',  # Dark green
+    '#f96502',  # Deep orange
+    '#6d3f7d',  # Deep purple
+    '#6b4423',  # Dark brown
+    '#d956a6'   # Hot pink
+    ]
     return list
