@@ -721,7 +721,8 @@ def clean_nordic_all(df):
     
     df = df.replace({'Unknown': np.nan, 'NA': np.nan,'YES': 'Yes', 'NO': 'No', 'n':'No', 'y':'Yes',
                      'M':'Male','F':'Female', 'ALL diagnosis':'Diagnosis', 'ALL relapse':'Relapse',
-                     'normal bone marrow':'Bone Marrow Normal','normal peripheral blood':'Peripheral Blood Normal',
+                     'normal bone marrow':'Bone Marrow Normal (NOPHO ALL92-2000)',
+                     'normal peripheral blood':'Peripheral Blood Normal (NOPHO ALL92-2000)',
                      })
 
     # Make `Diagnosis` column by concatenating `immunophenotype` and `subtype` columns
