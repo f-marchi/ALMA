@@ -31,7 +31,6 @@ class DataProcessor:
             self.df3 = self.df2
         self.df_methyl_filtered = self.df_methyl[self.df_methyl.index.isin(self.df3.index)].iloc[:, 1:]
 
-
     def apply_pacmap(self):
 
         # Define a filter to ignore the specific UserWarning
