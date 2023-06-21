@@ -10,7 +10,7 @@ parts:
   #   chapters:
   #     - file: docs/Intro_to_Methylation.md
 
-  - caption: Data Preparation
+  - caption: Data Download and Processing
 
     chapters:
       - file: 1_Data_Download_Process.ipynb
