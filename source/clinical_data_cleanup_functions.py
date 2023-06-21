@@ -1,5 +1,5 @@
 """
-This module cleans and adjusts clinical data files from St. Jude and COG AML trials.
+This module cleans and adjusts clinical data files.
 
 """
 
@@ -188,10 +188,10 @@ def merge_index_0531():
 
 # AML05
 def merge_index_aml05():
-    labels_aml05 = pd.read_pickle(
+    df = pd.read_pickle(
     clinical_data_path + '/Japanese_AML05/AML05_sample_sheet_meta_data.pkl'
         ).iloc[:,:-1].set_index('Sample_ID')
-    return (labels_aml05)
+    return (df)
 
 # AML02
 def merge_index_aml02():
@@ -622,6 +622,250 @@ def clean_cog(df):
     # df['Tumor Code'] = df['Tumor Code'].replace({'00': '00 - Non-cancerous tissue',
     #                                             '20': '20 - Acute myeloid leukemia (AML)',
     #                                              '21': '21 - Induction failure AML (AML-IF)'})
+
+
+
+    # ELN 2022
+
+    def classify_controls(normal_samples):
+        mapping = {
+            'Bone Marrow Normal': 'Otherwise-Normal Control',
+            'Blood Derived Normal': 'Otherwise-Normal Control'}
+        
+        for key, value in mapping.items():
+            if key in normal_samples:
+                return value
+
+
+    def classify_fusion(gene_fusion):
+        mapping = {
+        'RUNX1-RUNX1T1': 'AML with t(8;21)(q22;q22.1)/RUNX1::RUNX1T1',
+        'CBFB-MYH11':    'AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22)/CBFB::MYH11',
+        'KMT2A':         'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
+        'add(11)(q23)':  'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
+        'MLL':           'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
+        'PML-RARA':      'APL with t(15;17)(q24.1;q21.2)/PML::RARA',
+        'DEK-NUP214':    'AML with t(6;9)(p23;q34.1)/DEK::NUP214',
+        'MECOM':         'AML with inv(3)(q21.3q26.2) or t(3;3)(q21.3;q26.2)/MECOM-rearrangement',
+        'NPM1-MLF1':     'AML with other rare recurring translocations',
+        'PRDM16-RPN1':   'AML with other rare recurring translocations',
+        'RBM15-MRTFA':   'AML with other rare recurring translocations',
+        'RBM15-MKL1':    'AML with other rare recurring translocations',
+        'NUP98':         'AML with other rare recurring translocations',
+        'ETV6-MNX1':     'AML with other rare recurring translocations',
+        'KAT6A-CREBBP':  'AML with other rare recurring translocations',
+        'PICALM-MLLT10': 'AML with other rare recurring translocations',
+        'FUS-ERG':       'AML with other rare recurring translocations',
+        'RUNX1-CBFA2T3': 'AML with other rare recurring translocations',
+        'CBFA2T3-GLIS2': 'AML with other rare recurring translocations',
+        'BCR-ABL1':       'AML with t(9;22)(q34.1;q11.2)/BCR::ABL1'}
+
+        # Other uncharacterized abdnormalities present in the dataset but not in guidelines
+        
+        # 'CBFA2T3-GLIS3': 'AML with other rare recurring translocations',
+        # 'PSIP1-NUP214':  'AML with other rare recurring translocations',
+        # 'XPO1-TNRC18':   'AML with other rare recurring translocations', 
+        # 'HNRNPH1-ERG':   'AML with other rare recurring translocations',
+        # 'NIPBL-HOXB9':   'AML with other rare recurring translocations', 
+        # 'SET-NUP214':    'AML with other rare recurring translocations', 
+        # 'FLI1-IFIT2':    'AML with other rare recurring translocations', 
+        # 'TCF4-ZEB2':     'AML with other rare recurring translocations',
+        # 'MBTD1-ZMYND11': 'AML with other rare recurring translocations', 
+        # 'FOSB-KLF6':     'AML with other rare recurring translocations', 
+        # 'SFPQ-ZFP36L2':  'AML with other rare recurring translocations', 
+        # 'RUNX1-LINC00478':'AML with other rare recurring translocations',
+        # 'RUNX1-EVX1':     'AML with other rare recurring translocations',  
+        # 'PSPC1-ZFP36L1':  'AML with other rare recurring translocations', 
+        # 'EWSR1-FEV':      'AML with other rare recurring translocations',
+        # 'STAG2-AFF2':     'AML with other rare recurring translocations', 
+        # 'MYB-GATA1':      'AML with other rare recurring translocations', 
+        # 'CBFA2T3-GLIS3':  'AML with other rare recurring translocations',
+        # 'RUNX1-ZFPM2':    'AML with other rare recurring translocations', 
+        # 'RUNX1-CBFA2T2':  'AML with other rare recurring translocations',
+        # 'PIM3-BRD1':      'AML with other rare recurring translocations',
+        # 'KAT6A-EP300':    'AML with other rare recurring translocations',
+        # 'DOT1L-RPS15':    'AML with other rare recurring translocations',
+        # 'FUS-FEV':        'AML with other rare recurring translocations',
+        # 'KAT6A-NCOA2':    'AML with other rare recurring translocations',
+        # 'JARID2-PTP4A1':  'AML with other rare recurring translocations',
+        # 'FUS-FLI1':       'AML with other rare recurring translocations',     
+        
+        for key, value in mapping.items():
+            if key in gene_fusion:
+                return value
+
+    def classify_cebpa(cebpa_mutation):
+        mapping = {
+            'Yes': 'AML with in-frame bZIP mutated CEBPA'}
+        
+        for key, value in mapping.items():
+            if key in cebpa_mutation:
+                return value
+
+    def classify_npm(npm_mutation):
+        mapping = {
+            'Yes': 'AML with mutated NPM1',
+        }
+
+        for key, value in mapping.items():
+            if key in npm_mutation:
+                return value
+            
+    def classify_annotated_diagnosis(diagnosis):
+        mapping = {
+            'mutated NPM1': 'AML with mutated NPM1',
+            'mutated CEBPA': 'AML with in-frame bZIP mutated CEBPA',
+            'myelodysplasia-related changes': 'MDS-related or secondary myeloid neoplasms'
+            }
+        
+        for key, value in mapping.items():
+            if key in diagnosis:
+                return value
+
+    def process_labels_eln22(df):
+        df['ELN 2022_Controls'] = df['Sample Type'].astype(str).apply(classify_controls)
+        df['ELN 2022_Gene Fusion'] = df['Gene Fusion'].astype(str).apply(classify_fusion)
+        df['ELN 2022_CEBPA'] = df['CEBPA mutation'].astype(str).apply(classify_cebpa)
+        df['ELN 2022_NPM1'] = df['NPM mutation'].astype(str).apply(classify_npm)
+        df['ELN 2022_Comment'] = df['Comment'].astype(str).apply(classify_annotated_diagnosis)
+
+        df['ELN 2022 Combined Diagnoses'] = df[['ELN 2022_Controls','ELN 2022_Gene Fusion', 'ELN 2022_CEBPA', 'ELN 2022_NPM1', 'ELN 2022_Comment']]\
+            .apply(lambda x: ','.join(filter(lambda i: i is not None and i==i, x)), axis=1)
+
+        # Replace empty strings with NaN
+        df['ELN 2022 Combined Diagnoses'] = df['ELN 2022 Combined Diagnoses'].replace('', np.nan)
+
+        # Create `ELN 2022 Final Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
+        df['ELN AML 2022 Diagnosis'] = df['ELN 2022 Combined Diagnoses'].str.split(',').str[0]
+
+        # Drop columns created except for `ELN 2022 Final Diagnosis` and `Combined Diagnosis` columns
+        df = df.drop(['ELN 2022_Controls','ELN 2022_Gene Fusion', 'ELN 2022_CEBPA', 'ELN 2022_NPM1', 'ELN 2022_Comment'], axis=1)
+            
+        return df
+
+    # Process labels
+    df = process_labels_eln22(df)
+
+    # WHO 2021
+
+    def classify_controls(normal_samples):
+        mapping = {
+            'Bone Marrow Normal': 'Otherwise-Normal Control',
+            'Blood Derived Normal': 'Otherwise-Normal Control'}
+        
+        for key, value in mapping.items():
+            if key in normal_samples:
+                return value
+
+
+    def classify_fusion(gene_fusion):
+        mapping = {
+        'RUNX1-RUNX1T1': 'AML with t(8;21)(q22;q22.1)/RUNX1::RUNX1T1',
+        'CBFB-MYH11':    'AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22)/CBFB::MYH11',
+        'KMT2A':         'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
+        'add(11)(q23)':  'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
+        'MLL':           'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
+        'PML-RARA':      'APL with t(15;17)(q24.1;q21.2)/PML::RARA',
+        'DEK-NUP214':    'AML with t(6;9)(p23;q34.1)/DEK::NUP214',
+        'MECOM':         'AML with inv(3)(q21.3q26.2) or t(3;3)(q21.3;q26.2)/MECOM-rearrangement',
+        'ETV6':          'AML with ETV6 fusion',
+        'NPM1':          'AML with mutated NPM1',
+        'RBM15-MKL1':    'AML with t(1;22)(p13.3;q13.1); RBM15::MKL1',
+        'NUP98':         'AML with NUP98-fusion',
+        'KAT6A-CREBBP':  'AML with t(8;16)(p11.2;p13.3); KAT6A::CREBBP',
+        'FUS-ERG':       'AML with t(16;21)(p11;q22); FUS::ERG',
+        'CBFA2T3-GLIS2': 'AML with CBFA2T3::GLIS2 (inv(16)(p13q24))',
+        'BCR-ABL1':       'AML with t(9;22)(q34.1;q11.2)/BCR::ABL1'}
+
+        # Other uncharacterized abdnormalities present in the dataset but not in guidelines
+        # 'RUNX1-CBFA2T3': 'AML with other rare recurring translocations',
+        # 'PRDM16-RPN1':   'AML with other rare recurring translocations',
+        # 'PICALM-MLLT10': 'AML with other rare recurring translocations',
+        # 'RBM15-MRTFA':   'AML with other rare recurring translocations',
+        # 'CBFA2T3-GLIS3': 'AML with other rare recurring translocations',
+        # 'PSIP1-NUP214':  'AML with other rare recurring translocations',
+        # 'XPO1-TNRC18':   'AML with other rare recurring translocations', 
+        # 'HNRNPH1-ERG':   'AML with other rare recurring translocations',
+        # 'NIPBL-HOXB9':   'AML with other rare recurring translocations', 
+        # 'SET-NUP214':    'AML with other rare recurring translocations', 
+        # 'FLI1-IFIT2':    'AML with other rare recurring translocations', 
+        # 'TCF4-ZEB2':     'AML with other rare recurring translocations',
+        # 'MBTD1-ZMYND11': 'AML with other rare recurring translocations', 
+        # 'FOSB-KLF6':     'AML with other rare recurring translocations', 
+        # 'SFPQ-ZFP36L2':  'AML with other rare recurring translocations', 
+        # 'RUNX1-LINC00478':'AML with other rare recurring translocations',
+        # 'RUNX1-EVX1':     'AML with other rare recurring translocations',  
+        # 'PSPC1-ZFP36L1':  'AML with other rare recurring translocations', 
+        # 'EWSR1-FEV':      'AML with other rare recurring translocations',
+        # 'STAG2-AFF2':     'AML with other rare recurring translocations', 
+        # 'MYB-GATA1':      'AML with other rare recurring translocations', 
+        # 'CBFA2T3-GLIS3':  'AML with other rare recurring translocations',
+        # 'RUNX1-ZFPM2':    'AML with other rare recurring translocations', 
+        # 'RUNX1-CBFA2T2':  'AML with other rare recurring translocations',
+        # 'PIM3-BRD1':      'AML with other rare recurring translocations',
+        # 'KAT6A-EP300':    'AML with other rare recurring translocations',
+        # 'DOT1L-RPS15':    'AML with other rare recurring translocations',
+        # 'FUS-FEV':        'AML with other rare recurring translocations',
+        # 'KAT6A-NCOA2':    'AML with other rare recurring translocations',
+        # 'JARID2-PTP4A1':  'AML with other rare recurring translocations',
+        # 'FUS-FLI1':       'AML with other rare recurring translocations',     
+        
+        for key, value in mapping.items():
+            if key in gene_fusion:
+                return value
+
+    def classify_cebpa(cebpa_mutation):
+        mapping = {
+            'Yes': 'AML with bZIP mutated CEBPA'}
+        
+        for key, value in mapping.items():
+            if key in cebpa_mutation:
+                return value
+
+    def classify_npm(npm_mutation):
+        mapping = {
+            'Yes': 'AML with mutated NPM1',
+        }
+
+        for key, value in mapping.items():
+            if key in npm_mutation:
+                return value
+            
+    def classify_annotated_diagnosis(diagnosis):
+        mapping = {
+            'mutated NPM1': 'AML with mutated NPM1',
+            'mutated CEBPA': 'AML with bZIP mutated CEBPA',
+            'myelodysplasia-related changes': 'MDS-related or secondary myeloid neoplasms'
+            }
+        
+        for key, value in mapping.items():
+            if key in diagnosis:
+                return value
+
+    def process_labels_who21(df):
+        df['WHO 2021_Controls'] = df['Sample Type'].astype(str).apply(classify_controls)
+        df['WHO 2021_Gene Fusion'] = df['Gene Fusion'].astype(str).apply(classify_fusion)
+        df['WHO 2021_CEBPA'] = df['CEBPA mutation'].astype(str).apply(classify_cebpa)
+        df['WHO 2021_NPM1'] = df['NPM mutation'].astype(str).apply(classify_npm)
+        df['WHO 2021_Comment'] = df['Comment'].astype(str).apply(classify_annotated_diagnosis)
+
+        df['WHO 2021 Combined Diagnoses'] = df[['WHO 2021_Controls','WHO 2021_Gene Fusion', 'WHO 2021_CEBPA', 'WHO 2021_NPM1', 'WHO 2021_Comment']]\
+            .apply(lambda x: ','.join(filter(lambda i: i is not None and i==i, x)), axis=1)
+
+        # Replace empty strings with NaN
+        df['WHO 2021 Combined Diagnoses'] = df['WHO 2021 Combined Diagnoses'].replace('', np.nan)
+
+        # Create `WHO 2021 Final Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
+        df['WHO AML 2021 Diagnosis'] = df['WHO 2021 Combined Diagnoses'].str.split(',').str[0]
+
+        # Drop columns created except for `WHO 2021 Final Diagnosis` and `Combined Diagnosis` columns
+        df = df.drop(['WHO 2021_Controls','WHO 2021_Gene Fusion', 'WHO 2021_CEBPA', 'WHO 2021_NPM1', 'WHO 2021_Comment'], axis=1)
+            
+        return df
+
+    # Process labels
+    df = process_labels_who21(df)
+
     return (df)
 
 
@@ -679,6 +923,35 @@ def clean_aml05(df, clinical_data_path='../Data/Raw_Data/Clinical_Data/Japanese_
     df['Clinical Trial'] = 'Japanese AML05'
     df['Sample Type'] = 'Diagnosis'
 
+    # ELN 2022
+
+    def classify_fusion_aml05_eln22(gene_fusion):
+        mapping = {
+        'KMT2A':         'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
+        'NPM1':          'AML with mutated NPM1',
+        'NUP98':         'AML with other rare recurring translocations'}
+        for key, value in mapping.items():
+            if key in gene_fusion:
+                return value
+            
+    # Rename `Other genetic alterations` column to `Gene Fusion`
+    df = df.rename(columns={'Other genetic alterations': 'Gene Fusion'})
+
+    df['ELN AML 2022 Diagnosis'] = df['Gene Fusion'].astype(str).apply(classify_fusion_aml05_eln22)
+
+    # WHO 2021
+
+    def classify_fusion_aml05_who21(gene_fusion):
+        mapping = {
+        'KMT2A':         'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
+        'NPM1':          'AML with mutated NPM1',
+        'NUP98':         'AML with NUP98-fusion'}
+        for key, value in mapping.items():
+            if key in gene_fusion:
+                return value
+
+    df['WHO AML 2021 Diagnosis'] = df['Gene Fusion'].astype(str).apply(classify_fusion_aml05_who21)
+
     return (df)
 
 
@@ -691,6 +964,56 @@ def clean_beataml(df):
     
     df = df.replace({'Unknown': np.nan, 'YES': 'Yes', 'NO': 'No', 'n':'No', 'y':'Yes'})
     df['Clinical Trial'] = 'Beat AML Consortium'
+
+    # ELN 2022
+
+    def classify_annotated_diagnosis_beataml_eln22(gene_fusion):
+        mapping = {
+            "AML with mutated NPM1"                                         : "AML with mutated NPM1",
+            "AML with myelodysplasia-related changes"                       : "MDS-related or secondary myeloid neoplasms",
+            "AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22); CBFB-MYH11" : "AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22)/CBFB::MYH11",
+            "AML with mutated CEBPA"                                        : "AML with in-frame bZIP mutated CEBPA",
+            "Therapy-related myeloid neoplasms"                             : "MDS-related or secondary myeloid neoplasms",
+            "PML-RARA"                                                      : "APL with t(15;17)(q24.1;q21.2)/PML::RARA",
+            "AML with t(9;11)(p22;q23); MLLT3-MLL"                          : "AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement",
+            "AML with t(8;21)(q22;q22.1); RUNX1-RUNX1T1"                    : "AML with t(8;21)(q22;q22.1)/RUNX1::RUNX1T1",
+            "AML with inv(3)(q21q26.2) or t(3;3)(q21;q26.2); RPN1-EVI1"     : "AML with inv(3)(q21.3q26.2) or t(3;3)(q21.3;q26.2)/MECOM-rearrangement",
+            "Mixed phenotype acute leukaemia, T/myeloid"                    : "Mixed phenotype acute leukemia T/myeloid",
+            "Myeloid leukaemia associated with Down syndrome"               : "Myeloid leukaemia associated with Down syndrome",
+        }
+        for key, value in mapping.items():
+            if key in gene_fusion:
+                return value
+
+    df["ELN AML 2022 Diagnosis"] = (df["SpecificDxAtAcquisition"]
+                                    .astype(str)
+                                    .apply(classify_annotated_diagnosis_beataml_eln22))
+    # WHO 2021
+
+    def classify_annotated_diagnosis_beataml_who21(gene_fusion):
+        mapping = {
+            "AML with mutated NPM1"                                         : "AML with mutated NPM1",
+            "AML with myelodysplasia-related changes"                       : "MDS-related or secondary myeloid neoplasms",
+            "AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22); CBFB-MYH11" : "AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22)/CBFB::MYH11",
+            "AML with mutated CEBPA"                                        : "AML with bZIP mutated CEBPA",
+            "Therapy-related myeloid neoplasms"                             : "MDS-related or secondary myeloid neoplasms",
+            "PML-RARA"                                                      : "APL with t(15;17)(q24.1;q21.2)/PML::RARA",
+            "AML with t(9;11)(p22;q23); MLLT3-MLL"                          : "AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement",
+            "AML with t(8;21)(q22;q22.1); RUNX1-RUNX1T1"                    : "AML with t(8;21)(q22;q22.1)/RUNX1::RUNX1T1",
+            "AML with inv(3)(q21q26.2) or t(3;3)(q21;q26.2); RPN1-EVI1"     : "AML with inv(3)(q21.3q26.2) or t(3;3)(q21.3;q26.2)/MECOM-rearrangement",
+            "Mixed phenotype acute leukaemia, T/myeloid"                    : "Mixed phenotype acute leukemia T/myeloid",
+            "Myeloid leukaemia associated with Down syndrome"               : "Myeloid leukemia associated with Down syndrome",
+        }
+        for key, value in mapping.items():
+            if key in gene_fusion:
+                return value
+
+    df["WHO AML 2021 Diagnosis"] = (
+        df["SpecificDxAtAcquisition"]
+        .astype(str)
+        .apply(classify_annotated_diagnosis_beataml_who21)
+    )
+
     return df
 
 
@@ -711,6 +1034,40 @@ def clean_amltcga(df):
     df['Clinical Trial'] = 'TCGA AML'
     df['Sample Type'] = 'Diagnosis'
 
+    # ELN 2022 Diagnostic Annotation
+
+    def classify_annotated_diagnosis_amltcga_eln22(gene_fusion):
+        mapping = {
+        'PML-RARA':         'APL with t(15;17)(q24.1;q21.2)/PML::RARA',
+        'CBFB-MYH11':       'AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22)/CBFB::MYH11',
+        'RUNX1-RUNX1T1':    'AML with t(8;21)(q22;q22.1)/RUNX1::RUNX1T1',
+        'MLL':              'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
+        'BCR-ABL1':         'AML with t(9;22)(q34.1;q11.2)/BCR::ABL1',
+        'NUP98':            'AML with other rare recurring translocations'}
+        for key, value in mapping.items():
+            if key in gene_fusion:
+                return value
+            
+    df['ELN AML 2022 Diagnosis'] = df['Molecular Classification']\
+        .astype(str).apply(classify_annotated_diagnosis_amltcga_eln22)
+    
+    # WHO 2021 Diagnostic Annotation
+
+    def classify_annotated_diagnosis_amltcga_who21(gene_fusion):
+        mapping = {
+        'PML-RARA':         'APL with t(15;17)(q24.1;q21.2)/PML::RARA',
+        'CBFB-MYH11':       'AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22)/CBFB::MYH11',
+        'RUNX1-RUNX1T1':    'AML with t(8;21)(q22;q22.1)/RUNX1::RUNX1T1',
+        'MLL':              'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
+        'NUP98':            'AML with NUP98-fusion'}
+        for key, value in mapping.items():
+            if key in gene_fusion:
+                return value
+            
+    df['WHO AML 2021 Diagnosis'] = df['Molecular Classification']\
+        .astype(str).apply(classify_annotated_diagnosis_amltcga_who21)
+    
+
     return df
 
 
@@ -729,6 +1086,60 @@ def clean_nordic_all(df):
     df['Immunophenotype_Subtype'] = df['immunophenotype'] + ' ' + df['subtype'] 
     df['Clinical Trial'] = 'NOPHO ALL92-2000'
 
+    # WHO 2021 Diagnostic Annotation
+
+    def classify_controls(normal_samples):
+        mapping = {
+            'Bone Marrow Normal': 'Otherwise-Normal Control',
+            'Peripheral Blood Normal': 'Otherwise-Normal Control'}
+        
+        for key, value in mapping.items():
+            if key in normal_samples:
+                return value
+
+
+    def classify_fusion(immunophenotype_subtype):
+        mapping = {
+        'BCP-ALL HeH'           :'B-ALL with hyperdiploidy, high',
+        'BCP-ALL t(12;21)'      :'B-ALL with t(12;21)(p13.2;q22.1); ETV6::RUNX1',         
+        'BCP-ALL undefined'     :'B-ALL NOS',     
+        'T-ALL T-ALL'           :'T-ALL NOS',
+        'BCP-ALL non-recurrent' :'B-ALL NOS', 
+        'BCP-ALL 11q23/MLL'     :'B-ALL with t(v;11q23.3); KMT2A-rearranged',       
+        'BCP-ALL t(1;19)'       :'B-ALL with t(1;19)(q23;p13.3); TCF3::PBX1',       
+        'BCP-ALL dic(9;20)'     :'B-ALL dic(9;20)',       
+        'BCP-ALL t(9;22)'       :'B-ALL with t(9;22)(q34.1;q11.2); BCR::ABL1',       
+        'BCP-ALL iAMP21'        :'B-ALL with iAMP21',        
+        'BCP-ALL <45chr'        :'B-ALL with hypodiploidy',        
+        'BCP-ALL >67chr'        :'B-ALL with hyperdiploidy'}
+
+        # This criteria above needs to be revised if we choose to include ALL samples in the analysis 
+        
+        for key, value in mapping.items():
+            if key in immunophenotype_subtype:
+                return value
+            
+    def process_labels_nordic_all(df):
+        df['WHO 2021_Controls'] = df['Sample Type'].astype(str).apply(classify_controls)
+        df['WHO 2021_Immunophenotype_Subtype'] = df['Immunophenotype_Subtype'].astype(str).apply(classify_fusion)
+        
+        df['WHO 2021 Combined Diagnoses'] = df[['WHO 2021_Controls','WHO 2021_Immunophenotype_Subtype']]\
+            .apply(lambda x: ','.join(filter(lambda i: i is not None and i==i, x)), axis=1)
+
+        # Replace empty strings with NaN
+        df['WHO 2021 Combined Diagnoses'] = df['WHO 2021 Combined Diagnoses'].replace('', np.nan)
+
+        # Create `WHO 2021 Final Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
+        df['WHO ALL 2021 Diagnosis'] = df['WHO 2021 Combined Diagnoses'].str.split(',').str[0]
+
+        # Drop columns created except for `WHO 2021 Final Diagnosis` and `Combined Diagnosis` columns
+        df = df.drop(['WHO 2021_Controls','WHO 2021_Immunophenotype_Subtype','WHO 2021 Combined Diagnoses'], axis=1)
+            
+        return df
+
+    # Process labels
+    df = process_labels_nordic_all(df)
+
     return df
 
 
@@ -741,6 +1152,47 @@ def clean_mds_taml(df):
                      'CTR':'Control (Healthy Donor)','POST TPH': 'Post Transplant'})
     
     df['Clinical Trial'] = 'CETLAM SMD-09 (MDS-tAML)'
+
+    # ELN 2022 and WHO 2021 Diagnostic Annotation
+
+    def classify_controls_mds_taml(normal_samples):
+        mapping = {
+            'CTR': 'Otherwise-Normal Control'}
+        
+        for key, value in mapping.items():
+            if key in normal_samples:
+                return value
+
+    def classify_annotated_diagnosis_mds_taml(gene_fusion):
+        mapping = {
+            "MDS": "MDS-related or secondary myeloid neoplasms",
+            "AML": "MDS-related or secondary myeloid neoplasms",
+        }
+        for key, value in mapping.items():
+            if key in gene_fusion:
+                return value
+
+    def process_labels_mds_taml(df):
+        df['ELN22_Controls'] = df['Patient_ID'].astype(str).apply(classify_controls_mds_taml)
+        df["ELN22_Diagnosis"] = (df["Cytological category group"].astype(str).apply(classify_annotated_diagnosis_mds_taml))
+
+        df['ELN22 Combined Diagnoses'] = df[['ELN22_Controls','ELN22_Diagnosis']]\
+            .apply(lambda x: ','.join(filter(lambda i: i is not None and i==i, x)), axis=1)
+            # Replace empty strings with NaN
+        df['ELN22 Combined Diagnoses'] = df['ELN22 Combined Diagnoses'].replace('', np.nan)
+
+        # Create `ELN 2022 Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
+        df['ELN AML 2022 Diagnosis'] = df['ELN22 Combined Diagnoses'].str.split(',').str[0]
+
+        # Create `WHO 2021 Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
+        df['WHO AML 2021 Diagnosis'] = df['ELN22 Combined Diagnoses'].str.split(',').str[0]
+
+        # Drop columns created except for `ELN 2022 Diagnosis` and `Combined Diagnosis` columns
+        df = df.drop(['ELN22_Controls','ELN22_Diagnosis'], axis=1)
+            
+        return df
+
+    df = process_labels_mds_taml(df)
 
     return df
 
@@ -757,6 +1209,45 @@ def clean_all_graal(df):
     
     df['Sample Type'] = 'Diagnosis'
     df['Clinical Trial'] = 'French GRAALL 2003–2005'
+
+    # WHO 2021 Diagnostic Annotation
+
+    def classify_controls_target_all(normal_samples):
+        mapping = {
+            'Bone Marrow Normal': 'Otherwise-Normal Control'}
+        
+        for key, value in mapping.items():
+            if key in normal_samples:
+                return value
+
+    def classify_annotated_diagnosis_target_all(gene_fusion):
+        mapping = {
+            "T/M": "Mixed phenotype acute leukemia T/myeloid",
+            'B/M': 'Mixed phenotype acute leukemia B/myeloid',
+            'MLL': 'Mixed phenotype acute leukemia with t(v;11q23.3)/KMT2A-rearranged'
+        }
+        for key, value in mapping.items():
+            if key in gene_fusion:
+                return value
+
+    def process_labels_target_all(df):
+        df['WHO_Controls'] = df['Sample Type'].astype(str).apply(classify_controls_target_all)
+        df["WHO_Diagnosis"] = (df["WHO ALAL Classification"].astype(str).apply(classify_annotated_diagnosis_target_all))
+
+        df['WHO Combined Diagnoses'] = df[['WHO_Controls','WHO_Diagnosis']]\
+            .apply(lambda x: ','.join(filter(lambda i: i is not None and i==i, x)), axis=1)
+            # Replace empty strings with NaN
+        df['WHO Combined Diagnoses'] = df['WHO Combined Diagnoses'].replace('', np.nan)
+
+        # Create `WHO 2021 Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
+        df['WHO ALL 2021 Diagnosis'] = df['WHO Combined Diagnoses'].str.split(',').str[0]
+
+        # Drop columns created except for `WHO Final Diagnosis` and `Combined Diagnosis` columns
+        df = df.drop(['WHO_Controls','WHO_Diagnosis','WHO Combined Diagnoses'], axis=1)
+            
+        return df
+
+    df = process_labels_target_all(df)
 
     return df
 
@@ -777,6 +1268,120 @@ def clean_target_all(df):
     df['efs.evnt'] = df['First Event'].isin(
                         ['Relapse', 'Induction Failure', 'Death', 
                         'Death without Remission']).astype(int)
+    
+    # WHO 2021 Diagnostic Annotation
+
+    def classify_all_graal(diagnosis):
+        mapping = {
+        'Otherwise-Normal Control':'Otherwise-Normal Control',
+        'T-ALL':'T-ALL NOS'}
+        for key, value in mapping.items():
+            if key in diagnosis:
+                return value
+            
+    df['WHO ALL 2021 Diagnosis'] = df['Diagnosis'].astype(str).apply(classify_all_graal)
 
     return df
 
+
+##############################################################################################################
+# Functions for merged dataset
+##############################################################################################################
+
+def process_df_labels(df):
+    """
+    Function to process a pandas dataframe, performing age categorization 
+    and main disease classification.
+
+    Args:
+        df (pandas.DataFrame): Input dataframe.
+
+    Returns:
+        pandas.DataFrame: Processed dataframe with age categorized and main disease classified.
+    """
+    import numpy as np
+    import pandas as pd
+
+    def categorize_age(age):
+        """
+        Function to categorize age into a specific range.
+
+        Args:
+            age (int or float): The age to be categorized.
+
+        Returns:
+            str: A string representation of the age category.
+        """
+        if pd.isnull(age):
+            return np.nan
+        elif age < 5:
+            return '0-5'
+        elif age < 13:
+            return '5-13'
+        elif age < 39:
+            return '13-39'
+        elif age < 60:
+            return '39-60'
+        else:
+            return '60+'
+
+    def classify_main_disease(subtype):
+        """
+        Function to classify the main disease based on a given subtype.
+
+        Args:
+            subtype (str): The subtype of the disease.
+
+        Returns:
+            str: A string representation of the main disease.
+        """
+        mapping = {
+            'AML': 'Acute myeloid leukemia (AML)',
+            'ALL': 'Acute lymphoblastic leukemia (ALL)',
+            'MDS': 'Myelodysplastic syndrome (MDS or MDS-like)',
+            'Mixed phenotype acute leukemia': 'Mixed phenotype acute leukemia (MPAL)',
+            'APL': 'Acute promyelocytic leukemia (APL)',
+            'Otherwise-Normal Control': 'Otherwise-Normal (Control)'
+        }
+
+        for key, value in mapping.items():
+            if key in subtype:
+                return value
+
+    def main_disease_class(df):
+        """
+        Function to classify the main disease and create a pathology class.
+
+        Args:
+            df (pandas.DataFrame): The dataframe to be processed.
+
+        Returns:
+            pandas.DataFrame: The processed dataframe with new columns for main disease and pathology class.
+        """
+        df['WHO_AML'] = df['WHO AML 2021 Diagnosis'].astype(str).apply(classify_main_disease)
+        df['WHO_ALL'] = df['WHO ALL 2021 Diagnosis'].astype(str).apply(classify_main_disease)
+
+        df['Pathology Class'] = df[['WHO_AML', 'WHO_ALL']] \
+            .apply(lambda x: ','.join(filter(lambda i: i is not None and i == i, x)), axis=1) \
+            .replace('', np.nan)
+
+        # Drop columns created except for `WHO Final Diagnosis` and `Combined Diagnosis` columns
+        df = df.drop(['WHO_AML', 'WHO_ALL'], axis=1)
+
+        return df
+
+    # Convert 'Age (years)' to numeric, errors='coerce' will turn non-numeric data to NaN
+    df['Age (years)'] = pd.to_numeric(df['Age (years)'], errors='coerce')
+
+    # Then apply your function
+    df['Age (group years)'] = df['Age (years)'].apply(categorize_age)
+
+    # Process labels
+    df = main_disease_class(df)
+
+    # Create `WHO 2021 Diagnosis` column
+    df['WHO 2021 Diagnosis'] = df[['WHO AML 2021 Diagnosis', 'WHO ALL 2021 Diagnosis']] \
+        .apply(lambda x: ','.join(filter(lambda i: i is not None and i == i, x)), axis=1) \
+        .replace('', np.nan)
+
+    return df
