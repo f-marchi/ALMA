@@ -1,30 +1,37 @@
 format: jb-book
 root: index.md
 parts:
-  - caption: Specific Aims
-    chapters:
-      - file: docs/Specific_Aims.md
+  # - caption: Specific Aims
+  #   chapters:
+  #     - file: docs/Specific_Aims.md
 
-  - caption: Introduction
+  # - caption: Introduction
 
-    chapters:
-      - file: docs/Intro_to_Methylation.md
+  #   chapters:
+  #     - file: docs/Intro_to_Methylation.md
 
   - caption: Data Preparation
 
     chapters:
       - file: 1_Data_Download_Process.ipynb
+      - file: 6_Test_Data_Process_v1.ipynb
 
-  - caption: Aim 1a. Survival EWAS + CoxPH-Lasso
+  - caption: Survival EWAS + CoxPH-Lasso
 
     chapters:
       - file: 2_Univariate_CoxPH-EWAS_v2.ipynb
       - file: 3_Multivariate_CoxPH-Lasso_v3.ipynb
 
-  - caption: Aim 1b. PaCMAP + ML Classifier
+  - caption: PaCMAP + ML Classifier
   
     chapters:
       - file: 4_PaCMAP_benchmark_v3.ipynb
+      - file: 5_PyTorch_Classifier_v1.ipynb
+
+  # - caption: Validation
+  
+  #   chapters:
+  #     - file: 4_PaCMAP_benchmark_v3.ipynb
 
   #     # - caption: AML Diagnostic Map
 
