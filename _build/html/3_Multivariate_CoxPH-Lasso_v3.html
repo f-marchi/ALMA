@@ -151,10 +151,10 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Preparation</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Download and Processing</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="1_Data_Download_Process.html">Discovery Data Download and Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6_Test_Data_Process_v1.html">Validation Data Download and Processig</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_Data_Download_Process.html">Discovery Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Test_Data_Process_v1.html">Validation Data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Survival EWAS + CoxPH-Lasso</span></p>
 <ul class="current nav bd-sidenav">
@@ -475,7 +475,7 @@ document.write(`
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import functions to clean up clinical data</span>
-<span class="kn">from</span> <span class="nn">source.Cox_Lasso_Function</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">source.cox_lasso_functions</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="c1"># raw_coefs = train_coxph_lasso(df=df_labels,</span>
 <span class="c1">#                                 event= &#39;os.evnt&#39;,</span>
