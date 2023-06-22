@@ -507,7 +507,8 @@ def clean_aml08(df):
                             'Dxcbcblast': 'Peripheral blasts (%)', 'Gender': 'Sex',
                             'Age': 'Age (years)', 'Wbc': 'WBC Count (10⁹/L)',
                             'Flt3': 'FLT3 Status', 'Aml08.Sp.Id': 'Patient_ID',
-                            'Fullkaryotypetesting': 'Karyotype'})
+                            'Fullkaryotypestring': 'Karyotype'})
+    
     df['Ethnicity'] = df['Ethnicity'].replace({'Non Spanish speaking, Non Hispanic': 'Not Hispanic or Latino',
                                                'NOS Spanish,Hispanic,Latino': 'Hispanic or Latino'})
     df['os.time'] = df['os.time.days'].astype(float).apply(lambda x: x/365)
@@ -542,6 +543,49 @@ def clean_aml08(df):
 
     df['Tissue Type'] = 'Bone Marrow'
     df['Sample Type'] = 'Diagnosis'
+
+    # ELN 2022 and WHO 2021 Diagnostic Annotation
+
+    def classify_annotated_diagnosis_aml08(gene_fusion):
+        mapping = {
+            "MDS": "MDS-related or secondary myeloid neoplasms",
+            "AML": "MDS-related or secondary myeloid neoplasms",
+        }
+        for key, value in mapping.items():
+            if key in gene_fusion:
+                return value
+            
+    def classify_karyotype_aml08(normal_samples):
+        mapping = {
+            'CTR': 'Otherwise-Normal Control'}
+        
+        for key, value in mapping.items():
+            if key in normal_samples:
+                return value
+            
+
+    def process_labels_aml08(df):
+        
+        df["ELN22_Diagnosis"] = (df["Primarydiagnosis"].astype(str).apply(classify_annotated_diagnosis_aml08))
+        df['ELN22_Karyotype'] = df['Karyotype'].astype(str).apply(classify_karyotype_aml08)
+
+        df['ELN22 Combined Diagnoses'] = df[['ELN22_Karyotype','ELN22_Diagnosis']]\
+            .apply(lambda x: ','.join(filter(lambda i: i is not None and i==i, x)), axis=1)
+            # Replace empty strings with NaN
+        df['ELN22 Combined Diagnoses'] = df['ELN22 Combined Diagnoses'].replace('', np.nan)
+
+        # Create `ELN 2022 Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
+        df['ELN AML 2022 Diagnosis'] = df['ELN22 Combined Diagnoses'].str.split(',').str[0]
+
+        # Create `WHO 2021 Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
+        df['WHO AML 2021 Diagnosis'] = df['ELN22 Combined Diagnoses'].str.split(',').str[0]
+
+        # Drop columns created except for `ELN 2022 Diagnosis` and `Combined Diagnosis` columns
+        df = df.drop(['ELN22_Karyotype','ELN22_Diagnosis'], axis=1)
+            
+        return df
+
+    df = process_labels_aml08(df)
 
     return (df)
 
