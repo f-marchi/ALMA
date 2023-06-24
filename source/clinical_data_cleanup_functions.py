@@ -548,9 +548,27 @@ def clean_aml08(df):
 
     def classify_annotated_diagnosis_aml08(gene_fusion):
         mapping = {
-            "MDS": "MDS-related or secondary myeloid neoplasms",
-            "AML": "MDS-related or secondary myeloid neoplasms",
-        }
+        'RUNX1-RUNX1T1': 'AML with t(8;21)(q22;q22.1)/RUNX1::RUNX1T1',
+        'CBFB-MYH11':    'AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22)/CBFB::MYH11',
+        'KMT2A':         'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
+        'add(11)(q23)':  'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
+        'MLL':           'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
+        'PML-RARA':      'APL with t(15;17)(q24.1;q21.2)/PML::RARA',
+        'DEK-NUP214':    'AML with t(6;9)(p23;q34.1)/DEK::NUP214',
+        'MECOM':         'AML with inv(3)(q21.3q26.2) or t(3;3)(q21.3;q26.2)/MECOM-rearrangement',
+        'NPM1-MLF1':     'AML with other rare recurring translocations',
+        'PRDM16-RPN1':   'AML with other rare recurring translocations',
+        'RBM15-MRTFA':   'AML with other rare recurring translocations',
+        'RBM15-MKL1':    'AML with other rare recurring translocations',
+        'NUP98':         'AML with other rare recurring translocations',
+        'ETV6-MNX1':     'AML with other rare recurring translocations',
+        'KAT6A-CREBBP':  'AML with other rare recurring translocations',
+        'PICALM-MLLT10': 'AML with other rare recurring translocations',
+        'FUS-ERG':       'AML with other rare recurring translocations',
+        'RUNX1-CBFA2T3': 'AML with other rare recurring translocations',
+        'CBFA2T3-GLIS2': 'AML with other rare recurring translocations',
+        'BCR-ABL1':       'AML with t(9;22)(q34.1;q11.2)/BCR::ABL1'}
+        
         for key, value in mapping.items():
             if key in gene_fusion:
                 return value
@@ -679,7 +697,6 @@ def clean_cog(df):
         for key, value in mapping.items():
             if key in normal_samples:
                 return value
-
 
     def classify_fusion(gene_fusion):
         mapping = {
