@@ -1492,12 +1492,16 @@ def process_df_labels(df):
     # Then apply your function
     df['Age (group years)'] = df['Age (years)'].apply(categorize_age)
 
-    # Process labels
-    df = main_disease_class(df)
+    try:
+        # Process labels
+        df = main_disease_class(df)
 
-    # Create `WHO 2021 Diagnosis` column
-    df['WHO 2021 Diagnosis'] = df[['WHO AML 2021 Diagnosis', 'WHO ALL 2021 Diagnosis']] \
-        .apply(lambda x: ','.join(filter(lambda i: i is not None and i == i, x)), axis=1) \
-        .replace('', np.nan)
+        # Create `WHO 2021 Diagnosis` column
+        df['WHO 2021 Diagnosis'] = df[['WHO AML 2021 Diagnosis', 'WHO ALL 2021 Diagnosis']] \
+            .apply(lambda x: ','.join(filter(lambda i: i is not None and i == i, x)), axis=1) \
+            .replace('', np.nan)
+    
+    except:
+        pass
 
     return df
