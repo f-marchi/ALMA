@@ -484,6 +484,59 @@ def clean_aml02(df):
     df['Tissue Type'] = 'Bone Marrow'
     df['Sample Type'] = 'Diagnosis'
 
+    # ELN 2022 Diagnostic Annotation
+
+    def classify_annotated_diagnosis_aml02(gene_fusion):
+        mapping = {
+        'Syndrome, Myelodysplastic': 'MDS-related or secondary myeloid neoplasms',
+        'Acute Megakaryoblastic Leukemia': 'AML with other rare recurring translocations', # adding FAB M7 AMKL to rare translocations assuming its either t(1;22) or CBFA2T3-GLIS2
+        'Acute Erythroleukemia': 'MDS-related or secondary myeloid neoplasms', # adding FAB M6 AEL to MDS-related or secondary myeloid neoplasms according to PMID: 20807044
+        }
+        
+        for key, value in mapping.items():
+            if key in gene_fusion:
+                return value
+            
+    def classify_cytogenetic_code_aml02(gene_fusion2):
+        mapping = {
+        't (9;11)':'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
+        '11q23':'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
+        't (8;21)': 'AML with t(8;21)(q22;q22.1)/RUNX1::RUNX1T1',
+        'inv (16)': 'AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22)/CBFB::MYH11',}
+        
+        for key, value in mapping.items():
+            if key in gene_fusion2:
+                return value
+            
+    def classify_karyotype_aml02(normal_samples):
+        mapping = {
+            'placeholder': 'placeholder'}
+        
+        for key, value in mapping.items():
+            if key in normal_samples:
+                return value
+            
+
+    def process_labels_aml02(df):
+        
+        df["ELN22_Diagnosis"] = (df["Primarydiagnosis"].astype(str).apply(classify_annotated_diagnosis_aml02))
+        df['ELN22_Cytogenetics'] = df['Primary Cytogenetic Code'].astype(str).apply(classify_cytogenetic_code_aml02)
+        df['ELN22_Karyotype'] = df['Karyotype'].astype(str).apply(classify_karyotype_aml02)
+
+        df['ELN22 Combined Diagnoses'] = df[['ELN22_Diagnosis','ELN22_Cytogenetics','ELN22_Karyotype']]\
+            .apply(lambda x: ','.join(filter(lambda i: i is not None and i==i, x)), axis=1)
+            # Replace empty strings with NaN
+        df['ELN22 Combined Diagnoses'] = df['ELN22 Combined Diagnoses'].replace('', np.nan)
+
+        # Create `ELN 2022 Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
+        df['ELN AML 2022 Diagnosis'] = df['ELN22 Combined Diagnoses'].str.split(',').str[0]
+
+        # Drop columns created except for `ELN 2022 Diagnosis` and `Combined Diagnosis` columns
+        df = df.drop(['ELN22_Karyotype','ELN22_Diagnosis','ELN22_Cytogenetics'], axis=1)
+            
+        return df
+
+    df = process_labels_aml02(df)
     return (df)
 
 
@@ -549,10 +602,14 @@ def clean_aml08(df):
     def classify_annotated_diagnosis_aml08(gene_fusion):
         mapping = {
         'RUNX1-RUNX1T1': 'AML with t(8;21)(q22;q22.1)/RUNX1::RUNX1T1',
+        't(8;21)':      'AML with t(8;21)(q22;q22.1)/RUNX1::RUNX1T1',
         'CBFB-MYH11':    'AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22)/CBFB::MYH11',
+        'inv(16)':      'AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22)/CBFB::MYH11',
+        't(16;16)':     'AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22)/CBFB::MYH11',
         'KMT2A':         'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
         'add(11)(q23)':  'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
         'MLL':           'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
+        'Prior Myelodysplastic Syndrome': 'MDS-related or secondary myeloid neoplasms',
         'PML-RARA':      'APL with t(15;17)(q24.1;q21.2)/PML::RARA',
         'DEK-NUP214':    'AML with t(6;9)(p23;q34.1)/DEK::NUP214',
         'MECOM':         'AML with inv(3)(q21.3q26.2) or t(3;3)(q21.3;q26.2)/MECOM-rearrangement',
@@ -575,7 +632,7 @@ def clean_aml08(df):
             
     def classify_karyotype_aml08(normal_samples):
         mapping = {
-            'CTR': 'Otherwise-Normal Control'}
+            'placeholder': 'placeholder'}
         
         for key, value in mapping.items():
             if key in normal_samples:
@@ -587,7 +644,7 @@ def clean_aml08(df):
         df["ELN22_Diagnosis"] = (df["Primarydiagnosis"].astype(str).apply(classify_annotated_diagnosis_aml08))
         df['ELN22_Karyotype'] = df['Karyotype'].astype(str).apply(classify_karyotype_aml08)
 
-        df['ELN22 Combined Diagnoses'] = df[['ELN22_Karyotype','ELN22_Diagnosis']]\
+        df['ELN22 Combined Diagnoses'] = df[['ELN22_Diagnosis','ELN22_Karyotype']]\
             .apply(lambda x: ','.join(filter(lambda i: i is not None and i==i, x)), axis=1)
             # Replace empty strings with NaN
         df['ELN22 Combined Diagnoses'] = df['ELN22 Combined Diagnoses'].replace('', np.nan)
@@ -1270,7 +1327,37 @@ def clean_all_graal(df):
     
     df['Sample Type'] = 'Diagnosis'
     df['Clinical Trial'] = 'French GRAALL 2003–2005'
+        # WHO 2021 Diagnostic Annotation
 
+    def classify_all_graal(diagnosis):
+        mapping = {
+        'Otherwise-Normal Control':'Otherwise-Normal Control',
+        'T-ALL':'T-ALL NOS'}
+        for key, value in mapping.items():
+            if key in diagnosis:
+                return value
+            
+    df['WHO ALL 2021 Diagnosis'] = df['Diagnosis'].astype(str).apply(classify_all_graal)
+
+    return df
+
+
+def clean_target_all(df):
+
+    df = df.rename(columns={'Case ID': 'Patient_ID'})
+      
+    df['Clinical Trial'] = 'TARGET ALL'
+
+    df['Age (years)'] = df["Age at Diagnosis in Days"].astype(
+                        float).apply(lambda x: x/365)
+    df['efs.time'] = df['Event Free Survival Time in Days'].astype(
+                        float).apply(lambda x: x/365)
+    df['os.time'] = df['Overall Survival Time in Days'].astype(
+                        float).apply(lambda x: x/365)
+    df['os.evnt'] = df['Vital Status'].map({'Alive': 0, 'Dead': 1})
+    df['efs.evnt'] = df['First Event'].isin(
+                        ['Relapse', 'Induction Failure', 'Death', 
+                        'Death without Remission']).astype(int)
     # WHO 2021 Diagnostic Annotation
 
     def classify_controls_target_all(normal_samples):
@@ -1309,38 +1396,6 @@ def clean_all_graal(df):
         return df
 
     df = process_labels_target_all(df)
-
-    return df
-
-
-def clean_target_all(df):
-
-    df = df.rename(columns={'Case ID': 'Patient_ID'})
-      
-    df['Clinical Trial'] = 'TARGET ALL'
-
-    df['Age (years)'] = df["Age at Diagnosis in Days"].astype(
-                        float).apply(lambda x: x/365)
-    df['efs.time'] = df['Event Free Survival Time in Days'].astype(
-                        float).apply(lambda x: x/365)
-    df['os.time'] = df['Overall Survival Time in Days'].astype(
-                        float).apply(lambda x: x/365)
-    df['os.evnt'] = df['Vital Status'].map({'Alive': 0, 'Dead': 1})
-    df['efs.evnt'] = df['First Event'].isin(
-                        ['Relapse', 'Induction Failure', 'Death', 
-                        'Death without Remission']).astype(int)
-    
-    # WHO 2021 Diagnostic Annotation
-
-    def classify_all_graal(diagnosis):
-        mapping = {
-        'Otherwise-Normal Control':'Otherwise-Normal Control',
-        'T-ALL':'T-ALL NOS'}
-        for key, value in mapping.items():
-            if key in diagnosis:
-                return value
-            
-    df['WHO ALL 2021 Diagnosis'] = df['Diagnosis'].astype(str).apply(classify_all_graal)
 
     return df
 
