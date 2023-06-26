@@ -889,12 +889,11 @@ Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between grou
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="n">score_name</span> <span class="o">+</span> <span class="s1">&#39; Categorical&#39;</span> <span class="p">)</span>
 
 <span class="c1"># add vertical line at threshold and third quartile</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">threshold</span> <span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="n">score_name</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.6</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">threshold</span> <span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
 
 
 <span class="c1"># add legend</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">({</span><span class="s1">&#39;60</span><span class="si">%-40%</span><span class="s1">&#39;</span><span class="p">:</span><span class="n">df_test</span><span class="p">[</span><span class="n">score_name</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.6</span><span class="p">)})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">({</span><span class="s1">&#39;Discovery cohort cutoff&#39;</span> <span class="o">+</span> <span class="s1">&#39; (&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">,})</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of &#39;</span> <span class="o">+</span> <span class="n">score_name</span> <span class="o">+</span> <span class="s1">&#39; in StJude trials&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -904,7 +903,7 @@ Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between grou
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Distribution of MethylScore_CoxPH_Rpart_all in StJude trials&#39;)
 </pre></div>
 </div>
-<img alt="_images/1676122eda16ad4e1bf2bd5f6e6508d8ff3a77035f99efc9618e0671c23487e5.png" src="_images/1676122eda16ad4e1bf2bd5f6e6508d8ff3a77035f99efc9618e0671c23487e5.png" />
+<img alt="_images/64210b141124febd34684e39b0d9f4c1590c843d373bdd445e56a3ab8763162c.png" src="_images/64210b141124febd34684e39b0d9f4c1590c843d373bdd445e56a3ab8763162c.png" />
 </div>
 </div>
 </section>
