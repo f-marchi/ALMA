@@ -19,8 +19,9 @@ parts:
   - caption: Survival EWAS + CoxPH-Lasso
 
     chapters:
-      - file: 2_Univariate_CoxPH-EWAS_v2.ipynb
-      - file: 3_Multivariate_CoxPH-Lasso_v3.ipynb
+      - file: 2_Univariate_CoxPH-EWAS_v3.ipynb
+      - file: 3_Multivariate_CoxPH-Lasso_v4.ipynb
+      - file: 3_Multivariate_CoxPH-Lasso_Validation_v1.ipynb
 
   - caption: PaCMAP + ML Classifier
   
@@ -28,10 +29,11 @@ parts:
       - file: 4_PaCMAP_benchmark_v3.ipynb
       - file: 5_PyTorch_Classifier_v1.ipynb
 
-  - caption: Other Benchmarks and Analyses
+  # - caption: Other Benchmarks and Analyses
   
-    chapters:
-      - file: 4_PaCMAP_benchmark_v3.ipynb
+  #   chapters:
+  #     - file: past_code_files/2_Univariate_CoxPH-EWAS_v2.ipynb
+  #     - file: past_code_files/3_Multivariate_CoxPH-Lasso_v3.ipynb
 
   #     # - caption: AML Diagnostic Map
 
