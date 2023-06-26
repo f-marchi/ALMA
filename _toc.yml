@@ -28,10 +28,10 @@ parts:
       - file: 4_PaCMAP_benchmark_v3.ipynb
       - file: 5_PyTorch_Classifier_v1.ipynb
 
-  # - caption: Validation
+  - caption: Other Benchmarks and Analyses
   
-  #   chapters:
-  #     - file: 4_PaCMAP_benchmark_v3.ipynb
+    chapters:
+      - file: 4_PaCMAP_benchmark_v3.ipynb
 
   #     # - caption: AML Diagnostic Map
 
