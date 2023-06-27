@@ -14,12 +14,13 @@ from bokeh.layouts import layout
 from bokeh.io import curdoc, output_notebook
 
 class DataProcessor:
-    def __init__(self, df_labels, df_methyl, clinical_trials, sample_types, cols, remove_duplicates=False):
+    def __init__(self, df_labels, df_methyl, clinical_trials, sample_types, cols, n_components, remove_duplicates=False):
         self.df_labels = df_labels
         self.df_methyl = df_methyl
         self.clinical_trials = clinical_trials
         self.sample_types = sample_types
         self.cols = cols
+        self.n_components = n_components
         self.remove_duplicates = remove_duplicates
 
     def filter_data(self):
@@ -36,11 +37,14 @@ class DataProcessor:
         # Define a filter to ignore the specific UserWarning
         warnings.filterwarnings("ignore", category=UserWarning, message="Warning: random state is set to")
 
-        reducer = pacmap.PaCMAP(n_components=2, n_neighbors=15, MN_ratio=0.4, FP_ratio=16.0, 
+        reducer = pacmap.PaCMAP(n_components=self.n_components, n_neighbors=15, MN_ratio=0.4, FP_ratio=16.0, 
                                 random_state=42, lr=0.1, num_iters=5000)
         embedding = reducer.fit_transform(self.df_methyl_filtered.to_numpy(dtype='float16'))
 
-        self.df_embedding = pd.DataFrame(embedding, index=self.df_methyl_filtered.index, columns=['PaCMAP 1', 'PaCMAP 2'])
+        # Name the columns dynamically based on the number of components
+        cols = ['PaCMAP ' + str(i+1) for i in range(self.n_components)]
+
+        self.df_embedding = pd.DataFrame(embedding, index=self.df_methyl_filtered.index, columns=cols)
 
     def join_labels(self):
         self.df = self.df_embedding.join(self.df_labels[self.cols]).reset_index()
