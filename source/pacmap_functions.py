@@ -14,7 +14,7 @@ from bokeh.layouts import layout
 from bokeh.io import curdoc, output_notebook
 
 class DataProcessor:
-    def __init__(self, df_labels, df_methyl, clinical_trials, sample_types, cols, n_components, remove_duplicates=False):
+    def __init__(self, df_labels, df_methyl, clinical_trials, sample_types, cols, n_components, remove_duplicates=False, common_prefix=None):
         self.df_labels = df_labels
         self.df_methyl = df_methyl
         self.clinical_trials = clinical_trials
@@ -22,6 +22,7 @@ class DataProcessor:
         self.cols = cols
         self.n_components = n_components
         self.remove_duplicates = remove_duplicates
+        self.common_prefix = common_prefix
 
     def filter_data(self):
         self.df1 = self.df_labels[self.df_labels['Clinical Trial'].isin(self.clinical_trials)]
@@ -40,6 +41,10 @@ class DataProcessor:
         reducer = pacmap.PaCMAP(n_components=self.n_components, n_neighbors=15, MN_ratio=0.4, FP_ratio=16.0, 
                                 random_state=42, lr=0.1, num_iters=5000)
         embedding = reducer.fit_transform(self.df_methyl_filtered.to_numpy(dtype='float16'))
+
+        # Save the PaCMAP instance (and the AnnoyIndex if save_tree=True) to the location specified by the common_prefix
+        if self.common_prefix:
+            pacmap.save(reducer, self.common_prefix)
 
         # Name the columns dynamically based on the number of components
         cols = ['PaCMAP ' + str(i+1) for i in range(self.n_components)]
