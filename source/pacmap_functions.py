@@ -6,7 +6,6 @@ This module implements functions for unsupervised learning algorithms.
 import numpy as np
 import pandas as pd
 import pacmap
-import warnings
 from bokeh.plotting import figure, show
 from bokeh.transform import factor_cmap
 from bokeh.models import Div, Slider, TabPanel, Tabs, Legend, ColumnDataSource
@@ -14,45 +13,55 @@ from bokeh.layouts import layout
 from bokeh.io import curdoc, output_notebook
 
 class DataProcessor:
-    def __init__(self, df_labels, df_methyl, clinical_trials, sample_types, cols, n_components, remove_duplicates=False, common_prefix=None):
-        self.df_labels = df_labels
-        self.df_methyl = df_methyl
+    def __init__(self, train_clinical_data, df_train, clinical_trials, sample_types,
+                 cols, n_components, remove_patient_id_duplicates=False,
+                 common_prefix=None, df_test=None, test_clinical_data=None):
+        
+        self.train_clinical_data = train_clinical_data
+        self.df_train = df_train
         self.clinical_trials = clinical_trials
         self.sample_types = sample_types
         self.cols = cols
         self.n_components = n_components
-        self.remove_duplicates = remove_duplicates
+        self.remove_patient_id_duplicates = remove_patient_id_duplicates
         self.common_prefix = common_prefix
+        self.df_test = df_test
+        self.test_clinical_data = test_clinical_data
 
     def filter_data(self):
-        self.df1 = self.df_labels[self.df_labels['Clinical Trial'].isin(self.clinical_trials)]
+        self.df1 = self.train_clinical_data[self.train_clinical_data['Clinical Trial'].isin(self.clinical_trials)]
         self.df2 = self.df1[self.df1['Sample Type'].isin(self.sample_types)]
-        if self.remove_duplicates:
+        if self.remove_patient_id_duplicates:
             self.df3 = self.df2[~self.df2['Patient_ID'].duplicated(keep='last')]
         else:
             self.df3 = self.df2
-        self.df_methyl_filtered = self.df_methyl[self.df_methyl.index.isin(self.df3.index)].iloc[:, 1:]
+        self.df_train_filtered = self.df_train[self.df_train.index.isin(self.df3.index)]
 
     def apply_pacmap(self):
 
-        # Define a filter to ignore the specific UserWarning
-        warnings.filterwarnings("ignore", category=UserWarning, message="Warning: random state is set to")
-
-        reducer = pacmap.PaCMAP(n_components=self.n_components, n_neighbors=15, MN_ratio=0.4, FP_ratio=16.0, 
+        self.reducer = pacmap.PaCMAP(n_components=self.n_components, n_neighbors=15, MN_ratio=0.4, FP_ratio=16.0, 
                                 random_state=42, lr=0.1, num_iters=5000)
-        embedding = reducer.fit_transform(self.df_methyl_filtered.to_numpy(dtype='float16'))
+        
+        embedding = self.reducer.fit_transform(self.df_train_filtered.to_numpy(dtype='float16'))
 
-        # Save the PaCMAP instance (and the AnnoyIndex if save_tree=True) to the location specified by the common_prefix
         if self.common_prefix:
-            pacmap.save(reducer, self.common_prefix)
+            pacmap.save(self.reducer, self.common_prefix)
 
-        # Name the columns dynamically based on the number of components
         cols = ['PaCMAP ' + str(i+1) for i in range(self.n_components)]
 
-        self.df_embedding = pd.DataFrame(embedding, index=self.df_methyl_filtered.index, columns=cols)
+        self.df_embedding = pd.DataFrame(embedding, index=self.df_train_filtered.index, columns=cols)
+
+    def apply_pacmap_test(self):
+        if self.df_test is not None:
+            embedding_test = self.reducer.transform(self.df_test.to_numpy(dtype='float16'), 
+                                                    basis=self.df_train_filtered.to_numpy(dtype='float16').copy())
+            cols_test = ['PaCMAP ' + str(i+1) for i in range(self.n_components)]
+            self.df_test_embedding = pd.DataFrame(embedding_test, index=self.df_test.index, columns=cols_test)
 
     def join_labels(self):
-        self.df = self.df_embedding.join(self.df_labels[self.cols]).reset_index()
+        self.df_train = self.df_embedding.join(self.train_clinical_data[self.cols]).reset_index()
+        self.df_test = self.df_test_embedding.join(self.test_clinical_data[self.cols]).reset_index()
+        self.df = pd.concat([self.df_train, self.df_test]) # Concatenate train and test dataframes
 
 
 class BokehPlotter:
@@ -76,9 +85,7 @@ class BokehPlotter:
                       x_range=self.x_range, y_range=self.y_range,
                       tools="pan,wheel_zoom,reset,save", active_drag="pan",
                       active_scroll="auto",
-                      tooltips=[("Karyotype", "@Karyotype"),
-                                ("Gene Fusion", "@{Gene Fusion}"),
-                                ("Patient ID", "@{Patient_ID}")])
+                      tooltips=[("Dx", "@{ELN AML 2022 Diagnosis}")])
 
     def create_scatters(self, p, hue):
         df = self.df[~self.df[hue].isna()]  # Filter out rows with NaN values for the hue column
@@ -99,10 +106,10 @@ class BokehPlotter:
         return renderers, items
 
     def create_tabs_and_points(self):
-        self.tabs = Tabs(tabs=[TabPanel(child=self.create_figure(), title=title) for title in self.cols[:-3]],
+        self.tabs = Tabs(tabs=[TabPanel(child=self.create_figure(), title=title) for title in self.cols],
                 tabs_location='left')
 
-        self.points = [self.create_scatters(tab.child, hue=col) for tab, col in zip(self.tabs.tabs, self.cols[:-3])]
+        self.points = [self.create_scatters(tab.child, hue=col) for tab, col in zip(self.tabs.tabs, self.cols)]
 
     def finalize_tabs(self):
         for p, (renderers, items) in zip(self.tabs.tabs, self.points):

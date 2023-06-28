@@ -1477,7 +1477,7 @@ def process_df_labels(df):
         df['WHO_AML'] = df['WHO AML 2021 Diagnosis'].astype(str).apply(classify_main_disease)
         df['WHO_ALL'] = df['WHO ALL 2021 Diagnosis'].astype(str).apply(classify_main_disease)
 
-        df['Pathology Class'] = df[['WHO_AML', 'WHO_ALL']] \
+        df['Hematopoietic Lineage'] = df[['WHO_AML', 'WHO_ALL']] \
             .apply(lambda x: ','.join(filter(lambda i: i is not None and i == i, x)), axis=1) \
             .replace('', np.nan)
 
