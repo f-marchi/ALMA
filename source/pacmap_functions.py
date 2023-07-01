@@ -85,7 +85,7 @@ class BokehPlotter:
                       x_range=self.x_range, y_range=self.y_range,
                       tools="pan,wheel_zoom,reset,save", active_drag="pan",
                       active_scroll="auto",
-                      tooltips=[("Dx", "@{ELN AML 2022 Diagnosis}")])
+                      tooltips=[("Dx", "@{WHO 2021 Diagnosis}")])
 
     def create_scatters(self, p, hue):
         df = self.df[~self.df[hue].isna()]  # Filter out rows with NaN values for the hue column
