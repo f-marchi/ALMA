@@ -481,16 +481,18 @@ def clean_aml02(df):
                                                  'Low': 'Low Risk'})
     df = df.rename(columns={'Race': 'Race or ethnic group',
                             'Ethnicity': 'Hispanic or Latino ethnic group'})
+    
     df['Tissue Type'] = 'Bone Marrow'
     df['Sample Type'] = 'Diagnosis'
+    df['WHO ALL 2021 Diagnosis'] = np.nan
 
     # ELN 2022 Diagnostic Annotation
 
     def classify_annotated_diagnosis_aml02(gene_fusion):
         mapping = {
-        'Syndrome, Myelodysplastic': 'MDS-related or secondary myeloid neoplasms',
+        # 'Syndrome, Myelodysplastic': 'MDS-related or secondary myeloid neoplasms',
         'Acute Megakaryoblastic Leukemia': 'AML with other rare recurring translocations', # adding FAB M7 AMKL to rare translocations assuming its either t(1;22) or CBFA2T3-GLIS2
-        'Acute Erythroleukemia': 'MDS-related or secondary myeloid neoplasms', # adding FAB M6 AEL to MDS-related or secondary myeloid neoplasms according to PMID: 20807044
+        # 'Acute Erythroleukemia': 'MDS-related or secondary myeloid neoplasms', # adding FAB M6 AEL to MDS-related or secondary myeloid neoplasms according to PMID: 20807044
         }
         
         for key, value in mapping.items():
@@ -596,6 +598,7 @@ def clean_aml08(df):
 
     df['Tissue Type'] = 'Bone Marrow'
     df['Sample Type'] = 'Diagnosis'
+    df['WHO ALL 2021 Diagnosis'] = np.nan
 
     # ELN 2022 and WHO 2021 Diagnostic Annotation
 
@@ -609,7 +612,7 @@ def clean_aml08(df):
         'KMT2A':         'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
         'add(11)(q23)':  'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
         'MLL':           'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
-        'Prior Myelodysplastic Syndrome': 'MDS-related or secondary myeloid neoplasms',
+        # 'Prior Myelodysplastic Syndrome': 'MDS-related or secondary myeloid neoplasms',
         'PML-RARA':      'APL with t(15;17)(q24.1;q21.2)/PML::RARA',
         'DEK-NUP214':    'AML with t(6;9)(p23;q34.1)/DEK::NUP214',
         'MECOM':         'AML with inv(3)(q21.3q26.2) or t(3;3)(q21.3;q26.2)/MECOM-rearrangement',
@@ -1474,15 +1477,16 @@ def process_df_labels(df):
         Returns:
             pandas.DataFrame: The processed dataframe with new columns for main disease and pathology class.
         """
-        df['WHO_AML'] = df['WHO AML 2021 Diagnosis'].astype(str).apply(classify_main_disease)
-        df['WHO_ALL'] = df['WHO ALL 2021 Diagnosis'].astype(str).apply(classify_main_disease)
 
-        df['Hematopoietic Lineage'] = df[['WHO_AML', 'WHO_ALL']] \
+        df['WHO_ALL'] = df['WHO ALL 2021 Diagnosis'].astype(str).apply(classify_main_disease)
+        df['ELN_AML'] = df['ELN AML 2022 Diagnosis'].astype(str).apply(classify_main_disease)
+
+        df['Hematopoietic Lineage'] = df[['ELN_AML', 'WHO_ALL']] \
             .apply(lambda x: ','.join(filter(lambda i: i is not None and i == i, x)), axis=1) \
             .replace('', np.nan)
 
         # Drop columns created except for `WHO Final Diagnosis` and `Combined Diagnosis` columns
-        df = df.drop(['WHO_AML', 'WHO_ALL'], axis=1)
+        df = df.drop(['ELN_AML', 'WHO_ALL'], axis=1)
 
         return df
 
@@ -1491,17 +1495,13 @@ def process_df_labels(df):
 
     # Then apply your function
     df['Age (group years)'] = df['Age (years)'].apply(categorize_age)
-
-    try:
-        # Process labels
-        df = main_disease_class(df)
-
-        # Create `WHO 2021 Diagnosis` column
-        df['WHO 2021 Diagnosis'] = df[['WHO AML 2021 Diagnosis', 'WHO ALL 2021 Diagnosis']] \
+    
+    # Process labels
+    df = main_disease_class(df)
+    
+    # Create `WHO 2021 Diagnosis` column
+    df['WHO 2021 Diagnosis'] = df[['WHO AML 2021 Diagnosis', 'WHO ALL 2021 Diagnosis']] \
             .apply(lambda x: ','.join(filter(lambda i: i is not None and i == i, x)), axis=1) \
             .replace('', np.nan)
-    
-    except:
-        pass
 
     return df

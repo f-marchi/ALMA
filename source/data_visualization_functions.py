@@ -602,3 +602,38 @@ def draw_pacmap(score, labels, hue=None, test_sample=None, panel_size=50, s=10, 
                     bbox_inches='tight', dpi=300)
 
     return (plt.show())
+
+
+def plot_confusion_matrix(clf, x_test, y_test, title='Classification results', tick_fontsize=10, label_fontsize=10):
+
+    from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+
+    sns.set_theme(style='white')
+    predictions = clf.predict(x_test)
+    cm = confusion_matrix(y_test, predictions, labels=clf.classes_, normalize='true')
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm,
+                                  display_labels=clf.classes_)
+    disp.plot(cmap='Blues', values_format='.2f', xticks_rotation='vertical', colorbar=False)
+
+    # Decrease the font size of the numbers inside the confusion matrix
+    for texts in disp.text_:
+        for text in texts:
+            text.set_fontsize(label_fontsize)
+
+    # Decrease the font size of the tick labels
+    plt.xticks(fontsize=tick_fontsize)
+    plt.yticks(fontsize=tick_fontsize)
+
+    # Increase the size of the plot
+    fig = plt.gcf()
+    fig.set_size_inches(5, 5)
+
+    # Add title and axis names and place title in the middle
+    plt.title(title +', n=' + str(len(x_test)), fontsize=10, fontweight='bold', pad=10, x=-0.2)
+    plt.xlabel('Predicted', fontsize=10, fontweight='bold')
+    plt.ylabel('Actual', fontsize=10, fontweight='bold')
+
+    # remove x tick labels
+    plt.gca().axes.xaxis.set_ticklabels([])
+
+    plt.show()
