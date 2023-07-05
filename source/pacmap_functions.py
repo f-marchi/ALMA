@@ -65,7 +65,8 @@ class DataProcessor:
 
 
 class BokehPlotter:
-    def __init__(self, df, cols, custom_color_palette, title=None, x_range=None, y_range=None, datapoint_size=5):
+    def __init__(self, df, cols, custom_color_palette, title=None,
+                 x_range=None, y_range=None, datapoint_size=5, tooltip_dx_cols='WHO 2021 Diagnosis'):
         self.df = df
         self.cols = cols
         self.custom_color_palette = custom_color_palette
@@ -77,6 +78,7 @@ class BokehPlotter:
         self.slider = None
         self.layout = None
         self.datapoint_size = datapoint_size or 5
+        self.tooltip_dx_cols = tooltip_dx_cols
 
     def create_figure(self):
         return figure(title=self.title,
@@ -85,7 +87,7 @@ class BokehPlotter:
                       x_range=self.x_range, y_range=self.y_range,
                       tools="pan,wheel_zoom,reset,save", active_drag="pan",
                       active_scroll="auto",
-                      tooltips=[("Dx", "@{WHO 2021 Diagnosis}")])
+                      tooltips=[("Dx", "@{"+self.tooltip_dx_cols+"}")])
 
     def create_scatters(self, p, hue):
         df = self.df[~self.df[hue].isna()]  # Filter out rows with NaN values for the hue column
