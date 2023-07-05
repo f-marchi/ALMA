@@ -14,7 +14,7 @@ parts:
 
     chapters:
       - file: 1_Data_Download_Process.ipynb
-      - file: 6_Test_Data_Process_v1.ipynb
+      - file: 1_Test_Data_Process_v1.ipynb
 
   - caption: Survival EWAS + CoxPH-Lasso
 
@@ -26,8 +26,8 @@ parts:
   - caption: PaCMAP + ML Classifier
   
     chapters:
-      - file: 4_PaCMAP_benchmark_v3.ipynb
-      - file: 5_PyTorch_Classifier_v1.ipynb
+      - file: 4_PaCMAP_Benchmark_v4.ipynb
+      - file: 5_PyTorch_Classifier_v2.ipynb
 
   # - caption: Other Benchmarks and Analyses
   
