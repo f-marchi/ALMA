@@ -26,7 +26,7 @@ parts:
   - caption: PaCMAP + ML Classifier
   
     chapters:
-      - file: 4_PaCMAP_Benchmark_v4.ipynb
+      - file: 4_Methylome_Atlas_PaCMAP_v4.ipynb
       - file: 5_Multiclass_AMLsubtype_Classifier_v2.ipynb
 
   # - caption: Other Benchmarks and Analyses
