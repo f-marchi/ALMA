@@ -490,9 +490,7 @@ def clean_aml02(df):
 
     def classify_annotated_diagnosis_aml02(gene_fusion):
         mapping = {
-        # 'Syndrome, Myelodysplastic': 'MDS-related or secondary myeloid neoplasms',
         'Acute Megakaryoblastic Leukemia': 'AML with other rare recurring translocations', # adding FAB M7 AMKL to rare translocations assuming its either t(1;22) or CBFA2T3-GLIS2
-        # 'Acute Erythroleukemia': 'MDS-related or secondary myeloid neoplasms', # adding FAB M6 AEL to MDS-related or secondary myeloid neoplasms according to PMID: 20807044
         }
         
         for key, value in mapping.items():
@@ -612,7 +610,6 @@ def clean_aml08(df):
         'KMT2A':         'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
         'add(11)(q23)':  'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
         'MLL':           'AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement',
-        # 'Prior Myelodysplastic Syndrome': 'MDS-related or secondary myeloid neoplasms',
         'PML-RARA':      'APL with t(15;17)(q24.1;q21.2)/PML::RARA',
         'DEK-NUP214':    'AML with t(6;9)(p23;q34.1)/DEK::NUP214',
         'MECOM':         'AML with inv(3)(q21.3q26.2) or t(3;3)(q21.3;q26.2)/MECOM-rearrangement',

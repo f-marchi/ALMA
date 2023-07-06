@@ -65,6 +65,30 @@ class DataProcessor:
 
 
 class BokehPlotter:
+    from bokeh.themes import Theme
+
+    white_theme = Theme(json={
+        "attrs": {
+            # "Plot": { "toolbar_location": None },
+            # "Grid": { "grid_line_color": None },
+            "Axis": {
+            #     "axis_line_color": None,
+                "major_label_text_color": 'black',
+                "major_label_text_font": 'Arial',
+            #     "major_tick_line_color": None,
+            #     "minor_tick_line_color": None,
+            },
+            "Legend": {
+                "label_text_color": 'black',
+                "label_text_font": 'Arial',
+            },
+            "Title": {
+                "text_color": 'black',
+                "text_font": 'Arial',
+            },
+        }
+    })
+
     def __init__(self, df, cols, custom_color_palette, title=None,
                  x_range=None, y_range=None, datapoint_size=5, tooltip_dx_cols='WHO 2021 Diagnosis'):
         self.df = df
@@ -81,13 +105,16 @@ class BokehPlotter:
         self.tooltip_dx_cols = tooltip_dx_cols
 
     def create_figure(self):
-        return figure(title=self.title,
-                      width=1200, height=600, sizing_mode='fixed',
-                      x_axis_label='Longitude (PaCMAP 1)', y_axis_label='Latitude (PaCMAP 2)',
-                      x_range=self.x_range, y_range=self.y_range,
-                      tools="pan,wheel_zoom,reset,save", active_drag="pan",
-                      active_scroll="auto",
-                      tooltips=[("Dx", "@{"+self.tooltip_dx_cols+"}")])
+        p = figure(title=self.title, 
+                width=1300, height=800, sizing_mode='fixed',
+                x_axis_label='Longitude (PaCMAP 1)', y_axis_label='Latitude (PaCMAP 2)',
+                x_range=self.x_range, y_range=self.y_range,
+                tools="pan,wheel_zoom,reset,save", active_drag="pan",
+                active_scroll="auto",
+                tooltips=[("Dx", "@{"+self.tooltip_dx_cols+"}")])
+        curdoc().theme = BokehPlotter.white_theme
+        return p
+
 
     def create_scatters(self, p, hue):
         df = self.df[~self.df[hue].isna()]  # Filter out rows with NaN values for the hue column
