@@ -604,7 +604,7 @@ def draw_pacmap(score, labels, hue=None, test_sample=None, panel_size=50, s=10, 
     return (plt.show())
 
 
-def plot_confusion_matrix(clf, x_test, y_test, title='Classification results', tick_fontsize=10, label_fontsize=10):
+def plot_confusion_matrix_individual(clf, x_test, y_test, title='Classification results', tick_fontsize=10, label_fontsize=10):
 
     from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
@@ -635,5 +635,53 @@ def plot_confusion_matrix(clf, x_test, y_test, title='Classification results', t
 
     # remove x tick labels
     plt.gca().axes.xaxis.set_ticklabels([])
+
+    plt.show()
+
+def plot_confusion_matrix_stacked(clf, x_train, y_train, x_test, y_test, title='MethylScoreAML Dx Classification results', tick_fontsize=10, label_fontsize=10):
+
+    from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+
+    sns.set_theme(style='white')
+
+    fig, axs = plt.subplots(1, 2, figsize=(10, 5), sharey=True)
+
+    # Add a supertitle to the figure
+    fig.suptitle(title + ' on clinically annotated samples', fontsize=12, fontweight='bold')
+
+    for i, (ax, x, y, subset) in enumerate(zip(axs, [x_train, x_test], [y_train, y_test],
+                                                ['Discovery with 10-fold CV (train)', 'Independent validation (test)'])):
+        predictions = clf.predict(x)
+        cm = confusion_matrix(y, predictions, labels=clf.classes_, normalize='true')
+        disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=clf.classes_)
+        disp.plot(cmap='Blues', values_format='.2f', xticks_rotation='vertical', colorbar=False, ax=ax)
+
+        # Decrease the font size of the numbers inside the confusion matrix
+        for texts in disp.text_:
+            for text in texts:
+                text.set_fontsize(label_fontsize)
+
+        # Decrease the font size of the tick labels
+        ax.tick_params(axis='both', which='major', labelsize=tick_fontsize)
+
+        # Add title for each panel
+        ax.set_title(subset + ', n=' + str(len(x)), fontsize=10, pad=10)
+
+        # Add x labels
+        ax.set_xlabel('Predicted label', fontsize=10)
+
+        # Add y labels
+
+        if i == 0:
+            ax.set_ylabel('True label', fontsize=10)
+
+        # remove x tick labels
+        ax.xaxis.set_ticklabels([])
+        
+        # remove y label for the second plot
+        if i == 1:
+            ax.set_ylabel('')
 
     plt.show()
