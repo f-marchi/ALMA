@@ -29,11 +29,11 @@ parts:
       - file: 4_Methylome_Atlas_PaCMAP_v4.ipynb
       - file: 5_Multiclass_AMLsubtype_Classifier_v2.ipynb
 
-  # - caption: Other Benchmarks and Analyses
+  - caption: Other Benchmarks and Analyses
   
-  #   chapters:
-  #     - file: past_code_files/2_Univariate_CoxPH-EWAS_v2.ipynb
-  #     - file: past_code_files/3_Multivariate_CoxPH-Lasso_v3.ipynb
+    chapters:
+      - file: 5_Multiclass_Julia_Gen.ipynb
+      - file: 5_Multiclass_SPPL.ipynb
 
   #     # - caption: AML Diagnostic Map
 
