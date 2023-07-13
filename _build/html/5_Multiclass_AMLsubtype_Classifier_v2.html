@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>AML Diagnostic Subtype Predictor &#8212; Lamba Lab at UF</title>
+    <title>AML Diagnostic Subtype Classifier &#8212; Lamba Lab at UF</title>
   
   
   
@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '5_Multiclass_AMLsubtype_Classifier_v2';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="A Passionate Child’s Introduction to Gen" href="5_Multiclass_Julia_Gen.html" />
+    <link rel="next" title="Bayesian Inference with Julia - Gen" href="5_Multiclass_Julia_Gen.html" />
     <link rel="prev" title="Methylome Atlas of Acute Leukemia" href="4_Methylome_Atlas_PaCMAP_v4.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -165,12 +165,11 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">PaCMAP + ML Classifier</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="4_Methylome_Atlas_PaCMAP_v4.html">Methylome Atlas of Acute Leukemia</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">AML Diagnostic Subtype Predictor</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">AML Diagnostic Subtype Classifier</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Other Benchmarks and Analyses</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="5_Multiclass_Julia_Gen.html">A Passionate Child’s Introduction to Gen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5_Multiclass_SPPL.html">A Passionate Child’s Introduction to SPPL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_Multiclass_Julia_Gen.html">Bayesian Inference with Julia - Gen</a></li>
 </ul>
 
     </div>
@@ -307,7 +306,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>AML Diagnostic Subtype Predictor</h1>
+    <h1>AML Diagnostic Subtype Classifier</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -342,10 +341,34 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="aml-diagnostic-subtype-predictor">
-<h1>AML Diagnostic Subtype Predictor<a class="headerlink" href="#aml-diagnostic-subtype-predictor" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="aml-diagnostic-subtype-classifier">
+<h1><a class="toc-backref" href="#id1" role="doc-backlink">AML Diagnostic Subtype Classifier</a><a class="headerlink" href="#aml-diagnostic-subtype-classifier" title="Permalink to this heading">#</a></h1>
+<nav class="contents" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#aml-diagnostic-subtype-classifier" id="id1">AML Diagnostic Subtype Classifier</a></p>
+<ul>
+<li><p><a class="reference internal" href="#load-data" id="id2">Load data</a></p></li>
+<li><p><a class="reference internal" href="#preprocess-data" id="id3">Preprocess data</a></p>
+<ul>
+<li><p><a class="reference internal" href="#exclude-categories-with-10-samples" id="id4">Exclude categories with &lt;10 samples</a></p></li>
+<li><p><a class="reference internal" href="#exclude-samples-with-missing-labels" id="id5">Exclude samples with missing labels</a></p></li>
+<li><p><a class="reference internal" href="#define-x-and-y" id="id6">Define X and y</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#lightgbm" id="id7">LightGBM</a></p></li>
+<li><p><a class="reference internal" href="#gaussian-process" id="id8">Gaussian Process</a></p></li>
+<li><p><a class="reference internal" href="#random-forest" id="id9">Random Forest</a></p></li>
+<li><p><a class="reference internal" href="#logistic-regression" id="id10">Logistic Regression</a></p></li>
+<li><p><a class="reference internal" href="#k-nearest-neighbors" id="id11">K-Nearest Neighbors</a></p></li>
+<li><p><a class="reference internal" href="#other-tests" id="id12">Other tests</a></p></li>
+<li><p><a class="reference internal" href="#watermark" id="id13">Watermark</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
 <section id="load-data">
-<h2>Load data<a class="headerlink" href="#load-data" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Load data</a><a class="headerlink" href="#load-data" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -381,9 +404,9 @@ document.write(`
 </div>
 </section>
 <section id="preprocess-data">
-<h2>Preprocess data<a class="headerlink" href="#preprocess-data" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Preprocess data</a><a class="headerlink" href="#preprocess-data" title="Permalink to this heading">#</a></h2>
 <section id="exclude-categories-with-10-samples">
-<h3>Exclude categories with &lt;10 samples<a class="headerlink" href="#exclude-categories-with-10-samples" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Exclude categories with &lt;10 samples</a><a class="headerlink" href="#exclude-categories-with-10-samples" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -421,7 +444,7 @@ Name: count, dtype: int64
 </div>
 </section>
 <section id="exclude-samples-with-missing-labels">
-<h3>Exclude samples with missing labels<a class="headerlink" href="#exclude-samples-with-missing-labels" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Exclude samples with missing labels</a><a class="headerlink" href="#exclude-samples-with-missing-labels" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -438,7 +461,7 @@ Name: count, dtype: int64
 </div>
 </section>
 <section id="define-x-and-y">
-<h3>Define X and y<a class="headerlink" href="#define-x-and-y" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Define X and y</a><a class="headerlink" href="#define-x-and-y" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -463,7 +486,7 @@ Name: count, dtype: int64
 </section>
 </section>
 <section id="lightgbm">
-<h2>LightGBM<a class="headerlink" href="#lightgbm" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">LightGBM</a><a class="headerlink" href="#lightgbm" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -517,7 +540,7 @@ Overall accuracy score with best estimator: 0.936
 </div>
 </section>
 <section id="gaussian-process">
-<h2>Gaussian Process<a class="headerlink" href="#gaussian-process" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Gaussian Process</a><a class="headerlink" href="#gaussian-process" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -569,7 +592,7 @@ Overall accuracy score with best estimator: 0.945
 </div>
 </section>
 <section id="random-forest">
-<h2>Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Random Forest</a><a class="headerlink" href="#random-forest" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -619,7 +642,7 @@ Overall accuracy score with best estimator: 0.936
 </div>
 </section>
 <section id="logistic-regression">
-<h2>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Logistic Regression</a><a class="headerlink" href="#logistic-regression" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -673,7 +696,7 @@ Overall accuracy score with best estimator: 0.836
 </div>
 </section>
 <section id="k-nearest-neighbors">
-<h2>K-Nearest Neighbors<a class="headerlink" href="#k-nearest-neighbors" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">K-Nearest Neighbors</a><a class="headerlink" href="#k-nearest-neighbors" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -728,12 +751,12 @@ Accuracy score with best estimator: 0.936
 </div>
 </section>
 <section id="other-tests">
-<h2>Other tests<a class="headerlink" href="#other-tests" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Other tests</a><a class="headerlink" href="#other-tests" title="Permalink to this heading">#</a></h2>
 <p>We have attempted SVM and XGBoost but they either gave us trouble during training or did not perform well.</p>
 <p>Soon we will add a PyTorch deep learning benchmark but for now… <code class="docutils literal notranslate"><span class="pre">LightGBM</span></code> rules!</p>
 </section>
 <section id="watermark">
-<h2>Watermark<a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Author: Francisco_Marchi@Lamba_Lab_UF
@@ -808,7 +831,7 @@ Architecture: 64bit
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">A Passionate Child’s Introduction to Gen</p>
+        <p class="prev-next-title">Bayesian Inference with Julia - Gen</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
