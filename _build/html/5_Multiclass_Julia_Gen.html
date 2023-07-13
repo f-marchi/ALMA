@@ -339,13 +339,13 @@ document.write(`
 <p>This is a passionate child’s introduction to probabilistic programming and Bayesian inference using Julia and Gen.</p>
 <section id="load-data">
 <h2>Load data<a class="headerlink" href="#load-data" title="Permalink to this heading">#</a></h2>
-<div class="cell tag_hide-input tag_hide-output docutils container">
+<div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
 <span class="expanded">Hide code cell source</span>
 </summary>
-<div class="cell_input above-output-prompt docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">DataFrames</span><span class="p">,</span><span class="w"> </span><span class="n">CSV</span>
 
 <span class="n">input_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;../Data/Intermediate_Files/&quot;</span>
@@ -384,11 +384,6 @@ document.write(`
 </div>
 </div>
 </details>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X_train: (1399, 5)
 y_train: (1399,)
@@ -397,7 +392,6 @@ y_test: (110,)
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 </section>
 <section id="define-the-multinomial-logistic-regression-model">
@@ -531,7 +525,6 @@ Here we attempt the inference algorithm Metropolis-Hastings, which is a Markov c
 <span class="n">Pkg</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s">&quot;MLBase&quot;</span><span class="p">)</span>
 <span class="n">Pkg</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s">&quot;Gen&quot;</span><span class="p">)</span>
 <span class="n">Pkg</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s">&quot;Distributions&quot;</span><span class="p">)</span>
-<span class="n">Pkg</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s">&quot;LinearAlgebra&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
