@@ -33,7 +33,6 @@ parts:
   
     chapters:
       - file: 5_Multiclass_Julia_Gen.ipynb
-      - file: 5_Multiclass_SPPL.ipynb
 
   #     # - caption: AML Diagnostic Map
 
