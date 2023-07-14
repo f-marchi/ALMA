@@ -20,8 +20,8 @@ parts:
 
     chapters:
       - file: 2_Univariate_CoxPH-EWAS_v3.ipynb
-      - file: 3_Multivariate_CoxPH-Lasso_v4.ipynb
-      - file: 3_Multivariate_CoxPH-Lasso_Validation_v1.ipynb
+      - file: 3_Multivariate_CoxPH-Lasso_v5.ipynb
+      - file: 3_Multivariate_CoxPH-Lasso_Validation_v2.ipynb
 
   - caption: PaCMAP + ML Classifier
   

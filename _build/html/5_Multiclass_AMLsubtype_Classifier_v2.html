@@ -159,8 +159,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Survival EWAS + CoxPH-Lasso</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="2_Univariate_CoxPH-EWAS_v3.html">Univariate Cox-PH EWAS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_Multivariate_CoxPH-Lasso_v4.html">Multivariate CoxPH-Lasso</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_Multivariate_CoxPH-Lasso_Validation_v1.html">Multivariate CoxPH-Lasso Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_Multivariate_CoxPH-Lasso_v5.html">Multivariate CoxPH-Lasso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_Multivariate_CoxPH-Lasso_Validation_v2.html">Multivariate CoxPH-Lasso Validation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">PaCMAP + ML Classifier</span></p>
 <ul class="current nav bd-sidenav">
@@ -381,19 +381,19 @@ document.write(`
 <span class="n">input_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Intermediate_Files/&#39;</span>
 <span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/&#39;</span>
 
-<span class="c1"># read df_discovery and df_validation</span>
-<span class="n">df_discovery</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span>
-    <span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;df_discovery.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="c1"># # read df_discovery and df_validation</span>
+<span class="c1"># df_discovery = pd.read_pickle(</span>
+<span class="c1">#     input_path+&#39;df_discovery.pkl&#39;).sort_index()</span>
 
-<span class="n">df_validation</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span>
-    <span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;df_validation.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="c1"># df_validation = pd.read_pickle(</span>
+<span class="c1">#     input_path+&#39;df_validation.pkl&#39;).sort_index()</span>
 
-<span class="c1"># Load clinical data</span>
-<span class="n">discovery_clinical_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;discovery_clinical_data.csv&#39;</span><span class="p">,</span>
-                                      <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># # Load clinical data</span>
+<span class="c1"># discovery_clinical_data = pd.read_csv(input_path+&#39;discovery_clinical_data.csv&#39;,</span>
+<span class="c1">#                                       low_memory=False, index_col=0)</span>
 
-<span class="n">validation_clinical_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;validation_clinical_data.csv&#39;</span><span class="p">,</span>
-                                        <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># validation_clinical_data = pd.read_csv(input_path+&#39;validation_clinical_data.csv&#39;,</span>
+<span class="c1">#                                         low_memory=False, index_col=0)</span>
 
 <span class="c1"># Load pacmap output data</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;pacmap_output/pacmap_5d_output_acute_leukemia.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -407,6 +407,18 @@ document.write(`
 <h2><a class="toc-backref" href="#id3" role="doc-backlink">Preprocess data</a><a class="headerlink" href="#preprocess-data" title="Permalink to this heading">#</a></h2>
 <section id="exclude-categories-with-10-samples">
 <h3><a class="toc-backref" href="#id4" role="doc-backlink">Exclude categories with &lt;10 samples</a><a class="headerlink" href="#exclude-categories-with-10-samples" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3260
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">

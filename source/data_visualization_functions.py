@@ -167,11 +167,9 @@ def draw_forest_plot(time, event, df, save_plot=False, trialname=None, scorename
     time2 = time.replace('.', '_')
 
     if event[0] == 'o':
-        event3 = 'Overall-Survival'
-        event4 = 'OS'
+        event3 = 'OS'
     else:
-        event3 = 'Event-Free Survival'
-        event4 = 'EFS'
+        event3 = 'EFS'
 
     fp2 = fp.rename(columns={event: event2,
                              time: time2,
@@ -246,7 +244,7 @@ def draw_forest_plot(time, event, df, save_plot=False, trialname=None, scorename
 
     # Save plot figure
     if save_plot == True:
-        plt.savefig('../Figures/Forest_Plots/' + scorename + '_' + trialname + '_' + str(len(df)) + '_' + event4 + '.png',
+        plt.savefig('../Figures/Forest_Plots/' + scorename + '_' + trialname + '_' + str(len(df)) + '_' + event3 + '.png',
                     bbox_inches='tight', dpi=300)
 
     return (plt.show())
