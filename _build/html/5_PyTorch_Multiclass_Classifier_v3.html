@@ -1,0 +1,1649 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>PyTorch Classifier Benchmark &#8212; Lamba Lab at UF</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '5_PyTorch_Multiclass_Classifier_v3';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="AML Peds PaCMAP Classifier Benchmark" href="5_Multiclass_PedsPacmap_Classifier_v2.html" />
+    <link rel="prev" title="Bayesian Inference with Julia - Gen" href="5_Multiclass_Julia_Gen_v1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Lamba Lab at UF</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    DNA methylation-based diagnosis and prognosis of pediatric AML
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Download and Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_Data_Download_Process.html">Discovery Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_Test_Data_Process_v1.html">Validation Dataset</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">AML Prognostic Model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2_Univariate_CoxPH-EWAS_v3.html">Epigenome Wide Association Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.1_MethylScoreAML_Px_Development_v5.html">MethylScoreAML Px Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.2_MethylScoreAML_Px_Validation_Peds_v2.html">MethylScoreAML Px Validation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">AML Diagnostic Model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="4_Methylome_Atlas_PaCMAP_v4.html">Methylome Atlas of Acute Leukemia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_Multiclass_AMLsubtype_Classifier_v2.html">AML Diagnostic Subtype Classifier</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Other Benchmarks and Analyses</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="5_Multiclass_Julia_Gen_v1.html">Bayesian Inference with Julia - Gen</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">PyTorch Classifier Benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_Multiclass_PedsPacmap_Classifier_v2.html">AML Peds PaCMAP Classifier Benchmark</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/5_PyTorch_Multiclass_Classifier_v3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>PyTorch Classifier Benchmark</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocess-data">Preprocess data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exclude-categories-with-10-samples">Exclude categories with &lt;10 samples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exclude-samples-with-missing-labels">Exclude samples with missing labels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-x-and-y">Define X and y</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encode-labels">Encode labels</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-model-architecture">Define model architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-model-performance">Plot model performance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrices">Confusion matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pytorch-classifier-benchmark">
+<h1><a class="toc-backref" href="#id1" role="doc-backlink">PyTorch Classifier Benchmark</a><a class="headerlink" href="#pytorch-classifier-benchmark" title="Permalink to this heading">#</a></h1>
+<nav class="contents" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#pytorch-classifier-benchmark" id="id1">PyTorch Classifier Benchmark</a></p>
+<ul>
+<li><p><a class="reference internal" href="#load-data" id="id2">Load data</a></p></li>
+<li><p><a class="reference internal" href="#preprocess-data" id="id3">Preprocess data</a></p>
+<ul>
+<li><p><a class="reference internal" href="#exclude-categories-with-10-samples" id="id4">Exclude categories with &lt;10 samples</a></p></li>
+<li><p><a class="reference internal" href="#exclude-samples-with-missing-labels" id="id5">Exclude samples with missing labels</a></p></li>
+<li><p><a class="reference internal" href="#define-x-and-y" id="id6">Define X and y</a></p></li>
+<li><p><a class="reference internal" href="#encode-labels" id="id7">Encode labels</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#define-model-architecture" id="id8">Define model architecture</a></p></li>
+<li><p><a class="reference internal" href="#plot-model-performance" id="id9">Plot model performance</a></p></li>
+<li><p><a class="reference internal" href="#confusion-matrices" id="id10">Confusion matrices</a></p></li>
+<li><p><a class="reference internal" href="#watermark" id="id11">Watermark</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<p>This is a basic implementation of a deep learning architecture using PyTorch in python3.10.</p>
+<p>This is meant to be a sandbox for Pytorch wizards to build on top of.</p>
+<p>Nevertheless, here we describe the following MLP:</p>
+<p>Input -&gt; Hidden Layer 1 -&gt; Activation -&gt; Hidden Layer 2 -&gt; Activation -&gt; Output Layer</p>
+<section id="load-data">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Load data</a><a class="headerlink" href="#load-data" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">input_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Intermediate_Files/&#39;</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/&#39;</span>
+
+<span class="c1"># Load pacmap output data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;pacmap_output/pacmap_5d_output_acute_leukemia.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="preprocess-data">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Preprocess data</a><a class="headerlink" href="#preprocess-data" title="Permalink to this heading">#</a></h2>
+<section id="exclude-categories-with-10-samples">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Exclude categories with &lt;10 samples</a><a class="headerlink" href="#exclude-categories-with-10-samples" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># exclude the samples with mixed phenotypes and Down syndrome and t(9;22)(q34.1;q11.2)/BCR::ABL1</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Mixed phenotype acute leukemia T/myeloid&#39;</span><span class="p">,</span>
+                                       <span class="s1">&#39;Myeloid leukaemia associated with Down syndrome&#39;</span><span class="p">,</span>
+                                       <span class="s1">&#39;AML with t(9;22)(q34.1;q11.2)/BCR::ABL1&#39;</span><span class="p">])]</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ELN AML 2022 Diagnosis
+AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement                           360
+AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22)/CBFB::MYH11             201
+AML with t(8;21)(q22;q22.1)/RUNX1::RUNX1T1                                198
+AML with other rare recurring translocations                              172
+AML with mutated NPM1                                                     172
+MDS-related or secondary myeloid neoplasms                                148
+Otherwise-Normal Control                                                  121
+AML with in-frame bZIP mutated CEBPA                                       69
+APL with t(15;17)(q24.1;q21.2)/PML::RARA                                   31
+AML with t(6;9)(p23;q34.1)/DEK::NUP214                                     27
+AML with inv(3)(q21.3q26.2) or t(3;3)(q21.3;q26.2)/MECOM-rearrangement     10
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exclude-samples-with-missing-labels">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Exclude samples with missing labels</a><a class="headerlink" href="#exclude-samples-with-missing-labels" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># drop the samples with missing labels for the ELN AML 2022 Diagnosis</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="define-x-and-y">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Define X and y</a><a class="headerlink" href="#define-x-and-y" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define X and y</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;PaCMAP 1&#39;</span><span class="p">,</span> <span class="s1">&#39;PaCMAP 2&#39;</span><span class="p">,</span> <span class="s1">&#39;PaCMAP 3&#39;</span><span class="p">,</span> <span class="s1">&#39;PaCMAP 4&#39;</span><span class="p">,</span> <span class="s1">&#39;PaCMAP 5&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="c1"># shape (n_samples=1399, n_features=5)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="c1"># shape (n_samples=1399,) with 11 string classes</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="encode-labels">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Encode labels</a><a class="headerlink" href="#encode-labels" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># One hot encode the labels</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
+
+<span class="c1"># Instantiate the LabelEncoder</span>
+<span class="n">label_encoder</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+
+<span class="c1"># The LabelEncoder converts each unique string value into a unique integer</span>
+<span class="c1"># For example, if we had [&#39;cat&#39;, &#39;dog&#39;, &#39;cat&#39;, &#39;bird&#39;], it could become [0, 1, 0, 2]</span>
+<span class="c1"># The specific integer assigned to each string is arbitrary</span>
+<span class="n">integer_encoded</span> <span class="o">=</span> <span class="n">label_encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Instantiate the OneHotEncoder</span>
+<span class="n">onehot_encoder</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># The OneHotEncoder takes column-wise inputs, so we need to reshape our 1D array to be 2D</span>
+<span class="n">integer_encoded</span> <span class="o">=</span> <span class="n">integer_encoded</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">integer_encoded</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># The OneHotEncoder converts each unique integer value into a unique one-hot vector</span>
+<span class="c1"># For example, if we had [0, 1, 0, 2], it could become [[1, 0, 0], [0, 1, 0], [1, 0, 0], [0, 0, 1]]</span>
+<span class="c1"># The i-th index is &quot;hot&quot; (1) while the others are &quot;cold&quot; (0)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">onehot_encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">integer_encoded</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/fmarchi/.local/lib/python3.10/site-packages/sklearn/preprocessing/_encoders.py:868: FutureWarning: `sparse` was renamed to `sparse_output` in version 1.2 and will be removed in 1.4. `sparse_output` is ignored unless you leave `sparse` to its default value.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="define-model-architecture">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Define model architecture</a><a class="headerlink" href="#define-model-architecture" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="c1"># Split the data into train/test sets based on the `Train Test` column</span>
+<span class="n">train_indices</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Train Test&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Discovery (train) Samples&#39;</span>
+<span class="n">test_indices</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Train Test&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Validation (test) Samples&#39;</span>
+
+<span class="c1"># Convert numpy arrays into PyTorch tensors</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">train_indices</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">train_indices</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">test_indices</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">test_indices</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">tqdm</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+
+<span class="k">class</span> <span class="nc">Multiclass</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">hidden_sizes</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+                 <span class="n">output_size</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()):</span>
+        
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">()</span>
+        
+        <span class="c1"># Add input layer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_sizes</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        
+        <span class="c1"># Add hidden layers</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hidden_sizes</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">activation</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_sizes</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">hidden_sizes</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]))</span>
+        
+        <span class="c1"># Add output layer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_sizes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">output_size</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">layer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+
+<span class="c1"># loss metric and optimizer</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Multiclass</span><span class="p">()</span>
+<span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+
+<span class="c1"># prepare model and training parameters</span>
+<span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">batches_per_epoch</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span> <span class="o">//</span> <span class="n">batch_size</span>
+
+<span class="n">best_acc</span> <span class="o">=</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>   <span class="c1"># init to negative infinity</span>
+<span class="n">best_weights</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">train_loss_hist</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">train_acc_hist</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">test_loss_hist</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">test_acc_hist</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="c1"># training loop</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_epochs</span><span class="p">)):</span>
+    <span class="n">epoch_loss</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">epoch_acc</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># set model in training mode and run through each batch</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">trange</span><span class="p">(</span><span class="n">batches_per_epoch</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;batch&quot;</span><span class="p">,</span> <span class="n">mininterval</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="k">as</span> <span class="n">bar</span><span class="p">:</span>
+        <span class="n">bar</span><span class="o">.</span><span class="n">set_description</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bar</span><span class="p">:</span>
+            <span class="c1"># take a batch</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">batch_size</span>
+            <span class="n">X_batch</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">start</span><span class="o">+</span><span class="n">batch_size</span><span class="p">]</span>
+            <span class="n">y_batch</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">start</span><span class="o">+</span><span class="n">batch_size</span><span class="p">]</span>
+            <span class="c1"># forward pass</span>
+            <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_batch</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_batch</span><span class="p">)</span>
+            <span class="c1"># backward pass</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+            <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+            <span class="c1"># update weights</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+            <span class="c1"># compute and store metrics</span>
+            <span class="n">acc</span> <span class="o">=</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">torch</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y_batch</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+            <span class="n">epoch_loss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">loss</span><span class="p">))</span>
+            <span class="n">epoch_acc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">acc</span><span class="p">))</span>
+            <span class="n">bar</span><span class="o">.</span><span class="n">set_postfix</span><span class="p">(</span>
+                <span class="n">loss</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">loss</span><span class="p">),</span>
+                <span class="n">acc</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">acc</span><span class="p">)</span>
+            <span class="p">)</span>
+    <span class="c1"># set model in evaluation mode and run through the test set</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">ce</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">torch</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">ce</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">ce</span><span class="p">)</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">acc</span><span class="p">)</span>
+    <span class="n">train_loss_hist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">epoch_loss</span><span class="p">))</span>
+    <span class="n">train_acc_hist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">epoch_acc</span><span class="p">))</span>
+    <span class="n">test_loss_hist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ce</span><span class="p">)</span>
+    <span class="n">test_acc_hist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">acc</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">acc</span> <span class="o">&gt;</span> <span class="n">best_acc</span><span class="p">:</span>
+        <span class="n">best_acc</span> <span class="o">=</span> <span class="n">acc</span>
+        <span class="n">best_weights</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2"> validation: Cross-entropy=</span><span class="si">{</span><span class="n">ce</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, Accuracy=</span><span class="si">{</span><span class="n">acc</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+
+<span class="c1"># Restore best model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">best_weights</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 0: 100%|██████████| 279/279 [00:00&lt;00:00, 480.17batch/s, acc=0.4, loss=2.16] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 0 validation: Cross-entropy=0.65, Accuracy=85.5%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1: 100%|██████████| 279/279 [00:00&lt;00:00, 651.02batch/s, acc=0.4, loss=2.06] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1 validation: Cross-entropy=0.58, Accuracy=84.5%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 2: 100%|██████████| 279/279 [00:00&lt;00:00, 684.00batch/s, acc=0.4, loss=1.97] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 2 validation: Cross-entropy=0.55, Accuracy=84.5%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 3: 100%|██████████| 279/279 [00:00&lt;00:00, 665.64batch/s, acc=0.4, loss=1.88] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 3 validation: Cross-entropy=0.52, Accuracy=84.5%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 4: 100%|██████████| 279/279 [00:00&lt;00:00, 693.08batch/s, acc=0.4, loss=1.8]  
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 4 validation: Cross-entropy=0.50, Accuracy=84.5%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 5: 100%|██████████| 279/279 [00:00&lt;00:00, 702.79batch/s, acc=0.4, loss=1.73] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 5 validation: Cross-entropy=0.48, Accuracy=84.5%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 6: 100%|██████████| 279/279 [00:00&lt;00:00, 681.31batch/s, acc=0.4, loss=1.67] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 6 validation: Cross-entropy=0.47, Accuracy=84.5%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 7: 100%|██████████| 279/279 [00:00&lt;00:00, 705.88batch/s, acc=0.4, loss=1.62] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 7 validation: Cross-entropy=0.46, Accuracy=84.5%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 8: 100%|██████████| 279/279 [00:00&lt;00:00, 708.14batch/s, acc=0.4, loss=1.58] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 8 validation: Cross-entropy=0.45, Accuracy=84.5%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 9: 100%|██████████| 279/279 [00:00&lt;00:00, 663.13batch/s, acc=0.4, loss=1.55] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 9 validation: Cross-entropy=0.44, Accuracy=84.5%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 10: 100%|██████████| 279/279 [00:00&lt;00:00, 704.78batch/s, acc=0.4, loss=1.52] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 10 validation: Cross-entropy=0.43, Accuracy=83.6%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 11: 100%|██████████| 279/279 [00:00&lt;00:00, 658.70batch/s, acc=0.4, loss=1.49] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 11 validation: Cross-entropy=0.43, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 12: 100%|██████████| 279/279 [00:00&lt;00:00, 592.74batch/s, acc=0.2, loss=1.47] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 12 validation: Cross-entropy=0.42, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 13: 100%|██████████| 279/279 [00:00&lt;00:00, 617.34batch/s, acc=0.2, loss=1.45] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 13 validation: Cross-entropy=0.42, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 14: 100%|██████████| 279/279 [00:00&lt;00:00, 680.71batch/s, acc=0.2, loss=1.44] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 14 validation: Cross-entropy=0.42, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 15: 100%|██████████| 279/279 [00:00&lt;00:00, 599.46batch/s, acc=0.2, loss=1.43] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 15 validation: Cross-entropy=0.42, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 16: 100%|██████████| 279/279 [00:00&lt;00:00, 573.86batch/s, acc=0.2, loss=1.42] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 16 validation: Cross-entropy=0.42, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 17: 100%|██████████| 279/279 [00:00&lt;00:00, 481.18batch/s, acc=0.2, loss=1.41] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 17 validation: Cross-entropy=0.42, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 18: 100%|██████████| 279/279 [00:00&lt;00:00, 558.92batch/s, acc=0.2, loss=1.41] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 18 validation: Cross-entropy=0.42, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 19: 100%|██████████| 279/279 [00:00&lt;00:00, 608.92batch/s, acc=0.2, loss=1.39] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 19 validation: Cross-entropy=0.42, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 20: 100%|██████████| 279/279 [00:00&lt;00:00, 645.18batch/s, acc=0.2, loss=1.37] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 20 validation: Cross-entropy=0.42, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 21: 100%|██████████| 279/279 [00:00&lt;00:00, 676.10batch/s, acc=0.2, loss=1.36] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 21 validation: Cross-entropy=0.42, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 22: 100%|██████████| 279/279 [00:00&lt;00:00, 669.53batch/s, acc=0.2, loss=1.36] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 22 validation: Cross-entropy=0.42, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 23: 100%|██████████| 279/279 [00:00&lt;00:00, 657.96batch/s, acc=0.2, loss=1.32] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 23 validation: Cross-entropy=0.42, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 24: 100%|██████████| 279/279 [00:00&lt;00:00, 666.84batch/s, acc=0.2, loss=1.3]  
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 24 validation: Cross-entropy=0.42, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 25: 100%|██████████| 279/279 [00:00&lt;00:00, 660.64batch/s, acc=0.4, loss=1.27] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 25 validation: Cross-entropy=0.43, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 26: 100%|██████████| 279/279 [00:00&lt;00:00, 689.98batch/s, acc=0.4, loss=1.25] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 26 validation: Cross-entropy=0.43, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 27: 100%|██████████| 279/279 [00:00&lt;00:00, 702.45batch/s, acc=0.4, loss=1.24] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 27 validation: Cross-entropy=0.43, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 28: 100%|██████████| 279/279 [00:00&lt;00:00, 625.12batch/s, acc=0.4, loss=1.23] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 28 validation: Cross-entropy=0.43, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 29: 100%|██████████| 279/279 [00:00&lt;00:00, 554.66batch/s, acc=0.4, loss=1.21] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 29 validation: Cross-entropy=0.43, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 30: 100%|██████████| 279/279 [00:00&lt;00:00, 554.39batch/s, acc=0.4, loss=1.2]  
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 30 validation: Cross-entropy=0.43, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 31: 100%|██████████| 279/279 [00:00&lt;00:00, 677.19batch/s, acc=0.4, loss=1.19] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 31 validation: Cross-entropy=0.43, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 32: 100%|██████████| 279/279 [00:00&lt;00:00, 700.19batch/s, acc=0.4, loss=1.17] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 32 validation: Cross-entropy=0.43, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 33: 100%|██████████| 279/279 [00:00&lt;00:00, 576.73batch/s, acc=0.4, loss=1.17] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 33 validation: Cross-entropy=0.43, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 34: 100%|██████████| 279/279 [00:00&lt;00:00, 591.24batch/s, acc=0.4, loss=1.15] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 34 validation: Cross-entropy=0.43, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 35: 100%|██████████| 279/279 [00:00&lt;00:00, 608.25batch/s, acc=0.4, loss=1.14] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 35 validation: Cross-entropy=0.43, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 36: 100%|██████████| 279/279 [00:00&lt;00:00, 598.95batch/s, acc=0.4, loss=1.14] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 36 validation: Cross-entropy=0.43, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 37: 100%|██████████| 279/279 [00:00&lt;00:00, 606.07batch/s, acc=0.4, loss=1.12] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 37 validation: Cross-entropy=0.44, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 38: 100%|██████████| 279/279 [00:00&lt;00:00, 572.82batch/s, acc=0.4, loss=1.12] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 38 validation: Cross-entropy=0.43, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 39: 100%|██████████| 279/279 [00:00&lt;00:00, 560.99batch/s, acc=0.4, loss=1.12] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 39 validation: Cross-entropy=0.44, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 40: 100%|██████████| 279/279 [00:00&lt;00:00, 576.58batch/s, acc=0.4, loss=1.1]  
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 40 validation: Cross-entropy=0.44, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 41: 100%|██████████| 279/279 [00:00&lt;00:00, 549.90batch/s, acc=0.4, loss=1.1]  
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 41 validation: Cross-entropy=0.44, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 42: 100%|██████████| 279/279 [00:00&lt;00:00, 579.89batch/s, acc=0.6, loss=1.09] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 42 validation: Cross-entropy=0.44, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 43: 100%|██████████| 279/279 [00:00&lt;00:00, 566.64batch/s, acc=0.6, loss=1.08] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 43 validation: Cross-entropy=0.44, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 44: 100%|██████████| 279/279 [00:00&lt;00:00, 563.72batch/s, acc=0.6, loss=1.07] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 44 validation: Cross-entropy=0.44, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 45: 100%|██████████| 279/279 [00:00&lt;00:00, 565.02batch/s, acc=0.6, loss=1.06] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 45 validation: Cross-entropy=0.44, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 46: 100%|██████████| 279/279 [00:00&lt;00:00, 555.50batch/s, acc=0.6, loss=1.06] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 46 validation: Cross-entropy=0.44, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 47: 100%|██████████| 279/279 [00:00&lt;00:00, 556.12batch/s, acc=0.6, loss=1.06] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 47 validation: Cross-entropy=0.44, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 48: 100%|██████████| 279/279 [00:00&lt;00:00, 558.99batch/s, acc=0.6, loss=1.04] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 48 validation: Cross-entropy=0.44, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 49: 100%|██████████| 279/279 [00:00&lt;00:00, 561.69batch/s, acc=0.6, loss=1.04] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 49 validation: Cross-entropy=0.44, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 50: 100%|██████████| 279/279 [00:00&lt;00:00, 562.00batch/s, acc=0.6, loss=1.04] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 50 validation: Cross-entropy=0.44, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 51: 100%|██████████| 279/279 [00:00&lt;00:00, 560.62batch/s, acc=0.6, loss=1.03] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 51 validation: Cross-entropy=0.44, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 52: 100%|██████████| 279/279 [00:00&lt;00:00, 564.23batch/s, acc=0.6, loss=1.03] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 52 validation: Cross-entropy=0.44, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 53: 100%|██████████| 279/279 [00:00&lt;00:00, 559.37batch/s, acc=0.6, loss=1.02] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 53 validation: Cross-entropy=0.44, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 54: 100%|██████████| 279/279 [00:00&lt;00:00, 572.43batch/s, acc=0.6, loss=1.02] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 54 validation: Cross-entropy=0.44, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 55: 100%|██████████| 279/279 [00:00&lt;00:00, 570.09batch/s, acc=0.6, loss=1.02] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 55 validation: Cross-entropy=0.44, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 56: 100%|██████████| 279/279 [00:00&lt;00:00, 547.56batch/s, acc=0.6, loss=1.01] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 56 validation: Cross-entropy=0.45, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 57: 100%|██████████| 279/279 [00:00&lt;00:00, 549.49batch/s, acc=0.6, loss=1]    
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 57 validation: Cross-entropy=0.45, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 58: 100%|██████████| 279/279 [00:00&lt;00:00, 555.71batch/s, acc=0.6, loss=0.999]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 58 validation: Cross-entropy=0.45, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 59: 100%|██████████| 279/279 [00:00&lt;00:00, 554.20batch/s, acc=0.6, loss=0.993]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 59 validation: Cross-entropy=0.45, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 60: 100%|██████████| 279/279 [00:00&lt;00:00, 594.50batch/s, acc=0.6, loss=0.988]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 60 validation: Cross-entropy=0.45, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 61: 100%|██████████| 279/279 [00:00&lt;00:00, 590.29batch/s, acc=0.6, loss=0.984]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 61 validation: Cross-entropy=0.45, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 62: 100%|██████████| 279/279 [00:00&lt;00:00, 610.14batch/s, acc=0.6, loss=0.978]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 62 validation: Cross-entropy=0.45, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 63: 100%|██████████| 279/279 [00:00&lt;00:00, 579.75batch/s, acc=0.6, loss=0.974]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 63 validation: Cross-entropy=0.45, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 64: 100%|██████████| 279/279 [00:00&lt;00:00, 551.75batch/s, acc=0.6, loss=0.969]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 64 validation: Cross-entropy=0.45, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 65: 100%|██████████| 279/279 [00:00&lt;00:00, 560.96batch/s, acc=0.6, loss=0.966]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 65 validation: Cross-entropy=0.45, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 66: 100%|██████████| 279/279 [00:00&lt;00:00, 562.02batch/s, acc=0.6, loss=0.96] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 66 validation: Cross-entropy=0.45, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 67: 100%|██████████| 279/279 [00:00&lt;00:00, 561.21batch/s, acc=0.6, loss=0.955]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 67 validation: Cross-entropy=0.45, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 68: 100%|██████████| 279/279 [00:00&lt;00:00, 560.97batch/s, acc=0.6, loss=0.949]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 68 validation: Cross-entropy=0.45, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 69: 100%|██████████| 279/279 [00:00&lt;00:00, 570.75batch/s, acc=0.6, loss=0.946]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 69 validation: Cross-entropy=0.45, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 70: 100%|██████████| 279/279 [00:00&lt;00:00, 583.84batch/s, acc=0.6, loss=0.941]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 70 validation: Cross-entropy=0.45, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 71: 100%|██████████| 279/279 [00:00&lt;00:00, 545.81batch/s, acc=0.6, loss=0.94] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 71 validation: Cross-entropy=0.45, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 72: 100%|██████████| 279/279 [00:00&lt;00:00, 567.81batch/s, acc=0.6, loss=0.936]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 72 validation: Cross-entropy=0.45, Accuracy=83.6%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 73: 100%|██████████| 279/279 [00:00&lt;00:00, 556.51batch/s, acc=0.6, loss=0.935]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 73 validation: Cross-entropy=0.45, Accuracy=82.7%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 74: 100%|██████████| 279/279 [00:00&lt;00:00, 555.46batch/s, acc=0.6, loss=0.931]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 74 validation: Cross-entropy=0.45, Accuracy=83.6%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 75: 100%|██████████| 279/279 [00:00&lt;00:00, 571.36batch/s, acc=0.6, loss=0.931]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 75 validation: Cross-entropy=0.45, Accuracy=83.6%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 76: 100%|██████████| 279/279 [00:00&lt;00:00, 579.01batch/s, acc=0.6, loss=0.93] 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 76 validation: Cross-entropy=0.45, Accuracy=83.6%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 77: 100%|██████████| 279/279 [00:00&lt;00:00, 557.20batch/s, acc=0.6, loss=0.926]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 77 validation: Cross-entropy=0.45, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 78: 100%|██████████| 279/279 [00:00&lt;00:00, 518.04batch/s, acc=0.6, loss=0.925]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 78 validation: Cross-entropy=0.45, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 79: 100%|██████████| 279/279 [00:00&lt;00:00, 540.65batch/s, acc=0.6, loss=0.925]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 79 validation: Cross-entropy=0.45, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 80: 100%|██████████| 279/279 [00:00&lt;00:00, 507.77batch/s, acc=0.6, loss=0.924]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 80 validation: Cross-entropy=0.45, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 81: 100%|██████████| 279/279 [00:00&lt;00:00, 547.10batch/s, acc=0.6, loss=0.921]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 81 validation: Cross-entropy=0.45, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 82: 100%|██████████| 279/279 [00:00&lt;00:00, 539.85batch/s, acc=0.6, loss=0.921]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 82 validation: Cross-entropy=0.45, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 83: 100%|██████████| 279/279 [00:00&lt;00:00, 552.53batch/s, acc=0.6, loss=0.921]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 83 validation: Cross-entropy=0.45, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 84: 100%|██████████| 279/279 [00:00&lt;00:00, 538.57batch/s, acc=0.6, loss=0.923]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 84 validation: Cross-entropy=0.45, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 85: 100%|██████████| 279/279 [00:00&lt;00:00, 564.98batch/s, acc=0.6, loss=0.923]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 85 validation: Cross-entropy=0.45, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 86: 100%|██████████| 279/279 [00:00&lt;00:00, 582.71batch/s, acc=0.6, loss=0.923]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 86 validation: Cross-entropy=0.45, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 87: 100%|██████████| 279/279 [00:00&lt;00:00, 570.07batch/s, acc=0.6, loss=0.924]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 87 validation: Cross-entropy=0.45, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 88: 100%|██████████| 279/279 [00:00&lt;00:00, 525.69batch/s, acc=0.6, loss=0.923]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 88 validation: Cross-entropy=0.45, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 89: 100%|██████████| 279/279 [00:00&lt;00:00, 539.69batch/s, acc=0.6, loss=0.923]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 89 validation: Cross-entropy=0.46, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 90: 100%|██████████| 279/279 [00:00&lt;00:00, 572.44batch/s, acc=0.6, loss=0.923]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 90 validation: Cross-entropy=0.46, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 91: 100%|██████████| 279/279 [00:00&lt;00:00, 556.88batch/s, acc=0.6, loss=0.924]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 91 validation: Cross-entropy=0.46, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 92: 100%|██████████| 279/279 [00:00&lt;00:00, 558.47batch/s, acc=0.6, loss=0.923]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 92 validation: Cross-entropy=0.46, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 93: 100%|██████████| 279/279 [00:00&lt;00:00, 556.46batch/s, acc=0.6, loss=0.926]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 93 validation: Cross-entropy=0.46, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 94: 100%|██████████| 279/279 [00:00&lt;00:00, 571.31batch/s, acc=0.6, loss=0.926]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 94 validation: Cross-entropy=0.46, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 95: 100%|██████████| 279/279 [00:00&lt;00:00, 555.42batch/s, acc=0.6, loss=0.929]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 95 validation: Cross-entropy=0.46, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 96: 100%|██████████| 279/279 [00:00&lt;00:00, 539.74batch/s, acc=0.6, loss=0.927]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 96 validation: Cross-entropy=0.46, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 97: 100%|██████████| 279/279 [00:00&lt;00:00, 532.53batch/s, acc=0.6, loss=0.927]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 97 validation: Cross-entropy=0.46, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 98: 100%|██████████| 279/279 [00:00&lt;00:00, 521.84batch/s, acc=0.6, loss=0.928]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 98 validation: Cross-entropy=0.46, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 99: 100%|██████████| 279/279 [00:00&lt;00:00, 550.98batch/s, acc=0.6, loss=0.928]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 99 validation: Cross-entropy=0.46, Accuracy=87.3%
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;All keys matched successfully&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-model-performance">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Plot model performance</a><a class="headerlink" href="#plot-model-performance" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+
+<span class="c1"># Plotting the Cross-Entropy Loss</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train_loss_hist</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Train Loss&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test_loss_hist</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Test Loss&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cross-Entropy Loss per Epoch&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Epochs&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cross Entropy Loss&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Plotting the Accuracy</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train_acc_hist</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Train Accuracy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test_acc_hist</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Test Accuracy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Accuracy per Epoch&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Epochs&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Accuracy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/53dc102cc13d3d1dd35db8eadb49b3529589602efd2aefe441148e435e9fb834.png" src="_images/53dc102cc13d3d1dd35db8eadb49b3529589602efd2aefe441148e435e9fb834.png" />
+<img alt="_images/913559c28a24e969ea661170386a3c34576829a2d497e5ab24559cf36e4314c2.png" src="_images/913559c28a24e969ea661170386a3c34576829a2d497e5ab24559cf36e4314c2.png" />
+</div>
+</div>
+</section>
+<section id="confusion-matrices">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Confusion matrices</a><a class="headerlink" href="#confusion-matrices" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="k">def</span> <span class="nf">plot_confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">output_size</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">y_pred</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">conf_mat</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+    <span class="n">df_cm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">conf_mat</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">output_size</span><span class="p">)],</span>
+                         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">output_size</span><span class="p">)])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlGnBu&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Actual&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+<span class="n">output_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>  <span class="c1"># Replace with actual output sizes if different</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">X_train</span><span class="p">),</span> <span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)]</span>  <span class="c1"># Your data tuples here</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">y_true</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">output_sizes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/24f553691c79990f139916f6ac300642d3e2f3f833666b8cc64ac06ab3372358.png" src="_images/24f553691c79990f139916f6ac300642d3e2f3f833666b8cc64ac06ab3372358.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">25</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="n">_</span><span class="p">,</span> <span class="n">y_true</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">25</span>     <span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">output_sizes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="nn">Cell In[9], line 11,</span> in <span class="ni">plot_confusion_matrix</span><span class="nt">(y_true, y_pred, output_size)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">_</span><span class="p">,</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">y_pred</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">conf_mat</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+<span class="ne">---&gt; </span><span class="mi">11</span> <span class="n">df_cm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">conf_mat</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">output_size</span><span class="p">)],</span>
+<span class="nn">     12                      columns=[i for i</span> in <span class="ni">range</span><span class="nt">(output_size)])</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlGnBu&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~/.local/lib/python3.10/site-packages/pandas/core/frame.py:758,</span> in <span class="ni">DataFrame.__init__</span><span class="nt">(self, data, index, columns, dtype, copy)</span>
+<span class="g g-Whitespace">    </span><span class="mi">747</span>         <span class="n">mgr</span> <span class="o">=</span> <span class="n">dict_to_mgr</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">748</span>             <span class="c1"># error: Item &quot;ndarray&quot; of &quot;Union[ndarray, Series, Index]&quot; has no</span>
+<span class="g g-Whitespace">    </span><span class="mi">749</span>             <span class="c1"># attribute &quot;name&quot;</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">755</span>             <span class="n">copy</span><span class="o">=</span><span class="n">_copy</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">756</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">757</span>     <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">758</span>         <span class="n">mgr</span> <span class="o">=</span> <span class="n">ndarray_to_mgr</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">759</span>             <span class="n">data</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">760</span>             <span class="n">index</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">761</span>             <span class="n">columns</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">762</span>             <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">763</span>             <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">764</span>             <span class="n">typ</span><span class="o">=</span><span class="n">manager</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">765</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">767</span> <span class="c1"># For data is list-like, or Iterable (will consume into list)</span>
+<span class="g g-Whitespace">    </span><span class="mi">768</span> <span class="k">elif</span> <span class="n">is_list_like</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+
+<span class="nn">File ~/.local/lib/python3.10/site-packages/pandas/core/internals/construction.py:337,</span> in <span class="ni">ndarray_to_mgr</span><span class="nt">(values, index, columns, dtype, copy, typ)</span>
+<span class="g g-Whitespace">    </span><span class="mi">332</span> <span class="c1"># _prep_ndarraylike ensures that values.ndim == 2 at this point</span>
+<span class="g g-Whitespace">    </span><span class="mi">333</span> <span class="n">index</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">_get_axes</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">334</span>     <span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span>
+<span class="g g-Whitespace">    </span><span class="mi">335</span> <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">337</span> <span class="n">_check_values_indices_shape_match</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">339</span> <span class="k">if</span> <span class="n">typ</span> <span class="o">==</span> <span class="s2">&quot;array&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">340</span>     <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+
+<span class="nn">File ~/.local/lib/python3.10/site-packages/pandas/core/internals/construction.py:408,</span> in <span class="ni">_check_values_indices_shape_match</span><span class="nt">(values, index, columns)</span>
+<span class="g g-Whitespace">    </span><span class="mi">406</span> <span class="n">passed</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">shape</span>
+<span class="g g-Whitespace">    </span><span class="mi">407</span> <span class="n">implied</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">))</span>
+<span class="ne">--&gt; </span><span class="mi">408</span> <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape of passed values is </span><span class="si">{</span><span class="n">passed</span><span class="si">}</span><span class="s2">, indices imply </span><span class="si">{</span><span class="n">implied</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: Shape of passed values is (9, 9), indices imply (7, 7)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert one-hot encoded targets back to class labels</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">y_train_labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Define the number of classes (replace 11 with the actual number if different)</span>
+<span class="n">output_size</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="c1"># Compute the confusion matrix</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">conf_mat</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_train_labels</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+<span class="n">df_cm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">conf_mat</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">output_size</span><span class="p">)],</span>
+                     <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">output_size</span><span class="p">)])</span>
+
+<span class="c1"># Plot the confusion matrix</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlGnBu&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Actual&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Convert one-hot encoded targets back to class labels</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">y_test_labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Define the number of classes (replace 11 with the actual number if different)</span>
+<span class="n">output_size</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="c1"># Compute the confusion matrix</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">conf_mat</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test_labels</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+<span class="n">df_cm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">conf_mat</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">output_size</span><span class="p">)],</span>
+                     <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">output_size</span><span class="p">)])</span>
+
+<span class="c1"># Plot the confusion matrix</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;YlGnBu&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Actual&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/24f553691c79990f139916f6ac300642d3e2f3f833666b8cc64ac06ab3372358.png" src="_images/24f553691c79990f139916f6ac300642d3e2f3f833666b8cc64ac06ab3372358.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">32</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="n">_</span><span class="p">,</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="n">conf_mat</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test_labels</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+<span class="ne">---&gt; </span><span class="mi">32</span> <span class="n">df_cm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">conf_mat</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">output_size</span><span class="p">)],</span>
+<span class="nn">     33                      columns = [i for i</span> in <span class="ni">range</span><span class="nt">(output_size)])</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="c1"># Plot the confusion matrix</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+
+<span class="nn">File ~/.local/lib/python3.10/site-packages/pandas/core/frame.py:758,</span> in <span class="ni">DataFrame.__init__</span><span class="nt">(self, data, index, columns, dtype, copy)</span>
+<span class="g g-Whitespace">    </span><span class="mi">747</span>         <span class="n">mgr</span> <span class="o">=</span> <span class="n">dict_to_mgr</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">748</span>             <span class="c1"># error: Item &quot;ndarray&quot; of &quot;Union[ndarray, Series, Index]&quot; has no</span>
+<span class="g g-Whitespace">    </span><span class="mi">749</span>             <span class="c1"># attribute &quot;name&quot;</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">755</span>             <span class="n">copy</span><span class="o">=</span><span class="n">_copy</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">756</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">757</span>     <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">758</span>         <span class="n">mgr</span> <span class="o">=</span> <span class="n">ndarray_to_mgr</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">759</span>             <span class="n">data</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">760</span>             <span class="n">index</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">761</span>             <span class="n">columns</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">762</span>             <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">763</span>             <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">764</span>             <span class="n">typ</span><span class="o">=</span><span class="n">manager</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">765</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">767</span> <span class="c1"># For data is list-like, or Iterable (will consume into list)</span>
+<span class="g g-Whitespace">    </span><span class="mi">768</span> <span class="k">elif</span> <span class="n">is_list_like</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+
+<span class="nn">File ~/.local/lib/python3.10/site-packages/pandas/core/internals/construction.py:337,</span> in <span class="ni">ndarray_to_mgr</span><span class="nt">(values, index, columns, dtype, copy, typ)</span>
+<span class="g g-Whitespace">    </span><span class="mi">332</span> <span class="c1"># _prep_ndarraylike ensures that values.ndim == 2 at this point</span>
+<span class="g g-Whitespace">    </span><span class="mi">333</span> <span class="n">index</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">_get_axes</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">334</span>     <span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span>
+<span class="g g-Whitespace">    </span><span class="mi">335</span> <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">337</span> <span class="n">_check_values_indices_shape_match</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">339</span> <span class="k">if</span> <span class="n">typ</span> <span class="o">==</span> <span class="s2">&quot;array&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">340</span>     <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+
+<span class="nn">File ~/.local/lib/python3.10/site-packages/pandas/core/internals/construction.py:408,</span> in <span class="ni">_check_values_indices_shape_match</span><span class="nt">(values, index, columns)</span>
+<span class="g g-Whitespace">    </span><span class="mi">406</span> <span class="n">passed</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">shape</span>
+<span class="g g-Whitespace">    </span><span class="mi">407</span> <span class="n">implied</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">))</span>
+<span class="ne">--&gt; </span><span class="mi">408</span> <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape of passed values is </span><span class="si">{</span><span class="n">passed</span><span class="si">}</span><span class="s2">, indices imply </span><span class="si">{</span><span class="n">implied</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: Shape of passed values is (9, 9), indices imply (7, 7)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="watermark">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Author: Francisco_Marchi@Lamba_Lab_UF
+
+Python implementation: CPython
+Python version       : 3.10.6
+IPython version      : 8.14.0
+
+numpy     : 1.24.1
+pandas    : 2.0.2
+torch     : 2.0.1+cu118
+sklearn   : 1.2.2
+seaborn   : 0.12.2
+matplotlib: 3.7.1
+
+Compiler    : GCC 11.3.0
+OS          : Linux
+Release     : 5.15.90.1-microsoft-standard-WSL2
+Machine     : x86_64
+Processor   : x86_64
+CPU cores   : 20
+Architecture: 64bit
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="5_Multiclass_Julia_Gen_v1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Bayesian Inference with Julia - Gen</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="5_Multiclass_PedsPacmap_Classifier_v2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">AML Peds PaCMAP Classifier Benchmark</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocess-data">Preprocess data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exclude-categories-with-10-samples">Exclude categories with &lt;10 samples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exclude-samples-with-missing-labels">Exclude samples with missing labels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-x-and-y">Define X and y</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encode-labels">Encode labels</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-model-architecture">Define model architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-model-performance">Plot model performance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrices">Confusion matrices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Francisco Marchi @ Lamba Lab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
