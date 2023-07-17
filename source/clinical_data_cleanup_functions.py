@@ -484,7 +484,7 @@ def clean_aml02(df):
     
     df['Tissue Type'] = 'Bone Marrow'
     df['Sample Type'] = 'Diagnosis'
-    df['WHO ALL 2021 Diagnosis'] = np.nan
+    df['WHO ALL 2022 Diagnosis'] = np.nan
 
     # ELN 2022 Diagnostic Annotation
 
@@ -575,8 +575,10 @@ def clean_aml08(df):
                                                        'HD-ADE': 'Arm B',
                                                        'Not Randomized (give HD-ADE)': 'Arm B'})
     df['Vital Status'] = df['os.evnt'].replace({0: 'Alive', 1: 'Dead'})
+
     df = df.replace(
-        {'Unknown': np.nan, 'Unkown': np.nan, 'Inevaluable': np.nan})
+        {'Unknown': np.nan, 'Unkown': np.nan, 'Inevaluable': np.nan, -9999: np.nan, -9996: np.nan})
+    
     df['FLT3 ITD'] = df['FLT3 Status'].replace(
         {'Wild Type': 'No', 'Mutation': 'No', 'ITD': 'Yes'})
     df['Age group (years)'] = pd.cut(x=df['Age (years)'],
@@ -596,9 +598,9 @@ def clean_aml08(df):
 
     df['Tissue Type'] = 'Bone Marrow'
     df['Sample Type'] = 'Diagnosis'
-    df['WHO ALL 2021 Diagnosis'] = np.nan
+    df['WHO ALL 2022 Diagnosis'] = np.nan
 
-    # ELN 2022 and WHO 2021 Diagnostic Annotation
+    # ELN 2022 and WHO 2022 Diagnostic Annotation
 
     def classify_annotated_diagnosis_aml08(gene_fusion):
         mapping = {
@@ -652,8 +654,8 @@ def clean_aml08(df):
         # Create `ELN 2022 Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
         df['ELN AML 2022 Diagnosis'] = df['ELN22 Combined Diagnoses'].str.split(',').str[0]
 
-        # Create `WHO 2021 Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
-        df['WHO AML 2021 Diagnosis'] = df['ELN22 Combined Diagnoses'].str.split(',').str[0]
+        # Create `WHO 2022 Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
+        df['WHO AML 2022 Diagnosis'] = df['ELN22 Combined Diagnoses'].str.split(',').str[0]
 
         # Drop columns created except for `ELN 2022 Diagnosis` and `Combined Diagnosis` columns
         df = df.drop(['ELN22_Karyotype','ELN22_Diagnosis'], axis=1)
@@ -864,7 +866,7 @@ def clean_cog(df):
     # Process labels
     df = process_labels_eln22(df)
 
-    # WHO 2021
+    # WHO 2022
 
     def classify_controls(normal_samples):
         mapping = {
@@ -961,23 +963,23 @@ def clean_cog(df):
                 return value
 
     def process_labels_who21(df):
-        df['WHO 2021_Controls'] = df['Sample Type'].astype(str).apply(classify_controls)
-        df['WHO 2021_Gene Fusion'] = df['Gene Fusion'].astype(str).apply(classify_fusion)
-        df['WHO 2021_CEBPA'] = df['CEBPA mutation'].astype(str).apply(classify_cebpa)
-        df['WHO 2021_NPM1'] = df['NPM mutation'].astype(str).apply(classify_npm)
-        df['WHO 2021_Comment'] = df['Comment'].astype(str).apply(classify_annotated_diagnosis)
+        df['WHO 2022_Controls'] = df['Sample Type'].astype(str).apply(classify_controls)
+        df['WHO 2022_Gene Fusion'] = df['Gene Fusion'].astype(str).apply(classify_fusion)
+        df['WHO 2022_CEBPA'] = df['CEBPA mutation'].astype(str).apply(classify_cebpa)
+        df['WHO 2022_NPM1'] = df['NPM mutation'].astype(str).apply(classify_npm)
+        df['WHO 2022_Comment'] = df['Comment'].astype(str).apply(classify_annotated_diagnosis)
 
-        df['WHO 2021 Combined Diagnoses'] = df[['WHO 2021_Controls','WHO 2021_Gene Fusion', 'WHO 2021_CEBPA', 'WHO 2021_NPM1', 'WHO 2021_Comment']]\
+        df['WHO 2022 Combined Diagnoses'] = df[['WHO 2022_Controls','WHO 2022_Gene Fusion', 'WHO 2022_CEBPA', 'WHO 2022_NPM1', 'WHO 2022_Comment']]\
             .apply(lambda x: ','.join(filter(lambda i: i is not None and i==i, x)), axis=1)
 
         # Replace empty strings with NaN
-        df['WHO 2021 Combined Diagnoses'] = df['WHO 2021 Combined Diagnoses'].replace('', np.nan)
+        df['WHO 2022 Combined Diagnoses'] = df['WHO 2022 Combined Diagnoses'].replace('', np.nan)
 
-        # Create `WHO 2021 Final Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
-        df['WHO AML 2021 Diagnosis'] = df['WHO 2021 Combined Diagnoses'].str.split(',').str[0]
+        # Create `WHO 2022 Final Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
+        df['WHO AML 2022 Diagnosis'] = df['WHO 2022 Combined Diagnoses'].str.split(',').str[0]
 
-        # Drop columns created except for `WHO 2021 Final Diagnosis` and `Combined Diagnosis` columns
-        df = df.drop(['WHO 2021_Controls','WHO 2021_Gene Fusion', 'WHO 2021_CEBPA', 'WHO 2021_NPM1', 'WHO 2021_Comment'], axis=1)
+        # Drop columns created except for `WHO 2022 Final Diagnosis` and `Combined Diagnosis` columns
+        df = df.drop(['WHO 2022_Controls','WHO 2022_Gene Fusion', 'WHO 2022_CEBPA', 'WHO 2022_NPM1', 'WHO 2022_Comment'], axis=1)
             
         return df
 
@@ -1057,7 +1059,7 @@ def clean_aml05(df, clinical_data_path='../Data/Raw_Data/Clinical_Data/Japanese_
 
     df['ELN AML 2022 Diagnosis'] = df['Gene Fusion'].astype(str).apply(classify_fusion_aml05_eln22)
 
-    # WHO 2021
+    # WHO 2022
 
     def classify_fusion_aml05_who21(gene_fusion):
         mapping = {
@@ -1068,7 +1070,7 @@ def clean_aml05(df, clinical_data_path='../Data/Raw_Data/Clinical_Data/Japanese_
             if key in gene_fusion:
                 return value
 
-    df['WHO AML 2021 Diagnosis'] = df['Gene Fusion'].astype(str).apply(classify_fusion_aml05_who21)
+    df['WHO AML 2022 Diagnosis'] = df['Gene Fusion'].astype(str).apply(classify_fusion_aml05_who21)
 
     return (df)
 
@@ -1106,7 +1108,7 @@ def clean_beataml(df):
     df["ELN AML 2022 Diagnosis"] = (df["SpecificDxAtAcquisition"]
                                     .astype(str)
                                     .apply(classify_annotated_diagnosis_beataml_eln22))
-    # WHO 2021
+    # WHO 2022
 
     def classify_annotated_diagnosis_beataml_who21(gene_fusion):
         mapping = {
@@ -1126,7 +1128,7 @@ def clean_beataml(df):
             if key in gene_fusion:
                 return value
 
-    df["WHO AML 2021 Diagnosis"] = (
+    df["WHO AML 2022 Diagnosis"] = (
         df["SpecificDxAtAcquisition"]
         .astype(str)
         .apply(classify_annotated_diagnosis_beataml_who21)
@@ -1169,7 +1171,7 @@ def clean_amltcga(df):
     df['ELN AML 2022 Diagnosis'] = df['Molecular Classification']\
         .astype(str).apply(classify_annotated_diagnosis_amltcga_eln22)
     
-    # WHO 2021 Diagnostic Annotation
+    # WHO 2022 Diagnostic Annotation
 
     def classify_annotated_diagnosis_amltcga_who21(gene_fusion):
         mapping = {
@@ -1182,7 +1184,7 @@ def clean_amltcga(df):
             if key in gene_fusion:
                 return value
             
-    df['WHO AML 2021 Diagnosis'] = df['Molecular Classification']\
+    df['WHO AML 2022 Diagnosis'] = df['Molecular Classification']\
         .astype(str).apply(classify_annotated_diagnosis_amltcga_who21)
     
 
@@ -1204,7 +1206,7 @@ def clean_nordic_all(df):
     df['Immunophenotype_Subtype'] = df['immunophenotype'] + ' ' + df['subtype'] 
     df['Clinical Trial'] = 'NOPHO ALL92-2000'
 
-    # WHO 2021 Diagnostic Annotation
+    # WHO 2022 Diagnostic Annotation
 
     def classify_controls(normal_samples):
         mapping = {
@@ -1238,20 +1240,20 @@ def clean_nordic_all(df):
                 return value
             
     def process_labels_nordic_all(df):
-        df['WHO 2021_Controls'] = df['Sample Type'].astype(str).apply(classify_controls)
-        df['WHO 2021_Immunophenotype_Subtype'] = df['Immunophenotype_Subtype'].astype(str).apply(classify_fusion)
+        df['WHO 2022_Controls'] = df['Sample Type'].astype(str).apply(classify_controls)
+        df['WHO 2022_Immunophenotype_Subtype'] = df['Immunophenotype_Subtype'].astype(str).apply(classify_fusion)
         
-        df['WHO 2021 Combined Diagnoses'] = df[['WHO 2021_Controls','WHO 2021_Immunophenotype_Subtype']]\
+        df['WHO 2022 Combined Diagnoses'] = df[['WHO 2022_Controls','WHO 2022_Immunophenotype_Subtype']]\
             .apply(lambda x: ','.join(filter(lambda i: i is not None and i==i, x)), axis=1)
 
         # Replace empty strings with NaN
-        df['WHO 2021 Combined Diagnoses'] = df['WHO 2021 Combined Diagnoses'].replace('', np.nan)
+        df['WHO 2022 Combined Diagnoses'] = df['WHO 2022 Combined Diagnoses'].replace('', np.nan)
 
-        # Create `WHO 2021 Final Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
-        df['WHO ALL 2021 Diagnosis'] = df['WHO 2021 Combined Diagnoses'].str.split(',').str[0]
+        # Create `WHO 2022 Final Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
+        df['WHO ALL 2022 Diagnosis'] = df['WHO 2022 Combined Diagnoses'].str.split(',').str[0]
 
-        # Drop columns created except for `WHO 2021 Final Diagnosis` and `Combined Diagnosis` columns
-        df = df.drop(['WHO 2021_Controls','WHO 2021_Immunophenotype_Subtype','WHO 2021 Combined Diagnoses'], axis=1)
+        # Drop columns created except for `WHO 2022 Final Diagnosis` and `Combined Diagnosis` columns
+        df = df.drop(['WHO 2022_Controls','WHO 2022_Immunophenotype_Subtype','WHO 2022 Combined Diagnoses'], axis=1)
             
         return df
 
@@ -1271,7 +1273,7 @@ def clean_mds_taml(df):
     
     df['Clinical Trial'] = 'CETLAM SMD-09 (MDS-tAML)'
 
-    # ELN 2022 and WHO 2021 Diagnostic Annotation
+    # ELN 2022 and WHO 2022 Diagnostic Annotation
 
     def classify_controls_mds_taml(normal_samples):
         mapping = {
@@ -1302,8 +1304,8 @@ def clean_mds_taml(df):
         # Create `ELN 2022 Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
         df['ELN AML 2022 Diagnosis'] = df['ELN22 Combined Diagnoses'].str.split(',').str[0]
 
-        # Create `WHO 2021 Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
-        df['WHO AML 2021 Diagnosis'] = df['ELN22 Combined Diagnoses'].str.split(',').str[0]
+        # Create `WHO 2022 Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
+        df['WHO AML 2022 Diagnosis'] = df['ELN22 Combined Diagnoses'].str.split(',').str[0]
 
         # Drop columns created except for `ELN 2022 Diagnosis` and `Combined Diagnosis` columns
         df = df.drop(['ELN22_Controls','ELN22_Diagnosis'], axis=1)
@@ -1327,7 +1329,7 @@ def clean_all_graal(df):
     
     df['Sample Type'] = 'Diagnosis'
     df['Clinical Trial'] = 'French GRAALL 2003–2005'
-        # WHO 2021 Diagnostic Annotation
+        # WHO 2022 Diagnostic Annotation
 
     def classify_all_graal(diagnosis):
         mapping = {
@@ -1337,7 +1339,7 @@ def clean_all_graal(df):
             if key in diagnosis:
                 return value
             
-    df['WHO ALL 2021 Diagnosis'] = df['Diagnosis'].astype(str).apply(classify_all_graal)
+    df['WHO ALL 2022 Diagnosis'] = df['Diagnosis'].astype(str).apply(classify_all_graal)
 
     return df
 
@@ -1358,7 +1360,7 @@ def clean_target_all(df):
     df['efs.evnt'] = df['First Event'].isin(
                         ['Relapse', 'Induction Failure', 'Death', 
                         'Death without Remission']).astype(int)
-    # WHO 2021 Diagnostic Annotation
+    # WHO 2022 Diagnostic Annotation
 
     def classify_controls_target_all(normal_samples):
         mapping = {
@@ -1387,8 +1389,8 @@ def clean_target_all(df):
             # Replace empty strings with NaN
         df['WHO Combined Diagnoses'] = df['WHO Combined Diagnoses'].replace('', np.nan)
 
-        # Create `WHO 2021 Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
-        df['WHO ALL 2021 Diagnosis'] = df['WHO Combined Diagnoses'].str.split(',').str[0]
+        # Create `WHO 2022 Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
+        df['WHO ALL 2022 Diagnosis'] = df['WHO Combined Diagnoses'].str.split(',').str[0]
 
         # Drop columns created except for `WHO Final Diagnosis` and `Combined Diagnosis` columns
         df = df.drop(['WHO_Controls','WHO_Diagnosis','WHO Combined Diagnoses'], axis=1)
@@ -1475,7 +1477,7 @@ def process_df_labels(df):
             pandas.DataFrame: The processed dataframe with new columns for main disease and pathology class.
         """
 
-        df['WHO_ALL'] = df['WHO ALL 2021 Diagnosis'].astype(str).apply(classify_main_disease)
+        df['WHO_ALL'] = df['WHO ALL 2022 Diagnosis'].astype(str).apply(classify_main_disease)
         df['ELN_AML'] = df['ELN AML 2022 Diagnosis'].astype(str).apply(classify_main_disease)
 
         df['Hematopoietic Lineage'] = df[['ELN_AML', 'WHO_ALL']] \
@@ -1496,8 +1498,8 @@ def process_df_labels(df):
     # Process labels
     df = main_disease_class(df)
     
-    # Create `WHO 2021 Diagnosis` column
-    df['WHO 2021 Diagnosis'] = df[['WHO AML 2021 Diagnosis', 'WHO ALL 2021 Diagnosis']] \
+    # Create `WHO 2022 Diagnosis` column
+    df['WHO 2022 Diagnosis'] = df[['WHO AML 2022 Diagnosis', 'WHO ALL 2022 Diagnosis']] \
             .apply(lambda x: ','.join(filter(lambda i: i is not None and i == i, x)), axis=1) \
             .replace('', np.nan)
 
