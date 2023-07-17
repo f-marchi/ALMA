@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '5_Multiclass_AMLsubtype_Classifier_v2';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Bayesian Inference with Julia - Gen" href="5_Multiclass_Julia_Gen.html" />
+    <link rel="next" title="Bayesian Inference with Julia - Gen" href="5_Multiclass_Julia_Gen_v1.html" />
     <link rel="prev" title="Methylome Atlas of Acute Leukemia" href="4_Methylome_Atlas_PaCMAP_v4.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -156,20 +156,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="1_Data_Download_Process.html">Discovery Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1_Test_Data_Process_v1.html">Validation Dataset</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Survival EWAS + CoxPH-Lasso</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">AML Prognostic Model</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="2_Univariate_CoxPH-EWAS_v3.html">Univariate Cox-PH EWAS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_Multivariate_CoxPH-Lasso_v5.html">Multivariate CoxPH-Lasso</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_Multivariate_CoxPH-Lasso_Validation_v2.html">Multivariate CoxPH-Lasso Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_Univariate_CoxPH-EWAS_v3.html">Epigenome Wide Association Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.1_MethylScoreAML_Px_Development_v5.html">MethylScoreAML Px Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.2_MethylScoreAML_Px_Validation_Peds_v2.html">MethylScoreAML Px Validation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">PaCMAP + ML Classifier</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">AML Diagnostic Model</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="4_Methylome_Atlas_PaCMAP_v4.html">Methylome Atlas of Acute Leukemia</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">AML Diagnostic Subtype Classifier</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Other Benchmarks and Analyses</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="5_Multiclass_Julia_Gen.html">Bayesian Inference with Julia - Gen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_Multiclass_Julia_Gen_v1.html">Bayesian Inference with Julia - Gen</a></li>
 </ul>
 
     </div>
@@ -407,18 +407,6 @@ document.write(`
 <h2><a class="toc-backref" href="#id3" role="doc-backlink">Preprocess data</a><a class="headerlink" href="#preprocess-data" title="Permalink to this heading">#</a></h2>
 <section id="exclude-categories-with-10-samples">
 <h3><a class="toc-backref" href="#id4" role="doc-backlink">Exclude categories with &lt;10 samples</a><a class="headerlink" href="#exclude-categories-with-10-samples" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3260
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -839,7 +827,7 @@ Architecture: 64bit
       </div>
     </a>
     <a class="right-next"
-       href="5_Multiclass_Julia_Gen.html"
+       href="5_Multiclass_Julia_Gen_v1.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>

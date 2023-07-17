@@ -1,0 +1,684 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Bayesian Inference with Julia - Gen &#8212; Lamba Lab at UF</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '5_Multiclass_Julia_Gen_v1';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="AML Diagnostic Subtype Classifier" href="5_Multiclass_AMLsubtype_Classifier_v2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Lamba Lab at UF</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    DNA methylation-based diagnosis and prognosis of pediatric AML
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Download and Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_Data_Download_Process.html">Discovery Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_Test_Data_Process_v1.html">Validation Dataset</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">AML Prognostic Model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2_Univariate_CoxPH-EWAS_v3.html">Epigenome Wide Association Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.1_MethylScoreAML_Px_Development_v5.html">MethylScoreAML Px Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.2_MethylScoreAML_Px_Validation_Peds_v2.html">MethylScoreAML Px Validation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">AML Diagnostic Model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="4_Methylome_Atlas_PaCMAP_v4.html">Methylome Atlas of Acute Leukemia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_Multiclass_AMLsubtype_Classifier_v2.html">AML Diagnostic Subtype Classifier</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Other Benchmarks and Analyses</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Bayesian Inference with Julia - Gen</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/5_Multiclass_Julia_Gen_v1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Bayesian Inference with Julia - Gen</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-multinomial-logistic-regression-model">Define the multinomial logistic regression model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-bayesian-inference">Run Bayesian inference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting-required-here">Troubleshooting required here :(</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-info">System Info</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sppl-as-a-pythonic-alternative">SPPL as a pythonic alternative</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="bayesian-inference-with-julia-gen">
+<h1>Bayesian Inference with Julia - Gen<a class="headerlink" href="#bayesian-inference-with-julia-gen" title="Permalink to this heading">#</a></h1>
+<p>This is a passionate child’s introduction to probabilistic programming and Bayesian inference using Julia and Gen.</p>
+<section id="load-data">
+<h2>Load data<a class="headerlink" href="#load-data" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">DataFrames</span><span class="p">,</span><span class="w"> </span><span class="n">CSV</span>
+
+<span class="n">input_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;../Data/Intermediate_Files/&quot;</span>
+<span class="n">output_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;../Data/Processed_Data/&quot;</span>
+
+<span class="c"># Load pacmap output data</span>
+<span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CSV</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">output_path</span><span class="o">*</span><span class="s">&quot;pacmap_output/pacmap_5d_output_acute_leukemia_cleaned.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">DataFrame</span><span class="p">)</span>
+
+<span class="c"># Define X and y</span>
+<span class="n">X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Matrix</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;PaCMAP 1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PaCMAP 2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PaCMAP 3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PaCMAP 4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PaCMAP 5&quot;</span><span class="p">]])</span><span class="w">  </span><span class="c"># shape (n_samples=1399, n_features=5)</span>
+<span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ELN AML 2022 Diagnosis&quot;</span><span class="p">]</span><span class="w">  </span><span class="c"># shape (n_samples=1399,) with 11 string classes</span>
+
+<span class="n">X_train</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">X</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Train Test&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">.==</span><span class="w"> </span><span class="s">&quot;Discovery (train) Samples&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">:</span><span class="p">]</span>
+<span class="n">y_train</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Train Test&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">.==</span><span class="w"> </span><span class="s">&quot;Discovery (train) Samples&quot;</span><span class="p">]</span>
+<span class="n">X_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">X</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Train Test&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">.==</span><span class="w"> </span><span class="s">&quot;Validation (test) Samples&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">:</span><span class="p">]</span>
+<span class="n">y_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Train Test&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">.==</span><span class="w"> </span><span class="s">&quot;Validation (test) Samples&quot;</span><span class="p">]</span>
+
+<span class="c"># Mapping from string labels to integer labels</span>
+<span class="k">using</span><span class="w"> </span><span class="n">MLBase</span>
+<span class="n">label_to_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">labelmap</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+
+<span class="c"># Convert y_train and y_test to integer labels</span>
+<span class="n">y_train</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">labelencode</span><span class="p">(</span><span class="n">label_to_int</span><span class="p">,</span><span class="w"> </span><span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">labelencode</span><span class="p">(</span><span class="n">label_to_int</span><span class="p">,</span><span class="w"> </span><span class="n">y_test</span><span class="p">)</span>
+
+<span class="c"># Prepare your data</span>
+<span class="n">num_classes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="n">unique</span><span class="p">(</span><span class="n">y_train</span><span class="p">))</span><span class="w"> </span><span class="c"># 11 classes</span>
+<span class="n">num_features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="c"># 5 features</span>
+
+<span class="c"># print size of each set</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;X_train: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span><span class="w"> </span><span class="c"># X_train: (1399, 5)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;y_train: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">y_train</span><span class="p">))</span><span class="w"> </span><span class="c"># y_train: (1399,)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;X_test: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span><span class="w"> </span><span class="c"># X_test: (110, 5)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;y_test: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">y_test</span><span class="p">))</span><span class="w"> </span><span class="c"># y_test: (110,)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X_train: (1399, 5)
+y_train: (1399,)
+X_test: (110, 5)
+y_test: (110,)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-the-multinomial-logistic-regression-model">
+<h2>Define the multinomial logistic regression model<a class="headerlink" href="#define-the-multinomial-logistic-regression-model" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Install necessary packages</span>
+<span class="k">using</span><span class="w"> </span><span class="n">Gen</span><span class="p">,</span><span class="w"> </span><span class="n">Distributions</span>
+
+<span class="c"># Define our logistic model</span>
+<span class="nd">@gen</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">logistic_regression_model</span><span class="p">(</span><span class="n">X</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">},</span><span class="w"> </span><span class="n">y</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Int64</span><span class="p">})</span>
+<span class="w">    </span><span class="c"># Define the priors for our weights. Here we are assuming a Gaussian prior for simplicity.</span>
+<span class="w">    </span><span class="c"># The mean is 0 and the standard deviation is 1.</span>
+
+<span class="w">    </span><span class="n">weights</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@trace</span><span class="p">(</span><span class="n">mvnormal</span><span class="p">(</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_features</span><span class="p">),</span><span class="w"> </span><span class="kt">Matrix</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}(</span><span class="n">I</span><span class="p">,</span><span class="w"> </span><span class="n">num_features</span><span class="p">,</span><span class="w"> </span><span class="n">num_features</span><span class="p">)),</span><span class="w"> </span><span class="ss">:weights</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c"># Compute the log-odds</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">size</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">        </span><span class="c"># Dot product of the features and the weights gives the log-odds</span>
+<span class="w">        </span><span class="n">log_odds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="o">:</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">weights</span>
+
+<span class="w">        </span><span class="c"># We then convert this to a probability using the softmax function</span>
+<span class="w">        </span><span class="n">probabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">softmax</span><span class="p">(</span><span class="n">log_odds</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c"># Our observation is then a categorical distribution with the calculated probabilities</span>
+<span class="w">        </span><span class="nd">@trace</span><span class="p">(</span><span class="n">categorical</span><span class="p">(</span><span class="n">probabilities</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="ss">:y</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">))</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DynamicDSLFunction{Any}(Dict{Symbol, Any}(), Dict{Symbol, Any}(), Type[Array{Float64}, Array{Int64}], false, Union{Nothing, Some{Any}}[nothing, nothing], var&quot;##logistic_regression_model#292&quot;, Bool[0, 0], false)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-bayesian-inference">
+<h2>Run Bayesian inference<a class="headerlink" href="#run-bayesian-inference" title="Permalink to this heading">#</a></h2>
+<p>This will estimate the posterior distribution of our weights given the observed data.
+Here we attempt the inference algorithm Metropolis-Hastings, which is a Markov chain Monte Carlo (MCMC) method.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">LinearAlgebra</span>
+
+<span class="c"># Specify the data to be used in the model</span>
+<span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="w"> </span><span class="n">y_train</span><span class="p">)</span>
+
+<span class="c"># Define our proposal distribution, which randomly walks in the space of weights</span>
+<span class="nd">@gen</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">proposal</span><span class="p">(</span><span class="n">weights</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">})</span>
+<span class="w">    </span><span class="nd">@trace</span><span class="p">(</span><span class="n">mvnormal</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="o">*</span><span class="kt">Matrix</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}(</span><span class="n">I</span><span class="p">,</span><span class="w"> </span><span class="n">num_features</span><span class="p">,</span><span class="w"> </span><span class="n">num_features</span><span class="p">)),</span><span class="w"> </span><span class="ss">:weights</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="c"># Perform inference using Metropolis-Hastings</span>
+<span class="n">traces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+<span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="mi">2000</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="n">trace</span><span class="p">,</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Gen</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">logistic_regression_model</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">choicemap</span><span class="p">())</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">trace</span><span class="p">,</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Gen</span><span class="o">.</span><span class="n">mh</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span><span class="w"> </span><span class="n">proposal</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="n">push!</span><span class="p">(</span><span class="n">traces</span><span class="p">,</span><span class="w"> </span><span class="n">trace</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">MethodError</span>: no method matching *(::Vector{Float64}, ::Vector{Float64})
+
+<span class="n">Closest</span> <span class="n">candidates</span> <span class="n">are</span><span class="p">:</span>
+  <span class="o">*</span><span class="p">(::</span><span class="n">Any</span><span class="p">,</span> <span class="p">::</span><span class="n">Any</span><span class="p">,</span> <span class="p">::</span><span class="n">Any</span><span class="p">,</span> <span class="p">::</span><span class="n">Any</span><span class="o">...</span><span class="p">)</span>
+   <span class="o">@</span> <span class="n">Base</span> <span class="n">operators</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">578</span>
+  <span class="o">*</span><span class="p">(::</span><span class="n">StridedMatrix</span><span class="p">{</span><span class="n">T</span><span class="p">},</span> <span class="p">::</span><span class="n">StridedVector</span><span class="p">{</span><span class="n">S</span><span class="p">})</span> <span class="n">where</span> <span class="p">{</span><span class="n">T</span><span class="o">&lt;</span><span class="p">:</span><span class="n">Union</span><span class="p">{</span><span class="n">Float32</span><span class="p">,</span> <span class="n">Float64</span><span class="p">,</span> <span class="n">ComplexF32</span><span class="p">,</span> <span class="n">ComplexF64</span><span class="p">},</span> <span class="n">S</span><span class="o">&lt;</span><span class="p">:</span><span class="n">Real</span><span class="p">}</span>
+   <span class="o">@</span> <span class="n">LinearAlgebra</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">julia</span><span class="o">-</span><span class="mf">1.9.2</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">julia</span><span class="o">/</span><span class="n">stdlib</span><span class="o">/</span><span class="n">v1</span><span class="mf">.9</span><span class="o">/</span><span class="n">LinearAlgebra</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">matmul</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">49</span>
+  <span class="o">*</span><span class="p">(::</span><span class="n">StridedVecOrMat</span><span class="p">,</span> <span class="p">::</span><span class="n">LinearAlgebra</span><span class="o">.</span><span class="n">LQPackedQ</span><span class="p">)</span>
+   <span class="o">@</span> <span class="n">LinearAlgebra</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">julia</span><span class="o">-</span><span class="mf">1.9.2</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">julia</span><span class="o">/</span><span class="n">stdlib</span><span class="o">/</span><span class="n">v1</span><span class="mf">.9</span><span class="o">/</span><span class="n">LinearAlgebra</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">lq</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">293</span>
+  <span class="o">...</span>
+
+
+<span class="ne">Stacktrace</span>:
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">var</span><span class="s2">&quot;##logistic_regression_model#292&quot;</span><span class="p">(</span><span class="n">state</span><span class="c1">#294::Gen.GFGenerateState, X::Matrix{Float64}, y::Vector{Int64})</span>
+   <span class="o">@</span> <span class="n">Main</span> <span class="o">./</span><span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span><span class="mi">14</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">exec</span><span class="p">(</span><span class="n">gen_fn</span><span class="p">::</span><span class="n">DynamicDSLFunction</span><span class="p">{</span><span class="n">Any</span><span class="p">},</span> <span class="n">state</span><span class="p">::</span><span class="n">Gen</span><span class="o">.</span><span class="n">GFGenerateState</span><span class="p">,</span> <span class="n">args</span><span class="p">::</span><span class="n">Tuple</span><span class="p">{</span><span class="n">Matrix</span><span class="p">{</span><span class="n">Float64</span><span class="p">},</span> <span class="n">Vector</span><span class="p">{</span><span class="n">Int64</span><span class="p">}})</span>
+   <span class="o">@</span> <span class="n">Gen</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">Gen</span><span class="o">/</span><span class="n">Dne3u</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">dynamic</span><span class="o">/</span><span class="n">dynamic</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">58</span>
+ <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">generate</span><span class="p">(</span><span class="n">gen_fn</span><span class="p">::</span><span class="n">DynamicDSLFunction</span><span class="p">{</span><span class="n">Any</span><span class="p">},</span> <span class="n">args</span><span class="p">::</span><span class="n">Tuple</span><span class="p">{</span><span class="n">Matrix</span><span class="p">{</span><span class="n">Float64</span><span class="p">},</span> <span class="n">Vector</span><span class="p">{</span><span class="n">Int64</span><span class="p">}},</span> <span class="n">constraints</span><span class="p">::</span><span class="n">DynamicChoiceMap</span><span class="p">)</span>
+   <span class="o">@</span> <span class="n">Gen</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">Gen</span><span class="o">/</span><span class="n">Dne3u</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">dynamic</span><span class="o">/</span><span class="n">generate</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">84</span>
+ <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span> <span class="n">scope</span>
+   <span class="o">@</span> <span class="o">./</span><span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span><span class="mi">15</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="troubleshooting-required-here">
+<h3>Troubleshooting required here :(<a class="headerlink" href="#troubleshooting-required-here" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="system-info">
+<h2>System Info<a class="headerlink" href="#system-info" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">InteractiveUtils</span>
+
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;Julia Version: &quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">VERSION</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;System: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Sys</span><span class="o">.</span><span class="n">KERNEL</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;Architecture: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Sys</span><span class="o">.</span><span class="n">ARCH</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;CPU cores: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Sys</span><span class="o">.</span><span class="n">CPU_THREADS</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;Byte Order: &quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">ENDIAN_BOM</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x04030201</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;Little Endian&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Big Endian&quot;</span><span class="p">)</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+
+<span class="n">Pkg</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s">&quot;DataFrames&quot;</span><span class="p">)</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s">&quot;CSV&quot;</span><span class="p">)</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s">&quot;MLBase&quot;</span><span class="p">)</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s">&quot;Gen&quot;</span><span class="p">)</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s">&quot;Distributions&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Julia Version: 1.9.2
+System: Linux
+Architecture: x86_64
+CPU cores: 20
+Byte Order: Little Endian
+<span class=" -Color -Color-Bold -Color-Bold-Green">Status</span> `~/.julia/environments/v1.9/Project.toml`
+  [a93c6f00] DataFrames v1.6.0
+<span class=" -Color -Color-Bold -Color-Bold-Green">Status</span> `~/.julia/environments/v1.9/Project.toml`
+  [336ed68f] CSV v0.10.11
+<span class=" -Color -Color-Bold -Color-Bold-Green">Status</span> `~/.julia/environments/v1.9/Project.toml`
+  [f0e99cf1] MLBase v0.9.1
+<span class=" -Color -Color-Bold -Color-Bold-Green">Status</span> `~/.julia/environments/v1.9/Project.toml`
+  [ea4f424c] Gen v0.4.5
+<span class=" -Color -Color-Bold -Color-Bold-Green">Status</span> `~/.julia/environments/v1.9/Project.toml`
+  [31c24e10] Distributions v0.25.98
+<span class=" -Color -Color-Bold -Color-Bold-Green">No Matches</span> in `~/.julia/environments/v1.9/Project.toml`
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sppl-as-a-pythonic-alternative">
+<h2>SPPL as a pythonic alternative<a class="headerlink" href="#sppl-as-a-pythonic-alternative" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>SPPL</strong>: Sum-Product Probabilistic Language</p></li>
+<li><p><strong>Github</strong>: <a class="github reference external" href="https://github.com/probsys/sppl">probsys/sppl</a></p></li>
+<li><p><strong>Paper</strong>: <a class="reference external" href="https://arxiv.org/abs/2010.03485">SPPL: Probabilistic Programming with Fast Exact Symbolic Inference</a></p></li>
+<li><p><strong>Intro on SPNs</strong>: <a class="reference external" href="https://link.springer.com/article/10.1007/s10994-018-5760-y">Visualizing and understanding Sum-Product Networks</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.9"
+        },
+        kernelOptions: {
+            name: "julia-1.9",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.9'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="5_Multiclass_AMLsubtype_Classifier_v2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">AML Diagnostic Subtype Classifier</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-multinomial-logistic-regression-model">Define the multinomial logistic regression model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-bayesian-inference">Run Bayesian inference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting-required-here">Troubleshooting required here :(</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-info">System Info</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sppl-as-a-pythonic-alternative">SPPL as a pythonic alternative</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Francisco Marchi @ Lamba Lab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
