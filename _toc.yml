@@ -16,14 +16,14 @@ parts:
       - file: 1_Data_Download_Process.ipynb
       - file: 1_Test_Data_Process_v1.ipynb
 
-  - caption: Survival EWAS + CoxPH-Lasso
+  - caption: AML Prognostic Model
 
     chapters:
       - file: 2_Univariate_CoxPH-EWAS_v3.ipynb
-      - file: 3_Multivariate_CoxPH-Lasso_v5.ipynb
-      - file: 3_Multivariate_CoxPH-Lasso_Validation_v2.ipynb
+      - file: 3.1_MethylScoreAML_Px_Development_v5.ipynb
+      - file: 3.2_MethylScoreAML_Px_Validation_Peds_v2.ipynb
 
-  - caption: PaCMAP + ML Classifier
+  - caption: AML Diagnostic Model
   
     chapters:
       - file: 4_Methylome_Atlas_PaCMAP_v4.ipynb
@@ -32,7 +32,7 @@ parts:
   - caption: Other Benchmarks and Analyses
   
     chapters:
-      - file: 5_Multiclass_Julia_Gen.ipynb
+      - file: 5_Multiclass_Julia_Gen_v1.ipynb
 
   #     # - caption: AML Diagnostic Map
 
