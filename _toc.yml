@@ -28,6 +28,7 @@ parts:
     chapters:
       - file: 4_Methylome_Atlas_PaCMAP_v4.ipynb
       - file: 5_Multiclass_AMLsubtype_Classifier_v2.ipynb
+      - file: 6_Sankey_Plots.ipynb
 
   - caption: Other Benchmarks and Analyses
   
