@@ -33,6 +33,8 @@ parts:
   
     chapters:
       - file: 5_Multiclass_Julia_Gen_v1.ipynb
+      - file: 5_PyTorch_Multiclass_Classifier_v3.ipynb
+      - file: 5_Multiclass_PedsPacmap_Classifier_v2.ipynb
 
   #     # - caption: AML Diagnostic Map
 
