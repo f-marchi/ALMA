@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = '5_Multiclass_AMLsubtype_Classifier_v2';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Bayesian Inference with Julia - Gen" href="5_Multiclass_Julia_Gen_v1.html" />
+    <link rel="next" title="Evaluating Diagnostic Predictions" href="6_Sankey_Plots.html" />
     <link rel="prev" title="Methylome Atlas of Acute Leukemia" href="4_Methylome_Atlas_PaCMAP_v4.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -166,6 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="4_Methylome_Atlas_PaCMAP_v4.html">Methylome Atlas of Acute Leukemia</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">AML Diagnostic Subtype Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Sankey_Plots.html">Evaluating Diagnostic Predictions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Other Benchmarks and Analyses</span></p>
 <ul class="nav bd-sidenav">
@@ -326,6 +327,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lightgbm">LightGBM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-model-predictions">Save model predictions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-process">Gaussian Process</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic Regression</a></li>
@@ -359,12 +361,13 @@ document.write(`
 </ul>
 </li>
 <li><p><a class="reference internal" href="#lightgbm" id="id7">LightGBM</a></p></li>
-<li><p><a class="reference internal" href="#gaussian-process" id="id8">Gaussian Process</a></p></li>
-<li><p><a class="reference internal" href="#random-forest" id="id9">Random Forest</a></p></li>
-<li><p><a class="reference internal" href="#logistic-regression" id="id10">Logistic Regression</a></p></li>
-<li><p><a class="reference internal" href="#k-nearest-neighbors" id="id11">K-Nearest Neighbors</a></p></li>
-<li><p><a class="reference internal" href="#other-tests" id="id12">Other tests</a></p></li>
-<li><p><a class="reference internal" href="#watermark" id="id13">Watermark</a></p></li>
+<li><p><a class="reference internal" href="#save-model-predictions" id="id8">Save model predictions</a></p></li>
+<li><p><a class="reference internal" href="#gaussian-process" id="id9">Gaussian Process</a></p></li>
+<li><p><a class="reference internal" href="#random-forest" id="id10">Random Forest</a></p></li>
+<li><p><a class="reference internal" href="#logistic-regression" id="id11">Logistic Regression</a></p></li>
+<li><p><a class="reference internal" href="#k-nearest-neighbors" id="id12">K-Nearest Neighbors</a></p></li>
+<li><p><a class="reference internal" href="#other-tests" id="id13">Other tests</a></p></li>
+<li><p><a class="reference internal" href="#watermark" id="id14">Watermark</a></p></li>
 </ul>
 </li>
 </ul>
@@ -455,6 +458,7 @@ Name: count, dtype: int64
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># drop the samples with missing labels for the ELN AML 2022 Diagnosis</span>
+<span class="n">df_original</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
 </pre></div>
 </div>
@@ -541,8 +545,37 @@ Overall accuracy score with best estimator: 0.936
 </div>
 </div>
 </section>
+<section id="save-model-predictions">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Save model predictions</a><a class="headerlink" href="#save-model-predictions" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select necessary columns and set the index</span>
+<span class="n">df_selected</span> <span class="o">=</span> <span class="n">df_original</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)[[</span><span class="s1">&#39;PaCMAP 1&#39;</span><span class="p">,</span> <span class="s1">&#39;PaCMAP 2&#39;</span><span class="p">,</span> <span class="s1">&#39;PaCMAP 3&#39;</span><span class="p">,</span> <span class="s1">&#39;PaCMAP 4&#39;</span><span class="p">,</span> <span class="s1">&#39;PaCMAP 5&#39;</span><span class="p">]]</span>
+
+<span class="c1"># Predict using the selected columns</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_selected</span><span class="p">)</span>
+
+<span class="c1"># Convert predictions to a Series with the same index as df_selected</span>
+<span class="n">predictions_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df_selected</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;MethylScoreAML_Dx_predictions&#39;</span><span class="p">)</span>
+
+<span class="c1"># Join predictions with the original DataFrame (already indexed)</span>
+<span class="n">df_joined</span> <span class="o">=</span> <span class="n">df_original</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">predictions_series</span><span class="p">)</span>
+
+<span class="c1"># Write the final DataFrame to a CSV file</span>
+<span class="n">df_joined</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;classifier_output/pacmap_5d_output_acute_leukemia_with_predictions.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
 <section id="gaussian-process">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">Gaussian Process</a><a class="headerlink" href="#gaussian-process" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Gaussian Process</a><a class="headerlink" href="#gaussian-process" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -594,7 +627,7 @@ Overall accuracy score with best estimator: 0.945
 </div>
 </section>
 <section id="random-forest">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">Random Forest</a><a class="headerlink" href="#random-forest" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Random Forest</a><a class="headerlink" href="#random-forest" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -644,7 +677,7 @@ Overall accuracy score with best estimator: 0.936
 </div>
 </section>
 <section id="logistic-regression">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">Logistic Regression</a><a class="headerlink" href="#logistic-regression" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Logistic Regression</a><a class="headerlink" href="#logistic-regression" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -698,7 +731,7 @@ Overall accuracy score with best estimator: 0.836
 </div>
 </section>
 <section id="k-nearest-neighbors">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">K-Nearest Neighbors</a><a class="headerlink" href="#k-nearest-neighbors" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">K-Nearest Neighbors</a><a class="headerlink" href="#k-nearest-neighbors" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -753,12 +786,12 @@ Accuracy score with best estimator: 0.936
 </div>
 </section>
 <section id="other-tests">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">Other tests</a><a class="headerlink" href="#other-tests" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">Other tests</a><a class="headerlink" href="#other-tests" title="Permalink to this heading">#</a></h2>
 <p>We have attempted SVM and XGBoost but they either gave us trouble during training or did not perform well.</p>
 <p>Soon we will add a PyTorch deep learning benchmark but for now… <code class="docutils literal notranslate"><span class="pre">LightGBM</span></code> rules!</p>
 </section>
 <section id="watermark">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Author: Francisco_Marchi@Lamba_Lab_UF
@@ -829,11 +862,11 @@ Architecture: 64bit
       </div>
     </a>
     <a class="right-next"
-       href="5_Multiclass_Julia_Gen_v1.html"
+       href="6_Sankey_Plots.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Bayesian Inference with Julia - Gen</p>
+        <p class="prev-next-title">Evaluating Diagnostic Predictions</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -863,6 +896,7 @@ Architecture: 64bit
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lightgbm">LightGBM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-model-predictions">Save model predictions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-process">Gaussian Process</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic Regression</a></li>

@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Bayesian Inference with Julia - Gen" href="5_Multiclass_Julia_Gen_v1.html" />
-    <link rel="prev" title="Methylome Atlas of Acute Leukemia" href="4_Methylome_Atlas_PaCMAP_v4.html" />
+    <link rel="prev" title="AML Diagnostic Subtype Classifier" href="5_Multiclass_AMLsubtype_Classifier_v2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -165,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">AML Diagnostic Model</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="4_Methylome_Atlas_PaCMAP_v4.html">Methylome Atlas of Acute Leukemia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_Multiclass_AMLsubtype_Classifier_v2.html">AML Diagnostic Subtype Classifier</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Evaluating Diagnostic Predictions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Other Benchmarks and Analyses</span></p>
@@ -358,7 +359,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">input_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/&#39;</span>
-<span class="c1"># output_path = &#39;../Data/Processed_Data/&#39;</span>
+<span class="n">clinical_data_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Intermediate_Files/&#39;</span>
 
 <span class="c1"># # read df_discovery and df_validation</span>
 <span class="c1"># df_discovery = pd.read_pickle(</span>
@@ -367,12 +368,12 @@ document.write(`
 <span class="c1"># df_validation = pd.read_pickle(</span>
 <span class="c1">#     input_path+&#39;df_validation.pkl&#39;).sort_index()</span>
 
-<span class="c1"># # Load clinical data</span>
-<span class="c1"># discovery_clinical_data = pd.read_csv(input_path+&#39;discovery_clinical_data.csv&#39;,</span>
-<span class="c1">#                                       low_memory=False, index_col=0)</span>
+<span class="c1"># Load clinical data</span>
+<span class="n">discovery_clinical_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">clinical_data_path</span><span class="o">+</span><span class="s1">&#39;discovery_clinical_data.csv&#39;</span><span class="p">,</span>
+                                      <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="c1"># validation_clinical_data = pd.read_csv(input_path+&#39;validation_clinical_data.csv&#39;,</span>
-<span class="c1">#                                         low_memory=False, index_col=0)</span>
+<span class="n">validation_clinical_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">clinical_data_path</span><span class="o">+</span><span class="s1">&#39;validation_clinical_data.csv&#39;</span><span class="p">,</span>
+                                        <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># Load pacmap output data</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;classifier_output/pacmap_5d_output_acute_leukemia_with_predictions.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -405,15 +406,274 @@ document.write(`
 <span class="n">color_dict</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())):</span> 
     <span class="n">color_dict</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-<span class="n">pySankey</span><span class="o">.</span><span class="n">sankey</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;MethylScoreAML_Dx_predictions&#39;</span><span class="p">],</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">colorDict</span><span class="o">=</span><span class="n">color_dict</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">pySankey</span><span class="o">.</span><span class="n">sankey</span><span class="p">(</span><span class="n">left</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">],</span><span class="n">right</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;MethylScoreAML_Dx_predictions&#39;</span><span class="p">],</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">colorDict</span><span class="o">=</span><span class="n">color_dict</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1"># add title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pacmap 5D Output with MethylScoreAML_Dx Predictions&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/c3e2a38f707c5f261a7061bffc646736ed044485578c8c24e533cb575b7c1358.png" src="_images/c3e2a38f707c5f261a7061bffc646736ed044485578c8c24e533cb575b7c1358.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Pacmap 5D Output with MethylScoreAML_Dx Predictions&#39;)
+</pre></div>
 </div>
+<img alt="_images/a623194fb813560e7f6fc795ddedd8607835f3d5e83b8156ef9ed924a1344e06.png" src="_images/a623194fb813560e7f6fc795ddedd8607835f3d5e83b8156ef9ed924a1344e06.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;PaCMAP 1&#39;, &#39;PaCMAP 2&#39;, &#39;PaCMAP 3&#39;, &#39;PaCMAP 4&#39;, &#39;PaCMAP 5&#39;,
+       &#39;Clinical Trial&#39;, &#39;Sample Type&#39;, &#39;Patient_ID&#39;, &#39;ELN AML 2022 Diagnosis&#39;,
+       &#39;Train Test&#39;, &#39;Batch&#39;, &#39;Hematopoietic Lineage&#39;,
+       &#39;MethylScoreAML_Dx_predictions&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_validation</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PaCMAP 1</th>
+      <th>PaCMAP 2</th>
+      <th>PaCMAP 3</th>
+      <th>PaCMAP 4</th>
+      <th>PaCMAP 5</th>
+      <th>Clinical Trial</th>
+      <th>Sample Type</th>
+      <th>Patient_ID</th>
+      <th>ELN AML 2022 Diagnosis</th>
+      <th>Train Test</th>
+      <th>Batch</th>
+      <th>Hematopoietic Lineage</th>
+      <th>MethylScoreAML_Dx_predictions</th>
+    </tr>
+    <tr>
+      <th>index</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0003fe29-7b8f-4ef1-b9bc-40306205f1fd_noid</th>
+      <td>14.163744</td>
+      <td>-12.102138</td>
+      <td>11.901865</td>
+      <td>15.432140</td>
+      <td>-16.474106</td>
+      <td>AAML03P1</td>
+      <td>Primary Blood Derived Cancer - Bone Marrow</td>
+      <td>PANVPB</td>
+      <td>Unknown</td>
+      <td>Discovery (train) Samples</td>
+      <td>GDC_TARGET-AML</td>
+      <td>Unknown</td>
+      <td>AML with mutated NPM1</td>
+    </tr>
+    <tr>
+      <th>003d9efe-90a1-42cf-84c4-03fbabefe60b_noid</th>
+      <td>-10.709123</td>
+      <td>-15.305382</td>
+      <td>-21.771700</td>
+      <td>6.981653</td>
+      <td>-21.686016</td>
+      <td>TARGET ALL</td>
+      <td>Bone Marrow Normal</td>
+      <td>TARGET-00-SJNORM054698</td>
+      <td>Unknown</td>
+      <td>Discovery (train) Samples</td>
+      <td>GDC_TARGET-ALL</td>
+      <td>Otherwise-Normal (Control)</td>
+      <td>AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q...</td>
+    </tr>
+    <tr>
+      <th>004c953f-d999-4d82-898d-c091e692df3c_noid</th>
+      <td>-14.334599</td>
+      <td>-13.189907</td>
+      <td>2.261059</td>
+      <td>25.173847</td>
+      <td>-12.793757</td>
+      <td>AAML0531</td>
+      <td>Primary Blood Derived Cancer - Peripheral Blood</td>
+      <td>PASAUT</td>
+      <td>Unknown</td>
+      <td>Discovery (train) Samples</td>
+      <td>GDC_TARGET-AML</td>
+      <td>Unknown</td>
+      <td>Otherwise-Normal Control</td>
+    </tr>
+    <tr>
+      <th>005fdc28-ef44-4957-bc70-ddd5c19bb4cb_noid</th>
+      <td>-5.477030</td>
+      <td>-11.416238</td>
+      <td>5.994673</td>
+      <td>7.061894</td>
+      <td>10.688519</td>
+      <td>TCGA AML</td>
+      <td>Diagnosis</td>
+      <td>TCGA-AB-2972</td>
+      <td>Unknown</td>
+      <td>Discovery (train) Samples</td>
+      <td>GDC_TCGA-AML</td>
+      <td>Unknown</td>
+      <td>AML with other rare recurring translocations</td>
+    </tr>
+    <tr>
+      <th>0066d4af-8019-46a0-ba29-d2962c9537a7_noid</th>
+      <td>10.688504</td>
+      <td>-27.276545</td>
+      <td>-13.803440</td>
+      <td>4.209973</td>
+      <td>16.794840</td>
+      <td>AAML0531</td>
+      <td>Primary Blood Derived Cancer - Bone Marrow</td>
+      <td>PASYWA</td>
+      <td>Unknown</td>
+      <td>Discovery (train) Samples</td>
+      <td>GDC_TARGET-AML</td>
+      <td>Unknown</td>
+      <td>Otherwise-Normal Control</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>9426021041_R03C01</th>
+      <td>-11.987736</td>
+      <td>11.113221</td>
+      <td>19.518076</td>
+      <td>-5.899825</td>
+      <td>-18.843174</td>
+      <td>AML08</td>
+      <td>Diagnosis</td>
+      <td>AML08_SP_58</td>
+      <td>Unknown</td>
+      <td>Validation (test) Samples</td>
+      <td>St Jude Children's</td>
+      <td>Unknown</td>
+      <td>AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement</td>
+    </tr>
+    <tr>
+      <th>9426021041_R05C02</th>
+      <td>13.759434</td>
+      <td>-13.563489</td>
+      <td>-1.080396</td>
+      <td>-14.676401</td>
+      <td>-13.194667</td>
+      <td>AML08</td>
+      <td>Diagnosis</td>
+      <td>AML08_SP_20</td>
+      <td>Unknown</td>
+      <td>Validation (test) Samples</td>
+      <td>St Jude Children's</td>
+      <td>Unknown</td>
+      <td>AML with other rare recurring translocations</td>
+    </tr>
+    <tr>
+      <th>9426021149_R01C01</th>
+      <td>-12.778236</td>
+      <td>13.408336</td>
+      <td>19.593397</td>
+      <td>-5.141050</td>
+      <td>-19.365086</td>
+      <td>AML08</td>
+      <td>Diagnosis</td>
+      <td>AML08_SP_34</td>
+      <td>Unknown</td>
+      <td>Validation (test) Samples</td>
+      <td>St Jude Children's</td>
+      <td>Unknown</td>
+      <td>AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement</td>
+    </tr>
+    <tr>
+      <th>9426021149_R02C02</th>
+      <td>14.189075</td>
+      <td>-10.110070</td>
+      <td>-0.841071</td>
+      <td>-17.566992</td>
+      <td>-12.961734</td>
+      <td>AML08</td>
+      <td>Diagnosis</td>
+      <td>AML08_SP_35</td>
+      <td>Unknown</td>
+      <td>Validation (test) Samples</td>
+      <td>St Jude Children's</td>
+      <td>Unknown</td>
+      <td>AML with mutated NPM1</td>
+    </tr>
+    <tr>
+      <th>9426021149_R05C02</th>
+      <td>13.360536</td>
+      <td>-11.380533</td>
+      <td>-1.173544</td>
+      <td>-17.606000</td>
+      <td>-11.733229</td>
+      <td>AML08</td>
+      <td>Diagnosis</td>
+      <td>AML08_SP_53</td>
+      <td>Unknown</td>
+      <td>Validation (test) Samples</td>
+      <td>St Jude Children's</td>
+      <td>Unknown</td>
+      <td>AML with mutated NPM1</td>
+    </tr>
+  </tbody>
+</table>
+<p>1746 rows × 13 columns</p>
+</div></div></div>
 </div>
 </section>
 <section id="watermark">
@@ -476,12 +736,12 @@ Architecture: 64bit
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="4_Methylome_Atlas_PaCMAP_v4.html"
+       href="5_Multiclass_AMLsubtype_Classifier_v2.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Methylome Atlas of Acute Leukemia</p>
+        <p class="prev-next-title">AML Diagnostic Subtype Classifier</p>
       </div>
     </a>
     <a class="right-next"
