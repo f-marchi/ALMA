@@ -384,7 +384,10 @@ document.write(`
 </li>
 </ul>
 </nav>
-<p>We have shown that it is possible to predict all subtypes of AML with clinical accuracy using our DNA methylation model. However, an important question is when methylation-based diagnostics offer an advantage over current standard of care.</p>
+<p>We have shown that it is possible to predict all subtypes of AML with clinical accuracy using our DNA methylation model. However, an important question arises:</p>
+<ul class="simple">
+<li><p>When would a DNA methylation-based diagnostis offer an advantage over current standard of care?</p></li>
+</ul>
 <p><code class="docutils literal notranslate"><span class="pre">MethylScoreAML</span> <span class="pre">Dx</span></code> is recommended in the following scenarios:</p>
 <ol class="arabic simple">
 <li><p>For patients with complex karyotype, in which the genomic integrity is so highly compromised that it is unclear what alterations are driving the cancerous phenotype.</p></li>
@@ -394,7 +397,7 @@ document.write(`
 <p>The rationale for this is that whatever the underlying genomic impairment is, it will produce a celular state that can be assessed with high resolution by way of DNA methylation.</p>
 <p><code class="docutils literal notranslate"><span class="pre">MethylScoreAML</span> <span class="pre">Dx</span></code> is not recommended in the following scenarios:</p>
 <ol class="arabic simple">
-<li><p>For patients with a clear, actionable diagnosis based on standard of care assays. In these cases, like inv(16) and t(8;21), methylation-based diagnostics will not add any additional information.</p></li>
+<li><p>For patients with a clear, actionable diagnosis based on standard of care assays. In these cases, like inv(16) and t(8;21), methylation-based diagnostics may not add any additional information.</p></li>
 </ol>
 <p>To illustrate the above points, we will use one of our validation clinical trials, St. Jude AML02, which only contains FAB, Karyotype, and Cytogenetic assays. We will show how our methylation-based model predicts the subtype of each patient at times where no conclusive information is available:</p>
 <section id="load-and-preprocess-data">
@@ -525,6 +528,9 @@ Name: count, dtype: int64
 <img alt="_images/705252d6a7988b35dd25133f3b1768d4f22777289a1961402001ae00bc5b5129.png" src="_images/705252d6a7988b35dd25133f3b1768d4f22777289a1961402001ae00bc5b5129.png" />
 <img alt="_images/64c90bf86324da31390f6698cb97624cb5a256714325665d42ea2dd6d1a81588.png" src="_images/64c90bf86324da31390f6698cb97624cb5a256714325665d42ea2dd6d1a81588.png" />
 </div>
+</div>
+<div class="highlight-note notranslate"><div class="highlight"><pre><span></span>Sankey plots above show the distribution of predicted subtypes per each cytogenetic group. The width of the lines is proportional to the number of patients in each group. Samples with inconclusive or ambiguous cytogenetic results (i.e. &quot;Normal&quot;, &quot;Miscell&quot;, &quot;Insuff&quot;) may benefit the most from DNA methylation-based diagnostics.
+</pre></div>
 </div>
 </section>
 <section id="overall-trial-population">
