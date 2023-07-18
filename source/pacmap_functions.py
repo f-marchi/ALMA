@@ -90,7 +90,7 @@ class BokehPlotter:
     })
 
     def __init__(self, df, cols, custom_color_palette, title=None,
-                 x_range=None, y_range=None, datapoint_size=5, tooltip_dx_cols='WHO 2021 Diagnosis'):
+                 x_range=None, y_range=None, datapoint_size=5, tooltip_dx_cols='WHO 2022 Diagnosis'):
         self.df = df
         self.cols = cols
         self.custom_color_palette = custom_color_palette

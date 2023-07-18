@@ -8,6 +8,7 @@ This module implements functions for several commonly used data visualization te
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
+import pandas as pd
 
 
 def draw_kaplan_meier(scorename, df, save_plot=False,
@@ -636,6 +637,7 @@ def plot_confusion_matrix_individual(clf, x_test, y_test, title='Classification 
 
     plt.show()
 
+
 def plot_confusion_matrix_stacked(clf, x_train, y_train, x_test, y_test, title='MethylScoreAML Dx Classification results', tick_fontsize=10, label_fontsize=10):
 
     from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
@@ -683,3 +685,106 @@ def plot_confusion_matrix_stacked(clf, x_train, y_train, x_test, y_test, title='
             ax.set_ylabel('')
 
     plt.show()
+
+
+def create_color_dict(df, columns, colors):
+    """
+    Create a color dictionary using unique values from the specified DataFrame columns.
+    
+    Args:
+    df (pd.DataFrame): DataFrame to extract unique values from.
+    columns (list): Columns to extract unique values from.
+    colors (list): List of colors to assign to unique values.
+    
+    Returns:
+    dict: A dictionary with unique values as keys and corresponding colors as values.
+    """
+    unique_values = pd.concat([df[col] for col in columns]).unique()
+    return {unique_values[i]: colors[i % len(colors)] for i in range(len(unique_values))}
+
+
+def draw_sankey_plot(df, col1, col2, colors, title, fontsize=10, fig_size=(10,10),
+                     column_title=True, column_title_pos = (0.1,0.9)):
+    """
+    Create a sankey plot using the specified DataFrame columns.
+    
+    Args:
+    df (pd.DataFrame): DataFrame to plot.
+    col1, col2 (str): Column names to plot.
+    colors (list): List of colors to assign to unique values.
+    title (str): Title for the plot.
+    fontsize (int): Font size to use for text in the plot. Default is 10.
+    fig_size (tuple): Figure size. Default is (10,10).
+    column_title (bool): Whether to add column titles to the plot. Default is True.
+    column_title_pos (tuple): Relative positions of the column titles. Default is (0.1,0.9).
+    """
+    import pySankey
+    import pandas as pd
+
+    # Set global font size and family
+    plt.rcParams.update({
+        'font.size': fontsize,
+        'font.family': 'Arial'
+    })
+    
+    # Create color dictionary for unique values in the specified columns
+    color_dict = create_color_dict(df, [col1, col2], colors)
+
+    # Fill NaN values with 'Unknown'
+    df = df.fillna('Unknown')
+    # Add the unknown class
+    color_dict['Unknown'] = colors[-1]
+
+    # Create the sankey plot
+    pySankey.sankey(left=df[col1], right=df[col2], aspect=20, colorDict=color_dict, fontsize=fontsize)
+
+    # Get the current figure to add text labels
+    fig = plt.gcf()
+
+    if column_title:
+        # Add labels at relative positions
+        fig.text(column_title_pos[0], 0.88, col1, ha='right', va='center', fontweight='bold')
+        fig.text(column_title_pos[1], 0.88, col2, ha='left', va='center', fontweight='bold')
+
+    # Set figure size
+    fig.set_size_inches(fig_size[0], fig_size[1])
+
+    # Add title
+    plt.title(title + ', n=' +
+                 str(len(df)), pad=30)
+    
+
+def get_custom_color_palette():
+    list = [
+    '#1f77b4',  # Vivid blue
+    '#ff7f0e',  # Vivid orange 
+    '#2ca02c',  # Vivid green
+    '#d62728',  # Vivid red
+    '#9467bd',  # Vivid purple 
+    '#7f7f7f',  # Medium gray
+    '#e377c2',  # Pink
+    '#e7ba52',  # Light orange
+    '#bcbd22',  # Olive
+    '#17becf',  # Light blue
+    '#393b79',  # Dark blue
+    '#8c564b',  # Brown
+    '#f7b6d2',  # Light pink
+    '#c49c94',  # Light brown
+    '#a2769e',   # Soft purple
+    '#dbdb8d',  # Pale yellow
+    '#9edae5',  # Pale cyan
+    '#c5b0d5',  # Pale purple
+    '#c7c7c7',  # Light gray
+    '#ff9896',  # Light red
+    '#637939',  # Dark olive
+    '#aec7e8',  # Light blue
+    '#ffbb78',  # Light orange
+    '#98df8a',  # Light green
+    '#7c231e',  # Dark red
+    '#3d6a3d',  # Dark green
+    '#f96502',  # Deep orange
+    '#6d3f7d',  # Deep purple
+    '#6b4423',  # Dark brown
+    '#d956a6'   # Hot pink
+    ]
+    return list
