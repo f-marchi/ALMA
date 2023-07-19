@@ -137,14 +137,8 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/dna1.gif" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/dna1.gif" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
+    <p class="title logo__title">MethylScoreAML</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -384,22 +378,20 @@ document.write(`
 </li>
 </ul>
 </nav>
-<p>We have shown that it is possible to predict all subtypes of AML with clinical accuracy using our DNA methylation model. However, an important question arises:</p>
+<p>We have shown that it is possible to predict all clinical subtypes of AML with translatable accuracy using our DNA methylation model. However, an important question arises:</p>
 <ul class="simple">
-<li><p>When would a DNA methylation-based diagnostis offer an advantage over current standard of care?</p></li>
+<li><p>When would a DNA methylation-based model offer an advantage over current standard of care?</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">MethylScoreAML</span> <span class="pre">Dx</span></code> is recommended in the following scenarios:</p>
 <ol class="arabic simple">
 <li><p>For patients with complex karyotype, in which the genomic integrity is so highly compromised that it is unclear what alterations are driving the cancerous phenotype.</p></li>
 <li><p>For patients with normal karyotype or rare recurring translocations, in which the genomic integrity is intact but the driver alterations are not known/hidden.</p></li>
-<li><p>For patients whose standard of care diagnostic techniques are inconclusive or ambiguous. This may happen, for example, if morphology shows a clear phenotype that is not supported by FISH or cytogenetics.</p></li>
+<li><p>For patients whose standard of care diagnostic techniques are inconclusive or ambiguous.</p></li>
 </ol>
-<p>The rationale for this is that whatever the underlying genomic impairment is, it will produce a celular state that can be assessed with high resolution by way of DNA methylation.</p>
 <p><code class="docutils literal notranslate"><span class="pre">MethylScoreAML</span> <span class="pre">Dx</span></code> is not recommended in the following scenarios:</p>
 <ol class="arabic simple">
-<li><p>For patients with a clear, actionable diagnosis based on standard of care assays. In these cases, like inv(16) and t(8;21), methylation-based diagnostics may not add any additional information.</p></li>
+<li><p>For patients with a clear, actionable diagnosis based on standard of care assays. In these cases, such as inv(16) and t(8;21), a DNA methylation-based model may not add any additional information.</p></li>
 </ol>
-<p>To illustrate the above points, we will use one of our validation clinical trials, St. Jude AML02, which only contains FAB, Karyotype, and Cytogenetic assays. We will show how our methylation-based model predicts the subtype of each patient at times where no conclusive information is available:</p>
 <section id="load-and-preprocess-data">
 <h2><a class="toc-backref" href="#id3" role="doc-backlink">Load and preprocess data</a><a class="headerlink" href="#load-and-preprocess-data" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">

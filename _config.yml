@@ -1,7 +1,7 @@
 title: MethylScoreAML
 author: Marchi et. al, Lamba Lab @ University of Florida. Please do not share this notebook publicly.
 copyright: "2023"  # Copyright year to be placed in the footer
-logo: "_logos/dna1.gif"
+# logo: "_logos/dna1.gif"
 exclude_patterns: [.venv,.venv_py37,.venv_py38, .venv_data_vizualization, .venv_pacmap, .venv_sklearn,
                   Code_past, Benchmarking]
 only_build_toc_files: true
