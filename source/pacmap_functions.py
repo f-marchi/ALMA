@@ -90,7 +90,8 @@ class BokehPlotter:
     })
 
     def __init__(self, df, cols, custom_color_palette, title=None,
-                 x_range=None, y_range=None, datapoint_size=5, tooltip_dx_cols='WHO 2022 Diagnosis'):
+                x_range=None, y_range=None, datapoint_size=5, 
+                tooltip_dx_cols='WHO 2022 Diagnosis', width=1300, height=800):
         self.df = df
         self.cols = cols
         self.custom_color_palette = custom_color_palette
@@ -103,10 +104,12 @@ class BokehPlotter:
         self.layout = None
         self.datapoint_size = datapoint_size or 5
         self.tooltip_dx_cols = tooltip_dx_cols
+        self.width = width
+        self.height = height
 
     def create_figure(self):
         p = figure(title=self.title, 
-                width=1300, height=800, sizing_mode='fixed',
+                width=self.width, height=self.height, sizing_mode='fixed',
                 x_axis_label='Longitude (PaCMAP 1)', y_axis_label='Latitude (PaCMAP 2)',
                 x_range=self.x_range, y_range=self.y_range,
                 tools="pan,wheel_zoom,reset,save", active_drag="pan",
@@ -114,6 +117,7 @@ class BokehPlotter:
                 tooltips=[("Dx", "@{"+self.tooltip_dx_cols+"}")])
         curdoc().theme = BokehPlotter.white_theme
         return p
+
 
 
     def create_scatters(self, p, hue):
