@@ -1,4 +1,4 @@
-# DNA methylation-based diagnosis and prognosis of pediatric AML
+# DNA methylation-based diagnosis and prognosis of AML
 
 
 
