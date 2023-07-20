@@ -323,6 +323,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-eln-aml-2022-dx-with-methylscoreaml-dx">Comparing ELN AML 2022 Dx with MethylScoreAML Dx</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clinically-annotated-samples-only">Clinically annotated samples only</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-study-populations">Overall study populations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crazy-big-font-for-plotting">Crazy big font for plotting</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#samples-for-which-no-clinical-dx-annotation-was-available">Samples for which no clinical Dx annotation was available</a></li>
 </ul>
 </li>
@@ -364,27 +365,28 @@ document.write(`
 <ul>
 <li><p><a class="reference internal" href="#clinically-annotated-samples-only" id="id5">Clinically annotated samples only</a></p></li>
 <li><p><a class="reference internal" href="#overall-study-populations" id="id6">Overall study populations</a></p></li>
-<li><p><a class="reference internal" href="#samples-for-which-no-clinical-dx-annotation-was-available" id="id7">Samples for which no clinical Dx annotation was available</a></p></li>
+<li><p><a class="reference internal" href="#crazy-big-font-for-plotting" id="id7">Crazy big font for plotting</a></p></li>
+<li><p><a class="reference internal" href="#samples-for-which-no-clinical-dx-annotation-was-available" id="id8">Samples for which no clinical Dx annotation was available</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#methylscoreaml-dx-in-st-jude-aml02-by-cytogenetic-groups" id="id8">MethylScoreAML Dx in St. Jude AML02 by Cytogenetic Groups</a></p>
+<li><p><a class="reference internal" href="#methylscoreaml-dx-in-st-jude-aml02-by-cytogenetic-groups" id="id9">MethylScoreAML Dx in St. Jude AML02 by Cytogenetic Groups</a></p>
 <ul>
-<li><p><a class="reference internal" href="#per-cytogenetic-group" id="id9">Per cytogenetic group</a></p></li>
-<li><p><a class="reference internal" href="#overall-trial-population" id="id10">Overall trial population</a></p></li>
+<li><p><a class="reference internal" href="#per-cytogenetic-group" id="id10">Per cytogenetic group</a></p></li>
+<li><p><a class="reference internal" href="#overall-trial-population" id="id11">Overall trial population</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#methylscoreaml-dx-in-validation-cohort-by-risk-groups" id="id11">MethylScoreAML Dx in validation cohort by risk groups</a></p>
+<li><p><a class="reference internal" href="#methylscoreaml-dx-in-validation-cohort-by-risk-groups" id="id12">MethylScoreAML Dx in validation cohort by risk groups</a></p>
 <ul>
-<li><p><a class="reference internal" href="#per-category" id="id12">Per category</a></p></li>
-<li><p><a class="reference internal" href="#all-categories" id="id13">All categories</a></p></li>
+<li><p><a class="reference internal" href="#per-category" id="id13">Per category</a></p></li>
+<li><p><a class="reference internal" href="#all-categories" id="id14">All categories</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#methylscoreaml-dx-in-validation-cohort-by-fab" id="id14">MethylScoreAML Dx in validation cohort by FAB</a></p>
+<li><p><a class="reference internal" href="#methylscoreaml-dx-in-validation-cohort-by-fab" id="id15">MethylScoreAML Dx in validation cohort by FAB</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id1" id="id15">All categories</a></p></li>
+<li><p><a class="reference internal" href="#id1" id="id16">All categories</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#watermark" id="id16">Watermark</a></p></li>
+<li><p><a class="reference internal" href="#watermark" id="id17">Watermark</a></p></li>
 </ul>
 </li>
 </ul>
@@ -508,19 +510,49 @@ document.write(`
 
 
 <span class="n">draw_sankey_plot</span><span class="p">(</span><span class="n">validation_sankey</span><span class="p">,</span> <span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">,</span> <span class="s1">&#39;MethylScoreAML_Dx_predictions&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span>
-                 <span class="n">title</span><span class="o">=</span> <span class="s1">&#39;MethylScoreAML_Dx Predictions in Validation Cohort&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">fig_size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+                 <span class="n">title</span><span class="o">=</span> <span class="s1">&#39;MethylScoreAML_Dx Predictions in Validation Cohort&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fig_size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
 <img alt="_images/ffefb1bfab80cc790192b88e31c144e6de41f745af4e642bb9b3a750a8ed1f83.png" src="_images/ffefb1bfab80cc790192b88e31c144e6de41f745af4e642bb9b3a750a8ed1f83.png" />
-<img alt="_images/22d13726ce4c3f4c9038e9c8b84ae040cece7d577226e0944e98c525c06f6736.png" src="_images/22d13726ce4c3f4c9038e9c8b84ae040cece7d577226e0944e98c525c06f6736.png" />
+<img alt="_images/21a295288179b27e51e57eb4ec16aae16813432cb9b609f8de783041108777bb.png" src="_images/21a295288179b27e51e57eb4ec16aae16813432cb9b609f8de783041108777bb.png" />
+</div>
+</div>
+</section>
+<section id="crazy-big-font-for-plotting">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Crazy big font for plotting</a><a class="headerlink" href="#crazy-big-font-for-plotting" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_sankey_plot</span><span class="p">(</span><span class="n">validation_sankey</span><span class="p">,</span> <span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">,</span> <span class="s1">&#39;MethylScoreAML_Dx_predictions&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span>
+                 <span class="n">title</span><span class="o">=</span> <span class="s1">&#39;MethylScoreAML_Dx Predictions in Validation Cohort&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span> <span class="n">fig_size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+
+<span class="n">draw_sankey_plot</span><span class="p">(</span><span class="n">validation_sankey</span><span class="p">,</span> <span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">,</span> <span class="s1">&#39;MethylScoreAML_Dx_predictions&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span>
+                 <span class="n">title</span><span class="o">=</span> <span class="s1">&#39;MethylScoreAML_Dx Predictions in Validation Cohort&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">fig_size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
+
+<span class="n">draw_sankey_plot</span><span class="p">(</span><span class="n">validation_sankey</span><span class="p">,</span> <span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">,</span> <span class="s1">&#39;MethylScoreAML_Dx_predictions&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span>
+                 <span class="n">title</span><span class="o">=</span> <span class="s1">&#39;MethylScoreAML_Dx Predictions in Validation Cohort&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">fig_size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">17</span><span class="p">))</span>
+
+<span class="n">draw_sankey_plot</span><span class="p">(</span><span class="n">validation_sankey</span><span class="p">,</span> <span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">,</span> <span class="s1">&#39;MethylScoreAML_Dx_predictions&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span>
+                 <span class="n">title</span><span class="o">=</span> <span class="s1">&#39;MethylScoreAML_Dx Predictions in Validation Cohort&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">fig_size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">18</span><span class="p">))</span>
+
+<span class="n">draw_sankey_plot</span><span class="p">(</span><span class="n">validation_sankey</span><span class="p">,</span> <span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">,</span> <span class="s1">&#39;MethylScoreAML_Dx_predictions&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span>
+                 <span class="n">title</span><span class="o">=</span> <span class="s1">&#39;MethylScoreAML_Dx Predictions in Validation Cohort&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">36</span><span class="p">,</span> <span class="n">fig_size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">19</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e90bbbaad6ce250c7d733a6704e370de363aa86a5a8b0ba0616e13c4868dac8e.png" src="_images/e90bbbaad6ce250c7d733a6704e370de363aa86a5a8b0ba0616e13c4868dac8e.png" />
+<img alt="_images/bf29a6cdea3310d46e23ea9af5f41d152ed35e088983711d365eb37eac601eaa.png" src="_images/bf29a6cdea3310d46e23ea9af5f41d152ed35e088983711d365eb37eac601eaa.png" />
+<img alt="_images/c989361ed3822947ed302acb0d19dffa7e2d38b92472a66113d2f2107a964a46.png" src="_images/c989361ed3822947ed302acb0d19dffa7e2d38b92472a66113d2f2107a964a46.png" />
+<img alt="_images/8e2d8e4a9d3edbf44afcbc61c9f86c835dc2009859b2f3e2f16be1e9a7232987.png" src="_images/8e2d8e4a9d3edbf44afcbc61c9f86c835dc2009859b2f3e2f16be1e9a7232987.png" />
+<img alt="_images/75a581a6f9b36498a9d9d5ffd1deb897dc4dec49e78dc2c7b50ddb2c388b3950.png" src="_images/75a581a6f9b36498a9d9d5ffd1deb897dc4dec49e78dc2c7b50ddb2c388b3950.png" />
 </div>
 </div>
 </section>
 <section id="samples-for-which-no-clinical-dx-annotation-was-available">
-<h3><a class="toc-backref" href="#id7" role="doc-backlink">Samples for which no clinical Dx annotation was available</a><a class="headerlink" href="#samples-for-which-no-clinical-dx-annotation-was-available" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Samples for which no clinical Dx annotation was available</a><a class="headerlink" href="#samples-for-which-no-clinical-dx-annotation-was-available" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -546,7 +578,7 @@ document.write(`
 </section>
 </section>
 <section id="methylscoreaml-dx-in-st-jude-aml02-by-cytogenetic-groups">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">MethylScoreAML Dx in St. Jude AML02 by Cytogenetic Groups</a><a class="headerlink" href="#methylscoreaml-dx-in-st-jude-aml02-by-cytogenetic-groups" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">MethylScoreAML Dx in St. Jude AML02 by Cytogenetic Groups</a><a class="headerlink" href="#methylscoreaml-dx-in-st-jude-aml02-by-cytogenetic-groups" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -574,7 +606,7 @@ Name: count, dtype: int64
 </div>
 </div>
 <section id="per-cytogenetic-group">
-<h3><a class="toc-backref" href="#id9" role="doc-backlink">Per cytogenetic group</a><a class="headerlink" href="#per-cytogenetic-group" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Per cytogenetic group</a><a class="headerlink" href="#per-cytogenetic-group" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -616,7 +648,7 @@ Name: count, dtype: int64
 </div>
 </section>
 <section id="overall-trial-population">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink">Overall trial population</a><a class="headerlink" href="#overall-trial-population" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Overall trial population</a><a class="headerlink" href="#overall-trial-population" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -642,7 +674,7 @@ Name: count, dtype: int64
 </section>
 </section>
 <section id="methylscoreaml-dx-in-validation-cohort-by-risk-groups">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">MethylScoreAML Dx in validation cohort by risk groups</a><a class="headerlink" href="#methylscoreaml-dx-in-validation-cohort-by-risk-groups" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">MethylScoreAML Dx in validation cohort by risk groups</a><a class="headerlink" href="#methylscoreaml-dx-in-validation-cohort-by-risk-groups" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -666,7 +698,7 @@ Name: count, dtype: int64
 </div>
 </div>
 <section id="per-category">
-<h3><a class="toc-backref" href="#id12" role="doc-backlink">Per category</a><a class="headerlink" href="#per-category" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">Per category</a><a class="headerlink" href="#per-category" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -708,7 +740,7 @@ Name: count, dtype: int64
 </div>
 </section>
 <section id="all-categories">
-<h3><a class="toc-backref" href="#id13" role="doc-backlink">All categories</a><a class="headerlink" href="#all-categories" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id14" role="doc-backlink">All categories</a><a class="headerlink" href="#all-categories" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -733,7 +765,7 @@ Name: count, dtype: int64
 </section>
 </section>
 <section id="methylscoreaml-dx-in-validation-cohort-by-fab">
-<h2><a class="toc-backref" href="#id14" role="doc-backlink">MethylScoreAML Dx in validation cohort by FAB</a><a class="headerlink" href="#methylscoreaml-dx-in-validation-cohort-by-fab" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">MethylScoreAML Dx in validation cohort by FAB</a><a class="headerlink" href="#methylscoreaml-dx-in-validation-cohort-by-fab" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -761,7 +793,7 @@ Name: count, dtype: int64
 </div>
 </div>
 <section id="id1">
-<h3><a class="toc-backref" href="#id15" role="doc-backlink">All categories</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">All categories</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -786,7 +818,7 @@ Name: count, dtype: int64
 </section>
 </section>
 <section id="watermark">
-<h2><a class="toc-backref" href="#id16" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Author: Francisco_Marchi@Lamba_Lab_UF
@@ -884,6 +916,7 @@ Architecture: 64bit
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-eln-aml-2022-dx-with-methylscoreaml-dx">Comparing ELN AML 2022 Dx with MethylScoreAML Dx</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clinically-annotated-samples-only">Clinically annotated samples only</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-study-populations">Overall study populations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#crazy-big-font-for-plotting">Crazy big font for plotting</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#samples-for-which-no-clinical-dx-annotation-was-available">Samples for which no clinical Dx annotation was available</a></li>
 </ul>
 </li>
