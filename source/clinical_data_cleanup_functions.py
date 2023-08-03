@@ -1143,11 +1143,15 @@ def clean_amltcga(df):
                             '%BM Blast':'BM Leukemic blasts (%)', 'WBC':'WBC Count (10⁹/L)',
                             '%PB Blast': 'Peripheral blasts (%)', 'Cytogenetics': 'Karyotype',
                             'Gene Fusions by RNA-Seq':'Gene Fusion', 
-                            'Cytogenetic Classification':'Primary Cytogenetic Code',
-                            'RISK (Molecular)':'Risk Group'})
+                            'Cytogenetic Classification':'Primary Cytogenetic Code'})
     
     df = df.replace({'Unknown': np.nan, 'YES': 'Yes', 'NO': 'No', 'n':'No', 'y':'Yes',
                      'M':'Male','F':'Female'})
+    
+    df['Risk Group'] = df['RISK (Molecular)'].replace({'Good': 'Low Risk',
+                                                       'Intermediate': 'Standard Risk',
+                                                       'Poor': 'High Risk',
+                                                       'N.D.': np.nan})
 
     # Add `AML with` to the beginning of the `Diagnosis` column for each value
     df['Diagnosis'] = 'AML with ' + df['Molecular Classification'].astype(str)

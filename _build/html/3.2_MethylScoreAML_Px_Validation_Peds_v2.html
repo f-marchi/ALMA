@@ -735,7 +735,7 @@ Standard Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between
 High Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:2.836e-07 Stat=2.848e+01
 </pre></div>
 </div>
-<img alt="_images/f3bf06327e32f8c4294d736d9af2e8d5dc8fc9dd0a9683d8a474da98ce6c38fc.png" src="_images/f3bf06327e32f8c4294d736d9af2e8d5dc8fc9dd0a9683d8a474da98ce6c38fc.png" />
+<img alt="_images/c8756c6ffcba7d361f79bd3a0307d67c2b8a6dde06cec9d8d4c437e1804ec749.png" src="_images/c8756c6ffcba7d361f79bd3a0307d67c2b8a6dde06cec9d8d4c437e1804ec749.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p-value annotation legend:
       ns: p &lt;= 1.00e+00
        *: 1.00e-02 &lt; p &lt;= 5.00e-02
@@ -746,8 +746,8 @@ High Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between gro
 Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:1.003e-01 Stat=2.701e+00
 </pre></div>
 </div>
-<img alt="_images/a18c13e41d130dd3715d15ba14d916769a651d04a41254964b30d1039d6c9565.png" src="_images/a18c13e41d130dd3715d15ba14d916769a651d04a41254964b30d1039d6c9565.png" />
-<img alt="_images/faf979570c72a0d46917db06a45e22833f56e9865748acc56ce921682f7df7af.png" src="_images/faf979570c72a0d46917db06a45e22833f56e9865748acc56ce921682f7df7af.png" />
+<img alt="_images/d0fbe29c9f78895a29d44dc696e122c9b910bb540cd4ad57f9cc38ce379431d1.png" src="_images/d0fbe29c9f78895a29d44dc696e122c9b910bb540cd4ad57f9cc38ce379431d1.png" />
+<img alt="_images/7f8b0427c03f107bc074d3e49c222c1bd9197a7386380676d17b6a46a9689fa3.png" src="_images/7f8b0427c03f107bc074d3e49c222c1bd9197a7386380676d17b6a46a9689fa3.png" />
 </div>
 </div>
 </section>
@@ -875,22 +875,33 @@ Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between grou
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load clinical data</span>
 <span class="n">discovery_clinical_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;discovery_clinical_data.csv&#39;</span><span class="p">,</span>
-                                      <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ewas_top_cpgs</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+                                      <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">discovery_clinical_data</span><span class="p">[</span><span class="s1">&#39;Age (years)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">discovery_clinical_data</span><span class="p">[</span><span class="s1">&#39;Age (years)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
 
+<span class="n">px</span> <span class="o">=</span> <span class="n">discovery_clinical_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ewas_top_cpgs</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+<span class="n">dx</span> <span class="o">=</span> <span class="n">discovery_clinical_data</span><span class="p">[</span><span class="o">~</span><span class="n">discovery_clinical_data</span><span class="p">[</span><span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Mixed phenotype acute leukemia T/myeloid&#39;</span><span class="p">,</span>
+                                       <span class="s1">&#39;Myeloid leukaemia associated with Down syndrome&#39;</span><span class="p">,</span>
+                                       <span class="s1">&#39;AML with t(9;22)(q34.1;q11.2)/BCR::ABL1&#39;</span><span class="p">])]</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">dx</span><span class="p">[</span><span class="o">~</span><span class="n">dx</span><span class="p">[</span><span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+
+<span class="c1"># Use only samples from df_index</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">dx</span><span class="p">[</span><span class="n">dx</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;pacmap_output/pacmap_5d_output_acute_leukemia.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
+
 <span class="c1"># join discovery clinical data with validation clinical data</span>
-<span class="n">both_cohorts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">discovery_clinical_data</span><span class="p">,</span> <span class="n">validation_clinical_data</span><span class="p">],</span>
-                         <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Discovery&#39;</span><span class="p">,</span> <span class="s1">&#39;Validation&#39;</span><span class="p">],</span>
-                         <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cohort&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">all_cohorts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">dx</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">validation_clinical_data</span><span class="p">],</span>
+                         <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;MethylScoreAML Dx&#39;</span><span class="p">,</span><span class="s1">&#39;MethylScoreAML Px&#39;</span> <span class="p">,</span><span class="s1">&#39;Validation&#39;</span><span class="p">],</span>
+                         <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cohort&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
 
 <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Age group (years)&#39;</span><span class="p">,</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">,</span>
             <span class="s1">&#39;Leucocyte counts (10⁹/L)&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;Risk Group&#39;</span><span class="p">,</span><span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">]</span>
+            <span class="s1">&#39;Risk Group&#39;</span><span class="p">,</span><span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">,</span> <span class="s1">&#39;Treatment Arm&#39;</span><span class="p">]</span>
 
-<span class="n">mytable_cog</span> <span class="o">=</span> <span class="n">TableOne</span><span class="p">(</span><span class="n">both_cohorts</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span>
-                        <span class="n">overall</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                        <span class="n">pval</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">pval_adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="n">mytable_cog</span> <span class="o">=</span> <span class="n">TableOne</span><span class="p">(</span><span class="n">all_cohorts</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span>
+                        <span class="n">overall</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">pval</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pval_adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">htest_name</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dip_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                         <span class="n">tukey_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">normal_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 
@@ -906,7 +917,8 @@ Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between grou
 <span class="n">mytable_cog</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;multivariate_cox_lasso/tableone_both_cohorts.xlsx&#39;</span><span class="p">)</span>
 
 <span class="n">mytable_cog</span><span class="o">.</span><span class="n">tabulate</span><span class="p">(</span><span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;html&quot;</span><span class="p">,</span> 
-                        <span class="n">headers</span><span class="o">=</span><span class="p">[</span><span class="n">score_name</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s1">&#39;Missing&#39;</span><span class="p">,</span><span class="s1">&#39;Discovery&#39;</span><span class="p">,</span><span class="s1">&#39;Validation&#39;</span><span class="p">,</span><span class="s1">&#39;p-value&#39;</span><span class="p">,</span><span class="s1">&#39;Statistical Test&#39;</span><span class="p">])</span>
+                        <span class="c1"># headers=[score_name,&quot;&quot;,score_name,&#39;Validation&#39;,&#39;p-value&#39;,&#39;Statistical Test&#39;]</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -914,23 +926,25 @@ Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between grou
 <div class="cell_output docutils container">
 <div class="output text_html"><table>
 <thead>
-<tr><th>MethylScoreAML_Px              </th><th>             </th><th>Missing  </th><th>Discovery  </th><th>Validation  </th><th>p-value  </th><th>Statistical Test  </th></tr>
+<tr><th>                               </th><th>             </th><th>MethylScoreAML Dx  </th><th>MethylScoreAML Px  </th><th>Validation  </th></tr>
 </thead>
 <tbody>
-<tr><td>n                              </td><td>             </td><td>         </td><td>924        </td><td>201         </td><td>         </td><td>                  </td></tr>
-<tr><td>Age group (years), n (%)       </td><td>≥10          </td><td>2        </td><td>452 (48.9) </td><td>95 (47.7)   </td><td>0.823    </td><td>Chi-squared       </td></tr>
-<tr><td>                               </td><td>&lt;10          </td><td>         </td><td>472 (51.1) </td><td>104 (52.3)  </td><td>         </td><td>                  </td></tr>
-<tr><td>Sex, n (%)                     </td><td>Female       </td><td>0        </td><td>457 (49.5) </td><td>87 (43.3)   </td><td>0.131    </td><td>Chi-squared       </td></tr>
-<tr><td>                               </td><td>Male         </td><td>         </td><td>467 (50.5) </td><td>114 (56.7)  </td><td>         </td><td>                  </td></tr>
-<tr><td>MRD 1 Status, n (%)            </td><td>Positive     </td><td>130      </td><td>251 (31.1) </td><td>76 (40.2)   </td><td>0.021    </td><td>Chi-squared       </td></tr>
-<tr><td>                               </td><td>Negative     </td><td>         </td><td>555 (68.9) </td><td>113 (59.8)  </td><td>         </td><td>                  </td></tr>
-<tr><td>Leucocyte counts (10⁹/L), n (%)</td><td>≥30          </td><td>1        </td><td>453 (49.0) </td><td>88 (44.0)   </td><td>0.226    </td><td>Chi-squared       </td></tr>
-<tr><td>                               </td><td>&lt;30          </td><td>         </td><td>471 (51.0) </td><td>112 (56.0)  </td><td>         </td><td>                  </td></tr>
-<tr><td>Risk Group, n (%)              </td><td>High Risk    </td><td>14       </td><td>126 (13.8) </td><td>51 (25.4)   </td><td>&lt;0.001   </td><td>Chi-squared       </td></tr>
-<tr><td>                               </td><td>Standard Risk</td><td>         </td><td>443 (48.7) </td><td>87 (43.3)   </td><td>         </td><td>                  </td></tr>
-<tr><td>                               </td><td>Low Risk     </td><td>         </td><td>341 (37.5) </td><td>63 (31.3)   </td><td>         </td><td>                  </td></tr>
-<tr><td>FLT3 ITD, n (%)                </td><td>Yes          </td><td>4        </td><td>162 (17.6) </td><td>31 (15.6)   </td><td>0.568    </td><td>Chi-squared       </td></tr>
-<tr><td>                               </td><td>No           </td><td>         </td><td>760 (82.4) </td><td>168 (84.4)  </td><td>         </td><td>                  </td></tr>
+<tr><td>n                              </td><td>             </td><td>1399               </td><td>924                </td><td>201         </td></tr>
+<tr><td>Age group (years), n (%)       </td><td>≥10          </td><td>516 (47.6)         </td><td>452 (48.9)         </td><td>95 (47.7)   </td></tr>
+<tr><td>                               </td><td>&lt;10          </td><td>567 (52.4)         </td><td>472 (51.1)         </td><td>104 (52.3)  </td></tr>
+<tr><td>Sex, n (%)                     </td><td>Female       </td><td>658 (50.7)         </td><td>457 (49.5)         </td><td>87 (43.3)   </td></tr>
+<tr><td>                               </td><td>Male         </td><td>640 (49.3)         </td><td>467 (50.5)         </td><td>114 (56.7)  </td></tr>
+<tr><td>MRD 1 Status, n (%)            </td><td>Positive     </td><td>270 (28.9)         </td><td>251 (31.1)         </td><td>76 (40.2)   </td></tr>
+<tr><td>                               </td><td>Negative     </td><td>663 (71.1)         </td><td>555 (68.9)         </td><td>113 (59.8)  </td></tr>
+<tr><td>Leucocyte counts (10⁹/L), n (%)</td><td>≥30          </td><td>566 (52.7)         </td><td>453 (49.0)         </td><td>88 (44.0)   </td></tr>
+<tr><td>                               </td><td>&lt;30          </td><td>508 (47.3)         </td><td>471 (51.0)         </td><td>112 (56.0)  </td></tr>
+<tr><td>Risk Group, n (%)              </td><td>High Risk    </td><td>125 (11.3)         </td><td>126 (13.8)         </td><td>51 (25.4)   </td></tr>
+<tr><td>                               </td><td>Standard Risk</td><td>501 (45.3)         </td><td>443 (48.7)         </td><td>87 (43.3)   </td></tr>
+<tr><td>                               </td><td>Low Risk     </td><td>480 (43.4)         </td><td>341 (37.5)         </td><td>63 (31.3)   </td></tr>
+<tr><td>FLT3 ITD, n (%)                </td><td>Yes          </td><td>178 (16.5)         </td><td>162 (17.6)         </td><td>31 (15.6)   </td></tr>
+<tr><td>                               </td><td>No           </td><td>903 (83.5)         </td><td>760 (82.4)         </td><td>168 (84.4)  </td></tr>
+<tr><td>Treatment Arm, n (%)           </td><td>Arm A        </td><td>242 (43.6)         </td><td>252 (47.9)         </td><td>107 (53.8)  </td></tr>
+<tr><td>                               </td><td>Arm B        </td><td>313 (56.4)         </td><td>274 (52.1)         </td><td>92 (46.2)   </td></tr>
 </tbody>
 </table></div></div>
 </div>
