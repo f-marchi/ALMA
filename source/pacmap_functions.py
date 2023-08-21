@@ -153,7 +153,7 @@ class BokehPlotter:
             p.child.legend.click_policy = 'hide'
         for i in range(len(self.tabs.tabs)):
             self.tabs.tabs[i].child.legend.title = self.tabs.tabs[i].title
-            self.tabs.tabs[i].child.output_backend = "webgl"
+            self.tabs.tabs[i].child.output_backend = "svg"
 
     def create_slider(self):
         self.slider = Slider(title="Adjust datapoint size", start=0, end=10, step=1, value=self.points[0][0][0].glyph.size)
