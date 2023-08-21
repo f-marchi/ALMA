@@ -147,7 +147,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="index.html">
-                    DNA methylation-based diagnosis and prognosis of AML
+                    The DNA methylome refines clinical diagnosis and prognosis of Acute Myeloid Leukemia
                 </a>
             </li>
         </ul>
@@ -891,7 +891,7 @@ Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between grou
 
 <span class="c1"># join discovery clinical data with validation clinical data</span>
 <span class="n">all_cohorts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">dx</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">validation_clinical_data</span><span class="p">],</span>
-                         <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;MethylScoreAML Dx&#39;</span><span class="p">,</span><span class="s1">&#39;MethylScoreAML Px&#39;</span> <span class="p">,</span><span class="s1">&#39;Validation&#39;</span><span class="p">],</span>
+                         <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;MethylScoreAML Dx Discovery&#39;</span><span class="p">,</span><span class="s1">&#39;MethylScoreAML Px Discovery&#39;</span> <span class="p">,</span><span class="s1">&#39;Validation&#39;</span><span class="p">],</span>
                          <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cohort&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 
 
@@ -914,7 +914,7 @@ Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between grou
                                 <span class="s1">&#39;Age group (years)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;≥10&#39;</span><span class="p">]},</span>
                                 <span class="n">groupby</span><span class="o">=</span><span class="s1">&#39;cohort&#39;</span><span class="p">)</span>
 
-<span class="n">mytable_cog</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;multivariate_cox_lasso/tableone_both_cohorts.xlsx&#39;</span><span class="p">)</span>
+<span class="n">mytable_cog</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/tableone_both_cohorts.xlsx&#39;</span><span class="p">)</span>
 
 <span class="n">mytable_cog</span><span class="o">.</span><span class="n">tabulate</span><span class="p">(</span><span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;html&quot;</span><span class="p">,</span> 
                         <span class="c1"># headers=[score_name,&quot;&quot;,score_name,&#39;Validation&#39;,&#39;p-value&#39;,&#39;Statistical Test&#39;]</span>
@@ -926,25 +926,25 @@ Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between grou
 <div class="cell_output docutils container">
 <div class="output text_html"><table>
 <thead>
-<tr><th>                               </th><th>             </th><th>MethylScoreAML Dx  </th><th>MethylScoreAML Px  </th><th>Validation  </th></tr>
+<tr><th>                               </th><th>             </th><th>MethylScoreAML Dx Discovery  </th><th>MethylScoreAML Px Discovery  </th><th>Validation  </th></tr>
 </thead>
 <tbody>
-<tr><td>n                              </td><td>             </td><td>1399               </td><td>924                </td><td>201         </td></tr>
-<tr><td>Age group (years), n (%)       </td><td>≥10          </td><td>516 (47.6)         </td><td>452 (48.9)         </td><td>95 (47.7)   </td></tr>
-<tr><td>                               </td><td>&lt;10          </td><td>567 (52.4)         </td><td>472 (51.1)         </td><td>104 (52.3)  </td></tr>
-<tr><td>Sex, n (%)                     </td><td>Female       </td><td>658 (50.7)         </td><td>457 (49.5)         </td><td>87 (43.3)   </td></tr>
-<tr><td>                               </td><td>Male         </td><td>640 (49.3)         </td><td>467 (50.5)         </td><td>114 (56.7)  </td></tr>
-<tr><td>MRD 1 Status, n (%)            </td><td>Positive     </td><td>270 (28.9)         </td><td>251 (31.1)         </td><td>76 (40.2)   </td></tr>
-<tr><td>                               </td><td>Negative     </td><td>663 (71.1)         </td><td>555 (68.9)         </td><td>113 (59.8)  </td></tr>
-<tr><td>Leucocyte counts (10⁹/L), n (%)</td><td>≥30          </td><td>566 (52.7)         </td><td>453 (49.0)         </td><td>88 (44.0)   </td></tr>
-<tr><td>                               </td><td>&lt;30          </td><td>508 (47.3)         </td><td>471 (51.0)         </td><td>112 (56.0)  </td></tr>
-<tr><td>Risk Group, n (%)              </td><td>High Risk    </td><td>125 (11.3)         </td><td>126 (13.8)         </td><td>51 (25.4)   </td></tr>
-<tr><td>                               </td><td>Standard Risk</td><td>501 (45.3)         </td><td>443 (48.7)         </td><td>87 (43.3)   </td></tr>
-<tr><td>                               </td><td>Low Risk     </td><td>480 (43.4)         </td><td>341 (37.5)         </td><td>63 (31.3)   </td></tr>
-<tr><td>FLT3 ITD, n (%)                </td><td>Yes          </td><td>178 (16.5)         </td><td>162 (17.6)         </td><td>31 (15.6)   </td></tr>
-<tr><td>                               </td><td>No           </td><td>903 (83.5)         </td><td>760 (82.4)         </td><td>168 (84.4)  </td></tr>
-<tr><td>Treatment Arm, n (%)           </td><td>Arm A        </td><td>242 (43.6)         </td><td>252 (47.9)         </td><td>107 (53.8)  </td></tr>
-<tr><td>                               </td><td>Arm B        </td><td>313 (56.4)         </td><td>274 (52.1)         </td><td>92 (46.2)   </td></tr>
+<tr><td>n                              </td><td>             </td><td>1399                         </td><td>924                          </td><td>201         </td></tr>
+<tr><td>Age group (years), n (%)       </td><td>≥10          </td><td>516 (47.6)                   </td><td>452 (48.9)                   </td><td>95 (47.7)   </td></tr>
+<tr><td>                               </td><td>&lt;10          </td><td>567 (52.4)                   </td><td>472 (51.1)                   </td><td>104 (52.3)  </td></tr>
+<tr><td>Sex, n (%)                     </td><td>Female       </td><td>658 (50.7)                   </td><td>457 (49.5)                   </td><td>87 (43.3)   </td></tr>
+<tr><td>                               </td><td>Male         </td><td>640 (49.3)                   </td><td>467 (50.5)                   </td><td>114 (56.7)  </td></tr>
+<tr><td>MRD 1 Status, n (%)            </td><td>Positive     </td><td>270 (28.9)                   </td><td>251 (31.1)                   </td><td>76 (40.2)   </td></tr>
+<tr><td>                               </td><td>Negative     </td><td>663 (71.1)                   </td><td>555 (68.9)                   </td><td>113 (59.8)  </td></tr>
+<tr><td>Leucocyte counts (10⁹/L), n (%)</td><td>≥30          </td><td>566 (52.7)                   </td><td>453 (49.0)                   </td><td>88 (44.0)   </td></tr>
+<tr><td>                               </td><td>&lt;30          </td><td>508 (47.3)                   </td><td>471 (51.0)                   </td><td>112 (56.0)  </td></tr>
+<tr><td>Risk Group, n (%)              </td><td>High Risk    </td><td>125 (11.3)                   </td><td>126 (13.8)                   </td><td>51 (25.4)   </td></tr>
+<tr><td>                               </td><td>Standard Risk</td><td>501 (45.3)                   </td><td>443 (48.7)                   </td><td>87 (43.3)   </td></tr>
+<tr><td>                               </td><td>Low Risk     </td><td>480 (43.4)                   </td><td>341 (37.5)                   </td><td>63 (31.3)   </td></tr>
+<tr><td>FLT3 ITD, n (%)                </td><td>Yes          </td><td>178 (16.5)                   </td><td>162 (17.6)                   </td><td>31 (15.6)   </td></tr>
+<tr><td>                               </td><td>No           </td><td>903 (83.5)                   </td><td>760 (82.4)                   </td><td>168 (84.4)  </td></tr>
+<tr><td>Treatment Arm, n (%)           </td><td>Arm A        </td><td>242 (43.6)                   </td><td>252 (47.9)                   </td><td>107 (53.8)  </td></tr>
+<tr><td>                               </td><td>Arm B        </td><td>313 (56.4)                   </td><td>274 (52.1)                   </td><td>92 (46.2)   </td></tr>
 </tbody>
 </table></div></div>
 </div>
@@ -983,6 +983,7 @@ Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between grou
                         <span class="n">groupby</span><span class="o">=</span><span class="n">score_name</span> <span class="o">+</span> <span class="s1">&#39; Categorical&#39;</span><span class="p">)</span>
 
 <span class="n">mytable_cog</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;multivariate_cox_lasso/tableone_validation_methylscoreaml_px.csv&#39;</span><span class="p">)</span>
+<span class="n">mytable_cog</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/tableone_validation_methylscoreaml_px.xlsx&#39;</span><span class="p">)</span>
 
 <span class="n">mytable_cog</span><span class="o">.</span><span class="n">tabulate</span><span class="p">(</span><span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;html&quot;</span><span class="p">,</span> 
                         <span class="n">headers</span><span class="o">=</span><span class="p">[</span><span class="n">score_name</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s1">&#39;Missing&#39;</span><span class="p">,</span><span class="s1">&#39;High&#39;</span><span class="p">,</span><span class="s1">&#39;Low&#39;</span><span class="p">,</span><span class="s1">&#39;p-value&#39;</span><span class="p">,</span><span class="s1">&#39;Statistical Test&#39;</span><span class="p">])</span>
@@ -1162,7 +1163,7 @@ Architecture: 64bit
   <div class="footer-item">
     
 <p class="component-author">
-By Marchi et. al, Lamba Lab @ University of Florida. Please do not share this notebook publicly.
+By Marchi et al., 2023. Lamba Lab @ University of Florida. Please do not share this notebook publicly.
 </p>
 
   </div>

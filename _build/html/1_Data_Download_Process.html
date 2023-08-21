@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Validation Dataset" href="1_Test_Data_Process_v1.html" />
-    <link rel="prev" title="DNA methylation-based diagnosis and prognosis of AML" href="index.html" />
+    <link rel="prev" title="The DNA methylome refines clinical diagnosis and prognosis of Acute Myeloid Leukemia" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -147,7 +147,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="index.html">
-                    DNA methylation-based diagnosis and prognosis of AML
+                    The DNA methylome refines clinical diagnosis and prognosis of Acute Myeloid Leukemia
                 </a>
             </li>
         </ul>
@@ -781,6 +781,11 @@ document.write(`
                   <span class="n">GSE49031_Amplified_gDNA_controls</span> <span class="o">+</span>\
                   <span class="n">GDC_TARGET_AML_fibroblast_samples</span>
 
+<span class="k">def</span> <span class="nf">remove_duplicates</span><span class="p">(</span><span class="n">input_list</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">input_list</span><span class="p">))</span>
+
+<span class="n">columns_to_drop</span> <span class="o">=</span> <span class="n">remove_duplicates</span><span class="p">(</span><span class="n">columns_to_drop</span><span class="p">)</span> 
+
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">columns_to_drop</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span>
@@ -790,7 +795,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49 non-hematopoietic samples removed. 3807 samples remaining.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>38 non-hematopoietic samples removed. 3807 samples remaining.
 </pre></div>
 </div>
 </div>
@@ -1001,10 +1006,14 @@ document.write(`
 
 <span class="c1"># Execute functions</span>
 
-<span class="n">threshold</span> <span class="o">=</span> <span class="mi">4000</span>
+
 <span class="n">X_std</span> <span class="o">=</span> <span class="n">standardize_data</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="n">principal_components</span> <span class="o">=</span> <span class="n">perform_pca</span><span class="p">(</span><span class="n">X_std</span><span class="p">)</span>
 <span class="n">principal_df</span> <span class="o">=</span> <span class="n">create_principal_df</span><span class="p">(</span><span class="n">principal_components</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Define threshold to be &gt; 5 standard deviations from the mean</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="n">principal_df</span><span class="p">[</span><span class="s1">&#39;PC1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">*</span> <span class="mi">5</span>
+
 <span class="n">non_outliers</span> <span class="o">=</span> <span class="n">principal_df</span><span class="p">[</span><span class="n">principal_df</span><span class="p">[</span><span class="s1">&#39;PC1&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">]</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">filter_df</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">principal_df</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
 
@@ -1037,7 +1046,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/c165224ec465a440961d76b2f0369c386fe8292a256b38db47df492c552ea3b2.png" src="_images/c165224ec465a440961d76b2f0369c386fe8292a256b38db47df492c552ea3b2.png" />
+<img alt="_images/7d503097d8cbad6c611330bbac5bfe469e27eb0e03c4ab23cb0ecd6eabe9a679.png" src="_images/7d503097d8cbad6c611330bbac5bfe469e27eb0e03c4ab23cb0ecd6eabe9a679.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Removed 11 outliers. 3330 samples remaining.
 </pre></div>
 </div>
@@ -1461,7 +1470,7 @@ Architecture: 64bit
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">DNA methylation-based diagnosis and prognosis of AML</p>
+        <p class="prev-next-title">The DNA methylome refines clinical diagnosis and prognosis of Acute Myeloid Leukemia</p>
       </div>
     </a>
     <a class="right-next"
@@ -1546,7 +1555,7 @@ Architecture: 64bit
   <div class="footer-item">
     
 <p class="component-author">
-By Marchi et. al, Lamba Lab @ University of Florida. Please do not share this notebook publicly.
+By Marchi et al., 2023. Lamba Lab @ University of Florida. Please do not share this notebook publicly.
 </p>
 
   </div>
