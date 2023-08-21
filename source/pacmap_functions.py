@@ -95,7 +95,7 @@ class BokehPlotter:
         self.df = df
         self.cols = cols
         self.custom_color_palette = custom_color_palette
-        self.title = title + ', n=' + str(self.df.shape[0])
+        self.title = title #+ ', n=' + str(self.df.shape[0])
         self.x_range = x_range or (-50, 50)
         self.y_range = y_range or (-50, 50)
         self.tabs = None
@@ -153,7 +153,7 @@ class BokehPlotter:
             p.child.legend.click_policy = 'hide'
         for i in range(len(self.tabs.tabs)):
             self.tabs.tabs[i].child.legend.title = self.tabs.tabs[i].title
-            self.tabs.tabs[i].child.output_backend = "svg"
+            self.tabs.tabs[i].child.output_backend = "webgl"
 
     def create_slider(self):
         self.slider = Slider(title="Adjust datapoint size", start=0, end=10, step=1, value=self.points[0][0][0].glyph.size)
