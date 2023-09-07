@@ -253,6 +253,129 @@ def draw_forest_plot(time, event, df, save_plot=False, trialname=None, scorename
 
     return (plt.show())
 
+def draw_forest_plot_noMRD(time, event, df, save_plot=False, trialname=None, scorename=None):
+    """
+    Generates a custom forest plot.
+
+    Parameters:
+    ----------
+    time: object
+        List of mean coeficients from CoxPH fit.
+        Note: this value has to be a pandas series.
+    event: object
+        Dataframe to add your results to.
+    df: object
+        A dataframe of variables/features that will be used to calculate the score.
+    save_plot: bool, default=False
+        Set to True if you wish to save the plot.It will be saved under "../Figures/ForestPlot/"
+    trialname: str
+        Name of your clinical trial or dataset.
+    scorename: str
+        Name of your model.
+
+    Returns:
+    --------
+        A magnificent forest plot.
+
+    """
+    import myforestplot as mfp
+    from tableone import TableOne
+    import statsmodels.formula.api as smf
+    import numpy as np
+
+    fp = df[[scorename+' Categorical',
+
+             'Risk Group',
+             'FLT3 ITD',
+             'Leucocyte counts (10⁹/L)',
+             'Age group (years)',
+             time, event]].rename(columns={scorename + ' Categorical': scorename})
+
+    event2 = event.replace('.', '_')
+    time2 = time.replace('.', '_')
+
+    if event[0] == 'o':
+        event3 = 'OS'
+    else:
+        event3 = 'EFS'
+
+    fp2 = fp.rename(columns={event: event2,
+                             time: time2,
+
+                             'FLT3 ITD': 'FLT3_ITD',
+                             'Risk Group': 'Risk_Group',
+                             'Leucocyte counts (10⁹/L)': 'WBC_count',
+                             'Age group (years)': 'Age_group'})
+
+    res = smf.phreg(formula=time2 + " ~ C("+scorename+",Treatment(reference='Low')) + C(Risk_Group,Treatment(reference='Low Risk')) + C(FLT3_ITD) + C(WBC_count) + C(Age_group)",
+                    data=fp2, status=event2).fit()
+
+    res2 = res.summary(xname=[scorename+'-High',
+
+                              'Risk Group-High Risk',
+                              'Risk Group-Standard Risk',
+                              'FLT3 ITD-Yes',
+                              'Leucocyte counts (10⁹/L)-≥30',
+                              'Age group (years)-≥10']).tables[1]
+
+    res3 = res2.set_index(res2.index.str.split(pat='-', expand=True))
+
+    mytable = TableOne(data=fp.drop(columns=[event, time]),
+                       pval=False, missing=True, overall=True,
+                       label_suffix=False, order={scorename: ['High'],
+
+                                                  'Risk Group': ['High Risk', 'Standard Risk'],
+                                                  'FLT3 ITD': ['Yes'],
+                                                  'Leucocyte counts (10⁹/L)': ['≥30'],
+                                                  'Age group (years)': ['≥10']}).tableone
+
+    mytable2 = mytable.join(res3)
+
+    mytable2["risk_pretty"] = mfp.add_pretty_risk_column(mytable2,
+                                                         risk="HR",
+                                                         lower='[0.025',
+                                                         upper='0.975]',
+                                                         fml=".2f"
+                                                         )
+    mytable3 = mytable2.reset_index(names=['category', 'item']).rename(columns={'HR': 'risk',
+                                                                                '[0.025': 0,
+                                                                                '0.975]': 1}).iloc[1:, :]
+
+    mytable3['P>|t|'] = round(mytable3['P>|t|'], 4).replace(
+        {np.nan: '', 0: '<0.0001'})
+
+    plt.rcParams["font.size"] = 8
+    fp = mfp.ForestPlot(df=mytable3,
+                        ratio=[3, 3, 2],
+                        fig_ax_index=[2],
+                        dpi=300,
+                        figsize=(9, 5),
+                        vertical_align=True)
+    fp.errorbar(index=2, errorbar_kwds=None)
+    fp.axd[2].set_xlim([1, 8.5])
+    fp.axd[2].set_xticks([0, 2, 4, 6, 8])
+    fp.axd[2].set_xticklabels(labels=[0, 2, 4, 6, 8], fontdict={'fontsize': 8})
+    fp.axd[2].set_xlabel("Hazard Ratio", fontsize=8)
+    fp.axd[2].axvline(x=1, ymin=0, ymax=1.0, color="black", alpha=0.5)
+
+    fp.axd[1].set_xlim([0.50, 1])
+    fp.embed_cate_strings(1, "category", 0.5, header=trialname + " " + event3,
+                          text_kwds=dict(fontweight="bold"),
+                          header_kwds=dict(fontweight="bold"),
+                          )
+    fp.embed_strings(1, "item", 0.55, header="", replace={"age": ""})
+    fp.embed_strings(1, "Overall", 0.86, header="n (%)")
+    fp.embed_strings(3, "P>|t|", 0, header="P>|t|")
+    fp.embed_strings(3, "risk_pretty", 0.4, header="Hazard Ratio (95% CI)")
+    fp.horizontal_variable_separators()
+    fp.draw_outer_marker(log_scale=False, scale=0.008, index=2)
+
+    # Save plot figure
+    if save_plot == True:
+        plt.savefig('../Figures/Forest_Plots/' + scorename + '_' + trialname + '_' + str(len(df)) + '_' + event3 + '.png',
+                    bbox_inches='tight', dpi=300)
+
+    return (plt.show())
 
 def draw_boxplot(df, x, y, order, trialname, hue=None, save_plot=False, figsize=None):
     """
