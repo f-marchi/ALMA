@@ -613,7 +613,9 @@ document.write(`
 
 <span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">scorename</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
                         <span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span>
+                        <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                         <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;StJude trials&#39;</span><span class="p">)</span>
 </pre></div>
@@ -621,7 +623,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/0dece9b512d6e88240f380e78435bedc35c8c20d0980b7ceb0c0181c74a5e14b.png" src="_images/0dece9b512d6e88240f380e78435bedc35c8c20d0980b7ceb0c0181c74a5e14b.png" />
+<img alt="_images/c25ef5ef7acc07a4fa2050348e43d122dc622f402e63440ba455f633ff9ed708.png" src="_images/c25ef5ef7acc07a4fa2050348e43d122dc622f402e63440ba455f633ff9ed708.png" />
 </div>
 </div>
 </section>
@@ -637,18 +639,21 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">scorename</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
                         <span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">[</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;High Risk&#39;</span><span class="p">],</span>
                         <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                         <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;StJude trials, High Risk Group&#39;</span><span class="p">)</span>
 
 <span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">scorename</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
                         <span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">[</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Low Risk&#39;</span><span class="p">],</span>
                         <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                         <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;StJude trials, Low Risk Group&#39;</span><span class="p">)</span>
 
 <span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">scorename</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
                         <span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">[</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Standard Risk&#39;</span><span class="p">],</span>
                         <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                         <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;StJude trials, Standard Risk Group&#39;</span><span class="p">)</span>
 </pre></div>
@@ -656,9 +661,9 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/afd5af7653950e31dc1ac3bd878bffeaed0a589726212bf0dc2748d8a136a78c.png" src="_images/afd5af7653950e31dc1ac3bd878bffeaed0a589726212bf0dc2748d8a136a78c.png" />
-<img alt="_images/811b389990f8c6eb40a92a20387809990fcaa0bd1b78e2e3cebf9095762e1a70.png" src="_images/811b389990f8c6eb40a92a20387809990fcaa0bd1b78e2e3cebf9095762e1a70.png" />
-<img alt="_images/320e1440ccac9d1df99aeefe1c8ba974a19172b80a2680c442127dcbcfa8458b.png" src="_images/320e1440ccac9d1df99aeefe1c8ba974a19172b80a2680c442127dcbcfa8458b.png" />
+<img alt="_images/4f5f76cfa0b6a3e12bcf6a76bfbe8d87a67f7e52f469ecdf35401559ff2bc848.png" src="_images/4f5f76cfa0b6a3e12bcf6a76bfbe8d87a67f7e52f469ecdf35401559ff2bc848.png" />
+<img alt="_images/ecfeaccd93ec715ecbe260b8de325427ca1f8109111b1e7994167115f3cca7ad.png" src="_images/ecfeaccd93ec715ecbe260b8de325427ca1f8109111b1e7994167115f3cca7ad.png" />
+<img alt="_images/5fde77ac0ce9dfdbd110f29b2b2ff3ba46f0a34728368254040c00ddf37eb870.png" src="_images/5fde77ac0ce9dfdbd110f29b2b2ff3ba46f0a34728368254040c00ddf37eb870.png" />
 </div>
 </div>
 </section>

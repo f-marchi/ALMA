@@ -79,15 +79,18 @@ def draw_kaplan_meier(scorename, df, save_plot=False,
             HZ = cph.fit(X_CPH, t, event_col=e)
             hz = HZ.hazard_ratios_[0]
             p = HZ.summary['p'][0]
+            ci_lower = HZ.summary['exp(coef) lower 95%'][0]
+            ci_upper = HZ.summary['exp(coef) upper 95%'][0]
 
-            # Annotate HZ and p
-            i.annotate(f'Hazard Ratio: {hz:.4f}\np-value: {p:.4f}',
-                    xy=(9.75, 0.085), xycoords='data',
-                    ha='right', va='center', fontsize=11,
-                    bbox={'boxstyle': 'round', 'facecolor': 'none',
-                            'edgecolor': 'lightgray'})
+            # Annotate HZ, CI, and p
+            i.annotate(f'HR: {hz:.4f} (95% CI: {ci_lower:.2f}, {ci_upper:.2f})\n p-value: {p:.4f}',
+               xy=(9.75, 0.085), xycoords='data',
+               ha='right', va='center', fontsize=11,
+               bbox={'boxstyle': 'round', 'facecolor': 'none',
+                     'edgecolor': 'lightgray'})
         except:
             pass
+
 
         # Add risk counts below the graph
         if add_risk_counts == True:
@@ -98,7 +101,7 @@ def draw_kaplan_meier(scorename, df, save_plot=False,
             surv1 = kmf1.survival_function_.join(kmf1.confidence_interval_)
             surv2 = kmf2.survival_function_.join(kmf2.confidence_interval_)
             surv3 = surv1.join(surv2, how='outer')
-            surv3.to_csv('../Figures/Kaplan_Meiers/KM_OS_SurvivalTable_' +
+            surv3.to_csv('../Figures/Kaplan_Meiers/KM_' + t + '_SurvivalTable_' +
                          scorename + '_' + trialname + '_' + str(len(df)) + '.csv')
 
         i.set_ylim(0, 1)
