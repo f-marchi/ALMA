@@ -624,7 +624,7 @@ document.write(`
 
 <span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">scorename</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
                         <span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span>
-                        <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -650,21 +650,21 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">scorename</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
                         <span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">[</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;High Risk&#39;</span><span class="p">],</span>
                         <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                        <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;StJude trials, High Risk Group&#39;</span><span class="p">)</span>
 
 <span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">scorename</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
                         <span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">[</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Low Risk&#39;</span><span class="p">],</span>
                         <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                        <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;StJude trials, Low Risk Group&#39;</span><span class="p">)</span>
 
 <span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">scorename</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
                         <span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">[</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Standard Risk&#39;</span><span class="p">],</span>
                         <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                        <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;StJude trials, Standard Risk Group&#39;</span><span class="p">)</span>
 </pre></div>
