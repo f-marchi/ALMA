@@ -1,5 +1,5 @@
 format: jb-book
-root: index.md
+root: index.ipynb
 parts:
   # - caption: Specific Aims
   #   chapters:
