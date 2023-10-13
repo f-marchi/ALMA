@@ -1,9 +1,7 @@
-# The DNA methylome refines clinical diagnosis and prognosis of Acute Myeloid Leukemia 
+# The DNA methylome refines clinical diagnosis and prognosis of Acute Myeloid Leukemia
 
-Documentation/github-pages: [https://franciscomarchi.github.io/MethylScore/](https://franciscomarchi.github.io/MethylScore/)
+## This is a pre-publication repository. Please do not share or distribute without permission.
 
-Citation: TBD
+## Check interactive notebook here:
 
-## Abstract
-
-TBD
+Documentation/github-pages: [https://lambalabuf.github.io/MethylScore/](https://lambalabuf.github.io/MethylScore/)
