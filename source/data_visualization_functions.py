@@ -253,6 +253,7 @@ def draw_forest_plot(time, event, df, save_plot=False, trialname=None, scorename
 
     return (plt.show())
 
+
 def draw_forest_plot_noMRD(time, event, df, save_plot=False, trialname=None, scorename=None):
     """
     Generates a custom forest plot.
@@ -376,6 +377,7 @@ def draw_forest_plot_noMRD(time, event, df, save_plot=False, trialname=None, sco
                     bbox_inches='tight', dpi=300)
 
     return (plt.show())
+
 
 def draw_boxplot(df, x, y, order, trialname, hue=None, save_plot=False, figsize=None):
     """
@@ -1113,6 +1115,7 @@ def draw_sankey_plot(df, col1, col2, colors, title, fontsize=10, fig_size=(10,10
     plt.rcParams.update({
         'font.size': fontsize,
     })
+
 
 def get_custom_color_palette():
     list = [
