@@ -327,7 +327,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#samples-for-which-no-clinical-dx-annotation-was-available">Samples for which no clinical Dx annotation was available</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-do-these-unknown-samples-come-from">Where do these unknown samples come from?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-do-these-unknown-samples-come-from">Where do these unknown samples come from?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unknown-samples-by-clinical-trial-in-discovery-cohort">Unknown samples by clinical trial in discovery cohort</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unknown-samples-from-cog-trials-only">Unknown samples from COG trials only</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methylscoreaml-dx-in-st-jude-aml02-by-cytogenetic-groups">MethylScoreAML Dx in St. Jude AML02 by Cytogenetic Groups</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#per-cytogenetic-group">Per cytogenetic group</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-trial-population">Overall trial population</a></li>
@@ -369,25 +373,30 @@ document.write(`
 <li><p><a class="reference internal" href="#samples-for-which-no-clinical-dx-annotation-was-available" id="id7">Samples for which no clinical Dx annotation was available</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#where-do-these-unknown-samples-come-from" id="id8">Where do these unknown samples come from?</a></p></li>
-<li><p><a class="reference internal" href="#methylscoreaml-dx-in-st-jude-aml02-by-cytogenetic-groups" id="id9">MethylScoreAML Dx in St. Jude AML02 by Cytogenetic Groups</a></p>
+<li><p><a class="reference internal" href="#where-do-these-unknown-samples-come-from" id="id8">Where do these unknown samples come from?</a></p>
 <ul>
-<li><p><a class="reference internal" href="#per-cytogenetic-group" id="id10">Per cytogenetic group</a></p></li>
-<li><p><a class="reference internal" href="#overall-trial-population" id="id11">Overall trial population</a></p></li>
+<li><p><a class="reference internal" href="#unknown-samples-by-clinical-trial-in-discovery-cohort" id="id9">Unknown samples by clinical trial in discovery cohort</a></p></li>
+<li><p><a class="reference internal" href="#unknown-samples-from-cog-trials-only" id="id10">Unknown samples from COG trials only</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#methylscoreaml-dx-in-validation-cohort-by-risk-groups" id="id12">MethylScoreAML Dx in validation cohort by risk groups</a></p>
+<li><p><a class="reference internal" href="#methylscoreaml-dx-in-st-jude-aml02-by-cytogenetic-groups" id="id11">MethylScoreAML Dx in St. Jude AML02 by Cytogenetic Groups</a></p>
 <ul>
-<li><p><a class="reference internal" href="#per-category" id="id13">Per category</a></p></li>
-<li><p><a class="reference internal" href="#all-categories" id="id14">All categories</a></p></li>
+<li><p><a class="reference internal" href="#per-cytogenetic-group" id="id12">Per cytogenetic group</a></p></li>
+<li><p><a class="reference internal" href="#overall-trial-population" id="id13">Overall trial population</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#methylscoreaml-dx-in-validation-cohort-by-fab" id="id15">MethylScoreAML Dx in validation cohort by FAB</a></p>
+<li><p><a class="reference internal" href="#methylscoreaml-dx-in-validation-cohort-by-risk-groups" id="id14">MethylScoreAML Dx in validation cohort by risk groups</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id1" id="id16">All categories</a></p></li>
+<li><p><a class="reference internal" href="#per-category" id="id15">Per category</a></p></li>
+<li><p><a class="reference internal" href="#all-categories" id="id16">All categories</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#watermark" id="id17">Watermark</a></p></li>
+<li><p><a class="reference internal" href="#methylscoreaml-dx-in-validation-cohort-by-fab" id="id17">MethylScoreAML Dx in validation cohort by FAB</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id1" id="id18">All categories</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#watermark" id="id19">Watermark</a></p></li>
 </ul>
 </li>
 </ul>
@@ -576,9 +585,60 @@ document.write(`
 <img alt="_images/4d4152d57568467576b741b86f7e3889ff6cd49c1bb828c44831322f32529ee9.png" src="_images/4d4152d57568467576b741b86f7e3889ff6cd49c1bb828c44831322f32529ee9.png" />
 </div>
 </div>
+<section id="unknown-samples-by-clinical-trial-in-discovery-cohort">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Unknown samples by clinical trial in discovery cohort</a><a class="headerlink" href="#unknown-samples-by-clinical-trial-in-discovery-cohort" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select only rows in which AML diagnosis is unknown</span>
+<span class="n">aml_only_trials</span><span class="p">[</span><span class="n">aml_only_trials</span><span class="p">[</span><span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()][</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Clinical Trial
+TCGA AML               140
+AAML0531               132
+Beat AML Consortium    132
+AAML1031                94
+Japanese AML05          55
+AAML03P1                12
+CCG2961                 10
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="unknown-samples-from-cog-trials-only">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Unknown samples from COG trials only</a><a class="headerlink" href="#unknown-samples-from-cog-trials-only" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aml_only_trials_COG</span> <span class="o">=</span> <span class="n">aml_only_trials</span><span class="p">[</span><span class="n">aml_only_trials</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;AAML1031&#39;</span><span class="p">,</span> <span class="s1">&#39;AAML0531&#39;</span><span class="p">,</span> <span class="s1">&#39;AAML03P1&#39;</span><span class="p">,</span> <span class="s1">&#39;CCG2961&#39;</span><span class="p">])]</span>
+<span class="n">draw_sankey_plot</span><span class="p">(</span><span class="n">aml_only_trials_COG</span><span class="p">[</span><span class="n">aml_only_trials</span><span class="p">[</span><span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()],</span> <span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Primary Cytogenetic Code&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span>
+                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39;ELN AML 2022 to Cytogenetics in Discovery Cohort&#39;</span><span class="p">,</span> <span class="n">fig_size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/00f40a885caf6893e1dcb2a521fa70159a7595dc7aa5f944b41206458587cdba.png" src="_images/00f40a885caf6893e1dcb2a521fa70159a7595dc7aa5f944b41206458587cdba.png" />
+</div>
+</div>
+</section>
 </section>
 <section id="methylscoreaml-dx-in-st-jude-aml02-by-cytogenetic-groups">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">MethylScoreAML Dx in St. Jude AML02 by Cytogenetic Groups</a><a class="headerlink" href="#methylscoreaml-dx-in-st-jude-aml02-by-cytogenetic-groups" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">MethylScoreAML Dx in St. Jude AML02 by Cytogenetic Groups</a><a class="headerlink" href="#methylscoreaml-dx-in-st-jude-aml02-by-cytogenetic-groups" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -606,7 +666,7 @@ Name: count, dtype: int64
 </div>
 </div>
 <section id="per-cytogenetic-group">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink">Per cytogenetic group</a><a class="headerlink" href="#per-cytogenetic-group" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Per cytogenetic group</a><a class="headerlink" href="#per-cytogenetic-group" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -645,7 +705,7 @@ Name: count, dtype: int64
 </div>
 </section>
 <section id="overall-trial-population">
-<h3><a class="toc-backref" href="#id11" role="doc-backlink">Overall trial population</a><a class="headerlink" href="#overall-trial-population" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">Overall trial population</a><a class="headerlink" href="#overall-trial-population" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -671,7 +731,7 @@ Name: count, dtype: int64
 </section>
 </section>
 <section id="methylscoreaml-dx-in-validation-cohort-by-risk-groups">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">MethylScoreAML Dx in validation cohort by risk groups</a><a class="headerlink" href="#methylscoreaml-dx-in-validation-cohort-by-risk-groups" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">MethylScoreAML Dx in validation cohort by risk groups</a><a class="headerlink" href="#methylscoreaml-dx-in-validation-cohort-by-risk-groups" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -695,7 +755,7 @@ Name: count, dtype: int64
 </div>
 </div>
 <section id="per-category">
-<h3><a class="toc-backref" href="#id13" role="doc-backlink">Per category</a><a class="headerlink" href="#per-category" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Per category</a><a class="headerlink" href="#per-category" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -737,7 +797,7 @@ Name: count, dtype: int64
 </div>
 </section>
 <section id="all-categories">
-<h3><a class="toc-backref" href="#id14" role="doc-backlink">All categories</a><a class="headerlink" href="#all-categories" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">All categories</a><a class="headerlink" href="#all-categories" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -762,7 +822,7 @@ Name: count, dtype: int64
 </section>
 </section>
 <section id="methylscoreaml-dx-in-validation-cohort-by-fab">
-<h2><a class="toc-backref" href="#id15" role="doc-backlink">MethylScoreAML Dx in validation cohort by FAB</a><a class="headerlink" href="#methylscoreaml-dx-in-validation-cohort-by-fab" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">MethylScoreAML Dx in validation cohort by FAB</a><a class="headerlink" href="#methylscoreaml-dx-in-validation-cohort-by-fab" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -790,7 +850,7 @@ Name: count, dtype: int64
 </div>
 </div>
 <section id="id1">
-<h3><a class="toc-backref" href="#id16" role="doc-backlink">All categories</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">All categories</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -815,7 +875,7 @@ Name: count, dtype: int64
 </section>
 </section>
 <section id="watermark">
-<h2><a class="toc-backref" href="#id17" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Author: Francisco_Marchi@Lamba_Lab_UF
@@ -916,7 +976,11 @@ Architecture: 64bit
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#samples-for-which-no-clinical-dx-annotation-was-available">Samples for which no clinical Dx annotation was available</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-do-these-unknown-samples-come-from">Where do these unknown samples come from?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-do-these-unknown-samples-come-from">Where do these unknown samples come from?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unknown-samples-by-clinical-trial-in-discovery-cohort">Unknown samples by clinical trial in discovery cohort</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unknown-samples-from-cog-trials-only">Unknown samples from COG trials only</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methylscoreaml-dx-in-st-jude-aml02-by-cytogenetic-groups">MethylScoreAML Dx in St. Jude AML02 by Cytogenetic Groups</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#per-cytogenetic-group">Per cytogenetic group</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-trial-population">Overall trial population</a></li>
