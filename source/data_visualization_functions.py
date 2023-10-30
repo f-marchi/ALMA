@@ -1083,6 +1083,7 @@ def draw_sankey_plot(df, col1, col2, colors, title, fontsize=10, fig_size=(10,10
     fig_size (tuple): Figure size. Default is (10,10).
     column_title (bool): Whether to add column titles to the plot. Default is True.
     column_title_pos (tuple): Relative positions of the column titles. Default is (0.1,0.9).
+
     """
 
     # Create color dictionary for unique values in the specified columns
