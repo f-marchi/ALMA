@@ -388,6 +388,7 @@ document.write(`
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">input_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Intermediate_Files/&#39;</span>
 <span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/&#39;</span>
@@ -588,17 +589,37 @@ Overall accuracy score with best estimator: 0.936
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select necessary columns and set the index</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="c1">#  Select necessary columns and set the index</span>
 <span class="n">df_selected</span> <span class="o">=</span> <span class="n">df_original</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)[[</span><span class="s1">&#39;PaCMAP 1&#39;</span><span class="p">,</span> <span class="s1">&#39;PaCMAP 2&#39;</span><span class="p">,</span> <span class="s1">&#39;PaCMAP 3&#39;</span><span class="p">,</span> <span class="s1">&#39;PaCMAP 4&#39;</span><span class="p">,</span> <span class="s1">&#39;PaCMAP 5&#39;</span><span class="p">]]</span>
 
 <span class="c1"># Predict using the selected columns</span>
 <span class="n">predictions</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_selected</span><span class="p">)</span>
 
+<span class="c1"># Predict probabilities using the selected columns</span>
+<span class="n">probabilities</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">df_selected</span><span class="p">)</span>
+
 <span class="c1"># Convert predictions to a Series with the same index as df_selected</span>
 <span class="n">predictions_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df_selected</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;MethylScoreAML_Dx_predictions&#39;</span><span class="p">)</span>
 
+<span class="c1"># Convert probabilities to a DataFrame with the same index as df_selected and the same columns as the classes</span>
+<span class="n">probabilities_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">probabilities</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df_selected</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">best_model</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Add &quot; - predict_proba&quot; to the column names</span>
+<span class="n">probabilities_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">probabilities_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">+</span> <span class="s1">&#39; - predict_proba&#39;</span>
+
+<span class="c1"># Create a new column named &quot;Confident&quot; and set it to True if the max probability is &gt;= 0.8</span>
+<span class="n">confidence_threshold</span> <span class="o">=</span> <span class="mf">0.8</span>
+<span class="n">probabilities_df</span><span class="p">[</span><span class="s1">&#39;Confidence &gt;=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">confidence_threshold</span><span class="p">)]</span> <span class="o">=</span> <span class="n">probabilities_df</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">confidence_threshold</span>
+
 <span class="c1"># Join predictions with the original DataFrame (already indexed)</span>
-<span class="n">df_joined</span> <span class="o">=</span> <span class="n">df_original</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">predictions_series</span><span class="p">)</span>
+<span class="n">df_joined</span> <span class="o">=</span> <span class="n">df_original</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">predictions_series</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">probabilities_df</span><span class="p">)</span>
+
+<span class="c1"># Select AML-only trials only</span>
+<span class="n">df_joined</span> <span class="o">=</span> <span class="n">df_joined</span><span class="p">[</span><span class="o">~</span><span class="n">df_joined</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;NOPHO ALL92-2000&#39;</span><span class="p">,</span> <span class="s1">&#39;French GRAALL 2003–2005&#39;</span><span class="p">,</span><span class="s1">&#39;TARGET ALL&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])]</span>
+
+<span class="c1"># For &#39;ELN AML 2022 Diagnosis&#39;, replace na with &quot;AML, NOS (not otherwise specified)&quot;</span>
+<span class="n">df_joined</span><span class="p">[</span><span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_joined</span><span class="p">[</span><span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;AML, NOS (not otherwise specified)&#39;</span><span class="p">)</span>
 
 <span class="c1"># Write the final DataFrame to a CSV file</span>
 <span class="n">df_joined</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;classifier_output/pacmap_5d_output_acute_leukemia_with_predictions.csv&#39;</span><span class="p">)</span>
