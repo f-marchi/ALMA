@@ -109,10 +109,10 @@ class BokehPlotter:
 
     def create_figure(self):
         p = figure(title=self.title, 
-                width=self.width, height=self.height, sizing_mode='fixed',
+                width=self.width, height=self.height, sizing_mode="inherit",
                 x_axis_label='Longitude (PaCMAP 1)', y_axis_label='Latitude (PaCMAP 2)',
                 x_range=self.x_range, y_range=self.y_range,
-                tools="pan,wheel_zoom,reset,save", active_drag="pan",
+                tools="pan,wheel_zoom,reset,save", active_drag=None,
                 active_scroll="auto",
                 tooltips=[("Dx", "@{"+self.tooltip_dx_cols+"}")])
         curdoc().theme = BokehPlotter.white_theme
