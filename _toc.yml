@@ -30,13 +30,17 @@ parts:
       - file: 5_Multiclass_AMLsubtype_Classifier_v2.ipynb
       - file: 6_Sankey_Plots_v1.ipynb
 
+  - caption: Nanopore Sequencing Testing
+    chapters:
+      - file: 8_Nanopore_Sample.ipynb
+
   - caption: Other Benchmarks and Analyses
   
     chapters:
       - file: 5_Multiclass_Julia_Gen_v1.ipynb
       - file: 5_PyTorch_Multiclass_Classifier_v3.ipynb
       - file: 5_Multiclass_PedsPacmap_Classifier_v2.ipynb
-      - file: 4.2_CCA_v1.ipynb
+      # - file: 4.2_CCA_v1.ipynb
 
   #     # - caption: AML Diagnostic Map
 
