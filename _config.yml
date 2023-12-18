@@ -3,7 +3,7 @@ author: Marchi et al., 2023. Lamba Lab @ University of Florida. Please do not sh
 copyright: "2023"  # Copyright year to be placed in the footer
 # logo: "_logos/dna1.gif"
 exclude_patterns: [.venv,.venv_py37,.venv_py38, .venv_data_vizualization, .venv_pacmap, .venv_sklearn,
-                  Code_past, Benchmarking]
+                  Code_past, Benchmarking, .past_code_files]
 only_build_toc_files: true
 
 # Short description about the book
@@ -13,7 +13,7 @@ description: >-
 execute:
   execute_notebooks: "off"
   exclude_patterns: [.venv,.venv_py38, .venv_data_vizualization, .venv_pacmap, .venv_sklearn,
-                    Code_past, Benchmarking]
+                    Code_past, Benchmarking, .past_code_files]
 # HTML-specific settings
 html:
   home_page_in_navbar: false
