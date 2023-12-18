@@ -207,7 +207,7 @@ def generate_coxph_score(coef_mean, x, df, score_name, train_test='train', rpart
     else:
         i = train_test
 
-    print(f"Continuous score cut at the value of {round(i,4)} for {str(list(df['Primary Cytogenetic Code'].unique()))}")
+    print(f"Continuous score cut at the value of {round(i,4)}")
 
     # Binarize score
     df[score_name + ' Categorical'] = pd.cut(df[score_name],
