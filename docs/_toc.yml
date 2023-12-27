@@ -1,5 +1,5 @@
 format: jb-book
-root: index.ipynb
+root: ../index.ipynb
 parts:
   # - caption: Specific Aims
   #   chapters:
@@ -13,33 +13,33 @@ parts:
   - caption: Data Download and Processing
 
     chapters:
-      - file: 1_Data_Download_Process.ipynb
-      - file: 1_Test_Data_Process_v1.ipynb
+      - file: ../data-processing/discovery-dataset.ipynb
+      - file: ../data-processing/test-dataset.ipynb
 
-  - caption: AML Prognostic Model
+  # - caption: AML Prognostic Model
 
-    chapters:
-      - file: 2_Univariate_CoxPH-EWAS_v3.ipynb
-      - file: 3.1_MethylScoreAML_Px_Development_v5.ipynb
-      - file: 3.2_MethylScoreAML_Px_Validation_Peds_v2.ipynb
+  #   chapters:
+  #     - file: 2_Univariate_CoxPH-EWAS_v3.ipynb
+  #     - file: 3.1_MethylScoreAML_Px_Development_v5.ipynb
+  #     - file: 3.2_MethylScoreAML_Px_Validation_Peds_v2.ipynb
 
-  - caption: AML Diagnostic Model
+  # - caption: AML Diagnostic Model
   
-    chapters:
-      - file: 4_Methylome_Atlas_PaCMAP_v4.ipynb
-      - file: 5_Multiclass_AMLsubtype_Classifier_v2.ipynb
-      - file: 6_Sankey_Plots_v1.ipynb
+  #   chapters:
+  #     - file: 4_Methylome_Atlas_PaCMAP_v4.ipynb
+  #     - file: 5_Multiclass_AMLsubtype_Classifier_v2.ipynb
+  #     - file: 6_Sankey_Plots_v1.ipynb
 
-  - caption: Nanopore Sequencing Testing
-    chapters:
-      - file: 8_Nanopore_Sample.ipynb
+  # - caption: Nanopore Sequencing Testing
+  #   chapters:
+  #     - file: 8_Nanopore_Sample.ipynb
 
-  - caption: Other Benchmarks and Analyses
+  # - caption: Other Benchmarks and Analyses
   
-    chapters:
-      - file: 5_Multiclass_Julia_Gen_v1.ipynb
-      - file: 5_PyTorch_Multiclass_Classifier_v3.ipynb
-      - file: 5_Multiclass_PedsPacmap_Classifier_v2.ipynb
+  #   chapters:
+  #     - file: 5_Multiclass_Julia_Gen_v1.ipynb
+  #     - file: 5_PyTorch_Multiclass_Classifier_v3.ipynb
+  #     - file: 5_Multiclass_PedsPacmap_Classifier_v2.ipynb
       # - file: 4.2_CCA_v1.ipynb
 
   #     # - caption: AML Diagnostic Map
