@@ -1,5 +1,3 @@
-# The DNA methylome refines clinical diagnosis and prognosis of Acute Myeloid Leukemia
+# AML Atlas Study - Notebooks
 
-## This is a pre-publication repository. Please do not share or distribute without permission.
-
-## Check interactive notebook here:
+This repository contains datasets, models, and tests for the AML atlas study.
