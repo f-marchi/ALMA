@@ -11,6 +11,7 @@ from bokeh.transform import factor_cmap
 from bokeh.models import Div, Slider, TabPanel, Tabs, Legend, ColumnDataSource
 from bokeh.layouts import layout
 from bokeh.io import curdoc, output_notebook
+from bokeh.embed import json_item
 
 class DataProcessor:
     def __init__(self, train_clinical_data, df_train, clinical_trials, sample_types,
@@ -171,6 +172,9 @@ class BokehPlotter:
         self.create_slider()
         self.create_layout()
         show(self.layout)
+
+    def create_json_item(self):
+        return json_item(self.layout)
 
 def get_custom_color_palette():
     list = [

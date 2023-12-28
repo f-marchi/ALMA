@@ -10,7 +10,9 @@ __author__ = 'Francisco Marchi, Lamba Lab, University of Florida'
 __email__ = 'flourenco@ufl.edu'
 
 
-clinical_data_path='../Data/Raw_Data/Clinical_Data/'
+clinical_data_path ='../../Data/Clinical_Data/'
+input_path_450k = '/mnt/d/MethylScore/Raw_Data/Methyl_Array_450k/'
+input_path_EPIC = '/mnt/d/MethylScore/Raw_Data/Methyl_Array_EPIC/'
 
 ##############################################################################################################
 # Merge and index clinical data files
@@ -20,11 +22,11 @@ clinical_data_path='../Data/Raw_Data/Clinical_Data/'
 def merge_index_1031():
 
     filepath1 = '/TARGET/TARGET-AML/TARGET_AML_ClinicalData_AML1031_20221108.xlsx'
-    filepath2 = '../Data/Raw_Data/Methyl_Array_EPIC/GSE190931/sample_sheet_meta_data.pkl'
+    filepath2 = '../../Data/Raw_Data/Methyl_Array_EPIC/GSE190931/sample_sheet_meta_data.pkl'
 
     # Load clinical data files
     labels_1031 = pd.read_excel(clinical_data_path + filepath1)
-    meta        = pd.read_pickle(filepath2)
+    meta        = pd.read_pickle(clinical_data_path +filepath2)
 
     # Extract last term of `TARGET USI` by splitting on `-`
     labels_1031['Patient_ID'] = labels_1031['TARGET USI'].str.split('-').str[2]
@@ -50,7 +52,7 @@ def merge_index_1031():
 
 # COG TARGET-AML
 def merge_index_0531():
-    dir      = '../Data/Raw_Data/Clinical_Data/TARGET/TARGET-AML/'
+    dir      =  clinical_data_path + '/TARGET/TARGET-AML/'
     filepath1 = 'TARGET_AML_ClinicalData_Discovery_20221108.xlsx'
     filepath2 = 'TARGET_AML_ClinicalData_Validation_20221108.xlsx'
     filepath3 = 'TARGET_AML_ClinicalData_LowDepthRNAseq_20221108.xlsx'
