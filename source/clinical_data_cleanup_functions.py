@@ -614,7 +614,7 @@ def clean_aml08(df):
     df['Sample Type'] = 'Diagnosis'
     df['WHO ALL 2022 Diagnosis'] = np.nan
 
-    # ELN 2022 and WHO 2022 Diagnostic Annotation
+    # ELN 2022 Diagnostic Annotation
 
     def classify_annotated_diagnosis_aml08(gene_fusion):
         mapping = {
