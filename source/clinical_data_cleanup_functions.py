@@ -21,12 +21,12 @@ input_path_EPIC = '/mnt/d/MethylScore/Raw_Data/Methyl_Array_EPIC/'
 # COG AAML1031
 def merge_index_1031():
 
-    filepath1 = '/TARGET/TARGET-AML/TARGET_AML_ClinicalData_AML1031_20221108.xlsx'
-    filepath2 = '../../Data/Raw_Data/Methyl_Array_EPIC/GSE190931/sample_sheet_meta_data.pkl'
+    filepath1 = clinical_data_path + '/TARGET/TARGET-AML/TARGET_AML_ClinicalData_AML1031_20221108.xlsx'
+    filepath2 = input_path_EPIC + '/GSE190931/sample_sheet_meta_data.pkl'
 
     # Load clinical data files
-    labels_1031 = pd.read_excel(clinical_data_path + filepath1)
-    meta        = pd.read_pickle(clinical_data_path +filepath2)
+    labels_1031 = pd.read_excel(filepath1)
+    meta        = pd.read_pickle(filepath2)
 
     # Extract last term of `TARGET USI` by splitting on `-`
     labels_1031['Patient_ID'] = labels_1031['TARGET USI'].str.split('-').str[2]
@@ -52,21 +52,22 @@ def merge_index_1031():
 
 # COG TARGET-AML
 def merge_index_0531():
+
     dir      =  clinical_data_path + '/TARGET/TARGET-AML/'
-    filepath1 = 'TARGET_AML_ClinicalData_Discovery_20221108.xlsx'
-    filepath2 = 'TARGET_AML_ClinicalData_Validation_20221108.xlsx'
-    filepath3 = 'TARGET_AML_ClinicalData_LowDepthRNAseq_20221108.xlsx'
-    filepath4 = '../Data/Raw_Data/Methyl_Array_EPIC/GSE124413/sample_sheet_meta_data.pkl'
-    filepath5 = '../Data/Raw_Data/Methyl_Array_EPIC/GSE124413/GSE124413_series_matrix.csv'
-    filepath6 = 'gdc_sample_sheet.2023-05-13.tsv'
+    filepath1 = dir + 'TARGET_AML_ClinicalData_Discovery_20221108.xlsx'
+    filepath2 = dir + 'TARGET_AML_ClinicalData_Validation_20221108.xlsx'
+    filepath3 = dir + 'TARGET_AML_ClinicalData_LowDepthRNAseq_20221108.xlsx'
+    filepath4 = input_path_EPIC + '/GSE124413/sample_sheet_meta_data.pkl'
+    filepath5 = input_path_EPIC + '/GSE124413/GSE124413_series_matrix.csv'
+    filepath6 = dir + 'gdc_sample_sheet.2023-05-13.tsv'
 
     # Load all clinical data files for 0531
-    labels_0531_1 = pd.read_excel (dir + filepath1, index_col=0)
-    labels_0531_2 = pd.read_excel (dir + filepath2, index_col=0)
-    labels_0531_3 = pd.read_excel (dir + filepath3, index_col=0)
-    labels_gdc    = pd.read_csv   (dir + filepath6, sep='\t')
+    labels_0531_1 = pd.read_excel (filepath1, index_col=0)
+    labels_0531_2 = pd.read_excel (filepath2, index_col=0)
+    labels_0531_3 = pd.read_excel (filepath3, index_col=0)
+    labels_gdc    = pd.read_csv   (filepath6, sep='\t')
     meta          = pd.read_pickle(filepath4)
-    meta_matrix   = pd.read_csv(filepath5)
+    meta_matrix   = pd.read_csv   (filepath5)
 
     # Concatenate the two dataframes
     labels_0531 = pd.concat([labels_0531_1, labels_0531_2], axis=0, join='outer').reset_index()
@@ -190,69 +191,70 @@ def merge_index_0531():
 
 # AML05
 def merge_index_aml05():
-    df = pd.read_pickle(
-    clinical_data_path + '/Japanese_AML05/AML05_sample_sheet_meta_data.pkl'
-        ).iloc[:,:-1].set_index('Sample_ID')
+
+    filepath1 = clinical_data_path + 'Japanese_AML05/AML05_sample_sheet_meta_data.pkl'
+
+    df = pd.read_pickle(filepath1).iloc[:,:-1].set_index('Sample_ID')
     return (df)
 
 # AML02
 def merge_index_aml02():
 
-        labels5_1 = pd.read_excel(clinical_data_path + '/StJude_Trials/JLamba-AML02-data-2019-02-12_JKL.Francisco.xlsx',
-                              index_col=94).drop(columns=['DONOTUSE: ACCESSION_NBR'])  # main clinical data file
-        labels5_2 = pd.read_excel(clinical_data_path + '/StJude_Trials/AML02_Clinical_Data_Mastersheet.xlsx',
-                              index_col=0)  # only used to retrieve pLSC6 values
-        labels5_3 = pd.read_excel(clinical_data_path + '/StJude_Trials/AML02methylation_Lamba_July25.2014Summary_FM_Cleaned.xlsx',
-                              index_col=1)  # used to merged clinical data with methyl
-        
-        # Join contents of two columns into one
-        labels5_3['Sample'] = labels5_3['Sentrix Barcode'].astype(
-            str) + '_' + labels5_3['Sample Section'].astype(str)
-        labels5_4 = labels5_3[labels5_3['type'] ==
-                              'AML02'].reset_index()
-        
-        # Replace - with _ in Sample ID
-        labels5_4['Sample ID'] = labels5_4['Sample ID'].str.replace(
-            '-', '_')
-        
-        # Set index to Sample ID
-        labels5_4 = labels5_4.set_index('Sample ID')
+    filepath1 = clinical_data_path + '/StJude_Trials/JLamba-AML02-data-2019-02-12_JKL.Francisco.xlsx'
+    filepath2 = clinical_data_path + '/StJude_Trials/AML02_Clinical_Data_Mastersheet.xlsx'
+    filepath3 = clinical_data_path + '/StJude_Trials/AML02methylation_Lamba_July25.2014Summary_FM_Cleaned.xlsx'
 
-        # Combine all clinical data files together
-        labels5_5 = labels5_1.join(labels5_2[['pLSC6_gb', 'pLSC6_Score', 'DNMT3B']],
-                                   how='left', on='U133A.Dx.ID').join(labels5_4['Sample'],
-                                                                      how='inner', on='JL.id.x').reset_index(
-        ).set_index('Sample')
 
-        # Remove samples that Dr. Lamba requested to be removed
-        labels5_6 = labels5_5[labels5_5['Meth450K.Array.ID'].isin(
-            ['AML02_119_P022', 'AML02_147_P053', 'AML02_197_P022',
-             'AML02_23_P022', 'AML02_39_P022', 'AML02_46_P022',
-             'AML02_13_P022']).astype(int) == 0]
-        return (labels5_6)
+    labels1 = pd.read_excel(filepath1, index_col=94).drop(columns=['DONOTUSE: ACCESSION_NBR'])  # main clinical data file
+    labels2 = pd.read_excel(filepath2, index_col=0)  # only used to retrieve pLSC6 values
+    labels3 = pd.read_excel(filepath3, index_col=1)  # used to merged clinical data with methyl
+    
+    # Join contents of two columns into one
+    labels3['Sample'] = labels3['Sentrix Barcode'].astype(str) + '_' + labels3['Sample Section'].astype(str)
+    labels4 = labels3[labels3['type'] == 'AML02'].reset_index()
+    
+    # Replace - with _ in Sample ID
+    labels4['Sample ID'] = labels4['Sample ID'].str.replace('-', '_')
+    
+    # Set index to Sample ID
+    labels4 = labels4.set_index('Sample ID')
+
+    # Combine all clinical data files together
+    labels5 = labels1.join(labels2[['pLSC6_gb', 'pLSC6_Score', 'DNMT3B']],
+                                how='left', on='U133A.Dx.ID').join(labels4['Sample'],
+                                    how='inner', on='JL.id.x').reset_index().set_index('Sample')
+
+    # Remove samples that Dr. Lamba requested to be removed
+    labels6 = labels5[labels5['Meth450K.Array.ID'].isin(
+        ['AML02_119_P022', 'AML02_147_P053', 'AML02_197_P022',
+            'AML02_23_P022', 'AML02_39_P022', 'AML02_46_P022',
+            'AML02_13_P022']).astype(int) == 0]
+
+    return (labels6)
 
 # AML08
 def merge_index_aml08():
-        labels6_1 = pd.read_excel(clinical_data_path + '/StJude_Trials/AML08-clinical-AEs-IDs-2022-06-01.xlsx',
-                                sheet_name=[0, 2],
-                                index_col=0)
 
-        labels6_2 = pd.read_csv(clinical_data_path + '/StJude_Trials/AML02.AML08.PC.clin.rand.merge.N400.csv',
-                                index_col=1)
-        # Merge cleaned clinical data files with methylation data file
-        labels6_1[0] = labels6_1[0].join(labels6_2['AGE'], how='left')
-        labels_aml08 = labels6_1[2]['Meth.Sample.ID'].to_frame().join(labels6_1[0],
-                                                                    how='inner').reset_index(
-        ).set_index('Meth.Sample.ID')
-        labels_aml08.columns = labels_aml08.columns.str.title()
-        return (labels_aml08)
+    filepath1 = clinical_data_path + '/StJude_Trials/AML08-clinical-AEs-IDs-2022-06-01.xlsx'
+    filepath2 = clinical_data_path + '/StJude_Trials/AML02.AML08.PC.clin.rand.merge.N400.csv'
+
+    labels1 = pd.read_excel(filepath1, sheet_name=[0, 2], index_col=0)
+    labels2 = pd.read_csv(filepath2, index_col=1)
+
+    # Merge cleaned clinical data files with methylation data file
+    labels1[0] = labels1[0].join(labels2['AGE'], how='left')
+    labels_aml08 = labels1[2]['Meth.Sample.ID'].to_frame().join(labels1[0],how='inner').\
+                                                            reset_index().set_index('Meth.Sample.ID')
+    labels_aml08.columns = labels_aml08.columns.str.title()
+
+    return (labels_aml08)
 
 # BeatAML
 def merge_index_beataml():
 
-    filepath1 = clinical_data_path +'BeatAML/BEAT_AML_Raw clinical data_702.Samples.Vizome.xlsx'
-    filepath2 = clinical_data_path +'BeatAML/Beat_AML_561 Unique Samples_Cbioportal_OSHU.xlsx'
-    filepath3 = '../Data/Raw_Data/Methyl_Array_EPIC/GSE159907/sample_sheet_meta_data.pkl'
+    filepath1 = clinical_data_path + 'BeatAML/BEAT_AML_Raw clinical data_702.Samples.Vizome.xlsx'
+    filepath2 = clinical_data_path + 'BeatAML/Beat_AML_561 Unique Samples_Cbioportal_OSHU.xlsx'
+    filepath3 = input_path_EPIC + 'GSE159907/sample_sheet_meta_data.pkl'
 
     # Load the clinical data
     labels1 = pd.read_excel(filepath1, index_col=3)
@@ -337,38 +339,45 @@ def merge_index_amltcga():
     return labels_amltcga
 
 # Nordic ALL
-def merge_index_nordic_all(): 
-        # Load meta data from GSE49031
-        meta = pd.read_pickle('../Data/Raw_Data/Methyl_Array_450k/GSE49031/sample_sheet_meta_data.pkl')\
-                                .iloc[:,:-1].set_index('Sample_ID')
+def merge_index_nordic_all():
 
-        # split meta `title` column by the last word
-        meta['title'] = meta['title'].str.split().str[-1]
+    filepath1 = input_path_450k + 'GSE49031/sample_sheet_meta_data.pkl'
+    filepath2 = clinical_data_path + 'Nordic_ALL/PMID_25729447_Supp_Clinical_Data.xlsx'
 
-        # Set index to `title`
-        meta = meta.reset_index().set_index('title')
+    # Load meta data from GSE49031
+    meta = pd.read_pickle(filepath1).iloc[:,:-1].set_index('Sample_ID')
 
-        # Load clinical data from paper
-        paper = pd.read_excel('../Data/Raw_Data/Clinical_Data/Nordic_ALL/PMID_25729447_Supp_Clinical_Data.xlsx',
-                            index_col=0,header=2, sheet_name='Table S7- Verification summary')[['Karyotyping at diagnosisc']]
+    # split meta `title` column by the last word
+    meta['title'] = meta['title'].str.split().str[-1]
 
-        # Join meta and paper
-        meta = meta.join(paper)
+    # Set index to `title`
+    meta = meta.reset_index().set_index('title')
 
-        # Reset index to `Sample_ID`
-        meta = meta.reset_index().set_index('Sample_ID')
-        return meta
+    # Load clinical data from paper
+    paper = pd.read_excel(filepath2, index_col=0,header=2,
+                sheet_name='Table S7- Verification summary')\
+                [['Karyotyping at diagnosisc']] # diagnosisc is not a typo, it's a superscript c at the end
+
+    # Join meta and paper
+    meta = meta.join(paper)
+
+    # Reset index to `Sample_ID`
+    meta = meta.reset_index().set_index('Sample_ID')
+
+    return meta
 
 # MDS_tAML
 def merge_index_mds_taml():
 
+    filepath1 = input_path_450k + 'GSE152710/sample_sheet_meta_data.pkl'
+    filepath2 = clinical_data_path + 'MDS_tAML/PMID33446256_clinical_data_extracted_from_paper_supplement.xlsx'
+
     # Load meta data from GSE152710
-    meta = pd.read_pickle('../Data/Raw_Data/Methyl_Array_450k/GSE152710/sample_sheet_meta_data.pkl')\
+    meta = pd.read_pickle(filepath1)\
             .iloc[:,:-1].set_index('description')[['tissue','response','Sample_ID','time_afer_diagnosis']]
         
     # Read clinical data from supplemental info from paper
-    df = pd.read_excel('../Data/Raw_Data/Clinical_Data/MDS_tAML/PMID33446256_clinical_data_extracted_from_paper_supplement.xlsx',
-                           index_col=1)
+    df = pd.read_excel(filepath2, index_col=1)
     
     # Join meta and df
     meta = meta.join(df, how='left')
@@ -380,9 +389,12 @@ def merge_index_mds_taml():
     
 # Tcell_ALL_GRAAL
 def merge_index_all_graal():
-        meta = pd.read_pickle('../Data/Raw_Data/Methyl_Array_EPIC/GSE147667/sample_sheet_meta_data.pkl')\
-            .iloc[:,:-1].set_index('Sample_ID')
-        return meta
+
+    filepath1 = input_path_EPIC + 'GSE147667/sample_sheet_meta_data.pkl'
+    
+    meta = pd.read_pickle(filepath1).iloc[:,:-1].set_index('Sample_ID')
+
+    return meta
         
 # GDC_TARGET-ALL
 def merge_index_target_all():
@@ -964,7 +976,7 @@ def clean_cog(df):
             if key in diagnosis:
                 return value
 
-    def process_labels_who21(df):
+    def process_labels_who22(df):
         df['WHO 2022_Controls'] = df['Sample Type'].astype(str).apply(classify_controls)
         df['WHO 2022_Gene Fusion'] = df['Gene Fusion'].astype(str).apply(classify_fusion)
         df['WHO 2022_CEBPA'] = df['CEBPA mutation'].astype(str).apply(classify_cebpa)
@@ -986,12 +998,12 @@ def clean_cog(df):
         return df
 
     # Process labels
-    df = process_labels_who21(df)
+    df = process_labels_who22(df)
 
     return (df)
 
 
-def clean_aml05(df, clinical_data_path='../Data/Raw_Data/Clinical_Data/Japanese_AML05/'):
+def clean_aml05(df):
     """
     This module cleans and adjusts clinical data files from AML05 trial.
 
@@ -999,9 +1011,6 @@ def clean_aml05(df, clinical_data_path='../Data/Raw_Data/Clinical_Data/Japanese_
     -----------
     df:object
         AML05 clinical outcome dataframe.
-    
-    clinical_data_path: str
-        Path to the directory containing 'ClinicalData_AML05_JapaneseTrial_FromPaper.csv'.
 
     Returns:
     --------
@@ -1020,7 +1029,7 @@ def clean_aml05(df, clinical_data_path='../Data/Raw_Data/Clinical_Data/Japanese_
 
     # Load AML05 Clinical Data from Paper
     aml05 = pd.read_csv(
-        clinical_data_path + 'ClinicalData_AML05_JapaneseTrial_FromPaper.csv', index_col=0)
+        clinical_data_path + 'Japanese_AML05/ClinicalData_AML05_JapaneseTrial_FromPaper.csv', index_col=0)
 
     # All 15 samples are positive for FLT3 ITD according to paper's table 1
     aml05['FLT3 ITD'] = 'Yes'
