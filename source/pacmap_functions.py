@@ -174,6 +174,7 @@ class BokehPlotter:
         show(self.layout)
 
     def create_json_item(self):
+        # This function is used to embed the plot in the web app
         return json_item(self.layout)
 
 def get_custom_color_palette():
