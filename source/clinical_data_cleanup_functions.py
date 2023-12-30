@@ -792,37 +792,36 @@ def clean_cog(df):
         'FUS-ERG':       'AML with other rare recurring translocations',
         'RUNX1-CBFA2T3': 'AML with other rare recurring translocations',
         'CBFA2T3-GLIS2': 'AML with other rare recurring translocations',
-        'BCR-ABL1':       'AML with t(9;22)(q34.1;q11.2)/BCR::ABL1'}
+        'BCR-ABL1':       'AML with t(9;22)(q34.1;q11.2)/BCR::ABL1',
 
         # Other uncharacterized abdnormalities present in the dataset but not in guidelines
         
-        # 'CBFA2T3-GLIS3': 'AML with other rare recurring translocations',
-        # 'PSIP1-NUP214':  'AML with other rare recurring translocations',
-        # 'XPO1-TNRC18':   'AML with other rare recurring translocations', 
-        # 'HNRNPH1-ERG':   'AML with other rare recurring translocations',
-        # 'NIPBL-HOXB9':   'AML with other rare recurring translocations', 
-        # 'SET-NUP214':    'AML with other rare recurring translocations', 
-        # 'FLI1-IFIT2':    'AML with other rare recurring translocations', 
-        # 'TCF4-ZEB2':     'AML with other rare recurring translocations',
-        # 'MBTD1-ZMYND11': 'AML with other rare recurring translocations', 
-        # 'FOSB-KLF6':     'AML with other rare recurring translocations', 
-        # 'SFPQ-ZFP36L2':  'AML with other rare recurring translocations', 
-        # 'RUNX1-LINC00478':'AML with other rare recurring translocations',
-        # 'RUNX1-EVX1':     'AML with other rare recurring translocations',  
-        # 'PSPC1-ZFP36L1':  'AML with other rare recurring translocations', 
-        # 'EWSR1-FEV':      'AML with other rare recurring translocations',
-        # 'STAG2-AFF2':     'AML with other rare recurring translocations', 
-        # 'MYB-GATA1':      'AML with other rare recurring translocations', 
-        # 'CBFA2T3-GLIS3':  'AML with other rare recurring translocations',
-        # 'RUNX1-ZFPM2':    'AML with other rare recurring translocations', 
-        # 'RUNX1-CBFA2T2':  'AML with other rare recurring translocations',
-        # 'PIM3-BRD1':      'AML with other rare recurring translocations',
-        # 'KAT6A-EP300':    'AML with other rare recurring translocations',
-        # 'DOT1L-RPS15':    'AML with other rare recurring translocations',
-        # 'FUS-FEV':        'AML with other rare recurring translocations',
-        # 'KAT6A-NCOA2':    'AML with other rare recurring translocations',
-        # 'JARID2-PTP4A1':  'AML with other rare recurring translocations',
-        # 'FUS-FLI1':       'AML with other rare recurring translocations',     
+        'CBFA2T3-GLIS3': 'AML with other rare recurring translocations',
+        'PSIP1-NUP214':  'AML with t(6;9)(p23;q34.1)/DEK::NUP214',
+        'XPO1-TNRC18':   'AML with other rare recurring translocations', 
+        'HNRNPH1-ERG':   'AML with other rare recurring translocations',
+        'NIPBL-HOXB9':   'AML with other rare recurring translocations', 
+        'SET-NUP214':    'AML with t(6;9)(p23;q34.1)/DEK::NUP214', 
+        'FLI1-IFIT2':    'AML with other rare recurring translocations', 
+        'TCF4-ZEB2':     'AML with other rare recurring translocations',
+        'MBTD1-ZMYND11': 'AML with other rare recurring translocations', 
+        'FOSB-KLF6':     'AML with other rare recurring translocations', 
+        'SFPQ-ZFP36L2':  'AML with other rare recurring translocations', 
+        'RUNX1-LINC00478':'AML with other rare recurring translocations',
+        'RUNX1-EVX1':     'AML with other rare recurring translocations',  
+        'PSPC1-ZFP36L1':  'AML with other rare recurring translocations', 
+        'EWSR1-FEV':      'AML with other rare recurring translocations',
+        'STAG2-AFF2':     'AML with other rare recurring translocations', 
+        'MYB-GATA1':      'AML with other rare recurring translocations', 
+        'RUNX1-ZFPM2':    'AML with other rare recurring translocations', 
+        'RUNX1-CBFA2T2':  'AML with other rare recurring translocations',
+        'PIM3-BRD1':      'AML with other rare recurring translocations',
+        'KAT6A-EP300':    'AML with other rare recurring translocations',
+        'DOT1L-RPS15':    'AML with other rare recurring translocations',
+        'FUS-FEV':        'AML with other rare recurring translocations',
+        'KAT6A-NCOA2':    'AML with other rare recurring translocations',
+        'JARID2-PTP4A1':  'AML with other rare recurring translocations',
+        'FUS-FLI1':       'AML with other rare recurring translocations'}     
         
         for key, value in mapping.items():
             if key in gene_fusion:
@@ -909,19 +908,20 @@ def clean_cog(df):
         'KAT6A-CREBBP':  'AML with t(8;16)(p11.2;p13.3); KAT6A::CREBBP',
         'FUS-ERG':       'AML with t(16;21)(p11;q22); FUS::ERG',
         'CBFA2T3-GLIS2': 'AML with CBFA2T3::GLIS2 (inv(16)(p13q24))',
-        'BCR-ABL1':       'AML with t(9;22)(q34.1;q11.2)/BCR::ABL1'}
+        'BCR-ABL1':       'AML with t(9;22)(q34.1;q11.2)/BCR::ABL1',
 
         # Other uncharacterized abdnormalities present in the dataset but not in guidelines
+        
         # 'RUNX1-CBFA2T3': 'AML with other rare recurring translocations',
         # 'PRDM16-RPN1':   'AML with other rare recurring translocations',
         # 'PICALM-MLLT10': 'AML with other rare recurring translocations',
         # 'RBM15-MRTFA':   'AML with other rare recurring translocations',
-        # 'CBFA2T3-GLIS3': 'AML with other rare recurring translocations',
-        # 'PSIP1-NUP214':  'AML with other rare recurring translocations',
+        'CBFA2T3-GLIS3': 'AML with CBFA2T3::GLIS2 (inv(16)(p13q24))',
+        'PSIP1-NUP214':  'AML with t(6;9)(p23;q34.1)/DEK::NUP214',
         # 'XPO1-TNRC18':   'AML with other rare recurring translocations', 
         # 'HNRNPH1-ERG':   'AML with other rare recurring translocations',
         # 'NIPBL-HOXB9':   'AML with other rare recurring translocations', 
-        # 'SET-NUP214':    'AML with other rare recurring translocations', 
+        'SET-NUP214':    'AML with t(6;9)(p23;q34.1)/DEK::NUP214', 
         # 'FLI1-IFIT2':    'AML with other rare recurring translocations', 
         # 'TCF4-ZEB2':     'AML with other rare recurring translocations',
         # 'MBTD1-ZMYND11': 'AML with other rare recurring translocations', 
@@ -933,7 +933,6 @@ def clean_cog(df):
         # 'EWSR1-FEV':      'AML with other rare recurring translocations',
         # 'STAG2-AFF2':     'AML with other rare recurring translocations', 
         # 'MYB-GATA1':      'AML with other rare recurring translocations', 
-        # 'CBFA2T3-GLIS3':  'AML with other rare recurring translocations',
         # 'RUNX1-ZFPM2':    'AML with other rare recurring translocations', 
         # 'RUNX1-CBFA2T2':  'AML with other rare recurring translocations',
         # 'PIM3-BRD1':      'AML with other rare recurring translocations',
@@ -942,7 +941,8 @@ def clean_cog(df):
         # 'FUS-FEV':        'AML with other rare recurring translocations',
         # 'KAT6A-NCOA2':    'AML with other rare recurring translocations',
         # 'JARID2-PTP4A1':  'AML with other rare recurring translocations',
-        # 'FUS-FLI1':       'AML with other rare recurring translocations',     
+        # 'FUS-FLI1':       'AML with other rare recurring translocations'
+        }    
         
         for key, value in mapping.items():
             if key in gene_fusion:
