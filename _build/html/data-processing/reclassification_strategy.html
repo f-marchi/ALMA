@@ -1,0 +1,922 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Reclassification to Current Clinical Guidelines &#8212; MethylScoreAML</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'data-processing/reclassification_strategy';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="The DNA methylome refines clinical diagnosis and prognosis of Acute Myeloid Leukemia" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">MethylScoreAML</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    The DNA methylome refines clinical diagnosis and prognosis of Acute Myeloid Leukemia
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Processing</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Reclassification to Current Clinical Guidelines</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/data-processing/reclassification_strategy.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Reclassification to Current Clinical Guidelines</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guidelines">Guidelines</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#who-2022">WHO 2022</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-icd-o-coding">Summary ICD-O Coding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-process-clinical-data">Load and process clinical data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-strategy">Classification Strategy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#later">Later</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#who-aml-2022-diagnosis">WHO AML 2022 Diagnosis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eln-aml-2022-diagnosis">ELN AML 2022 Diagnosis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-final-sample-size-by-batch">Evaluate final sample size by batch</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="reclassification-to-current-clinical-guidelines">
+<h1><a class="toc-backref" href="#id1" role="doc-backlink">Reclassification to Current Clinical Guidelines</a><a class="headerlink" href="#reclassification-to-current-clinical-guidelines" title="Permalink to this heading">#</a></h1>
+<nav class="contents" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#reclassification-to-current-clinical-guidelines" id="id1">Reclassification to Current Clinical Guidelines</a></p>
+<ul>
+<li><p><a class="reference internal" href="#guidelines" id="id2">Guidelines</a></p>
+<ul>
+<li><p><a class="reference internal" href="#who-2022" id="id3">WHO 2022</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#summary-icd-o-coding" id="id4">Summary ICD-O Coding</a></p></li>
+<li><p><a class="reference internal" href="#load-and-process-clinical-data" id="id5">Load and process clinical data</a></p></li>
+<li><p><a class="reference internal" href="#classification-strategy" id="id6">Classification Strategy</a></p></li>
+<li><p><a class="reference internal" href="#later" id="id7">Later</a></p>
+<ul>
+<li><p><a class="reference internal" href="#who-aml-2022-diagnosis" id="id8">WHO AML 2022 Diagnosis</a></p></li>
+<li><p><a class="reference internal" href="#eln-aml-2022-diagnosis" id="id9">ELN AML 2022 Diagnosis</a></p></li>
+<li><p><a class="reference internal" href="#evaluate-final-sample-size-by-batch" id="id10">Evaluate final sample size by batch</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<p>Current thinking:</p>
+<p>14 WHO subtypes of AML
++1 otherwise-normal control
++1 mds-like and secondary neoplasms</p>
+<p>Need to figure out how to deal with really rare subtypes (e.g. AML FUS-ERG, KAT6A)</p>
+<section id="guidelines">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Guidelines</a><a class="headerlink" href="#guidelines" title="Permalink to this heading">#</a></h2>
+<section id="who-2022">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">WHO 2022</a><a class="headerlink" href="#who-2022" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Subtype</p></th>
+<th class="head"><p>Frequency in paediatric AML</p></th>
+<th class="head"><p>Morphology</p></th>
+<th class="head"><p>Immunophenotype</p></th>
+<th class="head"><p>Common co-occurring genetic aberrations</p></th>
+<th class="head"><p>Prognosis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AML with RUNX1::RUNXT1 fusion</p></td>
+<td><p>13–19% of cases</p></td>
+<td><p>Neutrophilic maturation, Auer rods; often increased basophils and/or mast cells</p></td>
+<td><p>Positive: CD34, HLA-DR, KIT (CD117), CD99, myeloperoxidase Usually positive but can be heterogeneous: CD13, CD33 and CD38, CD19, PAX5, cytoplasmic CD79a, CD56 Negative: CD7</p></td>
+<td><p>Mutations in KIT, FLT3, CSF3R, EZH2, ASXL1, ASXL2, CBL, WT1, cohesion genes (SMC1A, SMC3, RAD21), NRAS, KRAS</p></td>
+<td><p>Good</p></td>
+</tr>
+<tr class="row-odd"><td><p>AML with CBFB::MYH11 fusion</p></td>
+<td><p>7–12% of cases</p></td>
+<td><p>Myelomonocytic; often increased eosinophils at all maturation stages</p></td>
+<td><p>Often multiple blast populations with signs of differentiation towards both granulocytic and monocytic lineages; may express CD2 and/or NG2 in a small subpopulation of cells</p></td>
+<td><p>Mutations in KIT, KRAS, NRAS, CBL, FLT3, WT1</p></td>
+<td><p>Good</p></td>
+</tr>
+<tr class="row-even"><td><p>APL with PML::RARA fusion</p></td>
+<td><p>5–10% of cases but wide geographical variation (2–50%)</p></td>
+<td><p>Exclusively FAB M3; may be hypogranular</p></td>
+<td><p>Positive: CD33, often KIT (CD117), sometimes CD2 Negative: CD34 (except hypogranular variant), HLA-DR Often high autofluorescence</p></td>
+<td><p>Mutations in FLT3</p></td>
+<td><p>Good (but treated differently)</p></td>
+</tr>
+<tr class="row-odd"><td><p>AML with KMT2A rearrangement</p></td>
+<td><p>20% of cases</p></td>
+<td><p>All FAB types except M3 and M6, most commonly M5</p></td>
+<td><p>Positive: CD33, CD65, CD4, HLA-DR (in monocytic cases), CD15, NG2; platelet antigens (in megakaryocytic cases) Negative/low: CD13, CD34, CD14</p></td>
+<td><p>Mutations in the tyrosine kinase, PI3K, and RAS pathways; FLT3-TKD, NRAS, KRAS</p></td>
+<td><p>Depends on fusion partner</p></td>
+</tr>
+<tr class="row-even"><td><p>AML with DEK::NUP214 fusion</p></td>
+<td><p>1–2% of cases</p></td>
+<td><p>All FAB types except M3 and M7, most commonly M2 and M4; Auer rods; basophilia in blood or bone marrow; erythroid and granulocytic dysplasia are common</p></td>
+<td><p>Positive: myeloperoxidase, CD13, CD33, CD38, CD123, HLA-DR; often CD34, KIT (CD117), CD15; sometimes CD64, TdT</p></td>
+<td><p>FLT3 ITD in two thirds of cases; complex karyotype</p></td>
+<td><p>Poor</p></td>
+</tr>
+<tr class="row-odd"><td><p>AML with MECOM rearrangement</p></td>
+<td><p>&lt; 1% of cases</p></td>
+<td><p>Commonly FAB M1, M4, and M7; multilineage dysplasia is common, especially in megakaryopoiesis</p></td>
+<td><p>Positive: CD34, CD33, CD13, KIT (CD117), HLA-DR, CD7 Negative: lymphoid markers other than CD7</p></td>
+<td><p>n/a</p></td>
+<td><p>Poor</p></td>
+</tr>
+<tr class="row-even"><td><p>AML with ETV6 fusion</p></td>
+<td><p>1% of all cases</p></td>
+<td><p>All FAB types, most commonly M0 and M1</p></td>
+<td><p>For MNX1::ETV6: Positive: CD34, HLA-DR, often KIT (CD117), T-cell markers CD7 and CD4</p></td>
+<td><p>Almost always +19, sometimes +8</p></td>
+<td><p>Poor, but may be protocol dependent</p></td>
+</tr>
+<tr class="row-odd"><td><p>AML with KAT6A::CREBBP fusion</p></td>
+<td><p>0.5% of cases</p></td>
+<td><p>FAB M5</p></td>
+<td><p>Positive: HLA-DR, CD15, myeloperoxidase, CD13, CD33, sometimes CD56, CD14 Negative: CD34, KIT (CD117)</p></td>
+<td><p>n/a</p></td>
+<td><p>OS similar to paediatric AML in general</p></td>
+</tr>
+<tr class="row-even"><td><p>AML with RBM15::MRTFA fusion</p></td>
+<td><p>0.8% of all cases</p></td>
+<td><p>Exclusively FAB M7</p></td>
+<td><p>Positive: &gt; 1 platelet antigen, some CD34 and/or HLA-DR Negative: CD45</p></td>
+<td><p>del(1p), +4, +7, +8, +9, +10, +14, +15, +17, +18, +20, +21(21p), complex hyperdiploid karyotype</p></td>
+<td><p>Lower CR rate but similar EFS/OS vs other AMKLs</p></td>
+</tr>
+<tr class="row-odd"><td><p>AML with CBFA2T3::GLIS2 fusion</p></td>
+<td><p>3% of all cases</p></td>
+<td><p>All FAB types, most commonly M7</p></td>
+<td><p>&gt; 50% show the RAM phenotype; overexpression of CD56 and underexpression of HLA-DR and CD38</p></td>
+<td><p>Mutations in FLT3, GATA1, JAK/STAT pathway</p></td>
+<td><p>Poor</p></td>
+</tr>
+<tr class="row-even"><td><p>AML with NUP98 rearrangement</p></td>
+<td><p>5–9% of cases</p></td>
+<td><p>NUP98::NSD1: often FAB M4 and M5 NUP98::KDM5A: mostly FAB M7 but also M5 and M6</p></td>
+<td><p>n/a</p></td>
+<td><p>For NUP98::NSD1: FLT3 ITD in &gt; 80%, mutation in WT1 in 50%</p></td>
+<td><p>Poor</p></td>
+</tr>
+<tr class="row-odd"><td><p>AML with FUS::ERG fusion</p></td>
+<td><p>0.3–0.5% of cases</p></td>
+<td><p>All FAB types except M6; Auer rods</p></td>
+<td><p>n/a</p></td>
+<td><p>+8, +10, complex karyotype</p></td>
+<td><p>Poor</p></td>
+</tr>
+<tr class="row-even"><td><p>AML with NPM1 mutation</p></td>
+<td><p>6–8% of cases</p></td>
+<td><p>FAB M1, M2, M4, and M5</p></td>
+<td><p>Positive: CD33, sometimes KIT (CD117), often CD36, CD64 Negative: CD34, sometimes HLA-DR Often weak CD13</p></td>
+<td><p>FLT3 ITD, mutations in NRAS, WT1</p></td>
+<td><p>Good, also when FLT3 ITD is present</p></td>
+</tr>
+<tr class="row-odd"><td><p>AML with CEBPA mutation</p></td>
+<td><p>5–6% of cases</p></td>
+<td><p>Most commonly FAB M1 and M2</p></td>
+<td><p>Positive: CD34, HLA-DR, often CD7 Negative: other lymphoid antigens</p></td>
+<td><p>Mutations in CEBPA-TAD, CSF3R, GATA2, RAS genes, FLT3</p></td>
+<td><p>Good, except for CSF3R-mutated cases</p></td>
+</tr>
+</tbody>
+</table>
+<div class="tip admonition">
+<p class="admonition-title">Source</p>
+<p>Hasle H, Meshinchi S, Fogelstrand L, Alaggio R, et al. Acute myeloid leukaemias (AMLs) with defining genetic abnormalities. In: WHO Classification of Tumours Editorial Board. Paediatric tumours [Internet]. Lyon (France): International Agency for Research on Cancer; 2022 [cited 2024 Jan 1]. (WHO classification of tumours series, 5th ed.; vol. 7). Available from: <a class="reference external" href="https://tumourclassification.iarc.who.int/chapters/44">https://tumourclassification.iarc.who.int/chapters/44</a>.</p>
+</div>
+</section>
+</section>
+<section id="summary-icd-o-coding">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Summary ICD-O Coding</a><a class="headerlink" href="#summary-icd-o-coding" title="Permalink to this heading">#</a></h2>
+<p>9866/3 Acute promyelocytic leukaemia with PML::RARA fusion</p>
+<p>9896/3 AML with RUNX1::RUNX1T1 fusion</p>
+<p>9871/3 AML with CBFB::MYH11 fusion</p>
+<p>9897/3 AML with KMT2A rearrangement</p>
+<p>9877/3 AML with NPM1 mutation</p>
+<p>9869/3 AML with MECOM rearrangement</p>
+<p>9865/3 AML with DEK::NUP214 fusion</p>
+<p>9911/3 AML with RBM15::MRTFA fusion</p>
+<p>9912/3 AML with BCR::ABL1 fusion</p>
+<p>9861/3 AML with NUP98 rearrangement</p>
+<p>9878/3 AML with CEBPA mutation</p>
+<p>9861/3 AML with MNX1::ETV6 fusion</p>
+<p>9861/3 AML with KAT6A::CREBBP fusion</p>
+<p>9861/3 AML with CBFA2T3::GLIS2 fusion</p>
+</section>
+<section id="load-and-process-clinical-data">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Load and process clinical data</a><a class="headerlink" href="#load-and-process-clinical-data" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import functions to clean up clinical data</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">source.clinical_data_cleanup_functions</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># Call functions to merge, index and clean clinical data files</span>
+<span class="n">labels_0531</span>         <span class="o">=</span> <span class="n">clean_cog</span>       <span class="p">(</span><span class="n">merge_index_0531</span><span class="p">())</span>
+<span class="n">labels_1031</span>         <span class="o">=</span> <span class="n">clean_cog</span>       <span class="p">(</span><span class="n">merge_index_1031</span><span class="p">())</span>
+<span class="n">labels_aml05</span>        <span class="o">=</span> <span class="n">clean_aml05</span>     <span class="p">(</span><span class="n">merge_index_aml05</span><span class="p">())</span>
+<span class="n">labels_beataml</span>      <span class="o">=</span> <span class="n">clean_beataml</span>   <span class="p">(</span><span class="n">merge_index_beataml</span><span class="p">())</span>
+<span class="n">labels_amltcga</span>      <span class="o">=</span> <span class="n">clean_amltcga</span>   <span class="p">(</span><span class="n">merge_index_amltcga</span><span class="p">())</span>
+<span class="n">labels_nordic_all</span>   <span class="o">=</span> <span class="n">clean_nordic_all</span><span class="p">(</span><span class="n">merge_index_nordic_all</span><span class="p">())</span>
+<span class="n">labels_mds_taml</span>     <span class="o">=</span> <span class="n">clean_mds_taml</span>  <span class="p">(</span><span class="n">merge_index_mds_taml</span><span class="p">())</span>
+<span class="n">labels_all_graal</span>    <span class="o">=</span> <span class="n">clean_all_graal</span> <span class="p">(</span><span class="n">merge_index_all_graal</span><span class="p">())</span>
+<span class="n">labels_target_all</span>   <span class="o">=</span> <span class="n">clean_target_all</span><span class="p">(</span><span class="n">merge_index_target_all</span><span class="p">())</span>
+
+<span class="c1"># Combine all clinical data labels into one dataframe</span>
+<span class="n">labels_combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">labels_aml05</span><span class="p">,</span> <span class="n">labels_beataml</span><span class="p">,</span>
+                        <span class="n">labels_0531</span><span class="p">,</span> <span class="n">labels_amltcga</span><span class="p">,</span> <span class="n">labels_1031</span><span class="p">,</span>
+                        <span class="n">labels_nordic_all</span><span class="p">,</span> <span class="n">labels_mds_taml</span><span class="p">,</span>
+                        <span class="n">labels_all_graal</span><span class="p">,</span><span class="n">labels_target_all</span><span class="p">],</span>
+                        <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
+
+<span class="c1"># Redefine output path (for troubleshooting purposes in case only this cell is run)</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;../../Data/Intermediate_Files/&#39;</span>
+
+<span class="c1"># Read df</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;3330samples-333351cpgs-withbatchcorrection-bvalues.pkl&#39;</span><span class="p">)</span>
+
+<span class="c1"># Remove samples that are not in the methyl dataset</span>
+<span class="n">df_labels</span> <span class="o">=</span> <span class="n">labels_combined</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels_combined</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="c1"># Add age categorization and main disease classification to the clinical data</span>
+<span class="c1"># df_labels = process_df_labels(df_labels)</span>
+
+<span class="c1"># Save the clinical data labels</span>
+<span class="c1"># df_labels.to_csv(output_path + &#39;discovery_clinical_data.csv&#39;)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The clinical data has been indexed and cleaned.</span><span class="se">\n\</span>
+<span class="s1">Exclusion of samples may be applied depending on the analysis.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The clinical data has been indexed and cleaned.
+Exclusion of samples may be applied depending on the analysis.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># save all label dataframes into excel files using `pandas` &#39;to_excel&#39; function</span>
+<span class="c1"># labels_aml05.to_excel(output_path + &#39;aml05_clinical_data.xlsx&#39;)</span>
+<span class="c1"># labels_beataml.to_excel(output_path + &#39;beataml_clinical_data.xlsx&#39;)</span>
+<span class="n">labels_0531</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;0531_clinical_data.xlsx&#39;</span><span class="p">)</span>
+<span class="c1"># labels_amltcga.to_excel(output_path + &#39;amltcga_clinical_data.xlsx&#39;)</span>
+<span class="n">labels_1031</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;1031_clinical_data.xlsx&#39;</span><span class="p">)</span>
+<span class="c1"># labels_nordic_all.to_excel(output_path + &#39;nordic_all_clinical_data.xlsx&#39;)</span>
+<span class="c1"># labels_mds_taml.to_excel(output_path + &#39;mds_taml_clinical_data.xlsx&#39;)</span>
+<span class="c1"># labels_all_graal.to_excel(output_path + &#39;all_graal_clinical_data.xlsx&#39;)</span>
+<span class="c1"># labels_target_all.to_excel(output_path + &#39;target_all_clinical_data.xlsx&#39;)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="classification-strategy">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Classification Strategy</a><a class="headerlink" href="#classification-strategy" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="later">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Later</a><a class="headerlink" href="#later" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">process_df_labels</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to process a pandas dataframe, performing age categorization </span>
+<span class="sd">    and main disease classification.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df (pandas.DataFrame): Input dataframe.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pandas.DataFrame: Processed dataframe with age categorized and main disease classified.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+    <span class="k">def</span> <span class="nf">categorize_age</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function to categorize age into a specific range.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            age (int or float): The age to be categorized.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: A string representation of the age category.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+        <span class="k">elif</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;0-5&#39;</span>
+        <span class="k">elif</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">13</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;5-13&#39;</span>
+        <span class="k">elif</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">39</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;13-39&#39;</span>
+        <span class="k">elif</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;39-60&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;60+&#39;</span>
+
+    <span class="k">def</span> <span class="nf">classify_main_disease</span><span class="p">(</span><span class="n">subtype</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function to classify the main disease based on a given subtype.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            subtype (str): The subtype of the disease.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: A string representation of the main disease.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;AML&#39;</span><span class="p">:</span> <span class="s1">&#39;Acute myeloid leukemia (AML)&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ALL&#39;</span><span class="p">:</span> <span class="s1">&#39;Acute lymphoblastic leukemia (ALL)&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;MDS&#39;</span><span class="p">:</span> <span class="s1">&#39;Myelodysplastic syndrome (MDS or MDS-like)&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Mixed phenotype acute leukemia&#39;</span><span class="p">:</span> <span class="s1">&#39;Mixed phenotype acute leukemia (MPAL)&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;APL&#39;</span><span class="p">:</span> <span class="s1">&#39;Acute promyelocytic leukemia (APL)&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Otherwise-Normal Control&#39;</span><span class="p">:</span> <span class="s1">&#39;Otherwise-Normal (Control)&#39;</span>
+        <span class="p">}</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">mapping</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">subtype</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="nf">main_disease_class</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function to classify the main disease and create a pathology class.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            df (pandas.DataFrame): The dataframe to be processed.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            pandas.DataFrame: The processed dataframe with new columns for main disease and pathology class.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;WHO_ALL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;WHO ALL 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">classify_main_disease</span><span class="p">)</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ELN_AML&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">classify_main_disease</span><span class="p">)</span>
+
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Hematopoietic Group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;ELN_AML&#39;</span><span class="p">,</span> <span class="s1">&#39;WHO_ALL&#39;</span><span class="p">]]</span> \
+            <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">==</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+        <span class="c1"># Drop columns created except for `WHO Final Diagnosis` and `Combined Diagnosis` columns</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;ELN_AML&#39;</span><span class="p">,</span> <span class="s1">&#39;WHO_ALL&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">df</span>
+
+    <span class="c1"># Convert &#39;Age (years)&#39; to numeric, errors=&#39;coerce&#39; will turn non-numeric data to NaN</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age (years)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age (years)&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Then apply your function</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age (group years)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age (years)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">categorize_age</span><span class="p">)</span>
+    
+    <span class="c1"># Process labels</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">main_disease_class</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    
+    <span class="c1"># Create `WHO 2022 Diagnosis` column</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;WHO 2022 Diagnosis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;WHO AML 2022 Diagnosis&#39;</span><span class="p">,</span> <span class="s1">&#39;WHO ALL 2022 Diagnosis&#39;</span><span class="p">]]</span> \
+            <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">==</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="who-aml-2022-diagnosis">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">WHO AML 2022 Diagnosis</a><a class="headerlink" href="#who-aml-2022-diagnosis" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_labels</span><span class="p">[</span><span class="s1">&#39;WHO AML 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WHO AML 2022 Diagnosis
+AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement                           313
+MDS-related or secondary myeloid neoplasms                                230
+AML with mutated NPM1                                                     179
+AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22)/CBFB::MYH11             178
+AML with t(8;21)(q22;q22.1)/RUNX1::RUNX1T1                                169
+Otherwise-Normal Control                                                  162
+AML with NUP98-fusion                                                      97
+AML with bZIP mutated CEBPA                                                69
+APL with t(15;17)(q24.1;q21.2)/PML::RARA                                   31
+AML with CBFA2T3::GLIS2 (inv(16)(p13q24))                                  30
+AML with t(6;9)(p23;q34.1)/DEK::NUP214                                     28
+AML with ETV6 fusion                                                       16
+AML with inv(3)(q21.3q26.2) or t(3;3)(q21.3;q26.2)/MECOM-rearrangement     10
+AML with t(1;22)(p13.3;q13.1); RBM15::MKL1                                  9
+AML with t(8;16)(p11.2;p13.3); KAT6A::CREBBP                                7
+AML with t(16;21)(p11;q22); FUS::ERG                                        4
+Myeloid leukemia associated with Down syndrome                              1
+Mixed phenotype acute leukemia T/myeloid                                    1
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="eln-aml-2022-diagnosis">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">ELN AML 2022 Diagnosis</a><a class="headerlink" href="#eln-aml-2022-diagnosis" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_labels</span><span class="p">[</span><span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ELN AML 2022 Diagnosis
+AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement                           313
+MDS-related or secondary myeloid neoplasms                                228
+AML with other rare recurring translocations                              185
+AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22)/CBFB::MYH11             178
+AML with mutated NPM1                                                     172
+AML with t(8;21)(q22;q22.1)/RUNX1::RUNX1T1                                169
+Otherwise-Normal Control                                                  162
+AML with in-frame bZIP mutated CEBPA                                       69
+APL with t(15;17)(q24.1;q21.2)/PML::RARA                                   31
+AML with t(6;9)(p23;q34.1)/DEK::NUP214                                     28
+AML with inv(3)(q21.3q26.2) or t(3;3)(q21.3;q26.2)/MECOM-rearrangement     10
+AML with t(9;22)(q34.1;q11.2)/BCR::ABL1                                     3
+Myeloid leukaemia associated with Down syndrome                             1
+Mixed phenotype acute leukemia T/myeloid                                    1
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluate-final-sample-size-by-batch">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Evaluate final sample size by batch</a><a class="headerlink" href="#evaluate-final-sample-size-by-batch" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Batch&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Batch
+GSE49031          933
+GSE190931         581
+GSE124413         495
+GSE159907         316
+GDC_TARGET-AML    287
+GDC_TCGA-AML      194
+GSE152710         166
+GSE147667         153
+GDC_TARGET-ALL    141
+GSE133986          64
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./data-processing"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">The DNA methylome refines clinical diagnosis and prognosis of Acute Myeloid Leukemia</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guidelines">Guidelines</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#who-2022">WHO 2022</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-icd-o-coding">Summary ICD-O Coding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-process-clinical-data">Load and process clinical data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-strategy">Classification Strategy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#later">Later</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#who-aml-2022-diagnosis">WHO AML 2022 Diagnosis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eln-aml-2022-diagnosis">ELN AML 2022 Diagnosis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-final-sample-size-by-batch">Evaluate final sample size by batch</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marchi et al., 2023. Lamba Lab @ University of Florida. Please do not share this notebook publicly.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
