@@ -13,8 +13,8 @@ parts:
   - caption: Data Processing
 
     chapters:
-      - file: data-processing/discovery-dataset.ipynb
-      - file: data-processing/test-dataset.ipynb
+      - file: data-processing/discovery_dataset.ipynb
+      - file: data-processing/test_dataset.ipynb
       - file: data-processing/reclassification_strategy.ipynb
 
   # - caption: AML Prognostic Model
