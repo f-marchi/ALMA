@@ -1,0 +1,1473 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Validation Dataset &#8212; MethylScoreAML</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'data-processing/test_dataset';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Reclassification to Current Clinical Guidelines" href="reclassification_strategy.html" />
+    <link rel="prev" title="Discovery Dataset" href="discovery_dataset.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">MethylScoreAML</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    The DNA methylome refines clinical diagnosis and prognosis of Acute Myeloid Leukemia
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Processing</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="discovery_dataset.html">Discovery Dataset</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Validation Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reclassification_strategy.html">Reclassification to Current Clinical Guidelines</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Benchmarks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tests/dx-score-n_components-pacmap.html">Dx score - various components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/dx-score-pedsAML-only.html">Dx score - pedsAML only</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/dx-score-with-looser-filtering.html">Dx score - less strict pre-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/dx-score-without-ALL-relapse.html">Dx score - without relapse and ALL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/dx-score-without-relapse.html">Dx score - without relapse</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/data-processing/test_dataset.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Validation Dataset</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-test-dataset-sources">Validation (test) dataset sources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-process-raw-data-to-get-methylation-beta-values">Step 1. Process raw data to get methylation beta values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-the-data-at">Where the data at?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataframes">Load Dataframes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-load-and-process-clinical-data">Step 2. Load and process clinical data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-remove-suboptimal-probes">Step 3. Remove suboptimal probes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-remove-sex-linked-probes">Step 4. Remove sex-linked probes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-missing-values">Evaluate Missing Values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-remove-non-hematopoietic-samples">Step 5. Remove non-hematopoietic samples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-exclude-samples-in-which-20-of-probes-have-failed-p-values">Step 6. Exclude samples in which &gt;20% of probes have failed p-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-exclude-cpg-probes-that-are-missing-in-5-of-samples">Step 7. Exclude CpG probes that are missing in &gt;5% of samples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Evaluate Missing Values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-impute-remaining-missing-values">Step 7. Impute remaining missing values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Evaluate Missing Values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-remove-outliers-by-pca">Step 8. Remove outliers by PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transform-to-m-values">Transform to M-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-perform-batch-correction">Step 9. Perform batch correction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#m-values">M-values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beta-values">Beta-values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-batch-effects">Evaluate batch effects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-batch-corrected-m-values-dataframe-for-other-analyses">Save batch-corrected m-values dataframe for other analyses</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-batch-corrected-beta-values-dataset">Save batch-corrected beta-values dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-final-sample-size-by-batch">Evaluate final sample size by batch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eln-aml-2022-diagnosis">ELN AML 2022 Diagnosis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-1-how-to-create-this-electronic-notebook">Appendix 1. How to create this electronic notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="validation-dataset">
+<h1><a class="toc-backref" href="#id3" role="doc-backlink">Validation Dataset</a><a class="headerlink" href="#validation-dataset" title="Permalink to this heading">#</a></h1>
+<nav class="contents" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#validation-dataset" id="id3">Validation Dataset</a></p>
+<ul>
+<li><p><a class="reference internal" href="#validation-test-dataset-sources" id="id4">Validation (test) dataset sources</a></p></li>
+<li><p><a class="reference internal" href="#step-1-process-raw-data-to-get-methylation-beta-values" id="id5">Step 1. Process raw data to get methylation beta values</a></p>
+<ul>
+<li><p><a class="reference internal" href="#where-the-data-at" id="id6">Where the data at?</a></p></li>
+<li><p><a class="reference internal" href="#load-dataframes" id="id7">Load Dataframes</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-2-load-and-process-clinical-data" id="id8">Step 2. Load and process clinical data</a></p></li>
+<li><p><a class="reference internal" href="#step-3-remove-suboptimal-probes" id="id9">Step 3. Remove suboptimal probes</a></p></li>
+<li><p><a class="reference internal" href="#step-4-remove-sex-linked-probes" id="id10">Step 4. Remove sex-linked probes</a></p>
+<ul>
+<li><p><a class="reference internal" href="#evaluate-missing-values" id="id11">Evaluate Missing Values</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-5-remove-non-hematopoietic-samples" id="id12">Step 5. Remove non-hematopoietic samples</a></p></li>
+<li><p><a class="reference internal" href="#step-6-exclude-samples-in-which-20-of-probes-have-failed-p-values" id="id13">Step 6. Exclude samples in which &gt;20% of probes have failed p-values</a></p></li>
+<li><p><a class="reference internal" href="#step-7-exclude-cpg-probes-that-are-missing-in-5-of-samples" id="id14">Step 7. Exclude CpG probes that are missing in &gt;5% of samples</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id1" id="id15">Evaluate Missing Values</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-7-impute-remaining-missing-values" id="id16">Step 7. Impute remaining missing values</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id2" id="id17">Evaluate Missing Values</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-8-remove-outliers-by-pca" id="id18">Step 8. Remove outliers by PCA</a></p></li>
+<li><p><a class="reference internal" href="#transform-to-m-values" id="id19">Transform to M-values</a></p></li>
+<li><p><a class="reference internal" href="#step-9-perform-batch-correction" id="id20">Step 9. Perform batch correction</a></p>
+<ul>
+<li><p><a class="reference internal" href="#m-values" id="id21">M-values</a></p></li>
+<li><p><a class="reference internal" href="#beta-values" id="id22">Beta-values</a></p></li>
+<li><p><a class="reference internal" href="#evaluate-batch-effects" id="id23">Evaluate batch effects</a></p></li>
+<li><p><a class="reference internal" href="#save-batch-corrected-m-values-dataframe-for-other-analyses" id="id24">Save batch-corrected m-values dataframe for other analyses</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#save-batch-corrected-beta-values-dataset" id="id25">Save batch-corrected beta-values dataset</a></p>
+<ul>
+<li><p><a class="reference internal" href="#evaluate-final-sample-size-by-batch" id="id26">Evaluate final sample size by batch</a></p></li>
+<li><p><a class="reference internal" href="#eln-aml-2022-diagnosis" id="id27">ELN AML 2022 Diagnosis</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#appendix-1-how-to-create-this-electronic-notebook" id="id28">Appendix 1. How to create this electronic notebook</a></p></li>
+<li><p><a class="reference internal" href="#watermark" id="id29">Watermark</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="validation-test-dataset-sources">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Validation (test) dataset sources</a><a class="headerlink" href="#validation-test-dataset-sources" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Reference</p></th>
+<th class="head"><p>Disease</p></th>
+<th class="head"><p>Raw Data Source</p></th>
+<th class="head"><p>Download Sample Size</p></th>
+<th class="head"><p>Population</p></th>
+<th class="head"><p>Platform</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>StJude AML02</p></td>
+<td><p><a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/20451454/">Rubnitz et al., 2010</a></p></td>
+<td><p>AML</p></td>
+<td><p>St. Jude Children’s</p></td>
+<td><p>159</p></td>
+<td><p>Pediatric</p></td>
+<td><p>450k</p></td>
+</tr>
+<tr class="row-odd"><td><p>StJude AML08</p></td>
+<td><p><a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/31246522/">Rubnitz et al., 2019</a></p></td>
+<td><p>AML</p></td>
+<td><p>St. Jude Children’s</p></td>
+<td><p>42</p></td>
+<td><p>Pediatric</p></td>
+<td><p>450k</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The downloaded data contained an additional 95 liver methylation samples, so the total number of samples initially is 324. These will be filtered out in further steps.</p>
+</div>
+</section>
+<section id="step-1-process-raw-data-to-get-methylation-beta-values">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Step 1. Process raw data to get methylation beta values</a><a class="headerlink" href="#step-1-process-raw-data-to-get-methylation-beta-values" title="Permalink to this heading">#</a></h2>
+<p>This step will use SeSAMe (<a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/30085201/">Zhou et al. , 2018</a>) to take signal intensity data (red and green .idat files) and convert them to beta values, which represent the % of methylation for each CpG site.</p>
+<p>Process command:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m methylprep -v process -d &lt;directory&gt; --all --batch_size 199
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>From this point on we will move from using <code class="docutils literal notranslate"><span class="pre">python3.7</span></code> to using <code class="docutils literal notranslate"><span class="pre">python3.8</span></code>.</p>
+</div>
+<section id="where-the-data-at">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Where the data at?</a><a class="headerlink" href="#where-the-data-at" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_path_test_data</span> <span class="o">=</span> <span class="s1">&#39;/mnt/d/MethylScore/Raw_Data/LambaPrivate_StJude_AML02_AML08_Methyl450k/&#39;</span>
+
+<span class="n">zhou2016_probes_path</span> <span class="o">=</span> <span class="s1">&#39;/mnt/d/MethylScore/UnreliableProbesList_Zhou2016/EPIC.anno.GRCh38.tsv&#39;</span>
+
+<span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;../../Data/Intermediate_Files/&#39;</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="load-dataframes">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Load Dataframes</a><a class="headerlink" href="#load-dataframes" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">methylcheck</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Load the dataframes from the input paths</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">methylcheck</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">input_path_test_data</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Sort sample index</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; Dataset (df) contains </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (5mC sites/probes) and </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns (samples).&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Dataset (df) contains 485512 rows (5mC sites/probes) and 324 columns (samples).
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="step-2-load-and-process-clinical-data">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Step 2. Load and process clinical data</a><a class="headerlink" href="#step-2-load-and-process-clinical-data" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import functions to clean up clinical data</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">source.clinical_data_cleanup_functions</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># Call functions to merge, index and clean clinical data files</span>
+<span class="n">labels_aml02</span>         <span class="o">=</span> <span class="n">clean_aml02</span>       <span class="p">(</span><span class="n">merge_index_aml02</span><span class="p">())</span>
+<span class="n">labels_aml08</span>         <span class="o">=</span> <span class="n">clean_aml08</span>       <span class="p">(</span><span class="n">merge_index_aml08</span><span class="p">())</span>
+
+
+<span class="c1"># Combine all clinical data labels into one dataframe</span>
+<span class="n">labels_combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">labels_aml02</span><span class="p">,</span> <span class="n">labels_aml08</span><span class="p">]</span> <span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
+
+<span class="c1"># Remove samples that are not in the methyl dataset</span>
+<span class="n">df_labels</span> <span class="o">=</span> <span class="n">labels_combined</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels_combined</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The clinical data has been indexed and cleaned.</span><span class="se">\n\</span>
+<span class="s1">Exclusion of samples may be applied depending on the analysis.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The clinical data has been indexed and cleaned.
+Exclusion of samples may be applied depending on the analysis.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-3-remove-suboptimal-probes">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Step 3. Remove suboptimal probes</a><a class="headerlink" href="#step-3-remove-suboptimal-probes" title="Permalink to this heading">#</a></h2>
+<p>There are several critera for exclusion of probes: Areas that have polymorphisms, cross-hybridization, repeat sequence elements, or base color changes can affect probe quality. Below are publications that have benchmarked probe quality and have provided lists of probes to exclude:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3592906/">Chen et al., 2013</a></p></li>
+<li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3740789/">Price et al., 2013</a></p></li>
+<li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3943510/">Naeem et al., 2014</a></p></li>
+<li><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4659175/">DacaRoszak et al., 2015</a></p></li>
+<li><p><a class="reference external" href="https://academic.oup.com/nar/article/45/4/e22/2290930">Zhou et al., 2016</a></p></li>
+</ul>
+<p>This function removes proves listed as sub-optimal according to <a class="reference external" href="https://academic.oup.com/nar/article/45/4/e22/2290930">Zhou et al., 2016</a>. For the .tsv file containing the annotated probes, download the paper’s supplementary material. See figure 5 of their paper for detailed description.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">exclude_suboptimal_probes</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;This function removes proves listed as sub-optimal according to:</span>
+<span class="sd">    </span>
+<span class="sd">    Zhou, W., Laird, P. W. &amp; Shen, H.. Comprehensive characterization,</span>
+<span class="sd">    annotation and innovative use of Infinium DNA methylation BeadChip probes.</span>
+<span class="sd">    Nucleic Acids Research gkw967 (2016).</span>
+<span class="sd">    doi:10.1093/nar/gkw967</span>
+
+<span class="sd">    For the .tsv file containing the annotated probes, download the paper&#39;s</span>
+<span class="sd">    supplementary material.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># Load the list of suboptimal probes</span>
+    <span class="n">zhou2016_probes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">zhou2016_probes_path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Select the probes that are listed as suboptimal</span>
+    <span class="n">unreliable_probes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">zhou2016_probes</span><span class="p">[</span><span class="n">zhou2016_probes</span><span class="p">[</span><span class="s1">&#39;MASK.general&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+    <span class="c1"># Remove the unreliable probes from the dataframe</span>
+    <span class="n">df_</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">unreliable_probes</span><span class="p">)]</span>
+    
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s1">&#39;Removed </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">df_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> suboptimal probes. </span><span class="si">{</span><span class="n">df_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> probes remaining.&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">df_</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">exclude_suboptimal_probes</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Removed 47514 suboptimal probes. 437998 probes remaining.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-4-remove-sex-linked-probes">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Step 4. Remove sex-linked probes</a><a class="headerlink" href="#step-4-remove-sex-linked-probes" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">methylcheck</span><span class="o">.</span><span class="n">exclude_sex_control_probes</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;450k&#39;</span><span class="p">,</span> <span class="n">no_sex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">no_control</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>450k: Removed 10623 sex-linked probes from 324 samples. 427375 probes remaining.
+</pre></div>
+</div>
+</div>
+</div>
+<section id="evaluate-missing-values">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Evaluate Missing Values</a><a class="headerlink" href="#evaluate-missing-values" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">missingno</span> <span class="k">as</span> <span class="nn">msno</span>
+
+<span class="c1"># Plot the missing values</span>
+<span class="n">msno</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">20000</span><span class="p">:</span><span class="mi">20050</span><span class="p">,:]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="../_images/522df5f3e1b22c72aeed211a4e4558cdf5cfdc0d5962ffbdb5d7794fe0aafb31.png" src="../_images/522df5f3e1b22c72aeed211a4e4558cdf5cfdc0d5962ffbdb5d7794fe0aafb31.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="step-5-remove-non-hematopoietic-samples">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Step 5. Remove non-hematopoietic samples</a><a class="headerlink" href="#step-5-remove-non-hematopoietic-samples" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">def</span> <span class="nf">remove_non_hematopoietic_samples</span><span class="p">(</span><span class="n">df1</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">df_labels</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to remove samples not present in the AML02 or AML08 clinical dataset.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">    df1: DataFrame containing the initial set of samples.</span>
+<span class="sd">    df_labels: DataFrame containing the clinical dataset.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    df2: DataFrame after removing samples not present in the clinical dataset.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">df2</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df1</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df_labels</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s1">&#39;Removed </span><span class="si">{</span><span class="n">df1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples not present in AML02 or AML08 clinical datasets.</span><span class="se">\</span>
+<span class="s1"> </span><span class="si">{</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples remaining.&#39;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">df2</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">remove_non_hematopoietic_samples</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Removed 95 samples not present in AML02 or AML08 clinical datasets. 229 samples remaining.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-6-exclude-samples-in-which-20-of-probes-have-failed-p-values">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">Step 6. Exclude samples in which &gt;20% of probes have failed p-values</a><a class="headerlink" href="#step-6-exclude-samples-in-which-20-of-probes-have-failed-p-values" title="Permalink to this heading">#</a></h2>
+<p>A strict metric implemented by Illumina quality control process is <code class="docutils literal notranslate"><span class="pre">FAIL</span> <span class="pre">by</span> <span class="pre">pval</span></code>, which happens if, for a given sample, the detection p-value is &gt;0.05 in &gt;20% of probes.</p>
+<p>Recall that detection p-values measure how likely it is that signals are background fluorescence. There are a few methods for calculating these:  <code class="docutils literal notranslate"><span class="pre">SeSAMe</span></code> and <code class="docutils literal notranslate"><span class="pre">methylprep</span></code> implement pOOBAH, which stands for P-value Out Of Band (OOB) probes for Array Hybridization. For more, see SeSAMe’s paper in <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/30085201/">Zhou et al. , 2018</a>.</p>
+<p>In other words, we will exclude samples that Illumina QC categorizes as FAIL(pval) for meeting the condition: (pOOBAH &gt; 0.05) &gt;20% probes. Here, failed probes are listed as <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, so we will count the number of <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values in each sample and exclude samples that have more than 20% <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">exclude_failed_samples</span><span class="p">(</span><span class="n">df2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;This function removes samples that have more than 20% NaN values.&#39;&#39;&#39;</span>
+
+    <span class="c1"># Calculate the number of NaN values in each sample</span>
+    <span class="n">nan_count</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+    <span class="c1"># Calculate the total number of probes (rows) in the DataFrame</span>
+    <span class="n">total_probes</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># Calculate the percentage of NaN values for each sample</span>
+    <span class="n">nan_percentage</span> <span class="o">=</span> <span class="p">(</span><span class="n">nan_count</span> <span class="o">/</span> <span class="n">total_probes</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+    <span class="c1"># Identify samples that meet the condition of having more than 20% NaN values</span>
+    <span class="n">samples_to_exclude</span> <span class="o">=</span> <span class="n">nan_percentage</span><span class="p">[</span><span class="n">nan_percentage</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+
+    <span class="c1"># Exclude samples that meet the condition from the DataFrame</span>
+    <span class="n">filtered_df2</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">samples_to_exclude</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># Print the number of samples before and after filtering</span>
+    <span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;Removed </span><span class="si">{</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">filtered_df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> samples (</span><span class="si">{</span><span class="nb">round</span><span class="p">((</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">filtered_df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">%). </span><span class="si">{</span><span class="n">filtered_df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> samples remaining.&quot;</span>
+    <span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">filtered_df2</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">exclude_failed_samples</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Removed 28 samples (12.23%). 201 samples remaining.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-7-exclude-cpg-probes-that-are-missing-in-5-of-samples">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Step 7. Exclude CpG probes that are missing in &gt;5% of samples</a><a class="headerlink" href="#step-7-exclude-cpg-probes-that-are-missing-in-5-of-samples" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">probe_cutoff</span><span class="p">(</span><span class="n">qc_betas</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+    <span class="n">qc_betas2</span> <span class="o">=</span> <span class="n">qc_betas</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">thresh</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">threshold</span><span class="o">*</span><span class="n">qc_betas</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">qc_betas</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">qc_betas2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> probes removed. </span><span class="si">{</span><span class="n">qc_betas2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> probes remaining.&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">qc_betas2</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">probe_cutoff</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>69536 probes removed. 357839 probes remaining.
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id1">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Evaluate Missing Values</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the missing values</span>
+<span class="n">msno</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">20000</span><span class="p">:</span><span class="mi">20050</span><span class="p">,:]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="../_images/e36f2fec4c8ca698c58ba953b6ace973674d635d3550cc88f712cc5a4f24e70a.png" src="../_images/e36f2fec4c8ca698c58ba953b6ace973674d635d3550cc88f712cc5a4f24e70a.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="step-7-impute-remaining-missing-values">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">Step 7. Impute remaining missing values</a><a class="headerlink" href="#step-7-impute-remaining-missing-values" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p><strong>Method</strong>: Mean by batch (it replaces each missing value by averaging all the known values for that CpG across samples within their batch).</p></li>
+<li><p><strong>Simple mean is recommended for methylation β-values</strong>:</p>
+<p><em>In conclusion, the consolidated and manufacturer encouraged practice to use β-value seems appropriate for DNA methylation data imputation. The choice of the best imputation method is somewhat more subtle and depends essentially on the available computational resources and the amount of missing values. Independently of the expected missingness mechanisms, regression-based methods provide on average more accurate estimates of the missing values. However, imputations with regression methods in the presence of limited computational resources can be a rather challenging task. In such cases, the simple mean approach can surprisingly be a better choice than more sophisticated methods</em> (<a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/32600298/">Lena et al., 2020</a>).</p>
+</li>
+<li><p><strong>This step inevitably introduces bias</strong>: More sophisticated methods, however, also do. Benchmarks done by the paper above and others reported that the increase in error across methods is roughly similar (<a class="reference external" href="https://scikit-learn.org/stable/auto_examples/impute/plot_missing_values.html#sphx-glr-auto-examples-impute-plot-missing-values-py">see here</a>), which places <code class="docutils literal notranslate"><span class="pre">imputation</span> <span class="pre">by</span> <span class="pre">mean</span></code> as an equivalently error-prone method compared to others but vastly simpler and faster.</p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Impute missing values</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;NaN values filled by the mean probe value.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NaN values filled by the mean probe value.
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id2">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Evaluate Missing Values</a><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the missing values</span>
+<span class="n">msno</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">20000</span><span class="p">:</span><span class="mi">20050</span><span class="p">,:]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="../_images/fb06ccdf723a81947b41b81f0c3f26e7e40d8f2c35514b44f43f797e86b09d44.png" src="../_images/fb06ccdf723a81947b41b81f0c3f26e7e40d8f2c35514b44f43f797e86b09d44.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="step-8-remove-outliers-by-pca">
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">Step 8. Remove outliers by PCA</a><a class="headerlink" href="#step-8-remove-outliers-by-pca" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Define functions</span>
+
+<span class="k">def</span> <span class="nf">standardize_data</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Standardizes the data.&#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">perform_pca</span><span class="p">(</span><span class="n">std_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Performs PCA on standardized data.&#39;&#39;&#39;</span>
+    <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">std_data</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">create_principal_df</span><span class="p">(</span><span class="n">pca_data</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Creates a DataFrame with the PCA data.&#39;&#39;&#39;</span>
+    <span class="n">principal_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">pca_data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="s1">&#39;PC2&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+    <span class="n">principal_df</span><span class="p">[</span><span class="s1">&#39;hue&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_labels</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">principal_df</span>
+
+<span class="k">def</span> <span class="nf">filter_df</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">principal_df</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Filters the DataFrame by removing outliers.&#39;&#39;&#39;</span>
+    <span class="n">outliers</span> <span class="o">=</span> <span class="n">principal_df</span><span class="p">[</span><span class="n">principal_df</span><span class="p">[</span><span class="s1">&#39;PC1&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">outliers</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Execute functions</span>
+
+<span class="n">threshold</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">X_std</span> <span class="o">=</span> <span class="n">standardize_data</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">principal_components</span> <span class="o">=</span> <span class="n">perform_pca</span><span class="p">(</span><span class="n">X_std</span><span class="p">)</span>
+<span class="n">principal_df</span> <span class="o">=</span> <span class="n">create_principal_df</span><span class="p">(</span><span class="n">principal_components</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+<span class="n">non_outliers</span> <span class="o">=</span> <span class="n">principal_df</span><span class="p">[</span><span class="n">principal_df</span><span class="p">[</span><span class="s1">&#39;PC1&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">filter_df</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">principal_df</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
+
+<span class="c1"># Plot the PCA data</span>
+
+<span class="k">def</span> <span class="nf">plot_data</span><span class="p">(</span><span class="n">principal_df</span><span class="p">,</span> <span class="n">non_outliers</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Plots PCA data.&#39;&#39;&#39;</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">df</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="p">[(</span><span class="n">principal_df</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span>
+                                     <span class="s1">&#39;PCA possibly containing outliers, n=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">principal_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])),</span>
+                                    <span class="p">(</span><span class="n">non_outliers</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span>
+                                     <span class="s1">&#39;PCA without outliers (no change), n=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">non_outliers</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))]:</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;PC2&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;hue&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+        <span class="c1"># ax.axvline(x=threshold, color=&#39;black&#39;, linestyle=&#39;--&#39;, alpha=0.5, linewidth=1.5)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;PC 1&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;PC 2&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plot_data</span><span class="p">(</span><span class="n">principal_df</span><span class="p">,</span> <span class="n">non_outliers</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Removed </span><span class="si">{</span><span class="n">principal_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> outliers. </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples remaining.&#39;</span><span class="p">)</span>
+
+<span class="c1"># List outliers</span>
+
+<span class="n">outliers</span> <span class="o">=</span> <span class="n">principal_df</span><span class="p">[</span><span class="n">principal_df</span><span class="p">[</span><span class="s1">&#39;PC1&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<span class="n">outliers</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/267c2cabe1b06c7716ec4cdcddb36ef780412604952e98d21710fc236b56d963.png" src="../_images/267c2cabe1b06c7716ec4cdcddb36ef780412604952e98d21710fc236b56d963.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Removed 0 outliers. 201 samples remaining.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="transform-to-m-values">
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">Transform to M-values</a><a class="headerlink" href="#transform-to-m-values" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Transpose the dataframe</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">T</span>
+
+<span class="k">def</span> <span class="nf">beta2m</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Transfrom beta-values into m-values&#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">val</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">val</span><span class="p">))</span>
+
+<span class="n">x_train_m</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">beta2m</span><span class="p">))</span>
+
+<span class="c1"># Get correlation between Beta and M Values</span>
+<span class="n">corr</span> <span class="o">=</span> <span class="n">x_train_m</span><span class="o">.</span><span class="n">corrwith</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Glue them into same dataframe for vizualization purposes</span>
+<span class="n">beta_to_m_values</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">x_train_m</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="n">df2</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="n">corr</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                             <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;M Values&#39;</span><span class="p">,</span><span class="s1">&#39;Beta Values&#39;</span><span class="p">,</span><span class="s1">&#39;Correlation&#39;</span><span class="p">],</span>
+                             <span class="n">join</span><span class="o">=</span> <span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">draw_scatterplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">hue</span><span class="p">,</span><span class="n">s</span><span class="p">):</span>
+    
+    <span class="c1"># Define theme</span>
+
+    <span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Define scatterplot</span>
+
+    <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+                    <span class="n">hue</span><span class="o">=</span><span class="n">hue</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;flare&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">s</span><span class="p">,</span>
+                    <span class="n">sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+    <span class="c1"># Calculate Pearson’s correlation coefficient (r)</span>
+    <span class="c1"># and its two-tailed p-value (p)</span>
+
+    <span class="n">r</span><span class="p">,</span><span class="n">p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">x</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="n">y</span><span class="p">])</span>
+
+    <span class="c1"># Annotate r and p into the plot</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">fr</span><span class="s1">&#39;$\rho$: </span><span class="si">{</span><span class="n">r</span><span class="si">:</span><span class="s1">.5f</span><span class="si">}</span><span class="s1">, p-value: </span><span class="si">{</span><span class="n">p</span><span class="si">:</span><span class="s1">.5f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">6.0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
+                <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                <span class="n">bbox</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;boxstyle&#39;</span><span class="p">:</span> <span class="s1">&#39;round&#39;</span><span class="p">,</span> <span class="s1">&#39;facecolor&#39;</span><span class="p">:</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;edgecolor&#39;</span><span class="p">:</span> <span class="s1">&#39;lightgray&#39;</span><span class="p">})</span>
+
+    <span class="c1"># Define plot specs</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Concordance by Pearson&#39;s correlation coefficient ($\rho$) in &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; CpG probes&#39;</span><span class="p">,</span>
+               <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">12</span><span class="p">)</span> 
+
+    <span class="c1"># Save plot figure</span>
+    
+    <span class="c1"># plt.savefig(&#39;../Figures/Beta_to_M_Values_&#39; + str(len(df)) + &#39;_scatterplot&#39; + &#39;.png&#39;,</span>
+    <span class="c1">#              bbox_inches=&#39;tight&#39;, dpi=300)</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">())</span>
+
+<span class="n">draw_scatterplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">beta_to_m_values</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;M Values&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Beta Values&#39;</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Correlation&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: underflow encountered in _beta_sf
+</pre></div>
+</div>
+<img alt="../_images/064d9a49461e86ff4c862d5847b4fc041102074b78bafc286a792a112e157309.png" src="../_images/064d9a49461e86ff4c862d5847b4fc041102074b78bafc286a792a112e157309.png" />
+</div>
+</div>
+</section>
+<section id="step-9-perform-batch-correction">
+<h2><a class="toc-backref" href="#id20" role="doc-backlink">Step 9. Perform batch correction</a><a class="headerlink" href="#step-9-perform-batch-correction" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>pyCombat</strong>: a Python tool for batch effects correction in high-throughput molecular data using empirical Bayes methods</p></li>
+<li><p><strong>Github</strong>: <a class="reference external" href="https://epigenelabs.github.io/pyComBat/">https://epigenelabs.github.io/pyComBat/</a></p></li>
+<li><p><strong>Implementation Preprint</strong>: <a class="reference external" href="https://doi.org/10.1101/2020.03.17.995431">bioRxiv</a></p></li>
+<li><p><strong>Original Paper</strong>: <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/16632515/">Adjusting batch effects in microarray expression data using empirical Bayes methods</a></p></li>
+</ul>
+<section id="m-values">
+<h3><a class="toc-backref" href="#id21" role="doc-backlink">M-values</a><a class="headerlink" href="#m-values" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">combat.pycombat</span> <span class="kn">import</span> <span class="n">pycombat</span>
+
+<span class="c1"># Correct batch effects in the training dataset</span>
+<span class="n">df_m_values</span> <span class="o">=</span> <span class="n">pycombat</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">x_train_m</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">batch</span><span class="o">=</span><span class="n">df_labels</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_labels</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">columns</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Successfully corrected batch effects in the training dataset.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found 2 batches.
+Adjusting for 0 covariate(s) or covariate level(s).
+Standardizing Data across genes.
+Fitting L/S model and finding priors.
+Finding parametric adjustments.
+Adjusting the Data
+Successfully corrected batch effects in the training dataset.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="beta-values">
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">Beta-values</a><a class="headerlink" href="#beta-values" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">combat.pycombat</span> <span class="kn">import</span> <span class="n">pycombat</span>
+
+<span class="c1"># Correct batch effects in the training dataset</span>
+<span class="n">df_b_values</span> <span class="o">=</span> <span class="n">pycombat</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">batch</span> <span class="o">=</span> <span class="n">df_labels</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_labels</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Succesfully corrected batch effects in the training dataset.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found 2 batches.
+Adjusting for 0 covariate(s) or covariate level(s).
+Standardizing Data across genes.
+Fitting L/S model and finding priors.
+Finding parametric adjustments.
+Adjusting the Data
+Succesfully corrected batch effects in the training dataset.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluate-batch-effects">
+<h3><a class="toc-backref" href="#id23" role="doc-backlink">Evaluate batch effects</a><a class="headerlink" href="#evaluate-batch-effects" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_std</span> <span class="o">=</span> <span class="n">standardize_data</span><span class="p">(</span><span class="n">df_b_values</span><span class="p">)</span>
+<span class="n">principal_components</span> <span class="o">=</span> <span class="n">perform_pca</span><span class="p">(</span><span class="n">X_std</span><span class="p">)</span>
+<span class="n">principal_df</span> <span class="o">=</span> <span class="n">create_principal_df</span><span class="p">(</span><span class="n">principal_components</span><span class="p">,</span> <span class="n">df_b_values</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_data</span><span class="p">(</span><span class="n">principal_df</span><span class="p">,</span> <span class="n">non_outliers</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Plots PCA data.&#39;&#39;&#39;</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">df</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">legend</span> <span class="ow">in</span> <span class="p">[(</span><span class="n">principal_df</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span>
+                                   <span class="s1">&#39;PCA after batch correction, n=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">principal_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="s1">&#39;full&#39;</span><span class="p">),</span>
+                                  <span class="p">(</span><span class="n">non_outliers</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span>
+                                   <span class="s1">&#39;PCA before batch correction, n=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">non_outliers</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="kc">False</span><span class="p">)]:</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;PC1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;PC2&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;hue&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="n">legend</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;PC 1&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;PC 2&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Batch&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plot_data</span><span class="p">(</span><span class="n">principal_df</span><span class="p">,</span> <span class="n">non_outliers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/a34afec3e09656ae563a4032457434b4c3fd82ad2dd3cee3143e32183026e765.png" src="../_images/a34afec3e09656ae563a4032457434b4c3fd82ad2dd3cee3143e32183026e765.png" />
+</div>
+</div>
+</section>
+<section id="save-batch-corrected-m-values-dataframe-for-other-analyses">
+<h3><a class="toc-backref" href="#id24" role="doc-backlink">Save batch-corrected m-values dataframe for other analyses</a><a class="headerlink" href="#save-batch-corrected-m-values-dataframe-for-other-analyses" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Save file as csv</span>
+<span class="c1"># df_m-values.to_csv(output_path+&#39;methylation_dataset_m-values_StJude-201-dx-pts_batch-corrected_FMarchi-9-18-23.csv&#39;)</span>
+
+<span class="c1"># # Save file as .RData</span>
+<span class="c1"># import pyreadr</span>
+<span class="c1"># pyreadr.write_rdata(output_path+&#39;methylation_dataset_m-values_StJude-201-dx-pts_batch-corrected_FMarchi-9-18-23.RData&#39;,</span>
+<span class="c1">#             df_m-values.reset_index())</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+</section>
+<section id="save-batch-corrected-beta-values-dataset">
+<h2><a class="toc-backref" href="#id25" role="doc-backlink">Save batch-corrected beta-values dataset</a><a class="headerlink" href="#save-batch-corrected-beta-values-dataset" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_b_values</span> <span class="o">=</span> <span class="n">df_b_values</span><span class="o">.</span><span class="n">T</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Dataset (df_b_values) contains </span><span class="si">{</span><span class="n">df_b_values</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">df_b_values</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns (samples).&#39;</span><span class="p">)</span>
+
+<span class="n">df_b_values</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;201samples-357839cpgs-withbatchcorrection-bvalues.pkl&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Successfuly saved in: </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">201samples-357839cpgs-withbatchcorrection-bvalues.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset (df_b_values) contains 357839 rows (5mC nucleotides/probes) and 201 columns (samples).
+Successfuly saved in: ../../Data/Intermediate_Files/201samples-357839cpgs-withbatchcorrection-bvalues.pkl
+</pre></div>
+</div>
+</div>
+</div>
+<section id="evaluate-final-sample-size-by-batch">
+<h3><a class="toc-backref" href="#id26" role="doc-backlink">Evaluate final sample size by batch</a><a class="headerlink" href="#evaluate-final-sample-size-by-batch" title="Permalink to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove samples that are not in the methyl dataset</span>
+<span class="n">df_labels</span> <span class="o">=</span> <span class="n">labels_combined</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels_combined</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df_b_values</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="c1"># Add age categorization to the clinical data</span>
+<span class="n">df_labels</span> <span class="o">=</span> <span class="n">process_df_labels</span><span class="p">(</span><span class="n">df_labels</span><span class="p">)</span>
+
+<span class="c1"># Save the clinical data labels</span>
+<span class="n">df_labels</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;validation_clinical_data.csv&#39;</span><span class="p">)</span>
+
+<span class="n">df_labels</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Clinical Trial
+AML02    159
+AML08     42
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="eln-aml-2022-diagnosis">
+<h3><a class="toc-backref" href="#id27" role="doc-backlink">ELN AML 2022 Diagnosis</a><a class="headerlink" href="#eln-aml-2022-diagnosis" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_labels</span><span class="p">[</span><span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ELN AML 2022 Diagnosis
+AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement                  47
+AML with t(8;21)(q22;q22.1)/RUNX1::RUNX1T1                       29
+AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22)/CBFB::MYH11    23
+AML with other rare recurring translocations                     10
+AML with t(6;9)(p23;q34.1)/DEK::NUP214                            1
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="appendix-1-how-to-create-this-electronic-notebook">
+<h2><a class="toc-backref" href="#id28" role="doc-backlink">Appendix 1. How to create this electronic notebook</a><a class="headerlink" href="#appendix-1-how-to-create-this-electronic-notebook" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Use Jupyter Book</p>
+<ul class="simple">
+<li><p>Go to <a class="reference external" href="https://jupyterbook.org">jupyterbook.org</a>.</p></li>
+<li><p>Follow the steps on their page.</p></li>
+</ul>
+</li>
+<li><p>Set up <code class="docutils literal notranslate"><span class="pre">toc.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> files</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">toc.yml</span></code> is the table of contents file. It contains the structure of the book.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> is the configuration file. It contains the configuration of the book.</p></li>
+</ul>
+</li>
+<li><p>Build the book</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jb<span class="w"> </span>build<span class="w"> </span>.
+</pre></div>
+</div>
+</li>
+<li><p>Push to Github</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;message&quot;</span>
+git<span class="w"> </span>push
+</pre></div>
+</div>
+<p>or do it through VSCode GUI.</p>
+</li>
+<li><p>Push to Github pages using <code class="docutils literal notranslate"><span class="pre">ghp-import</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ghp-import<span class="w"> </span>-n<span class="w"> </span>-p<span class="w"> </span>-f<span class="w"> </span>-o<span class="w"> </span>_build/html
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">jupyterbook</span></code> works best on Linux/Mac. If on Windows, use WSL.</p>
+</div>
+</section>
+<section id="watermark">
+<h2><a class="toc-backref" href="#id29" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Author: Francisco_Marchi@Lamba_Lab_UF
+
+Python implementation: CPython
+Python version       : 3.8.16
+IPython version      : 8.12.2
+
+methylcheck: 0.8.5
+pandas     : 2.0.2
+
+Compiler    : GCC 11.3.0
+OS          : Linux
+Release     : 5.15.133.1-microsoft-standard-WSL2
+Machine     : x86_64
+Processor   : x86_64
+CPU cores   : 20
+Architecture: 64bit
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./data-processing"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="discovery_dataset.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Discovery Dataset</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="reclassification_strategy.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Reclassification to Current Clinical Guidelines</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-test-dataset-sources">Validation (test) dataset sources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-process-raw-data-to-get-methylation-beta-values">Step 1. Process raw data to get methylation beta values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-the-data-at">Where the data at?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataframes">Load Dataframes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-load-and-process-clinical-data">Step 2. Load and process clinical data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-remove-suboptimal-probes">Step 3. Remove suboptimal probes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-remove-sex-linked-probes">Step 4. Remove sex-linked probes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-missing-values">Evaluate Missing Values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-remove-non-hematopoietic-samples">Step 5. Remove non-hematopoietic samples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-exclude-samples-in-which-20-of-probes-have-failed-p-values">Step 6. Exclude samples in which &gt;20% of probes have failed p-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-exclude-cpg-probes-that-are-missing-in-5-of-samples">Step 7. Exclude CpG probes that are missing in &gt;5% of samples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Evaluate Missing Values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-impute-remaining-missing-values">Step 7. Impute remaining missing values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Evaluate Missing Values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-remove-outliers-by-pca">Step 8. Remove outliers by PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transform-to-m-values">Transform to M-values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-perform-batch-correction">Step 9. Perform batch correction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#m-values">M-values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beta-values">Beta-values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-batch-effects">Evaluate batch effects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-batch-corrected-m-values-dataframe-for-other-analyses">Save batch-corrected m-values dataframe for other analyses</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-batch-corrected-beta-values-dataset">Save batch-corrected beta-values dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-final-sample-size-by-batch">Evaluate final sample size by batch</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eln-aml-2022-diagnosis">ELN AML 2022 Diagnosis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-1-how-to-create-this-electronic-notebook">Appendix 1. How to create this electronic notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marchi et al., 2023. Lamba Lab @ University of Florida. Please do not share this notebook publicly.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

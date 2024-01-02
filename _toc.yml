@@ -35,13 +35,15 @@ parts:
   #   chapters:
   #     - file: 8_Nanopore_Sample.ipynb
 
-  # - caption: Other Benchmarks and Analyses
+  - caption: Benchmarks
   
-  #   chapters:
-  #     - file: 5_Multiclass_Julia_Gen_v1.ipynb
-  #     - file: 5_PyTorch_Multiclass_Classifier_v3.ipynb
-  #     - file: 5_Multiclass_PedsPacmap_Classifier_v2.ipynb
-      # - file: 4.2_CCA_v1.ipynb
+    chapters:
+      - file: benchmarks/dx-score.ipynb
+      - file: tests/dx-score-n_components-pacmap.ipynb
+      - file: tests/dx-score-pedsAML-only.ipynb
+      - file: tests/dx-score-with-looser-filtering.ipynb
+      - file: tests/dx-score-without-ALL-relapse.ipynb
+      - file: tests/dx-score-without-relapse.ipynb
 
   #     # - caption: AML Diagnostic Map
 
