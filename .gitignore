@@ -9,6 +9,7 @@
 .venv_pacmap
 .venv_sklearn
 .past_code_files
+.benchmarking
 
 # Compiled source #
 ###################
