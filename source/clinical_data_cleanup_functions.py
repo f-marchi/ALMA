@@ -500,6 +500,8 @@ def clean_aml02(df):
     df['Tissue Type'] = 'Bone Marrow'
     df['Sample Type'] = 'Diagnosis'
 
+
+
     return (df)
 
 
@@ -764,8 +766,16 @@ def clean_nordic_all(df):
                      })
 
     # Make `Diagnosis` column by concatenating `immunophenotype` and `subtype` columns
-    df['Immunophenotype_Subtype'] = df['immunophenotype'] + ' ' + df['subtype'] 
+    df['Dx at Acquisition'] = df['immunophenotype'] + ' ' + df['subtype']
+    
     df['Clinical Trial'] = 'NOPHO ALL92-2000'
+
+    df['CEBPA mutation'] = np.nan
+    df['NPM mutation'] = np.nan
+    df['Karyotype'] = np.nan
+    df['Gene Fusion'] = np.nan
+    
+
 
     return df
 
@@ -776,9 +786,15 @@ def clean_mds_taml(df):
     
     df = df.replace({'Unknown': np.nan, 'NA': np.nan,'YES': 'Yes', 'NO': 'No', 'n':'No', 'y':'Yes',
                      'M':'Male','F':'Female', 'bone marrow aspirate': 'Bone Marrow', 'DX':'Diagnosis',
-                     'CTR':'Control (Healthy Donor)','POST TPH': 'Post Transplant'})
+                     'CTR':'Otherwise-Normal Control','POST TPH': 'Post Transplant'})
     
     df['Clinical Trial'] = 'CETLAM SMD-09 (MDS-tAML)'
+
+    df['CEBPA mutation'] = np.nan
+    df['NPM mutation'] = np.nan
+    df['Karyotype'] = np.nan
+    df['Gene Fusion'] = np.nan
+    df['Dx at Acquisition'] = 'MDS-related or secondary myeloid neoplasms'
 
     return df
 
@@ -786,15 +802,20 @@ def clean_mds_taml(df):
 def clean_all_graal(df):
 
     df = df.rename(columns={'source': 'Tissue', 'age': 'Age (years)','gender':'Gender',
-                            'diagnosis':'Diagnosis', 'Sample_Name': 'Patient_ID'})
+                            'diagnosis':'Diagnosis', 'Sample_Name': 'Patient_ID',
+                            'tissue':'Tissue'})
     
     df = df.replace({'Unknown': np.nan, 'NA': np.nan,'YES': 'Yes', 'NO': 'No', 'n':'No', 'y':'Yes',
-                     'M':'Male','F':'Female', 'Leukemic Bone Marrow': 'Bone Marrow',
-                     'normal': 'Otherwise-Normal Control'})
+                     'M':'Male','F':'Female'})
     
     
     df['Sample Type'] = 'Diagnosis'
     df['Clinical Trial'] = 'French GRAALL 2003–2005'
+
+    df['CEBPA mutation'] = np.nan
+    df['NPM mutation'] = np.nan
+    df['Karyotype'] = np.nan
+    df['Gene Fusion'] = np.nan
 
     return df
 

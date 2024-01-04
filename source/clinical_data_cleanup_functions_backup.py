@@ -541,7 +541,7 @@ def clean_aml02(df):
 
         df['ELN22 Combined Diagnoses'] = df[['ELN22_Diagnosis','ELN22_Cytogenetics','ELN22_Karyotype']]\
             .apply(lambda x: ','.join(filter(lambda i: i is not None and i==i, x)), axis=1)
-            # Replace empty strings with NaN
+        # Replace empty strings with NaN
         df['ELN22 Combined Diagnoses'] = df['ELN22 Combined Diagnoses'].replace('', np.nan)
 
         # Create `ELN 2022 Diagnosis` column by splitting `Combined Diagnosis` by comma and taking the first element
@@ -1254,9 +1254,9 @@ def clean_nordic_all(df):
         mapping = {
         'BCP-ALL HeH'           :'B-ALL with hyperdiploidy, high',
         'BCP-ALL t(12;21)'      :'B-ALL with t(12;21)(p13.2;q22.1); ETV6::RUNX1',         
-        'BCP-ALL undefined'     :'B-ALL NOS',     
-        'T-ALL T-ALL'           :'T-ALL NOS',
-        'BCP-ALL non-recurrent' :'B-ALL NOS', 
+        # 'BCP-ALL undefined'     :'B-ALL NOS',     
+        # 'T-ALL T-ALL'           :'T-ALL NOS',
+        # 'BCP-ALL non-recurrent' :'B-ALL NOS', 
         'BCP-ALL 11q23/MLL'     :'B-ALL with t(v;11q23.3); KMT2A-rearranged',       
         'BCP-ALL t(1;19)'       :'B-ALL with t(1;19)(q23;p13.3); TCF3::PBX1',       
         'BCP-ALL dic(9;20)'     :'B-ALL dic(9;20)',       
