@@ -101,7 +101,7 @@ def draw_kaplan_meier(scorename, df, save_plot=False,
             surv1 = kmf1.survival_function_.join(kmf1.confidence_interval_)
             surv2 = kmf2.survival_function_.join(kmf2.confidence_interval_)
             surv3 = surv1.join(surv2, how='outer')
-            surv3.to_csv('../Figures/Kaplan_Meiers/KM_' + t + '_SurvivalTable_' +
+            surv3.to_csv('../../Figures/Kaplan_Meiers/KM_' + t + '_SurvivalTable_' +
                          scorename + '_' + trialname + '_' + str(len(df)) + '.csv')
 
         i.set_ylim(0, 1)
