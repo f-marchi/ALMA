@@ -786,7 +786,7 @@ def clean_mds_taml(df):
     
     df = df.replace({'Unknown': np.nan, 'NA': np.nan,'YES': 'Yes', 'NO': 'No', 'n':'No', 'y':'Yes',
                      'M':'Male','F':'Female', 'bone marrow aspirate': 'Bone Marrow', 'DX':'Diagnosis',
-                     'CTR':'Otherwise-Normal Control','POST TPH': 'Post Transplant'})
+                     'CTR':'Bone Marrow Normal','POST TPH': 'Post Transplant'})
     
     df['Clinical Trial'] = 'CETLAM SMD-09 (MDS-tAML)'
 
@@ -801,8 +801,8 @@ def clean_mds_taml(df):
 
 def clean_all_graal(df):
 
-    df = df.rename(columns={'source': 'Tissue', 'age': 'Age (years)','gender':'Gender',
-                            'diagnosis':'Diagnosis', 'Sample_Name': 'Patient_ID',
+    df = df.rename(columns={'age': 'Age (years)','gender':'Gender',
+                            'diagnosis':'Dx at Acquisition', 'Sample_Name': 'Patient_ID',
                             'tissue':'Tissue'})
     
     df = df.replace({'Unknown': np.nan, 'NA': np.nan,'YES': 'Yes', 'NO': 'No', 'n':'No', 'y':'Yes',
@@ -836,6 +836,13 @@ def clean_target_all(df):
     df['efs.evnt'] = df['First Event'].isin(
                         ['Relapse', 'Induction Failure', 'Death', 
                         'Death without Remission']).astype(int)
+
+    df['CEBPA mutation'] = np.nan
+    df['NPM mutation'] = np.nan
+    df['Gene Fusion'] = np.nan 
+
+    df['Dx at Acquisition'] = 'MPAL with ' + df['WHO ALAL Classification']
+
 
     return df
 
