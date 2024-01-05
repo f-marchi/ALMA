@@ -496,9 +496,23 @@ def clean_aml02(df):
                                                  'Low': 'Low Risk'})
     df = df.rename(columns={'Race': 'Race or ethnic group',
                             'Ethnicity': 'Hispanic or Latino ethnic group'})
+
+    df['Primary Cytogenetic Code'] = df['Primary Cytogenetic Code'].replace({'t (9;11)': 't(9;11)', 't (8;21)': 't(8;21)',
+                                                                             'Miscell': 'Other', 'inv (16)': 'inv(16)',
+                                                                             'Insuff': 'Other', '11q23': 't(9;11)'})
+
     
     df['Tissue Type'] = 'Bone Marrow'
     df['Sample Type'] = 'Diagnosis'
+
+    # Create new columns for reclassification
+    df['CEBPA mutation'] = np.nan
+    df['NPM mutation'] = np.nan
+    df['Gene Fusion'] = np.nan
+    df['Dx at Acquisition'] = 'AML ' + df['Primary Cytogenetic Code']
+
+    
+
 
 
 
