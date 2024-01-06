@@ -119,8 +119,6 @@ class BokehPlotter:
         curdoc().theme = BokehPlotter.white_theme
         return p
 
-
-
     def create_scatters(self, p, hue):
         df = self.df[~self.df[hue].isna()]  # Filter out rows with NaN values for the hue column
         filtered_dfs = [df[df[hue] == val] for val in df[hue].value_counts().sort_values(ascending=False).index.to_list()]
