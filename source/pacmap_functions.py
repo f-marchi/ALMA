@@ -64,7 +64,6 @@ class DataProcessor:
         self.df_test = self.df_test_embedding.join(self.test_clinical_data[self.cols]).reset_index()
         self.df = pd.concat([self.df_train, self.df_test]) # Concatenate train and test dataframes
 
-
 class BokehPlotter:
     from bokeh.themes import Theme
 
