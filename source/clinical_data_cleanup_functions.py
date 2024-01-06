@@ -13,9 +13,9 @@ __email__ = 'flourenco@ufl.edu'
 
 # Set paths to clinical data files
 
-mount = '/mnt/d/MethylScore'
+mount = '/mnt/f/MethylScore'
 
-clinical_data_path = mount + '/Data/Clinical_Data/'
+clinical_data_path = mount + '/Raw_Data/Clinical_Data/'
 input_path_450k = mount + '/Raw_Data/Methyl_Array_450k/'
 input_path_EPIC = mount + '/Raw_Data/Methyl_Array_EPIC/'
 
@@ -580,6 +580,12 @@ def clean_aml08(df):
 
     df['Tissue Type'] = 'Bone Marrow'
     df['Sample Type'] = 'Diagnosis'
+
+    # Create new columns for reclassification
+    df['CEBPA mutation'] = df['Cebpa'].replace({'Not Done': np.nan, 'Wild Type': 'No', 'Point Mutations': 'Yes'})
+    df['NPM mutation'] = df['Npm1'].replace({'Not Done': np.nan, 'Wild Type': 'No', 'Mutations': 'Yes'})
+    df['Gene Fusion'] = np.nan
+    df['Dx at Acquisition'] = df['Primarydiagnosis'] # making a copy here in case someone wants to look for the original column in the future
 
     return (df)
 
