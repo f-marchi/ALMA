@@ -583,9 +583,21 @@ def clean_aml08(df):
 
     # Create new columns for reclassification
     df['CEBPA mutation'] = df['Cebpa'].replace({'Not Done': np.nan, 'Wild Type': 'No', 'Point Mutations': 'Yes'})
-    df['NPM mutation'] = df['Npm1'].replace({'Not Done': np.nan, 'Wild Type': 'No', 'Mutations': 'Yes'})
-    df['Gene Fusion'] = np.nan
-    df['Dx at Acquisition'] = df['Primarydiagnosis'] # making a copy here in case someone wants to look for the original column in the future
+    df['NPM mutation'] = df['Nmp1'].replace({'Not Done': np.nan, 'Wild Type': 'No', 'Mutations': 'Yes'})
+    df['Dx at Acquisition'] = np.nan
+
+    def annotate_gene_fusion_aml08(samples):
+        mapping = {
+        'Myeloid Leukemia with t(8;21) (q22;q22) [AML1/ETO]'            : 'RUNX1-RUNX1T1',
+        'Myeloid Leukemia with 11q23/MLL Abnormalities'                 : 'MLL',
+        'Myeloid Leukemia with t(6;9)(p23;q34) DEK-NUP214'              : 'DEK-NUP214',
+        'Myeloid Leukemia with inv(16) or t(16;16) [CBFbeta/MYH11]'     : 'CBFB-MYH11'}
+    
+        for key, value in mapping.items():
+            if key in samples:
+                return value
+            
+    df['Gene Fusion'] = df['Primarydiagnosis'].astype(str).apply(annotate_gene_fusion_aml08)
 
     return (df)
 
