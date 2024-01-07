@@ -581,7 +581,7 @@ def clean_aml08(df):
     df['Tissue Type'] = 'Bone Marrow'
     df['Sample Type'] = 'Diagnosis'
 
-    # Create new columns for reclassification
+    # Create new columns for reclassification according to WHO 2022
     df['CEBPA mutation'] = df['Cebpa'].replace({'Not Done': np.nan, 'Wild Type': 'No', 'Point Mutations': 'Yes'})
     df['NPM mutation'] = df['Nmp1'].replace({'Not Done': np.nan, 'Wild Type': 'No', 'Mutations': 'Yes'})
     df['Dx at Acquisition'] = np.nan
