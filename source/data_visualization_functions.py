@@ -766,7 +766,10 @@ def plot_confusion_matrix_individual(clf, x_test, y_test, title='Classification 
     plt.show()
 
 
-def plot_confusion_matrix_stacked(clf, x_train, y_train, x_test, y_test, title='MethylScoreAML Dx Classification results', tick_fontsize=10, label_fontsize=10):
+def plot_confusion_matrix_stacked(clf, x_train, y_train, x_test, y_test, 
+                                    title='MethylScoreAML Dx Classification results', 
+                                    tick_fontsize=10, label_fontsize=10,
+                                    figsize=(10, 5)):
 
     from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
     import seaborn as sns
@@ -774,7 +777,7 @@ def plot_confusion_matrix_stacked(clf, x_train, y_train, x_test, y_test, title='
 
     sns.set_theme(style='white')
 
-    fig, axs = plt.subplots(1, 2, figsize=(10, 5), sharey=True)
+    fig, axs = plt.subplots(1, 2, figsize=figsize, sharey=True)
 
     # Add a supertitle to the figure
     fig.suptitle(title + ' on clinically annotated samples', fontsize=12, fontweight='bold')
