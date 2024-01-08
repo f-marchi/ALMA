@@ -13,7 +13,9 @@ __email__ = 'flourenco@ufl.edu'
 
 # Set paths to clinical data files
 
-mount = '/mnt/f/MethylScore'
+# mount = '/mnt/f/MethylScore'
+mount = '../../../'
+
 
 clinical_data_path = mount + '/Raw_Data/Clinical_Data/'
 input_path_450k = mount + '/Raw_Data/Methyl_Array_450k/'
