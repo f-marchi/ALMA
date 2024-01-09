@@ -353,10 +353,8 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-batch-corrected-beta-values-dataset">Save batch-corrected beta-values dataset</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-final-sample-size-by-batch">Evaluate final sample size by batch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eln-aml-2022-diagnosis">ELN AML 2022 Diagnosis</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-1-how-to-create-this-electronic-notebook">Appendix 1. How to create this electronic notebook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
 </ul>
             </nav>
@@ -415,11 +413,9 @@ document.write(`
 <li><p><a class="reference internal" href="#save-batch-corrected-beta-values-dataset" id="id25">Save batch-corrected beta-values dataset</a></p>
 <ul>
 <li><p><a class="reference internal" href="#evaluate-final-sample-size-by-batch" id="id26">Evaluate final sample size by batch</a></p></li>
-<li><p><a class="reference internal" href="#eln-aml-2022-diagnosis" id="id27">ELN AML 2022 Diagnosis</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#appendix-1-how-to-create-this-electronic-notebook" id="id28">Appendix 1. How to create this electronic notebook</a></p></li>
-<li><p><a class="reference internal" href="#watermark" id="id29">Watermark</a></p></li>
+<li><p><a class="reference internal" href="#watermark" id="id27">Watermark</a></p></li>
 </ul>
 </li>
 </ul>
@@ -481,11 +477,11 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_path_test_data</span> <span class="o">=</span> <span class="s1">&#39;/mnt/d/MethylScore/Raw_Data/LambaPrivate_StJude_AML02_AML08_Methyl450k/&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_path_test_data</span> <span class="o">=</span> <span class="s1">&#39;/mnt/f/MethylScore/Raw_Data/LambaPrivate_StJude_AML02_AML08_Methyl450k/&#39;</span>
 
-<span class="n">zhou2016_probes_path</span> <span class="o">=</span> <span class="s1">&#39;/mnt/d/MethylScore/UnreliableProbesList_Zhou2016/EPIC.anno.GRCh38.tsv&#39;</span>
+<span class="n">zhou2016_probes_path</span> <span class="o">=</span> <span class="s1">&#39;/mnt/f/MethylScore/UnreliableProbesList_Zhou2016/EPIC.anno.GRCh38.tsv&#39;</span>
 
-<span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;../../Data/Intermediate_Files/&#39;</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;/mnt/f/MethylScore/Intermediate_Files/&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -534,7 +530,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import functions to clean up clinical data</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">source.clinical_data_cleanup_functions</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="c1"># Call functions to merge, index and clean clinical data files</span>
@@ -658,7 +654,7 @@ Exclusion of samples may be applied depending on the analysis.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../_images/522df5f3e1b22c72aeed211a4e4558cdf5cfdc0d5962ffbdb5d7794fe0aafb31.png" src="../_images/522df5f3e1b22c72aeed211a4e4558cdf5cfdc0d5962ffbdb5d7794fe0aafb31.png" />
+<img alt="../_images/5157a77d87d672b2dccb3c63c1d19b551aa37daedd4dd34b04693dd11055310d.png" src="../_images/5157a77d87d672b2dccb3c63c1d19b551aa37daedd4dd34b04693dd11055310d.png" />
 </div>
 </div>
 </section>
@@ -800,7 +796,7 @@ Exclusion of samples may be applied depending on the analysis.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../_images/e36f2fec4c8ca698c58ba953b6ace973674d635d3550cc88f712cc5a4f24e70a.png" src="../_images/e36f2fec4c8ca698c58ba953b6ace973674d635d3550cc88f712cc5a4f24e70a.png" />
+<img alt="../_images/1d40e09461bb7702a6305ceb42a184fb8fe857692247239622ffea7d0d80c10b.png" src="../_images/1d40e09461bb7702a6305ceb42a184fb8fe857692247239622ffea7d0d80c10b.png" />
 </div>
 </div>
 </section>
@@ -856,7 +852,7 @@ Exclusion of samples may be applied depending on the analysis.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../_images/fb06ccdf723a81947b41b81f0c3f26e7e40d8f2c35514b44f43f797e86b09d44.png" src="../_images/fb06ccdf723a81947b41b81f0c3f26e7e40d8f2c35514b44f43f797e86b09d44.png" />
+<img alt="../_images/c4af6a9be87842ae10dcb21d9c76b0f3a1d74c883e6207ec3c60f55921148663.png" src="../_images/c4af6a9be87842ae10dcb21d9c76b0f3a1d74c883e6207ec3c60f55921148663.png" />
 </div>
 </div>
 </section>
@@ -936,7 +932,7 @@ Exclusion of samples may be applied depending on the analysis.
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/267c2cabe1b06c7716ec4cdcddb36ef780412604952e98d21710fc236b56d963.png" src="../_images/267c2cabe1b06c7716ec4cdcddb36ef780412604952e98d21710fc236b56d963.png" />
+<img alt="../_images/44f51ce10aa9aee057d8aeac65074ed77bc562e13807f488db0721c18c932fce.png" src="../_images/44f51ce10aa9aee057d8aeac65074ed77bc562e13807f488db0721c18c932fce.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Removed 0 outliers. 201 samples remaining.
 </pre></div>
 </div>
@@ -1029,7 +1025,7 @@ Exclusion of samples may be applied depending on the analysis.
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: underflow encountered in _beta_sf
 </pre></div>
 </div>
-<img alt="../_images/064d9a49461e86ff4c862d5847b4fc041102074b78bafc286a792a112e157309.png" src="../_images/064d9a49461e86ff4c862d5847b4fc041102074b78bafc286a792a112e157309.png" />
+<img alt="../_images/9fbae1f3f5a5a8b1793e179645cb5092760fe4bff9bca214851cce1bfabdf9af.png" src="../_images/9fbae1f3f5a5a8b1793e179645cb5092760fe4bff9bca214851cce1bfabdf9af.png" />
 </div>
 </div>
 </section>
@@ -1140,7 +1136,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/a34afec3e09656ae563a4032457434b4c3fd82ad2dd3cee3143e32183026e765.png" src="../_images/a34afec3e09656ae563a4032457434b4c3fd82ad2dd3cee3143e32183026e765.png" />
+<img alt="../_images/a46cf163498019024ebdd5a07d51a3aa02b1d7844e7519139fbafc411e51218c.png" src="../_images/a46cf163498019024ebdd5a07d51a3aa02b1d7844e7519139fbafc411e51218c.png" />
 </div>
 </div>
 </section>
@@ -1154,12 +1150,12 @@ Succesfully corrected batch effects in the training dataset.
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Save file as csv</span>
-<span class="c1"># df_m-values.to_csv(output_path+&#39;methylation_dataset_m-values_StJude-201-dx-pts_batch-corrected_FMarchi-9-18-23.csv&#39;)</span>
+<span class="c1"># df_m_values.to_csv(output_path+&#39;methylation_dataset_m-values_StJude-201-dx-pts_batch-corrected_FMarchi-9-18-23.csv&#39;)</span>
 
 <span class="c1"># # Save file as .RData</span>
 <span class="c1"># import pyreadr</span>
 <span class="c1"># pyreadr.write_rdata(output_path+&#39;methylation_dataset_m-values_StJude-201-dx-pts_batch-corrected_FMarchi-9-18-23.RData&#39;,</span>
-<span class="c1">#             df_m-values.reset_index())</span>
+<span class="c1">#             df_m_values.reset_index())</span>
 </pre></div>
 </div>
 </div>
@@ -1169,21 +1165,26 @@ Succesfully corrected batch effects in the training dataset.
 </section>
 <section id="save-batch-corrected-beta-values-dataset">
 <h2><a class="toc-backref" href="#id25" role="doc-backlink">Save batch-corrected beta-values dataset</a><a class="headerlink" href="#save-batch-corrected-beta-values-dataset" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_b_values</span> <span class="o">=</span> <span class="n">df_b_values</span><span class="o">.</span><span class="n">T</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_b_values2</span> <span class="o">=</span> <span class="n">df_b_values</span><span class="o">.</span><span class="n">T</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Dataset (df_b_values) contains </span><span class="si">{</span><span class="n">df_b_values</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">df_b_values</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns (samples).&#39;</span><span class="p">)</span>
+<span class="n">dataset_title</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">df_b_values2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">samples_</span><span class="si">{</span><span class="n">df_b_values2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">cpgs_withbatchcorrection_bvalues.pkl&#39;</span>
 
-<span class="n">df_b_values</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;201samples-357839cpgs-withbatchcorrection-bvalues.pkl&#39;</span><span class="p">)</span>
+<span class="n">df_b_values2</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="n">dataset_title</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Successfuly saved in: </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">201samples-357839cpgs-withbatchcorrection-bvalues.pkl&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Successfuly saved at: </span><span class="si">{</span><span class="n">output_path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dataset_title</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset (df_b_values) contains 357839 rows (5mC nucleotides/probes) and 201 columns (samples).
-Successfuly saved in: ../../Data/Intermediate_Files/201samples-357839cpgs-withbatchcorrection-bvalues.pkl
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved at: /mnt/f/MethylScore/Intermediate_Files/201samples_357839cpgs_withbatchcorrection_bvalues.pkl
 </pre></div>
 </div>
 </div>
@@ -1200,11 +1201,8 @@ Successfuly saved in: ../../Data/Intermediate_Files/201samples-357839cpgs-withba
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove samples that are not in the methyl dataset</span>
 <span class="n">df_labels</span> <span class="o">=</span> <span class="n">labels_combined</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels_combined</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df_b_values</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
 
-<span class="c1"># Add age categorization to the clinical data</span>
-<span class="n">df_labels</span> <span class="o">=</span> <span class="n">process_df_labels</span><span class="p">(</span><span class="n">df_labels</span><span class="p">)</span>
-
-<span class="c1"># Save the clinical data labels</span>
-<span class="n">df_labels</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;validation_clinical_data.csv&#39;</span><span class="p">)</span>
+<span class="c1"># # Save the clinical data labels</span>
+<span class="c1"># df_labels.to_csv(output_path + &#39;validation_clinical_data.csv&#39;)</span>
 
 <span class="n">df_labels</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
@@ -1221,69 +1219,9 @@ Name: count, dtype: int64
 </div>
 </div>
 </section>
-<section id="eln-aml-2022-diagnosis">
-<h3><a class="toc-backref" href="#id27" role="doc-backlink">ELN AML 2022 Diagnosis</a><a class="headerlink" href="#eln-aml-2022-diagnosis" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_labels</span><span class="p">[</span><span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ELN AML 2022 Diagnosis
-AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement                  47
-AML with t(8;21)(q22;q22.1)/RUNX1::RUNX1T1                       29
-AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22)/CBFB::MYH11    23
-AML with other rare recurring translocations                     10
-AML with t(6;9)(p23;q34.1)/DEK::NUP214                            1
-Name: count, dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="appendix-1-how-to-create-this-electronic-notebook">
-<h2><a class="toc-backref" href="#id28" role="doc-backlink">Appendix 1. How to create this electronic notebook</a><a class="headerlink" href="#appendix-1-how-to-create-this-electronic-notebook" title="Permalink to this heading">#</a></h2>
-<ol class="arabic">
-<li><p>Use Jupyter Book</p>
-<ul class="simple">
-<li><p>Go to <a class="reference external" href="https://jupyterbook.org">jupyterbook.org</a>.</p></li>
-<li><p>Follow the steps on their page.</p></li>
-</ul>
-</li>
-<li><p>Set up <code class="docutils literal notranslate"><span class="pre">toc.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> files</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">toc.yml</span></code> is the table of contents file. It contains the structure of the book.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">_config.yml</span></code> is the configuration file. It contains the configuration of the book.</p></li>
-</ul>
-</li>
-<li><p>Build the book</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jb<span class="w"> </span>build<span class="w"> </span>.
-</pre></div>
-</div>
-</li>
-<li><p>Push to Github</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;message&quot;</span>
-git<span class="w"> </span>push
-</pre></div>
-</div>
-<p>or do it through VSCode GUI.</p>
-</li>
-<li><p>Push to Github pages using <code class="docutils literal notranslate"><span class="pre">ghp-import</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ghp-import<span class="w"> </span>-n<span class="w"> </span>-p<span class="w"> </span>-f<span class="w"> </span>-o<span class="w"> </span>_build/html
-</pre></div>
-</div>
-</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">jupyterbook</span></code> works best on Linux/Mac. If on Windows, use WSL.</p>
-</div>
 </section>
 <section id="watermark">
-<h2><a class="toc-backref" href="#id29" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id27" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 </div>
 <div class="cell tag_remove-input docutils container">
@@ -1411,10 +1349,8 @@ Architecture: 64bit
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-batch-corrected-beta-values-dataset">Save batch-corrected beta-values dataset</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-final-sample-size-by-batch">Evaluate final sample size by batch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eln-aml-2022-diagnosis">ELN AML 2022 Diagnosis</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-1-how-to-create-this-electronic-notebook">Appendix 1. How to create this electronic notebook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
 </ul>
   </nav></div>

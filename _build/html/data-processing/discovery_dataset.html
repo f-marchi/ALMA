@@ -348,11 +348,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-perform-batch-correction">Step 9. Perform batch correction</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-batch-effects">Evaluate batch effects</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-batch-corrected-dataset">Save batch-corrected dataset</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-10-load-and-process-clinical-data">Step 10. Load and process clinical data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#who-aml-2022-diagnosis">WHO AML 2022 Diagnosis</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eln-aml-2022-diagnosis">ELN AML 2022 Diagnosis</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-final-sample-size-by-batch">Evaluate final sample size by batch</a></li>
 </ul>
 </li>
@@ -415,23 +410,17 @@ document.write(`
 <ul>
 <li><p><a class="reference internal" href="#evaluate-batch-effects" id="id20">Evaluate batch effects</a></p></li>
 <li><p><a class="reference internal" href="#save-batch-corrected-dataset" id="id21">Save batch-corrected dataset</a></p></li>
+<li><p><a class="reference internal" href="#evaluate-final-sample-size-by-batch" id="id22">Evaluate final sample size by batch</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#step-10-load-and-process-clinical-data" id="id22">Step 10. Load and process clinical data</a></p>
+<li><p><a class="reference internal" href="#appendix-1-how-to-download-data-from-geo-or-gdc" id="id23">Appendix 1. How to download data from GEO or GDC</a></p>
 <ul>
-<li><p><a class="reference internal" href="#who-aml-2022-diagnosis" id="id23">WHO AML 2022 Diagnosis</a></p></li>
-<li><p><a class="reference internal" href="#eln-aml-2022-diagnosis" id="id24">ELN AML 2022 Diagnosis</a></p></li>
-<li><p><a class="reference internal" href="#evaluate-final-sample-size-by-batch" id="id25">Evaluate final sample size by batch</a></p></li>
+<li><p><a class="reference internal" href="#gene-expression-omnibus-geo" id="id24">Gene Expression Omnibus (GEO)</a></p></li>
+<li><p><a class="reference internal" href="#genomic-data-commons-gdc" id="id25">Genomic Data Commons (GDC)</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#appendix-1-how-to-download-data-from-geo-or-gdc" id="id26">Appendix 1. How to download data from GEO or GDC</a></p>
-<ul>
-<li><p><a class="reference internal" href="#gene-expression-omnibus-geo" id="id27">Gene Expression Omnibus (GEO)</a></p></li>
-<li><p><a class="reference internal" href="#genomic-data-commons-gdc" id="id28">Genomic Data Commons (GDC)</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#appendix-2-how-to-create-this-electronic-notebook" id="id29">Appendix 2. How to create this electronic notebook</a></p></li>
-<li><p><a class="reference internal" href="#watermark" id="id30">Watermark</a></p></li>
+<li><p><a class="reference internal" href="#appendix-2-how-to-create-this-electronic-notebook" id="id26">Appendix 2. How to create this electronic notebook</a></p></li>
+<li><p><a class="reference internal" href="#watermark" id="id27">Watermark</a></p></li>
 </ul>
 </li>
 </ul>
@@ -722,6 +711,15 @@ document.write(`
 </section>
 <section id="step-4-remove-non-hematopoietic-samples">
 <h2><a class="toc-backref" href="#id11" role="doc-backlink">Step 4. Remove non-hematopoietic samples</a><a class="headerlink" href="#step-4-remove-non-hematopoietic-samples" title="Permalink to this heading">#</a></h2>
+<p>These are:</p>
+<ul class="simple">
+<li><p>GSE49031_colon_cancer_cell_line_samples</p></li>
+<li><p>GSE49031_Human_HCT116_DKO_cells</p></li>
+<li><p>GSE49031_Amplified_gDNA_controls</p></li>
+<li><p>GDC_TARGET_AML_fibroblast_samples</p></li>
+<li><p>GSE147667_thymic_cells</p></li>
+<li><p>GDC_TARGET_ALL_lymphoid_normal</p></li>
+</ul>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -782,11 +780,37 @@ document.write(`
                                     <span class="p">(</span><span class="s1">&#39;GDC_TARGET-AML&#39;</span><span class="p">,</span> <span class="s1">&#39;feb61d16-7262-4825-8c3d-6516959315ab_noid&#39;</span><span class="p">),</span>
                                     <span class="p">(</span><span class="s1">&#39;GDC_TARGET-AML&#39;</span><span class="p">,</span> <span class="s1">&#39;f7cb4d3d-63d5-4edb-babe-c2aadd22e5de_noid&#39;</span><span class="p">)]</span>
 
+<span class="n">GSE147667_thymic_cells</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;GSE147667&#39;</span><span class="p">,</span> <span class="s1">&#39;201233650075_R07C01&#39;</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;GSE147667&#39;</span><span class="p">,</span> <span class="s1">&#39;203724130020_R01C01&#39;</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;GSE147667&#39;</span><span class="p">,</span> <span class="s1">&#39;201233650075_R08C01&#39;</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;GSE147667&#39;</span><span class="p">,</span> <span class="s1">&#39;203724130020_R02C01&#39;</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;GSE147667&#39;</span><span class="p">,</span> <span class="s1">&#39;201233650023_R05C01&#39;</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;GSE147667&#39;</span><span class="p">,</span> <span class="s1">&#39;203724130020_R05C01&#39;</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;GSE147667&#39;</span><span class="p">,</span> <span class="s1">&#39;201233650023_R06C01&#39;</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;GSE147667&#39;</span><span class="p">,</span> <span class="s1">&#39;203724130020_R06C01&#39;</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;GSE147667&#39;</span><span class="p">,</span> <span class="s1">&#39;201233650023_R01C01&#39;</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;GSE147667&#39;</span><span class="p">,</span> <span class="s1">&#39;203724130020_R03C01&#39;</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;GSE147667&#39;</span><span class="p">,</span> <span class="s1">&#39;201233650023_R02C01&#39;</span><span class="p">),</span>
+                          <span class="p">(</span><span class="s1">&#39;GSE147667&#39;</span><span class="p">,</span> <span class="s1">&#39;203724130020_R04C01&#39;</span><span class="p">)]</span>
+
+<span class="n">GDC_TARGET_ALL_lymphoid_normal</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;GDC_TARGET-ALL&#39;</span><span class="p">,</span> <span class="s1">&#39;baa6556c-5041-40f7-b478-733e25bbcfae_noid&#39;</span><span class="p">),</span>
+                                  <span class="p">(</span><span class="s1">&#39;GDC_TARGET-ALL&#39;</span><span class="p">,</span> <span class="s1">&#39;e4889d0c-96dd-470f-b2c2-8fc120b4bed7_noid&#39;</span><span class="p">),</span>
+                                  <span class="p">(</span><span class="s1">&#39;GDC_TARGET-ALL&#39;</span><span class="p">,</span> <span class="s1">&#39;8ab6e84b-143e-4dc3-8339-f8ad30d646d1_noid&#39;</span><span class="p">),</span>
+                                  <span class="p">(</span><span class="s1">&#39;GDC_TARGET-ALL&#39;</span><span class="p">,</span> <span class="s1">&#39;3c73ab5f-1840-4dac-a678-959d5f57c92c_noid&#39;</span><span class="p">),</span>
+                                  <span class="p">(</span><span class="s1">&#39;GDC_TARGET-ALL&#39;</span><span class="p">,</span> <span class="s1">&#39;f21ea1c9-128c-4b59-ae4f-4d0be6e67759_noid&#39;</span><span class="p">),</span>
+                                  <span class="p">(</span><span class="s1">&#39;GDC_TARGET-ALL&#39;</span><span class="p">,</span> <span class="s1">&#39;6d1f3396-0dd7-45dc-adcb-405ca4ec8a78_noid&#39;</span><span class="p">),</span>
+                                  <span class="p">(</span><span class="s1">&#39;GDC_TARGET-ALL&#39;</span><span class="p">,</span> <span class="s1">&#39;57de5be1-4200-48dd-a31f-b38a32c23cda_noid&#39;</span><span class="p">),</span>
+                                  <span class="p">(</span><span class="s1">&#39;GDC_TARGET-ALL&#39;</span><span class="p">,</span> <span class="s1">&#39;ad7cf92d-95ec-4f76-8377-619ad796b492_noid&#39;</span><span class="p">),</span>
+                                  <span class="p">(</span><span class="s1">&#39;GDC_TARGET-ALL&#39;</span><span class="p">,</span> <span class="s1">&#39;97af751d-0ef9-4d14-ae67-14319985ca77_noid&#39;</span><span class="p">),</span>
+                                  <span class="p">(</span><span class="s1">&#39;GDC_TARGET-ALL&#39;</span><span class="p">,</span> <span class="s1">&#39;dd96e3d0-a4b5-4769-a65a-00e9996f4526_noid&#39;</span><span class="p">),]</span>
+
 <span class="c1"># Drop all samples selected above</span>
 <span class="n">columns_to_drop</span> <span class="o">=</span> <span class="n">GSE49031_colon_cancer_cell_line_samples</span> <span class="o">+</span>\
                   <span class="n">GSE49031_Human_HCT116_DKO_cells</span> <span class="o">+</span>\
                   <span class="n">GSE49031_Amplified_gDNA_controls</span> <span class="o">+</span>\
-                  <span class="n">GDC_TARGET_AML_fibroblast_samples</span>
+                  <span class="n">GDC_TARGET_AML_fibroblast_samples</span> <span class="o">+</span>\
+                  <span class="n">GSE147667_thymic_cells</span> <span class="o">+</span>\
+                  <span class="n">GDC_TARGET_ALL_lymphoid_normal</span>
 
 <span class="k">def</span> <span class="nf">remove_duplicates</span><span class="p">(</span><span class="n">input_list</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">input_list</span><span class="p">))</span>
@@ -802,7 +826,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>38 non-hematopoietic samples removed. 3807 samples remaining.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60 non-hematopoietic samples removed. 3785 samples remaining.
 </pre></div>
 </div>
 </div>
@@ -851,7 +875,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Removed 466 samples (12.24%). 3341 samples remaining.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Removed 466 samples (12.31%). 3319 samples remaining.
 </pre></div>
 </div>
 </div>
@@ -878,7 +902,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>62150 probes removed. 333351 probes remaining.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>62443 probes removed. 333058 probes remaining.
 </pre></div>
 </div>
 </div>
@@ -902,7 +926,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../_images/90684ff1d4022b68f44b83f6892cd3a360a3dfbdf0469c13bf8cdba95b5a386b.png" src="../_images/90684ff1d4022b68f44b83f6892cd3a360a3dfbdf0469c13bf8cdba95b5a386b.png" />
+<img alt="../_images/44615fd915f351ea516545c6c1194c45d2a910f9fd1c2ce1b2d7a3d9c020bf57.png" src="../_images/44615fd915f351ea516545c6c1194c45d2a910f9fd1c2ce1b2d7a3d9c020bf57.png" />
 </div>
 </div>
 </section>
@@ -969,7 +993,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../_images/19665b0cf6dc32e140cb3566d389b448e9cd02b60b364cf4fe1309251a789376.png" src="../_images/19665b0cf6dc32e140cb3566d389b448e9cd02b60b364cf4fe1309251a789376.png" />
+<img alt="../_images/ad6a068b2109174ef9209bad5aa1c978919ae5ecdfc307d0b8220113bae58372.png" src="../_images/ad6a068b2109174ef9209bad5aa1c978919ae5ecdfc307d0b8220113bae58372.png" />
 </div>
 </div>
 </section>
@@ -1053,8 +1077,8 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/7d503097d8cbad6c611330bbac5bfe469e27eb0e03c4ab23cb0ecd6eabe9a679.png" src="../_images/7d503097d8cbad6c611330bbac5bfe469e27eb0e03c4ab23cb0ecd6eabe9a679.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Removed 11 outliers. 3330 samples remaining.
+<img alt="../_images/d18a5afc64dad4079b555ba7960d4840a7fafe73f699b333dd367a0465e37c42.png" src="../_images/d18a5afc64dad4079b555ba7960d4840a7fafe73f699b333dd367a0465e37c42.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Removed 11 outliers. 3308 samples remaining.
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;GSE190931&#39;, &#39;202905580033_R06C01&#39;),
@@ -1074,24 +1098,20 @@ document.write(`
 </div>
 <section id="save-dataset-without-batch-correction">
 <h3><a class="toc-backref" href="#id18" role="doc-backlink">Save dataset without batch correction</a><a class="headerlink" href="#save-dataset-without-batch-correction" title="Permalink to this heading">#</a></h3>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_batch_uncorrected</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;Batch&#39;</span><span class="p">)</span>
-<span class="n">df_batch_uncorrected</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;3330samples-333351cpgs-nobatchcorrection-bvalues.pkl&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_nobatch</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;Batch&#39;</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s1">&#39;Successfuly saved in: </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">3330samples-333351cpgs-nobatchcorrection-bvalues.pkl&#39;</span><span class="p">)</span>
+<span class="n">dataset_title</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">df_nobatch</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">samples_</span><span class="si">{</span><span class="n">df_nobatch</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">cpgs_nobatchcorrection_bvalues.pkl&#39;</span>
+
+<span class="n">df_nobatch</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="n">dataset_title</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Successfuly saved at: </span><span class="si">{</span><span class="n">output_path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dataset_title</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved in: ../../Data/Intermediate_Files/3330samples-333351cpgs-nobatchcorrection-bvalues.pkl
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved at: ../../Data/Intermediate_Files/3308samples_333059cpgs_nobatchcorrection_bvalues.pkl
 </pre></div>
 </div>
 </div>
@@ -1170,177 +1190,33 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/4bb8b21425c18eb6920dc86189651e393814b3a2d17fb68f6140d2be1a4bcd51.png" src="../_images/4bb8b21425c18eb6920dc86189651e393814b3a2d17fb68f6140d2be1a4bcd51.png" />
+<img alt="../_images/66aa330ce4bdb6e3b84a9c984d88530ad4d4d53c805b396c366a3dcecd88fb1c.png" src="../_images/66aa330ce4bdb6e3b84a9c984d88530ad4d4d53c805b396c366a3dcecd88fb1c.png" />
 </div>
 </div>
 </section>
 <section id="save-batch-corrected-dataset">
 <h3><a class="toc-backref" href="#id21" role="doc-backlink">Save batch-corrected dataset</a><a class="headerlink" href="#save-batch-corrected-dataset" title="Permalink to this heading">#</a></h3>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;Batch&#39;</span><span class="p">)</span>
 
-<span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;3330samples-333351cpgs-withbatchcorrection-bvalues.pkl&#39;</span><span class="p">)</span>
+<span class="n">dataset_title</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">samples_</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">cpgs_withbatchcorrection_bvalues.pkl&#39;</span>
 
-<span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s1">&#39;Dataset (df) contains </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1"> rows (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns (samples).&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s1">&#39;Successfuly saved in: </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s1">3330samples-333351cpgs-withbatchcorrection-bvalues.pkl&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="n">dataset_title</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Successfuly saved at: </span><span class="si">{</span><span class="n">output_path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dataset_title</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset (df) contains 333351 rows (5mC nucleotides/probes) and 3330 columns (samples).
-Successfuly saved in: ../../Data/Intermediate_Files/3330samples-333351cpgs-withbatchcorrection-bvalues.pkl
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="step-10-load-and-process-clinical-data">
-<h2><a class="toc-backref" href="#id22" role="doc-backlink">Step 10. Load and process clinical data</a><a class="headerlink" href="#step-10-load-and-process-clinical-data" title="Permalink to this heading">#</a></h2>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import functions to clean up clinical data</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">source.clinical_data_cleanup_functions</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="c1"># Call functions to merge, index and clean clinical data files</span>
-<span class="n">labels_0531</span>         <span class="o">=</span> <span class="n">clean_cog</span>       <span class="p">(</span><span class="n">merge_index_0531</span><span class="p">())</span>
-<span class="n">labels_1031</span>         <span class="o">=</span> <span class="n">clean_cog</span>       <span class="p">(</span><span class="n">merge_index_1031</span><span class="p">())</span>
-<span class="n">labels_aml05</span>        <span class="o">=</span> <span class="n">clean_aml05</span>     <span class="p">(</span><span class="n">merge_index_aml05</span><span class="p">())</span>
-<span class="n">labels_beataml</span>      <span class="o">=</span> <span class="n">clean_beataml</span>   <span class="p">(</span><span class="n">merge_index_beataml</span><span class="p">())</span>
-<span class="n">labels_amltcga</span>      <span class="o">=</span> <span class="n">clean_amltcga</span>   <span class="p">(</span><span class="n">merge_index_amltcga</span><span class="p">())</span>
-<span class="n">labels_nordic_all</span>   <span class="o">=</span> <span class="n">clean_nordic_all</span><span class="p">(</span><span class="n">merge_index_nordic_all</span><span class="p">())</span>
-<span class="n">labels_mds_taml</span>     <span class="o">=</span> <span class="n">clean_mds_taml</span>  <span class="p">(</span><span class="n">merge_index_mds_taml</span><span class="p">())</span>
-<span class="n">labels_all_graal</span>    <span class="o">=</span> <span class="n">clean_all_graal</span> <span class="p">(</span><span class="n">merge_index_all_graal</span><span class="p">())</span>
-<span class="n">labels_target_all</span>   <span class="o">=</span> <span class="n">clean_target_all</span><span class="p">(</span><span class="n">merge_index_target_all</span><span class="p">())</span>
-
-<span class="c1"># Combine all clinical data labels into one dataframe</span>
-<span class="n">labels_combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">labels_aml05</span><span class="p">,</span> <span class="n">labels_beataml</span><span class="p">,</span>
-                        <span class="n">labels_0531</span><span class="p">,</span> <span class="n">labels_amltcga</span><span class="p">,</span> <span class="n">labels_1031</span><span class="p">,</span>
-                        <span class="n">labels_nordic_all</span><span class="p">,</span> <span class="n">labels_mds_taml</span><span class="p">,</span>
-                        <span class="n">labels_all_graal</span><span class="p">,</span><span class="n">labels_target_all</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
-
-<span class="c1"># Redefine output path (for troubleshooting purposes in case only this cell is run)</span>
-<span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;../../Data/Intermediate_Files/&#39;</span>
-
-<span class="c1"># Read df</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;3330samples-333351cpgs-withbatchcorrection-bvalues.pkl&#39;</span><span class="p">)</span>
-
-<span class="c1"># Remove samples that are not in the methyl dataset</span>
-<span class="n">df_labels</span> <span class="o">=</span> <span class="n">labels_combined</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels_combined</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
-
-<span class="c1"># Add age categorization and main disease classification to the clinical data</span>
-<span class="n">df_labels</span> <span class="o">=</span> <span class="n">process_df_labels</span><span class="p">(</span><span class="n">df_labels</span><span class="p">)</span>
-
-<span class="c1"># Save the clinical data labels</span>
-<span class="n">df_labels</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;discovery_clinical_data.csv&#39;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The clinical data has been indexed and cleaned.</span><span class="se">\n\</span>
-<span class="s1">Exclusion of samples may be applied depending on the analysis.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The clinical data has been indexed and cleaned.
-Exclusion of samples may be applied depending on the analysis.
-</pre></div>
-</div>
-</div>
-</div>
-<section id="who-aml-2022-diagnosis">
-<h3><a class="toc-backref" href="#id23" role="doc-backlink">WHO AML 2022 Diagnosis</a><a class="headerlink" href="#who-aml-2022-diagnosis" title="Permalink to this heading">#</a></h3>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_labels</span><span class="p">[</span><span class="s1">&#39;WHO AML 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</details>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WHO AML 2022 Diagnosis
-AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement                           313
-MDS-related or secondary myeloid neoplasms                                230
-AML with mutated NPM1                                                     179
-AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22)/CBFB::MYH11             178
-AML with t(8;21)(q22;q22.1)/RUNX1::RUNX1T1                                169
-Otherwise-Normal Control                                                  162
-AML with NUP98-fusion                                                      97
-AML with bZIP mutated CEBPA                                                69
-APL with t(15;17)(q24.1;q21.2)/PML::RARA                                   31
-AML with CBFA2T3::GLIS2 (inv(16)(p13q24))                                  30
-AML with t(6;9)(p23;q34.1)/DEK::NUP214                                     28
-AML with ETV6 fusion                                                       16
-AML with inv(3)(q21.3q26.2) or t(3;3)(q21.3;q26.2)/MECOM-rearrangement     10
-AML with t(1;22)(p13.3;q13.1); RBM15::MKL1                                  9
-AML with t(8;16)(p11.2;p13.3); KAT6A::CREBBP                                7
-AML with t(16;21)(p11;q22); FUS::ERG                                        4
-Myeloid leukemia associated with Down syndrome                              1
-Mixed phenotype acute leukemia T/myeloid                                    1
-Name: count, dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="eln-aml-2022-diagnosis">
-<h3><a class="toc-backref" href="#id24" role="doc-backlink">ELN AML 2022 Diagnosis</a><a class="headerlink" href="#eln-aml-2022-diagnosis" title="Permalink to this heading">#</a></h3>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_labels</span><span class="p">[</span><span class="s1">&#39;ELN AML 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</details>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ELN AML 2022 Diagnosis
-AML with t(9;11)(p22;q23.3)/KMT2A-rearrangement                           313
-MDS-related or secondary myeloid neoplasms                                228
-AML with other rare recurring translocations                              185
-AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22)/CBFB::MYH11             178
-AML with mutated NPM1                                                     172
-AML with t(8;21)(q22;q22.1)/RUNX1::RUNX1T1                                169
-Otherwise-Normal Control                                                  162
-AML with in-frame bZIP mutated CEBPA                                       69
-APL with t(15;17)(q24.1;q21.2)/PML::RARA                                   31
-AML with t(6;9)(p23;q34.1)/DEK::NUP214                                     28
-AML with inv(3)(q21.3q26.2) or t(3;3)(q21.3;q26.2)/MECOM-rearrangement     10
-AML with t(9;22)(q34.1;q11.2)/BCR::ABL1                                     3
-Myeloid leukaemia associated with Down syndrome                             1
-Mixed phenotype acute leukemia T/myeloid                                    1
-Name: count, dtype: int64
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved at: ../../Data/Intermediate_Files/3308samples_333059cpgs_withbatchcorrection_bvalues.pkl
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="evaluate-final-sample-size-by-batch">
-<h3><a class="toc-backref" href="#id25" role="doc-backlink">Evaluate final sample size by batch</a><a class="headerlink" href="#evaluate-final-sample-size-by-batch" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">Evaluate final sample size by batch</a><a class="headerlink" href="#evaluate-final-sample-size-by-batch" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1362,8 +1238,8 @@ GSE159907         316
 GDC_TARGET-AML    287
 GDC_TCGA-AML      194
 GSE152710         166
-GSE147667         153
-GDC_TARGET-ALL    141
+GSE147667         141
+GDC_TARGET-ALL    131
 GSE133986          64
 Name: count, dtype: int64
 </pre></div>
@@ -1373,9 +1249,9 @@ Name: count, dtype: int64
 </section>
 </section>
 <section id="appendix-1-how-to-download-data-from-geo-or-gdc">
-<h2><a class="toc-backref" href="#id26" role="doc-backlink">Appendix 1. How to download data from GEO or GDC</a><a class="headerlink" href="#appendix-1-how-to-download-data-from-geo-or-gdc" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id23" role="doc-backlink">Appendix 1. How to download data from GEO or GDC</a><a class="headerlink" href="#appendix-1-how-to-download-data-from-geo-or-gdc" title="Permalink to this heading">#</a></h2>
 <section id="gene-expression-omnibus-geo">
-<h3><a class="toc-backref" href="#id27" role="doc-backlink">Gene Expression Omnibus (GEO)</a><a class="headerlink" href="#gene-expression-omnibus-geo" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id24" role="doc-backlink">Gene Expression Omnibus (GEO)</a><a class="headerlink" href="#gene-expression-omnibus-geo" title="Permalink to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>Install Python3.7</p>
 <ul class="simple">
@@ -1404,7 +1280,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="nv">methy
 </div>
 </section>
 <section id="genomic-data-commons-gdc">
-<h3><a class="toc-backref" href="#id28" role="doc-backlink">Genomic Data Commons (GDC)</a><a class="headerlink" href="#genomic-data-commons-gdc" title="Permalink to this heading">#</a></h3>
+<h3><a class="toc-backref" href="#id25" role="doc-backlink">Genomic Data Commons (GDC)</a><a class="headerlink" href="#genomic-data-commons-gdc" title="Permalink to this heading">#</a></h3>
 <ol class="arabic">
 <li><p>Go to <a class="reference external" href="https://www.portal.gdc.cancer.gov/repository">GDC Repository</a>.</p></li>
 <li><p>Select the right filtering criteria for you (or click on one of the links from the table above).</p></li>
@@ -1431,7 +1307,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="nv">methy
 </section>
 </section>
 <section id="appendix-2-how-to-create-this-electronic-notebook">
-<h2><a class="toc-backref" href="#id29" role="doc-backlink">Appendix 2. How to create this electronic notebook</a><a class="headerlink" href="#appendix-2-how-to-create-this-electronic-notebook" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id26" role="doc-backlink">Appendix 2. How to create this electronic notebook</a><a class="headerlink" href="#appendix-2-how-to-create-this-electronic-notebook" title="Permalink to this heading">#</a></h2>
 <ol class="arabic">
 <li><p>Use Jupyter Book</p>
 <ul class="simple">
@@ -1470,7 +1346,7 @@ git<span class="w"> </span>push
 </div>
 </section>
 <section id="watermark">
-<h2><a class="toc-backref" href="#id30" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id27" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 </div>
 <div class="cell tag_remove-input docutils container">
@@ -1593,11 +1469,6 @@ Architecture: 64bit
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-perform-batch-correction">Step 9. Perform batch correction</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-batch-effects">Evaluate batch effects</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-batch-corrected-dataset">Save batch-corrected dataset</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-10-load-and-process-clinical-data">Step 10. Load and process clinical data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#who-aml-2022-diagnosis">WHO AML 2022 Diagnosis</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eln-aml-2022-diagnosis">ELN AML 2022 Diagnosis</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-final-sample-size-by-batch">Evaluate final sample size by batch</a></li>
 </ul>
 </li>

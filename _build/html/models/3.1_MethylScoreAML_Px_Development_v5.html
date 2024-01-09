@@ -420,8 +420,8 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">input_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Intermediate_Files/&#39;</span>
-<span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/Processed_Data/&#39;</span>
+<span class="n">input_path</span> <span class="o">=</span> <span class="s1">&#39;/mnt/d/MethylScore/Intermediate_Files/&#39;</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;/mnt/d/MethylScore/Processed_Data/&#39;</span>
 
 <span class="c1"># read top CpGs selected from previous code file (univariate cox-ph EWAS)</span>
 <span class="n">ewas_top_cpgs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;ewas_dmr/ewas_top_cpgs.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -431,7 +431,7 @@ document.write(`
                                       <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ewas_top_cpgs</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
 
 <span class="c1"># save clinical data</span>
-<span class="n">discovery_clinical_data</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/ewas_top_cpgs_clinical_data_discovery.xlsx&#39;</span><span class="p">)</span>
+<span class="n">discovery_clinical_data</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;../data/ewas_top_cpgs_clinical_data_discovery.xlsx&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span>
     <span class="sa">f</span><span class="s1">&#39; Dataset (df) contains </span><span class="si">{</span><span class="n">ewas_top_cpgs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> columns (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">ewas_top_cpgs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (samples).&#39;</span><span class="p">)</span>
@@ -472,7 +472,7 @@ document.write(`
 <span class="n">x_test_m_z</span> <span class="o">=</span> <span class="n">standardize_data</span><span class="p">(</span><span class="n">df</span><span class="o">=</span> <span class="n">ewas_top_cpgs</span><span class="p">,</span> <span class="n">reference_df</span><span class="o">=</span> <span class="n">ewas_top_cpgs</span><span class="p">)</span>
 
 <span class="c1"># Save standardized data</span>
-<span class="n">x_test_m_z</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/ewas_top_167_cpgs_M-Values_standardized_discovery_cohort.xlsx&#39;</span><span class="p">)</span>
+<span class="c1"># x_test_m_z.to_excel(&#39;../data/ewas_top_167_cpgs_M-Values_standardized_discovery_cohort.xlsx&#39;)</span>
 </pre></div>
 </div>
 </div>
@@ -490,6 +490,8 @@ document.write(`
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import functions to clean up clinical data</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">source.cox_lasso_functions</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="c1"># raw_coefs = train_coxph_lasso(df=discovery_clinical_data,</span>
@@ -538,9 +540,9 @@ document.write(`
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load `ewas_cpgs_top_OS_with_EFSinfo.xlsx`</span>
-<span class="n">ewas_cpgs_top_OS_with_EFSinfo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/ewas_cpgs_top_OS_with_EFSinfo.xlsx&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>\
+<span class="n">ewas_cpgs_top_OS_with_EFSinfo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;../data/ewas_cpgs_top_OS_with_EFSinfo.xlsx&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>\
     <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mean_coefs</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s1">&#39;MethylScoreAML Px Coefs&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;MethylScoreAML Px Coefs&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>\
-        <span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;data/ewas_cpgs_top_OS_with_EFSinfo_with_MethylScoreAML_Px_Coefs.xlsx&#39;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;../data/ewas_cpgs_top_OS_with_EFSinfo_with_MethylScoreAML_Px_Coefs.xlsx&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -572,7 +574,14 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous score cut at the value of 0.2208 for [&#39;Other&#39;, &#39;Normal&#39;, &#39;MLL&#39;, &#39;inv(16)&#39;, &#39;t(8;21)&#39;, nan]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Continuous score cut at the value of 0.2208
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;multivariate_cox_lasso/ewas_cog_os_MethylScoreAML_Px.xlsx&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -660,7 +669,7 @@ document.write(`
 <span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">scorename</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
                         <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
                         <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                        <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                         <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;COG trials&#39;</span><span class="p">)</span>
 </pre></div>
