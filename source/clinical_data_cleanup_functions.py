@@ -13,7 +13,7 @@ __email__ = 'flourenco@ufl.edu'
 
 # Set paths to clinical data files
 
-mount = '/mnt/f/MethylScore'
+mount = '/mnt/d/MethylScore'
 # mount = '../../../'
 
 
@@ -585,7 +585,8 @@ def clean_aml08(df):
 
     # Create new columns for reclassification according to WHO 2022
     df['CEBPA mutation'] = df['Cebpa'].replace({'Not Done': np.nan, 'Wild Type': 'No', 'Point Mutations': 'Yes'})
-    df['NPM mutation'] = df['Nmp1'].replace({'Not Done': np.nan, 'Wild Type': 'No', 'Mutations': 'Yes'})
+    # df['NPM mutation'] = df['Nmp1'].replace({'Not Done': np.nan, 'Wild Type': 'No', 'Mutations': 'Yes'})
+    df['NPM mutation'] = np.nan
     df['Dx at Acquisition'] = np.nan
 
     def annotate_gene_fusion_aml08(samples):
