@@ -24,12 +24,13 @@ parts:
       - file: models/3.1_MethylScoreAML_Px_Development_v5.ipynb
       - file: models/3.2_MethylScoreAML_Px_Validation_Peds_v2.ipynb
 
-  # - caption: AML Diagnostic Model
+  - caption: AML Diagnostic Model
   
-  #   chapters:
-  #     - file: models/pacmap_v4.ipynb
-  #     - file: models/5_Multiclass_AMLsubtype_Classifier_v2.ipynb
-  #     - file: tests/6_Sankey_Plots_v1.ipynb
+    chapters:
+      - file: models/dx-score_new.ipynb
+      # - file: models/pacmap_v4.ipynb
+      # - file: models/5_Multiclass_AMLsubtype_Classifier_v2.ipynb
+      # - file: tests/6_Sankey_Plots_v1.ipynb
 
   - caption: Nanopore Sequencing Testing
     chapters:
