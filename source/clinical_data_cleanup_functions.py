@@ -505,21 +505,16 @@ def clean_aml02(df):
     df['Primary Cytogenetic Code'] = df['Primary Cytogenetic Code'].replace({'t (9;11)': 't(9;11)', 't (8;21)': 't(8;21)',
                                                                              'Miscell': 'Other', 'inv (16)': 'inv(16)',
                                                                              'Insuff': 'Other', '11q23': 't(9;11)'})
-
     
     df['Tissue Type'] = 'Bone Marrow'
     df['Sample Type'] = 'Diagnosis'
 
-    # Create new columns for reclassification
+    # Create new columns for reclassification according to WHO 2022
+    df['Gene Fusion'] = df['Primary Cytogenetic Code'].replace({'t(9;11)': 'KMT2A', 't(8;21)': 'RUNX1-RUNX1T1',
+                                                                'Other': np.nan, 'inv(16)': 'CBFB-MYH11'})
     df['CEBPA mutation'] = np.nan
     df['NPM mutation'] = np.nan
-    df['Gene Fusion'] = np.nan
-    df['Dx at Acquisition'] = 'AML ' + df['Primary Cytogenetic Code']
-
-    
-
-
-
+    df['Dx at Acquisition'] = df['Primarydiagnosis']
 
     return (df)
 
@@ -584,23 +579,21 @@ def clean_aml08(df):
     df['Sample Type'] = 'Diagnosis'
 
     # Create new columns for reclassification according to WHO 2022
-    df['CEBPA mutation'] = df['Cebpa'].replace({'Not Done': np.nan, 'Wild Type': 'No', 'Point Mutations': 'Yes'})
-    # df['NPM mutation'] = df['Nmp1'].replace({'Not Done': np.nan, 'Wild Type': 'No', 'Mutations': 'Yes'})
-    df['NPM mutation'] = np.nan
-    df['Dx at Acquisition'] = np.nan
-
-    def annotate_gene_fusion_aml08(samples):
+    def categorize_main_fusions_aml08(subtype):
         mapping = {
-        'Myeloid Leukemia with t(8;21) (q22;q22) [AML1/ETO]'            : 'RUNX1-RUNX1T1',
-        'Myeloid Leukemia with 11q23/MLL Abnormalities'                 : 'MLL',
-        'Myeloid Leukemia with t(6;9)(p23;q34) DEK-NUP214'              : 'DEK-NUP214',
-        'Myeloid Leukemia with inv(16) or t(16;16) [CBFbeta/MYH11]'     : 'CBFB-MYH11'}
-    
+            'Acute Myeloid Leukemia with 11q23/MLL Abnormalities'               :'KMT2A',
+            'Acute Myeloid Leukemia with t(8;21) (q22;q22) [AML1/ETO]'          :'RUNX1-RUNX1T1',
+            'Acute Myeloid Leukemia with inv(16) or t(16;16) [CBFbeta/MYH11]'   :'CBFB-MYH11',
+            'Acute Myeloid Leukemia with t(6;9)(p23;q34) DEK-NUP214'            :'DEK-NUP214',
+        }
         for key, value in mapping.items():
-            if key in samples:
+            if key in subtype:
                 return value
-            
-    df['Gene Fusion'] = df['Primarydiagnosis'].astype(str).apply(annotate_gene_fusion_aml08)
+    
+    df['Gene Fusion'] = df['Primarydiagnosis'].astype(str).apply(categorize_main_fusions_aml08)
+    df['CEBPA mutation'] = df['Cebpa'].replace({'Not Done': np.nan, 'Wild Type': 'No', 'Point Mutations': 'Yes'})
+    df['NPM mutation'] = np.nan
+    df['Dx at Acquisition'] = df['Primarydiagnosis']
 
     return (df)
 
