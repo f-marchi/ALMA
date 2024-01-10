@@ -783,7 +783,7 @@ def plot_confusion_matrix_stacked(clf, x_train, y_train, x_test, y_test,
     fig.suptitle(title + ' on clinically annotated samples', fontsize=12, fontweight='bold')
 
     for i, (ax, x, y, subset) in enumerate(zip(axs, [x_train, x_test], [y_train, y_test],
-                                                ['Discovery with 10-fold CV (train)', 'Independent validation (test)'])):
+                                                ['Train with 3-fold CV', 'Validation'])):
         predictions = clf.predict(x)
         cm = confusion_matrix(y, predictions, labels=clf.classes_, normalize='true')
         disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=clf.classes_)
