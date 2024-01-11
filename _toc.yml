@@ -23,8 +23,10 @@ parts:
       - file: models/2_Univariate_CoxPH-EWAS_v4.ipynb
       - file: models/3.1_MethylScoreAML_Px_Development_v5.ipynb
       - file: models/3.1_MethylScoreAML_Px_Development_v6.ipynb
+      - file: models/3.1_MethylScoreAML_Px_Development_v7.ipynb
       - file: models/3.2_MethylScoreAML_Px_Validation_Peds_v2.ipynb
       - file: models/3.2_MethylScoreAML_Px_Validation_Peds_v3.ipynb
+      - file: models/3.2_MethylScoreAML_Px_Validation_Peds_v4.ipynb
 
   - caption: AML Diagnostic Model
   
