@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'models/3.2_MethylScoreAML_Px_Validation_Peds_v3';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Px Score Validation EFS - Updated Risk" href="3.2_MethylScoreAML_Px_Validation_Peds_v4.html" />
-    <link rel="prev" title="MethylScoreAML Px Validation" href="3.2_MethylScoreAML_Px_Validation_Peds_v2.html" />
+    <link rel="next" title="Px Score Validation OS - Updated Risk" href="3.2_MethylScoreAML_Px_Validation_Peds_v4.html" />
+    <link rel="prev" title="Px Score Test - Previous" href="3.2_MethylScoreAML_Px_Validation_Peds_v2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -160,12 +160,12 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">AML Prognostic Model</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="2_Univariate_CoxPH-EWAS_v4.html">Epigenome Wide Association Study</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3.1_MethylScoreAML_Px_Development_v5.html">MethylScoreAML Px Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.1_MethylScoreAML_Px_Development_v5.html">Px Score Discovery - Previous</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3.1_MethylScoreAML_Px_Development_v6.html">Px Score Discovery OS - Updated Risk</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3.1_MethylScoreAML_Px_Development_v7.html">Px Score Discovery EFS - Updated Risk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3.2_MethylScoreAML_Px_Validation_Peds_v2.html">MethylScoreAML Px Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.2_MethylScoreAML_Px_Validation_Peds_v2.html">Px Score Test - Previous</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Px Score Validation OS - Updated Risk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3.2_MethylScoreAML_Px_Validation_Peds_v4.html">Px Score Validation EFS - Updated Risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.2_MethylScoreAML_Px_Validation_Peds_v4.html">Px Score Validation OS - Updated Risk</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">AML Diagnostic Model</span></p>
 <ul class="nav bd-sidenav">
@@ -596,7 +596,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">score_name</span> <span class="o">=</span> <span class="s1">&#39;MethylScoreAML_Px&#39;</span>
 
 <span class="n">df_test</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="n">generate_coxph_score</span><span class="p">(</span><span class="n">coef_mean</span><span class="o">=</span><span class="n">mean_coefs</span><span class="p">,</span>
-                                        <span class="n">x</span><span class="o">=</span><span class="n">x_test_m</span><span class="p">,</span>
+                                        <span class="n">x</span><span class="o">=</span><span class="n">x_test_m_z</span><span class="p">,</span>
                                         <span class="n">df</span><span class="o">=</span><span class="n">validation_clinical_data</span><span class="p">,</span>
                                         <span class="n">score_name</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
                                         <span class="n">train_test</span><span class="o">=</span><span class="mf">0.4934</span><span class="p">,</span>
@@ -635,7 +635,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Distribution of MethylScoreAML_Px in StJude trials&#39;)
 </pre></div>
 </div>
-<img alt="../_images/30a1a5b87c84abcb3caa160675838cc9864e7bffa6198ed573f3266b8a66060f.png" src="../_images/30a1a5b87c84abcb3caa160675838cc9864e7bffa6198ed573f3266b8a66060f.png" />
+<img alt="../_images/0dded7575905e2bf58efdb7240d78eef5f6285ad10337e4ebf6425ca22e18d1a.png" src="../_images/0dded7575905e2bf58efdb7240d78eef5f6285ad10337e4ebf6425ca22e18d1a.png" />
 </div>
 </div>
 </section>
@@ -858,7 +858,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/096dee6b3828acd5adb9a4951844c33bae6df71f374f07bb55c7bb44716ba19f.png" src="../_images/096dee6b3828acd5adb9a4951844c33bae6df71f374f07bb55c7bb44716ba19f.png" />
+<img alt="../_images/a6eafa76bb58971ad72f06c9e4086e72927cfdf8619f68b6ea91d6481c534cca.png" src="../_images/a6eafa76bb58971ad72f06c9e4086e72927cfdf8619f68b6ea91d6481c534cca.png" />
 </div>
 </div>
 </section>
@@ -897,12 +897,12 @@ document.write(`
      ***: 1.00e-04 &lt; p &lt;= 1.00e-03
     ****: p &lt;= 1.00e-04
 
-High Risk vs. Standard Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:9.278e-01 Stat=1.034e+00
-Standard Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:2.635e-10 Stat=4.208e+01
-High Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:1.812e-08 Stat=3.382e+01
+High Risk vs. Standard Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:9.216e-01 Stat=1.043e+00
+Standard Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:2.914e-10 Stat=4.188e+01
+High Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:1.875e-08 Stat=3.376e+01
 </pre></div>
 </div>
-<img alt="../_images/419eac29d8acf041a8b47e73c06d19fc26e7870f2e8a1ad4b9421885fc478cc5.png" src="../_images/419eac29d8acf041a8b47e73c06d19fc26e7870f2e8a1ad4b9421885fc478cc5.png" />
+<img alt="../_images/f9fa3215e361debf0d97505003a756fce76876f216310fa3de892495ee779147.png" src="../_images/f9fa3215e361debf0d97505003a756fce76876f216310fa3de892495ee779147.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p-value annotation legend:
       ns: p &lt;= 1.00e+00
        *: 1.00e-02 &lt; p &lt;= 5.00e-02
@@ -910,11 +910,11 @@ High Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between gro
      ***: 1.00e-04 &lt; p &lt;= 1.00e-03
     ****: p &lt;= 1.00e-04
 
-Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:1.323e-01 Stat=2.265e+00
+Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:1.330e-01 Stat=2.257e+00
 </pre></div>
 </div>
-<img alt="../_images/2147d7381016699b11f5c321151b3010965c57485162c81922de9ca0b18a82c9.png" src="../_images/2147d7381016699b11f5c321151b3010965c57485162c81922de9ca0b18a82c9.png" />
-<img alt="../_images/27da801fbdfe8f1f7efaf9f6615690b0c335abeb983d0c0e75493229a2643520.png" src="../_images/27da801fbdfe8f1f7efaf9f6615690b0c335abeb983d0c0e75493229a2643520.png" />
+<img alt="../_images/889d04006586b168e0aeee6d3e21ffb6ab50d64009a7dd4c7dcd54f42e0c4c26.png" src="../_images/889d04006586b168e0aeee6d3e21ffb6ab50d64009a7dd4c7dcd54f42e0c4c26.png" />
+<img alt="../_images/d97bbc7957e8ccbe22c159394a42056ea25bc25c1fa744582d24f35f8e1052bf.png" src="../_images/d97bbc7957e8ccbe22c159394a42056ea25bc25c1fa744582d24f35f8e1052bf.png" />
 </div>
 </div>
 </section>
@@ -1277,7 +1277,7 @@ Architecture: 64bit
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">MethylScoreAML Px Validation</p>
+        <p class="prev-next-title">Px Score Test - Previous</p>
       </div>
     </a>
     <a class="right-next"
@@ -1285,7 +1285,7 @@ Architecture: 64bit
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Px Score Validation EFS - Updated Risk</p>
+        <p class="prev-next-title">Px Score Validation OS - Updated Risk</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
