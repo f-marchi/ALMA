@@ -767,7 +767,7 @@ def plot_confusion_matrix_individual(clf, x_test, y_test, title='Classification 
 
 
 def plot_confusion_matrix_stacked(clf, x_train, y_train, x_test, y_test, 
-                                    title='MethylScoreAML Dx Classification results', 
+                                    title='Classification results', 
                                     tick_fontsize=10, label_fontsize=10,
                                     figsize=(10, 5)):
 
