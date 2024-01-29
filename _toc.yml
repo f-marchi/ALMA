@@ -16,6 +16,7 @@ parts:
       - file: main/1_discovery_dataset.ipynb
       - file: main/2_validation_dataset.ipynb
       - file: main/3_reclassification_strategy.ipynb
+      - file: main/4_models.ipynb
       
   # - caption: AML Prognostic Model
 
