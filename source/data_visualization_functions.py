@@ -1,5 +1,5 @@
 """
-This module implements functions for several commonly used data visualization techniques.
+This module implements custom functions for several commonly used data visualization techniques.
 
 """
 
