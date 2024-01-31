@@ -134,7 +134,8 @@ def plot_bokeh(df):
         # Create a legend
         legend = Legend(items=legend_items, location="top", click_policy="hide",
                         label_text_font_size=font_size, label_text_font_style="normal",
-                        glyph_height=15, glyph_width=15, spacing=1, margin=5, padding=0,
+                        glyph_height=15, glyph_width=15, spacing=1, 
+                        # margin=5, padding=0,
                         )
 
         # Add the legend to the plot
@@ -146,5 +147,7 @@ def plot_bokeh(df):
     tabs_control = Tabs(tabs=tabs, tabs_location='above')
 
     p1.add_tools(scatter1_hover_tool)
+
+    # save(column(tabs_control,p1,data_table), filename="FM_interactive_plots_1-30-24_preliminary.html", title="AL Methylome Atlas")
 
     return(show(column(tabs_control,p1,data_table)))

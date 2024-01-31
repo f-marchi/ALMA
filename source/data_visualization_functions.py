@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-def draw_kaplan_meier(scorename, df, save_plot=False,
+def draw_kaplan_meier(df, model_name, save_plot=False, figsize=(8, 10), 
                       add_risk_counts=False, save_survival_table=False,
                       trialname=None, show_ci=False):
     """
@@ -49,10 +49,10 @@ def draw_kaplan_meier(scorename, df, save_plot=False,
 
     # Set up the matplotlib figure
     sns.set_theme(style='white')
-    f, ax = plt.subplots(2, 1, sharex=True, figsize=(8, 10))
+    f, ax = plt.subplots(2, 1, sharex=True, figsize=figsize)
 
     # Define survival curve categories
-    groups = df[scorename + ' Categorical']
+    groups = df[model_name]
     ix = (groups == 'High')
 
     # Fit the Kaplan Meier to each category of groups (kmf1 and kmf2)
@@ -61,20 +61,20 @@ def draw_kaplan_meier(scorename, df, save_plot=False,
         T = df[t]
         E = df[e]
         kmf1 = KaplanMeierFitter()
-        kmf1.fit(T[~ix], E[~ix], label='Low-' + scorename + ', n=' +
-                 str(len(df[df[scorename + ' Categorical'].isin(['Low'])])))
+        kmf1.fit(T[~ix], E[~ix], label='Low ' + model_name + ', n=' +
+                 str(len(df[df[model_name].isin(['Low'])])))
         ax = kmf1.plot_survival_function(
             ax=i, show_censors=True, ci_show=show_ci)
 
         kmf2 = KaplanMeierFitter()
-        kmf2.fit(T[ix], E[ix], label='High-' + scorename + ', n=' +
-                 str(len(df[df[scorename + ' Categorical'].isin(['High'])])))
+        kmf2.fit(T[ix], E[ix], label='High ' + model_name + ', n=' +
+                 str(len(df[df[model_name].isin(['High'])])))
         ax = kmf2.plot_survival_function(
             ax=i, show_censors=True, ci_show=show_ci)
 
         try:
             # Calculate Hazard Ratio (HZ) and p-value (p)
-            X_CPH = df[[scorename + '_cat_bin', t, e]]
+            X_CPH = df[[model_name + '_int', t, e]]
             cph = CoxPHFitter()
             HZ = cph.fit(X_CPH, t, event_col=e)
             hz = HZ.hazard_ratios_[0]
@@ -102,7 +102,7 @@ def draw_kaplan_meier(scorename, df, save_plot=False,
             surv2 = kmf2.survival_function_.join(kmf2.confidence_interval_)
             surv3 = surv1.join(surv2, how='outer')
             surv3.to_csv('../../Figures/Kaplan_Meiers/KM_' + t + '_SurvivalTable_' +
-                         scorename + '_' + trialname + '_' + str(len(df)) + '.csv')
+                         model_name + '_' + trialname + '_' + str(len(df)) + '.csv')
 
         i.set_ylim(0, 1)
         i.set_ylabel("est. probability of survival $\hat{S}(t)$")
@@ -115,7 +115,7 @@ def draw_kaplan_meier(scorename, df, save_plot=False,
     ax[1].set_title('Overall Survival', loc='left', pad=10, fontweight='bold')
     # Define Plot Specs
     plt.subplots_adjust(wspace=0, hspace=0.2)
-    plt.suptitle("Kaplan-Meiers of " + scorename + " in " + trialname + ", n=" + str(len(df)),
+    plt.suptitle(model_name + " in " + trialname + ", n=" + str(len(df)),
                  fontsize='medium', y=0.94,
                  fontweight='bold')
     plt.xlim(0, 10)
@@ -123,7 +123,7 @@ def draw_kaplan_meier(scorename, df, save_plot=False,
 
     # Save plot figure
     if save_plot == True:
-        plt.savefig('../Figures/Kaplan_Meiers/' + scorename + '_' + trialname + '_' + str(len(df)) + '.png',
+        plt.savefig('../Figures/Kaplan_Meiers/' + model_name + '_' + trialname + '_' + str(len(df)) + '.png',
                     bbox_inches='tight', dpi=300)
 
     return (plt.show())
