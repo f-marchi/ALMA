@@ -17,17 +17,18 @@ parts:
       - file: main/2_validation_dataset.ipynb
       - file: main/3_reclassification_strategy.ipynb
       - file: main/4_models.ipynb
+      - file: main/5_plots.ipynb
       
-  # - caption: AML Prognostic Model
+  - caption: EWAS-CoxLasso Benchmarking
 
-  #   chapters:
-  #     - file: tests/2_Univariate_CoxPH-EWAS_v4.ipynb
-  #     - file: tests/3.1_MethylScoreAML_Px_Development_v5.ipynb
-  #     - file: tests/3.1_MethylScoreAML_Px_Development_v6.ipynb
-  #     - file: tests/3.1_MethylScoreAML_Px_Development_v7.ipynb
-  #     - file: tests/3.2_MethylScoreAML_Px_Validation_Peds_v2.ipynb
-  #     - file: tests/3.2_MethylScoreAML_Px_Validation_Peds_v3.ipynb
-  #     - file: tests/3.2_MethylScoreAML_Px_Validation_Peds_v4.ipynb
+    chapters:
+      - file: tests/2_Univariate_CoxPH-EWAS_v4.ipynb
+      - file: tests/3.1_MethylScoreAML_Px_Development_v5.ipynb
+      - file: tests/3.1_MethylScoreAML_Px_Development_v6.ipynb
+      - file: tests/3.1_MethylScoreAML_Px_Development_v7.ipynb
+      - file: tests/3.2_MethylScoreAML_Px_Validation_Peds_v2.ipynb
+      - file: tests/3.2_MethylScoreAML_Px_Validation_Peds_v3.ipynb
+      - file: tests/3.2_MethylScoreAML_Px_Validation_Peds_v4.ipynb
 
   # - caption: AML Diagnostic Model
   

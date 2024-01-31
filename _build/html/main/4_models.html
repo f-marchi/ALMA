@@ -69,6 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'main/4_models';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Visualization" href="5_plots.html" />
     <link rel="prev" title="Reclassification to Current Clinical Guidelines" href="3_reclassification_strategy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -769,7 +770,15 @@ Overall accuracy score in Validation: 0.701
 <h2>Save results<a class="headerlink" href="#save-results" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">save_predictions</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">classifier</span><span class="p">,</span> <span class="n">model_name</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import dependencies again in case only this cell is run</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">joblib</span>
+
+<span class="c1"># Load models</span>
+<span class="n">lgbm_px_model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../models/lgbm_px_model.pkl&#39;</span><span class="p">)</span>
+<span class="n">lgbm_dx_model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../models/lgbm_dx_model.pkl&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">save_predictions</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">classifier</span><span class="p">,</span> <span class="n">model_name</span><span class="p">):</span>
 
     <span class="c1"># ignore sklearn warnings</span>
     <span class="kn">import</span> <span class="nn">warnings</span>
@@ -812,7 +821,21 @@ Overall accuracy score in Validation: 0.701
 <span class="n">df_combined</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_pred_px</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_pred_dx</span><span class="p">)</span>
 
 <span class="c1"># Save df_combined</span>
-<span class="n">df_combined</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;../data/al_atlas_main_results.xlsx&#39;</span><span class="p">)</span>
+<span class="c1"># df_combined.to_excel(&#39;../data/al_atlas_main_results.xlsx&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">42</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span>     <span class="k">return</span> <span class="n">df_joined</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span> <span class="c1"># Execution</span>
+<span class="ne">---&gt; </span><span class="mi">42</span> <span class="n">df_pred_px</span> <span class="o">=</span> <span class="n">save_predictions</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">classifier</span><span class="o">=</span><span class="n">lgbm_px_model</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;AML Epigenomic Risk&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="n">df_pred_dx</span> <span class="o">=</span> <span class="n">save_predictions</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">classifier</span><span class="o">=</span><span class="n">lgbm_dx_model</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;AL Epigenomic Phenotype&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="c1"># Map the classes to the desired labels</span>
+
+<span class="ne">NameError</span>: name &#39;df&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -891,6 +914,15 @@ Updating to python 3.10 caused substantial delays in lightgbm, so keep python at
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Reclassification to Current Clinical Guidelines</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="5_plots.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Visualization</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
