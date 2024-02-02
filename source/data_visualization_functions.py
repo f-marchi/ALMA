@@ -441,7 +441,7 @@ def draw_forest_plot_withBMblast(time, event, df, save_plot=False, trialname=Non
                               'Risk Group-Standard Risk',
                               'FLT3 ITD-Yes',
                               'Leucocyte counts (10⁹/L)-≥30',
-                                'BM Leukemic blasts (%) (grouped)->50%',
+                              'BM Leukemic blasts (%) (grouped)->50',
                               'Age group (years)-≥10']).tables[1]
 
     res3 = res2.set_index(res2.index.str.split(pat='-', expand=True))
@@ -453,7 +453,7 @@ def draw_forest_plot_withBMblast(time, event, df, save_plot=False, trialname=Non
                                                   'Risk Group': ['High Risk', 'Standard Risk'],
                                                   'FLT3 ITD': ['Yes'],
                                                   'Leucocyte counts (10⁹/L)': ['≥30'],
-                                                  'BM Leukemic blasts (%) (grouped)': ['>50%'],
+                                                  'BM Leukemic blasts (%) (grouped)': ['>50'],
                                                   'Age group (years)': ['≥10']}).tableone
 
     mytable2 = mytable.join(res3)
