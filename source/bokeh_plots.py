@@ -4,14 +4,14 @@ This module implements custom functions for a combined Bokeh plot with two scatt
 """  
 import numpy as np
 import pandas as pd
-from bokeh.layouts import column
-from bokeh.plotting import figure, show, output_notebook, save
-
-from bokeh.models import (Slider, TabPanel, Tabs, Legend, ColumnDataSource, LegendItem,
-                          CDSView, GroupFilter, CategoricalColorMapper, Label, Span,
+from bokeh.layouts import column, gridplot
+from bokeh.plotting import figure, show, save, output_notebook
+from bokeh.models import (TabPanel, Tabs, Legend, ColumnDataSource, LegendItem,
+                          CDSView, GroupFilter, CategoricalColorMapper, Label,
                           DataTable, HoverTool, TableColumn)
+from sklearn.metrics import roc_curve, auc
 
-output_notebook()
+
 
 def get_custom_color_palette():
     list = [
@@ -48,13 +48,16 @@ def get_custom_color_palette():
     ]
     return list
 
-def plot_bokeh(df):
+def plot_linked_scatters(df):
 
-    df2 = df.sort_values(by='P(Dead)').reset_index().reset_index(names=['Percentile'])
-    df2['Percentile'] = df2['Percentile'] / len(df2)
+    # Rank samples by P(High Risk) and call it "Percentile"
+    df_px = df[~df['P(High Risk)'].isna()]
+    df_px2 = df_px.sort_values(by='P(High Risk)').reset_index().reset_index(names=['Percentile']).set_index('index')
+    df_px2['Percentile'] = df_px2['Percentile'] / len(df_px2['Percentile'])
+    df2 = df.join(df_px2[['Percentile']])
     
     source = ColumnDataSource(df2)
-    tooltips = [("EpiDx", "@{AL Epigenomic Phenotype}")]
+    tooltips = [("WHO Dx", "@{WHO 2022 Diagnosis}")]
     width = 1000
     tools = "pan,wheel_zoom,box_select,reset,save"
     active_drag = "box_select"
@@ -93,7 +96,7 @@ def plot_bokeh(df):
     p1.add_layout(label2)
 
 
-    scatter1 = p1.circle(y='Percentile', x='P(Dead)', source=source, selection_color='#ff7f0e', 
+    scatter1 = p1.circle(y='Percentile', x='P(High Risk)', source=source, selection_color='#ff7f0e', 
                 nonselection_alpha=1.0, color='#1f77b4', size=5, alpha=0.8, hover_color='#ff7f0e',
                 hover_alpha=1.0)
 
@@ -151,3 +154,39 @@ def plot_bokeh(df):
     # save(column(tabs_control,p1,data_table), filename="FM_interactive_plots_1-30-24_preliminary.html", title="AL Methylome Atlas")
 
     return(show(column(tabs_control,p1,data_table)))
+
+def plot_roc_auc(df, target,title):
+    """
+    Plots ROC AUC flexibly using Bokeh.
+    
+    Parameters:
+    - df: pandas DataFrame containing model predictions as columns and actual target variable.
+    - target: Name of the column containing the actual target variable.
+    """
+    # colors = itertools.cycle(Spectral11)
+    colors = ['navy', 'firebrick', 'olive']
+
+    p = figure(title=title + ', n=' + str(len(df)),
+               x_axis_label='False Positive Rate',
+               y_axis_label='True Positive Rate',
+               width=400, height=400,
+               tools='save,reset,pan')
+    
+    p.line([0, 1], [0, 1], line_dash="dashed", color="gray", line_width=1)
+
+    for column, color in zip(df.columns.difference([target]), colors):
+        fpr, tpr, _ = roc_curve(df[target], df[column])
+        roc_auc = auc(fpr, tpr)
+        p.line(fpr, tpr, legend_label=f"{column} (AUC = {roc_auc:.2f})",
+               color=color, line_width=2, alpha=0.8)
+
+    p.legend.location = "bottom_right"
+    p.legend.click_policy="hide"
+    p.toolbar.logo = None
+    p.legend.label_text_font_size = '8pt'
+    p.legend.spacing = -5
+    p.xaxis.axis_label_text_font_style = "normal"
+    p.yaxis.axis_label_text_font_style = "normal"
+    p.legend.background_fill_alpha = 0.6
+
+    return p

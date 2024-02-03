@@ -13,6 +13,7 @@ from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, accuracy_s
 
 
 
+
 def draw_kaplan_meier(df, model_name, save_plot=False, figsize=(8, 10), 
                       add_risk_counts=False, save_survival_table=False,
                       trialname=None, show_ci=False):
@@ -413,7 +414,7 @@ def draw_forest_plot_withBMblast(time, event, df, save_plot=False, trialname=Non
              'Risk Group',
              'FLT3 ITD',
              'Leucocyte counts (10⁹/L)',
-             'BM Leukemic blasts (%) (grouped)', 
+             'BM leukemic blasts (%)', 
              'Age group (years)',
              time, event]]
 
@@ -431,7 +432,7 @@ def draw_forest_plot_withBMblast(time, event, df, save_plot=False, trialname=Non
                              'FLT3 ITD': 'FLT3_ITD',
                              'Risk Group': 'Risk_Group',
                              'Leucocyte counts (10⁹/L)': 'WBC_count',
-                             'BM Leukemic blasts (%) (grouped)': 'BM_blasts',
+                             'BM leukemic blasts (%)': 'BM_blasts',
                              'Age group (years)': 'Age_group'})
 
     res = smf.phreg(formula=time2 + " ~ C("+model_name+",Treatment(reference='Low')) + C(MRD_1_Status) + C(Risk_Group,Treatment(reference='Low Risk')) + C(FLT3_ITD) + C(WBC_count) + C(BM_blasts) + C(Age_group)",
@@ -443,7 +444,7 @@ def draw_forest_plot_withBMblast(time, event, df, save_plot=False, trialname=Non
                               'Risk Group-Standard Risk',
                               'FLT3 ITD-Yes',
                               'Leucocyte counts (10⁹/L)-≥30',
-                              'BM Leukemic blasts (%) (grouped)->50',
+                              'BM leukemic blasts (%)->50',
                               'Age group (years)-≥10']).tables[1]
 
     res3 = res2.set_index(res2.index.str.split(pat='-', expand=True))
@@ -455,7 +456,7 @@ def draw_forest_plot_withBMblast(time, event, df, save_plot=False, trialname=Non
                                                   'Risk Group': ['High Risk', 'Standard Risk'],
                                                   'FLT3 ITD': ['Yes'],
                                                   'Leucocyte counts (10⁹/L)': ['≥30'],
-                                                  'BM Leukemic blasts (%) (grouped)': ['>50'],
+                                                  'BM leukemic blasts (%)': ['>50'],
                                                   'Age group (years)': ['≥10']}).tableone
 
     mytable2 = mytable.join(res3)
