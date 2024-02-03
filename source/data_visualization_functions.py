@@ -9,6 +9,8 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, accuracy_score
+
 
 
 def draw_kaplan_meier(df, model_name, save_plot=False, figsize=(8, 10), 
