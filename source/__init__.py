@@ -1,9 +1,9 @@
-__all__ = ['cox_lasso_functions', 'clinical_data_cleanup_functions',
-           'data_visualization_functions', 'pacmap_functions', 'bokeh_plots']
+__all__ = ['cox_lasso', 'clinical_data_cleanup',
+           'data_visualization', 'pacmap_functions', 'bokeh_plots']
 
-from source import cox_lasso_functions
-from source import clinical_data_cleanup_functions
-from source import data_visualization_functions
+from source import cox_lasso
+from source import clinical_data_cleanup
+from source import data_visualization
 from source import pacmap_functions
 from source import bokeh_plots
 

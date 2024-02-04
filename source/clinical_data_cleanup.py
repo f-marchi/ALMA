@@ -751,6 +751,7 @@ def clean_beataml(df):
     
     df = df.replace({'Unknown': np.nan, 'YES': 'Yes', 'NO': 'No', 'n':'No', 'y':'Yes'})
     df['Clinical Trial'] = 'Beat AML Consortium'
+    df['os.evnt'] = df['Vital Status'].map({'Alive': 0, 'Dead': 1})
 
     return df
 
