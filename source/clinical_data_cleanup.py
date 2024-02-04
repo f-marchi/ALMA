@@ -467,8 +467,8 @@ def clean_aml02(df):
                             'CYTres': 'Primary Cytogenetic Code', 'FLT3': 'FLT3 Status', 'STUDY': 'Clinical Trial',
                             'WBC': 'WBC Count (10⁹/L)', 'age.dx': 'Age (years)', 'ARM': 'Study Arm',
                             'SEX': 'Sex', 'RACE': 'Race', 'ETHNICITY_CD': 'Ethnicity',
-                            'DXCBCBLASTS': 'Peripheral blasts (%)', 'JL.id.x': 'Patient_ID',
-                            'DXBMBLAST': 'BM Leukemic blasts (%)', 'REASONOFFSTUDY_02': 'Reasonoffstudy',
+                            'DXCBCBLASTS': 'PB leukemic blasts (%)', 'JL.id.x': 'Patient_ID',
+                            'DXBMBLAST': 'BM leukemic blasts (%)', 'REASONOFFSTUDY_02': 'Reasonoffstudy',
                             'CAUSEOFDEATH': 'Causeofdeath', 'dx02': 'Primarydiagnosis',
                             'FULLKARYOTYPE': 'Karyotype'})  # Note that patient ID column is JL.id.x
 
@@ -534,8 +534,8 @@ def clean_aml08(df):
 
     df = df.rename(columns={'Efscensor': 'efs.evnt', 'Oscensor': 'os.evnt',
                             'Ostime': 'os.time.days', 'Efstime': 'efs.time.days',
-                            'Ethnicity_Cd': 'Ethnicity', 'Dxbmblast': 'BM Leukemic blasts (%)',
-                            'Dxcbcblast': 'Peripheral blasts (%)', 'Gender': 'Sex',
+                            'Ethnicity_Cd': 'Ethnicity', 'Dxbmblast': 'BM leukemic blasts (%)',
+                            'Dxcbcblast': 'PB leukemic blasts (%)', 'Gender': 'Sex',
                             'Age': 'Age (years)', 'Wbc': 'WBC Count (10⁹/L)',
                             'Flt3': 'FLT3 Status', 'Aml08.Sp.Id': 'Patient_ID',
                             'Fullkaryotypestring': 'Karyotype'})
@@ -623,39 +623,37 @@ def clean_cog(df):
 
     df = df.rename(columns={'FLT3/ITD positive?': 'FLT3 ITD', 'Gender': 'Sex', 'Race': 'Race or ethnic group',
                             'Ethnicity': 'Hispanic or Latino ethnic group',
-                            'Bone marrow leukemic blast percentage (%)': 'BM Leukemic blasts (%)',
+                            'Bone marrow leukemic blast percentage (%)': 'BM leukemic blasts (%)',
                             'Protocol': 'Clinical Trial', 'WBC at Diagnosis': 'WBC Count (10⁹/L)',
                             'ISCN': 'Karyotype', 'FAB Category': 'FAB'})
 
     df['CNS disease'] = df[~df['Clinical Trial'].isin(
         ['AAML1031'])]['CNS disease']
-    df['Karyotype Complexity 3'] = pd.to_numeric(df['Cytogenetic Complexity'].replace({'>6': 6, 'More than 6': 6, '4 or more': 4}),
-                                                 errors='ignore').replace({range(3, 100): '3 or more'})
+
     df['Karyotype Complexity 4'] = pd.to_numeric(df['Cytogenetic Complexity'].replace({'>6': 6, 'More than 6': 6, '4 or more': 4}),
                                                  errors='ignore').replace({range(4, 100): '4 or more'})
-    df['Karyotype Complexity 6'] = pd.to_numeric(df['Cytogenetic Complexity'].replace({'>6': 6, 'More than 6': 6, '4 or more': 4}),
-                                                 errors='ignore').replace({range(6, 100): '6 or more'})
     df['Complex Karyotype'] = df[df['Karyotype Complexity 4'].isin(
         ['4 or more'])]['Karyotype Complexity 4']
     df['Complex Karyotype'] = df['Complex Karyotype'].fillna('Less than 4')
+
     df['Hispanic or Latino ethnic group'] = df['Hispanic or Latino ethnic group'].replace({
         'Not Hispanic or Latino': 'Not Hispanic or Latino',
         'Hispanic or Latino': 'Hispanic or Latino'})
     df['Age (years)'] = df["Age at Diagnosis in Days"].astype(
-        float).apply(lambda x: x/365)
+                            float).apply(lambda x: x/365)
     df['efs.time'] = df['Event Free Survival Time in Days'].astype(
-        float).apply(lambda x: x/365)
+                            float).apply(lambda x: x/365)
     df['os.time'] = df['Overall Survival Time in Days'].astype(
-        float).apply(lambda x: x/365)
+                            float).apply(lambda x: x/365)
     df['os.evnt'] = df['Vital Status'].map({'Alive': 0, 'Dead': 1})
     df['efs.evnt'] = df['First Event'].isin(
-        ['Relapse', 'Induction Failure', 'Death', 'Death without Remission']).astype(int)
+                        ['Relapse', 'Induction Failure', 'Death', 'Death without Remission']).astype(int)
     df['treat.arm'] = df['Treatment Arm'].map({'Arm A': 0, 'Arm B': 1})
     df['relapse.evnt'] = df['First Event'].isin(['Relapse']).astype(int)
     df['rel_indfail.evnt'] = df['First Event'].isin(
-        ['Relapse', 'Induction Failure']).astype(int)
+                                ['Relapse', 'Induction Failure']).astype(int)
     df['MRD 1 Status'] = df['MRD at end of course 1'].replace(
-        {'Yes': 'Positive', 'No': 'Negative'})
+                            {'Yes': 'Positive', 'No': 'Negative'})
     df['Age group (years)'] = pd.cut(x=df['Age (years)'],
                                      bins=[-np.inf, 10, np.inf],
                                      labels=['<10', '≥10'])
@@ -719,9 +717,10 @@ def clean_aml05(df):
 
     # Rename columns to match other datasets
     df = df.rename(columns={'FLT3-ITD AR': 'FLT3/ITD allelic ratio',
-                            'Blast, %': 'BM Leukemic blasts (%)', 'WBC, 109/L': 'WBC Count (10⁹/L)',
+                            'Blast, %': 'BM leukemic blasts (%)', 'WBC, 109/L': 'WBC Count (10⁹/L)',
                             'Outcome': 'Vital Status', 'Relapse': 'relapse.evnt', 'Gender': 'Sex',
-                            'Sample_Name': 'Patient_ID', 'Sample Type': 'Tissue Type'})
+                            'Sample_Name': 'Patient_ID', 'Sample Type': 'Tissue Type',
+                            'Other genetic alterations': 'Gene Fusion'})
 
     df['os.evnt'] = df['Vital Status'].map({'Alive': 0, 'Dead': 1})
     df['Age group (years)'] = pd.cut(x=df['Age (years)'].astype(float),
@@ -747,10 +746,27 @@ def clean_beataml(df):
                             'CEBPA_Biallelic': 'CEBPA mutation','VitalStatus':'Vital Status',
                             'WBC_Count':'WBC Count (10⁹/L)', 'WHO_Fusion':'Gene Fusion', 
                             'Age at Diagnosis': 'Age (years)', 'NPM1 Consensus Call': 'NPM mutation',
-                            'SpecificDxAtAcquisition': 'Dx at Acquisition',})
+                            'SpecificDxAtAcquisition': 'Dx at Acquisition', 
+                            'PercentBlastsInBM':'BM leukemic blasts (%)', 'PercentBlastsInPB': 'PB leukemic blasts (%)',
+                            })
+    
+    df['Race or ethnic group'] = df['InferredEthnicity'].replace({'Black': 'Black or African American', 'AdmixedBlack': 'Black or African American',
+                                                                   'AdmixedWhite': 'White', 'HispNative': 'Other'})
+    df['Ethnicity'] = df['InferredEthnicity'].replace({'Black': 'Not Hispanic or Latino', 'White': 'Not Hispanic or Latino',
+                                                        'Asian': 'Not Hispanic or Latino' , 'AdmixedWhite': np.nan, 'AdmixedBlack': np.nan,
+                                                        'HispNative': 'Hispanic or Latino'})
     
     df = df.replace({'Unknown': np.nan, 'YES': 'Yes', 'NO': 'No', 'n':'No', 'y':'Yes'})
+
     df['Clinical Trial'] = 'Beat AML Consortium'
+    df['Risk Group'] = df['ELN2017'].replace({'Favorable': 'Low Risk',
+                                              'FavorableORIntermediate': 'Standard Risk',
+                                              'Intermediate': 'Standard Risk',
+                                              'IntermediateORAdverse': 'High Risk',
+                                              'Adverse': 'High Risk'})
+    
+    df['os.time'] = df['Overall Survival (Months)'].astype(
+                            float).apply(lambda x: x/12)
     df['os.evnt'] = df['Vital Status'].map({'Alive': 0, 'Dead': 1})
 
     return df
@@ -759,8 +775,8 @@ def clean_beataml(df):
 def clean_amltcga(df):
 
     df = df.rename(columns={'case_submitter_id':'Patient_ID', 'Age': 'Age (years)',
-                            '%BM Blast':'BM Leukemic blasts (%)', 'WBC':'WBC Count (10⁹/L)',
-                            '%PB Blast': 'Peripheral blasts (%)', 'Cytogenetics': 'Karyotype',
+                            '%BM Blast':'BM leukemic blasts (%)', 'WBC':'WBC Count (10⁹/L)',
+                            '%PB Blast': 'PB leukemic blasts (%)', 'Cytogenetics': 'Karyotype',
                             'Gene Fusions by RNA-Seq':'Gene Fusion',
                             'Cytogenetic Classification':'Primary Cytogenetic Code'})
     
@@ -771,7 +787,21 @@ def clean_amltcga(df):
                                                        'Intermediate': 'Standard Risk',
                                                        'Poor': 'High Risk',
                                                        'N.D.': np.nan})
+    df['os.time'] = df['Overall Survival (Months)'].astype(float).apply(lambda x: x/12)
+    df['os.evnt'] = df['Overall Survival Status'].map({'0:LIVING': 0, '1:DECEASED': 1})
+    df['Vital Status'] = df['os.evnt'].map({0: 'Alive', 1: 'Dead'})
 
+    df['Race or ethnic group'] = df['Race Category'].replace({'HISPANIC': 'Other', 'WHITE': 'White', 'BLACK': 'Black or African American',
+                                                                'NH/A': np.nan, 'NH/B': np.nan, 'NH/C': np.nan,
+                                                                'NHC': np.nan, 'NH/AA': np.nan, 'Unk':np.nan,
+                                                                'Unk/B': np.nan, 'Unk/C': np.nan, 'ASIAN': 'Asian',
+                                                                'W/Nat Amer':'American Indian or Alaska Native'})
+    df['Ethnicity'] = df['Race Category'].replace({'HISPANIC': 'Hispanic or Latino', 'WHITE': 'Not Hispanic or Latino',
+                                                    'BLACK': 'Not Hispanic or Latino', 'ASIAN': 'Not Hispanic or Latino',
+                                                    'W/Nat Amer': 'Not Hispanic or Latino', 'NH/A': np.nan, 'NH/B': np.nan,
+                                                    'NH/C': np.nan, 'NHC': np.nan, 'NH/AA': np.nan, 'Unk':np.nan,
+                                                    'Unk/B': np.nan, 'Unk/C': np.nan})
+    
     df['Dx at Acquisition'] = 'AML with ' + df['Molecular Classification'].astype(str)
 
     # Create `Yes` or `No` columns for mutations of interest
@@ -806,8 +836,6 @@ def clean_nordic_all(df):
     df['Karyotype'] = np.nan
     df['Gene Fusion'] = np.nan
     
-
-
     return df
 
 
