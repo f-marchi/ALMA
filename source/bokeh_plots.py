@@ -155,14 +155,41 @@ def plot_linked_scatters(df):
 
     return(show(column(tabs_control,p1,data_table)))
 
-def plot_roc_auc(df, target,title):
+def plot_roc_auc(df, target, model_name, risk_group='Risk Group', title=None):
     """
     Plots ROC AUC flexibly using Bokeh.
     
     Parameters:
     - df: pandas DataFrame containing model predictions as columns and actual target variable.
     - target: Name of the column containing the actual target variable.
+    - model_name: Name of the column containing the model predictions.
+    - risk_group: Name of the column containing the risk group.
+    - title: Title of the plot.
     """
+
+    def category_to_integer(df, model_name, risk_group=None):
+
+        df_ = df.copy()        
+        low_high_dict = {'Low': 0, 'Low Risk': 0,
+                        'Standard':0.5, 'Standard Risk': 0.5,
+                        'High': 1, 'High Risk': 1}
+
+        if df[model_name].dtype == 'O':
+            df_[model_name] = df_[model_name].map(low_high_dict)
+        else:
+            pass
+        df_[risk_group] = df_[risk_group].map(low_high_dict)
+        df_[model_name + ' + ' + risk_group] = (df_[model_name] + df_[risk_group])/2
+
+        df_ = df_[[model_name, risk_group, model_name + ' + ' + risk_group, target]]
+
+        # drop rows with missing values
+        df_ = df_.dropna()
+
+        return df_
+
+    df = category_to_integer(df, model_name, risk_group=risk_group)
+    
     # colors = itertools.cycle(Spectral11)
     colors = ['navy', 'firebrick', 'olive']
 

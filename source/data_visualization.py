@@ -533,7 +533,7 @@ def draw_boxplot(df, x, y, order, trialname, hue=None, save_plot=False, figsize=
         A magnificent box plot.
 
     """
-    from statannotations.Annotator import Annotator
+    # from statannotations.Annotator import Annotator
 
     # Set up the matplotlib figure
     sns.set_theme(style='white')
@@ -566,10 +566,10 @@ def draw_boxplot(df, x, y, order, trialname, hue=None, save_plot=False, figsize=
             pairs = [(order2[0], order2[1]), (order2[0],
                                               order2[2]), (order2[1], order2[2])]
 
-        # Annotate figure
-        annotator = Annotator(ax, pairs, data=df, x=x, y=y, order=order2)
-        annotator.configure(test='Kruskal', text_format='star', loc='inside',
-                            comparisons_correction='bonf').apply_and_annotate()
+        # # Annotate figure
+        # annotator = Annotator(ax, pairs, data=df, x=x, y=y, order=order2)
+        # annotator.configure(test='Kruskal', text_format='star', loc='inside',
+        #                     comparisons_correction='bonf').apply_and_annotate()
 
         # Save plot figure
     if save_plot == True:
@@ -955,7 +955,8 @@ def create_color_dict(df, columns, colors):
 """
 Produces simple Sankey Diagrams with matplotlib.
 @author: Anneya Golob & marcomanz & pierre-sassoulas
-Customized by Francisco Marchi
+
+###Customized by Francisco Marchi###
                       .-.
                  .--.(   ).--.
       <-.  .-.-.(.->          )_  .--.
