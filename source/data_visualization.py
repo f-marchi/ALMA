@@ -1240,37 +1240,3 @@ def draw_sankey_plot(df, col1, col2, colors, title, fontsize=10, fig_size=(10,10
     })
 
 
-def get_custom_color_palette():
-    list = [
-    '#1f77b4',  # Vivid blue
-    '#ff7f0e',  # Vivid orange 
-    '#2ca02c',  # Vivid green
-    '#d62728',  # Vivid red
-    '#9467bd',  # Vivid purple 
-    '#7f7f7f',  # Medium gray
-    '#e377c2',  # Pink
-    '#e7ba52',  # Light orange
-    '#bcbd22',  # Olive
-    '#17becf',  # Light blue
-    '#393b79',  # Dark blue
-    '#8c564b',  # Brown
-    '#f7b6d2',  # Light pink
-    '#c49c94',  # Light brown
-    '#a2769e',   # Soft purple
-    '#dbdb8d',  # Pale yellow
-    '#9edae5',  # Pale cyan
-    '#c5b0d5',  # Pale purple
-    '#c7c7c7',  # Light gray
-    '#ff9896',  # Light red
-    '#637939',  # Dark olive
-    '#aec7e8',  # Light blue
-    '#ffbb78',  # Light orange
-    '#98df8a',  # Light green
-    '#7c231e',  # Dark red
-    '#3d6a3d',  # Dark green
-    '#f96502',  # Deep orange
-    '#6d3f7d',  # Deep purple
-    '#6b4423',  # Dark brown
-    '#d956a6'   # Hot pink
-    ]
-    return list

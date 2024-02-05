@@ -15,8 +15,8 @@ from sklearn.metrics import roc_curve, auc
 
 def get_custom_color_palette():
     list = [
-    '#1f77b4',  # Vivid blue
-    '#ff7f0e',  # Vivid orange 
+    '#ff7f0e',  # Vivid orange
+    '#1f77b4',  # Vivid blue 
     '#2ca02c',  # Vivid green
     '#d62728',  # Vivid red
     '#9467bd',  # Vivid purple 
