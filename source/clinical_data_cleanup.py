@@ -175,7 +175,7 @@ def merge_index_0531():
 
     # Rename values in `Sample Type` column
     labels_0531['Sample Type'] = labels_0531['Sample Type'].replace({'group: tumor': 'Diagnosis',
-                                                                    'group: normal': 'Bone Marrow Normal'})
+                                                                    'group: normal': 'Bone Marrow Normal (GSE124413)'})
 
     # Set index to `Sample_ID` to match methylation samples
     labels_0531 = labels_0531.reset_index().set_index('Sample_ID')
@@ -629,6 +629,10 @@ def clean_cog(df):
 
     df['CNS disease'] = df[~df['Clinical Trial'].isin(
         ['AAML1031'])]['CNS disease']
+    
+    normal_BM_samples = df[df['Sample Type'].isin(['Bone Marrow Normal (GSE124413)'])].index
+    # For rows `normal_BM_samples` in `clinical_data`, set `Vital Status` to `Alive`
+    df.loc[normal_BM_samples, 'Vital Status'] = 'Alive'
 
     df['Karyotype Complexity 4'] = pd.to_numeric(df['Cytogenetic Complexity'].replace({'>6': 6, 'More than 6': 6, '4 or more': 4}),
                                                  errors='ignore').replace({range(4, 100): '4 or more'})
@@ -760,14 +764,16 @@ def clean_beataml(df):
 
     df['Clinical Trial'] = 'Beat AML Consortium'
     df['Risk Group'] = df['ELN2017'].replace({'Favorable': 'Low Risk',
-                                              'FavorableORIntermediate': 'Standard Risk',
+                                              'FavorableOrIntermediate': 'Standard Risk',
                                               'Intermediate': 'Standard Risk',
-                                              'IntermediateORAdverse': 'High Risk',
+                                              'IntermediateOrAdverse': 'High Risk',
                                               'Adverse': 'High Risk'})
     
     df['os.time'] = df['Overall Survival (Months)'].astype(
                             float).apply(lambda x: x/12)
     df['os.evnt'] = df['Vital Status'].map({'Alive': 0, 'Dead': 1})
+
+    df['BM leukemic blasts (%)'] = df['BM leukemic blasts (%)'].replace({'&gt;50': np.nan}).astype(float)
 
     return df
 
