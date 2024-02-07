@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Discovery Dataset &#8212; Acute Leukemia Methylome Atlas</title>
+    <title>Discovery Dataset &#8212; Acute Leukemia Methylome Atlas Study</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
@@ -155,7 +155,7 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-    <p class="title logo__title">Acute Leukemia Methylome Atlas</p>
+    <p class="title logo__title">Acute Leukemia Methylome Atlas Study</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -185,6 +185,17 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="2_validation_dataset.html">Validation Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_reclassification_strategy.html">Reclassification to Current Clinical Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_models.html">Learning Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_plots.html">Data Visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">EWAS-CoxLasso Benchmarking</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tests/2_Univariate_CoxPH-EWAS_v4.html">Epigenome Wide Association Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.1_MethylScoreAML_Px_Development_v5.html">Px Score Discovery - Previous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.1_MethylScoreAML_Px_Development_v6.html">Px Score Discovery OS - Updated Risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.1_MethylScoreAML_Px_Development_v7.html">Px Score Discovery EFS - Updated Risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.2_MethylScoreAML_Px_Validation_Peds_v2.html">Px Score Test - Previous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.2_MethylScoreAML_Px_Validation_Peds_v3.html">Px Score Validation OS - Updated Risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.2_MethylScoreAML_Px_Validation_Peds_v4.html">Px Score Validation EFS - Updated Risk</a></li>
 </ul>
 
     </div>
@@ -1057,7 +1068,12 @@ document.write(`
 </div>
 <section id="save-dataset-without-batch-correction">
 <h3>Save dataset without batch correction<a class="headerlink" href="#save-dataset-without-batch-correction" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_nobatch</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;Batch&#39;</span><span class="p">)</span>
 
@@ -1069,6 +1085,7 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved at: ../../Data/Intermediate_Files/3308samples_333059cpgs_nobatchcorrection_bvalues.pkl
 </pre></div>
@@ -1155,7 +1172,12 @@ Succesfully corrected batch effects in the training dataset.
 </section>
 <section id="save-batch-corrected-dataset">
 <h3>Save batch-corrected dataset<a class="headerlink" href="#save-batch-corrected-dataset" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;Batch&#39;</span><span class="p">)</span>
 
@@ -1167,6 +1189,7 @@ Succesfully corrected batch effects in the training dataset.
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved at: ../../Data/Intermediate_Files/3308samples_333059cpgs_withbatchcorrection_bvalues.pkl
 </pre></div>
@@ -1235,7 +1258,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="nv">methy
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">methylprep</span></code> works best on Linux/Mac. API can be found <a class="reference external" href="https://www.life-epigenetics-methylprep.readthedocs-hosted.com/en/latest/docs/cli.html">here</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">methylprep</span></code> API can be found <a class="reference external" href="https://www.life-epigenetics-methylprep.readthedocs-hosted.com/en/latest/docs/cli.html">here</a>.</p>
 </div>
 </section>
 <section id="genomic-data-commons-gdc">
@@ -1301,7 +1324,7 @@ git<span class="w"> </span>push
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">jupyterbook</span></code> works best on Linux/Mac. If on Windows, use WSL.</p>
+<p><code class="docutils literal notranslate"><span class="pre">jupyterbook</span></code> works best on Linux/Mac. If on Windows, use WSL2.</p>
 </div>
 </section>
 <section id="watermark">
@@ -1449,7 +1472,7 @@ Architecture: 64bit
   <div class="footer-item">
     
 <p class="component-author">
-By Marchi et al., 2023. Lamba Lab @ University of Florida. Please do not share this notebook publicly.
+By Marchi et al., 2023. Lamba Lab @ University of Florida.
 </p>
 
   </div>

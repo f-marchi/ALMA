@@ -1,17 +1,7 @@
 format: jb-book
 root: index.ipynb
 parts:
-  # - caption: Specific Aims
-  #   chapters:
-  #     - file: docs/Specific_Aims.md
-
-  # - caption: Introduction
-
-  #   chapters:
-  #     - file: docs/Intro_to_Methylation.md
-
   - caption: Data Processing
-
     chapters:
       - file: main/1_discovery_dataset.ipynb
       - file: main/2_validation_dataset.ipynb
@@ -20,7 +10,6 @@ parts:
       - file: main/5_plots.ipynb
       
   - caption: EWAS-CoxLasso Benchmarking
-
     chapters:
       - file: tests/2_Univariate_CoxPH-EWAS_v4.ipynb
       - file: tests/3.1_MethylScoreAML_Px_Development_v5.ipynb
@@ -29,47 +18,3 @@ parts:
       - file: tests/3.2_MethylScoreAML_Px_Validation_Peds_v2.ipynb
       - file: tests/3.2_MethylScoreAML_Px_Validation_Peds_v3.ipynb
       - file: tests/3.2_MethylScoreAML_Px_Validation_Peds_v4.ipynb
-
-  # - caption: AML Diagnostic Model
-  
-  #   chapters:
-  #     - file: tests/dx-score_new.ipynb
-      # - file: tests/pacmap_v4.ipynb
-      # - file: tests/5_Multiclass_AMLsubtype_Classifier_v2.ipynb
-      # - file: tests/6_Sankey_Plots_v1.ipynb
-
-  # - caption: Nanopore Sequencing Testing
-  #   chapters:
-  #     - file: tests/8_Nanopore_Sample.ipynb
-
-  # - caption: Benchmarks
-  
-  #   chapters:
-  #     - file: benchmarks/dx-score.ipynb
-  #     - file: tests/dx-score-n_components-pacmap.ipynb
-  #     - file: tests/dx-score-pedsAML-only.ipynb
-  #     - file: tests/dx-score-with-looser-filtering.ipynb
-  #     - file: tests/dx-score-without-ALL-relapse.ipynb
-  #     - file: tests/dx-score-without-relapse.ipynb
-
-  #     # - caption: AML Diagnostic Map
-
-  #     #   chapters:
-  #     - file: 4_Dimension_Reduction.ipynb
-      #     - file: 5_PaCMAP_Visualization.ipynb
-
-      # - caption: Survival Analyses
-
-      #   chapters:
-      #     - file: 6_Survival_Analysis.ipynb
-      # - file: 6.1_MultiClass_Classifier.ipynb
-  #     - file: 6.1_Survival_Analysis_FS.ipynb
-  #     - file: 7_Score_Visualization.ipynb
-
-  # - caption: Immune Cell Deconvolution
-
-  #   chapters:
-  #     - file: 8.0_Immune_Cell_Deconvolution
-  #     - file: 8.1_Deconvolution_Visualization
-  #     - file: 8.2_Survival_Analysis_AML02score.ipynb
-  #     - file: 8.3_Data_Visualization_AML02score.ipynb
