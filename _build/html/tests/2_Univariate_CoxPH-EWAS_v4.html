@@ -154,14 +154,8 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-    
-    
-      
-    
-    
-    <img src="../_static/circle-logo.png" class="logo__image only-light" alt="Acute Leukemia Methylome Atlas Study - Home"/>
-    <script>document.write(`<img src="../_static/circle-logo.png" class="logo__image only-dark" alt="Acute Leukemia Methylome Atlas Study - Home"/>`);</script>
   
+    <p class="title logo__title">Acute Leukemia Methylome Atlas Study</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -181,7 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    The acute leukemia methylome atlas improves clinical diagnosis and prognosis of AML
+                    Overview
                 </a>
             </li>
         </ul>
@@ -397,59 +391,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="epigenome-wide-association-study">
-<h1><a class="toc-backref" href="#id1" role="doc-backlink">Epigenome Wide Association Study</a><a class="headerlink" href="#epigenome-wide-association-study" title="Link to this heading">#</a></h1>
-<p>Epigenome-wide association study (EWAS) using Cox proportional hazards regression (CoxPH) model with event time as the outcome and DNA methylation as the predictor.</p>
-<nav class="contents" id="contents">
-<p class="topic-title">Contents</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#epigenome-wide-association-study" id="id1">Epigenome Wide Association Study</a></p>
-<ul>
-<li><p><a class="reference internal" href="#where-the-data-at" id="id2">Where the data at?</a></p></li>
-<li><p><a class="reference internal" href="#load-data" id="id3">Load data</a></p></li>
-<li><p><a class="reference internal" href="#remove-samples-based-on-certain-clinical-features" id="id4">Remove samples based on certain clinical features</a></p>
-<ul>
-<li><p><a class="reference internal" href="#select-samples-from-aaml1031-0531-and-03p1-clinical-trials" id="id5">Select samples from AAML1031, 0531, and 03P1 clinical trials</a></p></li>
-<li><p><a class="reference internal" href="#select-diagnostic-samples-only" id="id6">Select diagnostic samples only</a></p></li>
-<li><p><a class="reference internal" href="#remove-duplicate-samples" id="id7">Remove duplicate samples</a></p></li>
-<li><p><a class="reference internal" href="#match-samples-in-clinical-data-to-samples-in-methylation-data" id="id8">Match samples in clinical data to samples in methylation data</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#transform-to-m-values" id="id9">Transform to M-values</a></p></li>
-<li><p><a class="reference internal" href="#perform-batch-correction" id="id10">Perform batch correction</a></p>
-<ul>
-<li><p><a class="reference internal" href="#evaluate-batch-effects" id="id11">Evaluate batch effects</a></p></li>
-<li><p><a class="reference internal" href="#save-dataframe-for-other-analyses" id="id12">Save dataframe for other analyses</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#run-coxph-ewas" id="id13">Run CoxPH-EWAS</a></p>
-<ul>
-<li><p><a class="reference internal" href="#import-custom-functions-adapted-from-methylize" id="id14">Import custom functions adapted from <code class="docutils literal notranslate"><span class="pre">methylize</span></code></a></p></li>
-<li><p><a class="reference internal" href="#overall-survival-previous-risk-group" id="id15">Overall survival - previous risk group</a></p></li>
-<li><p><a class="reference internal" href="#overall-survival-updated-rr-risk-group" id="id16">Overall survival - updated RR risk group</a></p></li>
-<li><p><a class="reference internal" href="#event-free-survival-previous-risk-group" id="id17">Event-free survival - previous risk group</a></p></li>
-<li><p><a class="reference internal" href="#event-free-survival-updated-risk-group" id="id18">Event-free survival - updated risk group</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#select-statistically-significant-cpgs" id="id19">Select statistically significant CpGs</a></p>
-<ul>
-<li><p><a class="reference internal" href="#threshold-based-on-suggested-significance-p-values-1-10e-6" id="id20">Threshold based on suggested-significance p-values (1*10e-6)</a></p></li>
-<li><p><a class="reference internal" href="#threshold-based-on-suggested-significance-p-values-1-10e-5" id="id21">Threshold based on suggested-significance p-values (1*10e-5)</a></p>
-<ul>
-<li><p><a class="reference internal" href="#fetch-genes" id="id22">Fetch genes</a></p></li>
-<li><p><a class="reference internal" href="#os-suggested-significance-probes" id="id23">OS suggested-significance probes:</a></p></li>
-<li><p><a class="reference internal" href="#efs-suggested-significance-probes" id="id24">EFS suggested-significance probes:</a></p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#save-top-probes" id="id25">Save top probes</a></p></li>
-<li><p><a class="reference internal" href="#watermark" id="id26">Watermark</a></p></li>
-</ul>
-</li>
-</ul>
-</nav>
+<h1>Epigenome Wide Association Study<a class="headerlink" href="#epigenome-wide-association-study" title="Link to this heading">#</a></h1>
 <section id="where-the-data-at">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Where the data at?</a><a class="headerlink" href="#where-the-data-at" title="Link to this heading">#</a></h2>
+<h2>Where the data at?<a class="headerlink" href="#where-the-data-at" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -472,7 +416,7 @@ document.write(`
 </div>
 </section>
 <section id="load-data">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">Load data</a><a class="headerlink" href="#load-data" title="Link to this heading">#</a></h2>
+<h2>Load data<a class="headerlink" href="#load-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read df_discovery and df_test</span>
@@ -488,9 +432,9 @@ document.write(`
 </div>
 </section>
 <section id="remove-samples-based-on-certain-clinical-features">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Remove samples based on certain clinical features</a><a class="headerlink" href="#remove-samples-based-on-certain-clinical-features" title="Link to this heading">#</a></h2>
+<h2>Remove samples based on certain clinical features<a class="headerlink" href="#remove-samples-based-on-certain-clinical-features" title="Link to this heading">#</a></h2>
 <section id="select-samples-from-aaml1031-0531-and-03p1-clinical-trials">
-<h3><a class="toc-backref" href="#id5" role="doc-backlink">Select samples from AAML1031, 0531, and 03P1 clinical trials</a><a class="headerlink" href="#select-samples-from-aaml1031-0531-and-03p1-clinical-trials" title="Link to this heading">#</a></h3>
+<h3>Select samples from AAML1031, 0531, and 03P1 clinical trials<a class="headerlink" href="#select-samples-from-aaml1031-0531-and-03p1-clinical-trials" title="Link to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -514,7 +458,7 @@ document.write(`
 </div>
 </section>
 <section id="select-diagnostic-samples-only">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">Select diagnostic samples only</a><a class="headerlink" href="#select-diagnostic-samples-only" title="Link to this heading">#</a></h3>
+<h3>Select diagnostic samples only<a class="headerlink" href="#select-diagnostic-samples-only" title="Link to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -539,7 +483,7 @@ document.write(`
 </div>
 </section>
 <section id="remove-duplicate-samples">
-<h3><a class="toc-backref" href="#id7" role="doc-backlink">Remove duplicate samples</a><a class="headerlink" href="#remove-duplicate-samples" title="Link to this heading">#</a></h3>
+<h3>Remove duplicate samples<a class="headerlink" href="#remove-duplicate-samples" title="Link to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -563,7 +507,7 @@ document.write(`
 </div>
 </section>
 <section id="match-samples-in-clinical-data-to-samples-in-methylation-data">
-<h3><a class="toc-backref" href="#id8" role="doc-backlink">Match samples in clinical data to samples in methylation data</a><a class="headerlink" href="#match-samples-in-clinical-data-to-samples-in-methylation-data" title="Link to this heading">#</a></h3>
+<h3>Match samples in clinical data to samples in methylation data<a class="headerlink" href="#match-samples-in-clinical-data-to-samples-in-methylation-data" title="Link to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -588,7 +532,7 @@ document.write(`
 </section>
 </section>
 <section id="transform-to-m-values">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">Transform to M-values</a><a class="headerlink" href="#transform-to-m-values" title="Link to this heading">#</a></h2>
+<h2>Transform to M-values<a class="headerlink" href="#transform-to-m-values" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -670,7 +614,7 @@ document.write(`
 </div>
 </section>
 <section id="perform-batch-correction">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">Perform batch correction</a><a class="headerlink" href="#perform-batch-correction" title="Link to this heading">#</a></h2>
+<h2>Perform batch correction<a class="headerlink" href="#perform-batch-correction" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>pyCombat</strong> is a Python tool for batch effects correction in high-throughput molecular data using empirical Bayes methods</p></li>
 <li><p><strong>Github</strong>: <a class="reference external" href="https://epigenelabs.github.io/pyComBat/">https://epigenelabs.github.io/pyComBat/</a></p></li>
@@ -707,7 +651,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </div>
 <section id="evaluate-batch-effects">
-<h3><a class="toc-backref" href="#id11" role="doc-backlink">Evaluate batch effects</a><a class="headerlink" href="#evaluate-batch-effects" title="Link to this heading">#</a></h3>
+<h3>Evaluate batch effects<a class="headerlink" href="#evaluate-batch-effects" title="Link to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -784,7 +728,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </section>
 <section id="save-dataframe-for-other-analyses">
-<h3><a class="toc-backref" href="#id12" role="doc-backlink">Save dataframe for other analyses</a><a class="headerlink" href="#save-dataframe-for-other-analyses" title="Link to this heading">#</a></h3>
+<h3>Save dataframe for other analyses<a class="headerlink" href="#save-dataframe-for-other-analyses" title="Link to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -808,9 +752,9 @@ Succesfully corrected batch effects in the training dataset.
 </section>
 </section>
 <section id="run-coxph-ewas">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">Run CoxPH-EWAS</a><a class="headerlink" href="#run-coxph-ewas" title="Link to this heading">#</a></h2>
+<h2>Run CoxPH-EWAS<a class="headerlink" href="#run-coxph-ewas" title="Link to this heading">#</a></h2>
 <section id="import-custom-functions-adapted-from-methylize">
-<h3><a class="toc-backref" href="#id14" role="doc-backlink">Import custom functions adapted from <code class="docutils literal notranslate"><span class="pre">methylize</span></code></a><a class="headerlink" href="#import-custom-functions-adapted-from-methylize" title="Link to this heading">#</a></h3>
+<h3>Import custom functions adapted from <code class="docutils literal notranslate"><span class="pre">methylize</span></code><a class="headerlink" href="#import-custom-functions-adapted-from-methylize" title="Link to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -849,7 +793,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </section>
 <section id="overall-survival-previous-risk-group">
-<h3><a class="toc-backref" href="#id15" role="doc-backlink">Overall survival - previous risk group</a><a class="headerlink" href="#overall-survival-previous-risk-group" title="Link to this heading">#</a></h3>
+<h3>Overall survival - previous risk group<a class="headerlink" href="#overall-survival-previous-risk-group" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df3 = df3.assign(Risk_Group_Bin=df3[&#39;Risk Group&#39;].map({&#39;Low Risk&#39;:0, &#39;Standard Risk&#39;:0.5,&#39;High Risk&#39;:1}))</span>
@@ -894,7 +838,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </section>
 <section id="overall-survival-updated-rr-risk-group">
-<h3><a class="toc-backref" href="#id16" role="doc-backlink">Overall survival - updated RR risk group</a><a class="headerlink" href="#overall-survival-updated-rr-risk-group" title="Link to this heading">#</a></h3>
+<h3>Overall survival - updated RR risk group<a class="headerlink" href="#overall-survival-updated-rr-risk-group" title="Link to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -945,7 +889,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </section>
 <section id="event-free-survival-previous-risk-group">
-<h3><a class="toc-backref" href="#id17" role="doc-backlink">Event-free survival - previous risk group</a><a class="headerlink" href="#event-free-survival-previous-risk-group" title="Link to this heading">#</a></h3>
+<h3>Event-free survival - previous risk group<a class="headerlink" href="#event-free-survival-previous-risk-group" title="Link to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -996,7 +940,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </section>
 <section id="event-free-survival-updated-risk-group">
-<h3><a class="toc-backref" href="#id18" role="doc-backlink">Event-free survival - updated risk group</a><a class="headerlink" href="#event-free-survival-updated-risk-group" title="Link to this heading">#</a></h3>
+<h3>Event-free survival - updated risk group<a class="headerlink" href="#event-free-survival-updated-risk-group" title="Link to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1046,9 +990,9 @@ Succesfully corrected batch effects in the training dataset.
 </section>
 </section>
 <section id="select-statistically-significant-cpgs">
-<h2><a class="toc-backref" href="#id19" role="doc-backlink">Select statistically significant CpGs</a><a class="headerlink" href="#select-statistically-significant-cpgs" title="Link to this heading">#</a></h2>
+<h2>Select statistically significant CpGs<a class="headerlink" href="#select-statistically-significant-cpgs" title="Link to this heading">#</a></h2>
 <section id="threshold-based-on-suggested-significance-p-values-1-10e-6">
-<h3><a class="toc-backref" href="#id20" role="doc-backlink">Threshold based on suggested-significance p-values (1*10e-6)</a><a class="headerlink" href="#threshold-based-on-suggested-significance-p-values-1-10e-6" title="Link to this heading">#</a></h3>
+<h3>Threshold based on suggested-significance p-values (1*10e-6)<a class="headerlink" href="#threshold-based-on-suggested-significance-p-values-1-10e-6" title="Link to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1143,7 +1087,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </section>
 <section id="threshold-based-on-suggested-significance-p-values-1-10e-5">
-<h3><a class="toc-backref" href="#id21" role="doc-backlink">Threshold based on suggested-significance p-values (1*10e-5)</a><a class="headerlink" href="#threshold-based-on-suggested-significance-p-values-1-10e-5" title="Link to this heading">#</a></h3>
+<h3>Threshold based on suggested-significance p-values (1*10e-5)<a class="headerlink" href="#threshold-based-on-suggested-significance-p-values-1-10e-5" title="Link to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1237,7 +1181,7 @@ Succesfully corrected batch effects in the training dataset.
 </div></div></div>
 </div>
 <section id="fetch-genes">
-<h4><a class="toc-backref" href="#id22" role="doc-backlink">Fetch genes</a><a class="headerlink" href="#fetch-genes" title="Link to this heading">#</a></h4>
+<h4>Fetch genes<a class="headerlink" href="#fetch-genes" title="Link to this heading">#</a></h4>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1278,7 +1222,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </section>
 <section id="os-suggested-significance-probes">
-<h4><a class="toc-backref" href="#id23" role="doc-backlink">OS suggested-significance probes:</a><a class="headerlink" href="#os-suggested-significance-probes" title="Link to this heading">#</a></h4>
+<h4>OS suggested-significance probes:<a class="headerlink" href="#os-suggested-significance-probes" title="Link to this heading">#</a></h4>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1361,7 +1305,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </section>
 <section id="efs-suggested-significance-probes">
-<h4><a class="toc-backref" href="#id24" role="doc-backlink">EFS suggested-significance probes:</a><a class="headerlink" href="#efs-suggested-significance-probes" title="Link to this heading">#</a></h4>
+<h4>EFS suggested-significance probes:<a class="headerlink" href="#efs-suggested-significance-probes" title="Link to this heading">#</a></h4>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1444,7 +1388,7 @@ Succesfully corrected batch effects in the training dataset.
 </section>
 </section>
 <section id="save-top-probes">
-<h2><a class="toc-backref" href="#id25" role="doc-backlink">Save top probes</a><a class="headerlink" href="#save-top-probes" title="Link to this heading">#</a></h2>
+<h2>Save top probes<a class="headerlink" href="#save-top-probes" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1466,7 +1410,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </section>
 <section id="watermark">
-<h2><a class="toc-backref" href="#id26" role="doc-backlink">Watermark</a><a class="headerlink" href="#watermark" title="Link to this heading">#</a></h2>
+<h2>Watermark<a class="headerlink" href="#watermark" title="Link to this heading">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Author: Francisco_Marchi@Lamba_Lab_UF

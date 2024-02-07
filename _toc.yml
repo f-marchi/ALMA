@@ -1,7 +1,7 @@
 format: jb-book
 root: index.ipynb
 parts:
-  - caption: Data Processing
+  - caption: Main Story
     chapters:
       - file: main/1_discovery_dataset.ipynb
       - file: main/2_validation_dataset.ipynb
@@ -9,7 +9,7 @@ parts:
       - file: main/4_models.ipynb
       - file: main/5_plots.ipynb
       
-  - caption: EWAS-CoxLasso Benchmarking
+  - caption: Benchmarks
     chapters:
       - file: tests/2_Univariate_CoxPH-EWAS_v4.ipynb
       - file: tests/3.1_MethylScoreAML_Px_Development_v5.ipynb
