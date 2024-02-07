@@ -114,13 +114,12 @@ def draw_kaplan_meier(df, model_name, save_plot=False, figsize=(8, 10),
     surv_curves(i=ax[1], t='os.time', e='os.evnt')
 
     ax[0].set_title('Event-Free Survival', loc='left',
-                    pad=10, fontweight='bold')
-    ax[1].set_title('Overall Survival', loc='left', pad=10, fontweight='bold')
+                    pad=10, fontweight='bold', fontsize=10)
+    ax[1].set_title('Overall Survival', loc='left', pad=10, fontweight='bold', fontsize=10)
     # Define Plot Specs
     plt.subplots_adjust(wspace=0, hspace=0.2)
     plt.suptitle(model_name + " in " + trialname + ", n=" + str(len(df)),
-                 fontsize='medium', y=0.94,
-                 fontweight='bold')
+                 fontsize=11, y=0.94, fontweight='bold')
     plt.xlim(0, 10)
     plt.xlabel("time $t$ (years)")
 
