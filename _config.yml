@@ -1,24 +1,3 @@
-# title: Acute Leukemia Methylome Atlas
-# author: Marchi et al., 2023. Lamba Lab @ University of Florida. Please do not share this notebook publicly.
-# copyright: "2023"  # Copyright year to be placed in the footer
-# # logo: "_logos/dna1.gif"
-# exclude_patterns: [.venv,.venv_py37,.venv_py38, .venv_data_vizualization, .venv_pacmap, .venv_sklearn,
-#                   Code_past, Benchmarking, .past_code_files]
-# only_build_toc_files: true
-
-# # Short description about the book
-# description: >-
-#   This is Francisco Marchi's electronic notebook, which belongs to Lamba Lab at UF.
-
-# execute:
-#   execute_notebooks: "off"
-#   exclude_patterns: [.venv,.venv_py38, .venv_data_vizualization, .venv_pacmap, .venv_sklearn,
-#                     Code_past, Benchmarking, .past_code_files]
-
-# Interact link settings
-# notebook_interface: "notebook"
-
-
 #######################################################################################
 # A default configuration that will be loaded for all jupyter books
 # Users are expected to override these values in their own `_config.yml` file.
@@ -27,8 +6,8 @@
 #######################################################################################
 # Book settings
 title                       : Acute Leukemia Methylome Atlas Study  # The title of the book. Will be placed in the left navbar.
-author                      : Marchi et al., 2023. Lamba Lab @ University of Florida. # The author of the book
-copyright                   : "2023"  # Copyright year to be placed in the footer
+author                      : Marchi et al. @ Lamba Lab @ University of Florida. # The author of the book
+copyright                   : "2024"  # Copyright year to be placed in the footer
 logo                        : ""  # A path to the book logo
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints", .venv,.venv_py37,.venv_py38,
