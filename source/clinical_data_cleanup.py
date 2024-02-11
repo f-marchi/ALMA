@@ -13,7 +13,7 @@ __email__ = 'flourenco@ufl.edu'
 
 # Set paths to clinical data files
 
-mount = '/mnt/h/MethylScore'
+mount = '/mnt/d/MethylScore'
 
 
 clinical_data_path = mount + '/Raw_Data/Clinical_Data/'

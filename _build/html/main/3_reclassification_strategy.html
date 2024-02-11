@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Reclassification to Current Clinical Guidelines &#8212; Acute Leukemia Methylome Atlas Study</title>
+    <title>Risk and Dx Reclassification &#8212; Acute Leukemia Methylome Atlas Study</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
@@ -179,23 +179,24 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Processing</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Main Story</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_discovery_dataset.html">Discovery Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_validation_dataset.html">Validation Dataset</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Reclassification to Current Clinical Guidelines</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Risk and Dx Reclassification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_models.html">Learning Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_plots.html">Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_new_data_test.html">Applying models to Nanopore data</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">EWAS-CoxLasso Benchmarking</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">EWAS+CoxPHLasso Tests</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../tests/2_Univariate_CoxPH-EWAS_v4.html">Epigenome Wide Association Study</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tests/3.1_MethylScoreAML_Px_Development_v5.html">Px Score Discovery - Previous</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tests/3.1_MethylScoreAML_Px_Development_v6.html">Px Score Discovery OS - Updated Risk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tests/3.1_MethylScoreAML_Px_Development_v7.html">Px Score Discovery EFS - Updated Risk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tests/3.2_MethylScoreAML_Px_Validation_Peds_v2.html">Px Score Test - Previous</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tests/3.2_MethylScoreAML_Px_Validation_Peds_v3.html">Px Score Validation OS - Updated Risk</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tests/3.2_MethylScoreAML_Px_Validation_Peds_v4.html">Px Score Validation EFS - Updated Risk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/2_Univariate_CoxPH-EWAS_v4.html">EWAS Runs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.1_MethylScoreAML_Px_Development_v5.html">924pts-OS-35CpGs-ASH23</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.1_MethylScoreAML_Px_Development_v6.html">940pts-OS-48CpGs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.1_MethylScoreAML_Px_Development_v7.html">940pts-EFS-55CpGs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.2_MethylScoreAML_Px_Validation_Peds_v2.html">OS-35CpGs-Validation-ASH23</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.2_MethylScoreAML_Px_Validation_Peds_v3.html">OS-48CpGs-Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.2_MethylScoreAML_Px_Validation_Peds_v4.html">EFS-55CpGs-Validation</a></li>
 </ul>
 
     </div>
@@ -334,7 +335,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Reclassification to Current Clinical Guidelines</h1>
+    <h1>Risk and Dx Reclassification</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -344,10 +345,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-process-discovery-clinical-data">Load and process discovery clinical data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-risk-group-criteria-jan2024-cog-aaml1831-rr">Update risk group criteria (Jan2024 COG AAML1831 RR)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reclassification-strategy-according-to-who-2022">Reclassification strategy according to WHO 2022</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reclassification-functions-applied-to-all-samples">Reclassification functions (applied to all samples)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-index-merge-process-and-clean-discovery-clinical-data">Load, index, merge, process, and clean discovery clinical data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reclassification-strategy-dx-who-2022">Reclassification strategy: Dx WHO 2022</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reclassification-strategy-risk-group-cog-aaml1831-rr">Reclassification strategy: Risk Group COG AAML1831 RR</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-reclassification-functions-applied-to-all-samples">Main reclassification functions (applied to all samples)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#execution">Execution</a></li>
 </ul>
 </li>
@@ -356,8 +357,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Execution</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-classification-to-test-dataset">Apply Classification to Test Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-clinical-datasets">Save Clinical Datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-classification-to-test-dataset">Apply classification to test dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-clinical-datasets">Save clinical datasets</a></li>
 </ul>
             </nav>
         </div>
@@ -369,10 +370,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="reclassification-to-current-clinical-guidelines">
-<h1>Reclassification to Current Clinical Guidelines<a class="headerlink" href="#reclassification-to-current-clinical-guidelines" title="Link to this heading">#</a></h1>
-<section id="load-and-process-discovery-clinical-data">
-<h2>Load and process discovery clinical data<a class="headerlink" href="#load-and-process-discovery-clinical-data" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="risk-and-dx-reclassification">
+<h1>Risk and Dx Reclassification<a class="headerlink" href="#risk-and-dx-reclassification" title="Link to this heading">#</a></h1>
+<section id="load-index-merge-process-and-clean-discovery-clinical-data">
+<h2>Load, index, merge, process, and clean discovery clinical data<a class="headerlink" href="#load-index-merge-process-and-clean-discovery-clinical-data" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -404,7 +405,7 @@ document.write(`
                         <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
 
 <span class="c1"># Redefine output path (for troubleshooting purposes in case only this cell is run)</span>
-<span class="n">mount</span> <span class="o">=</span> <span class="s1">&#39;/mnt/h/&#39;</span>
+<span class="n">mount</span> <span class="o">=</span> <span class="s1">&#39;/mnt/d/&#39;</span>
 <span class="n">output_path</span> <span class="o">=</span> <span class="n">mount</span> <span class="o">+</span> <span class="s1">&#39;MethylScore/Intermediate_Files/&#39;</span>
 
 <span class="c1"># Read df</span>
@@ -417,23 +418,107 @@ document.write(`
 <span class="c1"># Remove samples that are not in the methyl dataset</span>
 <span class="n">df_labels</span> <span class="o">=</span> <span class="n">labels_combined</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels_combined</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The clinical data has been indexed and cleaned.</span><span class="se">\n\</span>
-<span class="s1">Exclusion of samples may be applied depending on the analysis.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The clinical data has been indexed and cleaned.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The clinical data has been indexed and cleaned.
-Exclusion of samples may be applied depending on the analysis.
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="update-risk-group-criteria-jan2024-cog-aaml1831-rr">
-<h2>Update risk group criteria (Jan2024 COG AAML1831 RR)<a class="headerlink" href="#update-risk-group-criteria-jan2024-cog-aaml1831-rr" title="Link to this heading">#</a></h2>
-<div class="cell tag_hide-input docutils container">
+<section id="reclassification-strategy-dx-who-2022">
+<h2>Reclassification strategy: Dx WHO 2022<a class="headerlink" href="#reclassification-strategy-dx-who-2022" title="Link to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Source</p>
+<p>Hasle H, Meshinchi S, Fogelstrand L, Alaggio R, et al. Acute myeloid leukaemias (AMLs) with defining genetic abnormalities. In: WHO Classification of Tumours Editorial Board. Paediatric tumours [Internet]. Lyon (France): International Agency for Research on Cancer; 2022 [cited 2024 Jan 1]. (WHO classification of tumours series, 5th ed.; vol. 7). Available from: <a class="reference external" href="https://tumourclassification.iarc.who.int/chapters/44">https://tumourclassification.iarc.who.int/chapters/44</a>.</p>
+<p>Pfister, Stefan M et al. “A Summary of the Inaugural WHO Classification of Pediatric Tumors: Transitioning from the Optical into the Molecular Era.” Cancer discovery vol. 12,2 (2022): 331-355. doi:10.1158/2159-8290.CD-21-1094</p>
+</div>
+<div class="cell tag_hide-input tag_full-width docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">itables</span>
+
+<span class="kn">from</span> <span class="nn">itables</span> <span class="kn">import</span> <span class="n">show</span>
+
+<span class="c1"># Read the CSV file</span>
+<span class="n">dx_criteria</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/who2022_aml_classification.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Display the dataframe using itables</span>
+<span class="n">itables</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">dx_criteria</span><span class="p">,</span> <span class="n">columnDefs</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;className&quot;</span><span class="p">:</span> <span class="s2">&quot;dt-left&quot;</span><span class="p">,</span> <span class="s2">&quot;targets&quot;</span><span class="p">:</span> <span class="s2">&quot;_all&quot;</span><span class="p">}],</span> <span class="n">paging</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>.itables table td {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.itables table th {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.itables thead input {
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+.itables tfoot input {
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+}
+</style>
+<div class="itables">
+<table id="5b629fbb-bb6c-4b5a-a85c-9feb0a944c64" class="display nowrap"style="table-layout:auto;width:auto;margin:auto;caption-side:bottom"><thead>
+    <tr style="text-align: right;">
+      
+      <th>Subtype</th>
+      <th>Frequency in paediatric AML</th>
+      <th>Morphology</th>
+      <th>Immunophenotype</th>
+      <th>Common co-occurring genetic aberrations</th>
+      <th>Prognosis</th>
+    </tr>
+  </thead><tbody><tr><td>Loading... (need <a href=https://mwouts.github.io/itables/troubleshooting.html>help</a>?)</td></tr></tbody></table>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+<script type="module">
+    // Import jquery and DataTable
+    import 'https://code.jquery.com/jquery-3.6.0.min.js';
+    import dt from 'https://cdn.datatables.net/1.12.1/js/jquery.dataTables.mjs';
+    dt($);
+
+    // Define the table data
+    const data = [["AML with RUNX1::RUNXT1 fusion", "13\u201319% of cases", "Neutrophilic maturation, Auer rods; often increased basophils and/or mast cells", "Positive: CD34, HLA-DR, KIT (CD117), CD99, myeloperoxidase\\nUsually positive but can be heterogeneous: CD13, CD33 and CD38, CD19, PAX5, cytoplasmic CD79a, CD56\\nNegative: CD7", "Mutations in KIT, FLT3, CSF3R, EZH2, ASXL1, ASXL2, CBL, WT1, cohesion genes (SMC1A, SMC3, RAD21), NRAS, KRAS", "Good"], ["AML with CBFB::MYH11 fusion", "7\u201312% of cases", "Myelomonocytic; often increased eosinophils at all maturation stages", "Often multiple blast populations with signs of differentiation towards both granulocytic and monocytic lineages; may express CD2 and/or NG2 in a small subpopulation of cells", "Mutations in KIT, KRAS, NRAS, CBL, FLT3, WT1", "Good"], ["APL with PML::RARA fusion", "5\u201310% of cases but wide geographical variation (2\u201350%)", "Exclusively FAB M3; may be hypogranular", "Positive: CD33, often KIT (CD117), sometimes CD2\\nNegative: CD34 (except hypogranular variant), HLA-DR\\nOften high autofluorescence", "Mutations in FLT3", "Good (but treated differently)"], ["AML with KMT2A rearrangement", "20% of cases", "All FAB types except M3 and M6, most commonly M5", "Positive: CD33, CD65, CD4, HLA-DR (in monocytic cases), CD15, NG2; platelet antigens (in megakaryocytic cases)\\nNegative/low: CD13, CD34, CD14", "Mutations in the tyrosine kinase, PI3K, and RAS pathways; FLT3-TKD, NRAS, KRAS", "Depends on fusion partner"], ["AML with DEK::NUP214 fusion", "1\u20132% of cases", "All FAB types except M3 and M7, most commonly M2 and M4; Auer rods; basophilia in blood or bone marrow; erythroid and granulocytic dysplasia are common", "Positive: myeloperoxidase, CD13, CD33, CD38, CD123, HLA-DR; often CD34, KIT (CD117), CD15; sometimes CD64, TdT", "FLT3 ITD in two thirds of cases; complex karyotype", "Poor"], ["AML with MECOM rearrangement", "< 1% of cases", "Commonly FAB M1, M4, and M7; multilineage dysplasia is common, especially in megakaryopoiesis", "Positive: CD34, CD33, CD13, KIT (CD117), HLA-DR, CD7\\nNegative: lymphoid markers other than CD7", "NaN", "Poor"], ["AML with ETV6 fusion", "1% of all cases", "All FAB types, most commonly M0 and M1", "For MNX1::ETV6:\\nPositive: CD34, HLA-DR, often KIT (CD117), T-cell markers CD7 and CD4", "Almost always +19, sometimes +8", "Poor, but may be protocol dependent"], ["AML with KAT6A::CREBBP fusion", "0.5% of cases", "FAB M5", "Positive: HLA-DR, CD15, myeloperoxidase, CD13, CD33, sometimes CD56, CD14\\nNegative: CD34, KIT (CD117)", "NaN", "OS similar to paediatric AML in general"], ["AML with RBM15::MRTFA fusion", "0.8% of all cases", "Exclusively FAB M7", "Positive: > 1 platelet antigen, some CD34 and/or HLA-DR\\nNegative: CD45", "del(1p), +4, +7, +8, +9, +10, +14, +15, +17, +18, +20, +21(21p), complex hyperdiploid karyotype", "Lower CR rate but similar EFS/OS vs other AMKLs"], ["AML with CBFA2T3::GLIS2 fusion", "3% of all cases", "All FAB types, most commonly M7", "> 50% show the RAM phenotype; overexpression of CD56 and underexpression of HLA-DR and CD38", "Mutations in FLT3, GATA1, JAK/STAT pathway", "Poor"], ["AML with NUP98 rearrangement", "5\u20139% of cases", "NUP98::NSD1: often FAB M4 and M5\\nNUP98::KDM5A: mostly FAB M7 but also M5 and M6", "NaN", "For NUP98::NSD1: FLT3 ITD in > 80%, mutation in WT1 in 50%", "Poor"], ["AML with FUS::ERG fusion", "0.3\u20130.5% of cases", "All FAB types except M6; Auer rods", "NaN", "+8, +10, complex karyotype", "Poor"], ["AML with NPM1 mutation", "6\u20138% of cases", "FAB M1, M2, M4, and M5", "Positive: CD33, sometimes KIT (CD117), often CD36, CD64\\nNegative: CD34, sometimes HLA-DR\\nOften weak CD13", "FLT3 ITD, mutations in NRAS, WT1", "Good, also when FLT3 ITD is present"], ["AML with CEBPA mutation", "5\u20136% of cases", "Most commonly FAB M1 and M2", "Positive: CD34, HLA-DR, often CD7\\nNegative: other lymphoid antigens", "Mutations in CEBPA-TAD, CSF3R, GATA2, RAS genes, FLT3", "Good, except for CSF3R-mutated cases"]];
+
+    // Define the dt_args
+    let dt_args = {"columnDefs": [{"className": "dt-left", "targets": "_all"}], "paging": false, "order": []};
+    dt_args["data"] = data;
+
+    $(document).ready(function () {
+        
+        $('#5b629fbb-bb6c-4b5a-a85c-9feb0a944c64').DataTable(dt_args);
+    });
+</script>
+</div>
+</div></div>
+</div>
+</section>
+<section id="reclassification-strategy-risk-group-cog-aaml1831-rr">
+<h2>Reclassification strategy: Risk Group COG AAML1831 RR<a class="headerlink" href="#reclassification-strategy-risk-group-cog-aaml1831-rr" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input tag_full-width docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
 <span class="collapsed">Show code cell source</span>
@@ -521,94 +606,8 @@ Exclusion of samples may be applied depending on the analysis.
 </div>
 </div></div>
 </div>
-</section>
-<section id="reclassification-strategy-according-to-who-2022">
-<h2>Reclassification strategy according to WHO 2022<a class="headerlink" href="#reclassification-strategy-according-to-who-2022" title="Link to this heading">#</a></h2>
-<div class="tip admonition">
-<p class="admonition-title">Source</p>
-<p>Hasle H, Meshinchi S, Fogelstrand L, Alaggio R, et al. Acute myeloid leukaemias (AMLs) with defining genetic abnormalities. In: WHO Classification of Tumours Editorial Board. Paediatric tumours [Internet]. Lyon (France): International Agency for Research on Cancer; 2022 [cited 2024 Jan 1]. (WHO classification of tumours series, 5th ed.; vol. 7). Available from: <a class="reference external" href="https://tumourclassification.iarc.who.int/chapters/44">https://tumourclassification.iarc.who.int/chapters/44</a>.</p>
-<p>Pfister, Stefan M et al. “A Summary of the Inaugural WHO Classification of Pediatric Tumors: Transitioning from the Optical into the Molecular Era.” Cancer discovery vol. 12,2 (2022): 331-355. doi:10.1158/2159-8290.CD-21-1094</p>
-</div>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">itables</span>
-
-<span class="kn">from</span> <span class="nn">itables</span> <span class="kn">import</span> <span class="n">show</span>
-
-<span class="c1"># Read the CSV file</span>
-<span class="n">dx_criteria</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/who2022_aml_classification.csv&#39;</span><span class="p">)</span>
-
-<span class="c1"># Display the dataframe using itables</span>
-<span class="n">itables</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">dx_criteria</span><span class="p">,</span> <span class="n">columnDefs</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;className&quot;</span><span class="p">:</span> <span class="s2">&quot;dt-left&quot;</span><span class="p">,</span> <span class="s2">&quot;targets&quot;</span><span class="p">:</span> <span class="s2">&quot;_all&quot;</span><span class="p">}])</span>
-</pre></div>
-</div>
-</div>
-</details>
-<div class="cell_output docutils container">
-<div class="output text_html"><style>.itables table td {
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-.itables table th {
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-.itables thead input {
-    width: 100%;
-    padding: 3px;
-    box-sizing: border-box;
-}
-
-.itables tfoot input {
-    width: 100%;
-    padding: 3px;
-    box-sizing: border-box;
-}
-</style>
-<div class="itables">
-<table id="faebb139-7a89-43b2-bb98-06440dfd963a" class="display nowrap"style="table-layout:auto;width:auto;margin:auto;caption-side:bottom"><thead>
-    <tr style="text-align: right;">
-      
-      <th>Subtype</th>
-      <th>Frequency in paediatric AML</th>
-      <th>Morphology</th>
-      <th>Immunophenotype</th>
-      <th>Common co-occurring genetic aberrations</th>
-      <th>Prognosis</th>
-    </tr>
-  </thead><tbody><tr><td>Loading... (need <a href=https://mwouts.github.io/itables/troubleshooting.html>help</a>?)</td></tr></tbody></table>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
-<script type="module">
-    // Import jquery and DataTable
-    import 'https://code.jquery.com/jquery-3.6.0.min.js';
-    import dt from 'https://cdn.datatables.net/1.12.1/js/jquery.dataTables.mjs';
-    dt($);
-
-    // Define the table data
-    const data = [["AML with RUNX1::RUNXT1 fusion", "13\u201319% of cases", "Neutrophilic maturation, Auer rods; often increased basophils and/or mast cells", "Positive: CD34, HLA-DR, KIT (CD117), CD99, myeloperoxidase\\nUsually positive but can be heterogeneous: CD13, CD33 and CD38, CD19, PAX5, cytoplasmic CD79a, CD56\\nNegative: CD7", "Mutations in KIT, FLT3, CSF3R, EZH2, ASXL1, ASXL2, CBL, WT1, cohesion genes (SMC1A, SMC3, RAD21), NRAS, KRAS", "Good"], ["AML with CBFB::MYH11 fusion", "7\u201312% of cases", "Myelomonocytic; often increased eosinophils at all maturation stages", "Often multiple blast populations with signs of differentiation towards both granulocytic and monocytic lineages; may express CD2 and/or NG2 in a small subpopulation of cells", "Mutations in KIT, KRAS, NRAS, CBL, FLT3, WT1", "Good"], ["APL with PML::RARA fusion", "5\u201310% of cases but wide geographical variation (2\u201350%)", "Exclusively FAB M3; may be hypogranular", "Positive: CD33, often KIT (CD117), sometimes CD2\\nNegative: CD34 (except hypogranular variant), HLA-DR\\nOften high autofluorescence", "Mutations in FLT3", "Good (but treated differently)"], ["AML with KMT2A rearrangement", "20% of cases", "All FAB types except M3 and M6, most commonly M5", "Positive: CD33, CD65, CD4, HLA-DR (in monocytic cases), CD15, NG2; platelet antigens (in megakaryocytic cases)\\nNegative/low: CD13, CD34, CD14", "Mutations in the tyrosine kinase, PI3K, and RAS pathways; FLT3-TKD, NRAS, KRAS", "Depends on fusion partner"], ["AML with DEK::NUP214 fusion", "1\u20132% of cases", "All FAB types except M3 and M7, most commonly M2 and M4; Auer rods; basophilia in blood or bone marrow; erythroid and granulocytic dysplasia are common", "Positive: myeloperoxidase, CD13, CD33, CD38, CD123, HLA-DR; often CD34, KIT (CD117), CD15; sometimes CD64, TdT", "FLT3 ITD in two thirds of cases; complex karyotype", "Poor"], ["AML with MECOM rearrangement", "< 1% of cases", "Commonly FAB M1, M4, and M7; multilineage dysplasia is common, especially in megakaryopoiesis", "Positive: CD34, CD33, CD13, KIT (CD117), HLA-DR, CD7\\nNegative: lymphoid markers other than CD7", "NaN", "Poor"], ["AML with ETV6 fusion", "1% of all cases", "All FAB types, most commonly M0 and M1", "For MNX1::ETV6:\\nPositive: CD34, HLA-DR, often KIT (CD117), T-cell markers CD7 and CD4", "Almost always +19, sometimes +8", "Poor, but may be protocol dependent"], ["AML with KAT6A::CREBBP fusion", "0.5% of cases", "FAB M5", "Positive: HLA-DR, CD15, myeloperoxidase, CD13, CD33, sometimes CD56, CD14\\nNegative: CD34, KIT (CD117)", "NaN", "OS similar to paediatric AML in general"], ["AML with RBM15::MRTFA fusion", "0.8% of all cases", "Exclusively FAB M7", "Positive: > 1 platelet antigen, some CD34 and/or HLA-DR\\nNegative: CD45", "del(1p), +4, +7, +8, +9, +10, +14, +15, +17, +18, +20, +21(21p), complex hyperdiploid karyotype", "Lower CR rate but similar EFS/OS vs other AMKLs"], ["AML with CBFA2T3::GLIS2 fusion", "3% of all cases", "All FAB types, most commonly M7", "> 50% show the RAM phenotype; overexpression of CD56 and underexpression of HLA-DR and CD38", "Mutations in FLT3, GATA1, JAK/STAT pathway", "Poor"], ["AML with NUP98 rearrangement", "5\u20139% of cases", "NUP98::NSD1: often FAB M4 and M5\\nNUP98::KDM5A: mostly FAB M7 but also M5 and M6", "NaN", "For NUP98::NSD1: FLT3 ITD in > 80%, mutation in WT1 in 50%", "Poor"], ["AML with FUS::ERG fusion", "0.3\u20130.5% of cases", "All FAB types except M6; Auer rods", "NaN", "+8, +10, complex karyotype", "Poor"], ["AML with NPM1 mutation", "6\u20138% of cases", "FAB M1, M2, M4, and M5", "Positive: CD33, sometimes KIT (CD117), often CD36, CD64\\nNegative: CD34, sometimes HLA-DR\\nOften weak CD13", "FLT3 ITD, mutations in NRAS, WT1", "Good, also when FLT3 ITD is present"], ["AML with CEBPA mutation", "5\u20136% of cases", "Most commonly FAB M1 and M2", "Positive: CD34, HLA-DR, often CD7\\nNegative: other lymphoid antigens", "Mutations in CEBPA-TAD, CSF3R, GATA2, RAS genes, FLT3", "Good, except for CSF3R-mutated cases"]];
-
-    // Define the dt_args
-    let dt_args = {"columnDefs": [{"className": "dt-left", "targets": "_all"}], "order": []};
-    dt_args["data"] = data;
-
-    $(document).ready(function () {
-        
-        $('#faebb139-7a89-43b2-bb98-06440dfd963a').DataTable(dt_args);
-    });
-</script>
-</div>
-</div></div>
-</div>
-<section id="reclassification-functions-applied-to-all-samples">
-<h3>Reclassification functions (applied to all samples)<a class="headerlink" href="#reclassification-functions-applied-to-all-samples" title="Link to this heading">#</a></h3>
+<section id="main-reclassification-functions-applied-to-all-samples">
+<h3>Main reclassification functions (applied to all samples)<a class="headerlink" href="#main-reclassification-functions-applied-to-all-samples" title="Link to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -999,7 +998,7 @@ Name: count, dtype: int64
 </section>
 </section>
 <section id="apply-classification-to-test-dataset">
-<h2>Apply Classification to Test Dataset<a class="headerlink" href="#apply-classification-to-test-dataset" title="Link to this heading">#</a></h2>
+<h2>Apply classification to test dataset<a class="headerlink" href="#apply-classification-to-test-dataset" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1061,7 +1060,7 @@ Name: count, dtype: int64
 </div>
 </section>
 <section id="save-clinical-datasets">
-<h2>Save Clinical Datasets<a class="headerlink" href="#save-clinical-datasets" title="Link to this heading">#</a></h2>
+<h2>Save clinical datasets<a class="headerlink" href="#save-clinical-datasets" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1173,10 +1172,10 @@ Name: count, dtype: int64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-process-discovery-clinical-data">Load and process discovery clinical data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-risk-group-criteria-jan2024-cog-aaml1831-rr">Update risk group criteria (Jan2024 COG AAML1831 RR)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reclassification-strategy-according-to-who-2022">Reclassification strategy according to WHO 2022</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reclassification-functions-applied-to-all-samples">Reclassification functions (applied to all samples)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-index-merge-process-and-clean-discovery-clinical-data">Load, index, merge, process, and clean discovery clinical data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reclassification-strategy-dx-who-2022">Reclassification strategy: Dx WHO 2022</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reclassification-strategy-risk-group-cog-aaml1831-rr">Reclassification strategy: Risk Group COG AAML1831 RR</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-reclassification-functions-applied-to-all-samples">Main reclassification functions (applied to all samples)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#execution">Execution</a></li>
 </ul>
 </li>
@@ -1185,8 +1184,8 @@ Name: count, dtype: int64
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Execution</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-classification-to-test-dataset">Apply Classification to Test Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-clinical-datasets">Save Clinical Datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-classification-to-test-dataset">Apply classification to test dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-clinical-datasets">Save clinical datasets</a></li>
 </ul>
   </nav></div>
 
