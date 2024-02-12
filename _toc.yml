@@ -9,8 +9,12 @@ parts:
       - file: main/4_models.ipynb
       - file: main/5_plots.ipynb
       - file: main/6_new_data_test.ipynb
+
+  - caption: Benchmarks
+    chapters:
+      - file: tests/ewasCox_vs_pacmapLGBM.ipynb
       
-  - caption: EWAS+CoxPHLasso Tests
+  - caption: EWAS+CoxPHLasso
     chapters:
       - file: tests/2_Univariate_CoxPH-EWAS_v4.ipynb
       - file: tests/3.1_MethylScoreAML_Px_Development_v5.ipynb
