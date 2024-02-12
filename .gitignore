@@ -10,6 +10,7 @@
 .venv_sklearn
 .past_code_files
 .benchmarking
+*.drawio.bkp
 
 # Compiled source #
 ###################

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
@@ -184,9 +184,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Discovery Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_validation_dataset.html">Validation Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_reclassification_strategy.html">Risk and Dx Reclassification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4_models.html">Learning Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_models.html">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_plots.html">Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6_new_data_test.html">Applying models to Nanopore data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_new_data_test.html">Specimen-to-result Testing</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Benchmarks</span></p>
 <ul class="nav bd-sidenav">
@@ -415,7 +415,7 @@ document.write(`
 </thead>
 <tbody>
 <tr class="row-even"><td><p>COG_AAML1031</p></td>
-<td><p><a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/32029509/">Aplenc et al., 2020</a></p></td>
+<td><p><a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/36815378/">Bertrums et al., 2023</a></p></td>
 <td><p>AML</p></td>
 <td><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE190931">GSE190931</a></p></td>
 <td><p>1048</p></td>
@@ -423,7 +423,7 @@ document.write(`
 <td><p>EPIC</p></td>
 </tr>
 <tr class="row-odd"><td><p>COG_AAML0531</p></td>
-<td><p><a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/25092781/">Gamis et al., 2014</a></p></td>
+<td><p><a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/34793513/">Bolouri et al., 2021</a></p></td>
 <td><p>AML</p></td>
 <td><p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE124413">GSE124413</a></p></td>
 <td><p>500</p></td>
@@ -439,7 +439,7 @@ document.write(`
 <td><p>EPIC</p></td>
 </tr>
 <tr class="row-odd"><td><p>AML_TARGET-450k</p></td>
-<td><p><a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/26941285/">Farrar et al., 2016</a></p></td>
+<td><p><a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/29227476/">Bolouri et al., 2018</a></p></td>
 <td><p>AML</p></td>
 <td><p><a class="reference external" href="https://portal.gdc.cancer.gov/repository?facetTab=cases&amp;amp;filters=%7B%22op%22%3A%22and%22%2C%22content%22%3A%5B%7B%22op%22%3A%22in%22%2C%22content%22%3A%7B%22field%22%3A%22cases.project.program.name%22%2C%22value%22%3A%5B%22TARGET%22%5D%7D%7D%2C%7B%22op%22%3A%22in%22%2C%22content%22%3A%7B%22field%22%3A%22cases.project.project_id%22%2C%22value%22%3A%5B%22TARGET-AML%22%5D%7D%7D%2C%7B%22op%22%3A%22in%22%2C%22content%22%3A%7B%22field%22%3A%22files.data_format%22%2C%22value%22%3A%5B%22txt%22%5D%7D%7D%2C%7B%22op%22%3A%22in%22%2C%22content%22%3A%7B%22field%22%3A%22files.platform%22%2C%22value%22%3A%5B%22illumina%20human%20methylation%20450%22%2C%22illumina%20methylation%20epic%22%5D%7D%7D%5D%7D">GDC_TARGET-AML</a></p></td>
 <td><p>317</p></td>
@@ -479,7 +479,7 @@ document.write(`
 <td><p>450k</p></td>
 </tr>
 <tr class="row-even"><td><p>ALL_TARGET</p></td>
-<td><p><a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/30209392/">Alexander et al.,2018</a></p></td>
+<td><p><a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/30209392/">Alexander et al., 2018</a></p></td>
 <td><p>ALL</p></td>
 <td><p><a class="reference external" href="https://portal.gdc.cancer.gov/repository?facetTab=files&amp;amp;filters=%7B%22op%22%3A%22and%22%2C%22content%22%3A%5B%7B%22op%22%3A%22in%22%2C%22content%22%3A%7B%22field%22%3A%22cases.project.program.name%22%2C%22value%22%3A%5B%22TARGET%22%5D%7D%7D%2C%7B%22op%22%3A%22in%22%2C%22content%22%3A%7B%22field%22%3A%22cases.project.project_id%22%2C%22value%22%3A%5B%22TARGET-ALL-P3%22%5D%7D%7D%2C%7B%22op%22%3A%22in%22%2C%22content%22%3A%7B%22field%22%3A%22files.data_format%22%2C%22value%22%3A%5B%22txt%22%5D%7D%7D%2C%7B%22op%22%3A%22in%22%2C%22content%22%3A%7B%22field%22%3A%22files.platform%22%2C%22value%22%3A%5B%22illumina%20human%20methylation%20450%22%2C%22illumina%20methylation%20epic%22%5D%7D%7D%5D%7D&amp;amp;searchTableTab=cases">GDC-TARGET-ALL</a></p></td>
 <td><p>102</p></td>
