@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-02-12T16:55:31.110Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.16 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="BnJ5W3agitGEmY9qXVPJ" compressed="false" version="22.1.16" type="device">
+<mxfile host="Electron" modified="2024-02-12T16:20:03.344Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/23.0.2 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="gK0T23gF2SRnnZXC7S2q" compressed="false" version="23.0.2" type="device">
   <diagram id="prtHgNgQTEPvFCAcTncT" name="Page-1">
-    <mxGraphModel dx="1434" dy="836" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="1" shadow="0">
+    <mxGraphModel dx="1395" dy="703" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="1" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2505,17 +2505,17 @@
         <mxCell id="RfiaX51ck18fG0xROHYH-74" value="&lt;span style=&quot;font-size: 36px;&quot;&gt;Detailed Study Strategy&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="9280" y="3187.69" width="420" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="O-bsByhJzpPo9jhtWd-1-15" value="Unveil the epigenomic landscape of acute leukemia" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+        <mxCell id="O-bsByhJzpPo9jhtWd-1-15" value="Unveil the epigenomic landscape of acute leukemia" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="8999.63" y="2904.96" width="181.75" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="O-bsByhJzpPo9jhtWd-1-16" value="Use such landscape to create models predictive of diagnosis and prognosis" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+        <mxCell id="O-bsByhJzpPo9jhtWd-1-16" value="Use such landscape to create models predictive of diagnosis and prognosis" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="9280" y="2872" width="240" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="O-bsByhJzpPo9jhtWd-1-17" value="Validate models retrospectively in rigorous clinical trials&amp;nbsp;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="9615.26" y="2918.5" width="177.24" height="30" as="geometry" />
+        <mxCell id="O-bsByhJzpPo9jhtWd-1-17" value="Validate models in rigorous clinical trials&amp;nbsp;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="9632.76" y="2918.5" width="142.24" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="O-bsByhJzpPo9jhtWd-1-18" value="Test models prospectively in fresh and frozen patient samples" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="9890" y="2918.5" width="200" height="30" as="geometry" />
+        <mxCell id="O-bsByhJzpPo9jhtWd-1-18" value="Test models in fresh and frozen patient samples" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="9908.470000000001" y="2918.5" width="163.06" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
