@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Data Visualization" href="5_plots.html" />
-    <link rel="prev" title="Risk and Dx Reclassification" href="3_reclassification_strategy.html" />
+    <link rel="prev" title="Dx and Px Reclassification" href="3_reclassification_strategy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -183,7 +183,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_discovery_dataset.html">Discovery Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_validation_dataset.html">Validation Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_reclassification_strategy.html">Risk and Dx Reclassification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_reclassification_strategy.html">Dx and Px Reclassification</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_plots.html">Data Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6_new_data_test.html">Specimen-to-result Testing</a></li>
@@ -351,6 +351,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-the-data-at">Where the data at</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-overlapping-cpgs">Select overlapping CpGs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduce-dimensionality-with-pacmap">Reduce dimensionality with PaCMAP</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-hyperparameters-fit-and-save">Set hyperparameters, fit, and save</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-models-to-new-data">Apply models to new data</a></li>
@@ -401,7 +402,7 @@ document.write(`
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
 <span class="c1"># from source.pacmap_functions import *</span>
 
-<span class="n">mount</span> <span class="o">=</span> <span class="s1">&#39;/mnt/h/&#39;</span>
+<span class="n">mount</span> <span class="o">=</span> <span class="s1">&#39;/mnt/d/&#39;</span>
 <span class="n">input_path</span> <span class="o">=</span> <span class="n">mount</span> <span class="o">+</span> <span class="s1">&#39;MethylScore/Intermediate_Files/&#39;</span>
 <span class="n">output_path</span> <span class="o">=</span> <span class="n">mount</span> <span class="o">+</span> <span class="s1">&#39;MethylScore/Processed_Data/&#39;</span>
 </pre></div>
@@ -426,7 +427,29 @@ document.write(`
 <span class="n">df_validation</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span>
     <span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;201samples_357839cpgs_withbatchcorrection_bvalues.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
 
-<span class="c1"># use overlapping features between df_discovery and df_validation</span>
+<span class="nb">print</span><span class="p">(</span>
+<span class="sa">f</span><span class="s1">&#39; Discovery dataset (df_discovery) contains </span><span class="si">{</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> </span><span class="se">\</span>
+<span class="s1">columns (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (samples).&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span>
+<span class="sa">f</span><span class="s1">&#39; Validation dataset (df_validation) contains </span><span class="si">{</span><span class="n">df_validation</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> </span><span class="se">\</span>
+<span class="s1">columns (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">df_validation</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (samples).&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="select-overlapping-cpgs">
+<h2>Select overlapping CpGs<a class="headerlink" href="#select-overlapping-cpgs" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use overlapping features between df_discovery and df_validation</span>
 <span class="n">common_features</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df_discovery</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df_validation</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
 
 <span class="c1"># apply `common_features` to both df_discovery and df_validation</span>
@@ -907,7 +930,7 @@ Architecture: 64bit
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Risk and Dx Reclassification</p>
+        <p class="prev-next-title">Dx and Px Reclassification</p>
       </div>
     </a>
     <a class="right-next"
@@ -937,6 +960,7 @@ Architecture: 64bit
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-the-data-at">Where the data at</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-overlapping-cpgs">Select overlapping CpGs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduce-dimensionality-with-pacmap">Reduce dimensionality with PaCMAP</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-hyperparameters-fit-and-save">Set hyperparameters, fit, and save</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-models-to-new-data">Apply models to new data</a></li>

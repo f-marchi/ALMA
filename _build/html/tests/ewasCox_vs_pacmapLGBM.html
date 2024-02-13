@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="EWAS Runs" href="2_Univariate_CoxPH-EWAS_v4.html" />
-    <link rel="prev" title="Applying models to Nanopore data" href="../main/6_new_data_test.html" />
+    <link rel="prev" title="Specimen-to-result Testing" href="../main/6_new_data_test.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -183,10 +183,10 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../main/1_discovery_dataset.html">Discovery Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../main/2_validation_dataset.html">Validation Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../main/3_reclassification_strategy.html">Risk and Dx Reclassification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../main/4_models.html">Learning Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main/3_reclassification_strategy.html">Dx and Px Reclassification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main/4_models.html">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../main/5_plots.html">Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../main/6_new_data_test.html">Applying models to Nanopore data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main/6_new_data_test.html">Specimen-to-result Testing</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Benchmarks</span></p>
 <ul class="current nav bd-sidenav">
@@ -352,7 +352,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-pacmap-lgbm-data">Load PaCMAP-LGBM data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-ewas-cox-datasets">Load EWAS-Cox datasets</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combine-datasets">Combine datasets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#roc-auc-comparison">ROC-AUC comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#roc-auc-comparison-in-cog-aml-dx-samples">ROC-AUC comparison in COG AML Dx Samples</a></li>
 </ul>
             </nav>
         </div>
@@ -777,8 +777,8 @@ if (force === true) {
 </details>
 </div>
 </section>
-<section id="roc-auc-comparison">
-<h2>ROC-AUC comparison<a class="headerlink" href="#roc-auc-comparison" title="Link to this heading">#</a></h2>
+<section id="roc-auc-comparison-in-cog-aml-dx-samples">
+<h2>ROC-AUC comparison in COG AML Dx Samples<a class="headerlink" href="#roc-auc-comparison-in-cog-aml-dx-samples" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-input tag_full-width docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -904,7 +904,7 @@ if (force === true) {
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Applying models to Nanopore data</p>
+        <p class="prev-next-title">Specimen-to-result Testing</p>
       </div>
     </a>
     <a class="right-next"
@@ -935,7 +935,7 @@ if (force === true) {
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-pacmap-lgbm-data">Load PaCMAP-LGBM data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-ewas-cox-datasets">Load EWAS-Cox datasets</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combine-datasets">Combine datasets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#roc-auc-comparison">ROC-AUC comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#roc-auc-comparison-in-cog-aml-dx-samples">ROC-AUC comparison in COG AML Dx Samples</a></li>
 </ul>
   </nav></div>
 

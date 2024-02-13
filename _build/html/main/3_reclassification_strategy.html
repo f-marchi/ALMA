@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Risk and Dx Reclassification &#8212; Acute Leukemia Methylome Atlas Study</title>
+    <title>Dx and Px Reclassification &#8212; Acute Leukemia Methylome Atlas Study</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'main/3_reclassification_strategy';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Learning Algorithms" href="4_models.html" />
+    <link rel="next" title="Models" href="4_models.html" />
     <link rel="prev" title="Validation Dataset" href="2_validation_dataset.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -183,10 +183,10 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_discovery_dataset.html">Discovery Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_validation_dataset.html">Validation Dataset</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Risk and Dx Reclassification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4_models.html">Learning Algorithms</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Dx and Px Reclassification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_models.html">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_plots.html">Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6_new_data_test.html">Applying models to Nanopore data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_new_data_test.html">Specimen-to-result Testing</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Benchmarks</span></p>
 <ul class="nav bd-sidenav">
@@ -339,7 +339,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Risk and Dx Reclassification</h1>
+    <h1>Dx and Px Reclassification</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -349,7 +349,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-index-merge-process-and-clean-discovery-clinical-data">Load, index, merge, process, and clean discovery clinical data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-index-merge-and-clean-discovery-clinical-data">Load, index, merge, and clean discovery clinical data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reclassification-strategy-dx-who-2022">Reclassification strategy: Dx WHO 2022</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reclassification-strategy-risk-group-cog-aaml1831-rr">Reclassification strategy: Risk Group COG AAML1831 RR</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-reclassification-functions-applied-to-all-samples">Main reclassification functions (applied to all samples)</a></li>
@@ -374,10 +374,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="risk-and-dx-reclassification">
-<h1>Risk and Dx Reclassification<a class="headerlink" href="#risk-and-dx-reclassification" title="Link to this heading">#</a></h1>
-<section id="load-index-merge-process-and-clean-discovery-clinical-data">
-<h2>Load, index, merge, process, and clean discovery clinical data<a class="headerlink" href="#load-index-merge-process-and-clean-discovery-clinical-data" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="dx-and-px-reclassification">
+<h1>Dx and Px Reclassification<a class="headerlink" href="#dx-and-px-reclassification" title="Link to this heading">#</a></h1>
+<section id="load-index-merge-and-clean-discovery-clinical-data">
+<h2>Load, index, merge, and clean discovery clinical data<a class="headerlink" href="#load-index-merge-and-clean-discovery-clinical-data" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -713,7 +713,7 @@ document.write(`
         <span class="c1"># &#39;t(6;11)&#39;: &#39;AML with t(v;11q23); KMT2A-r&#39;,</span>
         <span class="c1"># &#39;t(1;11)&#39;: &#39;AML with t(v;11q23); KMT2A-r&#39;,</span>
         <span class="c1"># &#39;t(4;11)&#39;: &#39;AML with t(v;11q23); KMT2A-r&#39;,</span>
-        <span class="c1"># &#39;ins(6;11)&#39;: &#39;AML with t(v;11q23); KMT2A-r&#39;,</span>
+        <span class="c1"># &#39;ins(6;11)&#39;: &#39;AML with t(v;11q23); KMT2A-r&#39;, # Surprisingly, karyotype did not prove reliable</span>
 
         <span class="p">}</span>
     
@@ -1156,7 +1156,7 @@ Name: count, dtype: int64
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Learning Algorithms</p>
+        <p class="prev-next-title">Models</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1176,7 +1176,7 @@ Name: count, dtype: int64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-index-merge-process-and-clean-discovery-clinical-data">Load, index, merge, process, and clean discovery clinical data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-index-merge-and-clean-discovery-clinical-data">Load, index, merge, and clean discovery clinical data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reclassification-strategy-dx-who-2022">Reclassification strategy: Dx WHO 2022</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reclassification-strategy-risk-group-cog-aaml1831-rr">Reclassification strategy: Risk Group COG AAML1831 RR</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-reclassification-functions-applied-to-all-samples">Main reclassification functions (applied to all samples)</a></li>
