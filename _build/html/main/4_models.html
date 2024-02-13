@@ -428,8 +428,8 @@ document.write(`
     <span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;201samples_357839cpgs_withbatchcorrection_bvalues.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span>
-<span class="sa">f</span><span class="s1">&#39; Discovery dataset (df_discovery) contains </span><span class="si">{</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> </span><span class="se">\</span>
-<span class="s1">columns (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (samples).&#39;</span><span class="p">)</span>
+<span class="sa">f</span><span class="s1">&#39; Discovery dataset (df_discovery) contains </span><span class="si">{</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1"> </span><span class="se">\</span>
+<span class="s1">columns (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1"> rows (samples).&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span>
 <span class="sa">f</span><span class="s1">&#39; Validation dataset (df_validation) contains </span><span class="si">{</span><span class="n">df_validation</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> </span><span class="se">\</span>
@@ -438,6 +438,12 @@ document.write(`
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Discovery dataset (df_discovery) contains 333058 columns (5mC nucleotides/probes) and 3307 rows (samples).
+ Validation dataset (df_validation) contains 357839 columns (5mC nucleotides/probes) and 201 rows (samples).
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="select-overlapping-cpgs">
