@@ -1191,7 +1191,7 @@ def sankey(left, right, leftWeight=None, rightWeight=None, colorDict=None,
 
 
 def draw_sankey_plot(df, col1, col2, colors, title, fontsize=10, fig_size=(10,10),
-                     column_title=True, column_title_pos = (0.1,0.9)):
+                     column_title=True, column_title_pos = (0.1,0.9), nan_action='drop'):
     """
     Create a sankey plot using the specified DataFrame columns.
     
@@ -1204,14 +1204,29 @@ def draw_sankey_plot(df, col1, col2, colors, title, fontsize=10, fig_size=(10,10
     fig_size (tuple): Figure size. Default is (10,10).
     column_title (bool): Whether to add column titles to the plot. Default is True.
     column_title_pos (tuple): Relative positions of the column titles. Default is (0.1,0.9).
+    nan_action (str): What to do with NaN values. Options are 'drop', 'include', or 'keep only'. Default is 'drop'.
 
     """
 
     # Create color dictionary for unique values in the specified columns
     color_dict = create_color_dict(df, [col1, col2], colors)
 
-    # Fill NaN values with 'Unknown'
-    df = df.fillna('Unknown')
+    if nan_action == 'drop':
+        df = df.dropna(subset=[col1, col2])
+
+    elif nan_action == 'include':
+        df[col1] = df[col1].fillna('Unknown')
+        df[col2] = df[col2].fillna('Unknown')
+
+    elif nan_action == 'keep only':
+        df = df[df[col1].isna()]
+        # Fill NaN values with 'Unknown'
+        df[col1] = df[col1].fillna('Unknown')
+        df[col2] = df[col2].fillna('Unknown')
+
+    else:
+        raise ValueError('Invalid value for nan_action. Options are "drop", "include", or "keep only".')
+
     # Add the unknown class
     color_dict['Unknown'] = colors[-1]
 
