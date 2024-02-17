@@ -174,7 +174,6 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Main Story</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_discovery_dataset.html">Discovery Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2_validation_dataset.html">Validation Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_reclassification_strategy.html">Dx and Px Reclassification</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_plots.html">Data Visualization</a></li>
@@ -343,7 +342,6 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-the-data-at">Where the data at</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-overlapping-cpgs">Select overlapping CpGs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduce-dimensionality-with-pacmap">Reduce dimensionality with PaCMAP</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-hyperparameters-fit-and-save">Set hyperparameters, fit, and save</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-models-to-new-data">Apply models to new data</a></li>
@@ -414,13 +412,13 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read df_discovery and df_validation</span>
 <span class="n">df_discovery</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span>
-    <span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;3308samples_333059cpgs_withbatchcorrection_bvalues.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+    <span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;3308samples_333058cpgs_withbatchcorrection_bvalues.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span>
 
 <span class="n">df_validation</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span>
-    <span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;201samples_357839cpgs_withbatchcorrection_bvalues.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+    <span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;201samples_427375cpgs_withbatchcorrection_bvalues.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()[</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span>
-<span class="sa">f</span><span class="s1">&#39; Discovery dataset (df_discovery) contains </span><span class="si">{</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1"> </span><span class="se">\</span>
+<span class="sa">f</span><span class="s1">&#39; Discovery dataset (df_discovery) contains </span><span class="si">{</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> </span><span class="se">\</span>
 <span class="s1">columns (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1"> rows (samples).&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span>
@@ -432,42 +430,7 @@ document.write(`
 </details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Discovery dataset (df_discovery) contains 333058 columns (5mC nucleotides/probes) and 3307 rows (samples).
- Validation dataset (df_validation) contains 357839 columns (5mC nucleotides/probes) and 201 rows (samples).
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="select-overlapping-cpgs">
-<h2>Select overlapping CpGs<a class="headerlink" href="#select-overlapping-cpgs" title="Link to this heading">#</a></h2>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use overlapping features between df_discovery and df_validation</span>
-<span class="n">common_features</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df_discovery</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df_validation</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
-
-<span class="c1"># apply `common_features` to both df_discovery and df_validation</span>
-<span class="n">df_discovery</span> <span class="o">=</span> <span class="n">df_discovery</span><span class="p">[</span><span class="n">common_features</span><span class="p">]</span>
-<span class="n">df_validation</span> <span class="o">=</span> <span class="n">df_validation</span><span class="p">[</span><span class="n">common_features</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span>
-<span class="sa">f</span><span class="s1">&#39; Discovery dataset (df_discovery) contains </span><span class="si">{</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> </span><span class="se">\</span>
-<span class="s1">columns (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (samples).&#39;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span>
-<span class="sa">f</span><span class="s1">&#39; Validation dataset (df_validation) contains </span><span class="si">{</span><span class="n">df_validation</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> </span><span class="se">\</span>
-<span class="s1">columns (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">df_validation</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (samples).&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Discovery dataset (df_discovery) contains 319558 columns (5mC nucleotides/probes) and 3308 rows (samples).
- Validation dataset (df_validation) contains 319558 columns (5mC nucleotides/probes) and 201 rows (samples).
+ Validation dataset (df_validation) contains 333058 columns (5mC nucleotides/probes) and 201 rows (samples).
 </pre></div>
 </div>
 </div>
@@ -487,25 +450,30 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pacmap</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PaCMAP version:&#39;</span><span class="p">,</span> <span class="n">pacmap</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
 
-<span class="c1"># components_list = [2, 5]</span>
-<span class="c1"># for components in components_list:</span>
+<span class="n">components_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">components</span> <span class="ow">in</span> <span class="n">components_list</span><span class="p">:</span>
+    
+    <span class="n">reducer</span> <span class="o">=</span> <span class="n">pacmap</span><span class="o">.</span><span class="n">PaCMAP</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">components</span><span class="p">,</span> 
+                            <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
+                            <span class="n">MN_ratio</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> 
+                            <span class="n">FP_ratio</span><span class="o">=</span><span class="mf">16.0</span><span class="p">,</span> 
+                            <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
+                            <span class="n">num_iters</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+                            <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+                            <span class="n">save_tree</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="c1">#     # Initialize the instance</span>
-<span class="c1">#     reducer = pacmap.PaCMAP(n_components=components, n_neighbors=15, MN_ratio=0.4, FP_ratio=16.0, </span>
-<span class="c1">#                             random_state=42, lr=0.1, num_iters=5000, save_tree=True)</span>
+    <span class="c1"># Project the high dimensional dataset into a low-dimensional embedding</span>
+    <span class="n">embedding_training</span> <span class="o">=</span> <span class="n">reducer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float16&#39;</span><span class="p">))</span>
 
-<span class="c1">#     # Project the high dimensional dataset into a low-dimensional embedding</span>
-<span class="c1">#     embedding_training = reducer.fit_transform(df_discovery.to_numpy(dtype=&#39;float16&#39;))</span>
+    <span class="c1"># Save reducer</span>
+    <span class="n">pacmap</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">reducer</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;../models/pacmap_</span><span class="si">{</span><span class="n">components</span><span class="si">}</span><span class="s1">d_model_al_atlas&#39;</span><span class="p">)</span>
 
-<span class="c1">#     # Save reducer</span>
-<span class="c1">#     pacmap.save(reducer, f&#39;../models/pacmap_{components}d_model_al_atlas&#39;)</span>
+    <span class="c1"># Create column names</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;PaCMAP &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39; of </span><span class="si">{</span><span class="n">components</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">components</span><span class="p">)]</span>
 
-<span class="c1">#     # Create column names</span>
-<span class="c1">#     cols = [&#39;PaCMAP &#39;+ str(i+1) + f&#39; of {components}&#39; for i in range(components)]</span>
-
-<span class="c1">#     # Turn embedding into dataframe</span>
-<span class="c1">#     df_embedding = pd.DataFrame(embedding_training, columns=cols, index=df_discovery.index).to_pickle(</span>
-<span class="c1">#         output_path+f&#39;pacmap_{components}d_embedding.pkl&#39;)</span>
+    <span class="c1"># Turn embedding into dataframe</span>
+    <span class="n">df_embedding</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">embedding_training</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">cols</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span>
+        <span class="n">output_path</span><span class="o">+</span><span class="sa">f</span><span class="s1">&#39;pacmap_</span><span class="si">{</span><span class="n">components</span><span class="si">}</span><span class="s1">d_embedding.pkl&#39;</span><span class="p">)</span>
 
 <span class="c1"># # Time to run: 3m 22.9s</span>
 </pre></div>
@@ -514,6 +482,22 @@ document.write(`
 </details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PaCMAP version: 0.7.0
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/fmarchi/projects/AML-atlas-notebooks/.venv/lib/python3.8/site-packages/pacmap/pacmap.py:819: UserWarning: Warning: random state is set to 42
+  warnings.warn(f&#39;Warning: random state is set to {_RANDOM_STATE}&#39;)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The PaCMAP instance is successfully saved at ../models/pacmap_2d_model_al_atlas.pkl, and the Annoy Index is saved at ../models/pacmap_2d_model_al_atlas.ann.
+To load the instance again, please do `pacmap.load(../models/pacmap_2d_model_al_atlas)`.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/fmarchi/projects/AML-atlas-notebooks/.venv/lib/python3.8/site-packages/pacmap/pacmap.py:819: UserWarning: Warning: random state is set to 42
+  warnings.warn(f&#39;Warning: random state is set to {_RANDOM_STATE}&#39;)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The PaCMAP instance is successfully saved at ../models/pacmap_5d_model_al_atlas.pkl, and the Annoy Index is saved at ../models/pacmap_5d_model_al_atlas.ann.
+To load the instance again, please do `pacmap.load(../models/pacmap_5d_model_al_atlas)`.
 </pre></div>
 </div>
 </div>
@@ -605,9 +589,11 @@ document.write(`
 <span class="n">df_px2</span> <span class="o">=</span> <span class="n">df_px</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
 <span class="c1"># # Exclude the `Blood Derived Normal`and `Bone Marrow Normal` from `Sample Type`</span>
-<span class="c1"># df_px2 = df_px[~df_px[&#39;Sample Type&#39;].isin([&#39;Relapse&#39;, &#39;Recurrent Blood Derived Cancer - Bone Marrow&#39;,</span>
+<span class="c1"># df_px2 = df_px[~df_px[&#39;Sample Type&#39;].isin([</span>
+<span class="c1">#                                             &#39;Relapse&#39;, &#39;Recurrent Blood Derived Cancer - Bone Marrow&#39;,</span>
 <span class="c1">#                                             &#39;Recurrent Blood Derived Cancer - Peripheral Blood&#39;,</span>
-<span class="c1">#                                             &#39;Blood Derived Normal&#39;, &#39;Bone Marrow Normal&#39;])]</span>
+<span class="c1">#                                             &#39;Blood Derived Normal&#39;, &#39;Bone Marrow Normal&#39;</span>
+<span class="c1"># ])]</span>
 
 <span class="c1"># print the number of samples dropped and the amount remaining</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">df_px2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;samples removed.&#39;</span>\
@@ -699,12 +685,7 @@ X_train shape: (1844, 5) X_test shape: (201, 5)
 </section>
 <section id="benchmark-classifiers">
 <h2>Benchmark classifiers<a class="headerlink" href="#benchmark-classifiers" title="Link to this heading">#</a></h2>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
 <span class="kn">from</span> <span class="nn">lightgbm</span> <span class="kn">import</span> <span class="n">LGBMClassifier</span>
@@ -718,15 +699,18 @@ X_train shape: (1844, 5) X_test shape: (201, 5)
 
     <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
     <span class="c1"># &#39;num_leaves&#39;: [ 5, 6, 7, 8, 9, 10], # number of leaves in full tree</span>
-    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>  <span class="c1"># maximum depth of a tree</span>
-    <span class="c1"># &#39;learning_rate&#39;: [0.1],  # learning rate</span>
+    <span class="c1"># &#39;max_depth&#39;: [3,4,5,6,7,8,9,10],  # maximum depth of a tree</span>
+    <span class="c1"># &#39;learning_rate&#39;: [0.01],  # learning rate</span>
     <span class="c1"># &#39;n_estimators&#39;: [50, 100, 500],  # number of trees (or rounds)</span>
+    <span class="s1">&#39;reg_alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span>  <span class="c1"># L1 regularization</span>
+    <span class="s1">&#39;reg_lambda&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span>  <span class="c1"># L2 regularization</span>
+    <span class="s1">&#39;class_weight&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;balanced&#39;</span><span class="p">],</span>  <span class="c1"># weights associated with classes</span>
+    
     <span class="p">}</span>
 
     <span class="c1"># Initialize the LGBM Classifier with regularization</span>
-    <span class="n">lgbm</span> <span class="o">=</span> <span class="n">LGBMClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">reg_alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">reg_lambda</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="p">)</span>
-
-
+    <span class="n">lgbm</span> <span class="o">=</span> <span class="n">LGBMClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> 
+                          
     <span class="c1"># Perform grid search with stratified cross-validation</span>
     <span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">lgbm</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
                                <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;roc_auc_ovr_weighted&#39;</span><span class="p">)</span>
@@ -755,24 +739,27 @@ X_train shape: (1844, 5) X_test shape: (201, 5)
 </pre></div>
 </div>
 </div>
-</details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best parameters: {&#39;max_depth&#39;: 6}
-Overall accuracy score in Train with 10-fold CV: 0.949
-Overall accuracy score in Validation: 0.922
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best parameters: {&#39;class_weight&#39;: &#39;balanced&#39;, &#39;reg_alpha&#39;: 1, &#39;reg_lambda&#39;: 1}
+Overall accuracy score in Train with 10-fold CV: 0.912
+Overall accuracy score in Validation: 0.931
 </pre></div>
 </div>
-<img alt="../_images/08f374fa8e7f74460f73d2847cb9e9f66e67f5167c6e191e67e1c7294023ea8c.png" src="../_images/08f374fa8e7f74460f73d2847cb9e9f66e67f5167c6e191e67e1c7294023ea8c.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best parameters: {&#39;max_depth&#39;: 5}
-Overall accuracy score in Train with 10-fold CV: 0.765
-Overall accuracy score in Validation: 0.701
+<img alt="../_images/7a07590c3b820015b1f6bbfe75ab985447c479bd7266a59a28d1b053ce43b4be.png" src="../_images/7a07590c3b820015b1f6bbfe75ab985447c479bd7266a59a28d1b053ce43b4be.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best parameters: {&#39;class_weight&#39;: &#39;balanced&#39;, &#39;reg_alpha&#39;: 1, &#39;reg_lambda&#39;: 1}
+Overall accuracy score in Train with 10-fold CV: 0.814
+Overall accuracy score in Validation: 0.711
 </pre></div>
 </div>
-<img alt="../_images/b02d39ea5b38575efcd65acbcf633258fcdfe93deb62ffcb1fca597fc59a4d80.png" src="../_images/b02d39ea5b38575efcd65acbcf633258fcdfe93deb62ffcb1fca597fc59a4d80.png" />
+<img alt="../_images/a476dd38051b2a1d9df3fa3c6e8cb8c8909610c69866c4c20526ae712438dc80.png" src="../_images/a476dd38051b2a1d9df3fa3c6e8cb8c8909610c69866c4c20526ae712438dc80.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;../models/lgbm_dx_model.pkl&#39;]
 </pre></div>
 </div>
 </div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We have used <code class="docutils literal notranslate"><span class="pre">class_weight</span></code>=’balanced’` because we would like the models to be sensitive towards the minority class, even at a cost of sensitivity and specificity. Medically, it is important to prioritize detection of rarer subtypes since those may be more easily missed.</p>
 </div>
 </section>
 <section id="save-results">
@@ -830,7 +817,7 @@ Overall accuracy score in Validation: 0.701
 
 <span class="c1"># Map the classes to more desirable labels (low and high risk)</span>
 <span class="n">df_pred_px</span><span class="p">[</span><span class="s1">&#39;AML Epigenomic Risk&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_pred_px</span><span class="p">[</span><span class="s1">&#39;AML Epigenomic Risk&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s1">&#39;Alive&#39;</span><span class="p">:</span> <span class="s1">&#39;Low&#39;</span><span class="p">,</span> <span class="s1">&#39;Dead&#39;</span><span class="p">:</span> <span class="s1">&#39;High&#39;</span><span class="p">})</span>
-<span class="n">df_pred_px</span> <span class="o">=</span> <span class="n">df_pred_px</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;P(Alive)&#39;</span><span class="p">:</span> <span class="s1">&#39;P(Low Risk)&#39;</span><span class="p">,</span> <span class="s1">&#39;P(Dead)&#39;</span><span class="p">:</span> <span class="s1">&#39;P(High Risk)&#39;</span><span class="p">})</span>
+<span class="n">df_pred_px</span> <span class="o">=</span> <span class="n">df_pred_px</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;P(Alive)&#39;</span><span class="p">:</span> <span class="s1">&#39;AML Epigenomic Risk P(Low Risk)&#39;</span><span class="p">,</span> <span class="s1">&#39;P(Dead)&#39;</span><span class="p">:</span> <span class="s1">&#39;AML Epigenomic Risk P(High Risk)&#39;</span><span class="p">})</span>
 
 <span class="c1"># Select ALL samples</span>
 <span class="n">lymphoblastic_leukemia_samples</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;NOPHO ALL92-2000&#39;</span><span class="p">,</span> <span class="s1">&#39;French GRAALL 2003–2005&#39;</span><span class="p">])]</span><span class="o">.</span><span class="n">index</span>
@@ -958,7 +945,6 @@ Architecture: 64bit
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-the-data-at">Where the data at</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-overlapping-cpgs">Select overlapping CpGs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduce-dimensionality-with-pacmap">Reduce dimensionality with PaCMAP</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-hyperparameters-fit-and-save">Set hyperparameters, fit, and save</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-models-to-new-data">Apply models to new data</a></li>

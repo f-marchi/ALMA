@@ -4,7 +4,7 @@ parts:
   - caption: Main Story
     chapters:
       - file: main/1_discovery_dataset.ipynb
-      - file: main/2_validation_dataset.ipynb
+      - file: main/2_validation_dataset_v2.ipynb
       - file: main/3_reclassification_strategy.ipynb
       - file: main/4_models.ipynb
       - file: main/5_plots.ipynb

@@ -173,7 +173,6 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Main Story</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../main/1_discovery_dataset.html">Discovery Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../main/2_validation_dataset.html">Validation Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../main/3_reclassification_strategy.html">Dx and Px Reclassification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../main/4_models.html">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../main/5_plots.html">Data Visualization</a></li>
@@ -393,7 +392,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">source.cox_lasso_functions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">source.cox_lasso</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">input_path</span> <span class="o">=</span> <span class="s1">&#39;/mnt/d/MethylScore/Intermediate_Files/&#39;</span>
 <span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;/mnt/d/MethylScore/Processed_Data/&#39;</span>
@@ -416,9 +415,6 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raw_coefs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;multivariate_cox_lasso/ewas_cog_os_raw_coefs_newrisk_efs.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">mean_coefs</span> <span class="o">=</span> <span class="n">set_cutoff</span><span class="p">(</span><span class="n">coefs</span><span class="o">=</span><span class="n">raw_coefs</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="mf">0.99</span><span class="p">)</span>
-
-<span class="c1"># Remove `&#39;cg04092699&#39;` from mean coefs</span>
-<span class="c1"># mean_coefs = mean_coefs.drop(&#39;cg04092699&#39;)</span>
 
 <span class="n">df_validation</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span>
     <span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;201samples_357839cpgs_withbatchcorrection_bvalues.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()[</span><span class="n">mean_coefs</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
@@ -516,7 +512,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/ceb5e79c536bb759ce98182c8320b7caeaa0bf3278ac34b269eee2a74bf6e993.png" src="../_images/ceb5e79c536bb759ce98182c8320b7caeaa0bf3278ac34b269eee2a74bf6e993.png" />
+<img alt="../_images/2c725524202023ad440368e75cd692bf2869962105d907efcc5a2f0f50578b8c.png" src="../_images/2c725524202023ad440368e75cd692bf2869962105d907efcc5a2f0f50578b8c.png" />
 </div>
 </div>
 </section>
@@ -563,7 +559,7 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">score_name</span> <span class="o">=</span> <span class="s1">&#39;MethylScoreAML_Px&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">score_name</span> <span class="o">=</span> <span class="s1">&#39;EWASCox_EFS_55CpGs&#39;</span>
 
 <span class="n">df_test</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="n">generate_coxph_score</span><span class="p">(</span><span class="n">coef_mean</span><span class="o">=</span><span class="n">mean_coefs</span><span class="p">,</span>
                                         <span class="n">x</span><span class="o">=</span><span class="n">x_test_m_z</span><span class="p">,</span>
@@ -571,6 +567,8 @@ document.write(`
                                         <span class="n">score_name</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
                                         <span class="n">train_test</span><span class="o">=</span><span class="mf">0.1934</span><span class="p">,</span>
                                         <span class="n">rpart_outcome</span><span class="o">=</span><span class="s1">&#39;efs.time&#39;</span><span class="p">)</span>
+
+<span class="n">df_test</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;multivariate_cox_lasso/ewas_cog_efs_55cpgs_test.xlsx&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

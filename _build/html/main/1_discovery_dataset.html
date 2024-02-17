@@ -61,7 +61,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'main/1_discovery_dataset';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Validation Dataset" href="2_validation_dataset.html" />
+    <link rel="next" title="Validation Dataset" href="2_validation_dataset_v2.html" />
     <link rel="prev" title="Overview" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -174,7 +174,6 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Main Story</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Discovery Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2_validation_dataset.html">Validation Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_reclassification_strategy.html">Dx and Px Reclassification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_models.html">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_plots.html">Data Visualization</a></li>
@@ -1178,7 +1177,7 @@ Succesfully corrected batch effects in the training dataset.
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;Batch&#39;</span><span class="p">)</span>
 
-<span class="n">dataset_title</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">samples_</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">cpgs_withbatchcorrection_bvalues.pkl&#39;</span>
+<span class="n">dataset_title</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">samples_</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1">cpgs_withbatchcorrection_bvalues.pkl&#39;</span>
 
 <span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="n">dataset_title</span><span class="p">)</span>
 
@@ -1393,7 +1392,7 @@ Architecture: 64bit
       </div>
     </a>
     <a class="right-next"
-       href="2_validation_dataset.html"
+       href="2_validation_dataset_v2.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
