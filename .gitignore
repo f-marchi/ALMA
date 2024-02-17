@@ -11,6 +11,7 @@
 .past_code_files
 .benchmarking
 *.drawio.bkp
+.utils
 
 # Compiled source #
 ###################
