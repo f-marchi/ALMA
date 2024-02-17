@@ -231,9 +231,9 @@ def draw_forest_plot(time, event, df, save_plot=False, trialname=None, model_nam
                         figsize=(9, 5),
                         vertical_align=True)
     fp.errorbar(index=2, errorbar_kwds=None)
-    fp.axd[2].set_xlim([1, 8.5])
-    fp.axd[2].set_xticks([0, 2, 4, 6, 8])
-    fp.axd[2].set_xticklabels(labels=[0, 2, 4, 6, 8], fontdict={'fontsize': 8})
+    fp.axd[2].set_xlim([1, 10.5])
+    fp.axd[2].set_xticks([0, 2, 4, 6, 8, 10])
+    fp.axd[2].set_xticklabels(labels=[0, 2, 4, 6, 8, 10], fontdict={'fontsize': 8})
     fp.axd[2].set_xlabel("Hazard Ratio", fontsize=8)
     fp.axd[2].axvline(x=1, ymin=0, ymax=1.0, color="black", alpha=0.5)
 
@@ -352,9 +352,9 @@ def draw_forest_plot_noMRD(time, event, df, save_plot=False, trialname=None, mod
                         figsize=(9, 5),
                         vertical_align=True)
     fp.errorbar(index=2, errorbar_kwds=None)
-    fp.axd[2].set_xlim([1, 8.5])
-    fp.axd[2].set_xticks([0, 2, 4, 6, 8])
-    fp.axd[2].set_xticklabels(labels=[0, 2, 4, 6, 8], fontdict={'fontsize': 8})
+    fp.axd[2].set_xlim([1, 10.5])
+    fp.axd[2].set_xticks([0, 2, 4, 6, 8, 10])
+    fp.axd[2].set_xticklabels(labels=[0, 2, 4, 6, 8, 10], fontdict={'fontsize': 8})
     fp.axd[2].set_xlabel("Hazard Ratio", fontsize=8)
     fp.axd[2].axvline(x=1, ymin=0, ymax=1.0, color="black", alpha=0.5)
 
@@ -481,9 +481,9 @@ def draw_forest_plot_withBMblast(time, event, df, save_plot=False, trialname=Non
                         figsize=(9, 5),
                         vertical_align=True)
     fp.errorbar(index=2, errorbar_kwds=None)
-    fp.axd[2].set_xlim([1, 8.5])
-    fp.axd[2].set_xticks([0, 2, 4, 6, 8])
-    fp.axd[2].set_xticklabels(labels=[0, 2, 4, 6, 8], fontdict={'fontsize': 8})
+    fp.axd[2].set_xlim([1, 10.5])
+    fp.axd[2].set_xticks([0, 2, 4, 6, 8, 10])
+    fp.axd[2].set_xticklabels(labels=[0, 2, 4, 6, 8, 10], fontdict={'fontsize': 8})
     fp.axd[2].set_xlabel("Hazard Ratio", fontsize=8)
     fp.axd[2].axvline(x=1, ymin=0, ymax=1.0, color="black", alpha=0.5)
 

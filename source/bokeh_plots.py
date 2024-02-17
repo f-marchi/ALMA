@@ -50,14 +50,14 @@ def get_custom_color_palette():
 
 def plot_linked_scatters(df):
 
-    # Rank samples by P(High Risk) and call it "Percentile"
-    df_px = df[~df['P(High Risk)'].isna()]
-    df_px2 = df_px.sort_values(by='P(High Risk)').reset_index().reset_index(names=['Percentile']).set_index('index')
+    # Rank samples by AML Epigenomic Risk P(High Risk) and call it "Percentile"
+    df_px = df[~df['AML Epigenomic Risk P(High Risk)'].isna()]
+    df_px2 = df_px.sort_values(by='AML Epigenomic Risk P(High Risk)').reset_index().reset_index(names=['Percentile']).set_index('index')
     df_px2['Percentile'] = df_px2['Percentile'] / len(df_px2['Percentile'])
     df2 = df.join(df_px2[['Percentile']])
     
     source = ColumnDataSource(df2)
-    tooltips = [("WHO Dx", "@{WHO 2022 Diagnosis}")]
+    tooltips = [("WHO 2022 Diagnosis", "@{WHO 2022 Diagnosis}")]
     width = 1000
     tools = "pan,wheel_zoom,box_select,reset,save"
     active_drag = "box_select"
@@ -96,7 +96,7 @@ def plot_linked_scatters(df):
     p1.add_layout(label2)
 
 
-    scatter1 = p1.circle(y='Percentile', x='P(High Risk)', source=source, selection_color='#ff7f0e', 
+    scatter1 = p1.circle(y='Percentile', x='AML Epigenomic Risk P(High Risk)', source=source, selection_color='#ff7f0e', 
                 nonselection_alpha=1.0, color='#1f77b4', size=5, alpha=0.8, hover_color='#ff7f0e',
                 hover_alpha=1.0)
 
@@ -109,7 +109,7 @@ def plot_linked_scatters(df):
         color_mapper = CategoricalColorMapper(factors=factors, palette=custom_color_palette)
 
         p2 = figure(title='Acute Leukemia Methylome Atlas', width=width, height=600,
-                    tools="pan,wheel_zoom,box_select,reset,save", tooltips=tooltips, 
+                    tools="pan,wheel_zoom,box_select,reset,save", tooltips= [(str(col),'@{'+ str(col)+'}')], 
                     x_axis_label='Longitude (PaCMAP 1)', y_axis_label='Latitude (PaCMAP 2)',
                     active_drag="box_select", x_range= (-45,40), y_range=(-50,45),)
 
