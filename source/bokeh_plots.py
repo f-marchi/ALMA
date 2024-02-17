@@ -155,7 +155,7 @@ def plot_linked_scatters(df):
 
     return(show(column(tabs_control,p1,data_table)))
 
-def plot_roc_auc(df, target, model_name, risk_group='Risk Group', title=None):
+def plot_roc_auc_with_riskgroup(df, target, model_name, risk_group='Risk Group', title=None, sum_models=False):
     """
     Plots ROC AUC flexibly using Bokeh.
     
@@ -167,7 +167,7 @@ def plot_roc_auc(df, target, model_name, risk_group='Risk Group', title=None):
     - title: Title of the plot.
     """
 
-    def category_to_integer(df, model_name, risk_group=None):
+    def category_to_integer(df, model_name, risk_group=None, sum_models=sum_models):
 
         df_ = df.copy()        
         low_high_dict = {'Low': 0, 'Low Risk': 0,
@@ -176,12 +176,14 @@ def plot_roc_auc(df, target, model_name, risk_group='Risk Group', title=None):
 
         if df[model_name].dtype == 'O':
             df_[model_name] = df_[model_name].map(low_high_dict)
-        else:
-            pass
+            
         df_[risk_group] = df_[risk_group].map(low_high_dict)
-        df_[model_name + ' + ' + risk_group] = (df_[model_name] + df_[risk_group])/2
 
-        df_ = df_[[model_name, risk_group, model_name + ' + ' + risk_group, target]]
+        if sum_models:
+            df_[model_name + ' + ' + risk_group] = (df_[model_name] + df_[risk_group])/2
+            df_ = df_[[model_name + ' + ' + risk_group, target]]
+        else:
+            df_ = df_[[model_name, risk_group, target]]
 
         # drop rows with missing values
         df_ = df_.dropna()
@@ -189,14 +191,19 @@ def plot_roc_auc(df, target, model_name, risk_group='Risk Group', title=None):
         return df_
 
     df = category_to_integer(df, model_name, risk_group=risk_group)
-    
+
     # colors = itertools.cycle(Spectral11)
     colors = ['navy', 'firebrick', 'olive']
 
-    p = figure(title=title + ', n=' + str(len(df)),
+    if title:
+        title_ = title + ', n=' + str(len(df))
+    else:
+        title_ = ''
+
+    p = figure(title=title_,
                x_axis_label='False Positive Rate',
                y_axis_label='True Positive Rate',
-               width=400, height=400,
+               width=325, height=325,
                tools='save,reset,pan')
     
     p.line([0, 1], [0, 1], line_dash="dashed", color="gray", line_width=1)
@@ -204,16 +211,79 @@ def plot_roc_auc(df, target, model_name, risk_group='Risk Group', title=None):
     for column, color in zip(df.columns.difference([target]), colors):
         fpr, tpr, _ = roc_curve(df[target], df[column])
         roc_auc = auc(fpr, tpr)
-        p.line(fpr, tpr, legend_label=f"{column} (AUC = {roc_auc:.2f})",
+        p.line(fpr, tpr, legend_label=f"{column}\nAUC = {roc_auc:.2f}",
                color=color, line_width=2, alpha=0.8)
 
     p.legend.location = "bottom_right"
     p.legend.click_policy="hide"
     p.toolbar.logo = None
     p.legend.label_text_font_size = '8pt'
-    p.legend.spacing = -5
+    p.legend.spacing = 2
     p.xaxis.axis_label_text_font_style = "normal"
     p.yaxis.axis_label_text_font_style = "normal"
-    p.legend.background_fill_alpha = 0.6
+    p.legend.background_fill_alpha = 0.8
+    p.title.text_font_size = '9pt'
 
     return p
+
+def plot_multiclass_roc_auc(df, target_columns, title=None):
+    """
+    Plots ROC AUC for multiple classes using Bokeh, targeting multiple classes,
+    with legend below the plot.
+    """
+    
+    colors = get_custom_color_palette()
+    
+    if title:
+        title_ = title + ', n=' + str(len(df))
+    else:
+        title_ = ''
+
+    # Initialize figure without a legend inside it
+    p = figure(title=title_,
+               x_axis_label='False Positive Rate',
+               y_axis_label='True Positive Rate',
+               width=350, height=800,
+               tools='save,reset,pan')
+    
+    p.line([0, 1], [0, 1], line_dash="dashed", color="gray", line_width=1)
+
+    legend_items = []  # To hold the legend items
+
+    for target, color in zip(target_columns, colors):
+        column = 'P(' + target + ')'
+        if column in df.columns:  # Check if the probability column exists
+            fpr, tpr, _ = roc_curve(df[target], df[column])
+            roc_auc = auc(fpr, tpr)
+            line = p.line(fpr, tpr,
+                          color=color, line_width=2, alpha=0.8)
+            # Create legend items manually
+            legend_items.append(LegendItem(label=f"{column} ({roc_auc:.2f})", renderers=[line]))
+
+    # Create a Legend with the collected items and add it below the plot
+    legend = Legend(items=legend_items, spacing=0, location="left",
+                    label_text_font_size='7pt', click_policy="hide",
+                    background_fill_alpha=0.8)
+    p.add_layout(legend, 'below')
+
+
+    p.toolbar.logo = None
+    p.xaxis.axis_label_text_font_style = "normal"
+    p.yaxis.axis_label_text_font_style = "normal"
+    p.xaxis.axis_label_text_font_size = '8pt'
+    p.yaxis.axis_label_text_font_size = '8pt'
+    p.title.text_font_size = '10pt'
+
+    return p
+
+def process_dataset_for_multiclass_auc(df):
+    # One hot encode `df_dx['AL Epigenomic Phenotype']`
+    df_dx_dummies = pd.get_dummies(df['WHO 2022 Diagnosis'])
+
+    # transform boolean columns to integer
+    df_dx_dummies = df_dx_dummies.astype(int)
+
+    # join the one hot encoded columns with the original dataframe
+    df_dx_auc = pd.concat([df.iloc[:, -26:-1], df_dx_dummies], axis=1)
+
+    return df_dx_auc, df_dx_dummies
