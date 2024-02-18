@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
@@ -174,6 +174,7 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Main Story</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_discovery_dataset.html">Discovery Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_validation_dataset_v2.html">Validation Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_reclassification_strategy.html">Dx and Px Reclassification</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_plots.html">Data Visualization</a></li>
@@ -685,7 +686,12 @@ X_train shape: (1844, 5) X_test shape: (201, 5)
 </section>
 <section id="benchmark-classifiers">
 <h2>Benchmark classifiers<a class="headerlink" href="#benchmark-classifiers" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
 <span class="kn">from</span> <span class="nn">lightgbm</span> <span class="kn">import</span> <span class="n">LGBMClassifier</span>
@@ -739,6 +745,7 @@ X_train shape: (1844, 5) X_test shape: (201, 5)
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best parameters: {&#39;class_weight&#39;: &#39;balanced&#39;, &#39;reg_alpha&#39;: 1, &#39;reg_lambda&#39;: 1}
 Overall accuracy score in Train with 10-fold CV: 0.912
@@ -873,8 +880,11 @@ Architecture: 64bit
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>With the specs above, pacmap training took 3m 22.9s and lightgbm training took 28.0s.</p>
-<p>Updating to python 3.10 caused substantial delays in lightgbm, so keep python at 3.8.16.</p>
+<p>Updating to python 3.10 caused substantial delays in lightgbm, so please use the following versions:
+<code class="docutils literal notranslate"><span class="pre">python</span></code>: 3.8.16
+<code class="docutils literal notranslate"><span class="pre">pacmap</span></code>: 0.7.0
+<code class="docutils literal notranslate"><span class="pre">lightgbm</span></code>: 3.3.5
+<code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>: 1.2.2</p>
 </div>
 </section>
 </section>
