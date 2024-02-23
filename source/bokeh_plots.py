@@ -8,7 +8,7 @@ from bokeh.layouts import column, gridplot
 from bokeh.plotting import figure, show, save, output_notebook
 from bokeh.models import (TabPanel, Tabs, Legend, ColumnDataSource, LegendItem,
                           CDSView, GroupFilter, CategoricalColorMapper, Label,
-                          DataTable, HoverTool, TableColumn)
+                          DataTable, HoverTool, TableColumn, Span)
 from sklearn.metrics import roc_curve, auc
 
 
@@ -48,7 +48,7 @@ def get_custom_color_palette():
     ]
     return list
 
-def plot_linked_scatters(df):
+def plot_linked_scatters(df, table=True, test_sample=None):
 
     # Rank samples by AML Epigenomic Risk P(High Risk) and call it "Percentile"
     df_px = df[~df['AML Epigenomic Risk P(High Risk)'].isna()]
@@ -57,11 +57,11 @@ def plot_linked_scatters(df):
     df2 = df.join(df_px2[['Percentile']])
     
     source = ColumnDataSource(df2)
-    tooltips = [("WHO 2022 Diagnosis", "@{WHO 2022 Diagnosis}")]
     width = 1000
-    tools = "pan,wheel_zoom,box_select,reset,save"
-    active_drag = "box_select"
     font_size = "8pt"
+    x= 'AML Epigenomic Risk P(High Risk)'
+    y = 'Percentile'
+    threshold = 0.5
 
     custom_color_palette = get_custom_color_palette()
 
@@ -78,10 +78,8 @@ def plot_linked_scatters(df):
 
     p1 = figure(title= 'AML Epigenomic Risk' ,width=width, height=300,
                 tools="xbox_select,reset,save", active_drag='xbox_select',
-                x_axis_label='AML Epigenomic Risk Score', y_axis_label="est. probability of progression")
+                x_axis_label=x, y_axis_label="est. probability of progression")
     p1.toolbar.logo = None
-
-    threshold = 0.5  # Set your threshold value
 
     # Add background color to plot1
     p1.quad(left=0, right=threshold, bottom=0, top=1, color="#1f77b4", level="underlay", alpha=0.2)
@@ -92,15 +90,31 @@ def plot_linked_scatters(df):
                    text_color='#ff7f0e', text_alpha=0.8, text_align='left')
     label2 = Label(y=0.05, x=threshold - 0.01, text='Low Risk', text_font_size='8pt',
                    text_color='#1f77b4', text_alpha=0.8, text_align='right')
+    
     p1.add_layout(label1)
     p1.add_layout(label2)
 
 
-    scatter1 = p1.circle(y='Percentile', x='AML Epigenomic Risk P(High Risk)', source=source, selection_color='#ff7f0e', 
-                nonselection_alpha=1.0, color='#1f77b4', size=5, alpha=0.8, hover_color='#ff7f0e',
-                hover_alpha=1.0)
+    # scatter1 = p1.circle(y='Percentile', x='AML Epigenomic Risk P(High Risk)', source=source, selection_color='#ff7f0e', 
+    #             nonselection_alpha=1.0, color='#1f77b4', size=5, alpha=0.8, hover_color='#ff7f0e',
+    #             hover_alpha=1.0)
 
-    scatter1_hover_tool = HoverTool(renderers=[scatter1], tooltips=tooltips)
+    
+    scatter1 = p1.circle(y, x, source=source, color="steelblue", alpha=0.1, 
+                size=7, hover_alpha=0.5, line_color=None,hover_fill_color="midnightblue",
+                hover_line_color="white", selection_color="midnightblue")
+
+    scatter1_hover_tool = HoverTool(renderers=[scatter1], mode='vline', tooltips=None)
+
+    if test_sample:
+        vline = Span(location=df2.loc[test_sample]['AML Epigenomic Risk P(High Risk)'],
+                     dimension='height', line_color='black', line_dash='dashed', line_alpha=0.8)
+        p1.renderers.extend([vline])
+        p1.star(x=df2.loc[test_sample]['AML Epigenomic Risk P(High Risk)'],
+                y=df2.loc[test_sample]['Percentile']-0.01,
+                size=15, color="black", alpha=0.9, legend_label=test_sample,
+                line_color="black", line_width=1)
+
 
     tabs = []
 
@@ -130,6 +144,15 @@ def plot_linked_scatters(df):
             view = CDSView(filter=GroupFilter(column_name=col, group=factor))
             p2.scatter(x="PaCMAP 1 of 2", y="PaCMAP 2 of 2", source=source, view=view, 
                     color={'field': col, 'transform': color_mapper}, size=3, alpha=0.8, radius=0.2)
+        if test_sample:
+                vline = Span(location=df2.loc[test_sample]['PaCMAP 1 of 2'],
+                            dimension='height', line_color="black", line_dash='dashed',line_alpha=0.8)
+                hline = Span(location=df2.loc[test_sample]['PaCMAP 2 of 2'],
+                            dimension='width', line_color="black", line_dash='dashed',line_alpha=0.8)
+                p2.renderers.extend([vline, hline])
+                p2.star(x=df2.loc[test_sample]['PaCMAP 1 of 2'], y=df2.loc[test_sample]['PaCMAP 2 of 2'],
+                size=15, color="black", alpha=0.9, legend_label=test_sample,
+                 line_color="black", line_width=1)
 
         # Create a list of legend items
         legend_items = [LegendItem(label=factor, renderers=[r]) for factor, r in zip(factors, p2.renderers)]
@@ -152,8 +175,10 @@ def plot_linked_scatters(df):
     p1.add_tools(scatter1_hover_tool)
 
     # save(column(tabs_control,p1,data_table), filename="FM_interactive_plots_1-30-24_preliminary.html", title="AL Methylome Atlas")
-
-    return(show(column(tabs_control,p1,data_table)))
+    if table:
+        return(show(column(tabs_control,p1,data_table)))
+    else:
+        return(show(column(tabs_control,p1)))
 
 def plot_roc_auc_with_riskgroup(df, target, model_name, risk_group='Risk Group', title=None, sum_models=False):
     """

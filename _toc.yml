@@ -8,7 +8,8 @@ parts:
       - file: main/3_reclassification_strategy.ipynb
       - file: main/4_models.ipynb
       - file: main/5_plots.ipynb
-      - file: main/6_new_data_test.ipynb
+      - file: main/6_specimen_to_result_test.ipynb
+      - file: main/7_specimen_to_result_atlas.ipynb
 
   - caption: Benchmarks
     chapters:
