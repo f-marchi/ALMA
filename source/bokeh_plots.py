@@ -95,8 +95,9 @@ def plot_linked_scatters(df, table=True, test_sample=None):
     p1.add_layout(label2)
 
     scatter1 = p1.circle(y, x, source=source, color="steelblue", alpha=0.1, 
-                size=7, hover_alpha=0.5, line_color=None,hover_fill_color="midnightblue",
-                hover_line_color="white", selection_color="midnightblue", selection_alpha=0.7)
+                size=7, hover_alpha=0.5, line_color=None, hover_fill_color="midnightblue",
+                hover_line_color="white", selection_color="midnightblue", selection_alpha=0.7,
+                selection_line_color="white", )
 
     scatter1_hover_tool = HoverTool(renderers=[scatter1], mode='vline', tooltips=None)
 
@@ -106,11 +107,13 @@ def plot_linked_scatters(df, table=True, test_sample=None):
         p1.renderers.extend([vline])
         p1.star(x=df2.loc[test_sample]['AML Epigenomic Risk P(High Risk)'],
                 y=df2.loc[test_sample]['Percentile']-0.01,
-                size=15, color="black", alpha=0.9, legend_label=test_sample,
+                size=15, color="black", alpha=0.9, 
+                legend_label=f'{test_sample}, {df2.loc[test_sample]["AML Epigenomic Risk"]} Epigenomic Risk ({df2.loc[test_sample]["AML Epigenomic Risk P(High Risk)"]:.2f})',
                 line_color="black", line_width=1)
         
         # move `p1.star` legend to bottom right
         p1.legend.location = "bottom_right"
+        p1.legend.click_policy = "hide"
 
     tabs = []
 
@@ -149,6 +152,7 @@ def plot_linked_scatters(df, table=True, test_sample=None):
                 p2.star(x=df2.loc[test_sample]['PaCMAP 1 of 2'], y=df2.loc[test_sample]['PaCMAP 2 of 2'],
                 size=15, color="black", alpha=0.9, legend_label=test_sample,
                  line_color="black", line_width=1)
+                p2.legend.click_policy = "hide"
 
         # Create a list of legend items
         legend_items = [LegendItem(label=factor, renderers=[r]) for factor, r in zip(factors, p2.renderers)]
