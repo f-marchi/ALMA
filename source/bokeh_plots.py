@@ -94,12 +94,6 @@ def plot_linked_scatters(df, table=True, test_sample=None):
     p1.add_layout(label1)
     p1.add_layout(label2)
 
-
-    # scatter1 = p1.circle(y='Percentile', x='AML Epigenomic Risk P(High Risk)', source=source, selection_color='#ff7f0e', 
-    #             nonselection_alpha=1.0, color='#1f77b4', size=5, alpha=0.8, hover_color='#ff7f0e',
-    #             hover_alpha=1.0)
-
-    
     scatter1 = p1.circle(y, x, source=source, color="steelblue", alpha=0.1, 
                 size=7, hover_alpha=0.5, line_color=None,hover_fill_color="midnightblue",
                 hover_line_color="white", selection_color="midnightblue", selection_alpha=0.7)
@@ -117,7 +111,6 @@ def plot_linked_scatters(df, table=True, test_sample=None):
         
         # move `p1.star` legend to bottom right
         p1.legend.location = "bottom_right"
-
 
     tabs = []
 
