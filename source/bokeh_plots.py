@@ -102,7 +102,7 @@ def plot_linked_scatters(df, table=True, test_sample=None):
     
     scatter1 = p1.circle(y, x, source=source, color="steelblue", alpha=0.1, 
                 size=7, hover_alpha=0.5, line_color=None,hover_fill_color="midnightblue",
-                hover_line_color="white", selection_color="midnightblue")
+                hover_line_color="white", selection_color="midnightblue", selection_alpha=0.7)
 
     scatter1_hover_tool = HoverTool(renderers=[scatter1], mode='vline', tooltips=None)
 
@@ -114,6 +114,9 @@ def plot_linked_scatters(df, table=True, test_sample=None):
                 y=df2.loc[test_sample]['Percentile']-0.01,
                 size=15, color="black", alpha=0.9, legend_label=test_sample,
                 line_color="black", line_width=1)
+        
+        # move `p1.star` legend to bottom right
+        p1.legend.location = "bottom_right"
 
 
     tabs = []
