@@ -8,6 +8,9 @@ parts:
       - file: main/3_reclassification_strategy.ipynb
       - file: main/4_models.ipynb
       - file: main/5_plots.ipynb
+
+  - caption: Specimen-to-Result Testing
+    chapters:
       - file: main/6_specimen_to_result_test.ipynb
       - file: main/7_specimen_to_result_atlas.ipynb
 
@@ -15,7 +18,7 @@ parts:
     chapters:
       - file: tests/ewasCox_vs_pacmapLGBM.ipynb
       
-  - caption: EWAS+CoxPHLasso
+  - caption: Supplementary Material
     chapters:
       - file: tests/2_Univariate_CoxPH-EWAS_v4.ipynb
       - file: tests/3.1_MethylScoreAML_Px_Development_v5.ipynb
