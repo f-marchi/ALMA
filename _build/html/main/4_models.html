@@ -178,7 +178,8 @@
 <li class="toctree-l1"><a class="reference internal" href="3_reclassification_strategy.html">Dx and Px Reclassification</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_plots.html">Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6_new_data_test.html">Specimen-to-result Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_specimen_to_result_test.html">Specimen-to-result Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_specimen_to_result_atlas.html">Specimen-to-result atlas interface</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Benchmarks</span></p>
 <ul class="nav bd-sidenav">
@@ -472,8 +473,6 @@ document.write(`
     <span class="c1"># Turn embedding into dataframe</span>
     <span class="n">df_embedding</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">embedding_training</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">cols</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span>
         <span class="n">output_path</span><span class="o">+</span><span class="sa">f</span><span class="s1">&#39;pacmap_</span><span class="si">{</span><span class="n">components</span><span class="si">}</span><span class="s1">d_embedding.pkl&#39;</span><span class="p">)</span>
-
-<span class="c1"># # Time to run: 3m 22.9s</span>
 </pre></div>
 </div>
 </div>
