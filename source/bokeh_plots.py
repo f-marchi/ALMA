@@ -48,7 +48,7 @@ def get_custom_color_palette():
     ]
     return list
 
-def plot_linked_scatters(df, table=True, test_sample=None):
+def plot_linked_scatters(df, table=True, test_sample=None, xaxis = "PaCMAP 1 of 2", yaxis = "PaCMAP 2 of 2"):
 
     # Rank samples by AML Epigenomic Risk P(High Risk) and call it "Percentile"
     df_px = df[~df['AML Epigenomic Risk P(High Risk)'].isna()]
@@ -141,15 +141,15 @@ def plot_linked_scatters(df, table=True, test_sample=None):
         # Create scatter plot for each factor
         for factor in factors:
             view = CDSView(filter=GroupFilter(column_name=col, group=factor))
-            p2.scatter(x="PaCMAP 1 of 2", y="PaCMAP 2 of 2", source=source, view=view, 
+            p2.scatter(x=xaxis, y=yaxis, source=source, view=view, 
                     color={'field': col, 'transform': color_mapper}, size=3, alpha=0.8, radius=0.2)
         if test_sample:
-                vline = Span(location=df2.loc[test_sample]['PaCMAP 1 of 2'],
+                vline = Span(location=df2.loc[test_sample][xaxis],
                             dimension='height', line_color="black", line_dash='dashed',line_alpha=0.8)
-                hline = Span(location=df2.loc[test_sample]['PaCMAP 2 of 2'],
+                hline = Span(location=df2.loc[test_sample][yaxis],
                             dimension='width', line_color="black", line_dash='dashed',line_alpha=0.8)
                 p2.renderers.extend([vline, hline])
-                p2.star(x=df2.loc[test_sample]['PaCMAP 1 of 2'], y=df2.loc[test_sample]['PaCMAP 2 of 2'],
+                p2.star(x=df2.loc[test_sample][xaxis], y=df2.loc[test_sample][yaxis],
                 size=15, color="black", alpha=0.9, legend_label=test_sample,
                  line_color="black", line_width=1)
                 p2.legend.click_policy = "hide"
