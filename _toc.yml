@@ -11,8 +11,9 @@ parts:
 
   - caption: Specimen-to-Result Testing
     chapters:
-      - file: main/6_specimen_to_result_test.ipynb
-      - file: main/7_specimen_to_result_atlas.ipynb
+      - file: main/6_test_dataset.ipynb
+      - file: main/7_test_models.ipynb
+      - file: main/8_test_atlas.ipynb
 
   - caption: Benchmarks
     chapters:

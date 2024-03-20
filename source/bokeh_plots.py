@@ -48,7 +48,8 @@ def get_custom_color_palette():
     ]
     return list
 
-def plot_linked_scatters(df, table=True, test_sample=None, xaxis = "PaCMAP 1 of 2", yaxis = "PaCMAP 2 of 2"):
+def plot_linked_scatters(df, table=True, test_sample=None, xaxis = "PaCMAP 1 of 2", yaxis = "PaCMAP 2 of 2",
+                          x_range= (-45,40), y_range=(-50,45)):
 
     # Rank samples by AML Epigenomic Risk P(High Risk) and call it "Percentile"
     df_px = df[~df['AML Epigenomic Risk P(High Risk)'].isna()]
@@ -123,8 +124,8 @@ def plot_linked_scatters(df, table=True, test_sample=None, xaxis = "PaCMAP 1 of 
 
         p2 = figure(title='Acute Leukemia Methylome Atlas', width=width, height=600,
                     tools="pan,wheel_zoom,box_select,reset,save", tooltips= [(str(col),'@{'+ str(col)+'}')], 
-                    x_axis_label='Longitude (PaCMAP 1)', y_axis_label='Latitude (PaCMAP 2)',
-                    active_drag="box_select", x_range= (-45,40), y_range=(-50,45),)
+                    x_axis_label=xaxis, y_axis_label=yaxis,
+                    active_drag="box_select", x_range= x_range, y_range=y_range)
 
         p2.toolbar.logo = None
         p2.toolbar_location = 'above'
@@ -150,7 +151,7 @@ def plot_linked_scatters(df, table=True, test_sample=None, xaxis = "PaCMAP 1 of 
                             dimension='width', line_color="black", line_dash='dashed',line_alpha=0.8)
                 p2.renderers.extend([vline, hline])
                 p2.star(x=df2.loc[test_sample][xaxis], y=df2.loc[test_sample][yaxis],
-                size=15, color="black", alpha=0.9, legend_label=test_sample,
+                size=15, color="black", alpha=0.9, legend_label=f'Sample: {test_sample}\nPrediction: {df2.loc[test_sample]["AL Epigenomic Phenotype"]}',
                  line_color="black", line_width=1)
                 p2.legend.click_policy = "hide"
 
