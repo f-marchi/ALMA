@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
@@ -54,10 +54,18 @@
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'main/4_models';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -181,8 +189,9 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Specimen-to-Result Testing</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="6_specimen_to_result_test.html">Specimen testing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7_specimen_to_result_atlas.html">Specimen mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_test_dataset.html">Harmonize ONT reads with array reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_test_models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_test_atlas.html">Specimen mapping</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Benchmarks</span></p>
 <ul class="nav bd-sidenav">
@@ -394,7 +403,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">mount</span> <span class="o">=</span> <span class="s1">&#39;/mnt/d/&#39;</span>
+<span class="n">mount</span> <span class="o">=</span> <span class="s1">&#39;/mnt/e/&#39;</span>
 <span class="n">input_path</span> <span class="o">=</span> <span class="n">mount</span> <span class="o">+</span> <span class="s1">&#39;MethylScore/Intermediate_Files/&#39;</span>
 <span class="n">output_path</span> <span class="o">=</span> <span class="n">mount</span> <span class="o">+</span> <span class="s1">&#39;MethylScore/Processed_Data/&#39;</span>
 </pre></div>
@@ -414,7 +423,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read df_discovery and df_validation</span>
 <span class="n">df_discovery</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span>
-    <span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;3308samples_333058cpgs_withbatchcorrection_bvalues.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;3308samples_333059cpgs_withbatchcorrection_bvalues.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span>
 
 <span class="n">df_validation</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span>
     <span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;201samples_427375cpgs_withbatchcorrection_bvalues.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()[</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
@@ -484,7 +493,7 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PaCMAP version: 0.7.0
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/fmarchi/projects/AML-atlas-notebooks/.venv/lib/python3.8/site-packages/pacmap/pacmap.py:819: UserWarning: Warning: random state is set to 42
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/marchi/projects/AL_atlas_notebooks/.venv_py38/lib/python3.8/site-packages/pacmap/pacmap.py:819: UserWarning: Warning: random state is set to 42
   warnings.warn(f&#39;Warning: random state is set to {_RANDOM_STATE}&#39;)
 </pre></div>
 </div>
@@ -492,7 +501,7 @@ document.write(`
 To load the instance again, please do `pacmap.load(../models/pacmap_2d_model_al_atlas)`.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/fmarchi/projects/AML-atlas-notebooks/.venv/lib/python3.8/site-packages/pacmap/pacmap.py:819: UserWarning: Warning: random state is set to 42
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/marchi/projects/AL_atlas_notebooks/.venv_py38/lib/python3.8/site-packages/pacmap/pacmap.py:819: UserWarning: Warning: random state is set to 42
   warnings.warn(f&#39;Warning: random state is set to {_RANDOM_STATE}&#39;)
 </pre></div>
 </div>
@@ -857,21 +866,21 @@ Overall accuracy score in Validation: 0.711
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Author: Francisco_Marchi@Lamba_Lab_UF
 
 Python implementation: CPython
-Python version       : 3.8.16
-IPython version      : 8.12.3
+Python version       : 3.8.18
+IPython version      : 8.12.2
 
-numpy   : 1.24.4
-pandas  : 2.0.3
+numpy   : 1.24.3
+pandas  : 2.0.2
 pacmap  : 0.7.0
 sklearn : 1.2.2
 lightgbm: 3.3.5
 
-Compiler    : GCC 11.3.0
+Compiler    : GCC 11.4.0
 OS          : Linux
 Release     : 5.15.133.1-microsoft-standard-WSL2
 Machine     : x86_64
 Processor   : x86_64
-CPU cores   : 6
+CPU cores   : 32
 Architecture: 64bit
 </pre></div>
 </div>
