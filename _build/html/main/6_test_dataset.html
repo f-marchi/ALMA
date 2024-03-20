@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Harmonize ONT reads with array reference &#8212; Acute Leukemia Methylome Atlas Study</title>
+    <title>Preprocess long-read epigenomics &#8212; Acute Leukemia Methylome Atlas Study</title>
   
   
   
@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'main/6_test_dataset';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Models" href="7_test_models.html" />
+    <link rel="next" title="Run epigenomic models" href="7_test_models.html" />
     <link rel="prev" title="Data Visualization" href="5_plots.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -189,9 +189,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Specimen-to-Result Testing</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Harmonize ONT reads with array reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7_test_models.html">Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8_test_atlas.html">Specimen mapping</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Preprocess long-read epigenomics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_test_models.html">Run epigenomic models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_test_atlas.html">Specimen final mapping</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Benchmarks</span></p>
 <ul class="nav bd-sidenav">
@@ -344,7 +344,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Harmonize ONT reads with array reference</h1>
+    <h1>Preprocess long-read epigenomics</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -372,8 +372,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="harmonize-ont-reads-with-array-reference">
-<h1>Harmonize ONT reads with array reference<a class="headerlink" href="#harmonize-ont-reads-with-array-reference" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="preprocess-long-read-epigenomics">
+<h1>Preprocess long-read epigenomics<a class="headerlink" href="#preprocess-long-read-epigenomics" title="Link to this heading">#</a></h1>
 <ol class="arabic">
 <li><p>Converting unaligned CRAM to FASTQ for Minimap2 aligment:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>samtools<span class="w"> </span>bam2fq<span class="w"> </span>-@<span class="w"> </span><span class="m">32</span><span class="w"> </span>-T<span class="w"> </span><span class="m">1</span><span class="w"> </span>--reference<span class="w"> </span>./ref/hg38.fna<span class="w"> </span>cram/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.pass.cram<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
@@ -1457,7 +1457,7 @@ samtools<span class="w"> </span>sort<span class="w"> </span>-@<span class="w"> <
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Models</p>
+        <p class="prev-next-title">Run epigenomic models</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

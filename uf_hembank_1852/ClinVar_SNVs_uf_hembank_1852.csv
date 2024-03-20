@@ -1,0 +1,816 @@
+Sample,Chrom,Pos,Gene(s),ClinVar,Significance,Type,Consequence,HGVSc,HGVSp
+SAMPLE,chr1,976215,PERM1,1320032,Pathogenic,SNV,Missense variant,NM_001291366.2:c.2330T>C,p.Val777Ala
+SAMPLE,chr1,161223893,APOA2,17936,Pathogenic,SNV,No consequences found,NM_001643.2:c.-323C>T,-
+SAMPLE,chr2,15383297,NBAS,2073004,Pathogenic,Deletion,"Frameshift variant, Non-coding transcript variant",NM_015909.4:c.3274_3277delGAGT,p.Glu1092fs
+SAMPLE,chr2,227010390,COL4A4,1073470,Pathogenic,Deletion,Frameshift variant,NM_000092.5:c.4444delC,p.Leu1482fs
+SAMPLE,chr3,113658634,USF3,1712983,Pathogenic,Deletion,Frameshift variant,NM_001009899.4:c.3047delA,p.Asn1016fs
+SAMPLE,chr3,195783358,MUC4,1713019,Pathogenic,Deletion,"Frameshift variant, Genic upstream transcript variant",NM_018406.7:c.8221delG,p.Glu2741fs
+SAMPLE,chr3,195785085,MUC4,1712964,Pathogenic,Deletion,"Inframe deletion, Genic upstream transcript variant",NM_018406.7:c.6447_6494delAACTTCCTCAGTATCCACAGGTCACGCCACCTCTCTTCCTGTCACCGA,p.Glu2149_Thr2164del
+SAMPLE,chr6,157189781,ARID1B,2231541,Pathogenic,SNV,Splice donor variant,NM_001374828.1:c.4058+1G>A,-
+SAMPLE,chr10,6080046,IL2RA,14670,Pathogenic,SNV,No consequences found,RPL32P23-RBM17:n.6080046T>A,-
+SAMPLE,chr16,72787694,"ZFHX3, ZFHX3-AS1",1802388,Pathogenic,Microsatellite,Inframe insertion,NM_001386735.1:c.10579_10581dupGGC,p.Gly3527dup
+SAMPLE,chr17,21300880,MAP2K3,1713003,Pathogenic,SNV,Missense variant,NM_145109.3:c.286C>T,p.Arg96Trp
+SAMPLE,chr17,30237266,"SLC6A4, LOC110806262",12934,Pathogenic,Deletion,No consequences found,NM_001045.6:c.-1917_-1875delCCCCAGCATCTCCCCTGCACCCCCAGCATCCCCCCTGCAGCCC,-
+SAMPLE,chr19,15549170,CYP4F22,909,Pathogenic,SNV,Missense variant,NM_173483.4:c.1303C>T,p.His435Tyr
+SAMPLE,chr6,31464003,"HLA-B, HCP5",14910,"Pathogenic, risk factor",SNV,Non-coding transcript variant,NR_040662.1:n.733T>G,-
+SAMPLE,chr17,34252769,"CCL2, LOC126862536",14207,"Pathogenic, risk factor",SNV,No consequences found,NM_002982.4:c.-2581A>G,-
+SAMPLE,chr17,47731462,"TBX21, LOC109286563",5321,"Pathogenic, risk factor",SNV,No consequences found,NM_013351.2:c.-1993T>C,-
+SAMPLE,chr10,89222511,LIPA,203361,Pathogenic/likely pathogenic,SNV,Synonymous variant,NM_000235.4:c.894G>A,p.Gln298Gln
+SAMPLE,chr16,27344882,IL4R,14666,"Pathogenic, protective",SNV,"Missense variant, 5' UTR variant",NM_000418.4:c.223A>G,p.Ile75Val
+SAMPLE,chr1,37708311,CDCA8,1320033,Likely pathogenic,Deletion,Intron variant,NM_001256875.2:c.799-8_799-6delCTT,-
+SAMPLE,chr1,226735804,ITPKB,1705897,Likely pathogenic,SNV,Missense variant,NM_002221.4:c.1655C>A,p.Pro552Gln
+SAMPLE,chr1,226736237,ITPKB,1705899,Likely pathogenic,SNV,Missense variant,NM_002221.4:c.1222T>G,p.Ser408Ala
+SAMPLE,chr1,226737174,ITPKB,1705896,Likely pathogenic,Microsatellite,Inframe deletion,NM_002221.4:c.276_284delCAGCGGCAG,p.Ser93_Ser95del
+SAMPLE,chr11,72237703,INPPL1,1339494,Likely pathogenic,Deletion,Frameshift variant,NM_001567.4:c.3466delC,p.Arg1156fs
+SAMPLE,chr15,38351080,SPRED1,1335175,Likely pathogenic,SNV,Nonsense,NM_152594.3:c.751C>T,p.Arg251*
+SAMPLE,chr1,2321498,MORN1,2342952,Uncertain significance,SNV,Missense variant,NM_024848.3:c.1379G>A,p.Arg460Gln
+SAMPLE,chr1,12207235,TNFRSF1B,1048803,Uncertain significance,SNV,3' UTR variant,NM_001066.3:c.*215C>T,-
+SAMPLE,chr1,13223649,PRAMEF18,2407212,Uncertain significance,SNV,Missense variant,NM_001099850.2:c.1123C>T,p.Arg375Cys
+SAMPLE,chr1,25817946,SELENON,297061,Uncertain significance,Deletion,3' UTR variant,NM_020451.3:c.*2236delC,-
+SAMPLE,chr1,36137945,TRAPPC3,1449395,Uncertain significance,SNV,"Missense variant, Non-coding transcript variant",NM_001270894.2:c.298A>G,p.Ser100Gly
+SAMPLE,chr1,40286032,ZMPSTE24,1406130,Uncertain significance,SNV,Intron variant,NM_005857.5:c.1059+3A>G,-
+SAMPLE,chr1,55052517,PCSK9,265928,Uncertain significance,Deletion,Intron variant,NM_174936.4:c.657+114delC,-
+SAMPLE,chr1,100189353,DBT,875221,Uncertain significance,SNV,3' UTR variant,NM_001918.5:c.*6902T>A,-
+SAMPLE,chr1,100189354,DBT,291393,Uncertain significance,SNV,3' UTR variant,NM_001918.5:c.*6901T>A,-
+SAMPLE,chr1,108465245,NBPF6,2380898,Uncertain significance,SNV,Missense variant,NM_001143987.2:c.1568G>A,p.Arg523Gln
+SAMPLE,chr1,154582475,ADAR,292713,Uncertain significance,Duplication,3' UTR variant,NM_001365045.1:c.*2323_*2330dupCATGCCCC,-
+SAMPLE,chr1,158611131,"SPTA1, OR10Z1",292930,Uncertain significance,Microsatellite,3' UTR variant,NM_001004478.2:c.*3785_*3786delAC,-
+SAMPLE,chr1,161548543,FCGR3A,14828,Uncertain significance,SNV,Missense variant,NM_001127592.2:c.509T>A,p.Leu170His
+SAMPLE,chr1,173659393,ANKRD45,2339024,Uncertain significance,SNV,"Missense variant, Non-coding transcript variant",NM_198493.3:c.26C>T,p.Ser9Leu
+SAMPLE,chr1,211492048,RD3,295276,Uncertain significance,Microsatellite,5' UTR variant,NM_001164688.2:c.-294_-293delAC,-
+SAMPLE,chr1,226736941,ITPKB,1705898,Uncertain significance,SNV,Missense variant,NM_002221.4:c.518G>A,p.Arg173His
+SAMPLE,chr1,228158986,GJC2,1298457,Uncertain significance,SNV,Missense variant,NM_020435.4:c.1228G>A,p.Gly410Ser
+SAMPLE,chr1,248406311,OR2T1,2378243,Uncertain significance,SNV,Missense variant,NM_030904.2:c.164A>G,p.His55Arg
+SAMPLE,chr2,24164308,FAM228B,1184857,Uncertain significance,Deletion,"Frameshift variant, Non-coding transcript variant",NM_001145710.2:c.907delC,p.Gln303fs
+SAMPLE,chr2,49920697,NRXN1,336522,Uncertain significance,Microsatellite,3' UTR variant,NM_001135659.3:c.*1237_*1246delACACACACAC,-
+SAMPLE,chr2,73609717,ALMS1,337036,Uncertain significance,SNV,3' UTR variant,NM_001378454.1:c.*105A>G,-
+SAMPLE,chr2,112378247,RGPD8,2391481,Uncertain significance,SNV,Missense variant,NM_001164463.1:c.5069A>G,p.Lys1690Arg
+SAMPLE,chr2,120992007,GLI2,331013,Uncertain significance,Microsatellite,3' UTR variant,NM_001371271.1:c.*1375_*1376dupAC,-
+SAMPLE,chr2,151579550,NEB,2434195,Uncertain significance,SNV,"Missense variant, Intron variant",NM_001271208.2:c.16492A>C,p.Lys5498Gln
+SAMPLE,chr2,173266403,"MAP3K20, MAP3K20-AS1",1439205,Uncertain significance,SNV,Missense variant,NM_016653.3:c.2056A>G,p.Ile686Val
+SAMPLE,chr2,177540060,AGPS,893964,Uncertain significance,SNV,3' UTR variant,NM_003659.4:c.*1865C>T,-
+SAMPLE,chr2,177540075,AGPS,893966,Uncertain significance,SNV,3' UTR variant,NM_003659.4:c.*1880A>G,-
+SAMPLE,chr2,177540077,AGPS,893967,Uncertain significance,SNV,3' UTR variant,NM_003659.4:c.*1882A>G,-
+SAMPLE,chr2,178565958,"TTN, TTN-AS1",202897,Uncertain significance,SNV,Missense variant,NM_001267550.2:c.80174C>T,p.Ser26725Leu
+SAMPLE,chr2,219571441,OBSL1,334550,Uncertain significance,SNV,5' UTR variant,NM_015311.3:c.-209C>G,-
+SAMPLE,chr2,240568906,RNPEPL1,2390520,Uncertain significance,SNV,Missense variant,NM_018226.6:c.320C>T,p.Ser107Phe
+SAMPLE,chr3,12187425,SYN2,2394950,Uncertain significance,SNV,Missense variant,NM_133625.6:c.1426C>T,p.Arg476Trp
+SAMPLE,chr3,38492649,ACVR2B,345046,Uncertain significance,Insertion,3' UTR variant,NM_001106.4:c.*9317_*9318insT,-
+SAMPLE,chr3,42210085,TRAK1,"1260505, 977317",Uncertain significance,Microsatellite,"Intron variant, Inframe insertion",NM_001265608.2:c.2093_2095dupAGG,p.Glu698dup
+SAMPLE,chr3,45225556,TMEM158,2385498,Uncertain significance,SNV,Missense variant,NM_015444.3:c.472C>T,p.Arg158Trp
+SAMPLE,chr3,69965814,MITF,346515,Uncertain significance,Duplication,3' UTR variant,NM_001354604.2:c.*576dupA,-
+SAMPLE,chr3,123614032,"MYLK, MYLK-AS1",976613,Uncertain significance,SNV,3' UTR variant,NM_053031.4:c.*73A>C,-
+SAMPLE,chr3,149221791,CP,1496623,Uncertain significance,Deletion,No consequences found,NM_000096.4:c.1delA,p.Met1fs
+SAMPLE,chr4,2840990,SH3BP2,348717,Uncertain significance,Deletion,3' UTR variant,NM_001145856.2:c.*7167delT,-
+SAMPLE,chr4,8045201,ABLIM2,2302069,Uncertain significance,SNV,Missense variant,NM_001286688.2:c.134C>T,p.Ala45Val
+SAMPLE,chr4,9783007,"DRD5, SLC2A9",2507407,Uncertain significance,SNV,Synonymous variant,NM_000798.5:c.978C>T,p.Pro326Pro
+SAMPLE,chr4,22435308,ADGRA3,1052668,Uncertain significance,SNV,Intron variant,NM_145290.4:c.1443+3A>T,-
+SAMPLE,chr4,48540784,FRYL,2359870,Uncertain significance,SNV,Missense variant,NM_015030.2:c.5864G>A,p.Arg1955Gln
+SAMPLE,chr4,55371082,"SRD5A3, SRD5A3-AS1",349023,Uncertain significance,SNV,3' UTR variant,NM_024592.5:c.*991C>T,-
+SAMPLE,chr4,55372935,"SRD5A3, SRD5A3-AS1",349052,Uncertain significance,Deletion,3' UTR variant,NM_024592.5:c.*2858delA,-
+SAMPLE,chr4,145657400,MMAA,900495,Uncertain significance,SNV,3' UTR variant,NM_001375644.1:c.*1966C>T,-
+SAMPLE,chr4,148079850,NR3C2,347690,Uncertain significance,Deletion,"Non-coding transcript variant, 3' UTR variant",NM_000901.5:c.*1493delC,-
+SAMPLE,chr4,186211698,"KLKB1, CYP4V2",348346,Uncertain significance,Microsatellite,3' UTR variant,NM_207352.4:c.*1061_*1064dupCACA,-
+SAMPLE,chr5,10265350,CCT5,905668,Uncertain significance,SNV,3' UTR variant,NM_012073.5:c.*567G>A,-
+SAMPLE,chr5,19591065,CDH18,617842,Uncertain significance,SNV,Synonymous variant,NM_001291956.3:c.991T>C,p.Leu331Leu
+SAMPLE,chr5,36687002,SLC1A3,906452,Uncertain significance,SNV,3' UTR variant,NM_004172.5:c.*733G>A,-
+SAMPLE,chr5,37813438,GDNF,906003,Uncertain significance,SNV,3' UTR variant,NM_001190468.1:c.*2213G>A,-
+SAMPLE,chr5,53093481,ITGA2,353836,Uncertain significance,Duplication,"Non-coding transcript variant, 3' UTR variant",NM_002203.4:c.*2883_*2893dupGTATGTTTAGC,-
+SAMPLE,chr5,53094196,ITGA2,353855,Uncertain significance,Insertion,"Non-coding transcript variant, 3' UTR variant",NM_002203.4:c.*3599_*3600insTATATAAACAACTTTGTAGGACTAT,-
+SAMPLE,chr5,70074624,SMN2,1027370,Uncertain significance,SNV,Intron variant,NM_017411.4:c.835-1897C>T,-
+SAMPLE,chr5,71658103,MCCC2,903792,Uncertain significance,SNV,3' UTR variant,NM_022132.5:c.*1243G>C,-
+SAMPLE,chr5,77427401,PDE8B,354198,Uncertain significance,Deletion,3' UTR variant,NM_001349749.3:c.*864delA,-
+SAMPLE,chr5,132868775,UQCRQ,905152,Uncertain significance,SNV,3' UTR variant,NM_014402.5:c.*1193A>G,-
+SAMPLE,chr5,136063763,TGFBI,907848,Uncertain significance,SNV,3' UTR variant,NM_000358.3:c.*537T>G,-
+SAMPLE,chr5,137618894,KLHL3,350940,Uncertain significance,SNV,3' UTR variant,NM_017415.3:c.*3204A>T,-
+SAMPLE,chr5,141649286,FCHSD1,2260268,Uncertain significance,SNV,Missense variant,NM_033449.3:c.398C>T,p.Ala133Val
+SAMPLE,chr5,146878727,"PPP2R2B, LOC108660405",218860,Uncertain significance,Microsatellite,Intron variant,NM_001271948.2:c.-789_-775dupAGCAGCAGCAGCAGC,-
+SAMPLE,chr5,148994697,SH3TC2,351728,Uncertain significance,Microsatellite,3' UTR variant,NM_024577.4:c.*10010_*10013dupATCC,-
+SAMPLE,chr5,149858816,PDE6A,351952,Uncertain significance,Duplication,3' UTR variant,NM_000440.3:c.*2077_*2078dupAA,-
+SAMPLE,chr5,149858827,PDE6A,906748,Uncertain significance,SNV,3' UTR variant,NM_000440.3:c.*2068G>A,-
+SAMPLE,chr5,156765576,SGCD,907012,Uncertain significance,SNV,3' UTR variant,NM_000337.6:c.*6186C>T,-
+SAMPLE,chr5,157214272,ITK,940441,Uncertain significance,SNV,Missense variant,NM_005546.4:c.407T>C,p.Leu136Pro
+SAMPLE,chr5,172337170,SH3PXD2B,907193,Uncertain significance,SNV,"3' UTR variant, Intron variant",NM_001017995.3:c.*1199T>C,-
+SAMPLE,chr5,177300057,NSD1,352945,Uncertain significance,Deletion,3' UTR variant,NM_022455.5:c.*4610_*4611delCC,-
+SAMPLE,chr6,20660803,CDKAL1,986,Uncertain significance,SNV,Intron variant,NM_017774.3:c.371+11426A>C,-
+SAMPLE,chr6,20679478,CDKAL1,987,Uncertain significance,SNV,Intron variant,NM_017774.3:c.371+30101A>G,-
+SAMPLE,chr6,24534654,ALDH5A1,356156,Uncertain significance,SNV,3' UTR variant,NM_170740.1:c.*942A>G,-
+SAMPLE,chr6,26031640,H3C2,873160,Uncertain significance,SNV,3' UTR variant,NM_003537.4:c.*10C>T,-
+SAMPLE,chr6,31575324,TNF,1048804,Uncertain significance,SNV,No consequences found,NM_000594.4:c.-418G>A,-
+SAMPLE,chr6,32977921,BRD2,95243,Uncertain significance,Microsatellite,Inframe deletion,NM_001199455.1:c.1500_1502delGGA,p.Glu500del
+SAMPLE,chr6,35805608,LHFPL5,356486,Uncertain significance,SNV,5' UTR variant,NM_182548.4:c.-63C>G,-
+SAMPLE,chr6,38682852,GLO1,16037,Uncertain significance,SNV,Missense variant,NM_006708.3:c.332A>C,p.Glu111Ala
+SAMPLE,chr6,47624723,CD2AP,357208,Uncertain significance,SNV,3' UTR variant,NM_012120.3:c.*496A>G,-
+SAMPLE,chr6,54321304,TINAG,2462933,Uncertain significance,SNV,Missense variant,NM_014464.4:c.427T>A,p.Ser143Thr
+SAMPLE,chr6,57189210,"BAG2, RAB23",357627,Uncertain significance,SNV,"Non-coding transcript variant, 3' UTR variant",NM_004282.4:c.*5020C>T,-
+SAMPLE,chr6,72401222,RIMS1,357871,Uncertain significance,Duplication,3' UTR variant,NM_014989.7:c.*517dupT,-
+SAMPLE,chr6,86822028,No affected genes found,813013,Uncertain significance,SNV,No consequences found,RN7SL643P-HTR1E:n.86822028C>A,-
+SAMPLE,chr6,108042423,OSTM1,905118,Uncertain significance,SNV,3' UTR variant,NM_014028.4:c.*2362A>G,-
+SAMPLE,chr6,129154551,LAMA2,1440343,Uncertain significance,SNV,Missense variant,NM_000426.4:c.1074T>G,p.Asn358Lys
+SAMPLE,chr6,131700654,"ENPP3, OR2A4",2344609,Uncertain significance,SNV,"Missense variant, Intron variant",NM_030908.2:c.748G>T,p.Val250Phe
+SAMPLE,chr6,168307590,DACT2,2234461,Uncertain significance,SNV,"Missense variant, Non-coding transcript variant, Intron variant",NM_214462.5:c.2167G>A,p.Gly723Arg
+SAMPLE,chr7,2930027,CARD11,948799,Uncertain significance,SNV,Missense variant,NM_001324281.3:c.1618G>A,p.Gly540Arg
+SAMPLE,chr7,16089315,CRPPA,359521,Uncertain significance,SNV,"Non-coding transcript variant, 3' UTR variant",NM_001101426.4:c.*2380G>A,-
+SAMPLE,chr7,92503067,PEX1,971689,Uncertain significance,SNV,Missense variant,NM_000466.3:c.2200G>A,p.Val734Ile
+SAMPLE,chr7,101247300,FIS1,1049813,Uncertain significance,SNV,No consequences found,NM_016068.3:c.-2296T>A,-
+SAMPLE,chr7,127610546,PAX4,"358776, 358779",Uncertain significance,Microsatellite,3' UTR variant,NM_001366110.1:c.*516_*517dupAC,-
+SAMPLE,chr7,142581165,"TRB, TRBV12-5",2498233,Uncertain significance,SNV,No consequences found,TRB:n.142581165C>G,-
+SAMPLE,chr7,144185609,CTAGE4,2344690,Uncertain significance,SNV,Missense variant,NM_198495.3:c.2106C>A,p.Ser702Arg
+SAMPLE,chr7,155461298,EN2,16631,Uncertain significance,SNV,Intron variant,NM_001427.4:c.686-1073G>A,-
+SAMPLE,chr7,155461450,EN2,16632,Uncertain significance,SNV,Intron variant,NM_001427.4:c.686-921T>C,-
+SAMPLE,chr8,166096,OR4F21,2346974,Uncertain significance,SNV,Missense variant,NM_001005504.1:c.929A>G,p.Lys310Arg
+SAMPLE,chr8,11758829,GATA4,139593,Uncertain significance,SNV,3' UTR variant,NM_001308093.3:c.*354A>C,-
+SAMPLE,chr8,31067055,WRN,404012,Uncertain significance,SNV,Missense variant,NM_000553.6:c.527G>T,p.Ser176Ile
+SAMPLE,chr8,60678764,CHD7,363418,Uncertain significance,Microsatellite,5' UTR variant,NM_017780.4:c.-472_-467dupGGCGGC,-
+SAMPLE,chr8,60777762,CHD7,2030,Uncertain significance,SNV,Intron variant,NM_017780.4:c.1666-3238A>G,-
+SAMPLE,chr8,98526817,STK3,2278541,Uncertain significance,SNV,Missense variant,NM_001256313.2:c.909G>T,p.Met303Ile
+SAMPLE,chr8,115668717,TRPS1,361641,Uncertain significance,Microsatellite,5' UTR variant,NM_014112.5:c.-300_-295delCTCTCT,-
+SAMPLE,chr8,132125570,KCNQ3,361821,Uncertain significance,SNV,3' UTR variant,NM_004519.4:c.*3692T>C,-
+SAMPLE,chr8,132128507,KCNQ3,361861,Uncertain significance,Microsatellite,3' UTR variant,NM_004519.4:c.*753_*754dupCA,-
+SAMPLE,chr8,141190368,DENND3,691482,Uncertain significance,SNV,"Non-coding transcript variant, Synonymous variant",NM_001362798.2:c.3330G>A,p.Pro1110Pro
+SAMPLE,chr9,6532510,GLDC,367163,Uncertain significance,Deletion,3' UTR variant,NM_000170.3:c.*505_*506delTT,-
+SAMPLE,chr9,18928330,SAXO1,2352939,Uncertain significance,SNV,"Missense variant, 3' UTR variant",NM_153707.4:c.1147C>T,p.Pro383Ser
+SAMPLE,chr9,22005331,"CDKN2B, CDKN2B-AS1",812643,Uncertain significance,SNV,3' UTR variant,NM_004936.4:c.*656A>C,-
+SAMPLE,chr9,36216640,GNE,366826,Uncertain significance,Microsatellite,3' UTR variant,NM_001128227.3:c.*719_*724dupAATAAT,-
+SAMPLE,chr9,66989056,SPATA31A3,2285845,Uncertain significance,SNV,Missense variant,NM_001083124.1:c.1442C>A,p.Pro481His
+SAMPLE,chr9,68303280,FOXD4L3,2347310,Uncertain significance,SNV,Missense variant,NM_199135.4:c.329C>G,p.Pro110Arg
+SAMPLE,chr9,99151408,TGFBR1,364138,Uncertain significance,SNV,3' UTR variant,NM_001306210.2:c.*2103T>G,-
+SAMPLE,chr9,109166907,FRRS1L,858868,Uncertain significance,SNV,Missense variant,NM_014334.4:c.232G>A,p.Glu78Lys
+SAMPLE,chr9,121332719,GSN,364835,Uncertain significance,Insertion,3' UTR variant,NM_000177.5:c.*116_*117insG,-
+SAMPLE,chr9,126697837,LMX1B,364923,Uncertain significance,Microsatellite,3' UTR variant,NM_001174146.2:c.*1437_*1441delTGTTT,-
+SAMPLE,chr9,133069118,CEL,2351360,Uncertain significance,SNV,Missense variant,NM_001807.6:c.1145C>T,p.Thr382Met
+SAMPLE,chr9,133071434,CEL,128686,Uncertain significance,SNV,Synonymous variant,NM_001807.6:c.1932G>C,p.Gly644Gly
+SAMPLE,chr9,133071462,CEL,128687,Uncertain significance,SNV,Missense variant,NM_001807.6:c.1960T>G,p.Ser654Ala
+SAMPLE,chr9,133071468,CEL,128688,Uncertain significance,SNV,Missense variant,NM_001807.6:c.1966G>C,p.Ala656Pro
+SAMPLE,chr9,133262243,ABO,812626,Uncertain significance,SNV,Intron variant,NM_020469.3:c.29-75A>G,-
+SAMPLE,chr10,8074128,GATA3,301132,Uncertain significance,SNV,3' UTR variant,NM_001002295.2:c.*105A>G,-
+SAMPLE,chr10,13126366,OPTN,931275,Uncertain significance,SNV,Intron variant,NM_001008211.1:c.1242+327C>T,-
+SAMPLE,chr10,26212351,MYO3A,299687,Uncertain significance,Deletion,3' UTR variant,NM_017433.5:c.*399delT,-
+SAMPLE,chr10,68644893,TET1,2377905,Uncertain significance,SNV,Missense variant,NM_030625.3:c.2164G>A,p.Val722Met
+SAMPLE,chr10,82985500,NRG3,691408,Uncertain significance,SNV,"Non-coding transcript variant, Synonymous variant",NM_001010848.4:c.1986C>T,p.Ser662Ser
+SAMPLE,chr10,97612009,HOGA1,301809,Uncertain significance,Duplication,3' UTR variant,NM_138413.4:c.*353_*354dupTT,-
+SAMPLE,chr10,99710328,"COX15, ENTPD7",298379,Uncertain significance,SNV,"3' UTR variant, Intron variant",NM_001349962.2:c.*5645C>A,-
+SAMPLE,chr11,12242729,MICAL2,2401776,Uncertain significance,SNV,"Missense variant, Non-coding transcript variant, Intron variant",NM_001393937.1:c.2615C>T,p.Ala872Val
+SAMPLE,chr11,17517457,USH1C,1387738,Uncertain significance,SNV,"Missense variant, Intron variant",NM_001297764.2:c.1171C>T,p.Pro391Ser
+SAMPLE,chr11,22623347,FANCF,304181,Uncertain significance,Duplication,3' UTR variant,NM_022725.4:c.*1338dupA,-
+SAMPLE,chr11,32388003,WT1,304379,Uncertain significance,Microsatellite,"Non-coding transcript variant, 3' UTR variant",NM_024426.6:c.*1051_*1054delGTGT,-
+SAMPLE,chr11,36594028,RAG2,304557,Uncertain significance,SNV,Missense variant,NM_000536.4:c.141T>G,p.His47Gln
+SAMPLE,chr11,48139515,PTPRJ,1336046,Uncertain significance,SNV,Missense variant,NM_002843.4:c.2182G>A,p.Glu728Lys
+SAMPLE,chr11,74456155,KCNE3,306054,Uncertain significance,Microsatellite,3' UTR variant,NM_005472.5:c.*1091_*1096delATATAT,-
+SAMPLE,chr11,78771016,TENM4,2461010,Uncertain significance,SNV,Missense variant,NM_001098816.3:c.2515G>A,p.Gly839Ser
+SAMPLE,chr11,86947201,"FZD4, PRSS23",306350,Uncertain significance,Microsatellite,3' UTR variant,NM_012193.4:c.*3933_*3940delTTTGTTTG,-
+SAMPLE,chr11,94419465,MRE11,"306473, 306475",Uncertain significance,SNV,3' UTR variant,NM_005591.4:c.*660C>T,-
+SAMPLE,chr11,105035618,CASP1,1049122,Uncertain significance,Duplication,No consequences found,NM_001257118.3:c.-505C>A,-
+SAMPLE,chr11,110230554,RDX,302307,Uncertain significance,Microsatellite,"3' UTR variant, Intron variant",NM_001260494.2:c.*1311_*1314dupGAGA,-
+SAMPLE,chr11,125958565,CDON,303435,Uncertain significance,Insertion,3' UTR variant,NM_001243597.2:c.*2376_*2377insCACACACACACATA,-
+SAMPLE,chr11,128891441,KCNJ5,879671,Uncertain significance,SNV,5' UTR variant,NM_000890.5:c.-291C>G,-
+SAMPLE,chr12,2934508,TULP3,2388378,Uncertain significance,SNV,Missense variant,NM_001160408.2:c.871C>T,p.Arg291Trp
+SAMPLE,chr12,42459256,PRICKLE1,308692,Uncertain significance,Deletion,3' UTR variant,NM_001144881.2:c.*552delA,-
+SAMPLE,chr12,43383839,ADAMTS20,2356704,Uncertain significance,SNV,Missense variant,NM_025003.5:c.4591G>A,p.Val1531Met
+SAMPLE,chr12,109556648,MMAB,307061,Uncertain significance,Microsatellite,"Non-coding transcript variant, 3' UTR variant",NM_052845.4:c.*378_*379dupTG,-
+SAMPLE,chr12,112506436,PTPN11,307230,Uncertain significance,Deletion,3' UTR variant,NM_001330437.2:c.*656delT,-
+SAMPLE,chr12,117439680,"NOS1, LOC111258526",14012,Uncertain significance,SNV,No consequences found,NOS1-KSR2:n.117439680C>T,-
+SAMPLE,chr13,36371620,SPART,1049296,Uncertain significance,SNV,No consequences found,NM_001142294.2:c.-1534T>G,-
+SAMPLE,chr13,36845114,SMAD9,311823,Uncertain significance,Microsatellite,3' UTR variant,NM_001378621.1:c.*3560_*3561delTA,-
+SAMPLE,chr13,36920187,SMAD9,311920,Uncertain significance,Microsatellite,5' UTR variant,NM_001127217.3:c.-264_-259delCGCCGC,-
+SAMPLE,chr13,95577271,CLDN10,64492,Uncertain significance,SNV,Missense variant,NM_001160100.2:c.442G>T,p.Ala148Ser
+SAMPLE,chr14,22766688,OXA1L,2345270,Uncertain significance,SNV,5' UTR variant,NM_005015.5:c.-14C>T,-
+SAMPLE,chr14,73702078,DNAL1,314117,Uncertain significance,Microsatellite,3' UTR variant,NM_031427.4:c.*6160_*6163dupTGTG,-
+SAMPLE,chr14,91969289,TRIP11,314916,Uncertain significance,Deletion,3' UTR variant,NM_004239.4:c.*383delT,-
+SAMPLE,chr14,95090171,DICER1,315096,Uncertain significance,Deletion,3' UTR variant,NM_001271282.3:c.*326delT,-
+SAMPLE,chr15,20534955,GOLGA6L6,2210270,Uncertain significance,SNV,Missense variant,NM_001145004.2:c.1479A>G,p.Ile493Met
+SAMPLE,chr15,23440461,GOLGA6L2,1048962,Uncertain significance,SNV,Missense variant,NM_001304388.2:c.2014A>G,p.Arg672Gly
+SAMPLE,chr15,23440478,GOLGA6L2,1050195,Uncertain significance,SNV,Missense variant,NM_001304388.2:c.1997A>G,p.Glu666Gly
+SAMPLE,chr15,23440500,GOLGA6L2,1050296,Uncertain significance,SNV,Missense variant,NM_001304388.2:c.1975G>A,p.Glu659Lys
+SAMPLE,chr15,23440775,GOLGA6L2,1050484,Uncertain significance,Insertion,Inframe insertion,NM_001304388.2:c.1699_1700insAAGCAGGAGGAGAAGATGCGG,p.Ala566_Gly567insGluAlaGlyGlyGluAspAla
+SAMPLE,chr15,34231365,SLC12A6,884552,Uncertain significance,SNV,3' UTR variant,NM_001365088.1:c.*2516T>C,-
+SAMPLE,chr15,34231587,SLC12A6,315574,Uncertain significance,Deletion,3' UTR variant,NM_001365088.1:c.*2289_*2293delGAAAG,-
+SAMPLE,chr15,38542822,RASGRP1,1801426,Uncertain significance,Deletion,Intron variant,NM_005739.4:c.221-16458_221-16419delGTATATATATACACATATATATATATACACATATATATGT,-
+SAMPLE,chr15,53515086,WDR72,316522,Uncertain significance,Microsatellite,"Non-coding transcript variant, 3' UTR variant",NM_182758.4:c.*2609_*2612dupGTGT,-
+SAMPLE,chr15,68229767,CLN6,1049714,Uncertain significance,Duplication,No consequences found,NM_017882.3:c.-183T>C,-
+SAMPLE,chr15,72340841,HEXA,1049750,Uncertain significance,Microsatellite,No consequences found,NM_001318825.2:c.*3235_*3236insTGTGTGTGTGTG,-
+SAMPLE,chr15,74202264,STRA6,317119,Uncertain significance,SNV,Missense variant,NM_001199042.2:c.121T>C,p.Ser41Pro
+SAMPLE,chr15,90966362,PRC1,157646,Uncertain significance,SNV,3' UTR variant,NM_001267580.2:c.*812A>G,-
+SAMPLE,chr15,90968030,"PRC1, PRC1-AS1",157644,Uncertain significance,SNV,Intron variant,NM_001017919.2:c.*6261A>G,-
+SAMPLE,chr15,90974249,"PRC1, PRC1-AS1",157641,Uncertain significance,SNV,Intron variant,NM_001267580.2:c.1228-3C>T,-
+SAMPLE,chr15,90974550,"PRC1, PRC1-AS1",157640,Uncertain significance,SNV,Intron variant,NM_001267580.2:c.1227+35C>G,-
+SAMPLE,chr15,90979806,"PRC1, PRC1-AS1",157635,Uncertain significance,SNV,Intron variant,NM_001267580.2:c.847+436G>A,-
+SAMPLE,chr15,90981967,"PRC1, PRC1-AS1",157632,Uncertain significance,SNV,"Non-coding transcript variant, Synonymous variant",NM_001267580.2:c.159G>A,p.Thr53Thr
+SAMPLE,chr15,90984221,"PRC1, PRC1-AS1, LOC126862223",157630,Uncertain significance,SNV,Intron variant,NM_001267580.2:c.144+472A>T,-
+SAMPLE,chr15,90987590,"PRC1, PRC1-AS1",157631,Uncertain significance,SNV,Intron variant,NM_001267580.2:c.12-2765T>C,-
+SAMPLE,chr15,98963213,IGF1R,317624,Uncertain significance,Deletion,3' UTR variant,NM_000875.5:c.*5789delT,-
+SAMPLE,chr16,172854,"HBA2, LOC106804612",827660,Uncertain significance,SNV,No consequences found,NM_000517.6:c.-59C>T,-
+SAMPLE,chr16,1222012,TPSG1,2397923,Uncertain significance,SNV,Missense variant,NM_012467.4:c.742C>T,p.Arg248Cys
+SAMPLE,chr16,8782935,ABAT,321123,Uncertain significance,Deletion,3' UTR variant,NM_001386615.1:c.*1516delT,-
+SAMPLE,chr16,16075709,ABCC1,126852,Uncertain significance,SNV,Intron variant,NM_004996.4:c.1913-617C>T,-
+SAMPLE,chr16,16083830,ABCC1,126860,Uncertain significance,SNV,Intron variant,NM_004996.4:c.2292+288G>A,-
+SAMPLE,chr16,20798643,ERI2,2210565,Uncertain significance,SNV,"Missense variant, Intron variant",NM_001142725.2:c.1157C>T,p.Thr386Ile
+SAMPLE,chr16,28939253,CD19,318818,Uncertain significance,Microsatellite,"Non-coding transcript variant, 3' UTR variant",NM_001178098.2:c.*151_*152dupGT,-
+SAMPLE,chr16,29885675,SEZ6L2,2300600,Uncertain significance,SNV,Missense variant,NM_001243332.2:c.1283G>A,p.Arg428Gln
+SAMPLE,chr16,56663951,MT1F,1048884,Uncertain significance,Insertion,No consequences found,NM_005949.4:c.*4787_*4788insTAAG,-
+SAMPLE,chr16,56663955,MT1F,1049885,Uncertain significance,Insertion,No consequences found,NM_005949.4:c.*4791_*4792insG,-
+SAMPLE,chr16,72957825,ZFHX3,2306331,Uncertain significance,SNV,"Missense variant, Intron variant",NM_001386735.1:c.2321C>T,p.Ala774Val
+SAMPLE,chr16,89588741,CPNE7,2348549,Uncertain significance,SNV,Missense variant,NM_014427.5:c.1219C>T,p.Pro407Ser
+SAMPLE,chr16,90009419,DBNDD1,2213308,Uncertain significance,SNV,"Missense variant, 5' UTR variant",NM_024043.4:c.103G>A,p.Glu35Lys
+SAMPLE,chr17,1271069,BHLHA9,2183680,Uncertain significance,SNV,Missense variant,NM_001164405.2:c.506C>T,p.Ser169Leu
+SAMPLE,chr17,3661422,CTNS,322877,Uncertain significance,SNV,3' UTR variant,NM_001031681.3:c.*688T>G,-
+SAMPLE,chr17,5223379,"SCIMP, ZNF594-DT",813014,Uncertain significance,SNV,"Non-coding transcript variant, Synonymous variant",NM_207103.3:c.99T>C,p.Gly33Gly
+SAMPLE,chr17,6451886,PITPNM3,324674,Uncertain significance,SNV,3' UTR variant,NM_031220.4:c.*3452C>G,-
+SAMPLE,chr17,6451892,PITPNM3,324671,Uncertain significance,Insertion,3' UTR variant,NM_031220.4:c.*3445_*3446insT,-
+SAMPLE,chr17,17212476,FLCN,322038,Uncertain significance,SNV,3' UTR variant,NM_001353229.2:c.*1179T>A,-
+SAMPLE,chr17,18317261,SMCR8,2392228,Uncertain significance,SNV,Missense variant,NM_144775.3:c.1472C>T,p.Ala491Val
+SAMPLE,chr17,19909228,AKAP10,5404,Uncertain significance,SNV,Missense variant,NM_007202.4:c.1936A>G,p.Ile646Val
+SAMPLE,chr17,46295307,"LRRC37A, ARL17B",2346316,Uncertain significance,SNV,"Missense variant, Intron variant",NM_014834.4:c.174G>C,p.Glu58Asp
+SAMPLE,chr17,78168704,SYNGR2,2549336,Uncertain significance,SNV,Missense variant,NM_001363778.1:c.88G>A,p.Ala30Thr
+SAMPLE,chr17,81035353,BAIAP2,2507410,Uncertain significance,SNV,Intron variant,NM_001385129.1:c.54+45T>C,-
+SAMPLE,chr17,81110272,BAIAP2,2507409,Uncertain significance,SNV,"Non-coding transcript variant, 3' UTR variant, Intron variant",NM_001385131.1:c.*947T>G,-
+SAMPLE,chr18,51084012,SMAD4,327190,Uncertain significance,Microsatellite,3' UTR variant,NM_005359.6:c.*5576_*5577dupCA,-
+SAMPLE,chr18,58537563,ALPK2,1793986,Uncertain significance,SNV,Missense variant,NM_052947.4:c.2624C>T,p.Thr875Met
+SAMPLE,chr19,11131819,LDLR,328063,Uncertain significance,SNV,3' UTR variant,NM_000527.5:c.*503C>T,-
+SAMPLE,chr19,14767004,ADGRE2,1301602,Uncertain significance,SNV,Missense variant,NM_013447.4:c.461A>T,p.Lys154Ile
+SAMPLE,chr19,14767008,ADGRE2,1301601,Uncertain significance,SNV,Missense variant,NM_013447.4:c.457C>T,p.Leu153Phe
+SAMPLE,chr19,15243031,BRD4,2066959,Uncertain significance,SNV,Missense variant,NM_001379291.1:c.3038C>T,p.Pro1013Leu
+SAMPLE,chr19,45785977,DMWD,2371767,Uncertain significance,SNV,Missense variant,NM_004943.2:c.1519G>C,p.Gly507Arg
+SAMPLE,chr20,6075049,FERMT1,896102,Uncertain significance,SNV,3' UTR variant,NM_017671.5:c.*2124C>A,-
+SAMPLE,chr20,36941044,SAMHD1,1936881,Uncertain significance,SNV,Missense variant,NM_015474.4:c.343A>C,p.Met115Leu
+SAMPLE,chr20,45948981,ZNF335,1413326,Uncertain significance,SNV,Missense variant,NM_022095.4:c.4001A>G,p.Tyr1334Cys
+SAMPLE,chr20,57563688,PCK1,1360155,Uncertain significance,SNV,Missense variant,NM_002591.4:c.922G>A,p.Val308Ile
+SAMPLE,chr20,57566161,PCK1,338908,Uncertain significance,Microsatellite,3' UTR variant,NM_002591.4:c.*392_*393delTG,-
+SAMPLE,chr20,57566165,PCK1,338914,Uncertain significance,SNV,3' UTR variant,NM_002591.4:c.*361G>A,-
+SAMPLE,chr20,58445684,VAPB,338953,Uncertain significance,Microsatellite,"Non-coding transcript variant, 3' UTR variant",NM_004738.5:c.*1485_*1486delGT,-
+SAMPLE,chr20,63286399,ARFGAP1,2355843,Uncertain significance,SNV,"Missense variant, Non-coding transcript variant, Synonymous variant",NM_001281483.2:c.733G>A,p.Val245Ile
+SAMPLE,chr21,33252612,"IFNAR2, IFNAR2-IL10RB",1684583,Uncertain significance,SNV,Intron variant,NM_001289125.3:c.541-50A>G,-
+SAMPLE,chr21,44558709,"TSPEAR, KRTAP10-3",221312,Uncertain significance,SNV,"Missense variant, Intron variant",NM_198696.3:c.7A>G,p.Thr3Ala
+SAMPLE,chr22,15528754,OR11H1,2342870,Uncertain significance,SNV,Missense variant,NM_001005239.2:c.563G>T,p.Arg188Leu
+SAMPLE,chr22,20273291,No affected genes found,813016,Uncertain significance,SNV,No consequences found,NM_023004.6:c.-5199C>A,-
+SAMPLE,chr22,20888311,SNAP29,340844,Uncertain significance,Microsatellite,3' UTR variant,NM_004782.4:c.*519_*520dupAC,-
+SAMPLE,chr22,20888349,SNAP29,340849,Uncertain significance,Deletion,3' UTR variant,NM_004782.4:c.*515_*522delACACACTC,-
+SAMPLE,chr22,21387646,RIMBP3B,2226998,Uncertain significance,SNV,Missense variant,NM_001128635.2:c.3788A>C,p.Glu1263Ala
+SAMPLE,chr22,21387675,RIMBP3B,2281184,Uncertain significance,SNV,Missense variant,NM_001128635.2:c.3817A>G,p.Ser1273Gly
+SAMPLE,chr22,21387777,RIMBP3B,2284637,Uncertain significance,SNV,Missense variant,NM_001128635.2:c.3919C>A,p.Pro1307Thr
+SAMPLE,chr22,21547058,RIMBP3C,2286303,Uncertain significance,SNV,Missense variant,NM_001128633.2:c.3919C>A,p.Pro1307Thr
+SAMPLE,chr22,26451986,HPS4,340974,Uncertain significance,Microsatellite,"Non-coding transcript variant, 3' UTR variant, Intron variant",NM_152841.2:c.*1243_*1246delCGCG,-
+SAMPLE,chr22,26452002,HPS4,340984,Uncertain significance,SNV,"Non-coding transcript variant, 3' UTR variant, Intron variant",NM_152841.2:c.*1231C>T,-
+SAMPLE,chr22,32500544,FBXO7,1049480,Uncertain significance,SNV,No consequences found,NM_012179.4:c.*2014C>T,-
+SAMPLE,chr22,32503824,FBXO7,1048896,Uncertain significance,Insertion,No consequences found,NM_012179.4:c.*5294_*5295insCAATCGCTTATTTCCACGCCCCAACCTCTTATCTCTGCGCCC,-
+SAMPLE,chr22,36821536,PVALB,1049824,Uncertain significance,SNV,No consequences found,NM_001315532.2:c.-4531A>C,-
+SAMPLE,chr22,42058489,NAGA,341887,Uncertain significance,Deletion,3' UTR variant,NM_000262.3:c.*1789delT,-
+SAMPLE,chr22,50581549,"CHKB, CHKB-CPT1B",1378849,Uncertain significance,SNV,"Missense variant, Non-coding transcript variant",NM_005198.5:c.452G>A,p.Arg151Gln
+SAMPLE,chrX,13714164,TRAPPC2,367994,Uncertain significance,SNV,3' UTR variant,NM_001128835.3:c.*243G>T,-
+SAMPLE,chrX,71132767,MED12,196785,Uncertain significance,Microsatellite,Intron variant,NM_005120.3:c.4416-35_4416-16dupCTTCTCTTCTCTTCTCTTCT,-
+SAMPLE,chrX,150596742,MTM1,2500866,Uncertain significance,SNV,Intron variant,NM_000252.3:c.136+172T>C,-
+SAMPLE,chrX,154531643,G6PD,1722702,Uncertain significance,SNV,3' UTR variant,NM_000402.4:c.*357G>A,-
+SAMPLE,chr4,88890044,FAM13A,1162779,"Uncertain significance, association",SNV,Intron variant,NM_014883.4:c.843+16335C>A,-
+SAMPLE,chr5,1296371,"TERT, LOC110806263",375479,"Uncertain significance, association",SNV,No consequences found,NM_198253.3:c.-1382T>C,-
+SAMPLE,chr6,154039662,OPRM1,9538,"Uncertain significance, drug response",SNV,"Missense variant, Non-coding transcript variant, Intron variant",NM_001145279.4:c.397A>G,p.Asn133Asp
+SAMPLE,chr1,18872954,ALDH4A1,471329,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_003748.4:c.1583C>A,p.Thr528Asn
+SAMPLE,chr1,25800189,SELENON,261269,Conflicting interpretations of pathogenicity,SNV,No consequences found,NM_020451.3:c.-42T>C,-
+SAMPLE,chr1,27548841,AHDC1,774392,Conflicting interpretations of pathogenicity,Microsatellite,Inframe deletion,NM_001029882.3:c.3272_3274delCCT,p.Ser1091del
+SAMPLE,chr1,55057360,PCSK9,262899,Conflicting interpretations of pathogenicity,SNV,"Non-coding transcript variant, Synonymous variant",NM_174936.4:c.1026A>G,p.Gln342Gln
+SAMPLE,chr1,94008290,ABCA4,99413,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_000350.3:c.5843C>T,p.Pro1948Leu
+SAMPLE,chr1,115768745,CASQ2,292138,Conflicting interpretations of pathogenicity,Microsatellite,No consequences found,NM_001232.4:c.-205_-204insTGTGTGTG,-
+SAMPLE,chr1,160039373,KCNJ10,293096,Conflicting interpretations of pathogenicity,Microsatellite,3' UTR variant,NM_002241.5:c.*2012_*2019delGTGTGTGT,-
+SAMPLE,chr1,168293284,TBX19,"293462, 293463",Conflicting interpretations of pathogenicity,Microsatellite,Intron variant,NM_005149.3:c.603+47_603+48dupGT,-
+SAMPLE,chr1,169529737,F5,255210,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_000130.5:c.5290A>G,p.Met1764Val
+SAMPLE,chr1,169542517,F5,255200,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_000130.5:c.2573A>G,p.Lys858Arg
+SAMPLE,chr1,179889309,TOR1AIP1,257701,Conflicting interpretations of pathogenicity,SNV,"Splice acceptor variant, Intron variant",NM_001267578.2:c.554-1G>A,-
+SAMPLE,chr1,196690107,CFH,294490,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_000186.4:c.1204C>T,p.His402Tyr
+SAMPLE,chr1,212897349,FLVCR1,295373,Conflicting interpretations of pathogenicity,Microsatellite,3' UTR variant,NM_014053.4:c.*2077_*2080dupCACA,-
+SAMPLE,chr1,241500602,FH,296871,Conflicting interpretations of pathogenicity,Microsatellite,Intron variant,NM_000143.4:c.1237-14_1237-13delTC,-
+SAMPLE,chr2,1496621,TPO,256612,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_000547.6:c.2242G>A,p.Val748Met
+SAMPLE,chr2,26516422,OTOF,48247,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_001287489.2:c.505C>T,p.Arg169Trp
+SAMPLE,chr2,47414420,MSH2,336427,Conflicting interpretations of pathogenicity,Deletion,Intron variant,NM_001258281.1:c.744+28_744+29delAA,-
+SAMPLE,chr2,48713933,"LHCGR, STON1-GTF2A1L",36470,Conflicting interpretations of pathogenicity,Deletion,Intron variant,NM_000233.4:c.605+52delT,-
+SAMPLE,chr2,71598730,DYSF,595038,Conflicting interpretations of pathogenicity,SNV,Synonymous variant,NM_001130976.2:c.3645C>T,p.Tyr1215Tyr
+SAMPLE,chr2,151546001,NEB,331431,Conflicting interpretations of pathogenicity,Duplication,Intron variant,NM_001271208.2:c.20467-4dupT,-
+SAMPLE,chr2,162273887,IFIH1,541788,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_022168.4:c.2362G>A,p.Ala788Thr
+SAMPLE,chr2,177540073,AGPS,332564,Conflicting interpretations of pathogenicity,Microsatellite,3' UTR variant,NM_003659.4:c.*1896_*1899delATAT,-
+SAMPLE,chr2,178431784,"PRKRA, CHROMR",332613,Conflicting interpretations of pathogenicity,SNV,3' UTR variant,NM_003690.5:c.*313G>A,-
+SAMPLE,chr2,178431939,"PRKRA, CHROMR",332618,Conflicting interpretations of pathogenicity,SNV,3' UTR variant,NM_003690.5:c.*158A>G,-
+SAMPLE,chr2,178461008,PJVK,43871,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_001042702.5:c.793C>T,p.Arg265Cys
+SAMPLE,chr2,206149933,NDUFS1,333789,Conflicting interpretations of pathogenicity,Deletion,Intron variant,NM_001199984.2:c.196-10_196-9delTT,-
+SAMPLE,chr2,227028004,COL4A4,191312,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_000092.5:c.3979G>A,p.Val1327Met
+SAMPLE,chr2,233757013,"UGT1A, UGT1A10, UGT1A8, UGT1A7, UGT1A6, UGT1A5, UGT1A9, UGT1A4, UGT1A1, UGT1A3",12288,Conflicting interpretations of pathogenicity,SNV,Intron variant,NM_000463.3:c.-3275T>G,-
+SAMPLE,chr2,237324800,"COL6A3, LOC126806573",287900,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_004369.4:c.9508G>A,p.Gly3170Arg
+SAMPLE,chr2,237387870,COL6A3,94901,Conflicting interpretations of pathogenicity,SNV,"Missense variant, Intron variant",NM_004369.4:c.1024G>A,p.Val342Met
+SAMPLE,chr3,27721936,EOMES,210936,Conflicting interpretations of pathogenicity,Insertion,"Intron variant, Inframe insertion",NM_001278182.2:c.358_359insGCGCCG,p.Ala119_Ala120insGlyAla
+SAMPLE,chr3,113657263,USF3,1174824,Conflicting interpretations of pathogenicity,Microsatellite,Inframe deletion,NM_001009899.4:c.4410_4412delGCA,p.Gln1471del
+SAMPLE,chr3,170998041,SLC2A2,130348,Conflicting interpretations of pathogenicity,SNV,Synonymous variant,NM_000340.2:c.1437C>T,p.Phe479Phe
+SAMPLE,chr4,54273604,PDGFRA,41794,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_001347828.2:c.1507T>C,p.Ser503Pro
+SAMPLE,chr4,109741003,CFI,347147,Conflicting interpretations of pathogenicity,SNV,"Missense variant, Non-coding transcript variant, Intron variant",NM_000204.5:c.1642G>C,p.Glu548Gln
+SAMPLE,chr4,109746405,CFI,347157,Conflicting interpretations of pathogenicity,SNV,"Missense variant, Non-coding transcript variant",NM_001375278.1:c.1270A>C,p.Ile424Leu
+SAMPLE,chr4,121835150,BBS7,347482,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_176824.3:c.1505A>G,p.His502Arg
+SAMPLE,chr4,154586438,FGA,16420,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_000508.5:c.991A>G,p.Thr331Ala
+SAMPLE,chr4,177431488,AGA,348222,Conflicting interpretations of pathogenicity,SNV,"Non-coding transcript variant, 3' UTR variant",NM_000027.4:c.*220G>C,-
+SAMPLE,chr4,186212115,"KLKB1, CYP4V2",903414,Conflicting interpretations of pathogenicity,SNV,3' UTR variant,NM_207352.4:c.*1474G>T,-
+SAMPLE,chr4,186212144,"KLKB1, CYP4V2",903416,Conflicting interpretations of pathogenicity,SNV,3' UTR variant,NM_207352.4:c.*1503A>C,-
+SAMPLE,chr4,186707265,FAT1,425343,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_005245.4:c.2563G>A,p.Gly855Arg
+SAMPLE,chr5,137621777,KLHL3,350976,Conflicting interpretations of pathogenicity,Microsatellite,3' UTR variant,NM_017415.3:c.*319_*320delGT,-
+SAMPLE,chr5,148987809,SH3TC2,351629,Conflicting interpretations of pathogenicity,Microsatellite,3' UTR variant,NM_024577.4:c.*16900_*16901delCA,-
+SAMPLE,chr5,148994600,SH3TC2,351716,Conflicting interpretations of pathogenicity,Microsatellite,3' UTR variant,NM_024577.4:c.*10107_*10110delACCA,-
+SAMPLE,chr5,156326864,SGCD,48113,Conflicting interpretations of pathogenicity,SNV,Genic upstream transcript variant,NM_000337.6:c.-412A>T,-
+SAMPLE,chr5,156326904,SGCD,48112,Conflicting interpretations of pathogenicity,SNV,Genic upstream transcript variant,NM_000337.6:c.-372C>G,-
+SAMPLE,chr5,162067984,GABRG2,352637,Conflicting interpretations of pathogenicity,Deletion,"5' UTR variant, Intron variant",NM_198903.2:c.-4delA,-
+SAMPLE,chr5,172454519,SH3PXD2B,907388,Conflicting interpretations of pathogenicity,SNV,5' UTR variant,NM_001308175.2:c.-167C>G,-
+SAMPLE,chr5,177093242,FGFR4,16326,Conflicting interpretations of pathogenicity,SNV,"Missense variant, Intron variant",NM_001354984.2:c.1162G>A,p.Gly388Arg
+SAMPLE,chr6,6305510,F13A1,357677,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_000129.4:c.160T>A,p.Phe54Ile
+SAMPLE,chr6,6318562,F13A1,16532,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_000129.4:c.103G>T,p.Val35Leu
+SAMPLE,chr6,16327633,"ATXN1, LOC108663993",1174970,Conflicting interpretations of pathogenicity,Microsatellite,"3' UTR variant, Inframe insertion",NM_000332.3:c.675_677dupGCA,p.Gln225dup
+SAMPLE,chr6,26090957,"HFE, HFE-AS1",11,Conflicting interpretations of pathogenicity,SNV,"Missense variant, Non-coding transcript variant, Intron variant",NM_000410.4:c.193A>T,p.Ser65Cys
+SAMPLE,chr6,32039081,"CYP21A2, LOC106780800",196278,Conflicting interpretations of pathogenicity,SNV,"5' UTR variant, Intron variant",NM_001368143.2:c.-126C>A,-
+SAMPLE,chr6,112061073,CCN6,711335,Conflicting interpretations of pathogenicity,SNV,"Missense variant, Non-coding transcript variant",NM_003880.4:c.131G>A,p.Arg44His
+SAMPLE,chr6,123548606,TRDN,449704,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_006073.4:c.239C>T,p.Ser80Phe
+SAMPLE,chr6,131851228,ENPP1,13589,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_006208.3:c.517A>C,p.Lys173Gln
+SAMPLE,chr6,144188708,STX11,355616,Conflicting interpretations of pathogenicity,Duplication,3' UTR variant,NM_003764.4:c.*1221dupA,-
+SAMPLE,chr6,152148069,SYNE1,194303,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_001347702.2:c.1417C>T,p.Leu473Phe
+SAMPLE,chr7,21867834,DNAH11,198650,Conflicting interpretations of pathogenicity,Duplication,Intron variant,NM_001277115.2:c.11691-20dupT,-
+SAMPLE,chr7,92499847,PEX1,360922,Conflicting interpretations of pathogenicity,Deletion,Intron variant,NM_000466.3:c.2584-10delT,-
+SAMPLE,chr7,103989356,RELN,130109,Conflicting interpretations of pathogenicity,Microsatellite,Inframe insertion,NM_005045.4:c.-6_-1dupGGCGGC,-
+SAMPLE,chr7,113878379,PPP1R3A,8706,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_002711.4:c.2713G>T,p.Asp905Tyr
+SAMPLE,chr7,127611134,PAX4,129878,Conflicting interpretations of pathogenicity,SNV,"Missense variant, Intron variant",NM_001366110.1:c.986A>C,p.His329Pro
+SAMPLE,chr7,148884211,EZH2,359292,Conflicting interpretations of pathogenicity,Microsatellite,5' UTR variant,NM_001203247.2:c.-58_-56dupGCG,-
+SAMPLE,chr8,27803549,ESCO2,"362750, 362751",Conflicting interpretations of pathogenicity,Microsatellite,3' UTR variant,NM_001017420.3:c.*128_*129dupAC,-
+SAMPLE,chr8,31076300,WRN,802395,Conflicting interpretations of pathogenicity,Deletion,Intron variant,NM_000553.6:c.839+25delT,-
+SAMPLE,chr8,41661508,ANK1,789017,Conflicting interpretations of pathogenicity,SNV,"Intron variant, Synonymous variant",NM_020478.5:c.426G>A,p.Ala142Ala
+SAMPLE,chr8,133011962,TG,361984,Conflicting interpretations of pathogenicity,SNV,Synonymous variant,NM_003235.5:c.6324G>A,p.Arg2108Arg
+SAMPLE,chr8,140287720,TRAPPC9,130624,Conflicting interpretations of pathogenicity,SNV,"Non-coding transcript variant, Synonymous variant",NM_001160372.4:c.1869C>T,p.Ser623Ser
+SAMPLE,chr8,144317254,"DGAT1, MIR6848",1599565,Conflicting interpretations of pathogenicity,Duplication,"Non-coding transcript variant, Intron variant",NM_012079.6:c.1095-3dupC,-
+SAMPLE,chr9,2622146,"VLDLR, VLDLR-AS1",290493,Conflicting interpretations of pathogenicity,Microsatellite,"Non-coding transcript variant, 5' UTR variant",NM_003383.5:c.-27_-19delGGCGGCGGC,-
+SAMPLE,chr9,6556307,GLDC,235561,Conflicting interpretations of pathogenicity,SNV,Intron variant,NM_000170.3:c.2053-5C>G,-
+SAMPLE,chr9,35683243,TPM2,167742,Conflicting interpretations of pathogenicity,Deletion,Intron variant,NM_001301227.2:c.773-3delC,-
+SAMPLE,chr9,105636282,FKTN,364497,Conflicting interpretations of pathogenicity,SNV,"Non-coding transcript variant, 3' UTR variant, Intron variant",NM_006731.2:c.*1018T>A,-
+SAMPLE,chr9,133554507,ADAMTSL2,912901,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_001145320.2:c.1090G>A,p.Val364Ile
+SAMPLE,chr10,8074278,GATA3,301133,Conflicting interpretations of pathogenicity,Duplication,3' UTR variant,NM_001002295.2:c.*265dupA,-
+SAMPLE,chr10,23193706,PTF1A,130055,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_178161.3:c.787T>C,p.Ser263Pro
+SAMPLE,chr10,43114671,RET,24934,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_020975.6:c.2071G>A,p.Gly691Ser
+SAMPLE,chr10,60076182,ANK3,434171,Conflicting interpretations of pathogenicity,SNV,"Missense variant, Intron variant",NM_020987.5:c.4699G>A,p.Val1567Met
+SAMPLE,chr10,71397276,CDH23,300394,Conflicting interpretations of pathogenicity,Microsatellite,5' UTR variant,NM_022124.6:c.-35_-31dupAGGCG,-
+SAMPLE,chr10,71829044,PSAP,418428,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_001042465.3:c.409C>G,p.Leu137Val
+SAMPLE,chr10,90918983,ANKRD1,301605,Conflicting interpretations of pathogenicity,Deletion,Intron variant,NM_014391.3:c.346-29_346-12delATATATATATTTATTTAT,-
+SAMPLE,chr10,123053169,ACADSB,299089,Conflicting interpretations of pathogenicity,Deletion,Intron variant,NM_001609.4:c.1228+21delT,-
+SAMPLE,chr11,1759030,CTSD,527781,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_001909.5:c.410C>T,p.Ser137Leu
+SAMPLE,chr11,17276578,NUCB2,127108,Conflicting interpretations of pathogenicity,SNV,No consequences found,NM_001330227.3:c.-406C>G,-
+SAMPLE,chr11,17386478,KCNJ11,303722,Conflicting interpretations of pathogenicity,SNV,3' UTR variant,NM_000525.4:c.*441T>C,-
+SAMPLE,chr11,17386857,KCNJ11,303731,Conflicting interpretations of pathogenicity,SNV,3' UTR variant,NM_000525.4:c.*62G>A,-
+SAMPLE,chr11,17408375,ABCC8,157694,Conflicting interpretations of pathogenicity,SNV,Intron variant,NM_001351295.2:c.2886+17A>G,-
+SAMPLE,chr11,17414293,"ABCC8, LOC110121471",1177448,Conflicting interpretations of pathogenicity,SNV,Intron variant,NM_001351295.2:c.2456+219T>C,-
+SAMPLE,chr11,17414389,"ABCC8, LOC110121471",1177449,Conflicting interpretations of pathogenicity,SNV,Intron variant,NM_001351295.2:c.2456+123C>T,-
+SAMPLE,chr11,17414419,"ABCC8, LOC110121471",1177450,Conflicting interpretations of pathogenicity,SNV,Intron variant,NM_001351295.2:c.2456+93C>T,-
+SAMPLE,chr11,17415389,ABCC8,1177451,Conflicting interpretations of pathogenicity,SNV,Intron variant,NM_001351295.2:c.2322-50T>C,-
+SAMPLE,chr11,17428382,ABCC8,157686,Conflicting interpretations of pathogenicity,SNV,"Non-coding transcript variant, Synonymous variant",NM_001351295.2:c.2013G>A,p.Lys671Lys
+SAMPLE,chr11,17430945,ABCC8,157684,Conflicting interpretations of pathogenicity,SNV,"Non-coding transcript variant, Synonymous variant",NM_001351295.2:c.1686C>T,p.His562His
+SAMPLE,chr11,31793814,PAX6,258168,Conflicting interpretations of pathogenicity,SNV,Intron variant,NM_001288726.2:c.*10385G>A,-
+SAMPLE,chr11,36594029,RAG2,304558,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_000536.4:c.140A>T,p.His47Leu
+SAMPLE,chr11,47333645,MYBPC3,42687,Conflicting interpretations of pathogenicity,SNV,Synonymous variant,NM_000256.3:c.3102C>T,p.Ala1034Ala
+SAMPLE,chr11,47350041,MYBPC3,161311,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_000256.3:c.478C>T,p.Arg160Trp
+SAMPLE,chr11,64804758,MEN1,188099,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_001370251.1:c.1535C>T,p.Pro512Leu
+SAMPLE,chr11,77182088,MYO7A,43199,Conflicting interpretations of pathogenicity,SNV,Synonymous variant,NM_000260.4:c.3042G>T,p.Thr1014Thr
+SAMPLE,chr11,77205579,MYO7A,43290,Conflicting interpretations of pathogenicity,SNV,Synonymous variant,NM_000260.4:c.5598C>T,p.Leu1866Leu
+SAMPLE,chr11,88312569,CTSC,258190,Conflicting interpretations of pathogenicity,SNV,Intron variant,NM_001814.6:c.319-15C>T,-
+SAMPLE,chr11,108279480,ATM,181857,Conflicting interpretations of pathogenicity,Deletion,Intron variant,NM_000051.4:c.3285-9delT,-
+SAMPLE,chr11,108280980,ATM,181858,Conflicting interpretations of pathogenicity,Duplication,Intron variant,NM_000051.4:c.3403-13dupA,-
+SAMPLE,chr11,128891437,KCNJ5,303601,Conflicting interpretations of pathogenicity,SNV,5' UTR variant,NM_000890.5:c.-295C>G,-
+SAMPLE,chr11,128891439,KCNJ5,303610,Conflicting interpretations of pathogenicity,SNV,5' UTR variant,NM_000890.5:c.-293C>G,-
+SAMPLE,chr12,7190512,PEX5,768511,Conflicting interpretations of pathogenicity,Microsatellite,Splice donor variant,NM_001351124.3:c.147+77_147+121delCAGCCTCTGAGGCAGTGAGTGTTCTTGAGGTGGAAAGCCCAGGTG,-
+SAMPLE,chr12,47879112,VDR,308887,Conflicting interpretations of pathogenicity,SNV,"Initiatior codon variant, Missense variant",NM_001364085.2:c.2T>C,p.Met1?
+SAMPLE,chr12,120978819,HNF1A,129234,Conflicting interpretations of pathogenicity,SNV,Synonymous variant,NM_000545.8:c.51C>G,p.Leu17Leu
+SAMPLE,chr12,120978847,HNF1A,14937,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_000545.8:c.79A>C,p.Ile27Leu
+SAMPLE,chr12,120994314,HNF1A,129236,Conflicting interpretations of pathogenicity,SNV,Synonymous variant,NM_000545.8:c.864G>C,p.Gly288Gly
+SAMPLE,chr12,120997672,HNF1A,129231,Conflicting interpretations of pathogenicity,SNV,Intron variant,NM_000545.8:c.1501+7G>A,-
+SAMPLE,chr13,36346230,SPART,512580,Conflicting interpretations of pathogenicity,SNV,"5' UTR variant, Intron variant",NM_015087.5:c.-8G>A,-
+SAMPLE,chr13,83881070,SLITRK1,739922,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_001281503.2:c.438C>A,p.Asp146Glu
+SAMPLE,chr13,113117603,F7,402841,Conflicting interpretations of pathogenicity,SNV,Intron variant,NM_000131.4:c.805+7A>G,-
+SAMPLE,chr14,23419114,MYH7,36640,Conflicting interpretations of pathogenicity,Insertion,Intron variant,NM_000257.4:c.3972+62_3972+63insC,-
+SAMPLE,chr14,87950751,GALC,92493,Conflicting interpretations of pathogenicity,Deletion,Intron variant,NM_000153.4:c.1162-4delT,-
+SAMPLE,chr15,31026219,"TRPM1, LOC126862088",167747,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_001252020.2:c.3600G>C,p.Gln1200His
+SAMPLE,chr15,59256276,MYO1E,983002,Conflicting interpretations of pathogenicity,SNV,Intron variant,NM_004998.4:c.332+8G>A,-
+SAMPLE,chr15,68207979,CLN6,316984,Conflicting interpretations of pathogenicity,Microsatellite,3' UTR variant,NM_017882.3:c.*159_*160dupGT,-
+SAMPLE,chr15,82538982,RPS17,419839,Conflicting interpretations of pathogenicity,SNV,"Non-coding transcript variant, Synonymous variant",NM_001021.6:c.159T>C,p.Tyr53Tyr
+SAMPLE,chr15,99973382,ADAMTS17,315201,Conflicting interpretations of pathogenicity,Deletion,3' UTR variant,NM_139057.4:c.*1014_*1019delAGCCCA,-
+SAMPLE,chr16,1220770,CACNA1H,643039,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_001005407.2:c.6820C>T,p.Pro2274Ser
+SAMPLE,chr16,2084266,TSC2,49537,Conflicting interpretations of pathogenicity,SNV,Synonymous variant,NM_000548.5:c.4044C>T,p.His1348His
+SAMPLE,chr16,30091839,TBX6,427809,Conflicting interpretations of pathogenicity,SNV,Intron variant,NM_031477.5:c.*871G>T,-
+SAMPLE,chr16,53671541,RPGRIP1L,260597,Conflicting interpretations of pathogenicity,SNV,Synonymous variant,NM_001127897.4:c.1072T>C,p.Leu358Leu
+SAMPLE,chr16,67616808,CTCF,594856,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_006565.4:c.1016G>A,p.Arg339Gln
+SAMPLE,chr16,86513394,FOXF1,320803,Conflicting interpretations of pathogenicity,Insertion,3' UTR variant,NM_001451.3:c.*309_*310insT,-
+SAMPLE,chr16,89816740,"FANCA, LOC112486223",210970,Conflicting interpretations of pathogenicity,Duplication,No consequences found,NM_000135.4:c.-126_-125insACGACGCAAGGCC,-
+SAMPLE,chr17,7675327,TP53,440348,Conflicting interpretations of pathogenicity,SNV,Intron variant,NM_001126115.2:c.-112G>A,-
+SAMPLE,chr17,41611714,KRT16,587419,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_005557.4:c.539C>T,p.Ala180Val
+SAMPLE,chr18,31591900,TTR,1235184,Conflicting interpretations of pathogenicity,SNV,5' UTR variant,NM_000371.4:c.-3A>G,-
+SAMPLE,chr18,31598648,TTR,43455,Conflicting interpretations of pathogenicity,SNV,Synonymous variant,NM_000371.4:c.417G>A,p.Thr139Thr
+SAMPLE,chr18,50194774,MYO5B,327093,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_001080467.3:c.20A>G,p.Tyr7Cys
+SAMPLE,chr19,45496962,RTN2,1251464,Conflicting interpretations of pathogenicity,Microsatellite,5' UTR variant,NM_005619.5:c.-143_-138dupGGCGGC,-
+SAMPLE,chr19,45548790,OPA3,329598,Conflicting interpretations of pathogenicity,Microsatellite,"3' UTR variant, Intron variant",NM_025136.4:c.*4720_*4723dupATAA,-
+SAMPLE,chr19,53810749,NLRP12,262532,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_001277126.2:c.910C>T,p.His304Tyr
+SAMPLE,chr20,3234173,SLC4A11,262001,Conflicting interpretations of pathogenicity,SNV,"Non-coding transcript variant, Synonymous variant",NM_032034.4:c.481A>C,p.Arg161Arg
+SAMPLE,chr20,8774575,PLCB1,129909,Conflicting interpretations of pathogenicity,SNV,Synonymous variant,NM_015192.4:c.2967G>A,p.Thr989Thr
+SAMPLE,chr20,44429372,HNF4A,676885,Conflicting interpretations of pathogenicity,SNV,Intron variant,NM_001030004.3:c.*4993A>C,-
+SAMPLE,chr20,48991033,ARFGEF2,128435,Conflicting interpretations of pathogenicity,SNV,Intron variant,NM_006420.3:c.2815-7G>A,-
+SAMPLE,chr20,51790916,SALL4,288147,Conflicting interpretations of pathogenicity,SNV,"Missense variant, Intron variant",NM_020436.5:c.1567G>C,p.Gly523Arg
+SAMPLE,chr22,18088039,PEX26,500389,Conflicting interpretations of pathogenicity,SNV,Synonymous variant,NM_001127649.3:c.882A>G,p.Ala294Ala
+SAMPLE,chr22,21867418,MAPK1,1174634,Conflicting interpretations of pathogenicity,Microsatellite,"Initiatior codon variant, Inframe insertion",NM_002745.5:c.20_22dupCGG,p.Ala7dup
+SAMPLE,chrX,658804,SHOX,448376,Conflicting interpretations of pathogenicity,SNV,Missense variant,NM_006883.2:c.653G>A,p.Arg218His
+SAMPLE,chrX,49219808,CACNA1F,195497,Conflicting interpretations of pathogenicity,Deletion,Intron variant,NM_005183.4:c.2420-19delT,-
+SAMPLE,chr2,233760233,"UGT1A, UGT1A10, UGT1A8, UGT1A7, UGT1A6, UGT1A5, UGT1A9, UGT1A4, UGT1A1, UGT1A3",12275,"Conflicting interpretations of pathogenicity, drug response, other",Microsatellite,Intron variant,NM_000463.3:c.-55_-54insAT,-
+SAMPLE,chr3,46370444,"CCR5, CCR5AS",8189,"Conflicting interpretations of pathogenicity, protective",SNV,Intron variant,NM_001394783.1:c.-556A>G,-
+SAMPLE,chr6,159692840,SOD2,14751,"Conflicting interpretations of pathogenicity, risk factor",SNV,"Missense variant, 5' UTR variant",NM_000636.4:c.47T>C,p.Val16Ala
+SAMPLE,chr22,43928847,PNPLA3,341932,"Conflicting interpretations of pathogenicity, risk factor",SNV,Missense variant,NM_025225.3:c.444C>G,p.Ile148Met
+SAMPLE,chr11,66560624,ACTN3,18312,"Conflicting interpretations of pathogenicity, affects",SNV,Nonsense,NM_001258371.3:c.1858C>T,p.Arg620*
+SAMPLE,chr1,27370346,FCN3,992481,Risk factor,SNV,Intron variant,NM_004672.5:c.-3749C>A,-
+SAMPLE,chr1,53247055,LRP8,6996,Risk factor,SNV,Missense variant,NM_004631.5:c.2855G>A,p.Arg952Gln
+SAMPLE,chr1,93909753,GCLM,8366,Risk factor,SNV,Genic upstream transcript variant,NM_001308253.2:c.-590C>T,-
+SAMPLE,chr1,113872746,"PTPN22, AP4B1-AS1",8910,Risk factor,SNV,No consequences found,NM_015967.7:c.-1123C>G,-
+SAMPLE,chr1,160837925,CD244,4895,Risk factor,SNV,Intron variant,NM_001166663.2:c.849+526A>G,-
+SAMPLE,chr1,161662856,FCGR2B,5466,Risk factor,SNV,Genic upstream transcript variant,NM_001394477.1:c.-386G>A,-
+SAMPLE,chr1,203186754,CHI3L1,8112,Risk factor,SNV,No consequences found,NM_001276.4:c.-131C>G,-
+SAMPLE,chr2,634905,No affected genes found,812169,Risk factor,SNV,No consequences found,LOC105373352-TMEM18:n.634905T>C,-
+SAMPLE,chr2,112836810,IL1B,14671,Risk factor,SNV,No consequences found,NM_000576.3:c.-118C>T,-
+SAMPLE,chr2,218384290,SLC11A1,9232,Risk factor,SNV,Synonymous variant,NM_000578.4:c.198C>T,p.Phe66Phe
+SAMPLE,chr2,218395009,SLC11A1,9233,Risk factor,SNV,Missense variant,NM_000578.4:c.1627G>A,p.Asp543Asn
+SAMPLE,chr2,240591757,CAPN10,5093,Risk factor,SNV,Intron variant,NM_023083.4:c.471-176G>A,-
+SAMPLE,chr2,240594824,CAPN10,5094,Risk factor,Duplication,Intron variant,NM_023083.4:c.997+136_998-148dupCGGGAGGAGGGTGATGATTCTGTCCCAGGAGC,-
+SAMPLE,chr3,50612068,"CISH, MAPKAPK3",7091,Risk factor,SNV,5' UTR variant,NM_001243926.2:c.-436A>T,-
+SAMPLE,chr4,1113690,"RNF212, LOC105374344",984916,Risk factor,SNV,Non-coding transcript variant,NM_001131034.4:c.-226A>G,-
+SAMPLE,chr4,38798089,TLR1,8361,Risk factor,SNV,Missense variant,NM_003263.4:c.743A>G,p.Asn248Ser
+SAMPLE,chr4,46303716,GABRA2,16218,Risk factor,SNV,Intron variant,NM_001330690.2:c.704-104A>G,-
+SAMPLE,chr4,46327706,GABRA2,16219,Risk factor,SNV,Intron variant,NM_001330690.2:c.255+4909A>T,-
+SAMPLE,chr4,46337053,GABRA2,16220,Risk factor,SNV,Intron variant,NM_001330690.2:c.188-4371A>T,-
+SAMPLE,chr5,132251371,PDLIM4,6348,Risk factor,SNV,No consequences found,P4HA2-PDLIM4:n.132251371C>T,-
+SAMPLE,chr5,147878599,SCGB3A2,4253,Risk factor,SNV,No consequences found,NM_054023.5:c.-205G>A,-
+SAMPLE,chr5,163123997,No affected genes found,1342842,Risk factor,SNV,No consequences found,XR_002956233.1:n.1426-34651A>C,-
+SAMPLE,chr6,20661019,CDKAL1,812171,Risk factor,SNV,Intron variant,NM_017774.3:c.371+11642G>C,-
+SAMPLE,chr6,31306603,HLA-C,14907,Risk factor,SNV,No consequences found,XR_926691.2:n.965+175A>G,-
+SAMPLE,chr6,151842200,ESR1,16594,Risk factor,SNV,Intron variant,NM_001291230.2:c.453-397T>C,-
+SAMPLE,chr6,166160758,TBXT,8181,Risk factor,SNV,Intron variant,NM_001366285.2:c.1037+79C>T,-
+SAMPLE,chr7,22727026,"IL6, IL6-AS1, LOC126859963",14718,Risk factor,SNV,Genic upstream transcript variant,NM_000600.5:c.-237C>G,-
+SAMPLE,chr7,147877298,CNTNAP2,5491,Risk factor,SNV,Intron variant,NM_014141.6:c.2099-26267A>G,-
+SAMPLE,chr8,27516348,EPHX2,16603,Risk factor,SNV,Missense variant,NM_001979.6:c.860G>A,p.Arg287Gln
+SAMPLE,chr8,117172544,SLC30A8,1000,Risk factor,SNV,Missense variant,NM_173851.3:c.973C>T,p.Arg325Trp
+SAMPLE,chr8,132865378,TG,29906,Risk factor,SNV,No consequences found,NM_003235.5:c.-1623A>G,-
+SAMPLE,chr8,134597964,ZFAT,1084,Risk factor,SNV,Intron variant,NM_020863.4:c.2475+2472T>A,-
+SAMPLE,chr9,33403472,AQP7,35452,Risk factor,SNV,No consequences found,NM_001170.3:c.-1125A>G,-
+SAMPLE,chr10,68882104,STOX1,1719,Risk factor,SNV,Missense variant,NM_001130161.4:c.457T>C,p.Tyr153His
+SAMPLE,chr10,88989499,"ACTA2, FAS",16517,Risk factor,SNV,Intron variant,NM_000043.6:c.-1378G>A,-
+SAMPLE,chr10,113047288,TCF7L2,7415,Risk factor,SNV,Intron variant,NM_001367943.1:c.552+7162G>C,-
+SAMPLE,chr10,122461028,HTRA1,7486,Risk factor,SNV,No consequences found,NM_002775.5:c.-625G>A,-
+SAMPLE,chr11,320772,IFITM3,31527,Risk factor,SNV,"Non-coding transcript variant, Synonymous variant",NM_021034.3:c.42T>C,p.Ser14Ser
+SAMPLE,chr11,73983709,UCP2,7865,Risk factor,SNV,No consequences found,NM_001381943.1:c.-1503G>A,-
+SAMPLE,chr11,102845216,MMP3,12793,Risk factor,Duplication,No consequences found,NM_002422.5:c.-1671_-1670insT,-
+SAMPLE,chr13,109782884,IRS2,8820,Risk factor,SNV,Missense variant,NM_003749.3:c.3170G>A,p.Gly1057Asp
+SAMPLE,chr14,35292469,"PSMA6, PRORP-PSMA6",6796,Risk factor,SNV,"Non-coding transcript variant, 5' UTR variant, Intron variant",NM_002791.3:c.-8C>G,-
+SAMPLE,chr14,52300623,PTGER2,13360,Risk factor,SNV,No consequences found,LOC100131689-PTGER2:n.52300623G>A,-
+SAMPLE,chr14,103699590,"KLC1, XRCC3",8945,Risk factor,SNV,Intron variant,NM_001394833.1:c.*5972T>C,-
+SAMPLE,chr15,65201874,CILP,6312,Risk factor,SNV,Missense variant,NM_003613.4:c.1184T>C,p.Ile395Thr
+SAMPLE,chr16,3657746,DNASE1,16852,Risk factor,SNV,"Missense variant, Non-coding transcript variant",NM_001387139.1:c.800G>A,p.Arg267Gln
+SAMPLE,chr16,27363079,IL4R,14665,Risk factor,SNV,Missense variant,NM_000418.4:c.1727A>G,p.Gln576Arg
+SAMPLE,chr16,53767042,FTO,217824,Risk factor,SNV,Intron variant,NM_001363894.1:c.46-43098T>C,-
+SAMPLE,chr19,7748382,"CD209, LOC117307477",5409,Risk factor,SNV,No consequences found,NM_021155.4:c.-871T>C,-
+SAMPLE,chr19,17203024,MYO9B,7521,Risk factor,SNV,Intron variant,NM_004145.4:c.4879-123G>A,-
+SAMPLE,chr22,23894205,"MIF, MIF-AS1",14359,Risk factor,SNV,Non-coding transcript variant,NM_002415.2:c.-270G>C,-
+SAMPLE,chrX,129736814,XPNPEP2,11567,Risk factor,SNV,No consequences found,NM_003399.6:c.-2400C>A,-
+SAMPLE,chr6,35611598,FKBP5,1702942,Likely risk allele,SNV,Intron variant,NM_001145775.3:c.508+7498T>G,-
+SAMPLE,chr6,35639794,FKBP5,1712509,Likely risk allele,SNV,Intron variant,NM_001145775.3:c.106-2636A>G,-
+SAMPLE,chr6,35665261,FKBP5,1702944,Likely risk allele,SNV,Intron variant,NM_001145775.3:c.-19-22418C>G,-
+SAMPLE,chr6,35675286,FKBP5,1702946,Likely risk allele,SNV,Intron variant,NM_001145775.3:c.-19-32443C>T,-
+SAMPLE,chr6,35702206,FKBP5,1702943,Likely risk allele,SNV,Intron variant,NM_001145775.3:c.-20+18122T>C,-
+SAMPLE,chr1,20651565,"PINK1, PINK1-AS",1710533,Uncertain risk allele,SNV,Non-coding transcript variant,NM_032409.3:c.*874G>A,-
+SAMPLE,chr1,206773552,"IL10, IL19",1710531,Uncertain risk allele,SNV,Intron variant,NM_000572.3:c.-1117A>G,-
+SAMPLE,chr8,89766285,RIPK2,1710537,Uncertain risk allele,SNV,Intron variant,NM_003821.6:c.483+789G>A,-
+SAMPLE,chr8,89811459,RIPK2,1710536,Uncertain risk allele,SNV,No consequences found,RIPK2-COX6B1P6:n.89811459A>G,-
+SAMPLE,chr9,114776054,TNFSF15,1710538,Uncertain risk allele,SNV,No consequences found,LOC105376231-TNFSF15:n.114776054C>T,-
+SAMPLE,chr9,114785492,TNFSF15,1710526,Uncertain risk allele,SNV,3' UTR variant,NM_005118.4:c.*4960A>G,-
+SAMPLE,chr12,2236129,CACNA1C,1722519,Uncertain risk allele,SNV,Intron variant,NM_000719.7:c.477+115699G>A,-
+SAMPLE,chr13,43859494,CCDC122,1710528,Uncertain risk allele,SNV,Intron variant,NM_144974.5:c.555+178G>T,-
+SAMPLE,chr13,43904864,LACC1,1710529,Uncertain risk allele,SNV,No consequences found,XR_001749854.1:n.1268A>G,-
+SAMPLE,chr16,50700122,NOD2,1710530,Uncertain risk allele,SNV,Intron variant,NM_022162.3:c.540+168G>A,-
+SAMPLE,chr4,38797027,TLR1,8360,"Uncertain risk allele, protective",SNV,Missense variant,NM_003263.4:c.1805G>T,p.Ser602Ile
+SAMPLE,chr10,17849701,MRC1,64687,"Uncertain risk allele, risk factor",SNV,Missense variant,NM_002438.4:c.1186G>A,p.Gly396Ser
+SAMPLE,chr1,17079454,PADI2,972889,Association,SNV,Intron variant,NM_007365.3:c.1159-39G>A,-
+SAMPLE,chr1,17118274,PADI2,972891,Association,SNV,Intron variant,NM_007365.3:c.92+1006C>A,-
+SAMPLE,chr1,17331039,PADI4,972892,Association,SNV,Missense variant,NM_012387.3:c.163G>A,p.Gly55Ser
+SAMPLE,chr1,17331121,PADI4,972893,Association,SNV,Missense variant,NM_012387.3:c.245T>C,p.Val82Ala
+SAMPLE,chr1,17334004,PADI4,972895,Association,SNV,Missense variant,NM_012387.3:c.335G>C,p.Gly112Ala
+SAMPLE,chr1,17336144,PADI4,590790,Association,SNV,Intron variant,NM_012387.3:c.341-15T>C,-
+SAMPLE,chr1,17336167,PADI4,972894,Association,SNV,Synonymous variant,NM_012387.3:c.349T>C,p.Leu117Leu
+SAMPLE,chr1,30874473,SDC3,12755,Association,SNV,Missense variant,NM_014654.4:c.986C>T,p.Thr329Ile
+SAMPLE,chr1,47105719,CYP4Z1,1693612,Association,SNV,Intron variant,NM_178134.3:c.1068-409G>A,-
+SAMPLE,chr1,47143817,CYP4A22,1693611,Association,SNV,"Missense variant, Intron variant",NM_001010969.4:c.691T>C,p.Cys231Arg
+SAMPLE,chr1,156243466,"BGLAP, PAQR6",126864,Association,SNV,"Non-coding transcript variant, 3' UTR variant",NM_024897.4:c.*395C>T,-
+SAMPLE,chr1,165632229,MGST3,1693609,Association,SNV,Intron variant,NM_004528.4:c.-8+936G>A,-
+SAMPLE,chr2,33457670,RASGRP3,236028,Association,SNV,Intron variant,NM_001349979.2:c.-721G>T,-
+SAMPLE,chr2,102187575,IL1RL2,1120034,Association,SNV,Intron variant,NM_001351447.1:c.69-281C>A,-
+SAMPLE,chr2,102236342,IL1RL2,1120040,Association,SNV,Intron variant,NM_001351447.1:c.1324+1065T>C,-
+SAMPLE,chr2,102314488,IL1RL1,1120032,Association,SNV,Intron variant,NM_016232.5:c.-150+2865A>G,-
+SAMPLE,chr2,102350953,IL1RL1,1120037,Association,SNV,Intron variant,NM_003855.5:c.-5476T>C,-
+SAMPLE,chr2,102351825,IL1RL1,1120038,Association,SNV,Synonymous variant,NM_016232.5:c.1575T>C,p.Ser525Ser
+SAMPLE,chr2,102424707,IL18RAP,1120024,Association,SNV,Intron variant,NM_001393486.1:c.579+293T>C,-
+SAMPLE,chr2,102443564,IL18RAP,1120025,Association,SNV,Intron variant,NM_001393486.1:c.920+241T>A,-
+SAMPLE,chr2,102478945,SLC9A4,1120033,Association,SNV,Synonymous variant,NM_001011552.4:c.363G>A,p.Ser121Ser
+SAMPLE,chr2,102509525,SLC9A4,1120028,Association,SNV,Intron variant,NM_001011552.4:c.1488+592C>T,-
+SAMPLE,chr2,102526700,SLC9A4,1120029,Association,SNV,Intron variant,NM_001011552.4:c.2038+354T>G,-
+SAMPLE,chr2,102635468,SLC9A2,1120035,Association,SNV,Intron variant,NM_003048.6:c.289+15331G>A,-
+SAMPLE,chr2,112837290,IL1B,869138,Association,SNV,No consequences found,NM_000576.3:c.-598T>C,-
+SAMPLE,chr2,112838252,IL1B,869139,Association,SNV,No consequences found,NM_000576.3:c.-1560G>C,-
+SAMPLE,chr2,217310350,"DIRC3, DIRC3-AS1",1691113,Association,SNV,No consequences found,NR_026597.2:n.3065+7616C>T,-
+SAMPLE,chr3,2633505,CNTN4,430714,Association,SNV,Intron variant,NM_001206955.2:c.55+61947C>T,-
+SAMPLE,chr3,169774313,MYNN,375477,Association,SNV,"Non-coding transcript variant, Synonymous variant",NM_001185118.2:c.18C>T,p.His6His
+SAMPLE,chr4,1084399,RNF212,736,Association,SNV,Intron variant,NM_001131034.4:c.362+1497C>T,-
+SAMPLE,chr4,1101493,RNF212,735,Association,SNV,Intron variant,NM_001131034.4:c.172-4654T>C,-
+SAMPLE,chr4,9964756,SLC2A9,4593,Association,SNV,Intron variant,NM_020041.3:c.681+15836T>C,-
+SAMPLE,chr4,9992591,"SLC2A9, SLC2A9-AS1",4594,Association,SNV,Intron variant,NM_020041.3:c.410+4190G>A,-
+SAMPLE,chr4,73076961,ANKRD17,430719,Association,SNV,Synonymous variant,NM_032217.5:c.7731G>A,p.Thr2577Thr
+SAMPLE,chr4,88965146,FAM13A,1027617,Association,SNV,Intron variant,NM_014883.4:c.605+25827G>A,-
+SAMPLE,chr4,144539078,HHIP,870129,Association,SNV,No consequences found,XR_939273.2:n.522+22906T>C,-
+SAMPLE,chr4,144559628,HHIP,870131,Association,SNV,No consequences found,XR_939273.2:n.522+2356T>C,-
+SAMPLE,chr4,144565237,HHIP,870130,Association,SNV,No consequences found,LOC105377462-KRT18P51:n.144565237A>G,-
+SAMPLE,chr4,163086668,No affected genes found,375483,Association,SNV,No consequences found,LOC105377516-MIR4454:n.163086668A>G,-
+SAMPLE,chr5,168418786,WWC1,1213,Association,SNV,Intron variant,NM_001161661.2:c.1185-3222C>T,-
+SAMPLE,chr5,178320690,COL23A1,1691114,Association,SNV,Intron variant,NM_173465.4:c.362-13771A>G,-
+SAMPLE,chr6,102018522,GRIK2,252988,Association,SNV,Intron variant,NM_021956.5:c.2086-16819C>T,-
+SAMPLE,chr7,50398606,IKZF1,691984,Association,SNV,Intron variant,NM_001291839.2:c.464-1312A>G,-
+SAMPLE,chr7,50402906,IKZF1,694328,Association,SNV,3' UTR variant,NM_001291839.2:c.*2279T>G,-
+SAMPLE,chr7,92609830,CDK6,1321244,Association,SNV,3' UTR variant,NM_001145306.2:c.*5310T>C,-
+SAMPLE,chr7,92650049,CDK6,1321243,Association,SNV,Intron variant,NM_001145306.2:c.647+21377A>G,-
+SAMPLE,chr7,99668695,"CYP3A5, ZSCAN25",187819,Association,SNV,"3' UTR variant, Intron variant",NM_001190484.3:c.*3079C>T,-
+SAMPLE,chr9,133266456,ABO,1172913,Association,SNV,Intron variant,NM_020469.3:c.29-4288A>G,-
+SAMPLE,chr9,133273983,ABO,1172911,Association,SNV,Intron variant,NM_020469.3:c.28+1179T>C,-
+SAMPLE,chr9,133274414,ABO,1172912,Association,SNV,Intron variant,NM_020469.3:c.28+748T>C,-
+SAMPLE,chr10,94972974,CYP2C9,1693614,Association,SNV,Intron variant,NM_000771.4:c.961+729T>G,-
+SAMPLE,chr10,95037713,CYP2C8,1693596,Association,SNV,Intron variant,NM_000770.3:c.1292-404G>A,-
+SAMPLE,chr10,95065126,CYP2C8,1693597,Association,SNV,Intron variant,NM_000770.3:c.482-166A>G,-
+SAMPLE,chr10,133535040,CYP2E1,16888,Association,SNV,Intron variant,NM_000773.4:c.967+1143T>A,-
+SAMPLE,chr11,18303599,"LDHA, HPS5",183158,Association,SNV,Intron variant,NM_181508.1:c.554+1823G>A,-
+SAMPLE,chr11,34758731,No affected genes found,1027622,Association,SNV,No consequences found,XR_001748176.1:n.1016+4124G>A,-
+SAMPLE,chr11,34788896,No affected genes found,1027620,Association,SNV,No consequences found,XR_001748176.1:n.1016+34289T>C,-
+SAMPLE,chr11,35169898,CD44,126872,Association,SNV,Intron variant,NM_001202557.2:c.68-6677C>G,-
+SAMPLE,chr11,35171082,CD44,126875,Association,SNV,Intron variant,NM_001202557.2:c.68-5493C>T,-
+SAMPLE,chr11,35222511,CD44,126878,Association,SNV,"3' UTR variant, Intron variant",NM_001202557.2:c.*133A>G,-
+SAMPLE,chr11,62419070,SCGB1A1,1027621,Association,SNV,5' UTR variant,NM_003357.5:c.-26G>A,-
+SAMPLE,chr12,16352362,MGST1,1693600,Association,SNV,Intron variant,NM_145764.3:c.-1128G>A,-
+SAMPLE,chr12,129592551,TMEM132D,1691119,Association,SNV,Intron variant,NM_133448.3:c.969-61346A>G,-
+SAMPLE,chr14,54755757,SAMD4A,430718,Association,SNV,Intron variant,NM_015589.6:c.1176+4220T>C,-
+SAMPLE,chr14,56058851,No affected genes found,375481,Association,SNV,No consequences found,LOC105370512-LOC105370513:n.56058851G>A,-
+SAMPLE,chr15,28120472,"HERC2, LOC128772394",4745,Association,SNV,Intron variant,NM_004667.6:c.13272+874T>C,-
+SAMPLE,chr15,28285036,HERC2,4743,Association,SNV,Intron variant,NM_004667.6:c.323-4749G>A,-
+SAMPLE,chr15,58431476,LIPC,14453,Association,SNV,Genic upstream transcript variant,NM_000236.3:c.-557C>T,-
+SAMPLE,chr15,80441756,ARNT2,1693593,Association,SNV,Intron variant,NM_014862.4:c.32-9124C>T,-
+SAMPLE,chr15,90971530,"PRC1, PRC1-AS1",157642,Association,SNV,Intron variant,NM_001267580.2:c.1339-1016G>A,-
+SAMPLE,chr15,92061300,SLCO3A1,1691116,Association,SNV,Intron variant,NM_013272.4:c.647-33581T>C,-
+SAMPLE,chr16,55477894,MMP2,429032,Association,SNV,No consequences found,NM_004530.6:c.-1586C>T,-
+SAMPLE,chr16,74695364,MLKL,973943,Association,SNV,Missense variant,NM_152649.4:c.394T>C,p.Ser132Pro
+SAMPLE,chr17,4510732,SPNS2,1691123,Association,SNV,Intron variant,NM_001124758.3:c.371-2515A>G,-
+SAMPLE,chr19,10107354,"PPAN, PPAN-P2RY11",180725,Association,SNV,Intron variant,NM_002566.5:c.-4368C>T,-
+SAMPLE,chr19,10111519,"P2RY11, PPAN, PPAN-P2RY11",180727,Association,SNV,"3' UTR variant, Intron variant",NM_020230.7:c.*354A>G,-
+SAMPLE,chr19,10115376,"P2RY11, EIF3G",180728,Association,SNV,Intron variant,NM_020230.7:c.*4211G>A,-
+SAMPLE,chr19,10116334,EIF3G,180730,Association,SNV,Intron variant,NM_020230.7:c.*5169A>G,-
+SAMPLE,chr20,63790269,ZBTB46,375482,Association,SNV,Synonymous variant,NM_001369741.1:c.489T>C,p.Ala163Ala
+SAMPLE,chr21,33237200,"IFNAR2, IFNAR2-IL10RB",1684584,Association,SNV,Intron variant,NM_001289125.3:c.-83-4640G>A,-
+SAMPLE,chr4,53535732,LNX1,619293,Association not found,SNV,Intron variant,NM_001126328.3:c.381-27505G>A,-
+SAMPLE,chr7,99672916,"CYP3A5, ZSCAN25",5066,"Association, drug response, risk factor",SNV,"Splice acceptor variant, Intron variant",NM_001291829.2:c.-253-1A>G,-
+SAMPLE,chr10,114045297,ADRB1,17746,"Association, drug response",SNV,Missense variant,NM_000684.3:c.1165G>C,p.Gly389Arg
+SAMPLE,chr13,36887873,SMAD9,996154,Confers sensitivity,SNV,Intron variant,NM_001378621.1:c.-186-7998T>C,-
+SAMPLE,chr16,50704069,NOD2,1710532,Confers sensitivity,SNV,Intron variant,NM_022162.3:c.541-3786A>G,-
+SAMPLE,chr20,6786464,BMP2,996153,Confers sensitivity,SNV,No consequences found,BMP2-LINC01428:n.6786464A>G,-
+SAMPLE,chr6,29112227,OR2J3,40011,Affects,SNV,Missense variant,NM_001005216.4:c.337A>G,p.Thr113Ala
+SAMPLE,chr6,29112567,OR2J3,40012,Affects,SNV,Missense variant,NM_001005216.4:c.677G>A,p.Arg226Gln
+SAMPLE,chr12,88905969,KITLG,12812,Affects,SNV,No consequences found,LOC105369887-LINC02458:n.88905969C>T,-
+SAMPLE,chr15,28268218,HERC2,4744,Affects,SNV,Intron variant,NM_004667.6:c.1598+247A>G,-
+SAMPLE,chr1,165655786,MGST3,1693589,Protective,SNV,3' UTR variant,NM_004528.4:c.*282G>T,-
+SAMPLE,chr1,207580276,CR1,17066,Protective,SNV,Missense variant,NM_000651.6:c.4973A>G,p.His1658Arg
+SAMPLE,chr2,201232808,CASP8,7763,Protective,Deletion,No consequences found,NM_001228.4:c.-937_-932delAGTAAG,-
+SAMPLE,chr6,31574699,TNF,12390,Protective,SNV,No consequences found,NM_000594.4:c.-1043C>A,-
+SAMPLE,chr7,150992991,"NOS3, LOC110973015",517660,Protective,SNV,Intron variant,NM_001160109.2:c.-813C>T,-
+SAMPLE,chr9,22003368,"CDKN2B, CDKN2B-AS1",812639,Protective,SNV,3' UTR variant,NM_004936.4:c.*2619C>T,-
+SAMPLE,chr12,16366334,MGST1,1693603,Protective,SNV,Intron variant,NM_001260511.2:c.*2293G>T,-
+SAMPLE,chr16,27362859,IL4R,14667,Protective,SNV,Missense variant,NM_000418.4:c.1507T>C,p.Ser503Pro
+SAMPLE,chr1,97515839,DPYD,100092,Drug response,SNV,Missense variant,NM_000110.4:c.1627A>G,p.Ile543Val
+SAMPLE,chr1,97515865,DPYD,100094,Drug response,SNV,Missense variant,NM_000110.4:c.1601G>A,p.Ser534Asn
+SAMPLE,chr1,97883329,DPYD,435,Drug response,SNV,Missense variant,NM_000110.4:c.85T>C,p.Cys29Arg
+SAMPLE,chr2,233757136,"UGT1A, UGT1A10, UGT1A8, UGT1A7, UGT1A6, UGT1A5, UGT1A9, UGT1A4, UGT1A1, UGT1A3",810732,Drug response,SNV,Intron variant,NM_000463.3:c.-3152G>A,-
+SAMPLE,chr4,69096360,UGT2B7,828262,Drug response,SNV,Intron variant,NM_001074.4:c.-161T>C,-
+SAMPLE,chr4,69097442,UGT2B7,829037,Drug response,SNV,Intron variant,NM_001074.4:c.721+201A>C,-
+SAMPLE,chr4,69097450,UGT2B7,829035,Drug response,SNV,Intron variant,NM_001074.4:c.721+209A>G,-
+SAMPLE,chr4,69098462,"UGT2B7, LOC114803476",829026,Drug response,SNV,Intron variant,NM_001074.4:c.722-78T>C,-
+SAMPLE,chr4,69098491,"UGT2B7, LOC114803476",828230,Drug response,SNV,Intron variant,NM_001074.4:c.722-49A>G,-
+SAMPLE,chr4,69098553,"UGT2B7, LOC114803476",828228,Drug response,SNV,"5' UTR variant, Synonymous variant",NM_001074.4:c.735A>G,p.Thr245Thr
+SAMPLE,chr4,69098620,"UGT2B7, LOC114803476",828226,Drug response,SNV,Missense variant,NM_001074.4:c.802T>C,p.Tyr268His
+SAMPLE,chr4,69107231,UGT2B7,828215,Drug response,SNV,Synonymous variant,NM_001074.4:c.1059C>G,p.Leu353Leu
+SAMPLE,chr4,69107326,UGT2B7,828214,Drug response,SNV,Intron variant,NM_001074.4:c.1090+64A>T,-
+SAMPLE,chr4,69113032,UGT2B7,828199,Drug response,SNV,No consequences found,NM_001074.4:c.*296T>C,-
+SAMPLE,chr5,148826877,ADRB2,225937,Drug response,SNV,Missense variant,NM_000024.6:c.46G>A,p.Gly16Arg
+SAMPLE,chr6,154090869,OPRM1,829200,Drug response,SNV,Intron variant,NM_001145279.4:c.923-83G>C,-
+SAMPLE,chr6,154093240,OPRM1,828358,Drug response,SNV,Intron variant,NM_001008504.4:c.*1753A>C,-
+SAMPLE,chr6,154093311,OPRM1,829165,Drug response,SNV,"Missense variant, Intron variant",NM_001008505.2:c.1206A>T,p.Gln402His
+SAMPLE,chr6,154093428,OPRM1,829157,Drug response,SNV,"Intron variant, Synonymous variant",NM_001008505.2:c.1323A>G,p.Gly441Gly
+SAMPLE,chr6,154093438,OPRM1,829156,Drug response,SNV,"Intron variant, Synonymous variant",NM_001008505.2:c.1333C>T,p.Leu445Leu
+SAMPLE,chr6,154107567,OPRM1,829148,Drug response,SNV,"3' UTR variant, Intron variant",NM_001145286.3:c.*4A>G,-
+SAMPLE,chr6,154107950,OPRM1,828327,Drug response,Deletion,"Non-coding transcript variant, 3' UTR variant, Intron variant",NM_001145284.3:c.*162delT,-
+SAMPLE,chr6,154110258,OPRM1,829106,Drug response,SNV,Intron variant,NM_001145285.3:c.*2637C>G,-
+SAMPLE,chr6,154246532,"OPRM1, IPCEF1",829071,Drug response,SNV,Intron variant,NM_001130699.2:c.246+59A>C,-
+SAMPLE,chr7,87544351,ABCB1,829509,Drug response,SNV,Intron variant,NM_001348945.2:c.2275-76T>A,-
+SAMPLE,chr7,87544750,ABCB1,828712,Drug response,SNV,Intron variant,NM_001348945.2:c.2274+73A>G,-
+SAMPLE,chr7,87549310,ABCB1,828698,Drug response,SNV,Intron variant,NM_001348945.2:c.1935+38G>A,-
+SAMPLE,chr7,87549770,ABCB1,829485,Drug response,SNV,Intron variant,NM_001348945.2:c.1764+81C>T,-
+SAMPLE,chr7,87549827,ABCB1,829480,Drug response,SNV,Intron variant,NM_001348945.2:c.1764+24T>C,-
+SAMPLE,chr7,87550882,ABCB1,829458,Drug response,SNV,Intron variant,NM_001348945.2:c.1210-44G>A,-
+SAMPLE,chr7,87554038,ABCB1,828652,Drug response,SNV,Intron variant,NM_001348945.2:c.1038-106A>G,-
+SAMPLE,chr7,87560614,ABCB1,829434,Drug response,SNV,Intron variant,NM_001348945.2:c.1037+649A>C,-
+SAMPLE,chr7,87562353,ABCB1,828631,Drug response,SNV,Intron variant,NM_001348945.2:c.913-966G>C,-
+SAMPLE,chr7,87565790,ABCB1,829428,Drug response,SNV,Intron variant,NM_001348945.2:c.912+280G>A,-
+SAMPLE,chr7,87566646,ABCB1,828621,Drug response,SNV,Intron variant,NM_001348945.2:c.740+139C>T,-
+SAMPLE,chr7,87569866,ABCB1,828600,Drug response,SNV,Intron variant,NM_001348945.2:c.548+306C>T,-
+SAMPLE,chr7,87569948,ABCB1,828597,Drug response,SNV,Intron variant,NM_001348945.2:c.548+224G>T,-
+SAMPLE,chr7,87569949,ABCB1,828596,Drug response,SNV,Intron variant,NM_001348945.2:c.548+223A>T,-
+SAMPLE,chr7,87585798,ABCB1,828569,Drug response,SNV,Intron variant,NM_001348945.2:c.328-118T>G,-
+SAMPLE,chr7,87600185,"ABCB1, LOC126860097",829326,Drug response,SNV,"5' UTR variant, Synonymous variant",NM_001348945.2:c.210A>G,p.Gly70Gly
+SAMPLE,chr7,99763843,"CYP3A4, LOC110366355",2502287,Drug response,SNV,Intron variant,NM_017460.6:c.1026+12G>A,-
+SAMPLE,chr7,141972804,TAS2R38,2906,Drug response,SNV,Missense variant,NM_176817.5:c.886A>G,p.Ile296Val
+SAMPLE,chr7,141973545,TAS2R38,2904,Drug response,SNV,Missense variant,NM_176817.5:c.145G>C,p.Ala49Pro
+SAMPLE,chr8,18400860,NAT2,725,Drug response,SNV,Missense variant,NM_000015.3:c.857G>A,p.Gly286Glu
+SAMPLE,chr10,94645745,No affected genes found,225947,Drug response,SNV,No consequences found,HELLS-CTBP2P2:n.94645745G>A,-
+SAMPLE,chr10,94775367,CYP2C19,633850,Drug response,SNV,Intron variant,NM_000769.4:c.332-23A>G,-
+SAMPLE,chr11,75172532,SLCO2B1,1687047,Drug response,SNV,Missense variant,NM_001145212.3:c.503G>A,p.Arg168Gln
+SAMPLE,chr12,21178615,SLCO1B1,37346,Drug response,SNV,Missense variant,NM_006446.5:c.521T>C,p.Val174Ala
+SAMPLE,chr16,31091000,VKORC1,226016,Drug response,SNV,3' UTR variant,NM_001311311.2:c.*134G>A,-
+SAMPLE,chr16,31092475,VKORC1,225975,Drug response,SNV,Intron variant,NM_001039503.3:c.-3666T>C,-
+SAMPLE,chr16,31093188,VKORC1,226026,Drug response,SNV,Intron variant,NM_001039503.3:c.-4379G>C,-
+SAMPLE,chr16,31093557,VKORC1,37344,Drug response,SNV,Intron variant,NM_001039503.3:c.-4748C>T,-
+SAMPLE,chr16,31096368,VKORC1,2211,Drug response,SNV,No consequences found,NM_001311311.2:c.-1639G>A,-
+SAMPLE,chr19,15879621,CYP4F2,225969,Drug response,SNV,Missense variant,NM_001082.5:c.1297G>A,p.Val433Met
+SAMPLE,chr19,39244283,IFNL3,375658,Drug response,SNV,Intron variant,NM_001346937.2:c.271-126T>C,-
+SAMPLE,chr19,39248147,"IFNL3, IFNL4",225949,Drug response,SNV,No consequences found,NM_001346937.2:c.-3070G>A,-
+SAMPLE,chr19,39252525,IFNL3,226027,Drug response,SNV,No consequences found,IFNL4-MSRB1P1:n.39252525T>G,-
+SAMPLE,chr19,41006936,CYP2B6,29671,Drug response,SNV,Missense variant,NM_000767.5:c.516G>T,p.Gln172His
+SAMPLE,chr19,43551574,XRCC1,225976,Drug response,SNV,Missense variant,NM_006297.3:c.1196A>G,p.Gln399Arg
+SAMPLE,chr19,44905579,APOE,619951,Drug response,SNV,No consequences found,NM_001302688.2:c.-290T>G,-
+SAMPLE,chr19,44907187,APOE,619952,Drug response,SNV,Intron variant,NM_001128916.2:c.*4018G>A,-
+SAMPLE,chr19,44911194,APOE,619953,Drug response,SNV,No consequences found,NM_001379687.1:c.-3560T>C,-
+SAMPLE,chr22,19969500,"ARVCF, COMT",829732,Drug response,SNV,3' UTR variant,NM_000754.4:c.*764C>T,-
+SAMPLE,chr5,112728778,APC,82711,Other,SNV,Intron variant,NM_001127511.3:c.165+20896A>T,-
+SAMPLE,chr5,112729129,APC,82712,Other,SNV,Intron variant,NM_001127511.3:c.165+21247G>C,-
+SAMPLE,chr5,112730827,APC,82715,Other,SNV,Intron variant,NM_001127511.3:c.165+22945G>C,-
+SAMPLE,chr5,112731445,APC,82717,Other,SNV,Intron variant,NM_001127511.3:c.165+23563C>T,-
+SAMPLE,chr5,112734793,APC,82722,Other,SNV,Intron variant,NM_001354896.2:c.-3151G>T,-
+SAMPLE,chr5,112739025,APC,82748,Other,SNV,Intron variant,NM_001354896.2:c.-19+1100C>G,-
+SAMPLE,chr5,112741750,APC,82756,Other,SNV,Intron variant,NM_001354896.2:c.-19+3825T>A,-
+SAMPLE,chr5,112742073,APC,82760,Other,SNV,Intron variant,NM_001354896.2:c.-19+4148A>G,-
+SAMPLE,chr5,112742223,APC,82761,Other,SNV,Intron variant,NM_001354896.2:c.-19+4298G>C,-
+SAMPLE,chr5,112744185,APC,82766,Other,SNV,Intron variant,NM_001354896.2:c.-19+6260T>G,-
+SAMPLE,chr5,112745031,APC,82770,Other,SNV,Intron variant,NM_001354896.2:c.-19+7106G>A,-
+SAMPLE,chr5,112745682,APC,82773,Other,SNV,Intron variant,NM_001354896.2:c.-19+7757C>A,-
+SAMPLE,chr5,112746227,APC,82779,Other,SNV,Intron variant,NM_001354896.2:c.-19+8302A>G,-
+SAMPLE,chr5,112749914,APC,82795,Other,SNV,Intron variant,NM_001354896.2:c.-18-4959T>G,-
+SAMPLE,chr5,112750468,APC,82799,Other,SNV,Intron variant,NM_001354896.2:c.-18-4405T>A,-
+SAMPLE,chr5,112751630,APC,82801,Other,SNV,Intron variant,NM_001354896.2:c.-18-3243T>G,-
+SAMPLE,chr5,112752810,APC,82807,Other,SNV,Intron variant,NM_001354896.2:c.-18-2063G>A,-
+SAMPLE,chr5,112753585,APC,82809,Other,SNV,Intron variant,NM_001354896.2:c.-18-1288T>C,-
+SAMPLE,chr5,112753783,APC,82811,Other,SNV,Intron variant,NM_001354896.2:c.-18-1090T>C,-
+SAMPLE,chr5,112756007,APC,82823,Other,SNV,Intron variant,NM_001354896.2:c.135+982C>G,-
+SAMPLE,chr5,112756705,APC,82824,Other,SNV,Intron variant,NM_001354896.2:c.135+1680T>G,-
+SAMPLE,chr5,112758258,APC,88625,Other,SNV,Intron variant,NM_001354896.2:c.135+3233A>G,-
+SAMPLE,chr5,112758707,APC,82829,Other,SNV,Intron variant,NM_001354896.2:c.135+3682G>A,-
+SAMPLE,chr5,112759635,APC,82832,Other,SNV,Intron variant,NM_001354896.2:c.135+4610G>A,-
+SAMPLE,chr5,112760078,APC,82836,Other,SNV,Intron variant,NM_001354896.2:c.135+5053T>A,-
+SAMPLE,chr5,112761537,APC,82840,Other,SNV,Intron variant,NM_001354896.2:c.136-4789G>A,-
+SAMPLE,chr5,112762060,APC,82843,Other,SNV,Intron variant,NM_001354896.2:c.136-4266A>G,-
+SAMPLE,chr5,112763214,APC,82845,Other,SNV,Intron variant,NM_001354896.2:c.136-3112G>A,-
+SAMPLE,chr5,112763241,APC,82846,Other,SNV,Intron variant,NM_001354896.2:c.136-3085T>A,-
+SAMPLE,chr5,112763331,APC,82847,Other,SNV,Intron variant,NM_001354896.2:c.136-2995A>G,-
+SAMPLE,chr5,112764898,APC,82863,Other,SNV,Intron variant,NM_001354896.2:c.136-1428A>C,-
+SAMPLE,chr5,112765760,APC,82868,Other,SNV,Intron variant,NM_001354896.2:c.136-566G>T,-
+SAMPLE,chr5,112765799,APC,82869,Other,SNV,Intron variant,NM_001354896.2:c.136-527G>A,-
+SAMPLE,chr5,112768266,APC,82878,Other,SNV,Intron variant,NM_001354896.2:c.422+876C>G,-
+SAMPLE,chr5,112768600,APC,82880,Other,SNV,Intron variant,NM_001354896.2:c.422+1210A>G,-
+SAMPLE,chr5,112769526,APC,82884,Other,SNV,Intron variant,NM_001354896.2:c.422+2136A>T,-
+SAMPLE,chr5,112771361,APC,82887,Other,SNV,Intron variant,NM_001354896.2:c.422+3971G>A,-
+SAMPLE,chr5,112772029,APC,82889,Other,SNV,Intron variant,NM_001354896.2:c.423-3600C>T,-
+SAMPLE,chr5,112773168,APC,82896,Other,SNV,Intron variant,NM_001354896.2:c.423-2461T>C,-
+SAMPLE,chr5,112774082,APC,82901,Other,SNV,Intron variant,NM_001354896.2:c.423-1547G>C,-
+SAMPLE,chr5,112776169,APC,82915,Other,SNV,Intron variant,NM_001354896.2:c.531+432G>C,-
+SAMPLE,chr5,112777830,APC,82924,Other,SNV,Intron variant,NM_001354896.2:c.531+2093A>T,-
+SAMPLE,chr5,112778038,APC,82925,Other,SNV,Intron variant,NM_001354896.2:c.531+2301C>T,-
+SAMPLE,chr5,112778063,APC,82926,Other,SNV,Intron variant,NM_001354896.2:c.531+2326T>C,-
+SAMPLE,chr5,112778075,APC,82927,Other,SNV,Intron variant,NM_001354896.2:c.531+2338G>A,-
+SAMPLE,chr5,112780327,APC,82934,Other,SNV,Intron variant,NM_001354896.2:c.532-463C>T,-
+SAMPLE,chr5,112780372,APC,82935,Other,SNV,Intron variant,NM_001354896.2:c.532-418G>A,-
+SAMPLE,chr5,112782498,APC,82948,Other,SNV,Intron variant,NM_001354896.2:c.645+1595G>A,-
+SAMPLE,chr5,112782641,APC,82949,Other,SNV,Intron variant,NM_001354896.2:c.645+1738G>A,-
+SAMPLE,chr5,112783259,APC,82950,Other,SNV,Intron variant,NM_001354896.2:c.645+2356C>T,-
+SAMPLE,chr5,112786835,APC,82966,Other,SNV,Intron variant,NM_001354896.2:c.646-5611G>C,-
+SAMPLE,chr5,112788672,APC,82980,Other,SNV,Intron variant,NM_001354896.2:c.646-3774T>C,-
+SAMPLE,chr5,112794389,APC,83012,Other,SNV,Intron variant,NM_001354896.2:c.729+1860C>A,-
+SAMPLE,chr5,112795591,APC,83018,Other,SNV,Intron variant,NM_001354896.2:c.729+3062A>G,-
+SAMPLE,chr5,112796090,APC,83019,Other,SNV,Intron variant,NM_001354896.2:c.729+3561A>G,-
+SAMPLE,chr5,112799370,APC,83030,Other,SNV,Intron variant,NM_001354896.2:c.730-1909T>C,-
+SAMPLE,chr5,112799393,APC,83031,Other,SNV,Intron variant,NM_001354896.2:c.730-1886G>A,-
+SAMPLE,chr5,112800040,APC,83036,Other,SNV,Intron variant,NM_001354896.2:c.730-1239A>G,-
+SAMPLE,chr5,112800507,APC,83037,Other,SNV,Intron variant,NM_001354896.2:c.730-772A>G,-
+SAMPLE,chr5,112803037,APC,83046,Other,SNV,Intron variant,NM_001354896.2:c.834+1654G>A,-
+SAMPLE,chr5,112803191,APC,83047,Other,SNV,Intron variant,NM_001354896.2:c.834+1808G>C,-
+SAMPLE,chr5,112804048,APC,83049,Other,SNV,Intron variant,NM_001354896.2:c.834+2665A>G,-
+SAMPLE,chr5,112804772,APC,83051,Other,SNV,Intron variant,NM_001354896.2:c.834+3389T>C,-
+SAMPLE,chr5,112805052,APC,83055,Other,SNV,Intron variant,NM_001354896.2:c.834+3669A>G,-
+SAMPLE,chr5,112808326,APC,83070,Other,SNV,Intron variant,NM_001354896.2:c.834+6943A>G,-
+SAMPLE,chr5,112808747,APC,83071,Other,SNV,Intron variant,NM_001354896.2:c.835-6748A>T,-
+SAMPLE,chr5,112809257,APC,83073,Other,SNV,Intron variant,NM_001354896.2:c.835-6238T>C,-
+SAMPLE,chr5,112809564,APC,83075,Other,SNV,Intron variant,NM_001354896.2:c.835-5931C>A,-
+SAMPLE,chr5,112810420,APC,83080,Other,SNV,Intron variant,NM_001354896.2:c.835-5075A>G,-
+SAMPLE,chr5,112810500,APC,83081,Other,SNV,Intron variant,NM_001354896.2:c.835-4995T>G,-
+SAMPLE,chr5,112814060,APC,83089,Other,SNV,Intron variant,NM_001354896.2:c.835-1435T>C,-
+SAMPLE,chr5,112817422,APC,83110,Other,SNV,Intron variant,NM_001354896.2:c.934-1544C>T,-
+SAMPLE,chr5,112817798,APC,83112,Other,SNV,Intron variant,NM_001354896.2:c.934-1168A>G,-
+SAMPLE,chr5,112817968,APC,83113,Other,SNV,Intron variant,NM_001354896.2:c.934-998C>T,-
+SAMPLE,chr5,112818299,APC,83118,Other,SNV,Intron variant,NM_001354896.2:c.934-667C>G,-
+SAMPLE,chr5,112818606,APC,83121,Other,SNV,Intron variant,NM_001354896.2:c.934-360T>G,-
+SAMPLE,chr5,112819807,APC,83127,Other,SNV,Intron variant,NM_001354896.2:c.1312+463C>G,-
+SAMPLE,chr5,112820096,APC,83128,Other,SNV,Intron variant,NM_001354896.2:c.1312+752G>C,-
+SAMPLE,chr5,112823688,APC,83139,Other,SNV,Intron variant,NM_001354896.2:c.1462+328A>G,-
+SAMPLE,chr5,112823773,APC,83140,Other,SNV,Intron variant,NM_001354896.2:c.1462+413A>G,-
+SAMPLE,chr5,112823865,APC,83142,Other,SNV,Intron variant,NM_001354896.2:c.1462+505A>G,-
+SAMPLE,chr5,112825772,APC,83152,Other,SNV,Intron variant,NM_001354896.2:c.1463-1336C>A,-
+SAMPLE,chr5,112826716,APC,83157,Other,SNV,Intron variant,NM_001354896.2:c.1463-392A>G,-
+SAMPLE,chr5,112831165,APC,83181,Other,SNV,Intron variant,NM_001354896.2:c.1797+2193G>A,-
+SAMPLE,chr5,112831433,APC,83182,Other,SNV,Intron variant,NM_001354896.2:c.1797+2461T>G,-
+SAMPLE,chr5,112831890,APC,83183,Other,SNV,Intron variant,NM_001354896.2:c.1797+2918T>C,-
+SAMPLE,chr5,112832124,APC,83184,Other,SNV,Intron variant,NM_001354896.2:c.1798-2827C>T,-
+SAMPLE,chr5,112832244,APC,83185,Other,SNV,Intron variant,NM_001354896.2:c.1798-2707C>G,-
+SAMPLE,chr5,112832368,APC,83186,Other,SNV,Intron variant,NM_001354896.2:c.1798-2583A>G,-
+SAMPLE,chr5,112832433,APC,83187,Other,SNV,Intron variant,NM_001354896.2:c.1798-2518G>C,-
+SAMPLE,chr5,112833828,APC,83196,Other,SNV,Intron variant,NM_001354896.2:c.1798-1123T>A,-
+SAMPLE,chr5,112834261,APC,83199,Other,SNV,Intron variant,NM_001354896.2:c.1798-690A>T,-
+SAMPLE,chr5,112836180,APC,83225,Other,SNV,Intron variant,NM_001354896.2:c.2012+1015G>A,-
+SAMPLE,chr5,112836522,APC,83226,Other,SNV,Intron variant,NM_001354896.2:c.2013-1031G>A,-
+SAMPLE,chr5,112837089,APC,83228,Other,SNV,Intron variant,NM_001354896.2:c.2013-464G>T,-
+SAMPLE,chr5,112837233,APC,83229,Other,SNV,Intron variant,NM_001354896.2:c.2013-320T>C,-
+SAMPLE,chr5,112846535,No affected genes found,83268,Other,SNV,No consequences found,NM_001354896.2:c.*2409A>T,-
+SAMPLE,chr5,112846682,No affected genes found,83272,Other,SNV,No consequences found,NM_001354896.2:c.*2556G>A,-
+SAMPLE,chr5,112846994,No affected genes found,83275,Other,SNV,No consequences found,NM_001354896.2:c.*2868A>G,-
+SAMPLE,chr5,112847460,No affected genes found,83276,Other,SNV,No consequences found,NM_001354896.2:c.*3334A>G,-
+SAMPLE,chr5,112848793,No affected genes found,83284,Other,SNV,No consequences found,NM_001354896.2:c.*4667T>C,-
+SAMPLE,chr5,112849696,No affected genes found,83292,Other,SNV,No consequences found,NM_001354896.2:c.*5570A>C,-
+SAMPLE,chr5,112849754,No affected genes found,83296,Other,SNV,No consequences found,NM_001354896.2:c.*5628A>G,-
+SAMPLE,chr5,112849794,No affected genes found,83297,Other,SNV,No consequences found,NM_001354896.2:c.*5668A>G,-
+SAMPLE,chr5,112849816,No affected genes found,83298,Other,SNV,No consequences found,NM_001354896.2:c.*5690A>C,-
+SAMPLE,chr5,112850367,No affected genes found,83300,Other,SNV,No consequences found,NM_001354896.2:c.*6241C>A,-
+SAMPLE,chr1,2556714,"TNFRSF14, TNFRSF14-AS1",135349,Not provided,SNV,Missense variant,NM_001297605.2:c.50A>G,p.Lys17Arg
+SAMPLE,chr1,2559459,TNFRSF14,133404,Not provided,SNV,Intron variant,NM_001297605.2:c.305-364C>A,-
+SAMPLE,chr1,2559503,TNFRSF14,133406,Not provided,SNV,Intron variant,NM_001297605.2:c.305-320C>A,-
+SAMPLE,chr1,2559766,TNFRSF14,133414,Not provided,SNV,Intron variant,NM_001297605.2:c.305-57C>T,-
+SAMPLE,chr1,25408711,RHCE,156358,Not provided,SNV,Missense variant,NM_020485.8:c.307C>T,p.Pro103Ser
+SAMPLE,chr1,25408840,RHCE,156357,Not provided,SNV,Missense variant,NM_020485.8:c.178C>A,p.Leu60Ile
+SAMPLE,chr1,40257003,ZMPSTE24,140503,Not provided,SNV,No consequences found,NM_005857.5:c.-1269C>G,-
+SAMPLE,chr1,40276227,ZMPSTE24,140538,Not provided,SNV,Intron variant,NM_005857.5:c.769+4192C>T,-
+SAMPLE,chr1,94006279,ABCA4,441128,Not provided,Deletion,Intron variant,NM_000350.3:c.6006-698delC,-
+SAMPLE,chr3,64719689,ADAMTS9-AS2,162162,Not provided,SNV,No consequences found,NR_038264.1:n.469+34351C>T,-
+SAMPLE,chr4,109669323,"CASP6, MCUB",162164,Not provided,SNV,Intron variant,NM_017918.5:c.451+4929G>T,-
+SAMPLE,chr6,30806580,No affected genes found,162166,Not provided,SNV,No consequences found,HCG20-LINC00243:n.30806580G>A,-
+SAMPLE,chr6,46716485,PLA2G7,56163,Not provided,SNV,Missense variant,NM_001168357.2:c.275G>A,p.Arg92His
+SAMPLE,chr8,7296399,No affected genes found,441013,Not provided,SNV,No consequences found,FAM90A20P:n.7296399T>C,-
+SAMPLE,chr8,23225458,"TNFRSF10A-DT, LOC111255645",162169,Not provided,SNV,Non-coding transcript variant,NM_003844.4:c.-397C>A,-
+SAMPLE,chr8,104447565,DPYS,100143,Not provided,SNV,Intron variant,NM_001385.3:c.424-62G>T,-
+SAMPLE,chr8,104451462,DPYS,100144,Not provided,SNV,Intron variant,NM_001385.3:c.265-58T>C,-
+SAMPLE,chr9,133635393,DBH,217759,Not provided,SNV,No consequences found,NM_000787.4:c.-979T>C,-
+SAMPLE,chr10,122455905,ARMS2,162171,Not provided,SNV,Intron variant,NM_001099667.3:c.297+881C>T,-
+SAMPLE,chr10,122467114,HTRA1,162172,Not provided,SNV,Intron variant,NM_002775.5:c.472+4990G>T,-
+SAMPLE,chr11,1922375,TNNT3,31866,Not provided,SNV,Intron variant,NM_001367842.1:c.-500G>A,-
+SAMPLE,chr11,17276557,No affected genes found,127107,Not provided,SNV,No consequences found,NM_001330227.3:c.-427A>C,-
+SAMPLE,chr11,17276818,NUCB2,127111,Not provided,SNV,5' UTR variant,NM_001330227.3:c.-166G>C,-
+SAMPLE,chr11,22225659,ANO5,140559,Not provided,SNV,Intron variant,NM_213599.3:c.295-325A>G,-
+SAMPLE,chr11,61835024,FADS2,162046,Not provided,Microsatellite,Intron variant,NM_004265.4:c.208-2713_208-2692delACTTCTCCCTGCCTCCCCAGGG,-
+SAMPLE,chr11,102599525,MMP20,162146,Not provided,SNV,Intron variant,NM_004771.4:c.954-4768T>C,-
+SAMPLE,chr12,913070,RAD52,127049,Not provided,SNV,"Non-coding transcript variant, 3' UTR variant",NM_001297419.1:c.*321C>A,-
+SAMPLE,chr12,913071,RAD52,127050,Not provided,SNV,"Non-coding transcript variant, 3' UTR variant",NM_001297419.1:c.*320C>A,-
+SAMPLE,chr12,913076,RAD52,127054,Not provided,SNV,"Non-coding transcript variant, 3' UTR variant",NM_001297419.1:c.*315T>A,-
+SAMPLE,chr12,52900597,KRT8,66535,Not provided,SNV,"Non-coding transcript variant, Synonymous variant",NM_001256282.2:c.765A>G,p.Leu255Leu
+SAMPLE,chr13,31245188,B3GLCT,162173,Not provided,SNV,Intron variant,NM_194318.4:c.271-1835T>C,-
+SAMPLE,chr14,68318360,RAD51B,162174,Not provided,SNV,Intron variant,NM_001321821.2:c.853+26380G>A,-
+SAMPLE,chr17,39699581,ERBB2,135519,Not provided,SNV,"Missense variant, Intron variant",NM_001289936.2:c.22C>A,p.Pro8Thr
+SAMPLE,chr17,41525223,KRT19,66540,Not provided,SNV,Synonymous variant,NM_002276.5:c.471T>C,p.Asn157Asn
+SAMPLE,chr17,41528069,KRT19,66539,Not provided,SNV,Missense variant,NM_002276.5:c.179C>G,p.Ala60Gly
+SAMPLE,chr17,44908455,GFAP,66451,Not provided,SNV,Intron variant,NM_001258395.2:c.*5638T>C,-
+SAMPLE,chr19,14766987,ADGRE2,156715,Not provided,SNV,Missense variant,NM_013447.4:c.478C>G,p.Leu160Val
+SAMPLE,chr19,38499306,RYR1,133177,Not provided,SNV,Intron variant,NM_000540.3:c.7027+63G>A,-
+SAMPLE,chr19,38563051,RYR1,133039,Not provided,SNV,Intron variant,NM_000540.3:c.12624+1597T>C,-
+SAMPLE,chr19,52190204,PPP2R1A,133376,Not provided,SNV,Intron variant,NM_014225.6:c.78+30A>C,-
+SAMPLE,chr19,52190256,PPP2R1A,133378,Not provided,SNV,Intron variant,NM_014225.6:c.78+82T>G,-
+SAMPLE,chr19,54927463,"NCR1, NLRP7",97793,Not provided,SNV,Intron variant,NM_001127255.1:c.2981+142C>A,-
+SAMPLE,chr19,54927482,"NCR1, NLRP7",97792,Not provided,SNV,Intron variant,NM_001127255.1:c.2981+123T>C,-
+SAMPLE,chr19,54927572,"NCR1, NLRP7",97794,Not provided,Deletion,Intron variant,NM_001127255.1:c.2981+29_2981+32delGTTT,-
+SAMPLE,chr19,54928003,"NCR1, NLRP7",97777,Not provided,SNV,Intron variant,NM_001127255.1:c.2811-228T>C,-
+SAMPLE,chr19,54928087,"NCR1, NLRP7",97778,Not provided,SNV,Intron variant,NM_001127255.1:c.2811-312C>A,-
+SAMPLE,chr19,54928104,"NCR1, NLRP7",97779,Not provided,SNV,Intron variant,NM_001127255.1:c.2811-329A>G,-
+SAMPLE,chr19,54928169,"NCR1, NLRP7",97782,Not provided,SNV,Intron variant,NM_001127255.1:c.2811-394G>T,-
+SAMPLE,chr19,54928174,"NCR1, NLRP7",97783,Not provided,SNV,Intron variant,NM_001127255.1:c.2811-399A>G,-
+SAMPLE,chr19,54928177,"NCR1, NLRP7",97784,Not provided,SNV,Intron variant,NM_001127255.1:c.2811-402C>T,-
+SAMPLE,chr19,54928271,"NCR1, NLRP7",97785,Not provided,SNV,Intron variant,NM_001127255.1:c.2811-496T>C,-
+SAMPLE,chr19,54928298,"NCR1, NLRP7",97786,Not provided,SNV,Intron variant,NM_001127255.1:c.2811-523C>T,-
+SAMPLE,chr19,54928470,"NCR1, NLRP7",97789,Not provided,SNV,Intron variant,NM_001127255.1:c.2811-695T>C,-
+SAMPLE,chr19,54928989,"NCR1, NLRP7",97774,Not provided,SNV,Intron variant,NM_001127255.1:c.2811-1214C>T,-
+SAMPLE,chr19,54930275,"NCR1, NLRP7",97769,Not provided,SNV,Intron variant,NM_001127255.1:c.2810+224G>A,-
+SAMPLE,chr19,54930373,"NCR1, NLRP7",97767,Not provided,SNV,Intron variant,NM_001127255.1:c.2810+126T>C,-
+SAMPLE,chr19,54930376,"NCR1, NLRP7",97766,Not provided,SNV,Intron variant,NM_001127255.1:c.2810+123G>A,-
+SAMPLE,chr19,54930912,"NCR1, NLRP7",97764,Not provided,SNV,Intron variant,NM_001127255.1:c.2643-246T>G,-
+SAMPLE,chr19,54931030,"NCR1, NLRP7",97765,Not provided,SNV,Intron variant,NM_001127255.1:c.2643-364G>T,-
+SAMPLE,chr19,54932056,"NCR1, NLRP7",97763,Not provided,SNV,Intron variant,NM_001127255.1:c.2643-1390T>C,-
+SAMPLE,chr19,54937593,"NCR1, NLRP7",97742,Not provided,SNV,Intron variant,NM_001127255.1:c.2129+451C>T,-
+SAMPLE,chr19,54938387,NLRP7,97728,Not provided,SNV,Intron variant,NM_001127255.1:c.1932-146C>T,-
