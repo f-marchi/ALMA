@@ -103,15 +103,16 @@ def plot_linked_scatters(df, table=True, test_sample=None, xaxis = "PaCMAP 1 of 
     scatter1_hover_tool = HoverTool(renderers=[scatter1], mode='vline', tooltips=None)
 
     if test_sample:
-        vline = Span(location=df2.loc[test_sample]['AML Epigenomic Risk P(High Risk)'],
+        vline = Span(location=df2.loc[test_sample][x],
                      dimension='height', line_color='black', line_dash='dashed', line_alpha=0.8)
         p1.renderers.extend([vline])
-        p1.star(x=df2.loc[test_sample]['AML Epigenomic Risk P(High Risk)'],
-                y=df2.loc[test_sample]['Percentile']-0.01,
+
+        p1.star(x=df2.loc[test_sample][x],
+                y=df2.loc[test_sample][y],
                 size=15, color="black", alpha=0.9, 
-                legend_label=f'{test_sample}, {df2.loc[test_sample]["AML Epigenomic Risk"]} Epigenomic Risk ({df2.loc[test_sample]["AML Epigenomic Risk P(High Risk)"]:.2f})',
+                legend_label=f'{test_sample}, {df2.loc[test_sample]["AML Epigenomic Risk"]} Epigenomic Risk ({df2.loc[test_sample][x]:.2f})',
                 line_color="black", line_width=1)
-        
+
         # move `p1.star` legend to bottom right
         p1.legend.location = "bottom_right"
         p1.legend.click_policy = "hide"
