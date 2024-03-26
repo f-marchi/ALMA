@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Preprocess long-read epigenomics &#8212; Acute Leukemia Methylome Atlas Study</title>
+    <title>Preprocess long reads &#8212; Acute Leukemia Methylome Atlas Study</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
@@ -189,9 +189,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Specimen-to-Result Testing</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Preprocess long-read epigenomics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Preprocess long reads</a></li>
 <li class="toctree-l1"><a class="reference internal" href="7_test_models.html">Run epigenomic models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8_test_atlas.html">Specimen final mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_test_atlas.html">Final specimen mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_test_atlas_1852.html">UF HemBank 1852 case study</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Benchmarks</span></p>
 <ul class="nav bd-sidenav">
@@ -344,7 +345,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Preprocess long-read epigenomics</h1>
+    <h1>Preprocess long reads</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -361,6 +362,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#index-genomic-coordinates-for-both-files">Index genomic coordinates for both files</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjust-to-fit-pacmap-input-format">Adjust to fit PaCMAP input format</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-results">Save results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-1-retrospective-lower-coverage-analysis">Appendix 1. Retrospective lower coverage analysis</a></li>
 </ul>
             </nav>
         </div>
@@ -372,8 +374,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="preprocess-long-read-epigenomics">
-<h1>Preprocess long-read epigenomics<a class="headerlink" href="#preprocess-long-read-epigenomics" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="preprocess-long-reads">
+<h1>Preprocess long reads<a class="headerlink" href="#preprocess-long-reads" title="Link to this heading">#</a></h1>
 <ol class="arabic">
 <li><p>Converting unaligned CRAM to FASTQ for Minimap2 aligment:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>samtools<span class="w"> </span>bam2fq<span class="w"> </span>-@<span class="w"> </span><span class="m">32</span><span class="w"> </span>-T<span class="w"> </span><span class="m">1</span><span class="w"> </span>--reference<span class="w"> </span>./ref/hg38.fna<span class="w"> </span>cram/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.pass.cram<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
@@ -404,10 +406,9 @@ samtools<span class="w"> </span>sort<span class="w"> </span>-@<span class="w"> <
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">mount</span> <span class="o">=</span> <span class="s1">&#39;/mnt/d/&#39;</span>
+<span class="n">mount</span> <span class="o">=</span> <span class="s1">&#39;/mnt/e/&#39;</span>
 
-<span class="n">reference_path</span> <span class="o">=</span> <span class="n">mount</span> <span class="o">+</span> <span class="s1">&#39;genome_references/Illumina_methylation_arrays/EPIC.hg38.manifest.tsv.gz&#39;</span>
-<span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;/mnt/c/Users/fmarc/OneDrive/Desktop/nanopore_processed/pacmap/&#39;</span>
+<span class="n">input_path</span> <span class="o">=</span> <span class="n">mount</span> <span class="o">+</span> <span class="s1">&#39;nanopore_processed/&#39;</span>
 
 <span class="n">sample_name</span> <span class="o">=</span> <span class="s1">&#39;uf_hembank_1852&#39;</span>
 </pre></div>
@@ -598,7 +599,8 @@ samtools<span class="w"> </span>sort<span class="w"> </span>-@<span class="w"> <
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the input data, skipping the first row if it&#39;s a header or irrelevant</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/mnt/c/Users/fmarc/OneDrive/Desktop/nanopore_processed/bed/&#39;</span><span class="o">+</span><span class="n">sample_name</span><span class="o">+</span><span class="s1">&#39;.bed&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">input_path</span> <span class="o">+</span> <span class="s1">&#39;bed/&#39;</span><span class="o">+</span> <span class="n">sample_name</span><span class="o">+</span><span class="s1">&#39;.bed&#39;</span><span class="p">,</span> 
+                 <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span>
                  <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;chrom&quot;</span><span class="p">,</span> <span class="s2">&quot;start_position&quot;</span><span class="p">,</span><span class="s2">&quot;end_position&quot;</span><span class="p">,</span><span class="s2">&quot;modified base code&quot;</span><span class="p">,</span><span class="s2">&quot;score&quot;</span><span class="p">,</span>
                         <span class="s1">&#39;strand&#39;</span> <span class="p">,</span><span class="s2">&quot;start position&quot;</span><span class="p">,</span><span class="s2">&quot;end position&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">,</span> <span class="s2">&quot;Nvalid_cov&quot;</span><span class="p">,</span>
                         <span class="s2">&quot;fraction modified&quot;</span><span class="p">,</span> <span class="s2">&quot;Nmod&quot;</span><span class="p">,</span> <span class="s2">&quot;Ncanonical&quot;</span><span class="p">,</span> <span class="s2">&quot;Nother_mod&quot;</span><span class="p">,</span> <span class="s2">&quot;Ndelete&quot;</span><span class="p">,</span>
@@ -1395,20 +1397,28 @@ samtools<span class="w"> </span>sort<span class="w"> </span>-@<span class="w"> <
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save the final DataFrame</span>
-<span class="n">df_processed</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="n">sample_name</span> <span class="o">+</span> <span class="s1">&#39;_pacmap_bvalues.pkl&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_path</span> <span class="o">=</span> <span class="n">input_path</span> <span class="o">+</span> <span class="s1">&#39;pacmap/&#39;</span> <span class="o">+</span> <span class="n">sample_name</span> <span class="o">+</span> <span class="s1">&#39;_pacmap_bvalues.pkl&#39;</span>
+
+<span class="c1"># Save the final DataFrame</span>
+<span class="n">df_processed</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span>
 
 <span class="c1"># Print path to the final DataFrame</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="n">sample_name</span> <span class="o">+</span> <span class="s1">&#39;_pacmap_bvalues.pkl&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/mnt/c/Users/fmarc/OneDrive/Desktop/nanopore_processed/pacmap/uf_hembank_1852_pacmap_bvalues.pkl
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/mnt/e/nanopore_processed/pacmap/uf_hembank_1852_pacmap_bvalues.pkl
 </pre></div>
 </div>
 </div>
+</div>
+</section>
+<section id="appendix-1-retrospective-lower-coverage-analysis">
+<h2>Appendix 1. Retrospective lower coverage analysis<a class="headerlink" href="#appendix-1-retrospective-lower-coverage-analysis" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>samtools<span class="w"> </span>view<span class="w"> </span>-@<span class="w"> </span><span class="m">32</span><span class="w"> </span>-bh<span class="w"> </span>-s<span class="w"> </span><span class="si">${</span><span class="nv">subsampling_fraction</span><span class="si">}</span><span class="w"> </span>bam/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.bam<span class="w"> </span>&gt;<span class="w"> </span>bam/subsampled_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>_01x.bam
+</pre></div>
 </div>
 </section>
 </section>
@@ -1484,6 +1494,7 @@ samtools<span class="w"> </span>sort<span class="w"> </span>-@<span class="w"> <
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#index-genomic-coordinates-for-both-files">Index genomic coordinates for both files</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjust-to-fit-pacmap-input-format">Adjust to fit PaCMAP input format</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-results">Save results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-1-retrospective-lower-coverage-analysis">Appendix 1. Retrospective lower coverage analysis</a></li>
 </ul>
   </nav></div>
 

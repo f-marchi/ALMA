@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
@@ -69,8 +69,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'main/7_test_models';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Specimen final mapping" href="8_test_atlas.html" />
-    <link rel="prev" title="Preprocess long-read epigenomics" href="6_test_dataset.html" />
+    <link rel="next" title="Final specimen mapping" href="8_test_atlas.html" />
+    <link rel="prev" title="Preprocess long reads" href="6_test_dataset.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,9 +189,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Specimen-to-Result Testing</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="6_test_dataset.html">Preprocess long-read epigenomics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_test_dataset.html">Preprocess long reads</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Run epigenomic models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8_test_atlas.html">Specimen final mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8_test_atlas.html">Final specimen mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9_test_atlas_1852.html">UF HemBank 1852 case study</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Benchmarks</span></p>
 <ul class="nav bd-sidenav">
@@ -396,26 +397,21 @@ document.write(`
 </div>
 <section id="where-the-data-at">
 <h2>Where the data at<a class="headerlink" href="#where-the-data-at" title="Link to this heading">#</a></h2>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">mount</span> <span class="o">=</span> <span class="s1">&#39;/mnt/d/&#39;</span>
+<span class="n">mount</span> <span class="o">=</span> <span class="s1">&#39;/mnt/e/&#39;</span>
+
 <span class="n">input_path</span> <span class="o">=</span> <span class="n">mount</span> <span class="o">+</span> <span class="s1">&#39;MethylScore_v2/Intermediate_Files/&#39;</span>
 <span class="n">output_path</span> <span class="o">=</span> <span class="n">mount</span> <span class="o">+</span> <span class="s1">&#39;MethylScore_v2/Processed_Data/&#39;</span>
 
-<span class="n">nanopore_path</span> <span class="o">=</span> <span class="s1">&#39;/mnt/c/Users/fmarc/OneDrive/Desktop/nanopore_processed/pacmap/&#39;</span>
+<span class="n">nanopore_path</span> <span class="o">=</span> <span class="n">mount</span> <span class="o">+</span> <span class="s1">&#39;nanopore_processed/pacmap/&#39;</span>
 
-<span class="n">sample_name</span> <span class="o">=</span> <span class="s1">&#39;uf_hembank_1841&#39;</span>
+<span class="n">sample_name</span> <span class="o">=</span> <span class="s1">&#39;uf_hembank_1852&#39;</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 </section>
 <section id="load-data">
@@ -430,23 +426,23 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_nanopore</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span>
     <span class="n">nanopore_path</span> <span class="o">+</span> <span class="n">sample_name</span> <span class="o">+</span> <span class="s1">&#39;_pacmap_bvalues.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
 
+<span class="nb">print</span><span class="p">(</span>
+<span class="sa">f</span><span class="s1">&#39; Nanopore dataset (df_nanopore) contains </span><span class="si">{</span><span class="n">df_nanopore</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> </span><span class="se">\</span>
+<span class="s1">columns (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">df_nanopore</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (samples).&#39;</span><span class="p">)</span>
+
 <span class="n">df_discovery</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span>
     <span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;3308samples_333059cpgs_withbatchcorrection_bvalues.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:][</span><span class="n">df_nanopore</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span>
 <span class="sa">f</span><span class="s1">&#39; Discovery dataset (df_discovery) contains </span><span class="si">{</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> </span><span class="se">\</span>
 <span class="s1">columns (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1"> rows (samples).&#39;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span>
-<span class="sa">f</span><span class="s1">&#39; Validation dataset (df_nanopore) contains </span><span class="si">{</span><span class="n">df_nanopore</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> </span><span class="se">\</span>
-<span class="s1">columns (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">df_nanopore</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (samples).&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Discovery dataset (df_discovery) contains 331373 columns (5mC nucleotides/probes) and 3307 rows (samples).
- Validation dataset (df_nanopore) contains 331373 columns (5mC nucleotides/probes) and 1 rows (samples).
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Nanopore dataset (df_nanopore) contains 331886 columns (5mC nucleotides/probes) and 1 rows (samples).
+ Discovery dataset (df_discovery) contains 331886 columns (5mC nucleotides/probes) and 3307 rows (samples).
 </pre></div>
 </div>
 </div>
@@ -496,22 +492,10 @@ document.write(`
 </details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PaCMAP version: 0.7.0
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/marchi/projects/AL_atlas_notebooks/.venv_py38/lib/python3.8/site-packages/pacmap/pacmap.py:819: UserWarning: Warning: random state is set to 42
-  warnings.warn(f&#39;Warning: random state is set to {_RANDOM_STATE}&#39;)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The PaCMAP instance is successfully saved at /mnt/c/Users/fmarc/OneDrive/Desktop/nanopore_processed/pacmap/uf_hembank_1841_pacmap_2d_model_al_atlas.pkl, and the Annoy Index is saved at /mnt/c/Users/fmarc/OneDrive/Desktop/nanopore_processed/pacmap/uf_hembank_1841_pacmap_2d_model_al_atlas.ann.
-To load the instance again, please do `pacmap.load(/mnt/c/Users/fmarc/OneDrive/Desktop/nanopore_processed/pacmap/uf_hembank_1841_pacmap_2d_model_al_atlas)`.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/marchi/projects/AL_atlas_notebooks/.venv_py38/lib/python3.8/site-packages/pacmap/pacmap.py:819: UserWarning: Warning: random state is set to 42
-  warnings.warn(f&#39;Warning: random state is set to {_RANDOM_STATE}&#39;)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The PaCMAP instance is successfully saved at /mnt/c/Users/fmarc/OneDrive/Desktop/nanopore_processed/pacmap/uf_hembank_1841_pacmap_5d_model_al_atlas.pkl, and the Annoy Index is saved at /mnt/c/Users/fmarc/OneDrive/Desktop/nanopore_processed/pacmap/uf_hembank_1841_pacmap_5d_model_al_atlas.ann.
-To load the instance again, please do `pacmap.load(/mnt/c/Users/fmarc/OneDrive/Desktop/nanopore_processed/pacmap/uf_hembank_1841_pacmap_5d_model_al_atlas)`.
+The PaCMAP instance is successfully saved at /mnt/e/nanopore_processed/pacmap/uf_hembank_1852_pacmap_2d_model_al_atlas.pkl, and the Annoy Index is saved at /mnt/e/nanopore_processed/pacmap/uf_hembank_1852_pacmap_2d_model_al_atlas.ann.
+To load the instance again, please do `pacmap.load(/mnt/e/nanopore_processed/pacmap/uf_hembank_1852_pacmap_2d_model_al_atlas)`.
+The PaCMAP instance is successfully saved at /mnt/e/nanopore_processed/pacmap/uf_hembank_1852_pacmap_5d_model_al_atlas.pkl, and the Annoy Index is saved at /mnt/e/nanopore_processed/pacmap/uf_hembank_1852_pacmap_5d_model_al_atlas.ann.
+To load the instance again, please do `pacmap.load(/mnt/e/nanopore_processed/pacmap/uf_hembank_1852_pacmap_5d_model_al_atlas)`.
 </pre></div>
 </div>
 </div>
@@ -576,6 +560,9 @@ To load the instance again, please do `pacmap.load(/mnt/c/Users/fmarc/OneDrive/D
 
 <span class="c1"># Join train_test with clinical data</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">train_test</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">clinical_data</span><span class="p">)</span>
+
+<span class="n">train_test_5d</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">train_5d</span><span class="p">,</span> <span class="n">test_5d</span><span class="p">])</span>
+<span class="n">train_test_2d</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">train_2d</span><span class="p">,</span> <span class="n">test_2d</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -708,8 +695,6 @@ X_train shape: (1844, 5) X_test shape: (0, 5)
 <span class="kn">import</span> <span class="nn">joblib</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
-<span class="c1"># from source.data_visualization import plot_confusion_matrix_stacked</span>
-
 
 <span class="k">def</span> <span class="nf">benchmark_classifier</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">):</span>
 
@@ -721,7 +706,6 @@ X_train shape: (1844, 5) X_test shape: (0, 5)
     <span class="s1">&#39;reg_alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span>  <span class="c1"># L1 regularization</span>
     <span class="s1">&#39;reg_lambda&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span>  <span class="c1"># L2 regularization</span>
     <span class="s1">&#39;class_weight&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;balanced&#39;</span><span class="p">],</span>  <span class="c1"># weights associated with classes</span>
-    
     <span class="p">}</span>
 
     <span class="c1"># Initialize the LGBM Classifier with regularization</span>
@@ -739,8 +723,6 @@ X_train shape: (1844, 5) X_test shape: (0, 5)
     <span class="n">clf</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span>
 
     <span class="k">return</span> <span class="n">clf</span>
-
-    <span class="c1"># Plot the confusion matrix</span>
 
 <span class="c1"># Benchmark, train</span>
 <span class="n">lgbm_dx_model</span> <span class="o">=</span> <span class="n">benchmark_classifier</span><span class="p">(</span><span class="n">X_train_dx</span><span class="p">,</span> <span class="n">y_train_dx</span><span class="p">)</span>
@@ -766,7 +748,9 @@ Best parameters: {&#39;class_weight&#39;: &#39;balanced&#39;, &#39;reg_alpha&#39
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">save_predictions</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">classifier</span><span class="p">,</span> <span class="n">model_name</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">save_predictions</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">classifier</span><span class="p">,</span> <span class="n">model_name</span><span class="p">):</span>
 
     <span class="c1"># ignore sklearn warnings</span>
     <span class="kn">import</span> <span class="nn">warnings</span>
@@ -799,17 +783,21 @@ Best parameters: {&#39;class_weight&#39;: &#39;balanced&#39;, &#39;reg_alpha&#39
     <span class="k">return</span> <span class="n">df_joined</span>
 
 <span class="c1"># Execution</span>
-<span class="n">df_pred_px</span> <span class="o">=</span> <span class="n">save_predictions</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">test_5d</span><span class="p">,</span> <span class="n">classifier</span><span class="o">=</span><span class="n">lgbm_px_model</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;AML Epigenomic Risk&#39;</span><span class="p">)</span>
-<span class="n">df_pred_dx</span> <span class="o">=</span> <span class="n">save_predictions</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">test_5d</span><span class="p">,</span> <span class="n">classifier</span><span class="o">=</span><span class="n">lgbm_dx_model</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;AL Epigenomic Phenotype&#39;</span><span class="p">)</span>
+<span class="n">df_pred_px</span> <span class="o">=</span> <span class="n">save_predictions</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">train_test_5d</span><span class="p">,</span> <span class="n">classifier</span><span class="o">=</span><span class="n">lgbm_px_model</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;AML Epigenomic Risk&#39;</span><span class="p">)</span>
+<span class="n">df_pred_dx</span> <span class="o">=</span> <span class="n">save_predictions</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">train_test_5d</span><span class="p">,</span> <span class="n">classifier</span><span class="o">=</span><span class="n">lgbm_dx_model</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;AL Epigenomic Phenotype&#39;</span><span class="p">)</span>
 
 <span class="c1"># Map the classes to more desirable labels (low and high risk)</span>
 <span class="n">df_pred_px</span><span class="p">[</span><span class="s1">&#39;AML Epigenomic Risk&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_pred_px</span><span class="p">[</span><span class="s1">&#39;AML Epigenomic Risk&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s1">&#39;Alive&#39;</span><span class="p">:</span> <span class="s1">&#39;Low&#39;</span><span class="p">,</span> <span class="s1">&#39;Dead&#39;</span><span class="p">:</span> <span class="s1">&#39;High&#39;</span><span class="p">})</span>
 <span class="n">df_pred_px</span> <span class="o">=</span> <span class="n">df_pred_px</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;P(Alive)&#39;</span><span class="p">:</span> <span class="s1">&#39;AML Epigenomic Risk P(Low Risk)&#39;</span><span class="p">,</span> <span class="s1">&#39;P(Dead)&#39;</span><span class="p">:</span> <span class="s1">&#39;AML Epigenomic Risk P(High Risk)&#39;</span><span class="p">})</span>
 
 <span class="c1"># Join predictions with clinical data</span>
-<span class="n">df_combined</span> <span class="o">=</span> <span class="n">test_2d</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">test_5d</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_pred_px</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_pred_dx</span><span class="p">)</span>
+<span class="n">df_combined</span> <span class="o">=</span> <span class="n">train_test_2d</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">train_test_5d</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_pred_px</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_pred_dx</span><span class="p">)</span>
 
-<span class="n">df_combined</span><span class="p">[[</span><span class="s1">&#39;AML Epigenomic Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;AML Epigenomic Risk P(High Risk)&#39;</span><span class="p">,</span> <span class="s1">&#39;AL Epigenomic Phenotype&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;P(</span><span class="si">{</span><span class="n">df_combined</span><span class="p">[</span><span class="s2">&quot;AL Epigenomic Phenotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">]]</span>
+<span class="c1"># Exclude AML epigenomic risk predictions for samples predicted to be ALL</span>
+<span class="n">df_combined</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_combined</span><span class="p">[</span><span class="s1">&#39;AL Epigenomic Phenotype_int&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">24</span><span class="p">]),</span> <span class="s1">&#39;AML Epigenomic Risk&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">df_combined</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_combined</span><span class="p">[</span><span class="s1">&#39;AL Epigenomic Phenotype_int&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">24</span><span class="p">]),</span> <span class="s1">&#39;AML Epigenomic Risk P(High Risk)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="n">df_combined</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:,:][[</span><span class="s1">&#39;AML Epigenomic Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;AML Epigenomic Risk P(High Risk)&#39;</span><span class="p">,</span> <span class="s1">&#39;AL Epigenomic Phenotype&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;P(</span><span class="si">{</span><span class="n">df_combined</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:,:][</span><span class="s2">&quot;AL Epigenomic Phenotype&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -836,20 +824,396 @@ Best parameters: {&#39;class_weight&#39;: &#39;balanced&#39;, &#39;reg_alpha&#39
       <th>AML Epigenomic Risk</th>
       <th>AML Epigenomic Risk P(High Risk)</th>
       <th>AL Epigenomic Phenotype</th>
-      <th>P(Otherwise-Normal Control)</th>
+      <th>P(AML with NUP98-fusion)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>uf_hembank_1841</th>
+      <th>uf_hembank_1852</th>
       <td>High</td>
-      <td>0.678</td>
-      <td>Otherwise-Normal Control</td>
-      <td>0.988</td>
+      <td>0.786</td>
+      <td>AML with NUP98-fusion</td>
+      <td>0.83</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">show</span><span class="p">,</span> <span class="n">output_notebook</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span><span class="p">,</span> <span class="n">FactorRange</span><span class="p">,</span> <span class="n">HoverTool</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+<span class="kn">from</span> <span class="nn">bokeh.transform</span> <span class="kn">import</span> <span class="n">factor_cmap</span>
+
+<span class="c1"># Prepare the data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">df_pred_dx</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Sort columns by values</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">diagnoses</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+                                    <span class="n">probabilities</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()))</span>
+
+<span class="c1"># Set the output to notebook</span>
+<span class="n">output_notebook</span><span class="p">()</span>
+
+<span class="c1"># Create the figure</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">y_range</span><span class="o">=</span><span class="n">FactorRange</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()),</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> 
+           <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Predicted Probabilities of WHO 2022 Diagnosis&quot;</span><span class="p">,)</span>
+
+<span class="c1"># Add a horizontal bar chart</span>
+<span class="n">p</span><span class="o">.</span><span class="n">hbar</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;diagnoses&#39;</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">&#39;probabilities&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> 
+       <span class="n">fill_color</span><span class="o">=</span><span class="n">factor_cmap</span><span class="p">(</span><span class="s1">&#39;diagnoses&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Viridis256&quot;</span><span class="p">,</span>
+                              <span class="n">factors</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()))</span>
+
+<span class="c1"># Set the axis labels</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s2">&quot;Predicted Probability&quot;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s2">&quot;WHO 2022 Diagnosis&quot;</span>
+
+<span class="c1"># Add hover tool</span>
+<span class="n">hover</span> <span class="o">=</span> <span class="n">HoverTool</span><span class="p">()</span>
+<span class="n">hover</span><span class="o">.</span><span class="n">tooltips</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;Diagnosis&quot;</span><span class="p">,</span> <span class="s2">&quot;@diagnoses&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Probability&quot;</span><span class="p">,</span> <span class="s2">&quot;@probabilities</span><span class="si">{0.000}</span><span class="s2">&quot;</span><span class="p">)]</span>
+<span class="n">p</span><span class="o">.</span><span class="n">add_tools</span><span class="p">(</span><span class="n">hover</span><span class="p">)</span>
+
+<span class="c1"># hide logo</span>
+<span class="n">p</span><span class="o">.</span><span class="n">toolbar</span><span class="o">.</span><span class="n">logo</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># # Set other options</span>
+<span class="n">p</span><span class="o">.</span><span class="n">x_range</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">p</span><span class="o">.</span><span class="n">x_range</span><span class="o">.</span><span class="n">end</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">p</span><span class="o">.</span><span class="n">y_range</span><span class="o">.</span><span class="n">range_padding</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">p</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">major_label_orientation</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Adjusted to make labels horizontal</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">major_label_orientation</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xgrid</span><span class="o">.</span><span class="n">grid_line_color</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># Display the plot</span>
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+        .bk-notebook-logo {
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAOkSURBVDiNjZRtaJVlGMd/1/08zzln5zjP1LWcU9N0NkN8m2CYjpgQYQXqSs0I84OLIC0hkEKoPtiH3gmKoiJDU7QpLgoLjLIQCpEsNJ1vqUOdO7ppbuec5+V+rj4ctwzd8IIbbi6u+8f1539dt3A78eXC7QizUF7gyV1fD1Yqg4JWz84yffhm0qkFqBogB9rM8tZdtwVsPUhWhGcFJngGeWrPzHm5oaMmkfEg1usvLFyc8jLRqDOMru7AyC8saQr7GG7f5fvDeH7Ej8CM66nIF+8yngt6HWaKh7k49Soy9nXurCi1o3qUbS3zWfrYeQDTB/Qj6kX6Ybhw4B+bOYoLKCC9H3Nu/leUTZ1JdRWkkn2ldcCamzrcf47KKXdAJllSlxAOkRgyHsGC/zRday5Qld9DyoM4/q/rUoy/CXh3jzOu3bHUVZeU+DEn8FInkPBFlu3+nW3Nw0mk6vCDiWg8CeJaxEwuHS3+z5RgY+YBR6V1Z1nxSOfoaPa4LASWxxdNp+VWTk7+4vzaou8v8PN+xo+KY2xsw6une2frhw05CTYOmQvsEhjhWjn0bmXPjpE1+kplmmkP3suftwTubK9Vq22qKmrBhpY4jvd5afdRA3wGjFAgcnTK2s4hY0/GPNIb0nErGMCRxWOOX64Z8RAC4oCXdklmEvcL8o0BfkNK4lUg9HTl+oPlQxdNo3Mg4Nv175e/1LDGzZen30MEjRUtmXSfiTVu1kK8W4txyV6BMKlbgk3lMwYCiusNy9fVfvvwMxv8Ynl6vxoByANLTWplvuj/nF9m2+PDtt1eiHPBr1oIfhCChQMBw6Aw0UulqTKZdfVvfG7VcfIqLG9bcldL/+pdWTLxLUy8Qq38heUIjh4XlzZxzQm19lLFlr8vdQ97rjZVOLf8nclzckbcD4wxXMidpX30sFd37Fv/GtwwhzhxGVAprjbg0gCAEeIgwCZyTV2Z1REEW8O4py0wsjeloKoMr6iCY6dP92H6Vw/oTyICIthibxjm/DfN9lVz8IqtqKYLUXfoKVMVQVVJOElGjrnnUt9T9wbgp8AyYKaGlqingHZU/uG2NTZSVqwHQTWkx9hxjkpWDaCg6Ckj5qebgBVbT3V3NNXMSiWSDdGV3hrtzla7J+duwPOToIg42ChPQOQjspnSlp1V+Gjdged7+8UN5CRAV7a5EdFNwCjEaBR27b3W890TE7g24NAP/mMDXRWrGoFPQI9ls/MWO2dWFAar/xcOIImbbpA3zgAAAABJRU5ErkJggg==);
+        }
+    </style>
+    <div>
+        <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
+        <span id="e118658d-0160-424f-b28e-29e828d90a9d">Loading BokehJS ...</span>
+    </div>
+</div><script type="application/javascript">(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  const force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+const JS_MIME_TYPE = 'application/javascript';
+  const HTML_MIME_TYPE = 'text/html';
+  const EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  const CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    const script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    const cell = handle.cell;
+
+    const id = cell.output_area._bokeh_element_id;
+    const server_id = cell.output_area._bokeh_server_id;
+    // Clean up Bokeh references
+    if (id != null && id in Bokeh.index) {
+      Bokeh.index[id].model.document.clear();
+      delete Bokeh.index[id];
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      const cmd_clean = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd_clean, {
+        iopub: {
+          output: function(msg) {
+            const id = msg.content.text.trim();
+            if (id in Bokeh.index) {
+              Bokeh.index[id].model.document.clear();
+              delete Bokeh.index[id];
+            }
+          }
+        }
+      });
+      // Destroy server and session
+      const cmd_destroy = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd_destroy);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    const output_area = handle.output_area;
+    const output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!Object.prototype.hasOwnProperty.call(output.data, EXEC_MIME_TYPE))) {
+      return
+    }
+
+    const toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      const bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      const script_attrs = bk_div.children[0].attributes;
+      for (let i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+        toinsert[toinsert.length - 1].firstChild.textContent = bk_div.children[0].textContent
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      const toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      const props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    const events = require('base/js/events');
+    const OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  const NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded() {
+    const el = document.getElementById("e118658d-0160-424f-b28e-29e828d90a9d");
+    if (el != null) {
+      el.textContent = "BokehJS is loading...";
+    }
+    if (root.Bokeh !== undefined) {
+      if (el != null) {
+        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(display_loaded, 100)
+    }
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error(url) {
+      console.error("failed to load " + url);
+    }
+
+    for (let i = 0; i < css_urls.length; i++) {
+      const url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    for (let i = 0; i < js_urls.length; i++) {
+      const url = js_urls[i];
+      const element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.1.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.1.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.1.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.1.1.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.1.1.min.js"];
+  const css_urls = [];
+
+  const inline_js = [    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+function(Bokeh) {
+    }
+  ];
+
+  function run_inline_js() {
+    if (root.Bokeh !== undefined || force === true) {
+          for (let i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+if (force === true) {
+        display_loaded();
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      const cell = $(document.getElementById("e118658d-0160-424f-b28e-29e828d90a9d")).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));</script><div class="output text_html">
+  <div id="dd0a2723-83b8-455f-a3a1-9ef77267b138" data-root-id="p1298" style="display: contents;"></div>
+</div><script type="application/javascript">(function(root) {
+  function embed_document(root) {
+  const docs_json = {"11996fb1-ed9f-4ff0-898d-0f23bba0399f":{"version":"3.1.1","title":"Bokeh Application","defs":[],"roots":[{"type":"object","name":"Figure","id":"p1298","attributes":{"height":200,"x_range":{"type":"object","name":"DataRange1d","id":"p1300","attributes":{"start":0,"end":1}},"y_range":{"type":"object","name":"FactorRange","id":"p1297","attributes":{"factors":["P(AML with t(1;22); RBM15::MKL1)","P(AML with t(v;11q23); KMT2A-r)","P(AML with CBFA2T3::GLIS2)","P(MDS-related; secondary myeloid)","P(AML with NUP98-fusion)"],"range_padding":0.1}},"x_scale":{"type":"object","name":"LinearScale","id":"p1311"},"y_scale":{"type":"object","name":"CategoricalScale","id":"p1313"},"title":{"type":"object","name":"Title","id":"p1301","attributes":{"text":"Predicted Probabilities of WHO 2022 Diagnosis"}},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1350","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1294","attributes":{"selected":{"type":"object","name":"Selection","id":"p1295","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1296"},"data":{"type":"map","entries":[["diagnoses",["P(AML with t(1;22); RBM15::MKL1)","P(AML with t(v;11q23); KMT2A-r)","P(AML with CBFA2T3::GLIS2)","P(MDS-related; secondary myeloid)","P(AML with NUP98-fusion)"]],["probabilities",[0.009,0.026,0.029,0.055,0.83]]]}}},"view":{"type":"object","name":"CDSView","id":"p1351","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1352"}}},"glyph":{"type":"object","name":"HBar","id":"p1347","attributes":{"y":{"type":"field","field":"diagnoses"},"right":{"type":"field","field":"probabilities"},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"field","field":"diagnoses","transform":{"type":"object","name":"CategoricalColorMapper","id":"p1343","attributes":{"palette":["#440154","#440255","#440357","#450558","#45065A","#45085B","#46095C","#460B5E","#460C5F","#460E61","#470F62","#471163","#471265","#471466","#471567","#471669","#47186A","#48196B","#481A6C","#481C6E","#481D6F","#481E70","#482071","#482172","#482273","#482374","#472575","#472676","#472777","#472878","#472A79","#472B7A","#472C7B","#462D7C","#462F7C","#46307D","#46317E","#45327F","#45347F","#453580","#453681","#443781","#443982","#433A83","#433B83","#433C84","#423D84","#423E85","#424085","#414186","#414286","#404387","#404487","#3F4587","#3F4788","#3E4888","#3E4989","#3D4A89","#3D4B89","#3D4C89","#3C4D8A","#3C4E8A","#3B508A","#3B518A","#3A528B","#3A538B","#39548B","#39558B","#38568B","#38578C","#37588C","#37598C","#365A8C","#365B8C","#355C8C","#355D8C","#345E8D","#345F8D","#33608D","#33618D","#32628D","#32638D","#31648D","#31658D","#31668D","#30678D","#30688D","#2F698D","#2F6A8D","#2E6B8E","#2E6C8E","#2E6D8E","#2D6E8E","#2D6F8E","#2C708E","#2C718E","#2C728E","#2B738E","#2B748E","#2A758E","#2A768E","#2A778E","#29788E","#29798E","#287A8E","#287A8E","#287B8E","#277C8E","#277D8E","#277E8E","#267F8E","#26808E","#26818E","#25828E","#25838D","#24848D","#24858D","#24868D","#23878D","#23888D","#23898D","#22898D","#228A8D","#228B8D","#218C8D","#218D8C","#218E8C","#208F8C","#20908C","#20918C","#1F928C","#1F938B","#1F948B","#1F958B","#1F968B","#1E978A","#1E988A","#1E998A","#1E998A","#1E9A89","#1E9B89","#1E9C89","#1E9D88","#1E9E88","#1E9F88","#1EA087","#1FA187","#1FA286","#1FA386","#20A485","#20A585","#21A685","#21A784","#22A784","#23A883","#23A982","#24AA82","#25AB81","#26AC81","#27AD80","#28AE7F","#29AF7F","#2AB07E","#2BB17D","#2CB17D","#2EB27C","#2FB37B","#30B47A","#32B57A","#33B679","#35B778","#36B877","#38B976","#39B976","#3BBA75","#3DBB74","#3EBC73","#40BD72","#42BE71","#44BE70","#45BF6F","#47C06E","#49C16D","#4BC26C","#4DC26B","#4FC369","#51C468","#53C567","#55C666","#57C665","#59C764","#5BC862","#5EC961","#60C960","#62CA5F","#64CB5D","#67CC5C","#69CC5B","#6BCD59","#6DCE58","#70CE56","#72CF55","#74D054","#77D052","#79D151","#7CD24F","#7ED24E","#81D34C","#83D34B","#86D449","#88D547","#8BD546","#8DD644","#90D643","#92D741","#95D73F","#97D83E","#9AD83C","#9DD93A","#9FD938","#A2DA37","#A5DA35","#A7DB33","#AADB32","#ADDC30","#AFDC2E","#B2DD2C","#B5DD2B","#B7DD29","#BADE27","#BDDE26","#BFDF24","#C2DF22","#C5DF21","#C7E01F","#CAE01E","#CDE01D","#CFE11C","#D2E11B","#D4E11A","#D7E219","#DAE218","#DCE218","#DFE318","#E1E318","#E4E318","#E7E419","#E9E419","#ECE41A","#EEE51B","#F1E51C","#F3E51E","#F6E61F","#F8E621","#FAE622","#FDE724"],"factors":["P(AML with t(1;22); RBM15::MKL1)","P(AML with t(v;11q23); KMT2A-r)","P(AML with CBFA2T3::GLIS2)","P(MDS-related; secondary myeloid)","P(AML with NUP98-fusion)"]}}}}},"nonselection_glyph":{"type":"object","name":"HBar","id":"p1348","attributes":{"y":{"type":"field","field":"diagnoses"},"right":{"type":"field","field":"probabilities"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"field","field":"diagnoses","transform":{"id":"p1343"}},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"HBar","id":"p1349","attributes":{"y":{"type":"field","field":"diagnoses"},"right":{"type":"field","field":"probabilities"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"field","field":"diagnoses","transform":{"id":"p1343"}},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1307","attributes":{"logo":null,"tools":[{"type":"object","name":"PanTool","id":"p1328"},{"type":"object","name":"WheelZoomTool","id":"p1329"},{"type":"object","name":"BoxZoomTool","id":"p1330","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1331","attributes":{"syncable":false,"level":"overlay","visible":false,"left_units":"canvas","right_units":"canvas","bottom_units":"canvas","top_units":"canvas","line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5}}}},{"type":"object","name":"SaveTool","id":"p1332"},{"type":"object","name":"ResetTool","id":"p1333"},{"type":"object","name":"HelpTool","id":"p1334"},{"type":"object","name":"HoverTool","id":"p1353","attributes":{"renderers":"auto","tooltips":[["Diagnosis","@diagnoses"],["Probability","@probabilities{0.000}"]]}}]}},"left":[{"type":"object","name":"CategoricalAxis","id":"p1322","attributes":{"ticker":{"type":"object","name":"CategoricalTicker","id":"p1323"},"formatter":{"type":"object","name":"CategoricalTickFormatter","id":"p1324"},"axis_label":"WHO 2022 Diagnosis","major_label_orientation":0,"major_label_policy":{"type":"object","name":"AllLabels","id":"p1325"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1315","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1316","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1317"},"axis_label":"Predicted Probability","major_label_orientation":1,"major_label_policy":{"type":"object","name":"AllLabels","id":"p1318"}}}],"center":[{"type":"object","name":"Grid","id":"p1321","attributes":{"axis":{"id":"p1315"},"grid_line_color":null}},{"type":"object","name":"Grid","id":"p1327","attributes":{"dimension":1,"axis":{"id":"p1322"}}}]}}],"callbacks":{"type":"map"}}};
+  const render_items = [{"docid":"11996fb1-ed9f-4ff0-898d-0f23bba0399f","roots":{"p1298":"dd0a2723-83b8-455f-a3a1-9ef77267b138"},"root_ids":["p1298"]}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    let attempts = 0;
+    const timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);</script></div>
 </div>
 </section>
 <section id="ewascox-lasso">
@@ -939,8 +1303,8 @@ Best parameters: {&#39;class_weight&#39;: &#39;balanced&#39;, &#39;reg_alpha&#39
   </thead>
   <tbody>
     <tr>
-      <th>uf_hembank_1841</th>
-      <td>-2.289086</td>
+      <th>uf_hembank_1852</th>
+      <td>-0.722272</td>
       <td>Low</td>
     </tr>
   </tbody>
@@ -957,26 +1321,34 @@ Best parameters: {&#39;class_weight&#39;: &#39;balanced&#39;, &#39;reg_alpha&#39
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_nanopore</span> <span class="o">=</span> <span class="n">df_combined</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_validation_transformed</span><span class="p">[[</span><span class="s1">&#39;EWASCox_OS_48CpGs&#39;</span><span class="p">,</span><span class="s1">&#39;EWASCox_OS_48CpGs Categorical&#39;</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">df_final</span> <span class="o">=</span> <span class="n">df_combined</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_validation_transformed</span><span class="p">[[</span><span class="s1">&#39;EWASCox_OS_48CpGs&#39;</span><span class="p">,</span><span class="s1">&#39;EWASCox_OS_48CpGs Categorical&#39;</span><span class="p">]])</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">df_final</span> <span class="o">=</span> <span class="n">df_combined</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
-<span class="n">df_nanopore</span><span class="p">[</span><span class="s1">&#39;Train-Test&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Long-read Nanopore sequencing&#39;</span>
-<span class="n">df_nanopore</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;UF Hem Bank&#39;</span>
-<span class="n">df_nanopore</span><span class="p">[</span><span class="s1">&#39;Patient_ID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample_name</span>
-<span class="n">df_nanopore</span><span class="p">[</span><span class="s1">&#39;Hematopoietic Entity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-<span class="n">df_nanopore</span><span class="p">[</span><span class="s1">&#39;WHO 2022 Diagnosis&#39;</span><span class="p">]</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-<span class="n">df_nanopore</span><span class="p">[</span><span class="s1">&#39;Vital Status&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-<span class="n">df_nanopore</span><span class="p">[</span><span class="s1">&#39;Risk Group AAML1831&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="c1"># Merge with clinical data</span>
+<span class="n">df_final</span> <span class="o">=</span> <span class="n">df_final</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">clinical_data</span><span class="p">)</span>
 
-<span class="n">df_nanopore</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="n">sample_name</span> <span class="o">+</span> <span class="s1">&#39;_processed.xlsx&#39;</span><span class="p">)</span>
+<span class="c1"># Update the &#39;Train-Test&#39; column of the last row</span>
+<span class="n">df_final</span><span class="o">.</span><span class="n">iat</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">df_final</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="s1">&#39;Train-Test&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;Long-read ONTseq&#39;</span>
+
+<span class="c1"># Update the &#39;Clinical Trial&#39; column of the last row</span>
+<span class="n">df_final</span><span class="o">.</span><span class="n">iat</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">df_final</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;UF HemBank&#39;</span>
+
+<span class="c1"># Update the &#39;Patient_ID&#39; column of the last row</span>
+<span class="n">df_final</span><span class="o">.</span><span class="n">iat</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">df_final</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="s1">&#39;Patient_ID&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">sample_name</span>
+
+<span class="c1"># Save</span>
+<span class="n">df_final</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="n">sample_name</span> <span class="o">+</span> <span class="s1">&#39;_processed.pkl&#39;</span><span class="p">)</span>
 
 <span class="c1"># print save message</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Processed data for </span><span class="si">{</span><span class="n">sample_name</span><span class="si">}</span><span class="s1"> saved as </span><span class="si">{</span><span class="n">output_path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sample_name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;_processed.xlsx&quot;</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Processed data for </span><span class="si">{</span><span class="n">sample_name</span><span class="si">}</span><span class="s1"> saved as </span><span class="si">{</span><span class="n">output_path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sample_name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;_processed.pkl&quot;</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processed data for uf_hembank_1841 saved as /mnt/d/MethylScore_v2/Processed_Data/uf_hembank_1841_processed.xlsx
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processed data for uf_hembank_1852 saved as /mnt/e/MethylScore_v2/Processed_Data/uf_hembank_1852_processed.pkl
 </pre></div>
 </div>
 </div>
@@ -1056,7 +1428,7 @@ Architecture: 64bit
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Preprocess long-read epigenomics</p>
+        <p class="prev-next-title">Preprocess long reads</p>
       </div>
     </a>
     <a class="right-next"
@@ -1064,7 +1436,7 @@ Architecture: 64bit
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Specimen final mapping</p>
+        <p class="prev-next-title">Final specimen mapping</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

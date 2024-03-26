@@ -48,8 +48,11 @@ def get_custom_color_palette():
     ]
     return list
 
-def plot_linked_scatters(df, table=True, test_sample=None, xaxis = "PaCMAP 1 of 2", yaxis = "PaCMAP 2 of 2",
-                          x_range= (-45,40), y_range=(-50,45)):
+def plot_linked_scatters(df, table=True, test_sample=None, 
+                        xaxis = "PaCMAP 1 of 2", yaxis = "PaCMAP 2 of 2",
+                        x_range= (-45,40), y_range=(-50,45), 
+                        cols = ['AL Epigenomic Phenotype', 'Hematopoietic Entity','WHO 2022 Diagnosis', 
+                                  'Vital Status','AML Epigenomic Risk', 'Risk Group AAML1831', 'Clinical Trial']):
 
     # Rank samples by AML Epigenomic Risk P(High Risk) and call it "Percentile"
     df_px = df[~df['AML Epigenomic Risk P(High Risk)'].isna()]
@@ -65,9 +68,6 @@ def plot_linked_scatters(df, table=True, test_sample=None, xaxis = "PaCMAP 1 of 
     threshold = 0.5
 
     custom_color_palette = get_custom_color_palette()
-
-    cols = ['AL Epigenomic Phenotype', 'Hematopoietic Entity','WHO 2022 Diagnosis', 
-            'Vital Status','AML Epigenomic Risk', 'Risk Group AAML1831', 'Clinical Trial' ]
 
     columns = [TableColumn(field=col, title=col) for col in cols]
     columns.append(TableColumn(field='Gene Fusion', title='Gene Fusion'))
