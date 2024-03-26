@@ -1,3 +1,2 @@
 models/pacmap_2d_model_al_atlas.pkl filter=lfs diff=lfs merge=lfs -text
 models/pacmap_5d_model_al_atlas.pkl filter=lfs diff=lfs merge=lfs -text
-_build/.doctrees/environment.pickle filter=lfs diff=lfs merge=lfs -text
