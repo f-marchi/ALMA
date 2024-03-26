@@ -52,7 +52,8 @@ def plot_linked_scatters(df, table=True, test_sample=None,
                         xaxis = "PaCMAP 1 of 2", yaxis = "PaCMAP 2 of 2",
                         x_range= (-45,40), y_range=(-50,45), 
                         cols = ['AL Epigenomic Phenotype', 'Hematopoietic Entity','WHO 2022 Diagnosis', 
-                                  'Vital Status','AML Epigenomic Risk', 'Risk Group AAML1831', 'Clinical Trial']):
+                                  'Vital Status','AML Epigenomic Risk', 'Risk Group AAML1831', 'Clinical Trial',
+                                  'Race or ethnic group','Age (group years)']):
 
     # Rank samples by AML Epigenomic Risk P(High Risk) and call it "Percentile"
     df_px = df[~df['AML Epigenomic Risk P(High Risk)'].isna()]
