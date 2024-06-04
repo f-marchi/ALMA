@@ -13,12 +13,12 @@ __email__ = 'flourenco@ufl.edu'
 
 # Set paths to clinical data files
 
-mount = '/mnt/d/MethylScore'
+mount = '/mnt/e/ALMA/'
 
 
-clinical_data_path = mount + '/Raw_Data/Clinical_Data/'
-input_path_450k = mount + '/Raw_Data/Methyl_Array_450k/'
-input_path_EPIC = mount + '/Raw_Data/Methyl_Array_EPIC/'
+clinical_data_path = mount + 'Raw_Data/Clinical_Data/'
+input_path_450k = mount + 'Raw_Data/Methyl_Array_450k/'
+input_path_EPIC = mount + 'Raw_Data/Methyl_Array_EPIC/'
 
 ##############################################################################################################
 # Merge and index clinical data files
