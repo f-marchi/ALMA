@@ -51,20 +51,20 @@ def get_custom_color_palette():
 def plot_linked_scatters(df, table=True, test_sample=None, 
                         xaxis = "PaCMAP 1 of 2", yaxis = "PaCMAP 2 of 2",
                         x_range= (-45,40), y_range=(-50,45), 
-                        cols = ['AL Epigenomic Phenotype', 'Hematopoietic Entity','WHO 2022 Diagnosis', 
+                        cols = ['AL Epigenomic Subtype', 'Hematopoietic Entity','WHO 2022 Diagnosis', 
                                   'Vital Status','AML Epigenomic Risk', 'Risk Group AAML1831', 'Clinical Trial',
                                   'Race or ethnic group','Age (group years)']):
 
-    # Rank samples by AML Epigenomic Risk P(High Risk) and call it "Percentile"
-    df_px = df[~df['AML Epigenomic Risk P(High Risk)'].isna()]
-    df_px2 = df_px.sort_values(by='AML Epigenomic Risk P(High Risk)').reset_index().reset_index(names=['Percentile']).set_index('index')
+    # Rank samples by P(Death) and call it "Percentile"
+    df_px = df[~df['P(Death)'].isna()]
+    df_px2 = df_px.sort_values(by='P(Death)').reset_index().reset_index(names=['Percentile']).set_index('index')
     df_px2['Percentile'] = df_px2['Percentile'] / len(df_px2['Percentile'])
     df2 = df.join(df_px2[['Percentile']])
     
     source = ColumnDataSource(df2)
     width = 1000
     font_size = "8pt"
-    x= 'AML Epigenomic Risk P(High Risk)'
+    x= 'P(Death)'
     y = 'Percentile'
     threshold = 0.5
 
@@ -153,7 +153,7 @@ def plot_linked_scatters(df, table=True, test_sample=None,
                             dimension='width', line_color="black", line_dash='dashed',line_alpha=0.8)
                 p2.renderers.extend([vline, hline])
                 p2.star(x=df2.loc[test_sample][xaxis], y=df2.loc[test_sample][yaxis],
-                size=15, color="black", alpha=0.9, legend_label=f'Sample: {test_sample}\nPrediction: {df2.loc[test_sample]["AL Epigenomic Phenotype"]}',
+                size=15, color="black", alpha=0.9, legend_label=f'Sample: {test_sample}\nPrediction: {df2.loc[test_sample]["AL Epigenomic Subtype"]}',
                  line_color="black", line_width=1)
                 p2.legend.click_policy = "hide"
 
@@ -305,7 +305,7 @@ def plot_multiclass_roc_auc(df, target_columns, title=None):
     return p
 
 def process_dataset_for_multiclass_auc(df):
-    # One hot encode `df_dx['AL Epigenomic Phenotype']`
+    # One hot encode `df_dx['AL Epigenomic Subtype']`
     df_dx_dummies = pd.get_dummies(df['WHO 2022 Diagnosis'])
 
     # transform boolean columns to integer
