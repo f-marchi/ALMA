@@ -1,0 +1,1313 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Px Models Benchmarks &#8212; Acute Leukemia Methylome Atlas Study</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tests/ewasCox_vs_pacmapLGBM';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="EWAS Runs" href="2_Univariate_CoxPH-EWAS_v4.html" />
+    <link rel="prev" title="UF HemBank 1852 case study" href="../main/9_test_atlas_1852.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Acute Leukemia Methylome Atlas Study</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Main Story</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../main/1_discovery_dataset.html">Discovery Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main/2_validation_dataset_v2.html">Validation Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main/3_reclassification_strategy.html">Dx and Px Reclassification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main/4_models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main/5_plots.html">Data Visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Specimen-to-Result Testing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../main/6_test_dataset.html">Preprocess long reads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main/7_test_models.html">Run epigenomic models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main/9_test_atlas_1852.html">UF HemBank 1852 case study</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Benchmarks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Px Models Benchmarks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Supplementary Material</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2_Univariate_CoxPH-EWAS_v4.html">EWAS Runs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.1_MethylScoreAML_Px_Development_v5.html">924pts-OS-35CpGs-ASH23</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.1_MethylScoreAML_Px_Development_v6.html">940pts-OS-48CpGs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.1_MethylScoreAML_Px_Development_v7.html">940pts-EFS-55CpGs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.2_MethylScoreAML_Px_Validation_Peds_v2.html">OS-35CpGs-Validation-ASH23</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.2_MethylScoreAML_Px_Validation_Peds_v3.html">OS-48CpGs-Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.2_MethylScoreAML_Px_Validation_Peds_v4.html">EFS-55CpGs-Validation</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/tests/ewasCox_vs_pacmapLGBM.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Px Models Benchmarks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-pacmap-lgbm-data">Load PaCMAP-LGBM data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-ewas-cox-disovery-datasets">Load EWAS-Cox disovery datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combine-datasets">Combine datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#roc-auc-comparison-in-cog-aml-dx-samples">ROC-AUC comparison in COG AML Dx samples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-of-px-models-in-cog-aml-dx-samples">Correlation of Px models in COG AML Dx samples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#roc-auc-comparison-in-independent-validation-cohort-aml02-08">ROC-AUC comparison in independent validation cohort (AML02,08)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-of-continuous-px-models-in-validation-aml02-08">Correlation of continuous Px models in validation (AML02,08)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="px-models-benchmarks">
+<h1>Px Models Benchmarks<a class="headerlink" href="#px-models-benchmarks" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p><img alt="px_models_benchmark_diagram" src="../_images/px_models_benchmark_diagram.svg" /></p>
+</section>
+<section id="load-pacmap-lgbm-data">
+<h2>Load PaCMAP-LGBM data<a class="headerlink" href="#load-pacmap-lgbm-data" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">source.bokeh_plots</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">source.data_visualization</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">output_notebook</span><span class="p">()</span>
+
+<span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;../data/alma_main_results.xlsx&#39;</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;AML Epigenomic Risk&#39;</span>
+
+<span class="c1"># Read the data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="c1"># Define train and test samples</span>
+<span class="n">df_train</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Train-Test&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Train Sample&#39;</span><span class="p">]</span>
+<span class="n">df_test</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Train-Test&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Test Sample&#39;</span><span class="p">]</span>
+
+<span class="c1"># Drop the samples with missing labels for the selected column</span>
+<span class="n">df_px</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="o">~</span><span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;Vital Status&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+
+<span class="c1"># drop the samples with missing labels for the ELN AML 2022 Diagnosis</span>
+<span class="n">df_dx</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="o">~</span><span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;WHO 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+
+<span class="c1"># exclude the classes with fewer than 10 samples</span>
+<span class="n">df_dx</span> <span class="o">=</span> <span class="n">df_dx</span><span class="p">[</span><span class="o">~</span><span class="n">df_dx</span><span class="p">[</span><span class="s1">&#39;WHO 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span>
+                                       <span class="s1">&#39;MPAL with t(v;11q23.3)/KMT2A-r&#39;</span><span class="p">,</span>
+                                       <span class="s1">&#39;B-ALL with hypodiploidy&#39;</span><span class="p">,</span>
+                                       <span class="s1">&#39;AML with t(16;21); FUS::ERG&#39;</span><span class="p">,</span>
+                                       <span class="s1">&#39;AML with t(9;22); BCR::ABL1&#39;</span>
+                                       <span class="p">])]</span>
+
+<span class="c1">### Select samples from COG AAML1031, 0531, and 03P1 Dx samples</span>
+<span class="n">df_cog</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;AAML0531&#39;</span><span class="p">,</span> <span class="s1">&#39;AAML1031&#39;</span><span class="p">,</span> <span class="s1">&#39;AAML03P1&#39;</span><span class="p">])]</span>
+<span class="n">df_cog</span> <span class="o">=</span> <span class="n">df_cog</span><span class="p">[</span><span class="n">df_cog</span><span class="p">[</span><span class="s1">&#39;Sample Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Diagnosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Primary Blood Derived Cancer - Bone Marrow&#39;</span><span class="p">,</span>
+                                            <span class="s1">&#39;Primary Blood Derived Cancer - Peripheral Blood&#39;</span><span class="p">])]</span>
+<span class="n">df_cog</span> <span class="o">=</span> <span class="n">df_cog</span><span class="p">[</span><span class="o">~</span><span class="n">df_cog</span><span class="p">[</span><span class="s1">&#39;Patient_ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">)]</span>
+
+<span class="n">df_cog</span> <span class="o">=</span> <span class="n">df_cog</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;AML Epigenomic Risk_int&#39;</span><span class="p">:</span> <span class="s1">&#39;AML Epigenomic Risk (PaCMAP-LGBM)&#39;</span><span class="p">,</span> <span class="s1">&#39;P(Death)&#39;</span><span class="p">:</span> <span class="s1">&#39;AML Epigenomic Risk P(Death)&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">    <style>
+        .bk-notebook-logo {
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAOkSURBVDiNjZRtaJVlGMd/1/08zzln5zjP1LWcU9N0NkN8m2CYjpgQYQXqSs0I84OLIC0hkEKoPtiH3gmKoiJDU7QpLgoLjLIQCpEsNJ1vqUOdO7ppbuec5+V+rj4ctwzd8IIbbi6u+8f1539dt3A78eXC7QizUF7gyV1fD1Yqg4JWz84yffhm0qkFqBogB9rM8tZdtwVsPUhWhGcFJngGeWrPzHm5oaMmkfEg1usvLFyc8jLRqDOMru7AyC8saQr7GG7f5fvDeH7Ej8CM66nIF+8yngt6HWaKh7k49Soy9nXurCi1o3qUbS3zWfrYeQDTB/Qj6kX6Ybhw4B+bOYoLKCC9H3Nu/leUTZ1JdRWkkn2ldcCamzrcf47KKXdAJllSlxAOkRgyHsGC/zRday5Qld9DyoM4/q/rUoy/CXh3jzOu3bHUVZeU+DEn8FInkPBFlu3+nW3Nw0mk6vCDiWg8CeJaxEwuHS3+z5RgY+YBR6V1Z1nxSOfoaPa4LASWxxdNp+VWTk7+4vzaou8v8PN+xo+KY2xsw6une2frhw05CTYOmQvsEhjhWjn0bmXPjpE1+kplmmkP3suftwTubK9Vq22qKmrBhpY4jvd5afdRA3wGjFAgcnTK2s4hY0/GPNIb0nErGMCRxWOOX64Z8RAC4oCXdklmEvcL8o0BfkNK4lUg9HTl+oPlQxdNo3Mg4Nv175e/1LDGzZen30MEjRUtmXSfiTVu1kK8W4txyV6BMKlbgk3lMwYCiusNy9fVfvvwMxv8Ynl6vxoByANLTWplvuj/nF9m2+PDtt1eiHPBr1oIfhCChQMBw6Aw0UulqTKZdfVvfG7VcfIqLG9bcldL/+pdWTLxLUy8Qq38heUIjh4XlzZxzQm19lLFlr8vdQ97rjZVOLf8nclzckbcD4wxXMidpX30sFd37Fv/GtwwhzhxGVAprjbg0gCAEeIgwCZyTV2Z1REEW8O4py0wsjeloKoMr6iCY6dP92H6Vw/oTyICIthibxjm/DfN9lVz8IqtqKYLUXfoKVMVQVVJOElGjrnnUt9T9wbgp8AyYKaGlqingHZU/uG2NTZSVqwHQTWkx9hxjkpWDaCg6Ckj5qebgBVbT3V3NNXMSiWSDdGV3hrtzla7J+duwPOToIg42ChPQOQjspnSlp1V+Gjdged7+8UN5CRAV7a5EdFNwCjEaBR27b3W890TE7g24NAP/mMDXRWrGoFPQI9ls/MWO2dWFAar/xcOIImbbpA3zgAAAABJRU5ErkJggg==);
+        }
+    </style>
+    <div>
+        <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
+        <span id="bc8cbc5b-5978-458a-be8f-b8135c715307">Loading BokehJS ...</span>
+    </div>
+</div><script type="application/javascript">(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  const force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+const JS_MIME_TYPE = 'application/javascript';
+  const HTML_MIME_TYPE = 'text/html';
+  const EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  const CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    const script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    function drop(id) {
+      const view = Bokeh.index.get_by_id(id)
+      if (view != null) {
+        view.model.document.clear()
+        Bokeh.index.delete(view)
+      }
+    }
+
+    const cell = handle.cell;
+
+    const id = cell.output_area._bokeh_element_id;
+    const server_id = cell.output_area._bokeh_server_id;
+
+    // Clean up Bokeh references
+    if (id != null) {
+      drop(id)
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      const cmd_clean = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd_clean, {
+        iopub: {
+          output: function(msg) {
+            const id = msg.content.text.trim()
+            drop(id)
+          }
+        }
+      });
+      // Destroy server and session
+      const cmd_destroy = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd_destroy);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    const output_area = handle.output_area;
+    const output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!Object.prototype.hasOwnProperty.call(output.data, EXEC_MIME_TYPE))) {
+      return
+    }
+
+    const toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      const bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      const script_attrs = bk_div.children[0].attributes;
+      for (let i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+        toinsert[toinsert.length - 1].firstChild.textContent = bk_div.children[0].textContent
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      const toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      const props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    const events = require('base/js/events');
+    const OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  const NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded() {
+    const el = document.getElementById("bc8cbc5b-5978-458a-be8f-b8135c715307");
+    if (el != null) {
+      el.textContent = "BokehJS is loading...";
+    }
+    if (root.Bokeh !== undefined) {
+      if (el != null) {
+        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(display_loaded, 100)
+    }
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error(url) {
+      console.error("failed to load " + url);
+    }
+
+    for (let i = 0; i < css_urls.length; i++) {
+      const url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    for (let i = 0; i < js_urls.length; i++) {
+      const url = js_urls[i];
+      const element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.3.4.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.3.4.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.3.4.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.3.4.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.3.4.min.js"];
+  const css_urls = [];
+
+  const inline_js = [    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+function(Bokeh) {
+    }
+  ];
+
+  function run_inline_js() {
+    if (root.Bokeh !== undefined || force === true) {
+          for (let i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+if (force === true) {
+        display_loaded();
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      const cell = $(document.getElementById("bc8cbc5b-5978-458a-be8f-b8135c715307")).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));</script></div>
+</div>
+</section>
+<section id="load-ewas-cox-disovery-datasets">
+<h2>Load EWAS-Cox disovery datasets<a class="headerlink" href="#load-ewas-cox-disovery-datasets" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;/mnt/e/ALMA/Processed_Files/&#39;</span>
+<span class="n">path_os</span> <span class="o">=</span> <span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;multivariate_cox_lasso/ewas_cog_os_MethylScoreAML_Px.xlsx&#39;</span>
+<span class="n">path_efs</span> <span class="o">=</span> <span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;multivariate_cox_lasso/ewas_cog_efs_MethylScoreAML_Px.xlsx&#39;</span>
+
+<span class="n">ewas_cox_OS_48CpGs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">path_os</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)[[</span><span class="s1">&#39;MethylScoreAML_Px&#39;</span><span class="p">,</span><span class="s1">&#39;MethylScoreAML_Px_cat_bin&#39;</span><span class="p">]]</span>
+<span class="n">ewas_cox_EFS_55CpGs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">path_efs</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)[[</span><span class="s1">&#39;MethylScore55_NewRiskEFS&#39;</span><span class="p">,</span><span class="s1">&#39;MethylScore55_NewRiskEFS_cat_bin&#39;</span><span class="p">]]</span>
+
+<span class="n">ewas_cox_OS_48CpGs</span> <span class="o">=</span> <span class="n">ewas_cox_OS_48CpGs</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;MethylScoreAML_Px&#39;</span><span class="p">:</span><span class="s1">&#39;EWASCox_OS_48CpGs (cont)&#39;</span><span class="p">,</span> <span class="s1">&#39;MethylScoreAML_Px_cat_bin&#39;</span><span class="p">:</span><span class="s1">&#39;EWASCox_OS_48CpGs&#39;</span><span class="p">})</span>
+<span class="n">ewas_cox_EFS_55CpGs</span> <span class="o">=</span> <span class="n">ewas_cox_EFS_55CpGs</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;MethylScore55_NewRiskEFS&#39;</span><span class="p">:</span><span class="s1">&#39;EWASCox_EFS_55CpGs (cont)&#39;</span><span class="p">,</span> <span class="s1">&#39;MethylScore55_NewRiskEFS_cat_bin&#39;</span><span class="p">:</span><span class="s1">&#39;EWASCox_EFS_55CpGs&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="combine-datasets">
+<h2>Combine datasets<a class="headerlink" href="#combine-datasets" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_combined</span> <span class="o">=</span> <span class="n">df_cog</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ewas_cox_OS_48CpGs</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ewas_cox_EFS_55CpGs</span><span class="p">)</span>
+
+<span class="n">df_cat</span> <span class="o">=</span> <span class="n">df_combined</span><span class="p">[[</span><span class="s1">&#39;os.evnt&#39;</span><span class="p">,</span> <span class="s1">&#39;EWASCox_OS_48CpGs&#39;</span><span class="p">,</span> <span class="s1">&#39;EWASCox_EFS_55CpGs&#39;</span><span class="p">,</span> <span class="s1">&#39;AML Epigenomic Risk (PaCMAP-LGBM)&#39;</span><span class="p">]]</span>
+<span class="n">df_cont</span> <span class="o">=</span> <span class="n">df_combined</span><span class="p">[[</span><span class="s1">&#39;os.evnt&#39;</span><span class="p">,</span> <span class="s1">&#39;EWASCox_OS_48CpGs (cont)&#39;</span><span class="p">,</span> <span class="s1">&#39;EWASCox_EFS_55CpGs (cont)&#39;</span><span class="p">,</span> <span class="s1">&#39;AML Epigenomic Risk P(Death)&#39;</span><span class="p">]]</span>
+
+<span class="n">df_cont</span> <span class="o">=</span> <span class="n">df_cont</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;AML Epigenomic Risk P(Death)&#39;</span><span class="p">:</span><span class="s1">&#39;AML Epigenomic Risk (PaCMAP-LGBM)&#39;</span><span class="p">,</span>
+                                  <span class="s1">&#39;EWASCox_OS_48CpGs (cont)&#39;</span><span class="p">:</span> <span class="s1">&#39;EWASCox_OS_48CpGs&#39;</span><span class="p">,</span>
+                                  <span class="s1">&#39;EWASCox_EFS_55CpGs (cont)&#39;</span><span class="p">:</span> <span class="s1">&#39;EWASCox_EFS_55CpGs&#39;</span><span class="p">})</span>
+
+<span class="n">risk</span> <span class="o">=</span> <span class="n">df_cog</span><span class="p">[[</span><span class="s1">&#39;Risk Group AAML1831&#39;</span><span class="p">,</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">]]</span>
+
+<span class="n">low_high_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Low&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Low Risk&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s1">&#39;Standard&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;Standard Risk&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                <span class="s1">&#39;High&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;High Risk&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+
+<span class="n">risk</span><span class="p">[</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">risk</span><span class="p">[</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">low_high_dict</span><span class="p">)</span>
+<span class="n">risk</span><span class="p">[</span><span class="s1">&#39;Risk Group AAML1831&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">risk</span><span class="p">[</span><span class="s1">&#39;Risk Group AAML1831&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">low_high_dict</span><span class="p">)</span>
+
+<span class="n">df_cont_risk</span> <span class="o">=</span> <span class="n">df_cont</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">risk</span><span class="p">)</span>
+<span class="n">df_cat_risk</span> <span class="o">=</span> <span class="n">df_cat</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">risk</span><span class="p">)</span>
+
+<span class="n">df_cont_risk</span> <span class="o">=</span> <span class="n">df_cont_risk</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df_cat_risk</span> <span class="o">=</span> <span class="n">df_cat_risk</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="roc-auc-comparison-in-cog-aml-dx-samples">
+<h2>ROC-AUC comparison in COG AML Dx samples<a class="headerlink" href="#roc-auc-comparison-in-cog-aml-dx-samples" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input tag_full-width docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_roc_auc</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color_option</span><span class="o">=</span><span class="s1">&#39;colors1&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plots ROC AUC flexibly using Bokeh.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">color_option</span> <span class="o">==</span> <span class="s1">&#39;colors1&#39;</span><span class="p">:</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="s1">&#39;olive&#39;</span><span class="p">,</span> <span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">color_option</span> <span class="o">==</span> <span class="s1">&#39;colors2&#39;</span><span class="p">:</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+    
+    <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
+        <span class="n">title_</span> <span class="o">=</span> <span class="n">title</span> <span class="o">+</span> <span class="s1">&#39;, n=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">title_</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">title_</span><span class="p">,</span>
+               <span class="n">x_axis_label</span><span class="o">=</span><span class="s1">&#39;False Positive Rate&#39;</span><span class="p">,</span>
+               <span class="n">y_axis_label</span><span class="o">=</span><span class="s1">&#39;True Positive Rate&#39;</span><span class="p">,</span>
+               <span class="n">width</span><span class="o">=</span><span class="mi">425</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">425</span><span class="p">,</span>
+               <span class="n">tools</span><span class="o">=</span><span class="s1">&#39;save,reset,pan&#39;</span><span class="p">)</span>
+    
+    <span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">line_dash</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">column</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">difference</span><span class="p">([</span><span class="n">target</span><span class="p">]),</span> <span class="n">colors</span><span class="p">):</span>
+        <span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">target</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">])</span>
+        <span class="n">roc_auc</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">)</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">roc_auc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span>
+               <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+
+    <span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="s2">&quot;bottom_right&quot;</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">click_policy</span><span class="o">=</span><span class="s2">&quot;hide&quot;</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">toolbar</span><span class="o">.</span><span class="n">logo</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">label_text_font_size</span> <span class="o">=</span> <span class="s1">&#39;8pt&#39;</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">spacing</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">axis_label_text_font_style</span> <span class="o">=</span> <span class="s2">&quot;normal&quot;</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">axis_label_text_font_style</span> <span class="o">=</span> <span class="s2">&quot;normal&quot;</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">background_fill_alpha</span> <span class="o">=</span> <span class="mf">0.8</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text_font_size</span> <span class="o">=</span> <span class="s1">&#39;10pt&#39;</span>
+
+    <span class="k">return</span> <span class="n">p</span>
+
+<span class="n">p1</span> <span class="o">=</span> <span class="n">plot_roc_auc</span><span class="p">(</span><span class="n">df_cont_risk</span><span class="p">,</span> <span class="s1">&#39;os.evnt&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span> <span class="s1">&#39;Continuous (prob. of high risk)&#39;</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">plot_roc_auc</span><span class="p">(</span><span class="n">df_cat_risk</span><span class="p">,</span> <span class="s1">&#39;os.evnt&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span> <span class="s1">&#39;Categorical (high-low risk)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create a gridplot</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">gridplot</span><span class="p">([[</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">]],</span> <span class="n">toolbar_location</span><span class="o">=</span><span class="s1">&#39;above&#39;</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="a8c27b6d-860c-49de-bb9f-15375b95da67" data-root-id="p1175" style="display: contents;"></div>
+</div><script type="application/javascript">(function(root) {
+  function embed_document(root) {
+  const docs_json = {"d34a8c3a-accc-4f0b-89ef-120263c52b8d":{"version":"3.3.4","title":"Bokeh Application","roots":[{"type":"object","name":"GridPlot","id":"p1175","attributes":{"rows":null,"cols":null,"toolbar":{"type":"object","name":"Toolbar","id":"p1174","attributes":{"logo":null,"tools":[{"type":"object","name":"SaveTool","id":"p1171"},{"type":"object","name":"ToolProxy","id":"p1172","attributes":{"tools":[{"type":"object","name":"ResetTool","id":"p1024"},{"type":"object","name":"ResetTool","id":"p1109"}]}},{"type":"object","name":"ToolProxy","id":"p1173","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1025"},{"type":"object","name":"PanTool","id":"p1110"}]}}]}},"children":[[{"type":"object","name":"Figure","id":"p1001","attributes":{"width":425,"height":425,"x_range":{"type":"object","name":"DataRange1d","id":"p1002"},"y_range":{"type":"object","name":"DataRange1d","id":"p1003"},"x_scale":{"type":"object","name":"LinearScale","id":"p1011"},"y_scale":{"type":"object","name":"LinearScale","id":"p1012"},"title":{"type":"object","name":"Title","id":"p1004","attributes":{"text":"Continuous (prob. of high risk), n=926","text_font_size":"10pt"}},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1032","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1026","attributes":{"selected":{"type":"object","name":"Selection","id":"p1027","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1028"},"data":{"type":"map","entries":[["x",[0,1]],["y",[0,1]]]}}},"view":{"type":"object","name":"CDSView","id":"p1033","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1034"}}},"glyph":{"type":"object","name":"Line","id":"p1029","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"gray","line_dash":[6]}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1030","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"gray","line_alpha":0.1,"line_dash":[6]}},"muted_glyph":{"type":"object","name":"Line","id":"p1031","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"gray","line_alpha":0.2,"line_dash":[6]}}}},{"type":"object","name":"GlyphRenderer","id":"p1041","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1035","attributes":{"selected":{"type":"object","name":"Selection","id":"p1036","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1037"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACTlIcJ9rhbP5OUhwn2uFs/k5SHCfa4Wz+TlIcJ9rhbP5OUhwn2uFs/k5SHCfa4Wz+TlIcJ9rhbP5OUhwn2uFs/k5SHCfa4Wz+TlIcJ9rhrP5OUhwn2uGs/k5SHCfa4az+TlIcJ9rhrP5OUhwn2uGs/k5SHCfa4az+TlIcJ9rhrP5OUhwn2uGs/k5SHCfa4az+TlIcJ9rhrP5OUhwn2uGs/bq8lh7jKdD9uryWHuMp0P26vJYe4ynQ/bq8lh7jKdD9uryWHuMp0P26vJYe4ynQ/k5SHCfa4ez/cvPTFmVOBP9y89MWZU4E/bq8lh7jKhD8BolZI10GIPwGiVkjXQYg/AaJWSNdBiD8BolZI10GIPwGiVkjXQYg/AaJWSNdBiD8BolZI10GIPwGiVkjXQYg/k5SHCfa4iz+TlIcJ9riLPyaHuMoUMI8/Joe4yhQwjz8mh7jKFDCPP7govudHhpY/uCi+50eGlj+4KL7nR4aWP0ob76hm/Zk/ShvvqGb9mT9KG++oZv2ZP0ob76hm/Zk/k5SHCfa4mz+TlIcJ9ribP9wNIGqFdJ0/Joe4yhQwnz83gKgV0nWgPzeAqBXSdaA/3Lz0xZlToT/cvPTFmVOhP9y89MWZU6E/3Lz0xZlToT/cvPTFmVOhPyU2jSYpD6M/JTaNJikPoz8lNo0mKQ+jPyU2jSYpD6M/ynLZ1vDsoz8T7HE3gKilPxPscTeAqKU/uCi+50eGpj+4KL7nR4amP1xlCpgPZKc/XGUKmA9kpz8BolZI10GoP6XeovieH6k/ShvvqGb9qT9KG++oZv2pP+9XO1ku26o/ONHTub2WrD840dO5vZasP9wNIGqFdK0/3A0gaoV0rT/cDSBqhXStP4FKbBpNUq4/Joe4yhQwrz8mh7jKFDCvP+Vhgj3uBrA/ip7O7bXksD/cvPTFmVOxP4H5QHZhMbI/gflAdmExsj8lNo0mKQ+zP3hUs/4MfrM/eFSz/gx+sz/KctnW8OyzP8py2dbw7LM/ynLZ1vDssz8ckf+u1Fu0PxyR/67UW7Q/wc1LX5w5tT/BzUtfnDm1P7govudHhrY/uCi+50eGtj8KR+S/K/W2PwpH5L8r9bY/XGUKmA9ktz8BolZI10G4PwGiVkjXQbg/pd6i+J4fuT9KG++oZv25P0ob76hm/bk/ShvvqGb9uT9KG++oZv25P+9XO1ku27o/QXZhMRJKuz+TlIcJ9ri7P+ayreHZJ7w/5rKt4dknvD840dO5vZa8P9wNIGqFdL0/3A0gaoV0vT8vLEZCaeO9Py8sRkJp470/LyxGQmnjvT8vLEZCaeO9P4FKbBpNUr4/gUpsGk1Svj8mh7jKFDC/P+Vhgj3uBsA/DnGVKWA+wD9hj7sBRK3AP2GPuwFErcA/3Lz0xZlTwT/cvPTFmVPBPwXMB7ILi8E/BcwHsguLwT+qCFRi02jCP9MXZ05FoMI/0xdnTkWgwj/8Jno6t9fCP/wmejq318I/JTaNJikPwz8lNo0mKQ/DP05FoBKbRsM/oWPG6n61wz+hY8bqfrXDP8py2dbw7MM/ynLZ1vDswz/zgezCYiTEP0WgEptGk8Q/RaASm0aTxD+YvjhzKgLFP8HNS1+cOcU/E+xxN4CoxT8T7HE3gKjFP2UKmA9kF8Y/ZQqYD2QXxj+PGav71U7GP+E30dO5vcY/Ckfkvyv1xj8KR+S/K/XGP1xlCpgPZMc/hXQdhIGbxz+vgzBw89LHPwGiVkjXQcg/AaJWSNdByD8qsWk0SXnIP6XeovieH8k/+PzI0IKOyT8hDNy89MXJP3MqApXYNMo/cyoCldg0yj/GSChtvKPKP+9XO1ku28o/QXZhMRJKyz+TlIcJ9rjLP5OUhwn2uMs/vKOa9Wfwyz/msq3h2SfMPzjR07m9lsw/YeDmpS/OzD+z/gx+Ez3NPwYdM1b3q80/WDtZLtsazj+qWX8Gv4nOP6G08Y5q1s8/eumLM6ci0D/MB7ILi5HQP2GPuwFErdA/ip7O7bXk0D/cvPTFmVPRP3FE/rtSb9E/cUT+u1Jv0T8FzAeyC4vRP5pTEajEptE/7HE3gKgV0j+qCFRi02jSP2ifcET+u9I/aJ9wRP670j/8Jno6t9fSPyU2jSYpD9M/ur2WHOIq0z94VLP+DH7TP3hUs/4MftM/oWPG6n610z8168/gN9HTP1764sypCNQ/HJH/rtRb1D/aJxyR/67UP26vJYe4ytQ/mL44cyoC1T+YvjhzKgLVPyxGQmnjHdU/6txeSw5x1T9+ZGhBx4zVP35kaEHHjNU/qHN7LTnE1T/Rgo4Zq/vVP/qRoQUdM9Y/jxmr+9VO1j+4KL7nR4bWP0ywx90AotY/yN0AolZI1z9cZQqYD2TXPxr8Jno6t9c/Gvwmejq31z9DCzpmrO7XP0MLOmas7tc/Qws6Zqzu1z/YkkNcZQrYPyqxaTRJedg/U8B8ILuw2D/oR4YWdMzYPxFXmQLmA9k/pd6i+J4f2T/P7bXkEFfZP/j8yNCCjtk/IQzcvPTF2T+1k+WyreHZP9+i+J4fGdo/cyoCldg02j9zKgKV2DTaP8ZIKG28o9o/g99ET+f22j8YZ05FoBLbP0F2YTESSts/aoV0HYSB2z+8o5r1Z/DbP+ayreHZJ9w/D8LAzUtf3D9IhhZ0zFjdP9wNIGqFdN0/Bh0zVver3T8vLEZCaePdP8OzTzgi/90/FtJ1EAZu3j8/4Yj8d6XeP2jwm+jp3N4/ug7CwM1L3z9Plsu2hmffP6G08Y5q1t8/DnGVKWA+4D+j+J4fGVrgP228o5r1Z+A/AkStkK6D4D/MB7ILi5HgP2GPuwFEreA/K1PAfCC74D/p6dxeSw7hP0c168/gN+E/poD5QHZh4T87CAM3L33hPwXMB7ILi+E/ZBcWI6G04T/5nh8ZWtDhP+xxN4CoFeI/4ERP5/Za4j8+kF1YjITiP1tyiKtMAeM/JTaNJikP4z9CGLh56YvjP0IYuHnpi+M/NevP4DfR4z+UNt5RzfrjPxyR/67UW+Q/e9wNIGqF5D+k6yAM3LzkP2KCPe4GEOU/wc1LX5w55T9VVVVVVVXlPyAZWtAxY+U/fmRoQceM5T88+4Qj8t/lP9GCjhmr++U/+pGhBR0z5j+PGav71U7mP1ndr3ayXOY/F3TMWN2v5j8zVvernSznP/0Z/CZ6Ouc/u7AYCaWN5z8a/CZ6OrfnP0MLOmas7uc/Dc8+4Yj85z/LZVvDs0/oPyqxaTRJeeg/vzhzKgKV6D9TwHwgu7DoP+hHhhZ0zOg/fM+PDC3o6D8RV5kC5gPpPzpmrO5XO+k/z+215BBX6T9jdb/ayXLpP4yE0sY7quk/V0jXQRi46T/rz+A30dPpP7WT5bKt4ek/ShvvqGb96T8IsguLkVDqP5w5FYFKbOo/McEedwOI6j/GSChtvKPqP+9XO1ku2+o/TqNJysME6z8YZ05FoBLrP6zuVztZLus/QXZhMRJK6z9qhXQdhIHrP8nQgo4Zq+s/XliMhNLG6z8oHJH/rtTrP4dnn3BE/us/G++oZv0Z7D/msq3h2SfsP3o6t9eSQ+w/bg3PPuGI7D840dO5vZbsP/Zn8Jvo6ew/H3cDiFoh7T9+whH570rtPxJKG++oZu0/cZUpYD6Q7T9kaEHHjNXtP/nvSr1F8e0/w7NPOCL/7T8i/12ptyjuP+3CYiSUNu4/FtJ1EAZu7j/glXqL4nvuPz/hiPx3pe4/aPCb6Onc7j8ytKBjxuruP8c7qll/Bu8/Joe4yhQw7z+F0sY7qlnvP9fw7BOOyO8/obTxjmrW7z82PPuEI/LvPwAAAAAAAPA/"},"shape":[375],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAAC5ksC8J3RoP7mSwLwndJg/Z7fwqzGRnj8QpVi0rIKrP2e38Ksxka4/dWmqj3yTsT8LbpDNHVeyPzZ3XElg3rM/eqBydgu/uj+mqT7yTUa8P9GyCm6Qzb0//bvW6dJUvz9JYN4TOgzAP99kxFHbz8A/Kme38KsxwT91aaqPfJPBPwtukM0dV8I/oHJ2C78awz/rdGmqj3zDP4F5T+gwQMQ/YoAoxaJlxT9ukM0dVxLIP0+XpvrIN8k/L55/1zpdyj8vnn/XOl3KP8WiZRXcIMs/8asxkR6ozD8ctf0MYS/OP/271unSVM8/32TEUdvP0D9P6DBAlGLRP+XsFn41JtI/MO8JHQaI0j/G8+9ap0vTP+t0aaqPfNM/63Rpqo980z8R9uL5d63TP6f6yDcZcdQ/YoAoxaJl1T/SA5WzW/jVP/iEDgNEKdY/HQaIUixa1j8dBohSLFrWP42J9EDl7NY/2Ivn37VO1z/+DGEvnn/XPyOO2n6GsNc/uZLAvCd02D8ElbNb+NXYP0+XpvrIN9k/dBggSrFo2T+gIezF8+/aP8WiZRXcINs/6yPfZMRR2z8QpVi0rILbPzUm0gOVs9s/pqk+8k1G3D/LKrhBNnfcP8squEE2d9w/Fi2r4AbZ3D88riQw7wndPzyuJDDvCd0/hrAXz79r3T/3M4S9eP7dP0I2d1xJYN4/QjZ3XElg3j+NOGr7GcLeP9c6XZrqI98/1zpdmuoj3z8iPVA5u4XfP20/Q9iL598/bT9D2Ivn3z/cIJs7riTgP2/hV2MiPeA/lGLRsgpu4D8nI47afobgPycjjtp+huA/TKQHKme34D8F5j2hwwDhP5em+sg3GeE/T+gwQJRi4T9P6DBAlGLhP+Ko7WcIe+E/4qjtZwh74T/Aa50uTfXhP8BrnS5N9eE/UyxaVsEN4j/l7BZ+NSbiP+XsFn41JuI/eK3Tpak+4j+dLk31kW/iP8OvxkR6oOI/w6/GRHqg4j978fy71uniP3vx/LvW6eI/DrK540oC4z8zMzMzMzPjP341JtIDleM/fjUm0gOV4z8R9uL5d63jP6S2nyHsxeM/NndcSWDe4z/JNxlx1PbjP8k3GXHU9uM/XPjVmEgP5D/uuJLAvCfkP4F5T+gwQOQ/FDoMEKVY5D8UOgwQpVjkP6f6yDcZceQ/Xzz/rnW65D9fPP+udbrkP/H8u9bp0uQ/8fy71unS5D+EvXj+XevkP6o+8k1GHOU/PP+udbo05T88/651ujTlP2KAKMWiZeU/hwGiFIuW5T+HAaIUi5blP62CG2Rzx+U/0gOVs1v45T/SA5WzW/jlP/iEDgNEKeY/HQaIUixa5j9ChwGiFIvmP0KHAaIUi+Y/1Ue+yYij5j+NifRA5ezmP42J9EDl7OY/IEqxaFkF5z+zCm6QzR3nP7MKbpDNHec/RssquEE25z9Gyyq4QTbnP2tMpAcqZ+c/kM0dVxKY5z+2Tpem+sjnP7ZOl6b6yOc/SQ9Uzm7h5z9JD1TObuHnP26QzR1XEug/bpDNHVcS6D9ukM0dVxLoPwFRikXLKug/uZLAvCd06D9x1PYzhL3oP3HU9jOEveg/BJWzW/jV6D8ElbNb+NXoP5dVcINs7ug/KRYtq+AG6T8pFi2r4AbpP0+XpvrIN+k/T5em+sg36T/hV2MiPVDpPwfZ3HElgek/B9nccSWB6T+amZmZmZnpP5qZmZmZmek/LFpWwQ2y6T+/GhPpgcrpP78aE+mByuk/5JuMOGr76T/km4w4avvpP3dcSWDeE+o/d1xJYN4T6j8KHQaIUizqPwodBohSLOo/nd3Cr8ZE6j8vnn/XOl3qPy+ef9c6Xeo/wl48/6516j9VH/kmI47qP+jftU6Xpuo/oCHsxfPv6j+gIezF8+/qP8WiZRXcIOs/WGMiPVA56z9YYyI9UDnrP33km4w4aus/o2UV3CCb6z+jZRXcIJvrPzUm0gOVs+s/yOaOKwnM6z/I5o4rCczrP8jmjisJzOs/7mcIe/H86z+AKMWiZRXsP6apPvJNRuw/yyq4QTZ37D/LKrhBNnfsP8squEE2d+w/yyq4QTZ37D/LKrhBNnfsP4Ns7riSwOw/g2zuuJLA7D+DbO64ksDsP4Ns7riSwOw/g2zuuJLA7D+DbO64ksDsPxYtq+AG2ew/Fi2r4AbZ7D8WLavgBtnsP6ntZwh78ew/PK4kMO8J7T88riQw7wntP85u4VdjIu0/zm7hV2Mi7T/ObuFXYyLtP85u4VdjIu0/9O9ap0tT7T/071qnS1PtP/TvWqdLU+0/hrAXz79r7T+GsBfPv2vtPxlx1PYzhO0/GXHU9jOE7T8ZcdT2M4TtP6wxkR6onO0/rDGRHqic7T+sMZEeqJztPz/yTUYcte0/0bIKbpDN7T/3M4S9eP7tP/czhL14/u0/HLX9DGEv7j+vdbo01UfuP0I2d1xJYO4/QjZ3XElg7j/U9jOEvXjuP9T2M4S9eO4/1PYzhL147j/U9jOEvXjuP9T2M4S9eO4/1PYzhL147j9nt/CrMZHuP2e38Ksxke4/+net06Wp7j/6d63TpanuP404avsZwu4/srnjSgLz7j9FeqBydgvvP0V6oHJ2C+8/1zpdmuoj7z/XOl2a6iPvP9c6XZrqI+8/1zpdmuoj7z/XOl2a6iPvP9c6XZrqI+8/1zpdmuoj7z/XOl2a6iPvP/271unSVO8//bvW6dJU7z+QfJMRR23vP5B8kxFHbe8/kHyTEUdt7z+QfJMRR23vP5B8kxFHbe8/Ij1QObuF7z8iPVA5u4XvP7X9DGEvnu8/tf0MYS+e7z+1/QxhL57vP7X9DGEvnu8/SL7JiKO27z9IvsmIo7bvP0i+yYijtu8/SL7JiKO27z9IvsmIo7bvP0i+yYijtu8/SL7JiKO27z9IvsmIo7bvP0i+yYijtu8/SL7JiKO27z9IvsmIo7bvP0i+yYijtu8/SL7JiKO27z9IvsmIo7bvP0i+yYijtu8/SL7JiKO27z9IvsmIo7bvP9t+hrAXz+8/236GsBfP7z/bfoawF8/vP9t+hrAXz+8/236GsBfP7z/bfoawF8/vP9t+hrAXz+8/236GsBfP7z9tP0PYi+fvP20/Q9iL5+8/bT9D2Ivn7z9tP0PYi+fvPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/AAAAAAAA8D8AAAAAAADwPwAAAAAAAPA/"},"shape":[375],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1042","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1043"}}},"glyph":{"type":"object","name":"Line","id":"p1038","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_alpha":0.8,"line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1039","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1040","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1052","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1046","attributes":{"selected":{"type":"object","name":"Selection","id":"p1047","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1048"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"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"},"shape":[317],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"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"},"shape":[317],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1053","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1054"}}},"glyph":{"type":"object","name":"Line","id":"p1049","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"green","line_alpha":0.8,"line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1050","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"green","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1051","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"green","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1062","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1056","attributes":{"selected":{"type":"object","name":"Selection","id":"p1057","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1058"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAk5SHCfa4Wz+TlIcJ9rhbP26vJYe4ynQ/bq8lh7jKdD/cvPTFmVOBP9y89MWZU4E/AaJWSNdBiD8BolZI10GIP5OUhwn2uIs/k5SHCfa4iz8mh7jKFDCPPyaHuMoUMI8/3Lz0xZlTkT/cvPTFmVORP26vJYe4ypQ/bq8lh7jKlD+4KL7nR4aWP7govudHhpY/AaJWSNdBmD8BolZI10GYP9wNIGqFdJ0/3A0gaoV0nT8mh7jKFDCfPyaHuMoUMJ8/N4CoFdJ1oD83gKgV0nWgP9y89MWZU6E/3Lz0xZlToT+B+UB2YTGiP4H5QHZhMaI/JTaNJikPoz8lNo0mKQ+jP8py2dbw7KM/ynLZ1vDsoz9uryWHuMqkP26vJYe4yqQ/E+xxN4CopT8T7HE3gKilP7govudHhqY/uCi+50eGpj8BolZI10GoPwGiVkjXQag/pd6i+J4fqT+l3qL4nh+pP+9XO1ku26o/71c7WS7bqj+TlIcJ9rirP5OUhwn2uKs/ONHTub2WrD840dO5vZasP9wNIGqFdK0/3A0gaoV0rT+BSmwaTVKuP4FKbBpNUq4/Joe4yhQwrz8mh7jKFDCvP+Vhgj3uBrA/5WGCPe4GsD+Kns7tteSwP4qezu215LA/Ltsann3CsT8u2xqefcKxP4H5QHZhMbI/gflAdmExsj/TF2dORaCyP9MXZ05FoLI/eFSz/gx+sz94VLP+DH6zP8py2dbw7LM/ynLZ1vDssz8ckf+u1Fu0PxyR/67UW7Q/bq8lh7jKtD9uryWHuMq0P8HNS1+cObU/wc1LX5w5tT8T7HE3gKi1PxPscTeAqLU/XGUKmA9ktz9cZQqYD2S3PwGiVkjXQbg/AaJWSNdBuD9TwHwgu7C4P1PAfCC7sLg/pd6i+J4fuT+l3qL4nh+5P/j8yNCCjrk/+PzI0IKOuT9KG++oZv25P0ob76hm/bk/nDkVgUpsuj+cORWBSmy6P5OUhwn2uLs/k5SHCfa4uz+K7/mRoQW9P4rv+ZGhBb0/3A0gaoV0vT/cDSBqhXS9Py8sRkJp470/LyxGQmnjvT+BSmwaTVK+P4FKbBpNUr4/02iS8jDBvj/TaJLyMMG+P+Vhgj3uBsA/5WGCPe4GwD+zreHZJxzBP7Ot4dknHME/3Lz0xZlTwT/cvPTFmVPBPy7bGp59wsE/Ltsann3CwT/8Jno6t9fCP/wmejq318I/JTaNJikPwz8lNo0mKQ/DP3hUs/4MfsM/eFSz/gx+wz+hY8bqfrXDP6Fjxup+tcM/ynLZ1vDswz/KctnW8OzDP0WgEptGk8Q/RaASm0aTxD9uryWHuMrEP26vJYe4ysQ/PPuEI/LfxT88+4Qj8t/FP2UKmA9kF8Y/ZQqYD2QXxj+4KL7nR4bGP7govudHhsY/4TfR07m9xj/hN9HTub3GPwpH5L8r9cY/Ckfkvyv1xj8BolZI10HIPwGiVkjXQcg/KrFpNEl5yD8qsWk0SXnIP1PAfCC7sMg/U8B8ILuwyD/P7bXkEFfJP8/tteQQV8k/+PzI0IKOyT/4/MjQgo7JPyEM3Lz0xck/IQzcvPTFyT+cORWBSmzKP5w5FYFKbMo/71c7WS7byj/vVztZLtvKP7yjmvVn8Ms/vKOa9Wfwyz/msq3h2SfMP+ayreHZJ8w/YeDmpS/OzD9h4OalL87MP1g7WS7bGs4/WDtZLtsazj94pd6i+J7PP3il3qL4ns8/eumLM6ci0D966YszpyLQP6P4nh8ZWtA/o/ieHxla0D83gKgV0nXQPzeAqBXSddA/9RbF9/zI0D/1FsX3/MjQP5pTEajEptE/mlMRqMSm0T8u2xqefcLRPy7bGp59wtE/w2IklDbe0T/DYiSUNt7RP1fqLYrv+dE/V+otiu/50T+qCFRi02jSP6oIVGLTaNI/PpBdWIyE0j8+kF1YjITSP9MXZ05FoNI/0xdnTkWg0j/8Jno6t9fSP/wmejq319I/ka6DMHDz0j+RroMwcPPSP7q9lhziKtM/ur2WHOIq0z94VLP+DH7TP3hUs/4MftM/84HswmIk1D/zgezCYiTUPwM3L31x5tQ/AzcvfXHm1D8sRkJp4x3VPyxGQmnjHdU/fmRoQceM1T9+ZGhBx4zVP6hzey05xNU/qHN7LTnE1T9lCpgPZBfWP2UKmA9kF9Y/+pGhBR0z1j/6kaEFHTPWP7govudHhtY/uCi+50eG1j9MsMfdAKLWP0ywx90AotY/Ckfkvyv11j8KR+S/K/XWPzNW96udLNc/M1b3q50s1z9cZQqYD2TXP1xlCpgPZNc/Gvwmejq31z8a/CZ6OrfXP9iSQ1xlCtg/2JJDXGUK2D98z48MLejYP3zPjwwt6Ng/EVeZAuYD2T8RV5kC5gPZP8/tteQQV9k/z+215BBX2T/4/MjQgo7ZP/j8yNCCjtk/tZPlsq3h2T+1k+WyreHZP1rQMWN1v9o/WtAxY3W/2j/vVztZLtvaP+9XO1ku29o/GGdORaAS2z8YZ05FoBLbP+ayreHZJ9w/5rKt4dkn3D+jScrDBHvcP6NJysMEe9w/mqQ8TLDH3T+apDxMsMfdP8OzTzgi/90/w7NPOCL/3T+6DsLAzUvfP7oOwsDNS98/5WGCPe4G4D/lYYI97gbgP3rpizOnIuA/eumLM6ci4D+j+J4fGVrgP6P4nh8ZWuA/AkStkK6D4D8CRK2QroPgP8wHsguLkeA/zAeyC4uR4D+Kns7tteTgP4qezu215OA/RzXrz+A34T9HNevP4DfhP2QXFiOhtOE/ZBcWI6G04T9X6i2K7/nhP1fqLYrv+eE/PpBdWIyE4j8+kF1YjITiP53ba8khruI/ndtrySGu4j9on3BE/rviP2ifcET+u+I/xup+tZPl4j/G6n61k+XiP1tyiKtMAeM/W3KIq0wB4z8lNo0mKQ/jPyU2jSYpD+M/48ypCFRi4z/jzKkIVGLjP0IYuHnpi+M/Qhi4eemL4z8pvudHhhbkPym+50eGFuQ/vUXxPT8y5D+9RfE9PzLkP4gJ9rgbQOQ/iAn2uBtA5D9FoBKbRpPkP0WgEptGk+Q/LEZCaeMd5T8sRkJp4x3lP7SgY8bqfuU/tKBjxup+5T+C7MJiJJTmP4LswmIklOY/M1b3q50s5z8zVvernSznP4V0HYSBm+c/hXQdhIGb5z9Hk5SHCfboP0eTlIcJ9ug/pd6i+J4f6T+l3qL4nh/pPwQqsWk0Sek/BCqxaTRJ6T+Zsbpf7WTpP5mxul/tZOk/FN/zI0ML6j8U3/MjQwvqP9+i+J4fGeo/36L4nh8Z6j+pZv0Z/CbqP6lm/Rn8Juo/XliMhNLG6z9eWIyE0sbrP0T+u1JvUew/RP67Um9R7D/AK/UWxffsP8Ar9RbF9+w/SIYWdMxY7T9IhhZ0zFjtP54sl20Nz+4/niyXbQ3P7j9CaeMd1azvP0Jp4x3VrO8/AAAAAAAA8D8="},"shape":[328],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"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"},"shape":[328],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1063","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1064"}}},"glyph":{"type":"object","name":"Line","id":"p1059","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"blue","line_alpha":0.8,"line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1060","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"blue","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1061","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"blue","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1072","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1066","attributes":{"selected":{"type":"object","name":"Selection","id":"p1067","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1068"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAADmsq3h2Se8P228o5r1Z+A/AAAAAAAA8D8="},"shape":[4],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAABukM0dVxLIP1Uf+SYjjuo/AAAAAAAA8D8="},"shape":[4],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1073","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1074"}}},"glyph":{"type":"object","name":"Line","id":"p1069","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"orange","line_alpha":0.8,"line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1070","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"orange","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1071","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"orange","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1082","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1076","attributes":{"selected":{"type":"object","name":"Selection","id":"p1077","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1078"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAAA168/gN9HTP0c168/gN+E/AAAAAAAA8D8="},"shape":[4],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAADAa50uTfXhP53dwq/GROo/AAAAAAAA8D8="},"shape":[4],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1083","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1084"}}},"glyph":{"type":"object","name":"Line","id":"p1079","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"purple","line_alpha":0.8,"line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1080","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"purple","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1081","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"purple","line_alpha":0.2,"line_width":2}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1010","attributes":{"logo":null,"tools":[{"type":"object","name":"SaveTool","id":"p1023"},{"id":"p1024"},{"id":"p1025"}]}},"toolbar_location":null,"left":[{"type":"object","name":"LinearAxis","id":"p1018","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1019","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1020"},"axis_label":"True Positive Rate","axis_label_text_font_style":"normal","major_label_policy":{"type":"object","name":"AllLabels","id":"p1021"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1013","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1014","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1015"},"axis_label":"False Positive Rate","axis_label_text_font_style":"normal","major_label_policy":{"type":"object","name":"AllLabels","id":"p1016"}}}],"center":[{"type":"object","name":"Grid","id":"p1017","attributes":{"axis":{"id":"p1013"}}},{"type":"object","name":"Grid","id":"p1022","attributes":{"dimension":1,"axis":{"id":"p1018"}}},{"type":"object","name":"Legend","id":"p1044","attributes":{"location":"bottom_right","background_fill_alpha":0.8,"click_policy":"hide","label_text_font_size":"8pt","spacing":2,"items":[{"type":"object","name":"LegendItem","id":"p1045","attributes":{"label":{"type":"value","value":"AML Epigenomic Risk (PaCMAP-LGBM) (0.92)"},"renderers":[{"id":"p1041"}]}},{"type":"object","name":"LegendItem","id":"p1055","attributes":{"label":{"type":"value","value":"EWASCox_EFS_55CpGs (0.76)"},"renderers":[{"id":"p1052"}]}},{"type":"object","name":"LegendItem","id":"p1065","attributes":{"label":{"type":"value","value":"EWASCox_OS_48CpGs (0.78)"},"renderers":[{"id":"p1062"}]}},{"type":"object","name":"LegendItem","id":"p1075","attributes":{"label":{"type":"value","value":"Risk Group (0.66)"},"renderers":[{"id":"p1072"}]}},{"type":"object","name":"LegendItem","id":"p1085","attributes":{"label":{"type":"value","value":"Risk Group AAML1831 (0.67)"},"renderers":[{"id":"p1082"}]}}]}}]}},0,0],[{"type":"object","name":"Figure","id":"p1086","attributes":{"width":425,"height":425,"x_range":{"type":"object","name":"DataRange1d","id":"p1087"},"y_range":{"type":"object","name":"DataRange1d","id":"p1088"},"x_scale":{"type":"object","name":"LinearScale","id":"p1096"},"y_scale":{"type":"object","name":"LinearScale","id":"p1097"},"title":{"type":"object","name":"Title","id":"p1089","attributes":{"text":"Categorical (high-low risk), n=926","text_font_size":"10pt"}},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1117","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1111","attributes":{"selected":{"type":"object","name":"Selection","id":"p1112","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1113"},"data":{"type":"map","entries":[["x",[0,1]],["y",[0,1]]]}}},"view":{"type":"object","name":"CDSView","id":"p1118","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1119"}}},"glyph":{"type":"object","name":"Line","id":"p1114","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"gray","line_dash":[6]}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1115","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"gray","line_alpha":0.1,"line_dash":[6]}},"muted_glyph":{"type":"object","name":"Line","id":"p1116","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"gray","line_alpha":0.2,"line_dash":[6]}}}},{"type":"object","name":"GlyphRenderer","id":"p1126","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1120","attributes":{"selected":{"type":"object","name":"Selection","id":"p1121","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1122"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAADKctnW8OzDPwAAAAAAAPA/"},"shape":[3],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAACamZmZmZnpPwAAAAAAAPA/"},"shape":[3],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1127","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1128"}}},"glyph":{"type":"object","name":"Line","id":"p1123","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_alpha":0.8,"line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1124","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1125","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1137","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1131","attributes":{"selected":{"type":"object","name":"Selection","id":"p1132","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1133"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAAAzVvernSzHPwAAAAAAAPA/"},"shape":[3],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAAAIKme38KvhPwAAAAAAAPA/"},"shape":[3],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1138","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1139"}}},"glyph":{"type":"object","name":"Line","id":"p1134","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"green","line_alpha":0.8,"line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1135","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"green","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1136","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"green","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1147","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1141","attributes":{"selected":{"type":"object","name":"Selection","id":"p1142","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1143"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAACTlIcJ9ri7PwAAAAAAAPA/"},"shape":[3],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAABIvsmIo7bfPwAAAAAAAPA/"},"shape":[3],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1148","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1149"}}},"glyph":{"type":"object","name":"Line","id":"p1144","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"blue","line_alpha":0.8,"line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1145","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"blue","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1146","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"blue","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1157","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1151","attributes":{"selected":{"type":"object","name":"Selection","id":"p1152","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1153"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAADmsq3h2Se8P228o5r1Z+A/AAAAAAAA8D8="},"shape":[4],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAABukM0dVxLIP1Uf+SYjjuo/AAAAAAAA8D8="},"shape":[4],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1158","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1159"}}},"glyph":{"type":"object","name":"Line","id":"p1154","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"orange","line_alpha":0.8,"line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1155","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"orange","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1156","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"orange","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1167","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1161","attributes":{"selected":{"type":"object","name":"Selection","id":"p1162","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1163"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAAA168/gN9HTP0c168/gN+E/AAAAAAAA8D8="},"shape":[4],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAADAa50uTfXhP53dwq/GROo/AAAAAAAA8D8="},"shape":[4],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1168","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1169"}}},"glyph":{"type":"object","name":"Line","id":"p1164","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"purple","line_alpha":0.8,"line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1165","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"purple","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1166","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"purple","line_alpha":0.2,"line_width":2}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1095","attributes":{"logo":null,"tools":[{"type":"object","name":"SaveTool","id":"p1108"},{"id":"p1109"},{"id":"p1110"}]}},"toolbar_location":null,"left":[{"type":"object","name":"LinearAxis","id":"p1103","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1104","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1105"},"axis_label":"True Positive Rate","axis_label_text_font_style":"normal","major_label_policy":{"type":"object","name":"AllLabels","id":"p1106"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1098","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1099","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1100"},"axis_label":"False Positive Rate","axis_label_text_font_style":"normal","major_label_policy":{"type":"object","name":"AllLabels","id":"p1101"}}}],"center":[{"type":"object","name":"Grid","id":"p1102","attributes":{"axis":{"id":"p1098"}}},{"type":"object","name":"Grid","id":"p1107","attributes":{"dimension":1,"axis":{"id":"p1103"}}},{"type":"object","name":"Legend","id":"p1129","attributes":{"location":"bottom_right","background_fill_alpha":0.8,"click_policy":"hide","label_text_font_size":"8pt","spacing":2,"items":[{"type":"object","name":"LegendItem","id":"p1130","attributes":{"label":{"type":"value","value":"AML Epigenomic Risk (PaCMAP-LGBM) (0.82)"},"renderers":[{"id":"p1126"}]}},{"type":"object","name":"LegendItem","id":"p1140","attributes":{"label":{"type":"value","value":"EWASCox_EFS_55CpGs (0.69)"},"renderers":[{"id":"p1137"}]}},{"type":"object","name":"LegendItem","id":"p1150","attributes":{"label":{"type":"value","value":"EWASCox_OS_48CpGs (0.69)"},"renderers":[{"id":"p1147"}]}},{"type":"object","name":"LegendItem","id":"p1160","attributes":{"label":{"type":"value","value":"Risk Group (0.66)"},"renderers":[{"id":"p1157"}]}},{"type":"object","name":"LegendItem","id":"p1170","attributes":{"label":{"type":"value","value":"Risk Group AAML1831 (0.67)"},"renderers":[{"id":"p1167"}]}}]}}]}},0,1]]}}]}};
+  const render_items = [{"docid":"d34a8c3a-accc-4f0b-89ef-120263c52b8d","roots":{"p1175":"a8c27b6d-860c-49de-bb9f-15375b95da67"},"root_ids":["p1175"]}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    let attempts = 0;
+    const timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);</script></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To avoid overfitting bias, see below comparison of models in independent validation cohort.</p>
+</div>
+</section>
+<section id="correlation-of-px-models-in-cog-aml-dx-samples">
+<h2>Correlation of Px models in COG AML Dx samples<a class="headerlink" href="#correlation-of-px-models-in-cog-aml-dx-samples" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="k">def</span> <span class="nf">draw_scatterplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">s</span><span class="p">):</span>
+
+    <span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Set font size for all elements</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;notebook&quot;</span><span class="p">,</span> <span class="n">font_scale</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+    <span class="c1"># Define scatterplot</span>
+
+    <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+                    <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;flare&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">s</span><span class="p">,</span>
+                    <span class="n">sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+                    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+    <span class="c1"># Calculate Pearson’s correlation coefficient (r)</span>
+    <span class="c1"># and its two-tailed p-value (p)</span>
+
+    <span class="n">r</span><span class="p">,</span><span class="n">p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">x</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="n">y</span><span class="p">])</span>
+
+    <span class="c1"># Replace plt.annotate() with ax.text() for automatic placement within the plot</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.99</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="sa">fr</span><span class="s1">&#39;$\rho$: </span><span class="si">{</span><span class="n">r</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="o">+</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">p-value: </span><span class="si">{</span><span class="n">p</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
+        <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span>
+        <span class="n">bbox</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;boxstyle&#39;</span><span class="p">:</span> <span class="s1">&#39;round&#39;</span><span class="p">,</span> <span class="s1">&#39;facecolor&#39;</span><span class="p">:</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="s1">&#39;edgecolor&#39;</span><span class="p">:</span> <span class="s1">&#39;lightgray&#39;</span> <span class="p">})</span>
+
+    <span class="c1"># Define plot specs</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Pearson&#39;s correlation ($\rho$) in &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; samples&quot;</span><span class="p">,</span>
+               <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> 
+
+    <span class="k">return</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">())</span>
+
+<span class="n">draw_scatterplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_cont_risk</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;EWASCox_OS_48CpGs&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;EWASCox_EFS_55CpGs&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">draw_scatterplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_cont_risk</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;EWASCox_OS_48CpGs&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;AML Epigenomic Risk (PaCMAP-LGBM)&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">draw_scatterplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_cont_risk</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;EWASCox_EFS_55CpGs&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;AML Epigenomic Risk (PaCMAP-LGBM)&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">df_cont_risk</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/aaf5fcb257e07ffe677889f448727279a94c7dd69a391752e4d1785924842b27.png" src="../_images/aaf5fcb257e07ffe677889f448727279a94c7dd69a391752e4d1785924842b27.png" />
+<img alt="../_images/af3394e68dbc850a12e35f89760b294dfe4f271d4012127e04a306d86d0af3c3.png" src="../_images/af3394e68dbc850a12e35f89760b294dfe4f271d4012127e04a306d86d0af3c3.png" />
+<img alt="../_images/3ce557016cec87c075fc7da060d5c5e6e2a8e9a8b08aee7ae621e4e11af024ab.png" src="../_images/3ce557016cec87c075fc7da060d5c5e6e2a8e9a8b08aee7ae621e4e11af024ab.png" />
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>EWASCox_OS_48CpGs</th>
+      <th>EWASCox_EFS_55CpGs</th>
+      <th>AML Epigenomic Risk (PaCMAP-LGBM)</th>
+      <th>Risk Group AAML1831</th>
+      <th>Risk Group</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>EWASCox_OS_48CpGs</th>
+      <td>1.00</td>
+      <td>0.58</td>
+      <td>0.64</td>
+      <td>0.48</td>
+      <td>0.52</td>
+    </tr>
+    <tr>
+      <th>EWASCox_EFS_55CpGs</th>
+      <td>0.58</td>
+      <td>1.00</td>
+      <td>0.49</td>
+      <td>0.36</td>
+      <td>0.35</td>
+    </tr>
+    <tr>
+      <th>AML Epigenomic Risk (PaCMAP-LGBM)</th>
+      <td>0.64</td>
+      <td>0.49</td>
+      <td>1.00</td>
+      <td>0.48</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <th>Risk Group AAML1831</th>
+      <td>0.48</td>
+      <td>0.36</td>
+      <td>0.48</td>
+      <td>1.00</td>
+      <td>0.63</td>
+    </tr>
+    <tr>
+      <th>Risk Group</th>
+      <td>0.52</td>
+      <td>0.35</td>
+      <td>0.50</td>
+      <td>0.63</td>
+      <td>1.00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="roc-auc-comparison-in-independent-validation-cohort-aml02-08">
+<h2>ROC-AUC comparison in independent validation cohort (AML02,08)<a class="headerlink" href="#roc-auc-comparison-in-independent-validation-cohort-aml02-08" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_os_test</span> <span class="o">=</span> <span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;multivariate_cox_lasso/ewas_cog_os_48CpGs_test.xlsx&#39;</span>
+<span class="n">path_efs_test</span> <span class="o">=</span> <span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;multivariate_cox_lasso/ewas_cog_efs_55CpGs_test.xlsx&#39;</span>
+
+<span class="n">ewas_cox_OS_48CpGs_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">path_os_test</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)[[</span><span class="s1">&#39;EWASCox_OS_48CpGs&#39;</span><span class="p">,</span><span class="s1">&#39;EWASCox_OS_48CpGs_cat_bin&#39;</span><span class="p">]]</span>
+<span class="n">ewas_cox_EFS_55CpGs_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">path_efs_test</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)[[</span><span class="s1">&#39;EWASCox_EFS_55CpGs&#39;</span><span class="p">,</span><span class="s1">&#39;EWASCox_EFS_55CpGs_cat_bin&#39;</span><span class="p">]]</span>
+
+<span class="n">ewas_cox_OS_48CpGs_test</span> <span class="o">=</span> <span class="n">ewas_cox_OS_48CpGs_test</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;EWASCox_OS_48CpGs&#39;</span><span class="p">:</span><span class="s1">&#39;EWASCox_OS_48CpGs (cont)&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;EWASCox_OS_48CpGs_cat_bin&#39;</span><span class="p">:</span><span class="s1">&#39;EWASCox_OS_48CpGs&#39;</span><span class="p">})</span>
+<span class="n">ewas_cox_EFS_55CpGs_test</span> <span class="o">=</span> <span class="n">ewas_cox_EFS_55CpGs_test</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;EWASCox_EFS_55CpGs&#39;</span><span class="p">:</span><span class="s1">&#39;EWASCox_EFS_55CpGs (cont)&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;EWASCox_EFS_55CpGs_cat_bin&#39;</span><span class="p">:</span><span class="s1">&#39;EWASCox_EFS_55CpGs&#39;</span><span class="p">})</span>
+
+<span class="n">df_combined_test</span> <span class="o">=</span> <span class="n">df_test</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ewas_cox_OS_48CpGs_test</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ewas_cox_EFS_55CpGs_test</span><span class="p">)</span>
+
+<span class="n">df_cat</span> <span class="o">=</span> <span class="n">df_combined_test</span><span class="p">[[</span><span class="s1">&#39;os.evnt&#39;</span><span class="p">,</span> <span class="s1">&#39;EWASCox_OS_48CpGs&#39;</span><span class="p">,</span> <span class="s1">&#39;EWASCox_EFS_55CpGs&#39;</span><span class="p">,</span> <span class="s1">&#39;AML Epigenomic Risk_int&#39;</span><span class="p">]]</span>
+<span class="n">df_cont</span> <span class="o">=</span> <span class="n">df_combined_test</span><span class="p">[[</span><span class="s1">&#39;os.evnt&#39;</span><span class="p">,</span> <span class="s1">&#39;EWASCox_OS_48CpGs (cont)&#39;</span><span class="p">,</span> <span class="s1">&#39;EWASCox_EFS_55CpGs (cont)&#39;</span><span class="p">,</span> <span class="s1">&#39;P(Death)&#39;</span><span class="p">]]</span>
+
+<span class="n">df_cont</span> <span class="o">=</span> <span class="n">df_cont</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;P(Death)&#39;</span><span class="p">:</span><span class="s1">&#39;AML Epigenomic Risk (PaCMAP-LGBM)&#39;</span><span class="p">,</span>
+                                  <span class="s1">&#39;EWASCox_OS_48CpGs (cont)&#39;</span><span class="p">:</span> <span class="s1">&#39;EWASCox_OS_48CpGs&#39;</span><span class="p">,</span>
+                                  <span class="s1">&#39;EWASCox_EFS_55CpGs (cont)&#39;</span><span class="p">:</span> <span class="s1">&#39;EWASCox_EFS_55CpGs&#39;</span><span class="p">})</span>
+
+<span class="n">df_cat</span> <span class="o">=</span> <span class="n">df_cat</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;AML Epigenomic Risk&#39;</span><span class="p">:</span><span class="s1">&#39;AML Epigenomic Risk (PaCMAP-LGBM)&#39;</span><span class="p">})</span>
+<span class="n">risk</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[[</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">]]</span>
+
+<span class="n">low_high_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Low&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Low Risk&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s1">&#39;Standard&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;Standard Risk&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+                <span class="s1">&#39;High&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;High Risk&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+
+<span class="n">risk</span><span class="p">[</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">risk</span><span class="p">[</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">low_high_dict</span><span class="p">)</span>
+
+<span class="n">df_cont_risk</span> <span class="o">=</span> <span class="n">df_cont</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">risk</span><span class="p">)</span>
+<span class="n">df_cat_risk</span> <span class="o">=</span> <span class="n">df_cat</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">risk</span><span class="p">)</span>
+
+<span class="n">df_cont_risk</span> <span class="o">=</span> <span class="n">df_cont_risk</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df_cat_risk</span> <span class="o">=</span> <span class="n">df_cat_risk</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># Rename `Risk Group` to `Risk Group AML02,08`</span>
+<span class="n">df_cont_risk</span> <span class="o">=</span> <span class="n">df_cont_risk</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">:</span><span class="s1">&#39;Risk Group AML02-08&#39;</span><span class="p">})</span>
+<span class="n">df_cat_risk</span> <span class="o">=</span> <span class="n">df_cat_risk</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">:</span><span class="s1">&#39;Risk Group AML02-08&#39;</span><span class="p">})</span>
+
+<span class="n">p1</span> <span class="o">=</span> <span class="n">plot_roc_auc</span><span class="p">(</span><span class="n">df_cont_risk</span><span class="p">,</span> <span class="s1">&#39;os.evnt&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span> <span class="s1">&#39;Continuous (prob. of high risk)&#39;</span><span class="p">,</span> <span class="n">color_option</span><span class="o">=</span><span class="s1">&#39;colors1&#39;</span><span class="p">)</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">plot_roc_auc</span><span class="p">(</span><span class="n">df_cat_risk</span><span class="p">,</span> <span class="s1">&#39;os.evnt&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span> <span class="s1">&#39;Categorical (high-low risk)&#39;</span><span class="p">,</span> <span class="n">color_option</span><span class="o">=</span><span class="s1">&#39;colors1&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create a gridplot</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">gridplot</span><span class="p">([[</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">]],</span> <span class="n">toolbar_location</span><span class="o">=</span><span class="s1">&#39;above&#39;</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="aa5a7c62-88ef-4f32-8b3b-7ccaad7de1c0" data-root-id="p1632" style="display: contents;"></div>
+</div><script type="application/javascript">(function(root) {
+  function embed_document(root) {
+  const docs_json = {"ed29986a-c0f6-4f94-9f82-a78cba357e27":{"version":"3.3.4","title":"Bokeh Application","roots":[{"type":"object","name":"GridPlot","id":"p1632","attributes":{"rows":null,"cols":null,"toolbar":{"type":"object","name":"Toolbar","id":"p1631","attributes":{"logo":null,"tools":[{"type":"object","name":"SaveTool","id":"p1628"},{"type":"object","name":"ToolProxy","id":"p1629","attributes":{"tools":[{"type":"object","name":"ResetTool","id":"p1501"},{"type":"object","name":"ResetTool","id":"p1576"}]}},{"type":"object","name":"ToolProxy","id":"p1630","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1502"},{"type":"object","name":"PanTool","id":"p1577"}]}}]}},"children":[[{"type":"object","name":"Figure","id":"p1478","attributes":{"width":425,"height":425,"x_range":{"type":"object","name":"DataRange1d","id":"p1479"},"y_range":{"type":"object","name":"DataRange1d","id":"p1480"},"x_scale":{"type":"object","name":"LinearScale","id":"p1488"},"y_scale":{"type":"object","name":"LinearScale","id":"p1489"},"title":{"type":"object","name":"Title","id":"p1481","attributes":{"text":"Continuous (prob. of high risk), n=201","text_font_size":"10pt"}},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1509","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1503","attributes":{"selected":{"type":"object","name":"Selection","id":"p1504","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1505"},"data":{"type":"map","entries":[["x",[0,1]],["y",[0,1]]]}}},"view":{"type":"object","name":"CDSView","id":"p1510","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1511"}}},"glyph":{"type":"object","name":"Line","id":"p1506","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"gray","line_dash":[6]}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1507","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"gray","line_alpha":0.1,"line_dash":[6]}},"muted_glyph":{"type":"object","name":"Line","id":"p1508","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"gray","line_alpha":0.2,"line_dash":[6]}}}},{"type":"object","name":"GlyphRenderer","id":"p1518","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1512","attributes":{"selected":{"type":"object","name":"Selection","id":"p1513","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1514"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAAAAAAAAAAAAAB3UQR3UQY0/HdRBHdRBjT+SJEmSJEmiP5IkSZIkSaI/Fl/xFV/xpT+amZmZmZmpP5qZmZmZmak/HdRBHdRBrT9QB3VQB3WwP1AHdVAHdbA/kiRJkiRJsj+SJEmSJEmyP9RBHdRBHbQ/Fl/xFV/xtT9YfMVXfMW3P1h8xVd8xbc/mpmZmZmZuT+amZmZmZm5P9u2bdu2bbs/27Zt27Ztuz9f8RVf8RW/PzMzMzMzM8M/MzMzMzMzwz/UQR3UQR3EP9RBHdRBHcQ/WHzFV3zFxz9YfMVXfMXHP/mKr/iKr8g/mpmZmZmZyT87qIM6qIPKPzuogzqog8o/fMVXfMVXzD98xVd8xVfMP77iK77iK84/vuIrvuIrzj8AAAAAAADQPwAAAAAAANA/dVAHdVAH1T8WX/EVX/HVP7dt27Zt29Y/t23btm3b1j8HdVAHdVDXP/mKr/iKr9g/+Yqv+Iqv2D9JkiRJkiTZP0mSJEmSJNk/O6iDOqiD2j/btm3btm3bP83MzMzMzNw/zczMzMzM3D9u27Zt27bdPw/qoA7qoN4/sPiKr/iK3z+ogzqogzrgP1AHdVAHdeA/UAd1UAd14D/5iq/4iq/gP/mKr/iKr+A/8RVf8RVf4T/xFV/xFV/hP0Id1EEd1OE/JUmSJEmS5D/NzMzMzMzkP3VQB3VQB+U/dVAHdVAH5T/FV3zFV3zlP8VXfMVXfOU/Fl/xFV/x5T++4iu+4ivmPw/qoA7qoOY/D+qgDuqg5j+w+Iqv+IrnP6iDOqiDOug/qIM6qIM66D/5iq/4iq/oP/mKr/iKr+g/SZIkSZIk6T9CHdRBHdTpP5IkSZIkSeo/27Zt27Zt6z8svuIrvuLrP3VQB3VQB+0/xVd8xVd87T8WX/EVX/HtP77iK77iK+4/D+qgDuqg7j9f8RVf8RXvPwd1UAd1UO8/B3VQB3VQ7z9YfMVXfMXvP1h8xVd8xe8/AAAAAAAA8D8="},"shape":[94],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAAA72rxPccmQPzvavE9xyZA/O9q8T3HJsD872rxPccmwP4J1tHmf4sI/yRCso837xD/JEKyjzfvEP1hHm/cpLsk/WEeb9ykuyT+f4pIhWEfLP+d9ikuGYM0/LhmCdbR5zz/ep7hkCNbRP96nuGQI1tE/gnW0eZ/i0j+CdbR5n+LSPxGso837FNc/EayjzfsU1z9YR5v3KS7ZP1hHm/cpLtk//BSXDME62j+f4pIhWEfbP5/ikiFYR9s/Q7CONu9T3D9DsI4271PcP+d9ikuGYN0/532KS4Zg3T9p8z7FJUPgP2nzPsUlQ+A/O9q8T3HJ4D872rxPccngPw3BOtq8T+E/3qe4ZAjW4T+CdbR5n+LiP4J1tHmf4uI/JkOwjjbv4z8mQ7CONu/jP8kQrKPN++Q/yRCso8375D/JEKyjzfvkP8kQrKPN++Q/m/cpLhmC5T9t3qe4ZAjmP23ep7hkCOY/P8UlQ7CO5j8/xSVDsI7mPxGso837FOc/EayjzfsU5z8RrKPN+xTnPxGso837FOc/tHmf4pIh6D+0eZ/ikiHoP7R5n+KSIeg/tHmf4pIh6D+0eZ/ikiHoP7R5n+KSIeg/hmAdbd6n6D+GYB1t3qfoP1hHm/cpLuk/WEeb9yku6T8qLhmCdbTpPyouGYJ1tOk/Ki4ZgnW06T/8FJcMwTrqP/wUlwzBOuo/n+KSIVhH6z+f4pIhWEfrP3HJEKyjzes/cckQrKPN6z9DsI4271PsP0OwjjbvU+w/532KS4Zg7T/nfYpLhmDtP+d9ikuGYO0/uWQI1tHm7T+5ZAjW0ebtP4pLhmAdbe4/ikuGYB1t7j+KS4ZgHW3uP4pLhmAdbe4/ikuGYB1t7j+KS4ZgHW3uP4pLhmAdbe4/ikuGYB1t7j+KS4ZgHW3uP1wyBOto8+4/XDIE62jz7j9cMgTraPPuP1wyBOto8+4/LhmCdbR57z8uGYJ1tHnvPwAAAAAAAPA/AAAAAAAA8D8="},"shape":[94],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1519","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1520"}}},"glyph":{"type":"object","name":"Line","id":"p1515","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_alpha":0.8,"line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1516","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1517","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1529","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1523","attributes":{"selected":{"type":"object","name":"Selection","id":"p1524","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1525"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAAAd1EEd1EF9Px3UQR3UQX0/HdRBHdRBnT8d1EEd1EGdPxZf8RVf8aU/Fl/xFV/xpT+amZmZmZmpP5qZmZmZmak/HdRBHdRBrT8d1EEd1EGtP9RBHdRBHbQ/1EEd1EEdtD9YfMVXfMW3P1h8xVd8xbc/27Zt27Ztuz/btm3btm27Px3UQR3UQb0/HdRBHdRBvT9f8RVf8RW/P1/xFV/xFb8/kiRJkiRJwj+SJEmSJEnCPzMzMzMzM8M/MzMzMzMzwz/UQR3UQR3EP9RBHdRBHcQ/WHzFV3zFxz9YfMVXfMXHP/mKr/iKr8g/+Yqv+IqvyD87qIM6qIPKPzuogzqog8o/27Zt27Ztyz/btm3btm3LP1/xFV/xFc8/X/EVX/EVzz/xFV/xFV/RP/EVX/EVX9E/hDqogzqo0z+EOqiDOqjTP5qZmZmZmdk/mpmZmZmZ2T/qoA7qoA7aP+qgDuqgDto/LL7iK77i2z8svuIrvuLbP3zFV3zFV9w/fMVXfMVX3D9u27Zt27bdP27btm3btt0/AAAAAAAA4D8AAAAAAADgP1AHdVAHdeA/UAd1UAd14D/5iq/4iq/gP/mKr/iKr+A/SZIkSZIk4T9JkiRJkiThP0Id1EEd1OE/Qh3UQR3U4T91UAd1UAflP3VQB3VQB+U/HdRBHdRB5T8d1EEd1EHlP27btm3btuU/btu2bdu25T9QB3VQB3XoP1AHdVAHdeg/SZIkSZIk6T9JkiRJkiTpP5qZmZmZmek/mpmZmZmZ6T+Lr/iKr/jqP4uv+Iqv+Oo/MzMzMzMz6z8zMzMzMzPrP3VQB3VQB+0/dVAHdVAH7T9YfMVXfMXvP1h8xVd8xe8/AAAAAAAA8D8="},"shape":[82],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAAAAAAAAAAAAADvavE9xyaA/O9q8T3HJoD9YR5v3KS6pP1hHm/cpLqk/WEeb9ykuuT9YR5v3KS65P+d9ikuGYL0/532KS4ZgvT872rxPccnAPzvavE9xycA/gnW0eZ/iwj+CdbR5n+LCPxGso837FMc/EayjzfsUxz+f4pIhWEfLP5/ikiFYR8s/O9q8T3HJ0D872rxPccnQP96nuGQI1tE/3qe4ZAjW0T+CdbR5n+LSP4J1tHmf4tI/yRCso8371D/JEKyjzfvUP23ep7hkCNY/bd6nuGQI1j8RrKPN+xTXPxGso837FNc/WEeb9yku2T9YR5v3KS7ZP/wUlwzBOto//BSXDME62j+f4pIhWEfbP5/ikiFYR9s/afM+xSVD4D9p8z7FJUPgPzvavE9xyeA/O9q8T3HJ4D8NwTravE/hPw3BOtq8T+E/3qe4ZAjW4T/ep7hkCNbhP7CONu9TXOI/sI4271Nc4j+CdbR5n+LiP4J1tHmf4uI/VFwyBOto4z9UXDIE62jjPyZDsI427+M/JkOwjjbv4z/4KS4ZgnXkP/gpLhmCdeQ/yRCso8375D/JEKyjzfvkP23ep7hkCOY/bd6nuGQI5j8/xSVDsI7mPz/FJUOwjuY/EayjzfsU5z8RrKPN+xTnP+OSIVhHm+c/45IhWEeb5z+0eZ/ikiHoP7R5n+KSIeg/Ki4ZgnW06T8qLhmCdbTpP877FJcMweo/zvsUlwzB6j+f4pIhWEfrP5/ikiFYR+s/cckQrKPN6z9xyRCso83rPxWXDME62uw/FZcMwTra7D/nfYpLhmDtP+d9ikuGYO0/uWQI1tHm7T+5ZAjW0ebtPwAAAAAAAPA/AAAAAAAA8D8="},"shape":[82],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1530","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1531"}}},"glyph":{"type":"object","name":"Line","id":"p1526","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"green","line_alpha":0.8,"line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1527","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"green","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1528","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"green","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1539","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1533","attributes":{"selected":{"type":"object","name":"Selection","id":"p1534","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1535"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAAAAAAAAAAAAAB3UQR3UQX0/HdRBHdRBfT8WX/EVX/GVPxZf8RVf8ZU/mpmZmZmZqT+amZmZmZmpPx3UQR3UQa0/HdRBHdRBrT+SJEmSJEmyP5IkSZIkSbI/mpmZmZmZuT+amZmZmZm5P9u2bdu2bbs/27Zt27Ztuz9f8RVf8RW/P1/xFV/xFb8/UAd1UAd1wD9QB3VQB3XAP5IkSZIkScI/kiRJkiRJwj/UQR3UQR3EP9RBHdRBHcQ/mpmZmZmZyT+amZmZmZnJP9u2bdu2bcs/27Zt27Ztyz98xVd8xVfMP3zFV3zFV8w/HdRBHdRBzT8d1EEd1EHNP1/xFV/xFc8/X/EVX/EVzz+hDuqgDurQP6EO6qAO6tA/8RVf8RVf0T/xFV/xFV/RPzMzMzMzM9M/MzMzMzMz0z+EOqiDOqjTP4Q6qIM6qNM/1EEd1EEd1D/UQR3UQR3UP7dt27Zt29Y/t23btm3b1j+ogzqogzrYP6iDOqiDOtg/+Yqv+Iqv2D/5iq/4iq/YP5qZmZmZmdk/mpmZmZmZ2T/qoA7qoA7aP+qgDuqgDto/LL7iK77i2z8svuIrvuLbPw/qoA7qoN4/D+qgDuqg3j+ogzqogzrgP6iDOqiDOuA/+Yqv+Iqv4D/5iq/4iq/gP0mSJEmSJOE/SZIkSZIk4T9CHdRBHdThP0Id1EEd1OE/LL7iK77i4z8svuIrvuLjP2ZmZmZmZuY/ZmZmZmZm5j8HdVAHdVDnPwd1UAd1UOc/oQ7qoA7q6D+hDuqgDuroP0Id1EEd1Ok/Qh3UQR3U6T+EOqiDOqjrP4Q6qIM6qOs/zczMzMzM7D/NzMzMzMzsP1/xFV/xFe8/X/EVX/EV7z8AAAAAAADwPw=="},"shape":[83],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAAA72rxPccmQPzvavE9xyZA/O9q8T3HJoD872rxPccmgP+d9ikuGYL0/532KS4ZgvT872rxPccnAPzvavE9xycA/EayjzfsUxz8RrKPN+xTHP1hHm/cpLsk/WEeb9ykuyT+f4pIhWEfLP5/ikiFYR8s/532KS4ZgzT/nfYpLhmDNPy4ZgnW0ec8/LhmCdbR5zz/ep7hkCNbRP96nuGQI1tE/yRCso8371D/JEKyjzfvUP23ep7hkCNY/bd6nuGQI1j+0eZ/ikiHYP7R5n+KSIdg/WEeb9yku2T9YR5v3KS7ZP0OwjjbvU9w/Q7CONu9T3D/nfYpLhmDdP+d9ikuGYN0/LhmCdbR53z8uGYJ1tHnfPw3BOtq8T+E/DcE62rxP4T+wjjbvU1ziP7CONu9TXOI/gnW0eZ/i4j+CdbR5n+LiP1RcMgTraOM/VFwyBOto4z8mQ7CONu/jPyZDsI427+M/yRCso8375D/JEKyjzfvkP5v3KS4ZguU/m/cpLhmC5T9t3qe4ZAjmP23ep7hkCOY/P8UlQ7CO5j8/xSVDsI7mP7R5n+KSIeg/tHmf4pIh6D+GYB1t3qfoP4ZgHW3ep+g/WEeb9yku6T9YR5v3KS7pPyouGYJ1tOk/Ki4ZgnW06T/8FJcMwTrqP/wUlwzBOuo/zvsUlwzB6j/O+xSXDMHqP5/ikiFYR+s/n+KSIVhH6z9xyRCso83rP3HJEKyjzes/Q7CONu9T7D9DsI4271PsPxWXDME62uw/FZcMwTra7D/nfYpLhmDtP+d9ikuGYO0/ikuGYB1t7j+KS4ZgHW3uP1wyBOto8+4/XDIE62jz7j8uGYJ1tHnvPy4ZgnW0ee8/AAAAAAAA8D8AAAAAAADwPw=="},"shape":[83],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1540","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1541"}}},"glyph":{"type":"object","name":"Line","id":"p1536","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"blue","line_alpha":0.8,"line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1537","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"blue","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1538","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"blue","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1549","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1543","attributes":{"selected":{"type":"object","name":"Selection","id":"p1544","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1545"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAAC3bdu2bdvGP4uv+Iqv+OI/AAAAAAAA8D8="},"shape":[4],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAACf4pIhWEfbPxWXDME62uw/AAAAAAAA8D8="},"shape":[4],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1550","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1551"}}},"glyph":{"type":"object","name":"Line","id":"p1546","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"orange","line_alpha":0.8,"line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1547","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"orange","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1548","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"orange","line_alpha":0.2,"line_width":2}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1487","attributes":{"logo":null,"tools":[{"type":"object","name":"SaveTool","id":"p1500"},{"id":"p1501"},{"id":"p1502"}]}},"toolbar_location":null,"left":[{"type":"object","name":"LinearAxis","id":"p1495","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1496","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1497"},"axis_label":"True Positive Rate","axis_label_text_font_style":"normal","major_label_policy":{"type":"object","name":"AllLabels","id":"p1498"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1490","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1491","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1492"},"axis_label":"False Positive Rate","axis_label_text_font_style":"normal","major_label_policy":{"type":"object","name":"AllLabels","id":"p1493"}}}],"center":[{"type":"object","name":"Grid","id":"p1494","attributes":{"axis":{"id":"p1490"}}},{"type":"object","name":"Grid","id":"p1499","attributes":{"dimension":1,"axis":{"id":"p1495"}}},{"type":"object","name":"Legend","id":"p1521","attributes":{"location":"bottom_right","background_fill_alpha":0.8,"click_policy":"hide","label_text_font_size":"8pt","spacing":2,"items":[{"type":"object","name":"LegendItem","id":"p1522","attributes":{"label":{"type":"value","value":"AML Epigenomic Risk (PaCMAP-LGBM) (0.71)"},"renderers":[{"id":"p1518"}]}},{"type":"object","name":"LegendItem","id":"p1532","attributes":{"label":{"type":"value","value":"EWASCox_EFS_55CpGs (0.61)"},"renderers":[{"id":"p1529"}]}},{"type":"object","name":"LegendItem","id":"p1542","attributes":{"label":{"type":"value","value":"EWASCox_OS_48CpGs (0.69)"},"renderers":[{"id":"p1539"}]}},{"type":"object","name":"LegendItem","id":"p1552","attributes":{"label":{"type":"value","value":"Risk Group AML02-08 (0.70)"},"renderers":[{"id":"p1549"}]}}]}}]}},0,0],[{"type":"object","name":"Figure","id":"p1553","attributes":{"width":425,"height":425,"x_range":{"type":"object","name":"DataRange1d","id":"p1554"},"y_range":{"type":"object","name":"DataRange1d","id":"p1555"},"x_scale":{"type":"object","name":"LinearScale","id":"p1563"},"y_scale":{"type":"object","name":"LinearScale","id":"p1564"},"title":{"type":"object","name":"Title","id":"p1556","attributes":{"text":"Categorical (high-low risk), n=201","text_font_size":"10pt"}},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1584","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1578","attributes":{"selected":{"type":"object","name":"Selection","id":"p1579","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1580"},"data":{"type":"map","entries":[["x",[0,1]],["y",[0,1]]]}}},"view":{"type":"object","name":"CDSView","id":"p1585","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1586"}}},"glyph":{"type":"object","name":"Line","id":"p1581","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"gray","line_dash":[6]}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1582","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"gray","line_alpha":0.1,"line_dash":[6]}},"muted_glyph":{"type":"object","name":"Line","id":"p1583","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"gray","line_alpha":0.2,"line_dash":[6]}}}},{"type":"object","name":"GlyphRenderer","id":"p1593","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1587","attributes":{"selected":{"type":"object","name":"Selection","id":"p1588","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1589"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAAAAAAAAAADQPwAAAAAAAPA/"},"shape":[3],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAAAmQ7CONu/jPwAAAAAAAPA/"},"shape":[3],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1594","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1595"}}},"glyph":{"type":"object","name":"Line","id":"p1590","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_alpha":0.8,"line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1591","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1592","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1604","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1598","attributes":{"selected":{"type":"object","name":"Selection","id":"p1599","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1600"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAAAAAAAAAADwPw=="},"shape":[2],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAAAAAAAAAADwPw=="},"shape":[2],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1605","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1606"}}},"glyph":{"type":"object","name":"Line","id":"p1601","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"green","line_alpha":0.8,"line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1602","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"green","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1603","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"green","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1614","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1608","attributes":{"selected":{"type":"object","name":"Selection","id":"p1609","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1610"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAACEOqiDOqjTPwAAAAAAAPA/"},"shape":[3],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAACCdbR5n+LiPwAAAAAAAPA/"},"shape":[3],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1615","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1616"}}},"glyph":{"type":"object","name":"Line","id":"p1611","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"blue","line_alpha":0.8,"line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1612","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"blue","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1613","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"blue","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1624","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1618","attributes":{"selected":{"type":"object","name":"Selection","id":"p1619","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1620"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAAC3bdu2bdvGP4uv+Iqv+OI/AAAAAAAA8D8="},"shape":[4],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAAAAACf4pIhWEfbPxWXDME62uw/AAAAAAAA8D8="},"shape":[4],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1625","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1626"}}},"glyph":{"type":"object","name":"Line","id":"p1621","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"orange","line_alpha":0.8,"line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1622","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"orange","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1623","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"orange","line_alpha":0.2,"line_width":2}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1562","attributes":{"logo":null,"tools":[{"type":"object","name":"SaveTool","id":"p1575"},{"id":"p1576"},{"id":"p1577"}]}},"toolbar_location":null,"left":[{"type":"object","name":"LinearAxis","id":"p1570","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1571","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1572"},"axis_label":"True Positive Rate","axis_label_text_font_style":"normal","major_label_policy":{"type":"object","name":"AllLabels","id":"p1573"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1565","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1566","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1567"},"axis_label":"False Positive Rate","axis_label_text_font_style":"normal","major_label_policy":{"type":"object","name":"AllLabels","id":"p1568"}}}],"center":[{"type":"object","name":"Grid","id":"p1569","attributes":{"axis":{"id":"p1565"}}},{"type":"object","name":"Grid","id":"p1574","attributes":{"dimension":1,"axis":{"id":"p1570"}}},{"type":"object","name":"Legend","id":"p1596","attributes":{"location":"bottom_right","background_fill_alpha":0.8,"click_policy":"hide","label_text_font_size":"8pt","spacing":2,"items":[{"type":"object","name":"LegendItem","id":"p1597","attributes":{"label":{"type":"value","value":"AML Epigenomic Risk_int (0.69)"},"renderers":[{"id":"p1593"}]}},{"type":"object","name":"LegendItem","id":"p1607","attributes":{"label":{"type":"value","value":"EWASCox_EFS_55CpGs (0.50)"},"renderers":[{"id":"p1604"}]}},{"type":"object","name":"LegendItem","id":"p1617","attributes":{"label":{"type":"value","value":"EWASCox_OS_48CpGs (0.64)"},"renderers":[{"id":"p1614"}]}},{"type":"object","name":"LegendItem","id":"p1627","attributes":{"label":{"type":"value","value":"Risk Group AML02-08 (0.70)"},"renderers":[{"id":"p1624"}]}}]}}]}},0,1]]}}]}};
+  const render_items = [{"docid":"ed29986a-c0f6-4f94-9f82-a78cba357e27","roots":{"p1632":"aa5a7c62-88ef-4f32-8b3b-7ccaad7de1c0"},"root_ids":["p1632"]}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    let attempts = 0;
+    const timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);</script></div>
+</div>
+</section>
+<section id="correlation-of-continuous-px-models-in-validation-aml02-08">
+<h2>Correlation of continuous Px models in validation (AML02,08)<a class="headerlink" href="#correlation-of-continuous-px-models-in-validation-aml02-08" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_scatterplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_cont_risk</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;EWASCox_OS_48CpGs&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;EWASCox_EFS_55CpGs&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">draw_scatterplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_cont_risk</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;EWASCox_OS_48CpGs&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;AML Epigenomic Risk (PaCMAP-LGBM)&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">draw_scatterplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_cont_risk</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;EWASCox_EFS_55CpGs&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;AML Epigenomic Risk (PaCMAP-LGBM)&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">df_cont_risk</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/3bca97aeaaade6d3e0591687187b3deaf2829180a132f31364e7c9fcee35cb55.png" src="../_images/3bca97aeaaade6d3e0591687187b3deaf2829180a132f31364e7c9fcee35cb55.png" />
+<img alt="../_images/5e71f49381457a560b4418c1df9b882a5b1ca5664708e19908c8cc5ebd1a7332.png" src="../_images/5e71f49381457a560b4418c1df9b882a5b1ca5664708e19908c8cc5ebd1a7332.png" />
+<img alt="../_images/d47b55d436a3ea486e80abcb3e306113ca3935856e3e98f32fe1930760e87ec5.png" src="../_images/d47b55d436a3ea486e80abcb3e306113ca3935856e3e98f32fe1930760e87ec5.png" />
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>EWASCox_OS_48CpGs</th>
+      <th>EWASCox_EFS_55CpGs</th>
+      <th>AML Epigenomic Risk (PaCMAP-LGBM)</th>
+      <th>Risk Group AML02-08</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>EWASCox_OS_48CpGs</th>
+      <td>1.00</td>
+      <td>0.55</td>
+      <td>0.48</td>
+      <td>0.44</td>
+    </tr>
+    <tr>
+      <th>EWASCox_EFS_55CpGs</th>
+      <td>0.55</td>
+      <td>1.00</td>
+      <td>0.30</td>
+      <td>0.14</td>
+    </tr>
+    <tr>
+      <th>AML Epigenomic Risk (PaCMAP-LGBM)</th>
+      <td>0.48</td>
+      <td>0.30</td>
+      <td>1.00</td>
+      <td>0.35</td>
+    </tr>
+    <tr>
+      <th>Risk Group AML02-08</th>
+      <td>0.44</td>
+      <td>0.14</td>
+      <td>0.35</td>
+      <td>1.00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./tests"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../main/9_test_atlas_1852.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">UF HemBank 1852 case study</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="2_Univariate_CoxPH-EWAS_v4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">EWAS Runs</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-pacmap-lgbm-data">Load PaCMAP-LGBM data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-ewas-cox-disovery-datasets">Load EWAS-Cox disovery datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combine-datasets">Combine datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#roc-auc-comparison-in-cog-aml-dx-samples">ROC-AUC comparison in COG AML Dx samples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-of-px-models-in-cog-aml-dx-samples">Correlation of Px models in COG AML Dx samples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#roc-auc-comparison-in-independent-validation-cohort-aml02-08">ROC-AUC comparison in independent validation cohort (AML02,08)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-of-continuous-px-models-in-validation-aml02-08">Correlation of continuous Px models in validation (AML02,08)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marchi et al. @ Lamba Lab @ University of Florida.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
