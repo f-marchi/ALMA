@@ -13,7 +13,7 @@ parts:
     chapters:
       - file: main/6_test_dataset.ipynb
       - file: main/7_test_models.ipynb
-      - file: main/8_test_atlas.ipynb
+      # - file: main/8_test_atlas.ipynb
       - file: main/9_test_atlas_1852.ipynb
 
   - caption: Benchmarks
