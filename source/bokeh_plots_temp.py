@@ -49,29 +49,29 @@ def get_custom_color_palette():
     return list
 
 
-from bokeh.layouts import column
-from bokeh.models import ColumnDataSource, DataTable, TableColumn, CategoricalColorMapper, HoverTool, Label, Span, GroupFilter, CDSView, Legend, LegendItem, Tabs, TabPanel
-from bokeh.plotting import figure, show
-import pandas as pd
-from bokeh.layouts import column
-from bokeh.models import ColumnDataSource, DataTable, TableColumn, CategoricalColorMapper, HoverTool, Label, Span, GroupFilter, CDSView, Legend, LegendItem, Tabs, TabPanel
-from bokeh.plotting import figure, show
-import numpy as np
-from bokeh.layouts import column
-from bokeh.models import ColumnDataSource, DataTable, TableColumn, CategoricalColorMapper, HoverTool, Label, Span, GroupFilter, CDSView, Legend, LegendItem, Tabs, TabPanel, CustomJS
-from bokeh.plotting import figure, show
-import numpy as np
-from bokeh.layouts import column
-from bokeh.models import ColumnDataSource, DataTable, TableColumn, CategoricalColorMapper, HoverTool, Label, Span, GroupFilter, CDSView, Legend, LegendItem, Tabs, TabPanel, CustomJS, FactorRange
-from bokeh.plotting import figure, show
-import numpy as np
-import pandas as pd
+# from bokeh.layouts import column
+# from bokeh.models import ColumnDataSource, DataTable, TableColumn, CategoricalColorMapper, HoverTool, Label, Span, GroupFilter, CDSView, Legend, LegendItem, Tabs, TabPanel
+# from bokeh.plotting import figure, show
+# import pandas as pd
+# from bokeh.layouts import column
+# from bokeh.models import ColumnDataSource, DataTable, TableColumn, CategoricalColorMapper, HoverTool, Label, Span, GroupFilter, CDSView, Legend, LegendItem, Tabs, TabPanel
+# from bokeh.plotting import figure, show
+# import numpy as np
+# from bokeh.layouts import column
+# from bokeh.models import ColumnDataSource, DataTable, TableColumn, CategoricalColorMapper, HoverTool, Label, Span, GroupFilter, CDSView, Legend, LegendItem, Tabs, TabPanel, CustomJS
+# from bokeh.plotting import figure, show
+# import numpy as np
+# from bokeh.layouts import column
+# from bokeh.models import ColumnDataSource, DataTable, TableColumn, CategoricalColorMapper, HoverTool, Label, Span, GroupFilter, CDSView, Legend, LegendItem, Tabs, TabPanel, CustomJS, FactorRange
+# from bokeh.plotting import figure, show
+# import numpy as np
+# import pandas as pd
 
-from bokeh.layouts import column
-from bokeh.models import ColumnDataSource, DataTable, TableColumn, CategoricalColorMapper, HoverTool, Label, Span, GroupFilter, CDSView, Legend, LegendItem, Tabs, TabPanel, CustomJS, FactorRange
-from bokeh.plotting import figure, show
-import numpy as np
-import pandas as pd
+# from bokeh.layouts import column
+# from bokeh.models import ColumnDataSource, DataTable, TableColumn, CategoricalColorMapper, HoverTool, Label, Span, GroupFilter, CDSView, Legend, LegendItem, Tabs, TabPanel, CustomJS, FactorRange
+# from bokeh.plotting import figure, show
+# import numpy as np
+# import pandas as pd
 from bokeh.layouts import column
 from bokeh.models import ColumnDataSource, DataTable, TableColumn, CategoricalColorMapper, HoverTool, Label, Span, GroupFilter, CDSView, Legend, LegendItem, Tabs, TabPanel, CustomJS, FactorRange
 from bokeh.plotting import figure, show
@@ -310,10 +310,10 @@ def plot_linked_histograms4(df, table=True, test_sample=None,
                            xaxis="PaCMAP 1 of 2", yaxis="PaCMAP 2 of 2",
                            x_range=(-45, 40), y_range=(-50, 45), 
                            cols=[
-                            #    'AL Epigenomic Subtype', 'Hematopoietic Entity', 
+                               'AL Epigenomic Subtype', 'Hematopoietic Entity', 
                                  'WHO 2022 Diagnosis', 
-                            #      'Vital Status', 'AML Epigenomic Risk', 'Risk Group AAML1831', 'Clinical Trial',
-                            #      'Race or ethnic group', 'Age (group years)'
+                                 'Vital Status', 'AML Epigenomic Risk', 'Risk Group AAML1831', 'Clinical Trial',
+                                 'Race or ethnic group', 'Age (group years)'
                                  ]):
 
     # Rank samples by P(Death) and call it "Percentile"
