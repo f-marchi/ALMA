@@ -49,12 +49,41 @@ def get_custom_color_palette():
     return list
 
 
-def plot_linked_scatters(df, table=True, test_sample=None, 
-                        xaxis = "PaCMAP 1 of 2", yaxis = "PaCMAP 2 of 2",
-                        x_range= (-45,40), y_range=(-50,45), 
-                        cols = ['AL Epigenomic Subtype', 'Hematopoietic Entity','WHO 2022 Diagnosis', 
-                                  'Vital Status','AML Epigenomic Risk', 'Risk Group AAML1831', 'Clinical Trial',
-                                  'Race or ethnic group','Age (group years)']):
+from bokeh.layouts import column
+from bokeh.models import ColumnDataSource, DataTable, TableColumn, CategoricalColorMapper, HoverTool, Label, Span, GroupFilter, CDSView, Legend, LegendItem, Tabs, TabPanel
+from bokeh.plotting import figure, show
+import pandas as pd
+from bokeh.layouts import column
+from bokeh.models import ColumnDataSource, DataTable, TableColumn, CategoricalColorMapper, HoverTool, Label, Span, GroupFilter, CDSView, Legend, LegendItem, Tabs, TabPanel
+from bokeh.plotting import figure, show
+import numpy as np
+from bokeh.layouts import column
+from bokeh.models import ColumnDataSource, DataTable, TableColumn, CategoricalColorMapper, HoverTool, Label, Span, GroupFilter, CDSView, Legend, LegendItem, Tabs, TabPanel, CustomJS
+from bokeh.plotting import figure, show
+import numpy as np
+from bokeh.layouts import column
+from bokeh.models import ColumnDataSource, DataTable, TableColumn, CategoricalColorMapper, HoverTool, Label, Span, GroupFilter, CDSView, Legend, LegendItem, Tabs, TabPanel, CustomJS, FactorRange
+from bokeh.plotting import figure, show
+import numpy as np
+import pandas as pd
+
+from bokeh.layouts import column
+from bokeh.models import ColumnDataSource, DataTable, TableColumn, CategoricalColorMapper, HoverTool, Label, Span, GroupFilter, CDSView, Legend, LegendItem, Tabs, TabPanel, CustomJS, FactorRange
+from bokeh.plotting import figure, show
+import numpy as np
+import pandas as pd
+from bokeh.layouts import column
+from bokeh.models import ColumnDataSource, DataTable, TableColumn, CategoricalColorMapper, HoverTool, Label, Span, GroupFilter, CDSView, Legend, LegendItem, Tabs, TabPanel, CustomJS, FactorRange
+from bokeh.plotting import figure, show
+import numpy as np
+import pandas as pd
+
+def plot_linked_histograms5(df, table=True, test_sample=None, 
+                           xaxis="PaCMAP 1 of 2", yaxis="PaCMAP 2 of 2",
+                           x_range=(-45, 40), y_range=(-50, 45), 
+                           cols=['AL Epigenomic Subtype', 'Hematopoietic Entity', 'WHO 2022 Diagnosis', 
+                                 'Vital Status', 'AML Epigenomic Risk', 'Risk Group AAML1831', 'Clinical Trial',
+                                 'Race or ethnic group', 'Age (group years)']):
 
     # Rank samples by P(Death) and call it "Percentile"
     df_px = df[~df['P(Death)'].isna()]
@@ -65,7 +94,7 @@ def plot_linked_scatters(df, table=True, test_sample=None,
     source = ColumnDataSource(df2)
     width = 1000
     font_size = "8pt"
-    x= 'P(Death)'
+    x = 'P(Death)'
     y = 'Percentile'
     threshold = 0.5
 
@@ -75,18 +104,12 @@ def plot_linked_scatters(df, table=True, test_sample=None,
     columns.append(TableColumn(field='Gene Fusion', title='Gene Fusion'))
     columns.append(TableColumn(field='Karyotype', title='Karyotype'))
 
-
     data_table = DataTable(source=source, columns=columns, editable=True, width=width,
-                        index_position=None, height=300)
+                           index_position=None, height=300)
 
-    # p1 = figure(title= 'AML Epigenomic Risk' ,width=width, height=300,
-    #             tools="xbox_select,reset,save", active_drag='xbox_select',
-    #             x_axis_label=x, y_axis_label="Count"
-    #             )
-    p1 = figure(width=600, height=600, tools="box_select,lasso_select,reset")
-    bins = np.linspace(0, 1, 40)
-    hist, edges = np.histogram(x, density=True, bins=bins)
-
+    p1 = figure(title='AML Epigenomic Risk', width=width, height=300,
+                tools="xbox_select,reset,save", active_drag='xbox_select',
+                x_axis_label=x, y_axis_label="est. probability of progression")
     p1.toolbar.logo = None
 
     # Add background color to plot1
@@ -102,41 +125,126 @@ def plot_linked_scatters(df, table=True, test_sample=None,
     p1.add_layout(label1)
     p1.add_layout(label2)
 
-    # Replace this line:
-    # scatter1 = p1.circle(y, x, source=source, color="steelblue", alpha=0.1, 
-    #             size=7, hover_alpha=0.5, line_color=None, hover_fill_color="midnightblue",
-    #             hover_line_color="white", selection_color="midnightblue", selection_alpha=0.7,
-    #             selection_line_color="white", )
+    scatter1 = p1.circle(y, x, source=source, color="steelblue", alpha=0.1, 
+                         size=7, hover_alpha=0.5, line_color=None, hover_fill_color="midnightblue",
+                         hover_line_color="white", selection_color="midnightblue", selection_alpha=0.7,
+                         selection_line_color="white")
 
-    # With this line:
-    # scatter1 = p1.vbar(x=x, 
-    #                    top=y,
-    #                     width=0.5, source=source, color="steelblue", alpha=0.1, 
-    #                     hover_alpha=0.5, line_color=None, hover_fill_color="midnightblue",
-    #                     hover_line_color="white", selection_color="midnightblue", selection_alpha=0.7,
-    #                     selection_line_color="white", )
-    
-    # Add a quad glyph
-    histogram1 = p1.quad(top=hist, bottom=0, left=edges[:-1], right=edges[1:], fill_color="steelblue", alpha=0.1, 
-                hover_fill_color="midnightblue", hover_alpha=0.5, hover_line_color="white")
+    scatter1_hover_tool = HoverTool(renderers=[scatter1], mode='vline', tooltips=None)
+    p1.add_tools(scatter1_hover_tool)
 
+    # Create the histogram plot for P(Death)
+    p3 = figure(title='P(Death) Histogram', width=width, height=300,
+                tools="", x_axis_label=x, y_axis_label='Frequency')
+    p3.toolbar.logo = None
 
-    # scatter1_hover_tool = HoverTool(renderers=[scatter1], mode='vline', tooltips=None)
+    hist, edges = np.histogram(df2[x], bins=50, range=[0, 1])
+    hist_source = ColumnDataSource(data=dict(top=hist, left=edges[:-1], right=edges[1:]))
+
+    hist_renderer = p3.quad(top='top', bottom=0, left='left', right='right', source=hist_source, fill_color="navy", line_color="white", alpha=0.5)
 
     if test_sample:
         vline = Span(location=df2.loc[test_sample][x],
                      dimension='height', line_color='black', line_dash='dashed', line_alpha=0.8)
         p1.renderers.extend([vline])
+        p3.renderers.extend([vline])
 
         p1.star(x=df2.loc[test_sample][x],
-                y=df2.loc[test_sample][y],
+                y=0,
+                size=15, color="black", alpha=0.9, 
+                legend_label=f'{test_sample}, {df2.loc[test_sample]["AML Epigenomic Risk"]} Epigenomic Risk ({df2.loc[test_sample][x]:.2f})',
+                line_color="black", line_width=1)
+        p3.star(x=df2.loc[test_sample][x],
+                y=max(hist) * 0.5,
                 size=15, color="black", alpha=0.9, 
                 legend_label=f'{test_sample}, {df2.loc[test_sample]["AML Epigenomic Risk"]} Epigenomic Risk ({df2.loc[test_sample][x]:.2f})',
                 line_color="black", line_width=1)
 
-        # move `p1.star` legend to bottom right
         p1.legend.location = "bottom_right"
         p1.legend.click_policy = "hide"
+
+    # CustomJS callback to update histogram based on selection
+    callback = CustomJS(args=dict(source=source, hist_source=hist_source, edges=edges), code="""
+        const indices = source.selected.indices;
+        const data = source.data;
+        const hist_data = hist_source.data;
+
+        const hist = new Array(edges.length - 1).fill(0);
+
+        for (let i = 0; i < indices.length; i++) {
+            const idx = indices[i];
+            const value = data['P(Death)'][idx];
+            for (let j = 0; j < edges.length - 1; j++) {
+                if (value >= edges[j] && value < edges[j + 1]) {
+                    hist[j] += 1;
+                    break;
+                }
+            }
+        }
+
+        hist_data['top'] = hist;
+        hist_source.change.emit();
+    """)
+
+    source.selected.js_on_change('indices', callback)
+
+    # Create the stacked histograms plot for Race or ethnic group and Age (group years)
+    race_counts = df2['Race or ethnic group'].value_counts(normalize=True) * 100
+    age_counts = df2['Age (group years)'].value_counts(normalize=True) * 100
+    race_categories = list(race_counts.index)
+    age_categories = list(age_counts.index)
+
+    race_hist_source = ColumnDataSource(data=dict(categories=race_categories, counts=race_counts))
+    age_hist_source = ColumnDataSource(data=dict(categories=age_categories, counts=age_counts))
+
+    p4 = figure(title='Race or Ethnic Group and Age Group Histogram', width=width, height=600,
+                tools="", x_range=FactorRange(*race_categories, *age_categories), y_axis_label='Percentage')
+    p4.toolbar.logo = None
+
+    race_hist_renderer = p4.vbar(x='categories', top='counts', width=0.9, source=race_hist_source, fill_color="green", line_color="white", alpha=0.5)
+    age_hist_renderer = p4.vbar(x='categories', top='counts', width=0.9, source=age_hist_source, fill_color="blue", line_color="white", alpha=0.5)
+
+    # CustomJS callback to update race and age histograms based on selection
+    callback_stacked = CustomJS(args=dict(source=source, race_hist_source=race_hist_source, age_hist_source=age_hist_source, race_categories=race_categories, age_categories=age_categories), code="""
+        const indices = source.selected.indices;
+        const data = source.data;
+        const race_hist_data = race_hist_source.data;
+        const age_hist_data = age_hist_source.data;
+
+        const race_counts = {};
+        const age_counts = {};
+        for (let i = 0; i < race_categories.length; i++) {
+            race_counts[race_categories[i]] = 0;
+        }
+        for (let i = 0; i < age_categories.length; i++) {
+            age_counts[age_categories[i]] = 0;
+        }
+
+        for (let i = 0; i < indices.length; i++) {
+            const idx = indices[i];
+            const race = data['Race or ethnic group'][idx];
+            const age = data['Age (group years)'][idx];
+            if (race in race_counts) {
+                race_counts[race] += 1;
+            }
+            if (age in age_counts) {
+                age_counts[age] += 1;
+            }
+        }
+
+        const total_selected = indices.length;
+        for (let i = 0; i < race_categories.length; i++) {
+            race_hist_data['counts'][i] = (total_selected > 0) ? (race_counts[race_categories[i]] / total_selected) * 100 : 0;
+        }
+        for (let i = 0; i < age_categories.length; i++) {
+            age_hist_data['counts'][i] = (total_selected > 0) ? (age_counts[age_categories[i]] / total_selected) * 100 : 0;
+        }
+
+        race_hist_source.change.emit();
+        age_hist_source.change.emit();
+    """)
+
+    source.selected.js_on_change('indices', callback_stacked)
 
     tabs = []
 
@@ -145,9 +253,9 @@ def plot_linked_scatters(df, table=True, test_sample=None,
         color_mapper = CategoricalColorMapper(factors=factors, palette=custom_color_palette)
 
         p2 = figure(title='Acute Leukemia Methylome Atlas', width=width, height=600,
-                    tools="pan,wheel_zoom,box_select,reset,save", tooltips= [(str(col),'@{'+ str(col)+'}')], 
+                    tools="pan,wheel_zoom,box_select,reset,save", tooltips=[(str(col), '@{' + str(col) + '}')], 
                     x_axis_label=xaxis, y_axis_label=yaxis,
-                    active_drag="box_select", x_range= x_range, y_range=y_range)
+                    active_drag="box_select", x_range=x_range, y_range=y_range)
 
         p2.toolbar.logo = None
         p2.toolbar_location = 'above'
@@ -165,17 +273,17 @@ def plot_linked_scatters(df, table=True, test_sample=None,
         for factor in factors:
             view = CDSView(filter=GroupFilter(column_name=col, group=factor))
             p2.scatter(x=xaxis, y=yaxis, source=source, view=view, 
-                    color={'field': col, 'transform': color_mapper}, size=3, alpha=0.8, radius=0.2)
+                       color={'field': col, 'transform': color_mapper}, size=3, alpha=0.8, radius=0.2)
         if test_sample:
-                vline = Span(location=df2.loc[test_sample][xaxis],
-                            dimension='height', line_color="black", line_dash='dashed',line_alpha=0.8)
-                hline = Span(location=df2.loc[test_sample][yaxis],
-                            dimension='width', line_color="black", line_dash='dashed',line_alpha=0.8)
-                p2.renderers.extend([vline, hline])
-                p2.star(x=df2.loc[test_sample][xaxis], y=df2.loc[test_sample][yaxis],
-                size=15, color="black", alpha=0.9, legend_label=f'Sample: {test_sample}\nPrediction: {df2.loc[test_sample]["AL Epigenomic Subtype"]}',
-                 line_color="black", line_width=1)
-                p2.legend.click_policy = "hide"
+            vline = Span(location=df2.loc[test_sample][xaxis],
+                         dimension='height', line_color="black", line_dash='dashed', line_alpha=0.8)
+            hline = Span(location=df2.loc[test_sample][yaxis],
+                         dimension='width', line_color="black", line_dash='dashed', line_alpha=0.8)
+            p2.renderers.extend([vline, hline])
+            p2.star(x=df2.loc[test_sample][xaxis], y=df2.loc[test_sample][yaxis],
+                    size=15, color="black", alpha=0.9, legend_label=f'Sample: {test_sample}\nPrediction: {df2.loc[test_sample]["AL Epigenomic Subtype"]}',
+                    line_color="black", line_width=1)
+            p2.legend.click_policy = "hide"
 
         # Create a list of legend items
         legend_items = [LegendItem(label=factor, renderers=[r]) for factor, r in zip(factors, p2.renderers)]
@@ -183,9 +291,7 @@ def plot_linked_scatters(df, table=True, test_sample=None,
         # Create a legend
         legend = Legend(items=legend_items, location="top", click_policy="hide",
                         label_text_font_size=font_size, label_text_font_style="normal",
-                        glyph_height=15, glyph_width=15, spacing=1, 
-                        # margin=5, padding=0,
-                        )
+                        glyph_height=15, glyph_width=15, spacing=1)
 
         # Add the legend to the plot
         p2.add_layout(legend, 'right')
@@ -195,13 +301,671 @@ def plot_linked_scatters(df, table=True, test_sample=None,
 
     tabs_control = Tabs(tabs=tabs, tabs_location='above')
 
-    # p1.add_tools(scatter1_hover_tool)
-
-    # save(column(tabs_control,p1,data_table), filename="FM_interactive_plots_1-30-24_preliminary.html", title="AL Methylome Atlas")
     if table:
-        return(show(column(tabs_control,p1,data_table)))
+        return show(column(tabs_control, p1, p3, p4, data_table))
     else:
-        return(show(column(tabs_control,p1)))
+        return show(column(tabs_control, p1, p3, p4))
+
+def plot_linked_histograms4(df, table=True, test_sample=None, 
+                           xaxis="PaCMAP 1 of 2", yaxis="PaCMAP 2 of 2",
+                           x_range=(-45, 40), y_range=(-50, 45), 
+                           cols=[
+                            #    'AL Epigenomic Subtype', 'Hematopoietic Entity', 
+                                 'WHO 2022 Diagnosis', 
+                            #      'Vital Status', 'AML Epigenomic Risk', 'Risk Group AAML1831', 'Clinical Trial',
+                            #      'Race or ethnic group', 'Age (group years)'
+                                 ]):
+
+    # Rank samples by P(Death) and call it "Percentile"
+    df_px = df[~df['P(Death)'].isna()]
+    df_px2 = df_px.sort_values(by='P(Death)').reset_index().reset_index(names=['Percentile']).set_index('index')
+    df_px2['Percentile'] = df_px2['Percentile'] / len(df_px2['Percentile'])
+    df2 = df.join(df_px2[['Percentile']])
+    
+    source = ColumnDataSource(df2)
+    width = 1000
+    font_size = "8pt"
+    x = 'P(Death)'
+    y = 'Percentile'
+    threshold = 0.5
+
+    custom_color_palette = get_custom_color_palette()
+
+    columns = [TableColumn(field=col, title=col) for col in cols]
+    columns.append(TableColumn(field='Gene Fusion', title='Gene Fusion'))
+    columns.append(TableColumn(field='Karyotype', title='Karyotype'))
+
+    data_table = DataTable(source=source, columns=columns, editable=True, width=width,
+                           index_position=None, height=300)
+
+    p1 = figure(title='AML Epigenomic Risk', width=width, height=300,
+                tools="xbox_select,reset,save", active_drag='xbox_select',
+                x_axis_label=x, y_axis_label="Patient Percentile")
+    p1.toolbar.logo = None
+
+    # Add background color to plot1
+    p1.quad(left=0, right=threshold, bottom=0, top=1, color="#1f77b4", level="underlay", alpha=0.2)
+    p1.quad(left=threshold, right=1, bottom=0, top=1, color="#ff7f0e", level="underlay", alpha=0.2)
+
+    # Add a label to the line
+    label1 = Label(y=0.05, x=threshold + 0.01, text='High Risk', text_font_size='8pt',
+                   text_color='#ff7f0e', text_alpha=0.8, text_align='left')
+    label2 = Label(y=0.05, x=threshold - 0.01, text='Low Risk', text_font_size='8pt',
+                   text_color='#1f77b4', text_alpha=0.8, text_align='right')
+    
+    p1.add_layout(label1)
+    p1.add_layout(label2)
+
+    scatter1 = p1.circle(y, x, source=source, color="steelblue", alpha=0.1, 
+                         size=7, hover_alpha=0.5, line_color=None, hover_fill_color="midnightblue",
+                         hover_line_color="white", selection_color="midnightblue", selection_alpha=0.7,
+                         selection_line_color="white")
+
+    scatter1_hover_tool = HoverTool(renderers=[scatter1], mode='vline', tooltips=None)
+    p1.add_tools(scatter1_hover_tool)
+
+    # Create the histogram plot for P(Death)
+    p3 = figure(title='AML Epigenomic Risk - Select clusters on the map and their prognosis will appear here', width=width, height=300,
+                x_axis_label=x, y_axis_label='Frequency',tools="save",)
+    p3.toolbar.logo = None
+
+    hist, edges = np.histogram(df2[x], bins=50, range=[0, 1])
+    hist_source = ColumnDataSource(data=dict(top=hist, left=edges[:-1], right=edges[1:]))
+
+    hist_renderer = p3.quad(top='top', bottom=0, left='left', right='right', source=hist_source, fill_color="navy", line_color="white", alpha=0.5)
+
+    if test_sample:
+        vline = Span(location=df2.loc[test_sample][x],
+                     dimension='height', line_color='black', line_dash='dashed', line_alpha=0.8)
+        p1.renderers.extend([vline])
+        p3.renderers.extend([vline])
+
+        p1.star(x=df2.loc[test_sample][x],
+                y=0,
+                size=15, color="black", alpha=0.9, 
+                legend_label=f'{test_sample}, {df2.loc[test_sample]["AML Epigenomic Risk"]} Epigenomic Risk ({df2.loc[test_sample][x]:.2f})',
+                line_color="black", line_width=1)
+        p3.star(x=df2.loc[test_sample][x],
+                y=max(hist) * 0.5,
+                size=15, color="black", alpha=0.9, 
+                legend_label=f'{test_sample}, {df2.loc[test_sample]["AML Epigenomic Risk"]} Epigenomic Risk ({df2.loc[test_sample][x]:.2f})',
+                line_color="black", line_width=1)
+
+        p1.legend.location = "bottom_right"
+        p1.legend.click_policy = "hide"
+
+    # CustomJS callback to update histogram based on selection
+    callback = CustomJS(args=dict(source=source, hist_source=hist_source, edges=edges), code="""
+        const indices = source.selected.indices;
+        const data = source.data;
+        const hist_data = hist_source.data;
+
+        const hist = new Array(edges.length - 1).fill(0);
+
+        for (let i = 0; i < indices.length; i++) {
+            const idx = indices[i];
+            const value = data['P(Death)'][idx];
+            for (let j = 0; j < edges.length - 1; j++) {
+                if (value >= edges[j] && value < edges[j + 1]) {
+                    hist[j] += 1;
+                    break;
+                }
+            }
+        }
+
+        hist_data['top'] = hist;
+        hist_source.change.emit();
+    """)
+
+    source.selected.js_on_change('indices', callback)
+
+    # Create the histogram plot for Race or ethnic group
+    race_counts = df2['Race or ethnic group'].value_counts(normalize=True) * 100
+    race_categories = list(race_counts.index)
+    race_hist_source = ColumnDataSource(data=dict(race=race_categories, counts=race_counts))
+
+    p4 = figure(title='Race or Ethnic Group', width=width, height=300,
+                x_range=FactorRange(*race_categories), y_axis_label='Percentage', y_range=(0, 100),
+                 tools="save", )
+    p4.toolbar.logo = None
+    # Add hover tool
+    hover_p4 = HoverTool()
+    hover_p4.tooltips = [('Count', '@counts{0.0}%')]
+    p4.add_tools(hover_p4)
+
+
+    race_hist_renderer = p4.vbar(x='race', top='counts', width=0.9, source=race_hist_source, fill_color="green", line_color="white", alpha=0.5)
+
+    # CustomJS callback to update race histogram based on selection
+    callback_race = CustomJS(args=dict(source=source, race_hist_source=race_hist_source, race_categories=race_categories), code="""
+        const indices = source.selected.indices;
+        const data = source.data;
+        const race_hist_data = race_hist_source.data;
+
+        const race_counts = {};
+        for (let i = 0; i < race_categories.length; i++) {
+            race_counts[race_categories[i]] = 0;
+        }
+
+        for (let i = 0; i < indices.length; i++) {
+            const idx = indices[i];
+            const race = data['Race or ethnic group'][idx];
+            if (race in race_counts) {
+                race_counts[race] += 1;
+            }
+        }
+
+        const total_selected = indices.length;
+        for (let i = 0; i < race_categories.length; i++) {
+            race_hist_data['counts'][i] = (total_selected > 0) ? (race_counts[race_categories[i]] / total_selected) * 100 : 0;
+        }
+
+        race_hist_source.change.emit();
+    """)
+
+    source.selected.js_on_change('indices', callback_race)
+
+    tabs = []
+
+    for col in cols:
+        factors = [str(val) for val in df2[col].unique() if pd.notnull(val)]
+        color_mapper = CategoricalColorMapper(factors=factors, palette=custom_color_palette)
+
+        p2 = figure(title='Acute Leukemia Methylome Atlas', width=width, height=600,
+                    tools="pan,wheel_zoom,box_select,reset,save", tooltips=[(str(col), '@{' + str(col) + '}')], 
+                    x_axis_label=xaxis, y_axis_label=yaxis,
+                    active_drag="box_select", x_range=x_range, y_range=y_range)
+
+        p2.toolbar.logo = None
+        p2.toolbar_location = 'above'
+
+        def set_axis_properties(plot, font_size):
+            plot.xaxis.axis_label_text_font_size = font_size
+            plot.yaxis.axis_label_text_font_size = font_size
+            plot.xaxis.axis_label_text_font_style = "normal"
+            plot.yaxis.axis_label_text_font_style = "normal"
+
+        set_axis_properties(p1, font_size)
+        set_axis_properties(p2, font_size)
+
+        # Create scatter plot for each factor
+        for factor in factors:
+            view = CDSView(filter=GroupFilter(column_name=col, group=factor))
+            p2.scatter(x=xaxis, y=yaxis, source=source, view=view, 
+                       color={'field': col, 'transform': color_mapper}, size=3, alpha=0.8, radius=0.2)
+        if test_sample:
+            vline = Span(location=df2.loc[test_sample][xaxis],
+                         dimension='height', line_color="black", line_dash='dashed', line_alpha=0.8)
+            hline = Span(location=df2.loc[test_sample][yaxis],
+                         dimension='width', line_color="black", line_dash='dashed', line_alpha=0.8)
+            p2.renderers.extend([vline, hline])
+            p2.star(x=df2.loc[test_sample][xaxis], y=df2.loc[test_sample][yaxis],
+                    size=15, color="black", alpha=0.9, legend_label=f'Sample: {test_sample}\nPrediction: {df2.loc[test_sample]["AL Epigenomic Subtype"]}',
+                    line_color="black", line_width=1)
+            p2.legend.click_policy = "hide"
+
+        # Create a list of legend items
+        legend_items = [LegendItem(label=factor, renderers=[r]) for factor, r in zip(factors, p2.renderers)]
+
+        # Create a legend
+        legend = Legend(items=legend_items, location="top", click_policy="hide",
+                        label_text_font_size=font_size, label_text_font_style="normal",
+                        glyph_height=15, glyph_width=15, spacing=1)
+
+        # Add the legend to the plot
+        p2.add_layout(legend, 'right')
+
+        tab = TabPanel(child=p2, title=col)
+        tabs.append(tab)
+
+    tabs_control = Tabs(tabs=tabs, tabs_location='above')
+
+    if table:
+        return show(column(tabs_control, p3, p4, p1, data_table))
+    else:
+        return show(column(tabs_control, p3, p1, p4))
+
+
+def plot_linked_histograms3(df, table=True, test_sample=None, 
+                           xaxis="PaCMAP 1 of 2", yaxis="PaCMAP 2 of 2",
+                           x_range=(-45, 40), y_range=(-50, 45), 
+                           cols=['AL Epigenomic Subtype', 'Hematopoietic Entity', 'WHO 2022 Diagnosis', 
+                                 'Vital Status', 'AML Epigenomic Risk', 'Risk Group AAML1831', 'Clinical Trial',
+                                 'Race or ethnic group', 'Age (group years)']):
+
+    # Rank samples by P(Death) and call it "Percentile"
+    df_px = df[~df['P(Death)'].isna()]
+    df_px2 = df_px.sort_values(by='P(Death)').reset_index().reset_index(names=['Percentile']).set_index('index')
+    df_px2['Percentile'] = df_px2['Percentile'] / len(df_px2['Percentile'])
+    df2 = df.join(df_px2[['Percentile']])
+    
+    source = ColumnDataSource(df2)
+    width = 1000
+    font_size = "8pt"
+    x = 'P(Death)'
+    y = 'Percentile'
+    threshold = 0.5
+
+    custom_color_palette = get_custom_color_palette()
+
+    columns = [TableColumn(field=col, title=col) for col in cols]
+    columns.append(TableColumn(field='Gene Fusion', title='Gene Fusion'))
+    columns.append(TableColumn(field='Karyotype', title='Karyotype'))
+
+    data_table = DataTable(source=source, columns=columns, editable=True, width=width,
+                           index_position=None, height=300)
+
+    p1 = figure(title='AML Epigenomic Risk', width=width, height=300,
+                tools="xbox_select,reset,save", active_drag='xbox_select',
+                x_axis_label=x, y_axis_label="est. probability of progression")
+    p1.toolbar.logo = None
+
+    # Add background color to plot1
+    p1.quad(left=0, right=threshold, bottom=0, top=1, color="#1f77b4", level="underlay", alpha=0.2)
+    p1.quad(left=threshold, right=1, bottom=0, top=1, color="#ff7f0e", level="underlay", alpha=0.2)
+
+    # Add a label to the line
+    label1 = Label(y=0.05, x=threshold + 0.01, text='High Risk', text_font_size='8pt',
+                   text_color='#ff7f0e', text_alpha=0.8, text_align='left')
+    label2 = Label(y=0.05, x=threshold - 0.01, text='Low Risk', text_font_size='8pt',
+                   text_color='#1f77b4', text_alpha=0.8, text_align='right')
+    
+    p1.add_layout(label1)
+    p1.add_layout(label2)
+
+    scatter1 = p1.circle(y, x, source=source, color="steelblue", alpha=0.1, 
+                         size=7, hover_alpha=0.5, line_color=None, hover_fill_color="midnightblue",
+                         hover_line_color="white", selection_color="midnightblue", selection_alpha=0.7,
+                         selection_line_color="white")
+
+    scatter1_hover_tool = HoverTool(renderers=[scatter1], mode='vline', tooltips=None)
+    p1.add_tools(scatter1_hover_tool)
+
+    # Create the histogram plot
+    p3 = figure(title='AML Epigenomic Risk - Select clusters on the map and their prognosis will appear here', width=width, height=300,
+                tools="", x_axis_label=x, y_axis_label='Frequency')
+    p3.toolbar.logo = None
+
+    hist, edges = np.histogram(df2[x], bins=75, range=[0, 1], )
+    hist_source = ColumnDataSource(data=dict(top=hist, left=edges[:-1], right=edges[1:]))
+
+    hist_renderer = p3.quad(top='top', bottom=0, left='left', right='right', source=hist_source, fill_color="navy", line_color="white", alpha=0.5)
+
+    if test_sample:
+        vline = Span(location=df2.loc[test_sample][x],
+                     dimension='height', line_color='black', line_dash='dashed', line_alpha=0.8)
+        p1.renderers.extend([vline])
+        p3.renderers.extend([vline])
+
+        p1.star(x=df2.loc[test_sample][x],
+                y=0,
+                size=15, color="black", alpha=0.9, 
+                legend_label=f'{test_sample}, {df2.loc[test_sample]["AML Epigenomic Risk"]} Epigenomic Risk ({df2.loc[test_sample][x]:.2f})',
+                line_color="black", line_width=1)
+        p3.star(x=df2.loc[test_sample][x],
+                y=max(hist) * 0.5,
+                size=15, color="black", alpha=0.9, 
+                legend_label=f'{test_sample}, {df2.loc[test_sample]["AML Epigenomic Risk"]} Epigenomic Risk ({df2.loc[test_sample][x]:.2f})',
+                line_color="black", line_width=1)
+
+        p1.legend.location = "bottom_right"
+        p1.legend.click_policy = "hide"
+
+    # CustomJS callback to update histogram based on selection
+    callback = CustomJS(args=dict(source=source, hist_source=hist_source, edges=edges), code="""
+        const indices = source.selected.indices;
+        const data = source.data;
+        const hist_data = hist_source.data;
+
+        const hist = new Array(edges.length - 1).fill(0);
+
+        for (let i = 0; i < indices.length; i++) {
+            const idx = indices[i];
+            const value = data['P(Death)'][idx];
+            for (let j = 0; j < edges.length - 1; j++) {
+                if (value >= edges[j] && value < edges[j + 1]) {
+                    hist[j] += 1;
+                    break;
+                }
+            }
+        }
+
+        hist_data['top'] = hist;
+        hist_source.change.emit();
+    """)
+
+    source.selected.js_on_change('indices', callback)
+
+    tabs = []
+
+    for col in cols:
+        factors = [str(val) for val in df2[col].unique() if pd.notnull(val)]
+        color_mapper = CategoricalColorMapper(factors=factors, palette=custom_color_palette)
+
+        p2 = figure(title='Acute Leukemia Methylome Atlas', width=width, height=600,
+                    tools="pan,wheel_zoom,box_select,reset,save", tooltips=[(str(col), '@{' + str(col) + '}')], 
+                    x_axis_label=xaxis, y_axis_label=yaxis,
+                    active_drag="box_select", x_range=x_range, y_range=y_range)
+
+        p2.toolbar.logo = None
+        p2.toolbar_location = 'above'
+
+        def set_axis_properties(plot, font_size):
+            plot.xaxis.axis_label_text_font_size = font_size
+            plot.yaxis.axis_label_text_font_size = font_size
+            plot.xaxis.axis_label_text_font_style = "normal"
+            plot.yaxis.axis_label_text_font_style = "normal"
+
+        set_axis_properties(p1, font_size)
+        set_axis_properties(p2, font_size)
+
+        # Create scatter plot for each factor
+        for factor in factors:
+            view = CDSView(filter=GroupFilter(column_name=col, group=factor))
+            p2.scatter(x=xaxis, y=yaxis, source=source, view=view, 
+                       color={'field': col, 'transform': color_mapper}, size=3, alpha=0.8, radius=0.2)
+        if test_sample:
+            vline = Span(location=df2.loc[test_sample][xaxis],
+                         dimension='height', line_color="black", line_dash='dashed', line_alpha=0.8)
+            hline = Span(location=df2.loc[test_sample][yaxis],
+                         dimension='width', line_color="black", line_dash='dashed', line_alpha=0.8)
+            p2.renderers.extend([vline, hline])
+            p2.star(x=df2.loc[test_sample][xaxis], y=df2.loc[test_sample][yaxis],
+                    size=15, color="black", alpha=0.9, legend_label=f'Sample: {test_sample}\nPrediction: {df2.loc[test_sample]["AL Epigenomic Subtype"]}',
+                    line_color="black", line_width=1)
+            p2.legend.click_policy = "hide"
+
+        # Create a list of legend items
+        legend_items = [LegendItem(label=factor, renderers=[r]) for factor, r in zip(factors, p2.renderers)]
+
+        # Create a legend
+        legend = Legend(items=legend_items, location="top", click_policy="hide",
+                        label_text_font_size=font_size, label_text_font_style="normal",
+                        glyph_height=15, glyph_width=15, spacing=1)
+
+        # Add the legend to the plot
+        p2.add_layout(legend, 'right')
+
+        tab = TabPanel(child=p2, title=col)
+        tabs.append(tab)
+
+    tabs_control = Tabs(tabs=tabs, tabs_location='above')
+
+    if table:
+        return show(column(tabs_control, p1, p3, data_table))
+    else:
+        return show(column(tabs_control, p1, p3))
+
+def plot_linked_histograms2(df, table=True, test_sample=None, 
+                        xaxis="PaCMAP 1 of 2", yaxis="PaCMAP 2 of 2",
+                        x_range=(-45, 40), y_range=(-50, 45), 
+                        cols=['AL Epigenomic Subtype', 'Hematopoietic Entity', 'WHO 2022 Diagnosis', 
+                              'Vital Status', 'AML Epigenomic Risk', 'Risk Group AAML1831', 'Clinical Trial',
+                              'Race or ethnic group', 'Age (group years)']):
+
+    # Rank samples by P(Death) and call it "Percentile"
+    df_px = df[~df['P(Death)'].isna()]
+    df_px2 = df_px.sort_values(by='P(Death)').reset_index().reset_index(names=['Percentile']).set_index('index')
+    df_px2['Percentile'] = df_px2['Percentile'] / len(df_px2['Percentile'])
+    df2 = df.join(df_px2[['Percentile']])
+    
+    source = ColumnDataSource(df2)
+    width = 1000
+    font_size = "8pt"
+    x = 'P(Death)'
+    y = 'Percentile'
+    threshold = 0.5
+
+    custom_color_palette = get_custom_color_palette()
+
+    columns = [TableColumn(field=col, title=col) for col in cols]
+    columns.append(TableColumn(field='Gene Fusion', title='Gene Fusion'))
+    columns.append(TableColumn(field='Karyotype', title='Karyotype'))
+
+    data_table = DataTable(source=source, columns=columns, editable=True, width=width,
+                           index_position=None, height=300)
+
+    p1 = figure(title='AML Epigenomic Risk', width=width, height=300,
+                tools="xbox_select,reset,save", active_drag='xbox_select',
+                x_axis_label=x, y_axis_label="est. probability of progression")
+    p1.toolbar.logo = None
+
+    # Add background color to plot1
+    p1.quad(left=0, right=threshold, bottom=0, top=1, color="#1f77b4", level="underlay", alpha=0.2)
+    p1.quad(left=threshold, right=1, bottom=0, top=1, color="#ff7f0e", level="underlay", alpha=0.2)
+
+    # Add a label to the line
+    label1 = Label(y=0.05, x=threshold + 0.01, text='High Risk', text_font_size='8pt',
+                   text_color='#ff7f0e', text_alpha=0.8, text_align='left')
+    label2 = Label(y=0.05, x=threshold - 0.01, text='Low Risk', text_font_size='8pt',
+                   text_color='#1f77b4', text_alpha=0.8, text_align='right')
+    
+    p1.add_layout(label1)
+    p1.add_layout(label2)
+
+    scatter1 = p1.circle(y, x, source=source, color="steelblue", alpha=0.1, 
+                         size=7, hover_alpha=0.5, line_color=None, hover_fill_color="midnightblue",
+                         hover_line_color="white", selection_color="midnightblue", selection_alpha=0.7,
+                         selection_line_color="white")
+
+    scatter1_hover_tool = HoverTool(renderers=[scatter1], mode='vline', tooltips=None)
+    p1.add_tools(scatter1_hover_tool)
+
+    # Create the histogram plot
+    p3 = figure(title='P(Death) Histogram', width=width, height=300,
+                tools="", x_axis_label=x, y_axis_label='Frequency')
+    p3.toolbar.logo = None
+
+    hist, edges = np.histogram(df2[x], bins=50, range=[0, 1])
+
+    p3.quad(top=hist, bottom=0, left=edges[:-1], right=edges[1:], fill_color="navy", line_color="white", alpha=0.5)
+
+    if test_sample:
+        vline = Span(location=df2.loc[test_sample][x],
+                     dimension='height', line_color='black', line_dash='dashed', line_alpha=0.8)
+        p1.renderers.extend([vline])
+        p3.renderers.extend([vline])
+
+        p1.star(x=df2.loc[test_sample][x],
+                y=max(hist) * 0.5,
+                size=15, color="black", alpha=0.9, 
+                legend_label=f'{test_sample}, {df2.loc[test_sample]["AML Epigenomic Risk"]} Epigenomic Risk ({df2.loc[test_sample][x]:.2f})',
+                line_color="black", line_width=1)
+        p3.star(x=df2.loc[test_sample][x],
+                y=max(hist) * 0.5,
+                size=15, color="black", alpha=0.9, 
+                legend_label=f'{test_sample}, {df2.loc[test_sample]["AML Epigenomic Risk"]} Epigenomic Risk ({df2.loc[test_sample][x]:.2f})',
+                line_color="black", line_width=1)
+
+        p1.legend.location = "bottom_right"
+        p1.legend.click_policy = "hide"
+
+    tabs = []
+
+    for col in cols:
+        factors = [str(val) for val in df2[col].unique() if pd.notnull(val)]
+        color_mapper = CategoricalColorMapper(factors=factors, palette=custom_color_palette)
+
+        p2 = figure(title='Acute Leukemia Methylome Atlas', width=width, height=600,
+                    tools="pan,wheel_zoom,box_select,reset,save", tooltips=[(str(col), '@{' + str(col) + '}')], 
+                    x_axis_label=xaxis, y_axis_label=yaxis,
+                    active_drag="box_select", x_range=x_range, y_range=y_range)
+
+        p2.toolbar.logo = None
+        p2.toolbar_location = 'above'
+
+        def set_axis_properties(plot, font_size):
+            plot.xaxis.axis_label_text_font_size = font_size
+            plot.yaxis.axis_label_text_font_size = font_size
+            plot.xaxis.axis_label_text_font_style = "normal"
+            plot.yaxis.axis_label_text_font_style = "normal"
+
+        set_axis_properties(p1, font_size)
+        set_axis_properties(p2, font_size)
+
+        # Create scatter plot for each factor
+        for factor in factors:
+            view = CDSView(filter=GroupFilter(column_name=col, group=factor))
+            p2.scatter(x=xaxis, y=yaxis, source=source, view=view, 
+                       color={'field': col, 'transform': color_mapper}, size=3, alpha=0.8, radius=0.2)
+        if test_sample:
+            vline = Span(location=df2.loc[test_sample][xaxis],
+                         dimension='height', line_color="black", line_dash='dashed', line_alpha=0.8)
+            hline = Span(location=df2.loc[test_sample][yaxis],
+                         dimension='width', line_color="black", line_dash='dashed', line_alpha=0.8)
+            p2.renderers.extend([vline, hline])
+            p2.star(x=df2.loc[test_sample][xaxis], y=df2.loc[test_sample][yaxis],
+                    size=15, color="black", alpha=0.9, legend_label=f'Sample: {test_sample}\nPrediction: {df2.loc[test_sample]["AL Epigenomic Subtype"]}',
+                    line_color="black", line_width=1)
+            p2.legend.click_policy = "hide"
+
+        # Create a list of legend items
+        legend_items = [LegendItem(label=factor, renderers=[r]) for factor, r in zip(factors, p2.renderers)]
+
+        # Create a legend
+        legend = Legend(items=legend_items, location="top", click_policy="hide",
+                        label_text_font_size=font_size, label_text_font_style="normal",
+                        glyph_height=15, glyph_width=15, spacing=1)
+
+        # Add the legend to the plot
+        p2.add_layout(legend, 'right')
+
+        tab = TabPanel(child=p2, title=col)
+        tabs.append(tab)
+
+    tabs_control = Tabs(tabs=tabs, tabs_location='above')
+
+    if table:
+        return show(column(tabs_control, p1, p3, data_table))
+    else:
+        return show(column(tabs_control, p1, p3))
+
+def plot_linked_histograms(df, table=True, test_sample=None, 
+                        xaxis="PaCMAP 1 of 2", yaxis="PaCMAP 2 of 2",
+                        x_range=(-45, 40), y_range=(-50, 45), 
+                        cols=['AL Epigenomic Subtype', 'Hematopoietic Entity', 'WHO 2022 Diagnosis', 
+                              'Vital Status', 'AML Epigenomic Risk', 'Risk Group AAML1831', 'Clinical Trial',
+                              'Race or ethnic group', 'Age (group years)']):
+
+    # Rank samples by P(Death) and call it "Percentile"
+    df_px = df[~df['P(Death)'].isna()]
+    df_px2 = df_px.sort_values(by='P(Death)').reset_index().reset_index(names=['Percentile']).set_index('index')
+    df_px2['Percentile'] = df_px2['Percentile'] / len(df_px2['Percentile'])
+    df2 = df.join(df_px2[['Percentile']])
+    
+    source = ColumnDataSource(df2)
+    width = 1000
+    font_size = "8pt"
+    x = 'P(Death)'
+    y = 'Percentile'
+    threshold = 0.5
+
+    custom_color_palette = get_custom_color_palette()
+
+    columns = [TableColumn(field=col, title=col) for col in cols]
+    columns.append(TableColumn(field='Gene Fusion', title='Gene Fusion'))
+    columns.append(TableColumn(field='Karyotype', title='Karyotype'))
+
+    data_table = DataTable(source=source, columns=columns, editable=True, width=width,
+                           index_position=None, height=300)
+
+    p1 = figure(title='AML Epigenomic Risk', width=width, height=300,
+                tools="xbox_select,reset,save", active_drag='xbox_select',
+                x_axis_label=x, y_axis_label="est. probability of progression")
+    p1.toolbar.logo = None
+
+    # Add background color to plot1
+    p1.quad(left=0, right=threshold, bottom=0, top=1, color="#1f77b4", level="underlay", alpha=0.2)
+    p1.quad(left=threshold, right=1, bottom=0, top=1, color="#ff7f0e", level="underlay", alpha=0.2)
+
+    # Add a label to the line
+    label1 = Label(y=0.05, x=threshold + 0.01, text='High Risk', text_font_size='8pt',
+                   text_color='#ff7f0e', text_alpha=0.8, text_align='left')
+    label2 = Label(y=0.05, x=threshold - 0.01, text='Low Risk', text_font_size='8pt',
+                   text_color='#1f77b4', text_alpha=0.8, text_align='right')
+    
+    p1.add_layout(label1)
+    p1.add_layout(label2)
+
+    hist, edges = np.histogram(df2[x], bins=50, range=[0, 1])
+
+    p1.quad(top=hist, bottom=0, left=edges[:-1], right=edges[1:], fill_color="navy", line_color="white", alpha=0.5)
+
+    if test_sample:
+        vline = Span(location=df2.loc[test_sample][x],
+                     dimension='height', line_color='black', line_dash='dashed', line_alpha=0.8)
+        p1.renderers.extend([vline])
+
+        p1.star(x=df2.loc[test_sample][x],
+                y=max(hist) * 0.5,
+                size=15, color="black", alpha=0.9, 
+                legend_label=f'{test_sample}, {df2.loc[test_sample]["AML Epigenomic Risk"]} Epigenomic Risk ({df2.loc[test_sample][x]:.2f})',
+                line_color="black", line_width=1)
+
+        # move `p1.star` legend to bottom right
+        p1.legend.location = "bottom_right"
+        p1.legend.click_policy = "hide"
+
+    tabs = []
+
+    for col in cols:
+        factors = [str(val) for val in df2[col].unique() if pd.notnull(val)]
+        color_mapper = CategoricalColorMapper(factors=factors, palette=custom_color_palette)
+
+        p2 = figure(title='Acute Leukemia Methylome Atlas', width=width, height=600,
+                    tools="pan,wheel_zoom,box_select,reset,save", tooltips=[(str(col), '@{' + str(col) + '}')], 
+                    x_axis_label=xaxis, y_axis_label=yaxis,
+                    active_drag="box_select", x_range=x_range, y_range=y_range)
+
+        p2.toolbar.logo = None
+        p2.toolbar_location = 'above'
+
+        def set_axis_properties(plot, font_size):
+            plot.xaxis.axis_label_text_font_size = font_size
+            plot.yaxis.axis_label_text_font_size = font_size
+            plot.xaxis.axis_label_text_font_style = "normal"
+            plot.yaxis.axis_label_text_font_style = "normal"
+
+        set_axis_properties(p1, font_size)
+        set_axis_properties(p2, font_size)
+
+        # Create scatter plot for each factor
+        for factor in factors:
+            view = CDSView(filter=GroupFilter(column_name=col, group=factor))
+            p2.scatter(x=xaxis, y=yaxis, source=source, view=view, 
+                       color={'field': col, 'transform': color_mapper}, size=3, alpha=0.8, radius=0.2)
+        if test_sample:
+            vline = Span(location=df2.loc[test_sample][xaxis],
+                         dimension='height', line_color="black", line_dash='dashed', line_alpha=0.8)
+            hline = Span(location=df2.loc[test_sample][yaxis],
+                         dimension='width', line_color="black", line_dash='dashed', line_alpha=0.8)
+            p2.renderers.extend([vline, hline])
+            p2.star(x=df2.loc[test_sample][xaxis], y=df2.loc[test_sample][yaxis],
+                    size=15, color="black", alpha=0.9, legend_label=f'Sample: {test_sample}\nPrediction: {df2.loc[test_sample]["AL Epigenomic Subtype"]}',
+                    line_color="black", line_width=1)
+            p2.legend.click_policy = "hide"
+
+        # Create a list of legend items
+        legend_items = [LegendItem(label=factor, renderers=[r]) for factor, r in zip(factors, p2.renderers)]
+
+        # Create a legend
+        legend = Legend(items=legend_items, location="top", click_policy="hide",
+                        label_text_font_size=font_size, label_text_font_style="normal",
+                        glyph_height=15, glyph_width=15, spacing=1)
+
+        # Add the legend to the plot
+        p2.add_layout(legend, 'right')
+
+        tab = TabPanel(child=p2, title=col)
+        tabs.append(tab)
+
+    tabs_control = Tabs(tabs=tabs, tabs_location='above')
+
+    if table:
+        return show(column(tabs_control, p1, data_table))
+    else:
+        return show(column(tabs_control, p1))
+
 
 def plot_roc_auc_with_riskgroup(df, target, model_name, risk_group='Risk Group', title=None, sum_models=False):
     """

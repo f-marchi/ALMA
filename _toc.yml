@@ -22,6 +22,7 @@ parts:
       
   - caption: Supplementary Material
     chapters:
+      - file: tests/5_plots_6-17-24.ipynb
       - file: tests/2_Univariate_CoxPH-EWAS_v4.ipynb
       - file: tests/3.1_MethylScoreAML_Px_Development_v5.ipynb
       - file: tests/3.1_MethylScoreAML_Px_Development_v6.ipynb
