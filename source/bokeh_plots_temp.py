@@ -78,12 +78,56 @@ from bokeh.plotting import figure, show
 import numpy as np
 import pandas as pd
 
-def plot_linked_histograms5(df, table=True, test_sample=None, 
+def plot_linked_histograms7(df, table=True, test_sample=None, 
                            xaxis="PaCMAP 1 of 2", yaxis="PaCMAP 2 of 2",
                            x_range=(-45, 40), y_range=(-50, 45), 
                            cols=['AL Epigenomic Subtype', 'Hematopoietic Entity', 'WHO 2022 Diagnosis', 
                                  'Vital Status', 'AML Epigenomic Risk', 'Risk Group AAML1831', 'Clinical Trial',
                                  'Race or ethnic group', 'Age (group years)']):
+    df2 = prepare_data(df)
+    source = ColumnDataSource(df2)
+    width = 1000
+    custom_color_palette = get_custom_color_palette()
+
+    data_table = create_data_table(source, cols, width)
+    risk_plot = create_risk_plot(source, width)
+    hist_plot, hist_source, edges = create_histogram_plot(source, width, 'P(Death)')
+    race_plot, race_hist_source = create_race_plot(df2, source, width)
+
+    if test_sample:
+        update_test_sample(risk_plot, hist_plot, df2, test_sample)
+
+    update_histogram(source, hist_source, edges, hist_plot)
+    update_race_histogram(source, race_hist_source)
+
+    tabs = [create_scatter_plot(df2, source, col, xaxis, yaxis, x_range, y_range, custom_color_palette, test_sample) for col in cols]
+    layout = column(Tabs(tabs=tabs, tabs_location='above'), hist_plot, risk_plot, data_table) if table else column(Tabs(tabs=tabs, tabs_location='above'), hist_plot, risk_plot)
+    show(layout)
+
+def update_test_sample(risk_plot, hist_plot, df2, test_sample):
+    test_val = df2.loc[test_sample]['P(Death)']
+    vline = Span(location=test_val, dimension='height', line_color='black', line_dash='dashed', line_alpha=0.8)
+    risk_plot.renderers.extend([vline])
+    hist_plot.renderers.extend([vline])
+    risk_plot.star(x=test_val, y=0, size=15, color="black", alpha=0.9, 
+                   legend_label=f'{test_sample}, {df2.loc[test_sample]["AML Epigenomic Risk"]} Epigenomic Risk ({test_val:.2f})',
+                   line_color="black", line_width=1)
+    hist_plot.star(x=test_val, y=max(hist_plot.renderers[0].data_source.data['top']) * 0.5, size=15, color="black", alpha=0.9, 
+                   legend_label=f'{test_sample}, {df2.loc[test_sample]["AML Epigenomic Risk"]} Epigenomic Risk ({test_val:.2f})',
+                   line_color="black", line_width=1)
+    risk_plot.legend.location = "bottom_right"
+    risk_plot.legend.click_policy = "hide"
+
+
+def plot_linked_histograms5(df, table=True, test_sample=None, 
+                           xaxis="PaCMAP 1 of 2", yaxis="PaCMAP 2 of 2",
+                           x_range=(-45, 40), y_range=(-50, 45), 
+                           cols=[
+                               'AL Epigenomic Subtype', 'Hematopoietic Entity', 
+                                 'WHO 2022 Diagnosis', 
+                                 'Vital Status', 'AML Epigenomic Risk', 'Risk Group AAML1831', 'Clinical Trial',
+                                 'Race or ethnic group', 'Age (group years)'
+                                 ]):
 
     # Rank samples by P(Death) and call it "Percentile"
     df_px = df[~df['P(Death)'].isna()]
@@ -109,7 +153,7 @@ def plot_linked_histograms5(df, table=True, test_sample=None,
 
     p1 = figure(title='AML Epigenomic Risk', width=width, height=300,
                 tools="xbox_select,reset,save", active_drag='xbox_select',
-                x_axis_label=x, y_axis_label="est. probability of progression")
+                x_axis_label=x, y_axis_label="Patient Percentile")
     p1.toolbar.logo = None
 
     # Add background color to plot1
@@ -134,14 +178,21 @@ def plot_linked_histograms5(df, table=True, test_sample=None,
     p1.add_tools(scatter1_hover_tool)
 
     # Create the histogram plot for P(Death)
-    p3 = figure(title='P(Death) Histogram', width=width, height=300,
-                tools="", x_axis_label=x, y_axis_label='Frequency')
+    p3 = figure(title='AML Epigenomic Risk - Select clusters on the map and their prognosis will appear here', width=width, height=300,
+                x_axis_label=x, y_axis_label='Frequency', tools="save",)
     p3.toolbar.logo = None
 
     hist, edges = np.histogram(df2[x], bins=50, range=[0, 1])
     hist_source = ColumnDataSource(data=dict(top=hist, left=edges[:-1], right=edges[1:]))
 
     hist_renderer = p3.quad(top='top', bottom=0, left='left', right='right', source=hist_source, fill_color="navy", line_color="white", alpha=0.5)
+
+    avg_p_death = df2[x].mean()
+    avg_line = Span(location=avg_p_death, dimension='height', line_color='black', line_dash='dashed', line_alpha=0.8)
+    avg_label = Label(x=avg_p_death, y=max(hist), text=f'Avg: {avg_p_death:.2f}', text_font_size='8pt', text_color='black', text_align='center')
+    
+    p3.add_layout(avg_line)
+    p3.add_layout(avg_label)
 
     if test_sample:
         vline = Span(location=df2.loc[test_sample][x],
@@ -163,17 +214,19 @@ def plot_linked_histograms5(df, table=True, test_sample=None,
         p1.legend.location = "bottom_right"
         p1.legend.click_policy = "hide"
 
-    # CustomJS callback to update histogram based on selection
-    callback = CustomJS(args=dict(source=source, hist_source=hist_source, edges=edges), code="""
+    # CustomJS callback to update histogram and average P(Death) based on selection
+    callback = CustomJS(args=dict(source=source, hist_source=hist_source, edges=edges, p3=p3, avg_line=avg_line, avg_label=avg_label), code="""
         const indices = source.selected.indices;
         const data = source.data;
         const hist_data = hist_source.data;
 
         const hist = new Array(edges.length - 1).fill(0);
+        let sum_p_death = 0;
 
         for (let i = 0; i < indices.length; i++) {
             const idx = indices[i];
             const value = data['P(Death)'][idx];
+            sum_p_death += value;
             for (let j = 0; j < edges.length - 1; j++) {
                 if (value >= edges[j] && value < edges[j + 1]) {
                     hist[j] += 1;
@@ -184,51 +237,49 @@ def plot_linked_histograms5(df, table=True, test_sample=None,
 
         hist_data['top'] = hist;
         hist_source.change.emit();
+
+        const avg_p_death = sum_p_death / indices.length;
+        avg_line.location = avg_p_death;
+        avg_label.x = avg_p_death;
+        avg_label.text = `Avg: ${avg_p_death.toFixed(2)}`;
+        p3.request_render();
     """)
 
     source.selected.js_on_change('indices', callback)
 
-    # Create the stacked histograms plot for Race or ethnic group and Age (group years)
+    # Create the histogram plot for Race or ethnic group
     race_counts = df2['Race or ethnic group'].value_counts(normalize=True) * 100
-    age_counts = df2['Age (group years)'].value_counts(normalize=True) * 100
     race_categories = list(race_counts.index)
-    age_categories = list(age_counts.index)
+    race_hist_source = ColumnDataSource(data=dict(race=race_categories, counts=race_counts))
 
-    race_hist_source = ColumnDataSource(data=dict(categories=race_categories, counts=race_counts))
-    age_hist_source = ColumnDataSource(data=dict(categories=age_categories, counts=age_counts))
-
-    p4 = figure(title='Race or Ethnic Group and Age Group Histogram', width=width, height=600,
-                tools="", x_range=FactorRange(*race_categories, *age_categories), y_axis_label='Percentage')
+    p4 = figure(title='Race or Ethnic Group', width=width, height=300,
+                x_range=FactorRange(*race_categories), y_axis_label='Percentage', y_range=(0, 100),
+                 tools="save", )
     p4.toolbar.logo = None
+    # Add hover tool
+    hover_p4 = HoverTool()
+    hover_p4.tooltips = [('Count', '@counts{0.0}%')]
+    p4.add_tools(hover_p4)
 
-    race_hist_renderer = p4.vbar(x='categories', top='counts', width=0.9, source=race_hist_source, fill_color="green", line_color="white", alpha=0.5)
-    age_hist_renderer = p4.vbar(x='categories', top='counts', width=0.9, source=age_hist_source, fill_color="blue", line_color="white", alpha=0.5)
 
-    # CustomJS callback to update race and age histograms based on selection
-    callback_stacked = CustomJS(args=dict(source=source, race_hist_source=race_hist_source, age_hist_source=age_hist_source, race_categories=race_categories, age_categories=age_categories), code="""
+    race_hist_renderer = p4.vbar(x='race', top='counts', width=0.9, source=race_hist_source, fill_color="green", line_color="white", alpha=0.5)
+
+    # CustomJS callback to update race histogram based on selection
+    callback_race = CustomJS(args=dict(source=source, race_hist_source=race_hist_source, race_categories=race_categories), code="""
         const indices = source.selected.indices;
         const data = source.data;
         const race_hist_data = race_hist_source.data;
-        const age_hist_data = age_hist_source.data;
 
         const race_counts = {};
-        const age_counts = {};
         for (let i = 0; i < race_categories.length; i++) {
             race_counts[race_categories[i]] = 0;
-        }
-        for (let i = 0; i < age_categories.length; i++) {
-            age_counts[age_categories[i]] = 0;
         }
 
         for (let i = 0; i < indices.length; i++) {
             const idx = indices[i];
             const race = data['Race or ethnic group'][idx];
-            const age = data['Age (group years)'][idx];
             if (race in race_counts) {
                 race_counts[race] += 1;
-            }
-            if (age in age_counts) {
-                age_counts[age] += 1;
             }
         }
 
@@ -236,15 +287,11 @@ def plot_linked_histograms5(df, table=True, test_sample=None,
         for (let i = 0; i < race_categories.length; i++) {
             race_hist_data['counts'][i] = (total_selected > 0) ? (race_counts[race_categories[i]] / total_selected) * 100 : 0;
         }
-        for (let i = 0; i < age_categories.length; i++) {
-            age_hist_data['counts'][i] = (total_selected > 0) ? (age_counts[age_categories[i]] / total_selected) * 100 : 0;
-        }
 
         race_hist_source.change.emit();
-        age_hist_source.change.emit();
     """)
 
-    source.selected.js_on_change('indices', callback_stacked)
+    source.selected.js_on_change('indices', callback_race)
 
     tabs = []
 
@@ -302,9 +349,11 @@ def plot_linked_histograms5(df, table=True, test_sample=None,
     tabs_control = Tabs(tabs=tabs, tabs_location='above')
 
     if table:
-        return show(column(tabs_control, p1, p3, p4, data_table))
+        return show(column(tabs_control, p3, p4, p1, data_table))
     else:
-        return show(column(tabs_control, p1, p3, p4))
+        return show(column(tabs_control, p3, p1, p4))
+
+
 
 def plot_linked_histograms4(df, table=True, test_sample=None, 
                            xaxis="PaCMAP 1 of 2", yaxis="PaCMAP 2 of 2",
