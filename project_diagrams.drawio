@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-02-18T01:38:42.319Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/23.0.2 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="0LaUk_cg1i043dliGRq9" compressed="false" version="23.0.2" type="device">
+<mxfile host="Electron" modified="2024-07-02T20:23:28.265Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.16 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="EkOi8veEoNitPb_2S9mx" compressed="false" version="22.1.16" type="device">
   <diagram id="prtHgNgQTEPvFCAcTncT" name="Page-1">
-    <mxGraphModel dx="-5793" dy="-1764" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="1" shadow="0">
+    <mxGraphModel dx="-5767" dy="-1754" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="1" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -159,6 +159,59 @@
             <mxPoint x="7640.880000000001" y="4091" as="sourcePoint" />
             <mxPoint x="7910" y="4091" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="p5nluhM-51DTkeER_7es-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p5nluhM-51DTkeER_7es-1" target="p5nluhM-51DTkeER_7es-4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="8955" y="3530" />
+              <mxPoint x="8815" y="3530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p5nluhM-51DTkeER_7es-1" value="&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&amp;nbsp;Specimen-to-result Workflow&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Input: 300uL of whole blood or BM&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;1.&amp;nbsp;&lt;/b&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;&lt;font style=&quot;&quot;&gt;DNA extraction&lt;/font&gt;&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;Optimized QIAGEN Puregene Blood Kit&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b style=&quot;&quot;&gt;2. Shearing DNA for 10kb input&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;26G 0.5in needle + 1cc syringe&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial; font-size: 12px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font size=&quot;1&quot;&gt;&lt;b style=&quot;font-size: 12px;&quot;&gt;3.&amp;nbsp;&lt;/b&gt;&lt;/font&gt;&lt;b style=&quot;background-color: initial; font-size: 12px;&quot;&gt;Library Prep&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;Rapid Sequencing kit (SQK-RAD114)&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;div&gt;&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;4. Long-read Sequencing&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Oxford Nanopore PromethION 2 solo&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b style=&quot;&quot;&gt;5. &lt;/b&gt;&lt;b style=&quot;background-color: initial;&quot;&gt;Basecalling and Alignment&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;Dorado + minimap2, hg38&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="8820" y="3210" width="270" height="297.04" as="geometry" />
+        </mxCell>
+        <mxCell id="p5nluhM-51DTkeER_7es-2" value="" style="endArrow=none;html=1;rounded=0;fontSize=12;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="8820.880000000001" y="3251.18" as="sourcePoint" />
+            <mxPoint x="9090" y="3251.18" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p5nluhM-51DTkeER_7es-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="p5nluhM-51DTkeER_7es-1" target="p5nluhM-51DTkeER_7es-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p5nluhM-51DTkeER_7es-4" value="&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&amp;nbsp;Genomic Workflow&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div style=&quot;&quot;&gt;&lt;div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b style=&quot;&quot;&gt;6a. Extract SV, SNV, CNV, STR&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;Epi2me wf-human variation&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;div&gt;&lt;font size=&quot;1&quot;&gt;&lt;b style=&quot;font-size: 12px;&quot;&gt;7a. Extract PGx, HLA, Cyp2d6&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;PharmCAT, SpecHLA, Cyrius&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b style=&quot;background-color: initial; font-size: 12px;&quot;&gt;8a. Generate Dx and Px Genomics&lt;/b&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;SV, SNV, CNV &amp;gt; WHO22&amp;nbsp; guidelines&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 12px; background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 12px; background-color: initial;&quot;&gt;Output: clinical&lt;/span&gt;&lt;b style=&quot;background-color: initial; font-size: 12px;&quot;&gt;&amp;nbsp;genomic&amp;nbsp;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b&gt;diagnosis, prognosis,&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b&gt;and pharmacogenomics&amp;nbsp;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;for acute leukemia patients.&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="8680" y="3563.76" width="270" height="246.24" as="geometry" />
+        </mxCell>
+        <mxCell id="p5nluhM-51DTkeER_7es-5" value="" style="endArrow=none;html=1;rounded=0;fontSize=12;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="8680.880000000001" y="3600.0000000000005" as="sourcePoint" />
+            <mxPoint x="8950" y="3600.0000000000005" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p5nluhM-51DTkeER_7es-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="p5nluhM-51DTkeER_7es-4" target="p5nluhM-51DTkeER_7es-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p5nluhM-51DTkeER_7es-7" value="&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;b&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&amp;nbsp;Epigenomic Workflow&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div style=&quot;&quot;&gt;&lt;div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b style=&quot;&quot;&gt;6b. Extract 5mC and 5hmC&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;Modkit&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;div&gt;&lt;font size=&quot;1&quot;&gt;&lt;b style=&quot;font-size: 12px;&quot;&gt;7b. Harmonize data to array&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;28M CpGs &amp;gt; 333,058 CpGs&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;font size=&quot;1&quot;&gt;&lt;b style=&quot;font-size: 12px;&quot;&gt;8b. Apply models to new data&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;ALMA &amp;gt; AL Epigenomic Subtype&lt;/div&gt;&lt;/div&gt;&lt;div&gt;ALMA &amp;gt; AML Epigenomic Risk&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 12px; background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 12px; background-color: initial;&quot;&gt;Output: clinical&lt;/span&gt;&lt;b style=&quot;background-color: initial; font-size: 12px;&quot;&gt;&amp;nbsp;epigenomic&amp;nbsp;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b&gt;diagnosis and prognosis&amp;nbsp;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;for acute leukemia patients.&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="8990" y="3563.76" width="270" height="246.24" as="geometry" />
+        </mxCell>
+        <mxCell id="p5nluhM-51DTkeER_7es-8" value="" style="endArrow=none;html=1;rounded=0;fontSize=12;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="8990.880000000001" y="3604.94" as="sourcePoint" />
+            <mxPoint x="9260" y="3604.94" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p5nluhM-51DTkeER_7es-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="p5nluhM-51DTkeER_7es-7" target="p5nluhM-51DTkeER_7es-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p5nluhM-51DTkeER_7es-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="8950" y="3530" as="sourcePoint" />
+            <mxPoint x="9130" y="3560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p5nluhM-51DTkeER_7es-14" value="&lt;span style=&quot;font-size: 36px;&quot;&gt;Detailed Study Strategy&lt;br&gt;7-2-24&lt;br&gt;&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="8740" y="3110" width="420" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
