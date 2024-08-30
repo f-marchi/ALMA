@@ -1,7 +1,7 @@
 format: jb-book
 root: index.ipynb
 parts:
-  - caption: Main Story
+  - caption: v2 8-29-2024
     chapters:
       - file: main/1_discovery_dataset.ipynb
       - file: main/2_validation_dataset_v2.ipynb
