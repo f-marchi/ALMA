@@ -1,0 +1,1759 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Test Dataset (Work in Progress) &#8212; Acute Leukemia Methylome Atlas Study</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'v2/3_test';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Clinical Data" href="4_clinical_data.html" />
+    <link rel="prev" title="Validation Dataset" href="2_validation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Acute Leukemia Methylome Atlas Study</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Benchmarks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tests/ewasCox_vs_pacmapLGBM.html">Px Models Benchmarks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Supplementary Material</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tests/5_plots_6-17-24.html">AML-only map with new interactive prognostic and race histograms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/2_Univariate_CoxPH-EWAS_v4.html">EWAS Runs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.1_MethylScoreAML_Px_Development_v5.html">924pts-OS-35CpGs-ASH23</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.1_MethylScoreAML_Px_Development_v6.html">940pts-OS-48CpGs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.1_MethylScoreAML_Px_Development_v7.html">940pts-EFS-55CpGs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.2_MethylScoreAML_Px_Validation_Peds_v2.html">OS-35CpGs-Validation-ASH23</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.2_MethylScoreAML_Px_Validation_Peds_v3.html">OS-48CpGs-Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.2_MethylScoreAML_Px_Validation_Peds_v4.html">EFS-55CpGs-Validation</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/v2/3_test.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Test Dataset (Work in Progress)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-data-at">Where data at?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-bed6-file-to-harmonize-probes-from-epic-array-with-nanopore">Create BED6 file to harmonize probes from EPIC array with nanopore</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-modkit-processed-file">Load modkit processed file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-distributions">Plot distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#index-genomic-coordinates-for-both-files">Index genomic coordinates for both files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjust-to-fit-pacmap-input-format">Adjust to fit PaCMAP input format</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-results">Save results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-1-retrospective-lower-coverage-analysis">Appendix 1. Retrospective lower coverage analysis</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="test-dataset-work-in-progress">
+<h1>Test Dataset (Work in Progress)<a class="headerlink" href="#test-dataset-work-in-progress" title="Link to this heading">#</a></h1>
+<p>Placeholder for when all 20 nanopore samples have been sequenced and aligned and modcalled. We will put them here and merge with main dataset.</p>
+<ol class="arabic">
+<li><p>Converting unaligned CRAM to FASTQ for Minimap2 aligment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>samtools<span class="w"> </span>bam2fq<span class="w"> </span>-@<span class="w"> </span><span class="m">32</span><span class="w"> </span>-T<span class="w"> </span><span class="m">1</span><span class="w"> </span>--reference<span class="w"> </span>./ref/hg38.fna<span class="w"> </span>cram/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.pass.cram<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+minimap2<span class="w"> </span>-y<span class="w"> </span>-t<span class="w"> </span><span class="m">32</span><span class="w"> </span>-ax<span class="w"> </span>lr:hq<span class="w"> </span>ref/hg38.fna<span class="w"> </span>-<span class="w"> </span>&gt;<span class="w"> </span>sam/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.sam
+</pre></div>
+</div>
+</li>
+<li><p>Converting SAM to BAM, sorting, and indexing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>samtools<span class="w"> </span>view<span class="w"> </span>-@<span class="w"> </span><span class="m">32</span><span class="w"> </span>-bS<span class="w"> </span>sam/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.sam<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+samtools<span class="w"> </span>sort<span class="w"> </span>-@<span class="w"> </span><span class="m">32</span><span class="w"> </span>-<span class="w"> </span>--write-index<span class="w"> </span>-o<span class="w"> </span>bam/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.bam<span class="w"> </span>-O<span class="w"> </span>BAM<span class="w"> </span>--reference<span class="w"> </span>ref/hg38.fna
+</pre></div>
+</div>
+</li>
+<li><p>Creating a BedMethyl file with Modkit</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>modkit<span class="w"> </span>pileup<span class="w"> </span>bam/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.bam<span class="w"> </span>bed/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.bed<span class="w"> </span>-t<span class="w"> </span><span class="m">32</span><span class="w"> </span>--combine-strands<span class="w"> </span>--cpg<span class="w"> </span>--ignore<span class="w"> </span>h<span class="w"> </span>--ref<span class="w"> </span>ref/hg38.fna
+</pre></div>
+</div>
+</li>
+</ol>
+<section id="where-data-at">
+<h2>Where data at?<a class="headerlink" href="#where-data-at" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+
+<span class="c1"># Get a list of all CSV files in the directory</span>
+<span class="n">file_list</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;../../pacmap/*.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create an empty list to store the dataframes</span>
+<span class="n">dfs</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Read each CSV file and append it to the list</span>
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">dfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Concatenate all dataframes in the list</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cg00000109</th>
+      <th>cg00000236</th>
+      <th>cg00000292</th>
+      <th>cg00000363</th>
+      <th>cg00000622</th>
+      <th>cg00000658</th>
+      <th>cg00000714</th>
+      <th>cg00000721</th>
+      <th>cg00000734</th>
+      <th>cg00000769</th>
+      <th>...</th>
+      <th>cg21278787</th>
+      <th>cg22708233</th>
+      <th>cg23138682</th>
+      <th>cg23282051</th>
+      <th>cg24677744</th>
+      <th>cg25023752</th>
+      <th>cg26185531</th>
+      <th>cg26293201</th>
+      <th>cg26576875</th>
+      <th>cg07148304</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>uf_hembank_1852</th>
+      <td>1.000</td>
+      <td>0.913</td>
+      <td>0.615</td>
+      <td>0.174</td>
+      <td>0.0</td>
+      <td>0.964</td>
+      <td>0.250</td>
+      <td>1.000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>uf_hembank_1831</th>
+      <td>1.000</td>
+      <td>0.800</td>
+      <td>0.786</td>
+      <td>0.143</td>
+      <td>0.0</td>
+      <td>0.933</td>
+      <td>0.250</td>
+      <td>0.933</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>uf_hembank_1829</th>
+      <td>0.889</td>
+      <td>0.632</td>
+      <td>0.750</td>
+      <td>0.000</td>
+      <td>0.0</td>
+      <td>1.000</td>
+      <td>0.100</td>
+      <td>1.000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.25</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>uf_hembank_1830</th>
+      <td>0.960</td>
+      <td>0.500</td>
+      <td>0.615</td>
+      <td>0.294</td>
+      <td>0.0</td>
+      <td>1.000</td>
+      <td>0.000</td>
+      <td>1.000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>uf_hembank_1832</th>
+      <td>1.000</td>
+      <td>1.000</td>
+      <td>0.800</td>
+      <td>0.000</td>
+      <td>0.0</td>
+      <td>1.000</td>
+      <td>0.000</td>
+      <td>1.000</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>uf_hembank_1841</th>
+      <td>0.714</td>
+      <td>0.900</td>
+      <td>0.667</td>
+      <td>0.000</td>
+      <td>0.0</td>
+      <td>0.923</td>
+      <td>0.091</td>
+      <td>0.929</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>6 rows × 331963 columns</p>
+</div></div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># mount = &#39;/mnt/e/&#39;</span>
+
+<span class="c1"># input_path = mount + &#39;nanopore_processed/&#39;</span>
+
+<span class="c1"># sample_name = &#39;uf_hembank_1852&#39;</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="create-bed6-file-to-harmonize-probes-from-epic-array-with-nanopore">
+<h2>Create BED6 file to harmonize probes from EPIC array with nanopore<a class="headerlink" href="#create-bed6-file-to-harmonize-probes-from-epic-array-with-nanopore" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # read df_discovery and df_validation</span>
+<span class="c1"># df_discovery = pd.read_pickle(mount+&#39;MethylScore_v2/Intermediate_Files/&#39;+&#39;3308samples_333059cpgs_withbatchcorrection_bvalues.pkl&#39;).sort_index().iloc[:,1:]</span>
+
+<span class="c1"># array_reference = pd.read_csv(&quot;/mnt/c/Users/fmarc/OneDrive/Desktop/nanopore_processed/ref/EPIC.anno.GRCh38.tsv.gz&quot;, sep=&#39;\t&#39;, compression=&#39;gzip&#39;,</span>
+<span class="c1">#                               usecols=[&#39;chrm&#39;,&#39;start&#39;,&#39;end&#39;,&#39;orientation&#39;, &#39;probeID&#39;]</span>
+<span class="c1">#                               ).set_index(&#39;probeID&#39;).sort_index()</span>
+
+<span class="c1"># pacmap_reference = array_reference.loc[df_discovery.columns].reset_index()</span>
+
+<span class="c1"># # change values in `orientation` column to match the orientation of the probes in the discovery dataset</span>
+<span class="c1"># pacmap_reference[&#39;orientation&#39;] = pacmap_reference[&#39;orientation&#39;].map({&#39;down&#39;: &#39;-&#39;, &#39;up&#39;: &#39;+&#39;})</span>
+<span class="c1"># pacmap_reference[&#39;score&#39;] = 0</span>
+
+<span class="c1"># # Rename `IlmnID` to `name` to follow BED standard</span>
+<span class="c1"># pacmap_reference = pacmap_reference.rename(columns={&#39;IlmnID&#39;: &#39;name&#39;, &#39;orientation&#39;: &#39;strand&#39;})</span>
+
+<span class="c1"># # Order columns</span>
+<span class="c1"># pacmap_reference = pacmap_reference[[&#39;chrm&#39;, &#39;start&#39;, &#39;end&#39;, &#39;name&#39;, &#39;score&#39;, &#39;strand&#39;, ]]</span>
+
+<span class="c1"># # Sort by `chrm` and `start`</span>
+<span class="c1"># pacmap_reference = pacmap_reference.sort_values(by=[&#39;chrm&#39;, &#39;start&#39;])</span>
+
+<span class="c1"># pacmap_reference.to_csv(&#39;../data/pacmap_reference.bed&#39;, sep=&#39;\t&#39;, index=False, header=False)</span>
+
+<span class="n">pacmap_reference</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/pacmap_reference.bed&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;chrm&#39;</span><span class="p">,</span> <span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">,</span> <span class="s1">&#39;strand&#39;</span><span class="p">])</span>
+<span class="n">pacmap_reference</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>chrm</th>
+      <th>start</th>
+      <th>end</th>
+      <th>name</th>
+      <th>score</th>
+      <th>strand</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>chr1</td>
+      <td>69590</td>
+      <td>69592</td>
+      <td>cg21870274</td>
+      <td>0</td>
+      <td>+</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>chr1</td>
+      <td>864702</td>
+      <td>864704</td>
+      <td>cg08258224</td>
+      <td>0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>chr1</td>
+      <td>870160</td>
+      <td>870162</td>
+      <td>cg16619049</td>
+      <td>0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>chr1</td>
+      <td>877158</td>
+      <td>877160</td>
+      <td>cg18147296</td>
+      <td>0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>chr1</td>
+      <td>898802</td>
+      <td>898804</td>
+      <td>cg13938959</td>
+      <td>0</td>
+      <td>+</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>333053</th>
+      <td>chr9</td>
+      <td>138119084</td>
+      <td>138119086</td>
+      <td>cg00378292</td>
+      <td>0</td>
+      <td>+</td>
+    </tr>
+    <tr>
+      <th>333054</th>
+      <td>chr9</td>
+      <td>138120221</td>
+      <td>138120223</td>
+      <td>cg07982825</td>
+      <td>0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>333055</th>
+      <td>chr9</td>
+      <td>138122338</td>
+      <td>138122340</td>
+      <td>cg14491707</td>
+      <td>0</td>
+      <td>+</td>
+    </tr>
+    <tr>
+      <th>333056</th>
+      <td>chr9</td>
+      <td>138122548</td>
+      <td>138122550</td>
+      <td>cg13811936</td>
+      <td>0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>333057</th>
+      <td>chr9</td>
+      <td>138123004</td>
+      <td>138123006</td>
+      <td>cg14022794</td>
+      <td>0</td>
+      <td>+</td>
+    </tr>
+  </tbody>
+</table>
+<p>333058 rows × 6 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="load-modkit-processed-file">
+<h2>Load modkit processed file<a class="headerlink" href="#load-modkit-processed-file" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the input data, skipping the first row if it&#39;s a header or irrelevant</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">input_path</span> <span class="o">+</span> <span class="s1">&#39;bed/&#39;</span><span class="o">+</span> <span class="n">sample_name</span><span class="o">+</span><span class="s1">&#39;.bed&#39;</span><span class="p">,</span> 
+                 <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span>
+                 <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;chrom&quot;</span><span class="p">,</span> <span class="s2">&quot;start_position&quot;</span><span class="p">,</span><span class="s2">&quot;end_position&quot;</span><span class="p">,</span><span class="s2">&quot;modified base code&quot;</span><span class="p">,</span><span class="s2">&quot;score&quot;</span><span class="p">,</span>
+                        <span class="s1">&#39;strand&#39;</span> <span class="p">,</span><span class="s2">&quot;start position&quot;</span><span class="p">,</span><span class="s2">&quot;end position&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">,</span> <span class="s2">&quot;Nvalid_cov&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;fraction modified&quot;</span><span class="p">,</span> <span class="s2">&quot;Nmod&quot;</span><span class="p">,</span> <span class="s2">&quot;Ncanonical&quot;</span><span class="p">,</span> <span class="s2">&quot;Nother_mod&quot;</span><span class="p">,</span> <span class="s2">&quot;Ndelete&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Nfail&quot;</span><span class="p">,</span> <span class="s2">&quot;Ndiff&quot;</span><span class="p">,</span> <span class="s2">&quot;Nnocall&quot;</span><span class="p">])</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>chrom</th>
+      <th>start_position</th>
+      <th>end_position</th>
+      <th>modified base code</th>
+      <th>score</th>
+      <th>strand</th>
+      <th>start position</th>
+      <th>end position</th>
+      <th>color</th>
+      <th>Nvalid_cov</th>
+      <th>fraction modified</th>
+      <th>Nmod</th>
+      <th>Ncanonical</th>
+      <th>Nother_mod</th>
+      <th>Ndelete</th>
+      <th>Nfail</th>
+      <th>Ndiff</th>
+      <th>Nnocall</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>chr1</td>
+      <td>10468</td>
+      <td>10469</td>
+      <td>m</td>
+      <td>1</td>
+      <td>.</td>
+      <td>10468</td>
+      <td>10469</td>
+      <td>255,0,0</td>
+      <td>1</td>
+      <td>0.00</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>chr1</td>
+      <td>10470</td>
+      <td>10471</td>
+      <td>m</td>
+      <td>1</td>
+      <td>.</td>
+      <td>10470</td>
+      <td>10471</td>
+      <td>255,0,0</td>
+      <td>1</td>
+      <td>100.00</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>chr1</td>
+      <td>10483</td>
+      <td>10484</td>
+      <td>m</td>
+      <td>1</td>
+      <td>.</td>
+      <td>10483</td>
+      <td>10484</td>
+      <td>255,0,0</td>
+      <td>1</td>
+      <td>100.00</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>chr1</td>
+      <td>10488</td>
+      <td>10489</td>
+      <td>m</td>
+      <td>1</td>
+      <td>.</td>
+      <td>10488</td>
+      <td>10489</td>
+      <td>255,0,0</td>
+      <td>1</td>
+      <td>100.00</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>chr1</td>
+      <td>10492</td>
+      <td>10493</td>
+      <td>m</td>
+      <td>1</td>
+      <td>.</td>
+      <td>10492</td>
+      <td>10493</td>
+      <td>255,0,0</td>
+      <td>1</td>
+      <td>100.00</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>28983090</th>
+      <td>chrUn_GL000218v1</td>
+      <td>160573</td>
+      <td>160574</td>
+      <td>m</td>
+      <td>32</td>
+      <td>.</td>
+      <td>160573</td>
+      <td>160574</td>
+      <td>255,0,0</td>
+      <td>32</td>
+      <td>15.62</td>
+      <td>5</td>
+      <td>27</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>28983091</th>
+      <td>chrUn_GL000218v1</td>
+      <td>160611</td>
+      <td>160612</td>
+      <td>m</td>
+      <td>34</td>
+      <td>.</td>
+      <td>160611</td>
+      <td>160612</td>
+      <td>255,0,0</td>
+      <td>34</td>
+      <td>61.76</td>
+      <td>21</td>
+      <td>13</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>28983092</th>
+      <td>chrUn_GL000218v1</td>
+      <td>160669</td>
+      <td>160670</td>
+      <td>m</td>
+      <td>25</td>
+      <td>.</td>
+      <td>160669</td>
+      <td>160670</td>
+      <td>255,0,0</td>
+      <td>25</td>
+      <td>52.00</td>
+      <td>13</td>
+      <td>12</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>5</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>28983093</th>
+      <td>chrUn_GL000218v1</td>
+      <td>160790</td>
+      <td>160791</td>
+      <td>m</td>
+      <td>24</td>
+      <td>.</td>
+      <td>160790</td>
+      <td>160791</td>
+      <td>255,0,0</td>
+      <td>24</td>
+      <td>66.67</td>
+      <td>16</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>28983094</th>
+      <td>chrUn_GL000218v1</td>
+      <td>160914</td>
+      <td>160915</td>
+      <td>m</td>
+      <td>19</td>
+      <td>.</td>
+      <td>160914</td>
+      <td>160915</td>
+      <td>255,0,0</td>
+      <td>19</td>
+      <td>21.05</td>
+      <td>4</td>
+      <td>15</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>28983095 rows × 18 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="plot-distributions">
+<h2>Plot distributions<a class="headerlink" href="#plot-distributions" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Create histogram for fraction_modified</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;fraction modified&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;5mC levels across all CpGs, n=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Fraction Modified (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="c1"># add a vertical line at the mean</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;fraction modified&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean (&#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;fraction modified&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/5acbadd67c94d64521f9006ad622b4009263c763ff6701eb7b3a2ffd6f3b6814.png" src="../_images/5acbadd67c94d64521f9006ad622b4009263c763ff6701eb7b3a2ffd6f3b6814.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create histogram of `score` for both 5mC and 5hmC, ignoring outliers</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;5mC coverage, n=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Score&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="c1"># add mean line</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean (&#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/dbfaad7b3069f079133a866198360b2d57379448e1a33f06f5dabda90567b9cb.png" src="../_images/dbfaad7b3069f079133a866198360b2d57379448e1a33f06f5dabda90567b9cb.png" />
+</div>
+</div>
+</section>
+<section id="index-genomic-coordinates-for-both-files">
+<h2>Index genomic coordinates for both files<a class="headerlink" href="#index-genomic-coordinates-for-both-files" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create &#39;coordinate&#39; column for merging</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;coordinate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;chrom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;start_position&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+<span class="n">df_filtered</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;modified base code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;m&#39;</span><span class="p">])]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;coordinate&#39;</span><span class="p">)</span>
+
+<span class="n">pacmap_reference</span><span class="p">[</span><span class="s1">&#39;coordinate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pacmap_reference</span><span class="p">[</span><span class="s1">&#39;chrm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="n">pacmap_reference</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">pacmap_reference</span> <span class="o">=</span> <span class="n">pacmap_reference</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;coordinate&#39;</span><span class="p">)</span>
+
+<span class="n">df_merged</span> <span class="o">=</span> <span class="n">pacmap_reference</span><span class="p">[[</span><span class="s1">&#39;name&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_filtered</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+
+<span class="c1"># Transform the fraction modified into beta values</span>
+<span class="n">df_merged</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">sample_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_merged</span><span class="p">[</span><span class="s1">&#39;fraction modified&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">df_merged</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>chrom</th>
+      <th>start_position</th>
+      <th>end_position</th>
+      <th>modified base code</th>
+      <th>score</th>
+      <th>strand</th>
+      <th>start position</th>
+      <th>end position</th>
+      <th>color</th>
+      <th>Nvalid_cov</th>
+      <th>fraction modified</th>
+      <th>Nmod</th>
+      <th>Ncanonical</th>
+      <th>Nother_mod</th>
+      <th>Ndelete</th>
+      <th>Nfail</th>
+      <th>Ndiff</th>
+      <th>Nnocall</th>
+      <th>uf_hembank_1852</th>
+    </tr>
+    <tr>
+      <th>coordinate</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>chr10:100008150</th>
+      <td>cg19212550</td>
+      <td>chr10</td>
+      <td>100008150</td>
+      <td>100008151</td>
+      <td>m</td>
+      <td>11</td>
+      <td>.</td>
+      <td>100008150</td>
+      <td>100008151</td>
+      <td>255,0,0</td>
+      <td>11</td>
+      <td>63.64</td>
+      <td>7</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.636</td>
+    </tr>
+    <tr>
+      <th>chr10:100008943</th>
+      <td>cg14405603</td>
+      <td>chr10</td>
+      <td>100008943</td>
+      <td>100008944</td>
+      <td>m</td>
+      <td>13</td>
+      <td>.</td>
+      <td>100008943</td>
+      <td>100008944</td>
+      <td>255,0,0</td>
+      <td>13</td>
+      <td>38.46</td>
+      <td>5</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.385</td>
+    </tr>
+    <tr>
+      <th>chr10:100009525</th>
+      <td>cg18561930</td>
+      <td>chr10</td>
+      <td>100009525</td>
+      <td>100009526</td>
+      <td>m</td>
+      <td>10</td>
+      <td>.</td>
+      <td>100009525</td>
+      <td>100009526</td>
+      <td>255,0,0</td>
+      <td>10</td>
+      <td>0.00</td>
+      <td>0</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>chr10:100010213</th>
+      <td>cg16423650</td>
+      <td>chr10</td>
+      <td>100010213</td>
+      <td>100010214</td>
+      <td>m</td>
+      <td>11</td>
+      <td>.</td>
+      <td>100010213</td>
+      <td>100010214</td>
+      <td>255,0,0</td>
+      <td>11</td>
+      <td>0.00</td>
+      <td>0</td>
+      <td>11</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>chr10:100010332</th>
+      <td>cg27096759</td>
+      <td>chr10</td>
+      <td>100010332</td>
+      <td>100010333</td>
+      <td>m</td>
+      <td>12</td>
+      <td>.</td>
+      <td>100010332</td>
+      <td>100010333</td>
+      <td>255,0,0</td>
+      <td>12</td>
+      <td>0.00</td>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>chr9:99907189</th>
+      <td>cg22304376</td>
+      <td>chr9</td>
+      <td>99907189</td>
+      <td>99907190</td>
+      <td>m</td>
+      <td>20</td>
+      <td>.</td>
+      <td>99907189</td>
+      <td>99907190</td>
+      <td>255,0,0</td>
+      <td>20</td>
+      <td>0.00</td>
+      <td>0</td>
+      <td>20</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>chr9:99907330</th>
+      <td>cg14153061</td>
+      <td>chr9</td>
+      <td>99907330</td>
+      <td>99907331</td>
+      <td>m</td>
+      <td>21</td>
+      <td>.</td>
+      <td>99907330</td>
+      <td>99907331</td>
+      <td>255,0,0</td>
+      <td>21</td>
+      <td>4.76</td>
+      <td>1</td>
+      <td>20</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.048</td>
+    </tr>
+    <tr>
+      <th>chr9:99909385</th>
+      <td>cg13422870</td>
+      <td>chr9</td>
+      <td>99909385</td>
+      <td>99909386</td>
+      <td>m</td>
+      <td>23</td>
+      <td>.</td>
+      <td>99909385</td>
+      <td>99909386</td>
+      <td>255,0,0</td>
+      <td>23</td>
+      <td>69.57</td>
+      <td>16</td>
+      <td>7</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.696</td>
+    </tr>
+    <tr>
+      <th>chr9:99967624</th>
+      <td>cg14233861</td>
+      <td>chr9</td>
+      <td>99967624</td>
+      <td>99967625</td>
+      <td>m</td>
+      <td>21</td>
+      <td>.</td>
+      <td>99967624</td>
+      <td>99967625</td>
+      <td>255,0,0</td>
+      <td>21</td>
+      <td>100.00</td>
+      <td>21</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.000</td>
+    </tr>
+    <tr>
+      <th>chr9:99998980</th>
+      <td>cg05469304</td>
+      <td>chr9</td>
+      <td>99998980</td>
+      <td>99998981</td>
+      <td>m</td>
+      <td>15</td>
+      <td>.</td>
+      <td>99998980</td>
+      <td>99998981</td>
+      <td>255,0,0</td>
+      <td>15</td>
+      <td>100.00</td>
+      <td>15</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.000</td>
+    </tr>
+  </tbody>
+</table>
+<p>331886 rows × 20 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="adjust-to-fit-pacmap-input-format">
+<h2>Adjust to fit PaCMAP input format<a class="headerlink" href="#adjust-to-fit-pacmap-input-format" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the fraction modified and prepare the final DataFrame</span>
+<span class="n">df_merged</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">sample_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_merged</span><span class="p">[</span><span class="s1">&#39;fraction modified&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">df_processed</span> <span class="o">=</span> <span class="n">df_merged</span><span class="p">[[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">sample_name</span><span class="p">]]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+<span class="c1"># sort columns</span>
+<span class="n">df_processed</span> <span class="o">=</span> <span class="n">df_processed</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">df_processed</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>name</th>
+      <th>cg00000109</th>
+      <th>cg00000236</th>
+      <th>cg00000292</th>
+      <th>cg00000363</th>
+      <th>cg00000622</th>
+      <th>cg00000658</th>
+      <th>cg00000714</th>
+      <th>cg00000721</th>
+      <th>cg00000734</th>
+      <th>cg00000769</th>
+      <th>...</th>
+      <th>cg27665648</th>
+      <th>cg27665659</th>
+      <th>cg27665715</th>
+      <th>cg27665767</th>
+      <th>cg27665769</th>
+      <th>cg27665860</th>
+      <th>cg27665925</th>
+      <th>cg27665985</th>
+      <th>cg27666046</th>
+      <th>cg27666123</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>uf_hembank_1852</th>
+      <td>1.0</td>
+      <td>0.913</td>
+      <td>0.615</td>
+      <td>0.174</td>
+      <td>0.0</td>
+      <td>0.964</td>
+      <td>0.25</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>1.0</td>
+      <td>0.056</td>
+      <td>1.0</td>
+      <td>0.571</td>
+      <td>0.0</td>
+      <td>0.923</td>
+      <td>0.0</td>
+      <td>0.5</td>
+      <td>0.188</td>
+      <td>0.875</td>
+    </tr>
+  </tbody>
+</table>
+<p>1 rows × 331886 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="save-results">
+<h2>Save results<a class="headerlink" href="#save-results" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_path</span> <span class="o">=</span> <span class="n">input_path</span> <span class="o">+</span> <span class="s1">&#39;pacmap/&#39;</span> <span class="o">+</span> <span class="n">sample_name</span> <span class="o">+</span> <span class="s1">&#39;_pacmap_bvalues.pkl&#39;</span>
+
+<span class="c1"># Save the final DataFrame</span>
+<span class="n">df_processed</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span>
+
+<span class="c1"># Print path to the final DataFrame</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/mnt/e/nanopore_processed/pacmap/uf_hembank_1852_pacmap_bvalues.pkl
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="appendix-1-retrospective-lower-coverage-analysis">
+<h2>Appendix 1. Retrospective lower coverage analysis<a class="headerlink" href="#appendix-1-retrospective-lower-coverage-analysis" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>samtools<span class="w"> </span>view<span class="w"> </span>-@<span class="w"> </span><span class="m">32</span><span class="w"> </span>-bh<span class="w"> </span>-s<span class="w"> </span><span class="si">${</span><span class="nv">subsampling_fraction</span><span class="si">}</span><span class="w"> </span>bam/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.bam<span class="w"> </span>&gt;<span class="w"> </span>bam/subsampled_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>_01x.bam
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./v2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2_validation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Validation Dataset</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="4_clinical_data.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Clinical Data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-data-at">Where data at?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-bed6-file-to-harmonize-probes-from-epic-array-with-nanopore">Create BED6 file to harmonize probes from EPIC array with nanopore</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-modkit-processed-file">Load modkit processed file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-distributions">Plot distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#index-genomic-coordinates-for-both-files">Index genomic coordinates for both files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjust-to-fit-pacmap-input-format">Adjust to fit PaCMAP input format</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-results">Save results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-1-retrospective-lower-coverage-analysis">Appendix 1. Retrospective lower coverage analysis</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marchi et al. @ Lamba Lab @ University of Florida.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
