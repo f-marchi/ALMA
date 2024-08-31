@@ -69,18 +69,19 @@ def plot_linked_histograms7(df, table=True, test_sample=None,
                                  'WHO 2022 Diagnosis', 
                                  'Vital Status', 'AML Epigenomic Risk', 'Risk Group AAML1831', 'Clinical Trial',
                                  'Race or ethnic group', 'Age (group years)'
-                                 ], save_html=False):
+                                 ],
+                            save_html=False):
 
     # Rank samples by P(Death) and call it "Percentile"
-    df_px = df[~df['P(Death)'].isna()]
-    df_px2 = df_px.sort_values(by='P(Death)').reset_index().reset_index(names=['Percentile']).set_index('index')
+    df_px = df[~df['P(Death) at 5y'].isna()]
+    df_px2 = df_px.sort_values(by='P(Death) at 5y').reset_index().reset_index(names=['Percentile']).set_index('index')
     df_px2['Percentile'] = df_px2['Percentile'] / len(df_px2['Percentile'])
     df2 = df.join(df_px2[['Percentile']])
     
     source = ColumnDataSource(df2)
     width = 1000
     font_size = "8pt"
-    x = 'P(Death)'
+    x = 'P(Death) at 5y'
     y = 'Percentile'
     threshold = 0.5
 
