@@ -1,0 +1,1024 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Classifiers &#8212; Acute Leukemia Methylome Atlas Study</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'v2/5_classifiers';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Visualization" href="6_plots.html" />
+    <link rel="prev" title="37-CpG Signature" href="5_signature.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Acute Leukemia Methylome Atlas Study</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">v2 Latest</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_discovery.html">Discovery Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_validation.html">Validation Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_test.html">Test Dataset (Work in Progress)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_clinical_data.html">Clinical Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_signature.html">37-CpG Signature</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Classifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_plots.html">Data Visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">v1 2022-2024</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../v1/1_discovery_dataset.html">Discovery Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1/2_validation_dataset_v2.html">Validation Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1/3_reclassification_strategy.html">Dx and Px Reclassification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1/4_models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1/5_plots.html">Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1/6_test_dataset.html">Preprocess long reads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1/7_test_models.html">Run epigenomic models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1/8_test_atlas_1852.html">UF HemBank 1852 case study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/ewasCox_vs_pacmapLGBM.html">Px Models Benchmarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/5_plots_6-17-24.html">AML-only map with new interactive prognostic and race histograms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/2_Univariate_CoxPH-EWAS_v4.html">EWAS Runs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.1_MethylScoreAML_Px_Development_v5.html">924pts-OS-35CpGs-ASH23</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.1_MethylScoreAML_Px_Development_v6.html">940pts-OS-48CpGs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.1_MethylScoreAML_Px_Development_v7.html">940pts-EFS-55CpGs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.2_MethylScoreAML_Px_Validation_Peds_v2.html">OS-35CpGs-Validation-ASH23</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.2_MethylScoreAML_Px_Validation_Peds_v3.html">OS-48CpGs-Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.2_MethylScoreAML_Px_Validation_Peds_v4.html">EFS-55CpGs-Validation</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/v2/5_classifiers.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Classifiers</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-the-data-at">Where the data at</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduce-dimensionality-with-pacmap">Reduce dimensionality with PaCMAP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-hyperparameters-fit-and-save">Set hyperparameters, fit, and save</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-models-to-new-data">Apply models to new data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-results-with-clinical-data">Merge results with clinical data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocess-data-for-classifiers">Preprocess data for classifiers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-samples-for-prognostic-model">Select samples for prognostic model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-samples-dx">Select samples Dx</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-x-and-y">Define X and y</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-classifiers">Benchmark classifiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-results">Save results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="classifiers">
+<h1>Classifiers<a class="headerlink" href="#classifiers" title="Link to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please only use the following versions:
+<code class="docutils literal notranslate"><span class="pre">python</span></code>: 3.8.16
+<code class="docutils literal notranslate"><span class="pre">pacmap</span></code>: 0.7.0
+<code class="docutils literal notranslate"><span class="pre">lightgbm</span></code>: 3.3.5
+<code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>: 1.2.2</p>
+</div>
+<section id="where-the-data-at">
+<h2>Where the data at<a class="headerlink" href="#where-the-data-at" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">mount</span> <span class="o">=</span> <span class="s1">&#39;/mnt/e/ALMA/&#39;</span>
+<span class="n">input_path</span> <span class="o">=</span> <span class="n">mount</span> <span class="o">+</span> <span class="s1">&#39;Intermediate_Files/&#39;</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="n">mount</span> <span class="o">+</span> <span class="s1">&#39;Processed_Files/&#39;</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="load-data">
+<h2>Load data<a class="headerlink" href="#load-data" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read df_discovery and df_validation</span>
+<span class="n">df_discovery</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span>
+    <span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;3314samples_331557cpgs_withbatchcorrection_bvalues.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span>
+
+<span class="n">df_validation</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span>
+    <span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;201samples_427375cpgs_withbatchcorrection_bvalues.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()[</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span>
+<span class="sa">f</span><span class="s1">&#39; Discovery dataset (df_discovery) contains </span><span class="si">{</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> </span><span class="se">\</span>
+<span class="s1">columns (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (samples).&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span>
+<span class="sa">f</span><span class="s1">&#39; Validation dataset (df_validation) contains </span><span class="si">{</span><span class="n">df_validation</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> </span><span class="se">\</span>
+<span class="s1">columns (5mC nucleotides/probes) and </span><span class="si">{</span><span class="n">df_validation</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> rows (samples).&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Discovery dataset (df_discovery) contains 331557 columns (5mC nucleotides/probes) and 3314 rows (samples).
+ Validation dataset (df_validation) contains 331557 columns (5mC nucleotides/probes) and 201 rows (samples).
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="reduce-dimensionality-with-pacmap">
+<h2>Reduce dimensionality with PaCMAP<a class="headerlink" href="#reduce-dimensionality-with-pacmap" title="Link to this heading">#</a></h2>
+<section id="set-hyperparameters-fit-and-save">
+<h3>Set hyperparameters, fit, and save<a class="headerlink" href="#set-hyperparameters-fit-and-save" title="Link to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pacmap</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PaCMAP version:&#39;</span><span class="p">,</span> <span class="n">pacmap</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+
+<span class="c1"># components_list = [2, 5]</span>
+<span class="c1"># for components in components_list:</span>
+    
+<span class="c1">#     reducer = pacmap.PaCMAP(n_components=components, </span>
+<span class="c1">#                             n_neighbors=10, </span>
+<span class="c1">#                             MN_ratio=0.4, </span>
+<span class="c1">#                             FP_ratio=16.0, </span>
+<span class="c1">#                             lr=0.1, </span>
+<span class="c1">#                             num_iters=5000,</span>
+<span class="c1">#                             random_state=42,</span>
+<span class="c1">#                             save_tree=True)</span>
+
+<span class="c1">#     # Project the high dimensional dataset into a low-dimensional embedding</span>
+<span class="c1">#     embedding_training = reducer.fit_transform(df_discovery.to_numpy(dtype=&#39;float16&#39;))</span>
+
+<span class="c1">#     # Save reducer</span>
+<span class="c1">#     pacmap.save(reducer, output_path + f&#39;pacmap/pacmap_{components}d_model_alma&#39;)</span>
+
+<span class="c1">#     # Create column names</span>
+<span class="c1">#     cols = [&#39;PaCMAP &#39;+ str(i+1) + f&#39; of {components}&#39; for i in range(components)]</span>
+
+<span class="c1">#     # Turn embedding into dataframe</span>
+<span class="c1">#     df_embedding = pd.DataFrame(embedding_training, columns=cols, index=df_discovery.index).to_pickle(</span>
+<span class="c1">#         output_path+f&#39;pacmap/pacmap_{components}d_embedding.pkl&#39;)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PaCMAP version: 0.7.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="apply-models-to-new-data">
+<h3>Apply models to new data<a class="headerlink" href="#apply-models-to-new-data" title="Link to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">apply_pacmap_model_to_new_data</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">components</span><span class="p">):</span>
+
+    <span class="c1"># Load reducer</span>
+    <span class="n">reducer</span> <span class="o">=</span> <span class="n">pacmap</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;pacmap/pacmap_</span><span class="si">{</span><span class="n">components</span><span class="si">}</span><span class="s1">d_model_alma&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Project the high dimensional dataset into existing embedding space and return the embedding.</span>
+    <span class="n">embedding</span> <span class="o">=</span> <span class="n">reducer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float16&#39;</span><span class="p">))</span>
+
+    <span class="c1"># Create column names</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;PaCMAP &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39; of </span><span class="si">{</span><span class="n">components</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">components</span><span class="p">)]</span>
+
+    <span class="c1"># Turn embedding into dataframe</span>
+    <span class="n">df_embedding</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">embedding</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">cols</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df_embedding</span>
+
+
+<span class="c1"># Apply pacmap model to discovery dataset</span>
+<span class="n">train_2d</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;pacmap/pacmap_2d_embedding.pkl&#39;</span><span class="p">)</span>
+<span class="n">train_5d</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;pacmap/pacmap_5d_embedding.pkl&#39;</span><span class="p">)</span>
+
+<span class="c1"># # Apply pacmap model to validation dataset</span>
+<span class="n">test_2d</span> <span class="o">=</span> <span class="n">apply_pacmap_model_to_new_data</span><span class="p">(</span><span class="n">df_validation</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">test_5d</span> <span class="o">=</span> <span class="n">apply_pacmap_model_to_new_data</span><span class="p">(</span><span class="n">df_validation</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="merge-results-with-clinical-data">
+<h3>Merge results with clinical data<a class="headerlink" href="#merge-results-with-clinical-data" title="Link to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Join 2d and 5d</span>
+<span class="n">train</span> <span class="o">=</span> <span class="n">train_2d</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">train_5d</span><span class="p">)</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">test_2d</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">test_5d</span><span class="p">)</span>
+
+<span class="c1"># Concatenate train and test</span>
+<span class="n">train_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">])</span>
+
+<span class="c1"># Read clinical data</span>
+<span class="n">clinical_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;clinical_data.xlsx&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Join train_test with clinical data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">train_test</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">clinical_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+</section>
+<section id="preprocess-data-for-classifiers">
+<h2>Preprocess data for classifiers<a class="headerlink" href="#preprocess-data-for-classifiers" title="Link to this heading">#</a></h2>
+<section id="select-samples-for-prognostic-model">
+<h3>Select samples for prognostic model<a class="headerlink" href="#select-samples-for-prognostic-model" title="Link to this heading">#</a></h3>
+<p>Here we select samples that have both <code class="docutils literal notranslate"><span class="pre">vital</span> <span class="pre">status</span></code> and <code class="docutils literal notranslate"><span class="pre">time</span> <span class="pre">to</span> <span class="pre">death</span></code> information available publicly. No ALL or MPAL samples are included in this analysis.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop the samples with missing labels for the selected column</span>
+<span class="n">df_px</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vital Status at 5y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+
+<span class="c1"># Select only the samples from the following clinical trials</span>
+<span class="n">df_px2</span> <span class="o">=</span> <span class="n">df_px</span><span class="p">[</span><span class="n">df_px</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;AAML0531&#39;</span><span class="p">,</span> <span class="s1">&#39;AAML1031&#39;</span><span class="p">,</span> <span class="s1">&#39;AAML03P1&#39;</span><span class="p">,</span> <span class="s1">&#39;AML02&#39;</span><span class="p">,</span> <span class="s1">&#39;AML08&#39;</span><span class="p">])]</span>
+
+<span class="c1"># Select only diagnostic samples</span>
+<span class="n">df_px2</span> <span class="o">=</span> <span class="n">df_px2</span><span class="p">[</span><span class="n">df_px2</span><span class="p">[</span><span class="s1">&#39;Sample Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;Diagnosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Primary Blood Derived Cancer - Bone Marrow&#39;</span><span class="p">,</span> <span class="s1">&#39;Primary Blood Derived Cancer - Peripheral Blood&#39;</span><span class="p">])]</span>
+
+<span class="c1"># Remove duplicates</span>
+<span class="n">df_px2</span> <span class="o">=</span> <span class="n">df_px2</span><span class="p">[</span><span class="o">~</span><span class="n">df_px2</span><span class="p">[</span><span class="s1">&#39;Patient_ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">)]</span>
+
+<span class="c1"># print the number of samples dropped and the amount remaining</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">df_px2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;samples removed.&#39;</span>\
+<span class="p">,</span> <span class="n">df_px2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;samples remaining.&#39;</span><span class="p">)</span>
+
+<span class="n">df_px2</span><span class="p">[</span><span class="s1">&#39;Train-Test&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2369 samples removed. 1146 samples remaining.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train-Test
+Train Sample    946
+Test Sample     200
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="select-samples-dx">
+<h3>Select samples Dx<a class="headerlink" href="#select-samples-dx" title="Link to this heading">#</a></h3>
+<p>Here we select samples that have <code class="docutils literal notranslate"><span class="pre">WHO</span> <span class="pre">2022</span> <span class="pre">Diagnosis</span></code> information available publicly. See chapter on clinical data processing for how programatic reclassification to WHO 2022 was performed.</p>
+<p>We also exclude <code class="docutils literal notranslate"><span class="pre">AML</span> <span class="pre">with</span> <span class="pre">t(9;22);</span> <span class="pre">BCR::ABL1</span></code> subtype category due to having fewer than 5 samples representing it (n=3).</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># drop the samples with missing labels for the ELN AML 2022 Diagnosis</span>
+<span class="n">df_dx</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;WHO 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+
+<span class="c1"># exclude the classes with fewer than 10 samples</span>
+<span class="n">df_dx2</span> <span class="o">=</span> <span class="n">df_dx</span><span class="p">[</span><span class="o">~</span><span class="n">df_dx</span><span class="p">[</span><span class="s1">&#39;WHO 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;AML with t(9;22); BCR::ABL1&#39;</span><span class="p">])]</span>
+
+<span class="c1"># print the number of samples dropped and the amount remaining</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">df_dx2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;samples removed.&#39;</span>\
+<span class="p">,</span> <span class="n">df_dx2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;samples remaining.&#39;</span><span class="p">)</span>
+
+<span class="n">df_dx2</span><span class="p">[</span><span class="s1">&#39;Train-Test&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>946 samples removed. 2569 samples remaining.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train-Test
+Train Sample    2467
+Test Sample      102
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-x-and-y">
+<h3>Define X and y<a class="headerlink" href="#define-x-and-y" title="Link to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">custom_train_test_split</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">feature_columns</span><span class="p">,</span> <span class="n">target_column</span><span class="p">,</span> <span class="n">split_column</span><span class="p">):</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">feature_columns</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float16&#39;</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">target_column</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+    <span class="n">train_mask</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">split_column</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Train Sample&#39;</span>
+    <span class="n">test_mask</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">split_column</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Test Sample&#39;</span>
+
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train_mask</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">test_mask</span><span class="p">]</span>
+    <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">train_mask</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">test_mask</span><span class="p">]</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X_train shape:&#39;</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39;X_test shape:&#39;</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span>
+
+<span class="c1"># Execution</span>
+<span class="n">X_train_dx</span><span class="p">,</span> <span class="n">X_test_dx</span><span class="p">,</span> <span class="n">y_train_dx</span><span class="p">,</span> <span class="n">y_test_dx</span> <span class="o">=</span> <span class="n">custom_train_test_split</span><span class="p">(</span><span class="n">df_dx2</span><span class="p">,</span> <span class="n">test_5d</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span><span class="s1">&#39;WHO 2022 Diagnosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Train-Test&#39;</span><span class="p">)</span>
+<span class="n">X_train_px</span><span class="p">,</span> <span class="n">X_test_px</span><span class="p">,</span> <span class="n">y_train_px</span><span class="p">,</span> <span class="n">y_test_px</span> <span class="o">=</span> <span class="n">custom_train_test_split</span><span class="p">(</span><span class="n">df_px2</span><span class="p">,</span> <span class="n">test_5d</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span><span class="s1">&#39;Vital Status at 5y&#39;</span><span class="p">,</span> <span class="s1">&#39;Train-Test&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X_train shape: (2467, 5) X_test shape: (102, 5)
+X_train shape: (946, 5) X_test shape: (200, 5)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="benchmark-classifiers">
+<h2>Benchmark classifiers<a class="headerlink" href="#benchmark-classifiers" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">lightgbm</span> <span class="kn">import</span> <span class="n">LGBMClassifier</span>
+<span class="kn">import</span> <span class="nn">joblib</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">source.data_visualization</span> <span class="kn">import</span> <span class="n">plot_confusion_matrix_stacked</span>
+
+
+<span class="k">def</span> <span class="nf">benchmark_classifier</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">)):</span>
+
+    <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># &#39;num_leaves&#39;: [ 5, 6, 7, 8, 9, 10], # number of leaves in full tree</span>
+    <span class="c1"># &#39;max_depth&#39;: [3,4,5,6,7,8,9,10],  # maximum depth of a tree</span>
+    <span class="c1"># &#39;learning_rate&#39;: [0.01],  # learning rate</span>
+    <span class="c1"># &#39;n_estimators&#39;: [50, 100, 500],  # number of trees (or rounds)</span>
+    <span class="s1">&#39;reg_alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span>  <span class="c1"># L1 regularization</span>
+    <span class="s1">&#39;reg_lambda&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>  <span class="c1"># L2 regularization</span>
+    <span class="s1">&#39;class_weight&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;balanced&#39;</span><span class="p">],</span>  <span class="c1"># weights associated with classes</span>
+    
+    <span class="p">}</span>
+
+    <span class="c1"># Initialize the LGBM Classifier with regularization</span>
+    <span class="n">lgbm</span> <span class="o">=</span> <span class="n">LGBMClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> 
+                          
+    <span class="c1"># Perform grid search with stratified cross-validation</span>
+    <span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">lgbm</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+                               <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;roc_auc_ovr_weighted&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Fit the grid search to the data</span>
+    <span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best parameters: </span><span class="si">{</span><span class="n">grid_search</span><span class="o">.</span><span class="n">best_params_</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Get the best model</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span>
+
+    <span class="n">plot</span> <span class="o">=</span> <span class="n">plot_confusion_matrix_stacked</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span>
+                                  <span class="n">tick_fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">label_fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">clf</span><span class="p">,</span> <span class="n">plot</span>
+
+    <span class="c1"># Plot the confusion matrix</span>
+
+<span class="c1"># Benchmark, train</span>
+<span class="n">lgbm_dx_model</span><span class="p">,</span> <span class="n">plot</span> <span class="o">=</span> <span class="n">benchmark_classifier</span><span class="p">(</span><span class="n">X_train_dx</span><span class="p">,</span> <span class="n">y_train_dx</span><span class="p">,</span> <span class="n">X_test_dx</span><span class="p">,</span> <span class="n">y_test_dx</span><span class="p">)</span>
+<span class="n">lgbm_px_model</span><span class="p">,</span> <span class="n">plot</span> <span class="o">=</span> <span class="n">benchmark_classifier</span><span class="p">(</span><span class="n">X_train_px</span><span class="p">,</span> <span class="n">y_train_px</span><span class="p">,</span> <span class="n">X_test_px</span><span class="p">,</span> <span class="n">y_test_px</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># Save models</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">lgbm_px_model</span><span class="p">,</span> <span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;lgbm/lgbm_px_model.pkl&#39;</span><span class="p">)</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">lgbm_dx_model</span><span class="p">,</span> <span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;lgbm/lgbm_dx_model.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best parameters: {&#39;class_weight&#39;: &#39;balanced&#39;, &#39;reg_alpha&#39;: 1, &#39;reg_lambda&#39;: 0.1}
+Overall accuracy score in Train with 10-fold CV: 0.911
+Overall accuracy score in Validation: 0.912
+</pre></div>
+</div>
+<img alt="../_images/289bf0c5f14ba59bec47aac709fc7b6d483881e933ddd3c4ae69709a56eebd06.png" src="../_images/289bf0c5f14ba59bec47aac709fc7b6d483881e933ddd3c4ae69709a56eebd06.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best parameters: {&#39;class_weight&#39;: &#39;balanced&#39;, &#39;reg_alpha&#39;: 10, &#39;reg_lambda&#39;: 1}
+Overall accuracy score in Train with 10-fold CV: 0.704
+Overall accuracy score in Validation: 0.680
+</pre></div>
+</div>
+<img alt="../_images/a6f1cb063fbe4d2cb44229d059af19dafa68b9709aa5a844b89fe27641aab07b.png" src="../_images/a6f1cb063fbe4d2cb44229d059af19dafa68b9709aa5a844b89fe27641aab07b.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/mnt/e/ALMA/Processed_Files/lgbm/lgbm_dx_model.pkl&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="save-results">
+<h2>Save results<a class="headerlink" href="#save-results" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import dependencies again in case only this cell is run</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">joblib</span>
+
+<span class="c1"># Load models</span>
+<span class="n">lgbm_px_model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;lgbm/lgbm_px_model.pkl&#39;</span><span class="p">)</span>
+<span class="n">lgbm_dx_model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;lgbm/lgbm_dx_model.pkl&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">save_predictions</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">classifier</span><span class="p">,</span> <span class="n">model_name</span><span class="p">):</span>
+
+    <span class="c1"># ignore sklearn warnings</span>
+    <span class="kn">import</span> <span class="nn">warnings</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Select necessary columns</span>
+    <span class="n">df_features</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">test_5d</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+
+    <span class="c1"># Predict using the selected columns</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_features</span><span class="p">)</span>
+
+    <span class="c1"># Predict probabilities using the selected columns</span>
+    <span class="n">probabilities</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">df_features</span><span class="p">)</span>
+
+    <span class="c1"># Convert predictions to a Series with the same index as df_features</span>
+    <span class="n">predictions_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df_features</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">model_name</span><span class="p">)</span>
+
+    <span class="c1"># Convert probabilities to a DataFrame with the same index as df_features and the same columns as the classes</span>
+    <span class="n">probabilities_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">probabilities</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df_features</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">classifier</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="c1"># Add &quot; - predict_proba&quot; to the column names</span>
+    <span class="n">probabilities_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span><span class="s1">&#39;P(&#39;</span> <span class="o">+</span> <span class="n">probabilities_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
+
+    <span class="c1"># Transform classes of the predictions into integers based on unique values in the classes</span>
+    <span class="n">probabilities_df</span><span class="p">[</span><span class="n">model_name</span> <span class="o">+</span> <span class="s1">&#39;_int&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">predictions_series</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="n">c</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">classifier</span><span class="o">.</span><span class="n">classes_</span><span class="p">)})</span>
+
+    <span class="c1"># Join predictions with the original DataFrame (already indexed)</span>
+    <span class="n">df_joined</span> <span class="o">=</span> <span class="n">predictions_series</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">probabilities_df</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df_joined</span>
+
+<span class="c1"># Execution</span>
+<span class="n">df_pred_px</span> <span class="o">=</span> <span class="n">save_predictions</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">classifier</span><span class="o">=</span><span class="n">lgbm_px_model</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;AML Epigenomic Risk&#39;</span><span class="p">)</span>
+<span class="n">df_pred_dx</span> <span class="o">=</span> <span class="n">save_predictions</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">classifier</span><span class="o">=</span><span class="n">lgbm_dx_model</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;AL Epigenomic Subtype&#39;</span><span class="p">)</span>
+
+<span class="c1"># Map the classes to more desirable labels (low and high risk)</span>
+<span class="n">df_pred_px</span><span class="p">[</span><span class="s1">&#39;AML Epigenomic Risk&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_pred_px</span><span class="p">[</span><span class="s1">&#39;AML Epigenomic Risk&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s1">&#39;Alive&#39;</span><span class="p">:</span> <span class="s1">&#39;Low&#39;</span><span class="p">,</span> <span class="s1">&#39;Dead&#39;</span><span class="p">:</span> <span class="s1">&#39;High&#39;</span><span class="p">})</span>
+<span class="n">df_pred_px</span> <span class="o">=</span> <span class="n">df_pred_px</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;P(Alive)&#39;</span><span class="p">:</span> <span class="s1">&#39;P(Remission) at 5y&#39;</span><span class="p">,</span> <span class="s1">&#39;P(Dead)&#39;</span><span class="p">:</span> <span class="s1">&#39;P(Death) at 5y&#39;</span><span class="p">})</span>
+
+<span class="c1"># Select ALL samples</span>
+<span class="n">lymphoblastic_leukemia_samples</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;NOPHO ALL92-2000&#39;</span><span class="p">,</span> <span class="s1">&#39;French GRAALL 2003–2005&#39;</span><span class="p">,</span> <span class="s1">&#39;TARGET ALL&#39;</span><span class="p">])]</span><span class="o">.</span><span class="n">index</span>
+
+<span class="c1"># Remove ALL samples from df_pred_px since they should not be part of the AML Epigenomic Risk</span>
+<span class="n">df_pred_px</span> <span class="o">=</span> <span class="n">df_pred_px</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">lymphoblastic_leukemia_samples</span><span class="p">)</span>
+
+<span class="c1"># Join predictions with clinical data</span>
+<span class="n">df_combined</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_pred_px</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_pred_dx</span><span class="p">)</span>
+
+<span class="c1"># Save df_combined</span>
+<span class="n">df_combined</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;../data/alma_main_results.xlsx&#39;</span><span class="p">)</span>
+
+<span class="c1"># Print saved path</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dataset saved to ../data/alma_main_results.xlsx&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset saved to ../data/alma_main_results.xlsx
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="watermark">
+<h2>Watermark<a class="headerlink" href="#watermark" title="Link to this heading">#</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Author: Francisco_Marchi@Lamba_Lab_UF
+
+Python implementation: CPython
+Python version       : 3.8.18
+IPython version      : 8.12.2
+
+numpy   : 1.24.3
+pandas  : 2.0.2
+pacmap  : 0.7.0
+sklearn : 1.2.2
+lightgbm: 3.3.5
+
+Compiler    : GCC 11.4.0
+OS          : Linux
+Release     : 5.15.133.1-microsoft-standard-WSL2
+Machine     : x86_64
+Processor   : x86_64
+CPU cores   : 32
+Architecture: 64bit
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Updating to python 3.10 caused substantial delays in lightgbm, so please use the following versions:
+<code class="docutils literal notranslate"><span class="pre">python</span></code>: 3.8.16
+<code class="docutils literal notranslate"><span class="pre">pacmap</span></code>: 0.7.0
+<code class="docutils literal notranslate"><span class="pre">lightgbm</span></code>: 3.3.5
+<code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>: 1.2.2</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./v2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="5_signature.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">37-CpG Signature</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="6_plots.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Visualization</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-the-data-at">Where the data at</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduce-dimensionality-with-pacmap">Reduce dimensionality with PaCMAP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-hyperparameters-fit-and-save">Set hyperparameters, fit, and save</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-models-to-new-data">Apply models to new data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-results-with-clinical-data">Merge results with clinical data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocess-data-for-classifiers">Preprocess data for classifiers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-samples-for-prognostic-model">Select samples for prognostic model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-samples-dx">Select samples Dx</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-x-and-y">Define X and y</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-classifiers">Benchmark classifiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-results">Save results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marchi et al. @ Lamba Lab @ University of Florida.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
