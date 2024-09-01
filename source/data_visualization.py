@@ -17,34 +17,7 @@ from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, accuracy_s
 def draw_kaplan_meier(df, model_name, save_plot=False, figsize=(8, 10), 
                       add_risk_counts=False, save_survival_table=False,
                       trialname=None, show_ci=False):
-    """
-    Returns a Kaplan-Meier plot with:
 
-        1. Hazard Ratio
-        2. P-value
-        3. Risk counts
-        4. Survival table
-
-    Parameters:
-    ----------
-    scorename: str
-        Name of your model (and a column in df).
-    df: object
-        A dataframe containing:
-            1. Continuous predictions of Cox Regression model under "scorename".
-            2. efs/os information in the format of "efs.time" and "efs.evnt".
-    save_plot: bool, default=False
-        Set to True if you wish to save the plot.It will be saved under "../Figures/ForestPlot/"
-    trialname: str
-        Name of your clinical trial or dataset.
-    scorename: str
-        Name of your model.
-
-    Returns:
-    --------
-        A magnificent double kaplan-meier figure.
-
-    """
     # Import libraries for Kaplan Meier
     from lifelines.plotting import add_at_risk_counts
     from lifelines import KaplanMeierFitter
@@ -77,6 +50,7 @@ def draw_kaplan_meier(df, model_name, save_plot=False, figsize=(8, 10),
 
         try:
             # Calculate Hazard Ratio (HZ) and p-value (p)
+            df[model_name + '_int'] = df[model_name].map({'High':1, 'Low':0})
             X_CPH = df[[model_name + '_int', t, e]]
             cph = CoxPHFitter()
             HZ = cph.fit(X_CPH, t, event_col=e)
@@ -87,7 +61,7 @@ def draw_kaplan_meier(df, model_name, save_plot=False, figsize=(8, 10),
 
             # Annotate HZ, CI, and p
             i.annotate(f'HR: {hz:.4f} (95% CI: {ci_lower:.2f}, {ci_upper:.2f})\n p-value: {p:.4f}',
-               xy=(9.75, 0.085), xycoords='data',
+               xy=(4.75, 0.085), xycoords='data',
                ha='right', va='center', fontsize=11,
                bbox={'boxstyle': 'round', 'facecolor': 'none',
                      'edgecolor': 'lightgray'})
@@ -110,8 +84,8 @@ def draw_kaplan_meier(df, model_name, save_plot=False, figsize=(8, 10),
         i.set_ylim(0, 1)
         i.set_ylabel("est. probability of survival $\hat{S}(t)$")
 
-    surv_curves(i=ax[0], t='efs.time', e='efs.evnt')
-    surv_curves(i=ax[1], t='os.time', e='os.evnt')
+    surv_curves(i=ax[0], t='efs.time at 5y', e='efs.evnt at 5y')
+    surv_curves(i=ax[1], t='os.time at 5y', e='os.evnt at 5y')
 
     ax[0].set_title('Event-Free Survival', loc='left',
                     pad=10, fontweight='bold', fontsize=10)
@@ -120,7 +94,7 @@ def draw_kaplan_meier(df, model_name, save_plot=False, figsize=(8, 10),
     plt.subplots_adjust(wspace=0, hspace=0.2)
     plt.suptitle(model_name + " in " + trialname + ", n=" + str(len(df)),
                  fontsize=11, y=0.94, fontweight='bold')
-    plt.xlim(0, 10)
+    plt.xlim(0, 5)
     plt.xlabel("time $t$ (years)")
 
     # Save plot figure

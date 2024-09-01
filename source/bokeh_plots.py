@@ -53,18 +53,19 @@ def plot_linked_scatters(df, table=True, test_sample=None,
                         x_range= (-45,40), y_range=(-50,45), 
                         cols = ['AL Epigenomic Subtype', 'Hematopoietic Entity','WHO 2022 Diagnosis', 
                                   'Vital Status','AML Epigenomic Risk', 'Risk Group AAML1831', 'Clinical Trial',
-                                  'Race or ethnic group','Age (group years)']):
+                                  'Race or ethnic group','Age (group years)'],
+                        p_death = 'P(Death) at 5y'):
 
     # Rank samples by P(Death) and call it "Percentile"
-    df_px = df[~df['P(Death)'].isna()]
-    df_px2 = df_px.sort_values(by='P(Death)').reset_index().reset_index(names=['Percentile']).set_index('index')
+    df_px = df[~df[p_death].isna()]
+    df_px2 = df_px.sort_values(by=p_death).reset_index().reset_index(names=['Percentile']).set_index('index')
     df_px2['Percentile'] = df_px2['Percentile'] / len(df_px2['Percentile'])
     df2 = df.join(df_px2[['Percentile']])
     
     source = ColumnDataSource(df2)
     width = 1000
     font_size = "8pt"
-    x= 'P(Death)'
+    x= p_death
     y = 'Percentile'
     threshold = 0.5
 
