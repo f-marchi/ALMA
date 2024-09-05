@@ -493,7 +493,6 @@ def clean_aml02(df):
                                             bins=[-np.inf, 30, np.inf],
                                             labels=['<30', '≥30'])
     df['Race'] = df['Race'].replace({'Black': 'Black or African American',
-                                     'Pacific Islander': 'Native Hawaiian or other Pacific Islander',
                                      'Multiple Race  (NOS)': 'Other'})
     df['Risk Group'] = df['Risk Group'].replace({'High': 'High Risk',
                                                  'Standard': 'Standard Risk',
@@ -566,7 +565,6 @@ def clean_aml08(df):
                                             bins=[-np.inf, 30, np.inf],
                                             labels=['<30', '≥30'])
     df['Race'] = df['Race'].replace({'Black': 'Black or African American',
-                                     'Pacific Islander': 'Native Hawaiian or other Pacific Islander',
                                      'Multiple Race  (NOS)': 'Other'})
     df['Risk Group'] = df['Risk Group'].replace({'High': 'High Risk',
                                                  'Standard': 'Standard Risk',
@@ -633,6 +631,9 @@ def clean_cog(df):
     normal_BM_samples = df[df['Sample Type'].isin(['Bone Marrow Normal (GSE124413)'])].index
     # For rows `normal_BM_samples` in `clinical_data`, set `Vital Status` to `Alive`
     df.loc[normal_BM_samples, 'Vital Status'] = 'Alive'
+    df.loc[normal_BM_samples, 'Overall Survival Time in Days'] = 3650
+    df.loc[normal_BM_samples, 'Event Free Survival Time in Days'] = 3650
+    df.loc[normal_BM_samples, 'Clinical Trial'] = 'BM normal AAML0531'
 
     df['Karyotype Complexity 4'] = pd.to_numeric(df['Cytogenetic Complexity'].replace({'>6': 6, 'More than 6': 6, '4 or more': 4}),
                                                  errors='ignore').replace({range(4, 100): '4 or more'})
@@ -666,6 +667,8 @@ def clean_cog(df):
                                             labels=['<30', '≥30'])
 
     df['Dx at Acquisition'] = df['Comment']
+    df['Race or ethnic group'] = df['Race or ethnic group'].replace({'Native Hawaiian or other Pacific Islander': 'Pacific Islander'})
+
     # df['Tissue Code'] = df['Tissue Code'].replace({'09A': '09A - Primary blood derived cancer - bone marrow',
     #                                                '03A': '03A - Primary blood derived cancer - peripheral blood',
     #                                                '14A': '14A - Bone marrow normal',
