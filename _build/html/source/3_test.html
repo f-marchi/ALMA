@@ -1,0 +1,740 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Test Dataset (Work in Progress) &#8212; Acute Leukemia Methylome Atlas Study</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/3_test';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Clinical Data" href="4_clinical_data.html" />
+    <link rel="prev" title="Validation Dataset" href="2_validation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Acute Leukemia Methylome Atlas Study</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Latest</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_discovery.html">Discovery Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_validation.html">Validation Dataset</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Test Dataset (Work in Progress)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_clinical_data.html">Clinical Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_signature.html">37-CpG Signature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_classifiers.html">Classifiers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_plots.html">Data Visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Previous 2022-2024</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../v1/1_discovery_dataset.html">Discovery Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1/2_validation_dataset_v2.html">Validation Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1/3_reclassification_strategy.html">Dx and Px Reclassification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1/4_models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1/5_plots.html">Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1/6_test_dataset.html">Preprocess long reads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1/7_test_models.html">Run epigenomic models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1/8_test_atlas_1852.html">UF HemBank 1852 case study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/ewasCox_vs_pacmapLGBM.html">Px Models Benchmarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/5_plots_6-17-24.html">AML-only map with new interactive prognostic and race histograms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/2_Univariate_CoxPH-EWAS_v4.html">EWAS Runs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.1_MethylScoreAML_Px_Development_v5.html">924pts-OS-35CpGs-ASH23</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.1_MethylScoreAML_Px_Development_v6.html">940pts-OS-48CpGs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.1_MethylScoreAML_Px_Development_v7.html">940pts-EFS-55CpGs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.2_MethylScoreAML_Px_Validation_Peds_v2.html">OS-35CpGs-Validation-ASH23</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.2_MethylScoreAML_Px_Validation_Peds_v3.html">OS-48CpGs-Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tests/3.2_MethylScoreAML_Px_Validation_Peds_v4.html">EFS-55CpGs-Validation</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/source/3_test.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Test Dataset (Work in Progress)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-data-at">Where data at?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-1-retrospective-lower-coverage-analysis">Appendix 1. Retrospective lower coverage analysis</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="test-dataset-work-in-progress">
+<h1>Test Dataset (Work in Progress)<a class="headerlink" href="#test-dataset-work-in-progress" title="Link to this heading">#</a></h1>
+<p>Placeholder for when all 20 nanopore samples have been sequenced and aligned and modcalled. We will put them here and merge with main dataset.</p>
+<ol class="arabic">
+<li><p>Converting unaligned CRAM to FASTQ for Minimap2 aligment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>samtools<span class="w"> </span>bam2fq<span class="w"> </span>-@<span class="w"> </span><span class="m">32</span><span class="w"> </span>-T<span class="w"> </span><span class="m">1</span><span class="w"> </span>--reference<span class="w"> </span>./ref/hg38.fna<span class="w"> </span>cram/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.pass.cram<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+minimap2<span class="w"> </span>-y<span class="w"> </span>-t<span class="w"> </span><span class="m">32</span><span class="w"> </span>-ax<span class="w"> </span>lr:hq<span class="w"> </span>ref/hg38.fna<span class="w"> </span>-<span class="w"> </span>&gt;<span class="w"> </span>sam/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.sam
+</pre></div>
+</div>
+</li>
+<li><p>Converting SAM to BAM, sorting, and indexing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>samtools<span class="w"> </span>view<span class="w"> </span>-@<span class="w"> </span><span class="m">32</span><span class="w"> </span>-bS<span class="w"> </span>sam/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.sam<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+samtools<span class="w"> </span>sort<span class="w"> </span>-@<span class="w"> </span><span class="m">32</span><span class="w"> </span>-<span class="w"> </span>--write-index<span class="w"> </span>-o<span class="w"> </span>bam/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.bam<span class="w"> </span>-O<span class="w"> </span>BAM<span class="w"> </span>--reference<span class="w"> </span>ref/hg38.fna
+</pre></div>
+</div>
+</li>
+<li><p>Creating a BedMethyl file with Modkit</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>modkit<span class="w"> </span>pileup<span class="w"> </span>bam/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.bam<span class="w"> </span>bed/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.bed<span class="w"> </span>-t<span class="w"> </span><span class="m">32</span><span class="w"> </span>--combine-strands<span class="w"> </span>--cpg<span class="w"> </span>--ignore<span class="w"> </span>h<span class="w"> </span>--ref<span class="w"> </span>ref/hg38.fna
+</pre></div>
+</div>
+</li>
+</ol>
+<section id="where-data-at">
+<h2>Where data at?<a class="headerlink" href="#where-data-at" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+
+<span class="c1"># Get a list of all CSV files in the directory</span>
+<span class="n">file_list</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;../../pacmap/*.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create an empty list to store the dataframes</span>
+<span class="n">dfs</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Read each CSV file and append it to the list</span>
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">dfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Concatenate all dataframes in the list</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cg00000109</th>
+      <th>cg00000236</th>
+      <th>cg00000292</th>
+      <th>cg00000363</th>
+      <th>cg00000622</th>
+      <th>cg00000658</th>
+      <th>cg00000714</th>
+      <th>cg00000721</th>
+      <th>cg00000734</th>
+      <th>cg00000769</th>
+      <th>...</th>
+      <th>cg21278787</th>
+      <th>cg22708233</th>
+      <th>cg23138682</th>
+      <th>cg23282051</th>
+      <th>cg24677744</th>
+      <th>cg25023752</th>
+      <th>cg26185531</th>
+      <th>cg26293201</th>
+      <th>cg26576875</th>
+      <th>cg07148304</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>uf_hembank_1852</th>
+      <td>1.000</td>
+      <td>0.913</td>
+      <td>0.615</td>
+      <td>0.174</td>
+      <td>0.0</td>
+      <td>0.964</td>
+      <td>0.250</td>
+      <td>1.000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>uf_hembank_1831</th>
+      <td>1.000</td>
+      <td>0.800</td>
+      <td>0.786</td>
+      <td>0.143</td>
+      <td>0.0</td>
+      <td>0.933</td>
+      <td>0.250</td>
+      <td>0.933</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>uf_hembank_1829</th>
+      <td>0.889</td>
+      <td>0.632</td>
+      <td>0.750</td>
+      <td>0.000</td>
+      <td>0.0</td>
+      <td>1.000</td>
+      <td>0.100</td>
+      <td>1.000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.25</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>uf_hembank_1830</th>
+      <td>0.960</td>
+      <td>0.500</td>
+      <td>0.615</td>
+      <td>0.294</td>
+      <td>0.0</td>
+      <td>1.000</td>
+      <td>0.000</td>
+      <td>1.000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>uf_hembank_1832</th>
+      <td>1.000</td>
+      <td>1.000</td>
+      <td>0.800</td>
+      <td>0.000</td>
+      <td>0.0</td>
+      <td>1.000</td>
+      <td>0.000</td>
+      <td>1.000</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>uf_hembank_1841</th>
+      <td>0.714</td>
+      <td>0.900</td>
+      <td>0.667</td>
+      <td>0.000</td>
+      <td>0.0</td>
+      <td>0.923</td>
+      <td>0.091</td>
+      <td>0.929</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>6 rows × 331963 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="appendix-1-retrospective-lower-coverage-analysis">
+<h2>Appendix 1. Retrospective lower coverage analysis<a class="headerlink" href="#appendix-1-retrospective-lower-coverage-analysis" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>samtools<span class="w"> </span>view<span class="w"> </span>-@<span class="w"> </span><span class="m">32</span><span class="w"> </span>-bh<span class="w"> </span>-s<span class="w"> </span><span class="si">${</span><span class="nv">subsampling_fraction</span><span class="si">}</span><span class="w"> </span>bam/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.bam<span class="w"> </span>&gt;<span class="w"> </span>bam/subsampled_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>_01x.bam
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./source"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2_validation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Validation Dataset</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="4_clinical_data.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Clinical Data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-data-at">Where data at?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-1-retrospective-lower-coverage-analysis">Appendix 1. Retrospective lower coverage analysis</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marchi et al. @ Lamba Lab @ University of Florida.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

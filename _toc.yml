@@ -2,17 +2,17 @@ format: jb-book
 root: index.ipynb
 parts:
 
-  - caption: v2 Latest
+  - caption: Latest
     chapters:
-      - file: v2/1_discovery.ipynb
-      - file: v2/2_validation.ipynb
-      - file: v2/3_test.ipynb
-      - file: v2/4_clinical_data.ipynb
-      - file: v2/5_signature.ipynb
-      - file: v2/5_classifiers.ipynb
-      - file: v2/6_plots.ipynb
+      - file: source/1_discovery.ipynb
+      - file: source/2_validation.ipynb
+      - file: source/3_test.ipynb
+      - file: source/4_clinical_data.ipynb
+      - file: source/5_signature.ipynb
+      - file: source/5_classifiers.ipynb
+      - file: source/6_plots.ipynb
 
-  - caption: v1 2022-2024
+  - caption: Previous 2022-2024
     chapters:
       - file: v1/1_discovery_dataset.ipynb
       - file: v1/2_validation_dataset_v2.ipynb
