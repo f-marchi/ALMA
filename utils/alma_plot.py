@@ -32,8 +32,8 @@ def create_risk_plot(df, source, width, x, threshold, test_sample):
                            text_color=color, text_alpha=0.8, text_align=align))
 
     scatter = p.circle(x, 'Percentile', source=source, color="steelblue", alpha=0.1, 
-                       size=7, hover_alpha=0.5, line_color=None, hover_fill_color="midnightblue",
-                       hover_line_color="white", selection_color="midnightblue", selection_alpha=0.7,
+                       size=7, hover_alpha=0.6, line_color=None, hover_fill_color="midnightblue",
+                       hover_line_color="white", selection_color="midnightblue", selection_alpha=0.8,
                        selection_line_color="white")
 
     p.add_tools(HoverTool(renderers=[scatter], mode='vline', tooltips=None))
