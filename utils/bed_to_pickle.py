@@ -1,4 +1,3 @@
-#python3.10
 import pandas as pd
 import numpy as np
 from pathlib import Path
@@ -18,33 +17,29 @@ BED_COLUMNS = [
 ]
 
 def read_pacmap_reference(file_path):
-    df = pd.read_csv(
+    return pd.read_csv(
         file_path, 
         sep='\t', 
-        names=['chrm', 'start', 'end', 'name', 'score', 'strand'],
         usecols=['chrm', 'start', 'name'],  # Only read necessary columns
-        dtype={'chrm': str, 'start': int, 'name': str}  # Specify dtypes for faster reading
-    )
-    df['coordinate'] = df['chrm'] + ':' + df['start'].astype(str)
-    return df.set_index('coordinate')
+        names=['chrm', 'start', 'end', 'name', 'score', 'strand'], 
+        dtype={'chrm': str, 'start': int, 'name': str}
+    ).assign(coordinate=lambda df: df['chrm'] + ':' + df['start'].astype(str)).set_index('coordinate')
 
 def read_sample_data(file_path):
     return pd.read_csv(
         file_path, 
         sep='\t', 
-        names=BED_COLUMNS,
-        usecols=['chrom', 'start_position', 'modified_base_code', 'fraction_modified'],  # Only read necessary columnsb
-        dtype={'chrom': str, 'start_position': int, 'modified_base_code': str, 'fraction_modified': float}  # Specify dtypes for faster reading
+        usecols=['chrom', 'start_position', 'modified_base_code', 'fraction_modified'],  # Only read necessary columns
+        names=BED_COLUMNS, 
+        dtype={'chrom': str, 'start_position': int, 'modified_base_code': str, 'fraction_modified': float}
     )
 
 def process_sample(pacmap_ref, sample_df, sample_name):
-    # Filter and create coordinate column in one step
-    sample_filtered = sample_df[sample_df['modified_base_code'] == 'm']
-    sample_filtered['coordinate'] = sample_filtered['chrom'] + ':' + sample_filtered['start_position'].astype(str)
-    sample_filtered.set_index('coordinate', inplace=True)
+    # Filter directly while creating the coordinate column
+    sample_df['coordinate'] = sample_df['chrom'] + ':' + sample_df['start_position'].astype(str)
     
-    # Merge data
-    merged = pacmap_ref[['name']].join(sample_filtered[['fraction_modified']], how='inner')
+    # Perform merging operation
+    merged = pacmap_ref[['name']].merge(sample_df[['coordinate', 'fraction_modified']], left_index=True, right_on='coordinate', how='inner')
     
     # Calculate beta values and prepare final Series
     beta_values = (merged['fraction_modified'] / 100).round(3)
@@ -55,7 +50,7 @@ def process_sample(pacmap_ref, sample_df, sample_name):
 
 def process_directory(directory_path, pacmap_reference):
     results = []
-    bed_files = sorted(directory_path.glob('*.bed'))  # Sort bed files to ensure consistent order
+    bed_files = sorted(directory_path.glob('*.bed'))  # Sort bed files for consistent order
     
     for bed_file in tqdm(bed_files, desc="Processing samples", unit="sample"):
         sample_name = bed_file.stem  # Use filename without extension as sample name
