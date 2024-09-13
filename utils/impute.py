@@ -47,6 +47,6 @@ def load_model_and_impute_by_median(df, model_path):
     imputed_data = loaded_imputer.transform(df.T)
     
     # Convert back to a DataFrame with original shape
-    imputed_df = pd.DataFrame(imputed_data.T, columns=df.columns, index=df.index)
+    imputed_df = pd.DataFrame(imputed_data.T, columns=df.columns, index=df.index).round(3).astype('float32')
     
     return imputed_df
