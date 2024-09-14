@@ -148,32 +148,8 @@ def plot_nonzero_coef_freq(raw_coefs, mean_coefs, threshold=0.85, savefig=False,
     plt.show()
 
 
-def generate_coxph_score(coef_mean, x, df, score_name, train_test='train', rpart_outcome='os.time'):
-    """Generates a dataframe with score/Cox PH predictions
-
-    Parameters:
-    ----------
-    coef_mean: object
-        List of mean coeficients from CoxPH fit.
-        Note: this value has to be a pandas series.
-    df: object
-        Dataframe to add your results to.
-    x: object
-        A dataframe of variables/features that will be used to calculate the score.
-    score_name: 
-        Name of your score/prediction column.
-    train_test: str | float, default = 'train' 
-        Use 'train' or float between 0 and 1 for cutoff percentile.
-        If test, use pre-determined number for binary threshold/cutoff.
-    rpart_outcome: str, default = 'os.time'
-        Name of the outcome column.
-
-    Returns:
-    --------
-        A dataframe with calculated quantitative and categorical score/model predictions
-        and the value of the cutoff on the continuous variable.
-
-    """
+def generate_coxph_score(coef_mean, x, df, score_name, cutoff='quantile', cutoff_value=None, rpart_outcome=None):
+    """Generates a dataframe with score/Cox PH predictions and a cutoff value for binarization."""
 
     # Calculate score in test(validation) data
     b = np.arange(len(coef_mean))
@@ -189,8 +165,8 @@ def generate_coxph_score(coef_mean, x, df, score_name, train_test='train', rpart
     # Save calculated score as a separate column of the original dataframe
     df[score_name] = df3.sum(axis=1)
 
-    # Determine train
-    if train_test == 'train':
+    # Determine cutoff
+    if cutoff == 'rpart':
         
         from sklearn.tree import DecisionTreeRegressor
 
@@ -204,8 +180,11 @@ def generate_coxph_score(coef_mean, x, df, score_name, train_test='train', rpart
         # Get the threshold value for split
         i = tree.tree_.threshold[0]
 
+    if cutoff == 'quantile':
+        i = df[score_name].quantile(cutoff_value)
+
     else:
-        i = train_test
+        i = cutoff
 
     print(f"Continuous score cut at the value of {round(i,4)}")
 

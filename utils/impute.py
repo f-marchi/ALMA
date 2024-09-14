@@ -3,7 +3,7 @@ import joblib
 import numpy as np
 import pandas as pd
 
-def impute_and_save_by_median(df, output_path):
+def impute_and_save(df, output_path, strategy='mean'):
     """
     Impute NaN values in the given DataFrame, save the imputer model, and return the imputed DataFrame.
     
@@ -16,7 +16,7 @@ def impute_and_save_by_median(df, output_path):
     pandas.DataFrame: Imputed DataFrame with the same shape as input
     """
 
-    imputer = SimpleImputer(strategy='median', missing_values=np.nan)
+    imputer = SimpleImputer(strategy=strategy, missing_values=np.nan)
     imputer.fit(df.T)
     imputed_data = imputer.transform(df.T)
     
@@ -25,12 +25,12 @@ def impute_and_save_by_median(df, output_path):
     
     # Save the imputer model
     joblib.dump(imputer, output_path)
-    print("CpGs imputed by median and model saved at", output_path)
+    print(f"CpGs imputed by {strategy} and model saved at", output_path)
     
     return imputed_df
 
 import joblib
-def load_model_and_impute_by_median(df, model_path):
+def load_model_and_impute(df, model_path):
     # Load the imputer model
     loaded_imputer = joblib.load(model_path)
     
