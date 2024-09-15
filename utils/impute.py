@@ -1,7 +1,8 @@
-from sklearn.impute import SimpleImputer
-import joblib
 import numpy as np
+import joblib
 import pandas as pd
+from sklearn.impute import SimpleImputer
+
 
 def impute_and_save(df, output_path, strategy='mean'):
     """
@@ -29,7 +30,7 @@ def impute_and_save(df, output_path, strategy='mean'):
     
     return imputed_df
 
-import joblib
+
 def load_model_and_impute(df, model_path):
     # Load the imputer model
     loaded_imputer = joblib.load(model_path)
