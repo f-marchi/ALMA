@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
@@ -62,7 +62,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Validation Dataset" href="2_validation.html" />
-    <link rel="prev" title="Overview" href="../index.html" />
+    <link rel="prev" title="Overview" href="0_overview.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -143,7 +143,7 @@
     
   
 
-<a class="navbar-brand logo" href="../index.html">
+<a class="navbar-brand logo" href="0_overview.html">
   
   
   
@@ -169,7 +169,7 @@
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../index.html">
+                <a class="reference internal" href="0_overview.html">
                     Overview
                 </a>
             </li>
@@ -178,14 +178,15 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Discovery Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_validation.html">Validation Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_test.html">Test Dataset (Work in Progress)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_test.html">Test Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_clinical_data.html">Clinical Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_signature.html">37-CpG Signature</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_classifiers.html">Classifiers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6_plots.html">Data Visualization</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Previous 2022-2024</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Previous</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="6_plots_original.html">Data Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../v1/1_discovery_dataset.html">Discovery Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../v1/2_validation_dataset_v2.html">Validation Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../v1/3_reclassification_strategy.html">Dx and Px Reclassification</a></li>
@@ -368,10 +369,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Evaluate Missing Values</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-impute-remaining-missing-values">Step 7. Impute remaining missing values</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Evaluate Missing Values</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-impute-remaining-missing-values">Step 7. Impute remaining missing values</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-remove-outliers-by-pca">Step 8. Remove outliers by PCA</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-dataset-without-batch-correction">Save dataset without batch correction</a></li>
 </ul>
@@ -635,7 +633,12 @@ document.write(`
 </section>
 <section id="step-3-remove-sex-linked-and-non-cpg-probes">
 <h2>Step 3. Remove sex-linked and non-CpG probes<a class="headerlink" href="#step-3-remove-sex-linked-and-non-cpg-probes" title="Link to this heading">#</a></h2>
-<p>We remove non-CpG probes because when processing long-read sequencing samples later on, it is substantially faster to call 5mCG modifications rather than 5mC.</p>
+<p>We remove the following:</p>
+<ol class="arabic simple">
+<li><p>Sex-linked probes to avoid duplicated clusters (for males and females) as well as issues with XY chr representation.</p></li>
+<li><p>Non-CpG probes because when processing long-read sequencing samples later on, it is substantially faster to call 5mCG modifications rather than 5mC.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cg05280794</span></code> because none of the sequencing samples have modcalls for this CpG probe. Unclear why at this time.</p></li>
+</ol>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -648,12 +651,19 @@ document.write(`
 
 <span class="c1"># Remove rows that do not begin with `cg`</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;cg&#39;</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;After removing non-cg probes, the dataset contains </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> CpGs.&#39;</span><span class="p">)</span>
+
+<span class="c1"># Remove row `cg05280794` </span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;cg05280794&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;After removing row `cg05280794`, the dataset contains </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> CpGs.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>450k: Removed 9570 sex-linked probes from 3845 samples. 395501 probes remaining.
+After removing non-cg probes, the dataset contains 393069 CpGs.
+After removing row `cg05280794`, the dataset contains 393068 CpGs.
 </pre></div>
 </div>
 </div>
@@ -679,7 +689,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../_images/909828ecc78f929f2aa4065d3f2b7083c03e5b38e14b3c1c91324ce5212da7f5.png" src="../_images/909828ecc78f929f2aa4065d3f2b7083c03e5b38e14b3c1c91324ce5212da7f5.png" />
+<img alt="../_images/44eadc84a4cd88df7886dbb20e25f0a4dc2bcf93113483d3e26cd437e068016a.png" src="../_images/44eadc84a4cd88df7886dbb20e25f0a4dc2bcf93113483d3e26cd437e068016a.png" />
 </div>
 </div>
 </section>
@@ -877,7 +887,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>61512 probes removed. 331557 probes remaining.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>61512 probes removed. 331556 probes remaining.
 </pre></div>
 </div>
 </div>
@@ -901,7 +911,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../_images/feab35f84244fadd2b80eacc9e3b5a0e2bd991a7a8745452734da5297ff230fa.png" src="../_images/feab35f84244fadd2b80eacc9e3b5a0e2bd991a7a8745452734da5297ff230fa.png" />
+<img alt="../_images/43e7cf8cd8c8b4457c6dbcd489c35a338b557af2371efaf88f12c350ff0e1310.png" src="../_images/43e7cf8cd8c8b4457c6dbcd489c35a338b557af2371efaf88f12c350ff0e1310.png" />
 </div>
 </div>
 </section>
@@ -909,11 +919,12 @@ document.write(`
 <section id="step-7-impute-remaining-missing-values">
 <h2>Step 7. Impute remaining missing values<a class="headerlink" href="#step-7-impute-remaining-missing-values" title="Link to this heading">#</a></h2>
 <ul>
-<li><p><strong>Method</strong>: Mean by batch (it replaces each missing value by averaging all the known values for that CpG across samples within their batch).</p></li>
+<li><p><strong>Method</strong>: sklearn’s <code class="docutils literal notranslate"><span class="pre">SimpleImputer</span></code>.</p></li>
 <li><p><strong>Why simple mean for imputations</strong>:</p>
-<p><em>In conclusion, the consolidated and manufacturer encouraged practice to use β-value seems appropriate for DNA methylation data imputation. The choice of the best imputation method is somewhat more subtle and depends essentially on the available computational resources and the amount of missing values. Independently of the expected missingness mechanisms, regression-based methods provide on average more accurate estimates of the missing values. However, imputations with regression methods in the presence of limited computational resources can be a rather challenging task. In such cases, the simple mean approach can surprisingly be a better choice than more sophisticated methods</em> (<a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/32600298/">Lena et al., 2020</a>).</p>
+<p><em>In conclusion, the consolidated and manufacturer encouraged practice to use β-value seems appropriate for DNA methylation data imputation. The choice of the best imputation method is somewhat more subtle and depends essentially on the available computational resources and the amount of missing values. Independently of the expected missingness mechanisms, regression-based methods provide on average more accurate estimates of the missing values. However, imputations with regression methods in the presence of limited computational resources can be a rather challenging task. In such cases, the simple mean approach can surprisingly be a better choice than more sophisticated methods</em> (<a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/32600298/">Lena et al., 2020</a>). We chose median rather than mean to decrease outlier influence. Benchmarks done by the paper above and others reported that the increase in error across sophisticated and simple methods is roughly similar (<a class="reference external" href="https://scikit-learn.org/stable/auto_examples/impute/plot_missing_values.html#sphx-glr-auto-examples-impute-plot-missing-values-py">see here</a>), which places simple imputation as an equivalently error-prone method compared to others but vastly simpler and faster.</p>
 </li>
-<li><p><strong>We acknowledge that this step inevitably introduces bias</strong>: More sophisticated methods, however, also do. Benchmarks done by the paper above and others reported that the increase in error across methods is roughly similar (<a class="reference external" href="https://scikit-learn.org/stable/auto_examples/impute/plot_missing_values.html#sphx-glr-auto-examples-impute-plot-missing-values-py">see here</a>), which places <code class="docutils literal notranslate"><span class="pre">imputation</span> <span class="pre">by</span> <span class="pre">mean</span></code> as an equivalently error-prone method compared to others but vastly simpler and faster.</p></li>
+<li><p><strong>Other attempts</strong>: We have attempted KNN and MissForest. However, they take forever and always crash the kernel due to the size and dimensionality of the dataset. See PC specs in the watermark section. In the future I will use pipelines that don’t require imputation to begin with.</p></li>
+<li><p><strong>Model Saved</strong>: We are also saving the CpG imputation values from the discovery dataset here to apply them to the test datasets later.</p></li>
 </ul>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -922,56 +933,31 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">utils.impute</span> <span class="kn">import</span> <span class="n">impute_and_save</span>
 
-<span class="k">def</span> <span class="nf">impute_with_mean_of_batch</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;This function imputes missing values with the mean of the batch the sample belongs to.&#39;&#39;&#39;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">impute_and_save</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">output_path</span><span class="o">=</span><span class="s1">&#39;../models/imputer_model.joblib&#39;</span><span class="p">)</span>
 
-    <span class="c1"># Separate samples based on first level of the multi-index and fill NaNs with mean</span>
-    <span class="n">df_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">levels</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span>
-    
-    <span class="c1"># Merge the dataframes in multi-index format</span>
-    <span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">df_dict</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
-    
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;NaN values filled by the mean probe value of the batch.&#39;</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="n">df2</span>
-
-<span class="c1"># Impute missing values</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">impute_with_mean_of_batch</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NaN values filled by the mean probe value of the batch.
-</pre></div>
-</div>
-</div>
-</div>
-<section id="id2">
-<h3>Evaluate Missing Values<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the missing values</span>
+<span class="c1"># Plot the missing values</span>
 <span class="n">msno</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">20000</span><span class="p">:</span><span class="mi">20050</span><span class="p">,:]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: underflow encountered in cast
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CpGs imputed by mean and model saved at ../models/imputer_model.joblib
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../_images/a5c83adbfe8efae35dafedfe5acaee8b4919fabc54b04f228c27915b8e3cb703.png" src="../_images/a5c83adbfe8efae35dafedfe5acaee8b4919fabc54b04f228c27915b8e3cb703.png" />
+<img alt="../_images/5533326c87efa06367cd409029d08aeacc3b1529776165c7e40f38d2477e8f09.png" src="../_images/5533326c87efa06367cd409029d08aeacc3b1529776165c7e40f38d2477e8f09.png" />
 </div>
 </div>
-</section>
 </section>
 <section id="step-8-remove-outliers-by-pca">
 <h2>Step 8. Remove outliers by PCA<a class="headerlink" href="#step-8-remove-outliers-by-pca" title="Link to this heading">#</a></h2>
@@ -1052,7 +1038,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/c2c72bd74ecff0ba2c6f49b73d811d7b7418489af14c09c4d654e3926bb6effe.png" src="../_images/c2c72bd74ecff0ba2c6f49b73d811d7b7418489af14c09c4d654e3926bb6effe.png" />
+<img alt="../_images/41190cd715c993a7534d2488ee3bb070f055212ba732ff43722a154cdf15aa64.png" src="../_images/41190cd715c993a7534d2488ee3bb070f055212ba732ff43722a154cdf15aa64.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Removed 11 outliers. 3314 samples remaining.
 </pre></div>
 </div>
@@ -1092,7 +1078,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved at: /mnt/e/ALMA/Intermediate_Files/3314samples_331557cpgs_nobatchcorrection_bvalues.pkl
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved at: /mnt/e/ALMA/Intermediate_Files/3314samples_331556cpgs_nobatchcorrection_bvalues.pkl
 </pre></div>
 </div>
 </div>
@@ -1171,7 +1157,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/142429fe3e3923a792290e35ffa5124d7abf87dccc1e3481494681651134dd4f.png" src="../_images/142429fe3e3923a792290e35ffa5124d7abf87dccc1e3481494681651134dd4f.png" />
+<img alt="../_images/2537ad9bc6fa9925854f3fa31463b6d090cb14feb5463d61b810b2b233be7aea.png" src="../_images/2537ad9bc6fa9925854f3fa31463b6d090cb14feb5463d61b810b2b233be7aea.png" />
 </div>
 </div>
 </section>
@@ -1184,7 +1170,7 @@ Succesfully corrected batch effects in the training dataset.
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;Batch&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;Batch&#39;</span><span class="p">)</span>
 
 <span class="n">dataset_title</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">samples_</span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1">cpgs_withbatchcorrection_bvalues.pkl&#39;</span>
 
@@ -1196,7 +1182,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved at: /mnt/e/ALMA/Intermediate_Files/3314samples_331557cpgs_withbatchcorrection_bvalues.pkl
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved at: /mnt/e/ALMA/Intermediate_Files/3314samples_331556cpgs_withbatchcorrection_bvalues.pkl
 </pre></div>
 </div>
 </div>
@@ -1340,20 +1326,24 @@ git<span class="w"> </span>push
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Author: Francisco_Marchi@Lamba_Lab_UF
 
+Last updated: 2024-09-14
+
 Python implementation: CPython
-Python version       : 3.8.16
-IPython version      : 8.12.2
+Python version       : 3.8.18
+IPython version      : 8.12.3
 
 methylcheck: 0.8.5
-pandas     : 2.0.2
+pandas     : 2.0.3
 
-Compiler    : GCC 11.3.0
+Compiler    : GCC 11.4.0
 OS          : Linux
 Release     : 5.15.133.1-microsoft-standard-WSL2
 Machine     : x86_64
 Processor   : x86_64
-CPU cores   : 20
+CPU cores   : 32
 Architecture: 64bit
+
+Git repo: git@github.com:f-marchi/ALMA.git
 </pre></div>
 </div>
 </div>
@@ -1392,7 +1382,7 @@ Architecture: 64bit
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../index.html"
+       href="0_overview.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -1442,10 +1432,7 @@ Architecture: 64bit
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Evaluate Missing Values</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-impute-remaining-missing-values">Step 7. Impute remaining missing values</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Evaluate Missing Values</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-impute-remaining-missing-values">Step 7. Impute remaining missing values</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-remove-outliers-by-pca">Step 8. Remove outliers by PCA</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-dataset-without-batch-correction">Save dataset without batch correction</a></li>
 </ul>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Test Dataset (Work in Progress) &#8212; Acute Leukemia Methylome Atlas Study</title>
+    <title>Test Dataset &#8212; Acute Leukemia Methylome Atlas Study</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
@@ -143,7 +143,7 @@
     
   
 
-<a class="navbar-brand logo" href="../index.html">
+<a class="navbar-brand logo" href="0_overview.html">
   
   
   
@@ -169,7 +169,7 @@
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../index.html">
+                <a class="reference internal" href="0_overview.html">
                     Overview
                 </a>
             </li>
@@ -178,14 +178,15 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_discovery.html">Discovery Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_validation.html">Validation Dataset</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Test Dataset (Work in Progress)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Test Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_clinical_data.html">Clinical Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_signature.html">37-CpG Signature</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_classifiers.html">Classifiers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6_plots.html">Data Visualization</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Previous 2022-2024</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Previous</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="6_plots_original.html">Data Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../v1/1_discovery_dataset.html">Discovery Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../v1/2_validation_dataset_v2.html">Validation Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../v1/3_reclassification_strategy.html">Dx and Px Reclassification</a></li>
@@ -341,7 +342,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Test Dataset (Work in Progress)</h1>
+    <h1>Test Dataset</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -351,8 +352,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-data-at">Where data at?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-1-retrospective-lower-coverage-analysis">Appendix 1. Retrospective lower coverage analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-the-data-at">Where the data at?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-pacmap-reference-file">Create PaCMAP reference file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combine-samples-into-one-dataset">Combine samples into one dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-missing-values">Evaluate missing values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impute-remaining-missing-values">Impute remaining missing values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-batch-corrected-beta-values-dataset">Save batch-corrected beta-values dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
 </ul>
             </nav>
         </div>
@@ -364,58 +372,87 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="test-dataset-work-in-progress">
-<h1>Test Dataset (Work in Progress)<a class="headerlink" href="#test-dataset-work-in-progress" title="Link to this heading">#</a></h1>
-<p>Placeholder for when all 20 nanopore samples have been sequenced and aligned and modcalled. We will put them here and merge with main dataset.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="test-dataset">
+<h1>Test Dataset<a class="headerlink" href="#test-dataset" title="Link to this heading">#</a></h1>
 <ol class="arabic">
-<li><p>Converting unaligned CRAM to FASTQ for Minimap2 aligment:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>samtools<span class="w"> </span>bam2fq<span class="w"> </span>-@<span class="w"> </span><span class="m">32</span><span class="w"> </span>-T<span class="w"> </span><span class="m">1</span><span class="w"> </span>--reference<span class="w"> </span>./ref/hg38.fna<span class="w"> </span>cram/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.pass.cram<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
-minimap2<span class="w"> </span>-y<span class="w"> </span>-t<span class="w"> </span><span class="m">32</span><span class="w"> </span>-ax<span class="w"> </span>lr:hq<span class="w"> </span>ref/hg38.fna<span class="w"> </span>-<span class="w"> </span>&gt;<span class="w"> </span>sam/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.sam
+<li><p>Basecall and align using Dorado and minimap2:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/dorado-0.7.3-linux-x64/bin/dorado<span class="w"> </span>basecaller<span class="w"> </span>hac,5mCG_5hmCG<span class="w"> </span>uf1848/20240905_1712_P2S-02395-A_PAW87958_2d796b97/pod5/<span class="w"> </span>--reference<span class="w"> </span>ref/hg38.fna
+--trim<span class="w"> </span>adapters<span class="w"> </span>&gt;<span class="w"> </span>uf1848/uf1848_hac5_unsorted.bam
 </pre></div>
 </div>
 </li>
-<li><p>Converting SAM to BAM, sorting, and indexing:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>samtools<span class="w"> </span>view<span class="w"> </span>-@<span class="w"> </span><span class="m">32</span><span class="w"> </span>-bS<span class="w"> </span>sam/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.sam<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
-samtools<span class="w"> </span>sort<span class="w"> </span>-@<span class="w"> </span><span class="m">32</span><span class="w"> </span>-<span class="w"> </span>--write-index<span class="w"> </span>-o<span class="w"> </span>bam/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.bam<span class="w"> </span>-O<span class="w"> </span>BAM<span class="w"> </span>--reference<span class="w"> </span>ref/hg38.fna
+<li><p>Sort and index bam:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>samtools<span class="w"> </span>sort<span class="w"> </span>--write-index<span class="w"> </span>-o<span class="w"> </span>uf1857_hac430.bam<span class="w"> </span>-O<span class="w"> </span>BAM<span class="w"> </span>--reference<span class="w"> </span>ref/hg38.fna<span class="w"> </span>uf1857/uf1857_hac430_unsorted.bam
 </pre></div>
 </div>
 </li>
-<li><p>Creating a BedMethyl file with Modkit</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>modkit<span class="w"> </span>pileup<span class="w"> </span>bam/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.bam<span class="w"> </span>bed/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.bed<span class="w"> </span>-t<span class="w"> </span><span class="m">32</span><span class="w"> </span>--combine-strands<span class="w"> </span>--cpg<span class="w"> </span>--ignore<span class="w"> </span>h<span class="w"> </span>--ref<span class="w"> </span>ref/hg38.fna
+<li><p>Create a BedMethyl file with Modkit</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>modkit<span class="w"> </span>pileup<span class="w"> </span>bam/uf1829.bam<span class="w"> </span>bed/uf1829.bed<span class="w"> </span>-t<span class="w"> </span><span class="m">32</span><span class="w"> </span>--combine-strands<span class="w"> </span>--cpg<span class="w"> </span>--ignore<span class="w"> </span>h<span class="w"> </span>--ref<span class="w"> </span>ref/hg38.fna<span class="w"> </span>--no-filtering
 </pre></div>
 </div>
 </li>
 </ol>
-<section id="where-data-at">
-<h2>Where data at?<a class="headerlink" href="#where-data-at" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
+<section id="where-the-data-at">
+<h2>Where the data at?<a class="headerlink" href="#where-the-data-at" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="c1"># Get a list of all CSV files in the directory</span>
-<span class="n">file_list</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;../../pacmap/*.csv&#39;</span><span class="p">)</span>
-
-<span class="c1"># Create an empty list to store the dataframes</span>
-<span class="n">dfs</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="c1"># Read each CSV file and append it to the list</span>
-<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">dfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-
-<span class="c1"># Concatenate all dataframes in the list</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span>
+<span class="n">mount</span> <span class="o">=</span> <span class="s1">&#39;/mnt/e/ALMA/&#39;</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="n">mount</span> <span class="o">+</span> <span class="s1">&#39;Intermediate_Files/&#39;</span>
+<span class="n">zhou2016_probes_path</span> <span class="o">=</span> <span class="n">mount</span> <span class="o">+</span> <span class="s1">&#39;UnreliableProbesList_Zhou2016/EPIC.anno.GRCh38.tsv&#39;</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+</section>
+<section id="create-pacmap-reference-file">
+<h2>Create PaCMAP reference file<a class="headerlink" href="#create-pacmap-reference-file" title="Link to this heading">#</a></h2>
+<p>Specifically, create a BED6 file to harmonize CpG probes from EPIC array with their matching genomic locations nanopore sequencing.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # read df_discovery and df_validation</span>
+<span class="c1"># df_discovery = pd.read_pickle(</span>
+<span class="c1">#     output_path+&#39;3314samples_331556cpgs_withbatchcorrection_bvalues.pkl&#39;).sort_index().iloc[:,1:]</span>
+
+<span class="c1"># # Load the list of suboptimal probes</span>
+<span class="c1"># array_reference = pd.read_csv(zhou2016_probes_path, sep=&#39;\t&#39;,index_col=0)</span>
+
+<span class="c1"># pacmap_reference = array_reference.loc[df_discovery.columns].reset_index()</span>
+
+<span class="c1"># # change values in `orientation` column to match the orientation of the probes in the discovery dataset</span>
+<span class="c1"># pacmap_reference[&#39;orientation&#39;] = pacmap_reference[&#39;orientation&#39;].map({&#39;down&#39;: &#39;-&#39;, &#39;up&#39;: &#39;+&#39;})</span>
+<span class="c1"># pacmap_reference[&#39;score&#39;] = 0</span>
+
+<span class="c1"># # Rename `IlmnID` to `name` to follow BED standard</span>
+<span class="c1"># pacmap_reference = pacmap_reference.rename(columns={&#39;IlmnID&#39;: &#39;name&#39;, &#39;orientation&#39;: &#39;strand&#39;})</span>
+
+<span class="c1"># # Order columns</span>
+<span class="c1"># pacmap_reference = pacmap_reference[[&#39;chrm&#39;, &#39;start&#39;, &#39;end&#39;, &#39;name&#39;, &#39;score&#39;, &#39;strand&#39;, ]]</span>
+
+<span class="c1"># # Sort by `chrm` and `start`</span>
+<span class="c1"># pacmap_reference = pacmap_reference.sort_values(by=[&#39;chrm&#39;, &#39;start&#39;])</span>
+
+<span class="c1"># pacmap_reference.to_csv(&#39;../data/pacmap_reference.bed&#39;, sep=&#39;\t&#39;, index=False, header=False)</span>
+
+<span class="n">pacmap_reference</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/pacmap_reference.bed&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span>  <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;chrm&#39;</span><span class="p">,</span> <span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">,</span> <span class="s1">&#39;strand&#39;</span><span class="p">])</span>
+<span class="n">pacmap_reference</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -435,184 +472,540 @@ samtools<span class="w"> </span>sort<span class="w"> </span>-@<span class="w"> <
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>cg00000109</th>
-      <th>cg00000236</th>
-      <th>cg00000292</th>
-      <th>cg00000363</th>
-      <th>cg00000622</th>
-      <th>cg00000658</th>
-      <th>cg00000714</th>
-      <th>cg00000721</th>
-      <th>cg00000734</th>
-      <th>cg00000769</th>
-      <th>...</th>
-      <th>cg21278787</th>
-      <th>cg22708233</th>
-      <th>cg23138682</th>
-      <th>cg23282051</th>
-      <th>cg24677744</th>
-      <th>cg25023752</th>
-      <th>cg26185531</th>
-      <th>cg26293201</th>
-      <th>cg26576875</th>
-      <th>cg07148304</th>
+      <th>chrm</th>
+      <th>start</th>
+      <th>end</th>
+      <th>name</th>
+      <th>score</th>
+      <th>strand</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>uf_hembank_1852</th>
-      <td>1.000</td>
-      <td>0.913</td>
-      <td>0.615</td>
-      <td>0.174</td>
-      <td>0.0</td>
-      <td>0.964</td>
-      <td>0.250</td>
-      <td>1.000</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <th>0</th>
+      <td>chr1</td>
+      <td>69590</td>
+      <td>69592</td>
+      <td>cg21870274</td>
+      <td>0</td>
+      <td>+</td>
     </tr>
     <tr>
-      <th>uf_hembank_1831</th>
-      <td>1.000</td>
-      <td>0.800</td>
-      <td>0.786</td>
-      <td>0.143</td>
-      <td>0.0</td>
-      <td>0.933</td>
-      <td>0.250</td>
-      <td>0.933</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <th>1</th>
+      <td>chr1</td>
+      <td>864702</td>
+      <td>864704</td>
+      <td>cg08258224</td>
+      <td>0</td>
+      <td>-</td>
     </tr>
     <tr>
-      <th>uf_hembank_1829</th>
-      <td>0.889</td>
-      <td>0.632</td>
-      <td>0.750</td>
-      <td>0.000</td>
-      <td>0.0</td>
-      <td>1.000</td>
-      <td>0.100</td>
-      <td>1.000</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.25</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>NaN</td>
+      <th>2</th>
+      <td>chr1</td>
+      <td>870160</td>
+      <td>870162</td>
+      <td>cg16619049</td>
+      <td>0</td>
+      <td>-</td>
     </tr>
     <tr>
-      <th>uf_hembank_1830</th>
-      <td>0.960</td>
-      <td>0.500</td>
-      <td>0.615</td>
-      <td>0.294</td>
-      <td>0.0</td>
-      <td>1.000</td>
-      <td>0.000</td>
-      <td>1.000</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>...</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <th>3</th>
+      <td>chr1</td>
+      <td>877158</td>
+      <td>877160</td>
+      <td>cg18147296</td>
+      <td>0</td>
+      <td>-</td>
     </tr>
     <tr>
-      <th>uf_hembank_1832</th>
-      <td>1.000</td>
-      <td>1.000</td>
-      <td>0.800</td>
-      <td>0.000</td>
-      <td>0.0</td>
-      <td>1.000</td>
-      <td>0.000</td>
-      <td>1.000</td>
-      <td>0.0</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <th>4</th>
+      <td>chr1</td>
+      <td>898802</td>
+      <td>898804</td>
+      <td>cg13938959</td>
+      <td>0</td>
+      <td>+</td>
     </tr>
     <tr>
-      <th>uf_hembank_1841</th>
-      <td>0.714</td>
-      <td>0.900</td>
-      <td>0.667</td>
-      <td>0.000</td>
-      <td>0.0</td>
-      <td>0.923</td>
-      <td>0.091</td>
-      <td>0.929</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <th>...</th>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>NaN</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>331551</th>
+      <td>chr9</td>
+      <td>138119084</td>
+      <td>138119086</td>
+      <td>cg00378292</td>
+      <td>0</td>
+      <td>+</td>
+    </tr>
+    <tr>
+      <th>331552</th>
+      <td>chr9</td>
+      <td>138120221</td>
+      <td>138120223</td>
+      <td>cg07982825</td>
+      <td>0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>331553</th>
+      <td>chr9</td>
+      <td>138122338</td>
+      <td>138122340</td>
+      <td>cg14491707</td>
+      <td>0</td>
+      <td>+</td>
+    </tr>
+    <tr>
+      <th>331554</th>
+      <td>chr9</td>
+      <td>138122548</td>
+      <td>138122550</td>
+      <td>cg13811936</td>
+      <td>0</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>331555</th>
+      <td>chr9</td>
+      <td>138123004</td>
+      <td>138123006</td>
+      <td>cg14022794</td>
+      <td>0</td>
+      <td>+</td>
     </tr>
   </tbody>
 </table>
-<p>6 rows × 331963 columns</p>
+<p>331556 rows × 6 columns</p>
 </div></div></div>
 </div>
 </section>
-<section id="appendix-1-retrospective-lower-coverage-analysis">
-<h2>Appendix 1. Retrospective lower coverage analysis<a class="headerlink" href="#appendix-1-retrospective-lower-coverage-analysis" title="Link to this heading">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>samtools<span class="w"> </span>view<span class="w"> </span>-@<span class="w"> </span><span class="m">32</span><span class="w"> </span>-bh<span class="w"> </span>-s<span class="w"> </span><span class="si">${</span><span class="nv">subsampling_fraction</span><span class="si">}</span><span class="w"> </span>bam/uf_hembank_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>.bam<span class="w"> </span>&gt;<span class="w"> </span>bam/subsampled_<span class="si">${</span><span class="nv">ID</span><span class="si">}</span>_01x.bam
+<section id="combine-samples-into-one-dataset">
+<h2>Combine samples into one dataset<a class="headerlink" href="#combine-samples-into-one-dataset" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
+<span class="c1"># from utils.bed_to_pickle import bed_to_pickle</span>
+
+<span class="c1"># df = bed_to_pickle()</span>
+
+<span class="c1"># Read bed_to_pickle.py output</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;/mnt/e/nanopore_processed/bed/17samples_331556cpgs_nanopore_bvalues.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>uf1829_BM</th>
+      <th>uf1829_PB</th>
+      <th>uf1831_BM</th>
+      <th>uf1831_PB</th>
+      <th>uf1833_BM</th>
+      <th>uf1837_BM</th>
+      <th>uf1837_PB</th>
+      <th>uf1839_PB</th>
+      <th>uf1840_PB</th>
+      <th>uf1841_BM</th>
+      <th>uf1842_BM</th>
+      <th>uf1842_PB</th>
+      <th>uf1848_BM</th>
+      <th>uf1851_PB</th>
+      <th>uf1852_PB</th>
+      <th>uf1856_BM</th>
+      <th>uf1856_PB</th>
+    </tr>
+    <tr>
+      <th>name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>cg00000109</th>
+      <td>0.889</td>
+      <td>0.968</td>
+      <td>1.000</td>
+      <td>1.000</td>
+      <td>0.800</td>
+      <td>1.000</td>
+      <td>1.000</td>
+      <td>1.000</td>
+      <td>1.000</td>
+      <td>0.700</td>
+      <td>0.885</td>
+      <td>1.000</td>
+      <td>0.923</td>
+      <td>1.000</td>
+      <td>1.000</td>
+      <td>0.933</td>
+      <td>0.917</td>
+    </tr>
+    <tr>
+      <th>cg00000236</th>
+      <td>0.696</td>
+      <td>0.560</td>
+      <td>0.833</td>
+      <td>1.000</td>
+      <td>1.000</td>
+      <td>0.889</td>
+      <td>0.875</td>
+      <td>1.000</td>
+      <td>0.889</td>
+      <td>0.900</td>
+      <td>0.917</td>
+      <td>0.833</td>
+      <td>0.500</td>
+      <td>0.909</td>
+      <td>0.913</td>
+      <td>0.750</td>
+      <td>0.880</td>
+    </tr>
+    <tr>
+      <th>cg00000292</th>
+      <td>0.750</td>
+      <td>0.630</td>
+      <td>0.786</td>
+      <td>0.833</td>
+      <td>0.750</td>
+      <td>0.882</td>
+      <td>1.000</td>
+      <td>0.867</td>
+      <td>1.000</td>
+      <td>0.667</td>
+      <td>0.750</td>
+      <td>0.778</td>
+      <td>1.000</td>
+      <td>0.875</td>
+      <td>0.615</td>
+      <td>0.875</td>
+      <td>1.000</td>
+    </tr>
+    <tr>
+      <th>cg00000363</th>
+      <td>0.000</td>
+      <td>0.286</td>
+      <td>0.333</td>
+      <td>0.000</td>
+      <td>0.250</td>
+      <td>0.538</td>
+      <td>0.714</td>
+      <td>0.385</td>
+      <td>0.235</td>
+      <td>0.000</td>
+      <td>0.053</td>
+      <td>0.071</td>
+      <td>0.182</td>
+      <td>0.286</td>
+      <td>0.167</td>
+      <td>0.333</td>
+      <td>0.211</td>
+    </tr>
+    <tr>
+      <th>cg00000622</th>
+      <td>0.000</td>
+      <td>0.042</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.056</td>
+      <td>0.067</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>cg27665860</th>
+      <td>0.800</td>
+      <td>0.895</td>
+      <td>1.000</td>
+      <td>1.000</td>
+      <td>0.875</td>
+      <td>1.000</td>
+      <td>1.000</td>
+      <td>0.714</td>
+      <td>1.000</td>
+      <td>1.000</td>
+      <td>0.941</td>
+      <td>1.000</td>
+      <td>1.000</td>
+      <td>0.833</td>
+      <td>0.938</td>
+      <td>1.000</td>
+      <td>1.000</td>
+    </tr>
+    <tr>
+      <th>cg27665925</th>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.059</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.111</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>cg27665985</th>
+      <td>0.200</td>
+      <td>0.368</td>
+      <td>0.231</td>
+      <td>0.400</td>
+      <td>0.154</td>
+      <td>0.625</td>
+      <td>0.625</td>
+      <td>0.846</td>
+      <td>0.250</td>
+      <td>0.133</td>
+      <td>0.143</td>
+      <td>0.389</td>
+      <td>0.100</td>
+      <td>0.250</td>
+      <td>0.500</td>
+      <td>0.083</td>
+      <td>0.710</td>
+    </tr>
+    <tr>
+      <th>cg27666046</th>
+      <td>0.111</td>
+      <td>0.429</td>
+      <td>0.625</td>
+      <td>1.000</td>
+      <td>0.500</td>
+      <td>0.000</td>
+      <td>0.143</td>
+      <td>0.400</td>
+      <td>0.636</td>
+      <td>0.500</td>
+      <td>0.182</td>
+      <td>0.250</td>
+      <td>0.546</td>
+      <td>1.000</td>
+      <td>0.176</td>
+      <td>0.444</td>
+      <td>0.546</td>
+    </tr>
+    <tr>
+      <th>cg27666123</th>
+      <td>0.900</td>
+      <td>0.696</td>
+      <td>0.714</td>
+      <td>1.000</td>
+      <td>0.583</td>
+      <td>0.818</td>
+      <td>0.667</td>
+      <td>0.909</td>
+      <td>0.882</td>
+      <td>0.875</td>
+      <td>0.652</td>
+      <td>0.769</td>
+      <td>0.778</td>
+      <td>0.867</td>
+      <td>0.882</td>
+      <td>0.882</td>
+      <td>0.850</td>
+    </tr>
+  </tbody>
+</table>
+<p>331556 rows × 17 columns</p>
+</div></div></div>
+</div>
+<section id="evaluate-missing-values">
+<h3>Evaluate missing values<a class="headerlink" href="#evaluate-missing-values" title="Link to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">missingno</span> <span class="k">as</span> <span class="nn">msno</span>
+
+<span class="c1"># Plot the missing values</span>
+<span class="n">msno</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">20000</span><span class="p">:</span><span class="mi">20050</span><span class="p">,:]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="../_images/a2bbf8e66d302a6f22802abafedef91adced91c8e95e96d4d4c5acb2b1e2cd32.png" src="../_images/a2bbf8e66d302a6f22802abafedef91adced91c8e95e96d4d4c5acb2b1e2cd32.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="impute-remaining-missing-values">
+<h2>Impute remaining missing values<a class="headerlink" href="#impute-remaining-missing-values" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils.impute</span> <span class="kn">import</span> <span class="n">load_model_and_impute</span>
+
+<span class="n">df2</span> <span class="o">=</span> <span class="n">load_model_and_impute</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">model_path</span><span class="o">=</span><span class="s1">&#39;../models/imputer_model.joblib&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the missing values</span>
+<span class="n">msno</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">20000</span><span class="p">:</span><span class="mi">20050</span><span class="p">,:]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="../_images/13bf6691808dc21dc089f5d18ca0a0118daccfa6556b5b7a73951165fc32f46f.png" src="../_images/13bf6691808dc21dc089f5d18ca0a0118daccfa6556b5b7a73951165fc32f46f.png" />
+</div>
+</div>
+</section>
+<section id="save-batch-corrected-beta-values-dataset">
+<h2>Save batch-corrected beta-values dataset<a class="headerlink" href="#save-batch-corrected-beta-values-dataset" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">dataset_title</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">samples_</span><span class="si">{</span><span class="n">df2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">cpgs_nanoporeseq_bvalues.pkl&#39;</span>
+
+<span class="n">df2</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="n">dataset_title</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Successfuly saved at: </span><span class="si">{</span><span class="n">output_path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dataset_title</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved at: /mnt/e/ALMA/Intermediate_Files/17samples_331556cpgs_nanoporeseq_bvalues.pkl
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="watermark">
+<h2>Watermark<a class="headerlink" href="#watermark" title="Link to this heading">#</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The watermark extension is already loaded. To reload it, use:
+  %reload_ext watermark
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Author: Francisco_Marchi@Lamba_Lab_UF
+
+Last updated: 2024-09-14
+
+Python implementation: CPython
+Python version       : 3.8.18
+IPython version      : 8.12.3
+
+pandas: 2.0.3
+
+Compiler    : GCC 11.4.0
+OS          : Linux
+Release     : 5.15.133.1-microsoft-standard-WSL2
+Machine     : x86_64
+Processor   : x86_64
+CPU cores   : 32
+Architecture: 64bit
+
+Git repo: git@github.com:f-marchi/ALMA.git
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -681,8 +1074,15 @@ samtools<span class="w"> </span>sort<span class="w"> </span>-@<span class="w"> <
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-data-at">Where data at?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-1-retrospective-lower-coverage-analysis">Appendix 1. Retrospective lower coverage analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-the-data-at">Where the data at?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-pacmap-reference-file">Create PaCMAP reference file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combine-samples-into-one-dataset">Combine samples into one dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-missing-values">Evaluate missing values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impute-remaining-missing-values">Impute remaining missing values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-batch-corrected-beta-values-dataset">Save batch-corrected beta-values dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
 </ul>
   </nav></div>
 

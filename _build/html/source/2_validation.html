@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
@@ -61,7 +61,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'source/2_validation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Test Dataset (Work in Progress)" href="3_test.html" />
+    <link rel="next" title="Test Dataset" href="3_test.html" />
     <link rel="prev" title="Discovery Dataset" href="1_discovery.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -143,7 +143,7 @@
     
   
 
-<a class="navbar-brand logo" href="../index.html">
+<a class="navbar-brand logo" href="0_overview.html">
   
   
   
@@ -169,7 +169,7 @@
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../index.html">
+                <a class="reference internal" href="0_overview.html">
                     Overview
                 </a>
             </li>
@@ -178,14 +178,15 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_discovery.html">Discovery Dataset</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Validation Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_test.html">Test Dataset (Work in Progress)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_test.html">Test Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_clinical_data.html">Clinical Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_signature.html">37-CpG Signature</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_classifiers.html">Classifiers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6_plots.html">Data Visualization</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Previous 2022-2024</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Previous</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="6_plots_original.html">Data Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../v1/1_discovery_dataset.html">Discovery Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../v1/2_validation_dataset_v2.html">Validation Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../v1/3_reclassification_strategy.html">Dx and Px Reclassification</a></li>
@@ -357,21 +358,18 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataframes">Load Dataframes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-load-and-process-clinical-data">Step 2. Load and process clinical data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-remove-suboptimal-probes">Step 3. Remove suboptimal probes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-remove-sex-linked-probes">Step 4. Remove sex-linked probes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-missing-values">Evaluate Missing Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-load-and-process-clinical-data">Step 2. Load and process clinical data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-missing-values">Evaluate missing values</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-remove-suboptimal-cpgs">Step 3. Remove suboptimal CpGs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-remove-sex-linked-cpgs">Step 4. Remove sex-linked CpGs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-remove-non-hematopoietic-samples">Step 5. Remove non-hematopoietic samples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-exclude-samples-in-which-20-of-probes-have-failed-p-values">Step 6. Exclude samples in which &gt;20% of probes have failed p-values</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Evaluate Missing Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Evaluate missing values</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-impute-remaining-missing-values">Step 7. Impute remaining missing values</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Evaluate Missing Values</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-impute-remaining-missing-values">Step 7. Impute remaining missing values</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-remove-outliers-by-pca">Step 8. Remove outliers by PCA</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-perform-batch-correction">Step 9. Perform batch correction</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beta-values">Beta-values</a></li>
@@ -509,7 +507,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import functions to clean up clinical data</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">source.clinical_data_cleanup</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">utils.clinical_data_cleanup</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="c1"># Call functions to merge, index and clean clinical data files</span>
 <span class="n">labels_aml02</span>         <span class="o">=</span> <span class="n">clean_aml02</span>       <span class="p">(</span><span class="n">merge_index_aml02</span><span class="p">())</span>
@@ -535,9 +533,34 @@ Exclusion of samples may be applied depending on the analysis.
 </div>
 </div>
 </div>
+<section id="evaluate-missing-values">
+<h3>Evaluate missing values<a class="headerlink" href="#evaluate-missing-values" title="Link to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">missingno</span> <span class="k">as</span> <span class="nn">msno</span>
+
+<span class="c1"># Plot the missing values</span>
+<span class="n">msno</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">20000</span><span class="p">:</span><span class="mi">20050</span><span class="p">,:]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="../_images/f3777629e199832f0be60c20484bb907c17a19fa9c05ee8603f27bda6d32953e.png" src="../_images/f3777629e199832f0be60c20484bb907c17a19fa9c05ee8603f27bda6d32953e.png" />
+</div>
+</div>
 </section>
-<section id="step-3-remove-suboptimal-probes">
-<h2>Step 3. Remove suboptimal probes<a class="headerlink" href="#step-3-remove-suboptimal-probes" title="Link to this heading">#</a></h2>
+</section>
+<section id="step-3-remove-suboptimal-cpgs">
+<h2>Step 3. Remove suboptimal CpGs<a class="headerlink" href="#step-3-remove-suboptimal-cpgs" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -582,8 +605,8 @@ Exclusion of samples may be applied depending on the analysis.
 </div>
 </div>
 </section>
-<section id="step-4-remove-sex-linked-probes">
-<h2>Step 4. Remove sex-linked probes<a class="headerlink" href="#step-4-remove-sex-linked-probes" title="Link to this heading">#</a></h2>
+<section id="step-4-remove-sex-linked-cpgs">
+<h2>Step 4. Remove sex-linked CpGs<a class="headerlink" href="#step-4-remove-sex-linked-cpgs" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -602,31 +625,6 @@ Exclusion of samples may be applied depending on the analysis.
 </div>
 </div>
 </div>
-<section id="evaluate-missing-values">
-<h3>Evaluate Missing Values<a class="headerlink" href="#evaluate-missing-values" title="Link to this heading">#</a></h3>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">missingno</span> <span class="k">as</span> <span class="nn">msno</span>
-
-<span class="c1"># Plot the missing values</span>
-<span class="n">msno</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">20000</span><span class="p">:</span><span class="mi">20050</span><span class="p">,:]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</details>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
-</pre></div>
-</div>
-<img alt="../_images/522df5f3e1b22c72aeed211a4e4558cdf5cfdc0d5962ffbdb5d7794fe0aafb31.png" src="../_images/522df5f3e1b22c72aeed211a4e4558cdf5cfdc0d5962ffbdb5d7794fe0aafb31.png" />
-</div>
-</div>
-</section>
 </section>
 <section id="step-5-remove-non-hematopoietic-samples">
 <h2>Step 5. Remove non-hematopoietic samples<a class="headerlink" href="#step-5-remove-non-hematopoietic-samples" title="Link to this heading">#</a></h2>
@@ -717,7 +715,7 @@ Exclusion of samples may be applied depending on the analysis.
 </div>
 </div>
 <section id="id1">
-<h3>Evaluate Missing Values<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3>Evaluate missing values<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -735,13 +733,14 @@ Exclusion of samples may be applied depending on the analysis.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../_images/91292e4228cd0337100a21d07ec17020645440ff40b95a9b3e9ba392eca46e92.png" src="../_images/91292e4228cd0337100a21d07ec17020645440ff40b95a9b3e9ba392eca46e92.png" />
+<img alt="../_images/0d652ba220bdd844cf9d4c059828f9cb7b9bad81403b1fc41edccf0393948dfc.png" src="../_images/0d652ba220bdd844cf9d4c059828f9cb7b9bad81403b1fc41edccf0393948dfc.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="step-7-impute-remaining-missing-values">
 <h2>Step 7. Impute remaining missing values<a class="headerlink" href="#step-7-impute-remaining-missing-values" title="Link to this heading">#</a></h2>
+<p>This step will also automatically remove extra CpGs that are not in the discovery dataset.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -749,30 +748,11 @@ Exclusion of samples may be applied depending on the analysis.
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Impute missing values</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils.impute</span> <span class="kn">import</span> <span class="n">load_model_and_impute</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;NaN values filled by the mean probe value.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NaN values filled by the mean probe value.
-</pre></div>
-</div>
-</div>
-</div>
-<section id="id2">
-<h3>Evaluate Missing Values<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the missing values</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_model_and_impute</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">model_path</span><span class="o">=</span><span class="s1">&#39;../models/imputer_model.joblib&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the missing values for a subset</span>
 <span class="n">msno</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">20000</span><span class="p">:</span><span class="mi">20050</span><span class="p">,:]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -782,10 +762,9 @@ Exclusion of samples may be applied depending on the analysis.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../_images/1a7e5dffd25b0db1ec6e675ca8feb4cf58cd33746750479623a26d25d4028b33.png" src="../_images/1a7e5dffd25b0db1ec6e675ca8feb4cf58cd33746750479623a26d25d4028b33.png" />
+<img alt="../_images/5685859772d51584d30e19c8146efb73307e45572200ca588e97072c22ff1e00.png" src="../_images/5685859772d51584d30e19c8146efb73307e45572200ca588e97072c22ff1e00.png" />
 </div>
 </div>
-</section>
 </section>
 <section id="step-8-remove-outliers-by-pca">
 <h2>Step 8. Remove outliers by PCA<a class="headerlink" href="#step-8-remove-outliers-by-pca" title="Link to this heading">#</a></h2>
@@ -862,7 +841,7 @@ Exclusion of samples may be applied depending on the analysis.
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/f5acefdc366c16094002d24f1d0fb340294c04d648eeff90fe5204bf5f942507.png" src="../_images/f5acefdc366c16094002d24f1d0fb340294c04d648eeff90fe5204bf5f942507.png" />
+<img alt="../_images/c62b8baa251dfc9482b9574b917b68b6813496dd711b5dae6bd585e5d33208cf.png" src="../_images/c62b8baa251dfc9482b9574b917b68b6813496dd711b5dae6bd585e5d33208cf.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Removed 0 outliers. 201 samples remaining.
 </pre></div>
 </div>
@@ -941,7 +920,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/3bbbaa21f8aac9b0bc65a764be23521b2b39e3f5b19f03028fc730906f30fa2e.png" src="../_images/3bbbaa21f8aac9b0bc65a764be23521b2b39e3f5b19f03028fc730906f30fa2e.png" />
+<img alt="../_images/1b9f573b5af2711236297b2d8d5fcb5ca34620a0e7004ab33f9954079e55e9e8.png" src="../_images/1b9f573b5af2711236297b2d8d5fcb5ca34620a0e7004ab33f9954079e55e9e8.png" />
 </div>
 </div>
 </section>
@@ -967,7 +946,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved at: /mnt/e/ALMA/Intermediate_Files/201samples_427375cpgs_withbatchcorrection_bvalues.pkl
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved at: /mnt/e/ALMA/Intermediate_Files/201samples_331556cpgs_withbatchcorrection_bvalues.pkl
 </pre></div>
 </div>
 </div>
@@ -994,7 +973,7 @@ Succesfully corrected batch effects in the training dataset.
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved at: /mnt/e/ALMA/Intermediate_Files/201samples_427375cpgs_nobatchcorrection_bvalues.pkl
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfuly saved at: /mnt/e/ALMA/Intermediate_Files/201samples_331556cpgs_nobatchcorrection_bvalues.pkl
 </pre></div>
 </div>
 </div>
@@ -1033,19 +1012,25 @@ Name: count, dtype: int64
 <section id="watermark">
 <h2>Watermark<a class="headerlink" href="#watermark" title="Link to this heading">#</a></h2>
 <div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The watermark extension is already loaded. To reload it, use:
+  %reload_ext watermark
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Author: Francisco_Marchi@Lamba_Lab_UF
 
-Last updated: 2024-09-08
+Last updated: 2024-09-14
 
 Python implementation: CPython
 Python version       : 3.8.18
-IPython version      : 8.12.2
+IPython version      : 8.12.3
 
 methylcheck: 0.8.5
-pandas     : 2.0.2
+pandas     : 2.0.3
 
 Compiler    : GCC 11.4.0
 OS          : Linux
@@ -1055,7 +1040,7 @@ Processor   : x86_64
 CPU cores   : 32
 Architecture: 64bit
 
-Git hash: 40c52c3027fb537bcb2f698ba755f641f502264f
+Git repo: git@github.com:f-marchi/ALMA.git
 </pre></div>
 </div>
 </div>
@@ -1107,7 +1092,7 @@ Git hash: 40c52c3027fb537bcb2f698ba755f641f502264f
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Test Dataset (Work in Progress)</p>
+        <p class="prev-next-title">Test Dataset</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1133,21 +1118,18 @@ Git hash: 40c52c3027fb537bcb2f698ba755f641f502264f
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataframes">Load Dataframes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-load-and-process-clinical-data">Step 2. Load and process clinical data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-remove-suboptimal-probes">Step 3. Remove suboptimal probes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-remove-sex-linked-probes">Step 4. Remove sex-linked probes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-missing-values">Evaluate Missing Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-load-and-process-clinical-data">Step 2. Load and process clinical data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-missing-values">Evaluate missing values</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-remove-suboptimal-cpgs">Step 3. Remove suboptimal CpGs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-remove-sex-linked-cpgs">Step 4. Remove sex-linked CpGs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-remove-non-hematopoietic-samples">Step 5. Remove non-hematopoietic samples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-exclude-samples-in-which-20-of-probes-have-failed-p-values">Step 6. Exclude samples in which &gt;20% of probes have failed p-values</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Evaluate Missing Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Evaluate missing values</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-impute-remaining-missing-values">Step 7. Impute remaining missing values</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Evaluate Missing Values</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-impute-remaining-missing-values">Step 7. Impute remaining missing values</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-remove-outliers-by-pca">Step 8. Remove outliers by PCA</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-perform-batch-correction">Step 9. Perform batch correction</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beta-values">Beta-values</a></li>

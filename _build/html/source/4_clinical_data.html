@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
@@ -62,7 +62,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="37-CpG Signature" href="5_signature.html" />
-    <link rel="prev" title="Test Dataset (Work in Progress)" href="3_test.html" />
+    <link rel="prev" title="Test Dataset" href="3_test.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -143,7 +143,7 @@
     
   
 
-<a class="navbar-brand logo" href="../index.html">
+<a class="navbar-brand logo" href="0_overview.html">
   
   
   
@@ -169,7 +169,7 @@
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../index.html">
+                <a class="reference internal" href="0_overview.html">
                     Overview
                 </a>
             </li>
@@ -178,14 +178,15 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_discovery.html">Discovery Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_validation.html">Validation Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_test.html">Test Dataset (Work in Progress)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_test.html">Test Dataset</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Clinical Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_signature.html">37-CpG Signature</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5_classifiers.html">Classifiers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6_plots.html">Data Visualization</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Previous 2022-2024</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Previous</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="6_plots_original.html">Data Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../v1/1_discovery_dataset.html">Discovery Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../v1/2_validation_dataset_v2.html">Validation Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../v1/3_reclassification_strategy.html">Dx and Px Reclassification</a></li>
@@ -363,6 +364,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Execution</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-classification-to-validation-dataset">Apply classification to validation dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-classification-to-test-dataset">Apply classification to test dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-clinical-datasets">Save clinical datasets</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
@@ -391,7 +393,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import functions to clean up clinical data</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">source.clinical_data_cleanup</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">utils.clinical_data_cleanup</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="c1"># Call functions to merge, index and clean clinical data files</span>
 <span class="n">labels_0531</span>         <span class="o">=</span> <span class="n">clean_cog</span>       <span class="p">(</span><span class="n">merge_index_0531</span><span class="p">())</span>
@@ -412,11 +414,11 @@ document.write(`
                         <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
 
 <span class="c1"># Redefine output path (for troubleshooting purposes in case only this cell is run)</span>
-<span class="n">mount</span> <span class="o">=</span> <span class="s1">&#39;/mnt/e/ALMA/&#39;</span>
-<span class="n">output_path</span> <span class="o">=</span> <span class="n">mount</span> <span class="o">+</span> <span class="s1">&#39;/Intermediate_Files/&#39;</span>
+<span class="n">MOUNT</span> <span class="o">=</span> <span class="s1">&#39;/mnt/e/ALMA/&#39;</span>
+<span class="n">PATH</span> <span class="o">=</span> <span class="n">MOUNT</span> <span class="o">+</span> <span class="s1">&#39;/Intermediate_Files/&#39;</span>
 
 <span class="c1"># Read df</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;3314samples_331557cpgs_withbatchcorrection_bvalues.pkl&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">PATH</span> <span class="o">+</span> <span class="s1">&#39;3314samples_331556cpgs_withbatchcorrection_bvalues.pkl&#39;</span><span class="p">)</span>
 
 <span class="c1"># Add columns for later analyses</span>
 <span class="n">labels_combined</span><span class="p">[</span><span class="s1">&#39;Train-Test&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Train Sample&#39;</span>
@@ -465,30 +467,8 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>.itables table td {
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-.itables table th {
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-.itables thead input {
-    width: 100%;
-    padding: 3px;
-    box-sizing: border-box;
-}
-
-.itables tfoot input {
-    width: 100%;
-    padding: 3px;
-    box-sizing: border-box;
-}
-</style>
-<div class="itables">
-<table id="a926a8de-e84e-4624-b029-e0307723d1a7" class="display nowrap"style="table-layout:auto;width:auto;margin:auto;caption-side:bottom"><thead>
+<div class="output text_html"><table id="itables_b73eee2a_a3b8_47ab_bc1f_65e08459661d" class="display nowrap" data-quarto-disable-processing="true" style="table-layout:auto;width:auto;margin:auto;caption-side:bottom">
+<thead>
     <tr style="text-align: right;">
       
       <th>Subtype</th>
@@ -498,27 +478,123 @@ document.write(`
       <th>Common co-occurring genetic aberrations</th>
       <th>Prognosis</th>
     </tr>
-  </thead><tbody><tr><td>Loading... (need <a href=https://mwouts.github.io/itables/troubleshooting.html>help</a>?)</td></tr></tbody></table>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+  </thead><tbody><tr>
+<td style="vertical-align:middle; text-align:left">
+<div style="float:left; margin-right: 10px;">
+<a href=https://mwouts.github.io/itables/><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+width="64" viewBox="0 0 500 400" style="font-family: 'Droid Sans', sans-serif;">
+    <g style="fill:#d9d7fc">
+        <path d="M100,400H500V357H100Z" />
+        <path d="M100,300H400V257H100Z" />
+        <path d="M0,200H400V157H0Z" />
+        <path d="M100,100H500V57H100Z" />
+        <path d="M100,350H500V307H100Z" />
+        <path d="M100,250H400V207H100Z" />
+        <path d="M0,150H400V107H0Z" />
+        <path d="M100,50H500V7H100Z" />
+    </g>
+    <g style="fill:#1a1366;stroke:#1a1366;">
+   <rect x="100" y="7" width="400" height="43">
+    <animate
+      attributeName="width"
+      values="0;400;0"
+      dur="5s"
+      repeatCount="indefinite" />
+      <animate
+      attributeName="x"
+      values="100;100;500"
+      dur="5s"
+      repeatCount="indefinite" />
+  </rect>
+        <rect x="0" y="107" width="400" height="43">
+    <animate
+      attributeName="width"
+      values="0;400;0"
+      dur="3.5s"
+      repeatCount="indefinite" />
+    <animate
+      attributeName="x"
+      values="0;0;400"
+      dur="3.5s"
+      repeatCount="indefinite" />
+  </rect>
+        <rect x="100" y="207" width="300" height="43">
+    <animate
+      attributeName="width"
+      values="0;300;0"
+      dur="3s"
+      repeatCount="indefinite" />
+    <animate
+      attributeName="x"
+      values="100;100;400"
+      dur="3s"
+      repeatCount="indefinite" />
+  </rect>
+        <rect x="100" y="307" width="400" height="43">
+    <animate
+      attributeName="width"
+      values="0;400;0"
+      dur="4s"
+      repeatCount="indefinite" />
+      <animate
+      attributeName="x"
+      values="100;100;500"
+      dur="4s"
+      repeatCount="indefinite" />
+  </rect>
+        <g style="fill:transparent;stroke-width:8; stroke-linejoin:round" rx="5">
+            <g transform="translate(45 50) rotate(-45)">
+                <circle r="33" cx="0" cy="0" />
+                <rect x="-8" y="32" width="16" height="30" />
+            </g>
+
+            <g transform="translate(450 152)">
+                <polyline points="-15,-20 -35,-20 -35,40 25,40 25,20" />
+                <rect x="-15" y="-40" width="60" height="60" />
+            </g>
+
+            <g transform="translate(50 352)">
+                <polygon points="-35,-5 0,-40 35,-5" />
+                <polygon points="-35,10 0,45 35,10" />
+            </g>
+
+            <g transform="translate(75 250)">
+                <polyline points="-30,30 -60,0 -30,-30" />
+                <polyline points="0,30 -30,0 0,-30" />
+            </g>
+
+            <g transform="translate(425 250) rotate(180)">
+                <polyline points="-30,30 -60,0 -30,-30" />
+                <polyline points="0,30 -30,0 0,-30" />
+            </g>
+        </g>
+    </g>
+</svg>
+</a>
+</div>
+<div>
+Loading ITables v2.1.5 from the internet...
+(need <a href=https://mwouts.github.io/itables/troubleshooting.html>help</a>?)</td>
+</div>
+</tr></tbody>
+
+</table>
+<link href="https://www.unpkg.com/dt_for_itables@2.0.12/dt_bundle.css" rel="stylesheet">
 <script type="module">
-    // Import jquery and DataTable
-    import 'https://code.jquery.com/jquery-3.6.0.min.js';
-    import dt from 'https://cdn.datatables.net/1.12.1/js/jquery.dataTables.mjs';
-    dt($);
+    import {DataTable, jQuery as $} from 'https://www.unpkg.com/dt_for_itables@2.0.12/dt_bundle.js';
 
-    // Define the table data
-    const data = [["AML with RUNX1::RUNXT1 fusion", "13\u201319% of cases", "Neutrophilic maturation, Auer rods; often increased basophils and/or mast cells", "Positive: CD34, HLA-DR, KIT (CD117), CD99, myeloperoxidase\\nUsually positive but can be heterogeneous: CD13, CD33 and CD38, CD19, PAX5, cytoplasmic CD79a, CD56\\nNegative: CD7", "Mutations in KIT, FLT3, CSF3R, EZH2, ASXL1, ASXL2, CBL, WT1, cohesion genes (SMC1A, SMC3, RAD21), NRAS, KRAS", "Good"], ["AML with CBFB::MYH11 fusion", "7\u201312% of cases", "Myelomonocytic; often increased eosinophils at all maturation stages", "Often multiple blast populations with signs of differentiation towards both granulocytic and monocytic lineages; may express CD2 and/or NG2 in a small subpopulation of cells", "Mutations in KIT, KRAS, NRAS, CBL, FLT3, WT1", "Good"], ["APL with PML::RARA fusion", "5\u201310% of cases but wide geographical variation (2\u201350%)", "Exclusively FAB M3; may be hypogranular", "Positive: CD33, often KIT (CD117), sometimes CD2\\nNegative: CD34 (except hypogranular variant), HLA-DR\\nOften high autofluorescence", "Mutations in FLT3", "Good (but treated differently)"], ["AML with KMT2A rearrangement", "20% of cases", "All FAB types except M3 and M6, most commonly M5", "Positive: CD33, CD65, CD4, HLA-DR (in monocytic cases), CD15, NG2; platelet antigens (in megakaryocytic cases)\\nNegative/low: CD13, CD34, CD14", "Mutations in the tyrosine kinase, PI3K, and RAS pathways; FLT3-TKD, NRAS, KRAS", "Depends on fusion partner"], ["AML with DEK::NUP214 fusion", "1\u20132% of cases", "All FAB types except M3 and M7, most commonly M2 and M4; Auer rods; basophilia in blood or bone marrow; erythroid and granulocytic dysplasia are common", "Positive: myeloperoxidase, CD13, CD33, CD38, CD123, HLA-DR; often CD34, KIT (CD117), CD15; sometimes CD64, TdT", "FLT3 ITD in two thirds of cases; complex karyotype", "Poor"], ["AML with MECOM rearrangement", "< 1% of cases", "Commonly FAB M1, M4, and M7; multilineage dysplasia is common, especially in megakaryopoiesis", "Positive: CD34, CD33, CD13, KIT (CD117), HLA-DR, CD7\\nNegative: lymphoid markers other than CD7", "NaN", "Poor"], ["AML with ETV6 fusion", "1% of all cases", "All FAB types, most commonly M0 and M1", "For MNX1::ETV6:\\nPositive: CD34, HLA-DR, often KIT (CD117), T-cell markers CD7 and CD4", "Almost always +19, sometimes +8", "Poor, but may be protocol dependent"], ["AML with KAT6A::CREBBP fusion", "0.5% of cases", "FAB M5", "Positive: HLA-DR, CD15, myeloperoxidase, CD13, CD33, sometimes CD56, CD14\\nNegative: CD34, KIT (CD117)", "NaN", "OS similar to paediatric AML in general"], ["AML with RBM15::MRTFA fusion", "0.8% of all cases", "Exclusively FAB M7", "Positive: > 1 platelet antigen, some CD34 and/or HLA-DR\\nNegative: CD45", "del(1p), +4, +7, +8, +9, +10, +14, +15, +17, +18, +20, +21(21p), complex hyperdiploid karyotype", "Lower CR rate but similar EFS/OS vs other AMKLs"], ["AML with CBFA2T3::GLIS2 fusion", "3% of all cases", "All FAB types, most commonly M7", "> 50% show the RAM phenotype; overexpression of CD56 and underexpression of HLA-DR and CD38", "Mutations in FLT3, GATA1, JAK/STAT pathway", "Poor"], ["AML with NUP98 rearrangement", "5\u20139% of cases", "NUP98::NSD1: often FAB M4 and M5\\nNUP98::KDM5A: mostly FAB M7 but also M5 and M6", "NaN", "For NUP98::NSD1: FLT3 ITD in > 80%, mutation in WT1 in 50%", "Poor"], ["AML with FUS::ERG fusion", "0.3\u20130.5% of cases", "All FAB types except M6; Auer rods", "NaN", "+8, +10, complex karyotype", "Poor"], ["AML with NPM1 mutation", "6\u20138% of cases", "FAB M1, M2, M4, and M5", "Positive: CD33, sometimes KIT (CD117), often CD36, CD64\\nNegative: CD34, sometimes HLA-DR\\nOften weak CD13", "FLT3 ITD, mutations in NRAS, WT1", "Good, also when FLT3 ITD is present"], ["AML with CEBPA mutation", "5\u20136% of cases", "Most commonly FAB M1 and M2", "Positive: CD34, HLA-DR, often CD7\\nNegative: other lymphoid antigens", "Mutations in CEBPA-TAD, CSF3R, GATA2, RAS genes, FLT3", "Good, except for CSF3R-mutated cases"]];
+    document.querySelectorAll("#itables_b73eee2a_a3b8_47ab_bc1f_65e08459661d:not(.dataTable)").forEach(table => {
+        // Define the table data
+        const data = [["AML with RUNX1::RUNXT1 fusion", "13\u201319% of cases", "Neutrophilic maturation, Auer rods; often increased basophils and/or mast cells", "Positive: CD34, HLA-DR, KIT (CD117), CD99, myeloperoxidase\\nUsually positive but can be heterogeneous: CD13, CD33 and CD38, CD19, PAX5, cytoplasmic CD79a, CD56\\nNegative: CD7", "Mutations in KIT, FLT3, CSF3R, EZH2, ASXL1, ASXL2, CBL, WT1, cohesion genes (SMC1A, SMC3, RAD21), NRAS, KRAS", "Good"], ["AML with CBFB::MYH11 fusion", "7\u201312% of cases", "Myelomonocytic; often increased eosinophils at all maturation stages", "Often multiple blast populations with signs of differentiation towards both granulocytic and monocytic lineages; may express CD2 and/or NG2 in a small subpopulation of cells", "Mutations in KIT, KRAS, NRAS, CBL, FLT3, WT1", "Good"], ["APL with PML::RARA fusion", "5\u201310% of cases but wide geographical variation (2\u201350%)", "Exclusively FAB M3; may be hypogranular", "Positive: CD33, often KIT (CD117), sometimes CD2\\nNegative: CD34 (except hypogranular variant), HLA-DR\\nOften high autofluorescence", "Mutations in FLT3", "Good (but treated differently)"], ["AML with KMT2A rearrangement", "20% of cases", "All FAB types except M3 and M6, most commonly M5", "Positive: CD33, CD65, CD4, HLA-DR (in monocytic cases), CD15, NG2; platelet antigens (in megakaryocytic cases)\\nNegative/low: CD13, CD34, CD14", "Mutations in the tyrosine kinase, PI3K, and RAS pathways; FLT3-TKD, NRAS, KRAS", "Depends on fusion partner"], ["AML with DEK::NUP214 fusion", "1\u20132% of cases", "All FAB types except M3 and M7, most commonly M2 and M4; Auer rods; basophilia in blood or bone marrow; erythroid and granulocytic dysplasia are common", "Positive: myeloperoxidase, CD13, CD33, CD38, CD123, HLA-DR; often CD34, KIT (CD117), CD15; sometimes CD64, TdT", "FLT3 ITD in two thirds of cases; complex karyotype", "Poor"], ["AML with MECOM rearrangement", "< 1% of cases", "Commonly FAB M1, M4, and M7; multilineage dysplasia is common, especially in megakaryopoiesis", "Positive: CD34, CD33, CD13, KIT (CD117), HLA-DR, CD7\\nNegative: lymphoid markers other than CD7", "NaN", "Poor"], ["AML with ETV6 fusion", "1% of all cases", "All FAB types, most commonly M0 and M1", "For MNX1::ETV6:\\nPositive: CD34, HLA-DR, often KIT (CD117), T-cell markers CD7 and CD4", "Almost always +19, sometimes +8", "Poor, but may be protocol dependent"], ["AML with KAT6A::CREBBP fusion", "0.5% of cases", "FAB M5", "Positive: HLA-DR, CD15, myeloperoxidase, CD13, CD33, sometimes CD56, CD14\\nNegative: CD34, KIT (CD117)", "NaN", "OS similar to paediatric AML in general"], ["AML with RBM15::MRTFA fusion", "0.8% of all cases", "Exclusively FAB M7", "Positive: > 1 platelet antigen, some CD34 and/or HLA-DR\\nNegative: CD45", "del(1p), +4, +7, +8, +9, +10, +14, +15, +17, +18, +20, +21(21p), complex hyperdiploid karyotype", "Lower CR rate but similar EFS/OS vs other AMKLs"], ["AML with CBFA2T3::GLIS2 fusion", "3% of all cases", "All FAB types, most commonly M7", "> 50% show the RAM phenotype; overexpression of CD56 and underexpression of HLA-DR and CD38", "Mutations in FLT3, GATA1, JAK/STAT pathway", "Poor"], ["AML with NUP98 rearrangement", "5\u20139% of cases", "NUP98::NSD1: often FAB M4 and M5\\nNUP98::KDM5A: mostly FAB M7 but also M5 and M6", "NaN", "For NUP98::NSD1: FLT3 ITD in > 80%, mutation in WT1 in 50%", "Poor"], ["AML with FUS::ERG fusion", "0.3\u20130.5% of cases", "All FAB types except M6; Auer rods", "NaN", "+8, +10, complex karyotype", "Poor"], ["AML with NPM1 mutation", "6\u20138% of cases", "FAB M1, M2, M4, and M5", "Positive: CD33, sometimes KIT (CD117), often CD36, CD64\\nNegative: CD34, sometimes HLA-DR\\nOften weak CD13", "FLT3 ITD, mutations in NRAS, WT1", "Good, also when FLT3 ITD is present"], ["AML with CEBPA mutation", "5\u20136% of cases", "Most commonly FAB M1 and M2", "Positive: CD34, HLA-DR, often CD7\\nNegative: other lymphoid antigens", "Mutations in CEBPA-TAD, CSF3R, GATA2, RAS genes, FLT3", "Good, except for CSF3R-mutated cases"]];
 
-    // Define the dt_args
-    let dt_args = {"columnDefs": [{"className": "dt-left", "targets": "_all"}], "paging": false, "order": []};
-    dt_args["data"] = data;
+        // Define the dt_args
+        let dt_args = {"columnDefs": [{"className": "dt-left", "targets": "_all"}], "paging": false, "layout": {"topStart": "pageLength", "topEnd": "search", "bottomStart": "info", "bottomEnd": "paging"}, "order": []};
+        dt_args["data"] = data;
 
-    $(document).ready(function () {
         
-        $('#a926a8de-e84e-4624-b029-e0307723d1a7').DataTable(dt_args);
+        new DataTable(table, dt_args);
     });
 </script>
-</div>
 </div></div>
 </div>
 </section>
@@ -562,57 +638,131 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>.itables table td {
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-.itables table th {
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-.itables thead input {
-    width: 100%;
-    padding: 3px;
-    box-sizing: border-box;
-}
-
-.itables tfoot input {
-    width: 100%;
-    padding: 3px;
-    box-sizing: border-box;
-}
-</style>
-<div class="itables">
-<table id="a0ebccb9-3adc-4a59-8880-8beeaf26e492" class="display nowrap"style="table-layout:auto;width:auto;margin:auto;caption-side:bottom"><thead>
+<div class="output text_html"><table id="itables_167f931a_54dc_4b24_a6e0_79b55b64906d" class="display nowrap" data-quarto-disable-processing="true" style="table-layout:auto;width:auto;margin:auto;caption-side:bottom">
+<thead>
     <tr style="text-align: right;">
       
       <th>Low Risk</th>
       <th>Standard Risk</th>
       <th>High Risk</th>
     </tr>
-  </thead><tbody><tr><td>Loading... (need <a href=https://mwouts.github.io/itables/troubleshooting.html>help</a>?)</td></tr></tbody></table>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+  </thead><tbody><tr>
+<td style="vertical-align:middle; text-align:left">
+<div style="float:left; margin-right: 10px;">
+<a href=https://mwouts.github.io/itables/><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+width="64" viewBox="0 0 500 400" style="font-family: 'Droid Sans', sans-serif;">
+    <g style="fill:#d9d7fc">
+        <path d="M100,400H500V357H100Z" />
+        <path d="M100,300H400V257H100Z" />
+        <path d="M0,200H400V157H0Z" />
+        <path d="M100,100H500V57H100Z" />
+        <path d="M100,350H500V307H100Z" />
+        <path d="M100,250H400V207H100Z" />
+        <path d="M0,150H400V107H0Z" />
+        <path d="M100,50H500V7H100Z" />
+    </g>
+    <g style="fill:#1a1366;stroke:#1a1366;">
+   <rect x="100" y="7" width="400" height="43">
+    <animate
+      attributeName="width"
+      values="0;400;0"
+      dur="5s"
+      repeatCount="indefinite" />
+      <animate
+      attributeName="x"
+      values="100;100;500"
+      dur="5s"
+      repeatCount="indefinite" />
+  </rect>
+        <rect x="0" y="107" width="400" height="43">
+    <animate
+      attributeName="width"
+      values="0;400;0"
+      dur="3.5s"
+      repeatCount="indefinite" />
+    <animate
+      attributeName="x"
+      values="0;0;400"
+      dur="3.5s"
+      repeatCount="indefinite" />
+  </rect>
+        <rect x="100" y="207" width="300" height="43">
+    <animate
+      attributeName="width"
+      values="0;300;0"
+      dur="3s"
+      repeatCount="indefinite" />
+    <animate
+      attributeName="x"
+      values="100;100;400"
+      dur="3s"
+      repeatCount="indefinite" />
+  </rect>
+        <rect x="100" y="307" width="400" height="43">
+    <animate
+      attributeName="width"
+      values="0;400;0"
+      dur="4s"
+      repeatCount="indefinite" />
+      <animate
+      attributeName="x"
+      values="100;100;500"
+      dur="4s"
+      repeatCount="indefinite" />
+  </rect>
+        <g style="fill:transparent;stroke-width:8; stroke-linejoin:round" rx="5">
+            <g transform="translate(45 50) rotate(-45)">
+                <circle r="33" cx="0" cy="0" />
+                <rect x="-8" y="32" width="16" height="30" />
+            </g>
+
+            <g transform="translate(450 152)">
+                <polyline points="-15,-20 -35,-20 -35,40 25,40 25,20" />
+                <rect x="-15" y="-40" width="60" height="60" />
+            </g>
+
+            <g transform="translate(50 352)">
+                <polygon points="-35,-5 0,-40 35,-5" />
+                <polygon points="-35,10 0,45 35,10" />
+            </g>
+
+            <g transform="translate(75 250)">
+                <polyline points="-30,30 -60,0 -30,-30" />
+                <polyline points="0,30 -30,0 0,-30" />
+            </g>
+
+            <g transform="translate(425 250) rotate(180)">
+                <polyline points="-30,30 -60,0 -30,-30" />
+                <polyline points="0,30 -30,0 0,-30" />
+            </g>
+        </g>
+    </g>
+</svg>
+</a>
+</div>
+<div>
+Loading ITables v2.1.5 from the internet...
+(need <a href=https://mwouts.github.io/itables/troubleshooting.html>help</a>?)</td>
+</div>
+</tr></tbody>
+
+</table>
+<link href="https://www.unpkg.com/dt_for_itables@2.0.12/dt_bundle.css" rel="stylesheet">
 <script type="module">
-    // Import jquery and DataTable
-    import 'https://code.jquery.com/jquery-3.6.0.min.js';
-    import dt from 'https://cdn.datatables.net/1.12.1/js/jquery.dataTables.mjs';
-    dt($);
+    import {DataTable, jQuery as $} from 'https://www.unpkg.com/dt_for_itables@2.0.12/dt_bundle.js';
 
-    // Define the table data
-    const data = [["t(8;21)(q21.2;q22) [RUNX1-RUNX1T1]", "patients without HR or LR features ", "Monosomy 7"], ["inv(16)/t(16;16)(p13.1q22.1) [CBFB-MYH11]", "", "Monosomy 5/del5q-"], ["NPM1 positive", "", "FLT3/ITD+ with allelic ratio > 0.1%"], ["CEBPA positive\u00a0(Bzip mutation)", "", "t(6;9)(p22.3;q34.1) [DEK-NUP214]"], ["", "", "inv(3)(q21.3q26.2) [RPN1-MECOM]"], ["", "", "t(3;21)(26.2;q22) [RUNX1-MECOM]"], ["", "", "t(3;5)(q25q34) [NPM1-MLF1]"], ["", "", "11p15 (NUP98) rearrangements"], ["", "", "inv(16)(p13.3q24.3) [CBFA2T3-GLIS2]"], ["", "", "10p12.3 (MLLT10) rearrangements"], ["", "", "KMT2A rearrangements"], ["", "", "t(4;11)(q21;q23) [KMT2A-AFF1]"], ["", "", "t(6;11)(q27;q23) [KMT2A-MLLT4] (aka AF6, AFDN)"], ["", "", "t(10;11)(p11.2;q23) [KMT2A-ABI1]"], ["", "", "t(10;11)(p12;q23) [KMT2A-MLLT10]"], ["", "", "t(11;19)(q23;p13.3) [KMT2A-MLLT1]"], ["", "", "KMT2A-PTD"], ["", "", "ETS family rearrangements"], ["", "", "12p13.2 (ETV6) rearrangements"], ["", "", "12p13.2 (ETV6) deletion"], ["", "", "21q22.2 (ERG) rearrangements"], ["", "", "FEV rearrangements"], ["", "", "FLI1 rearrangements"], ["", "", "CREBBP"], ["", "", "t(8;16)(p11.2;p13.3) [KAT6A-CREBBP]"], ["", "", "CREBBP single nucleotide variants"], ["", "", "CREBBP insertion/deletions"], ["", "", "CEBPA with CSF3R"], ["", "", "IDH alterations"], ["", "", "IDH without NPM1"], ["", "", "IDH with NPM1 and DNMT3A"], ["", "", "IDH with NPM1 and FLT3-ITD"], ["", "", "Exon 5 \u2013 Exon 33 inv(16)/t16;16)(p13.1q22.1) [CBFB-MYH11]  with exon 17 c-KIT"], ["", "", "t(8;21)(q21.2;q22) [RUNX1-RUNX1T1] with ASXL1"], ["", "", "TP53"], ["", "", "UBTF/ITD"], ["", "", "NPM1 + DNMT3A"], ["", "", "RUNX1-RUNX1T1 + MGA alteration"], ["", "", "MYC SNV/indels"]];
+    document.querySelectorAll("#itables_167f931a_54dc_4b24_a6e0_79b55b64906d:not(.dataTable)").forEach(table => {
+        // Define the table data
+        const data = [["t(8;21)(q21.2;q22) [RUNX1-RUNX1T1]", "patients without HR or LR features ", "Monosomy 7"], ["inv(16)/t(16;16)(p13.1q22.1) [CBFB-MYH11]", "", "Monosomy 5/del5q-"], ["NPM1 positive", "", "FLT3/ITD+ with allelic ratio > 0.1%"], ["CEBPA positive\u00a0(Bzip mutation)", "", "t(6;9)(p22.3;q34.1) [DEK-NUP214]"], ["", "", "inv(3)(q21.3q26.2) [RPN1-MECOM]"], ["", "", "t(3;21)(26.2;q22) [RUNX1-MECOM]"], ["", "", "t(3;5)(q25q34) [NPM1-MLF1]"], ["", "", "11p15 (NUP98) rearrangements"], ["", "", "inv(16)(p13.3q24.3) [CBFA2T3-GLIS2]"], ["", "", "10p12.3 (MLLT10) rearrangements"], ["", "", "KMT2A rearrangements"], ["", "", "t(4;11)(q21;q23) [KMT2A-AFF1]"], ["", "", "t(6;11)(q27;q23) [KMT2A-MLLT4] (aka AF6, AFDN)"], ["", "", "t(10;11)(p11.2;q23) [KMT2A-ABI1]"], ["", "", "t(10;11)(p12;q23) [KMT2A-MLLT10]"], ["", "", "t(11;19)(q23;p13.3) [KMT2A-MLLT1]"], ["", "", "KMT2A-PTD"], ["", "", "ETS family rearrangements"], ["", "", "12p13.2 (ETV6) rearrangements"], ["", "", "12p13.2 (ETV6) deletion"], ["", "", "21q22.2 (ERG) rearrangements"], ["", "", "FEV rearrangements"], ["", "", "FLI1 rearrangements"], ["", "", "CREBBP"], ["", "", "t(8;16)(p11.2;p13.3) [KAT6A-CREBBP]"], ["", "", "CREBBP single nucleotide variants"], ["", "", "CREBBP insertion/deletions"], ["", "", "CEBPA with CSF3R"], ["", "", "IDH alterations"], ["", "", "IDH without NPM1"], ["", "", "IDH with NPM1 and DNMT3A"], ["", "", "IDH with NPM1 and FLT3-ITD"], ["", "", "Exon 5 \u2013 Exon 33 inv(16)/t16;16)(p13.1q22.1) [CBFB-MYH11]  with exon 17 c-KIT"], ["", "", "t(8;21)(q21.2;q22) [RUNX1-RUNX1T1] with ASXL1"], ["", "", "TP53"], ["", "", "UBTF/ITD"], ["", "", "NPM1 + DNMT3A"], ["", "", "RUNX1-RUNX1T1 + MGA alteration"], ["", "", "MYC SNV/indels"]];
 
-    // Define the dt_args
-    let dt_args = {"columnDefs": [{"className": "dt-left", "targets": "_all"}], "order": []};
-    dt_args["data"] = data;
+        // Define the dt_args
+        let dt_args = {"columnDefs": [{"className": "dt-left", "targets": "_all"}], "layout": {"topStart": "pageLength", "topEnd": "search", "bottomStart": "info", "bottomEnd": "paging"}, "order": []};
+        dt_args["data"] = data;
 
-    $(document).ready(function () {
         
-        $('#a0ebccb9-3adc-4a59-8880-8beeaf26e492').DataTable(dt_args);
+        new DataTable(table, dt_args);
     });
 </script>
-</div>
 </div></div>
 </div>
 <section id="main-reclassification-functions-applied-to-all-samples">
@@ -750,9 +900,11 @@ document.write(`
         <span class="s1">&#39;Myeloid Leukemia with 11q23/MLL Abnormalities&#39;</span>                 <span class="p">:</span> <span class="s2">&quot;AML with t(v;11q23); KMT2A-r&quot;</span><span class="p">,</span>
         <span class="s1">&#39;Myeloid Leukemia with t(6;9)(p23;q34) DEK-NUP214&#39;</span>              <span class="p">:</span> <span class="s1">&#39;AML with t(6;9); DEK::NUP214&#39;</span><span class="p">,</span>
         <span class="s1">&#39;Myeloid Leukemia with inv(16) or t(16;16) [CBFbeta/MYH11]&#39;</span>     <span class="p">:</span> <span class="s2">&quot;AML with inv(16); t(16;16); CBFB::MYH11&quot;</span><span class="p">,</span>
+        <span class="s1">&#39;MLL+, FLT3 TKD + monocytic AML&#39;</span>                                <span class="p">:</span> <span class="s2">&quot;AML with t(v;11q23); KMT2A-r&quot;</span><span class="p">,</span>
         
         <span class="c1"># ALL</span>
         <span class="s1">&#39;T-ALL&#39;</span>                                                         <span class="p">:</span><span class="s1">&#39;T-ALL NOS&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;T-cell acute lymphoblastic leukemia&#39;</span>                           <span class="p">:</span><span class="s1">&#39;T-ALL NOS&#39;</span><span class="p">,</span>
         <span class="s1">&#39;BCP-ALL HeH&#39;</span>                                                   <span class="p">:</span><span class="s1">&#39;B-ALL with hyperdiploidy&#39;</span><span class="p">,</span>
         <span class="s1">&#39;BCP-ALL t(12;21)&#39;</span>                                              <span class="p">:</span><span class="s1">&#39;B-ALL with t(12;21); ETV6::RUNX1&#39;</span><span class="p">,</span>         
         <span class="s1">&#39;BCP-ALL 11q23/MLL&#39;</span>                                             <span class="p">:</span><span class="s1">&#39;B-ALL with t(v;11q23); KMT2A-r&#39;</span><span class="p">,</span>       
@@ -1035,8 +1187,8 @@ Name: count, dtype: int64
 </div>
 </section>
 </section>
-<section id="apply-classification-to-test-dataset">
-<h2>Apply classification to test dataset<a class="headerlink" href="#apply-classification-to-test-dataset" title="Link to this heading">#</a></h2>
+<section id="apply-classification-to-validation-dataset">
+<h2>Apply classification to validation dataset<a class="headerlink" href="#apply-classification-to-validation-dataset" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1047,39 +1199,39 @@ Name: count, dtype: int64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import functions to clean up clinical data</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">source.clinical_data_cleanup</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">utils.clinical_data_cleanup</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="c1"># Call functions to merge, index and clean clinical data files</span>
 <span class="n">labels_aml02</span>         <span class="o">=</span> <span class="n">clean_aml02</span>       <span class="p">(</span><span class="n">merge_index_aml02</span><span class="p">())</span>
 <span class="n">labels_aml08</span>         <span class="o">=</span> <span class="n">clean_aml08</span>       <span class="p">(</span><span class="n">merge_index_aml08</span><span class="p">())</span>
 
 <span class="c1"># Combine all clinical data labels into one dataframe</span>
-<span class="n">labels_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">labels_aml02</span><span class="p">,</span> <span class="n">labels_aml08</span><span class="p">]</span> <span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
+<span class="n">labels_validation</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">labels_aml02</span><span class="p">,</span> <span class="n">labels_aml08</span><span class="p">]</span> <span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
 
 <span class="c1"># Redefine output path (for troubleshooting purposes in case only this cell is run)</span>
 <span class="n">mount</span> <span class="o">=</span> <span class="s1">&#39;/mnt/e/ALMA/&#39;</span>
 <span class="n">output_path</span> <span class="o">=</span> <span class="n">mount</span> <span class="o">+</span> <span class="s1">&#39;Intermediate_Files/&#39;</span>
 
 <span class="c1"># Read df_test</span>
-<span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;201samples_427375cpgs_withbatchcorrection_bvalues.pkl&#39;</span><span class="p">)</span>
+<span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;201samples_331556cpgs_nobatchcorrection_bvalues.pkl&#39;</span><span class="p">)</span>
 
 <span class="c1"># Add columns for later analyses</span>
-<span class="n">labels_test</span><span class="p">[</span><span class="s1">&#39;Train-Test&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Test Sample&#39;</span>
-<span class="n">labels_test</span><span class="p">[</span><span class="s1">&#39;Batch&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Multicenter AML02,08 Trials&quot;</span>
-<span class="n">labels_test</span><span class="p">[</span><span class="s1">&#39;Risk Group AAML1831&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-<span class="n">labels_test</span><span class="p">[</span><span class="s1">&#39;Risk_Group_AAML1831_int&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">labels_validation</span><span class="p">[</span><span class="s1">&#39;Train-Test&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Test Sample&#39;</span>
+<span class="n">labels_validation</span><span class="p">[</span><span class="s1">&#39;Batch&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Multicenter AML02,08 Trials&quot;</span>
+<span class="n">labels_validation</span><span class="p">[</span><span class="s1">&#39;Risk Group AAML1831&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">labels_validation</span><span class="p">[</span><span class="s1">&#39;Risk_Group_AAML1831_int&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
 
 <span class="c1"># Remove samples that are not in the methyl dataset</span>
-<span class="n">df_labels_test</span> <span class="o">=</span> <span class="n">labels_test</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels_test</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df_test</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="n">df_labels_validation</span> <span class="o">=</span> <span class="n">labels_validation</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels_validation</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df_test</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
 
 <span class="c1"># Reclassify samples according to WHO 2022</span>
-<span class="n">df_labels_test2</span> <span class="o">=</span> <span class="n">process_labels_who22</span><span class="p">(</span><span class="n">df_labels_test</span><span class="p">)</span>
+<span class="n">df_labels_validation2</span> <span class="o">=</span> <span class="n">process_labels_who22</span><span class="p">(</span><span class="n">df_labels_validation</span><span class="p">)</span>
 
 <span class="c1"># Add age categorization and main disease classification to the clinical data</span>
-<span class="n">df_labels_test3</span> <span class="o">=</span> <span class="n">process_df_labels</span><span class="p">(</span><span class="n">df_labels_test2</span><span class="p">)</span>
+<span class="n">df_labels_validation3</span> <span class="o">=</span> <span class="n">process_df_labels</span><span class="p">(</span><span class="n">df_labels_validation2</span><span class="p">)</span>
 
 <span class="c1"># Display the value counts of the WHO 2022 Diagnosis</span>
-<span class="n">df_labels_test3</span><span class="p">[</span><span class="s1">&#39;WHO 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df_labels_validation3</span><span class="p">[</span><span class="s1">&#39;WHO 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1099,8 +1251,8 @@ Name: count, dtype: int64
 </div>
 </div>
 </section>
-<section id="save-clinical-datasets">
-<h2>Save clinical datasets<a class="headerlink" href="#save-clinical-datasets" title="Link to this heading">#</a></h2>
+<section id="apply-classification-to-test-dataset">
+<h2>Apply classification to test dataset<a class="headerlink" href="#apply-classification-to-test-dataset" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1108,15 +1260,51 @@ Name: count, dtype: int64
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Concatenate clinical data files and keep overlapping columns</span>
-<span class="n">common_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df_labels4</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df_labels_test3</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read test data</span>
+<span class="n">labels_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">PATH</span> <span class="o">+</span> <span class="s1">&#39;UF_HemBank/uf_hembank_FM.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="c1"># Apply `common_columns` to both df_labels4 and df_labels_test3</span>
+<span class="c1"># Read df_test</span>
+<span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;17samples_331556cpgs_nanoporeseq_bvalues.pkl&#39;</span><span class="p">)</span>
+
+<span class="c1"># Remove samples that are not in the methyl dataset</span>
+<span class="n">df_labels_test</span> <span class="o">=</span> <span class="n">labels_test</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels_test</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df_test</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="c1"># Reclassify samples according to WHO 2022</span>
+<span class="n">df_labels_test2</span> <span class="o">=</span> <span class="n">process_labels_who22</span><span class="p">(</span><span class="n">df_labels_test</span><span class="p">)</span>
+
+<span class="c1"># Add age categorization and main disease classification to the clinical data</span>
+<span class="n">df_labels_test3</span> <span class="o">=</span> <span class="n">process_df_labels</span><span class="p">(</span><span class="n">df_labels_test2</span><span class="p">)</span>
+
+<span class="n">df_labels_test3</span><span class="p">[</span><span class="s1">&#39;WHO 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WHO 2022 Diagnosis
+NaN                             14
+AML with t(v;11q23); KMT2A-r     2
+T-ALL NOS                        1
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="save-clinical-datasets">
+<h2>Save clinical datasets<a class="headerlink" href="#save-clinical-datasets" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Concatenate clinical data files and keep overlapping columns</span>
+<span class="n">common_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df_labels4</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df_labels_validation3</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+
+<span class="c1"># Apply `common_columns` to all clinical datasets</span>
 <span class="n">df_labels5</span> <span class="o">=</span> <span class="n">df_labels4</span><span class="p">[</span><span class="n">common_columns</span><span class="p">]</span>
+<span class="n">df_labels_validation4</span> <span class="o">=</span> <span class="n">df_labels_validation3</span><span class="p">[</span><span class="n">common_columns</span><span class="p">]</span>
 <span class="n">df_labels_test4</span> <span class="o">=</span> <span class="n">df_labels_test3</span><span class="p">[</span><span class="n">common_columns</span><span class="p">]</span>
 
 <span class="c1"># Concatenate clinical data files and keep overlapping columns</span>
-<span class="n">clinical_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_labels5</span><span class="p">,</span> <span class="n">df_labels_test4</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">clinical_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_labels5</span><span class="p">,</span> <span class="n">df_labels_validation4</span><span class="p">,</span> <span class="n">df_labels_test4</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># Save the merged clinical data</span>
 <span class="n">clinical_data</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;clinical_data.xlsx&#39;</span><span class="p">)</span>
@@ -1137,7 +1325,6 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 </section>
 <section id="watermark">
@@ -1146,12 +1333,14 @@ Name: count, dtype: int64
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Author: Francisco_Marchi@Lamba_Lab_UF
 
+Last updated: 2024-09-14
+
 Python implementation: CPython
 Python version       : 3.8.18
-IPython version      : 8.12.2
+IPython version      : 8.12.3
 
-numpy   : 1.24.3
-pandas  : 2.0.2
+numpy   : 1.24.4
+pandas  : 2.0.3
 pacmap  : 0.7.0
 sklearn : 1.2.2
 lightgbm: 3.3.5
@@ -1163,6 +1352,8 @@ Machine     : x86_64
 Processor   : x86_64
 CPU cores   : 32
 Architecture: 64bit
+
+Git repo: git@github.com:f-marchi/ALMA.git
 </pre></div>
 </div>
 </div>
@@ -1206,7 +1397,7 @@ Architecture: 64bit
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Test Dataset (Work in Progress)</p>
+        <p class="prev-next-title">Test Dataset</p>
       </div>
     </a>
     <a class="right-next"
@@ -1246,6 +1437,7 @@ Architecture: 64bit
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Execution</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-classification-to-validation-dataset">Apply classification to validation dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-classification-to-test-dataset">Apply classification to test dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-clinical-datasets">Save clinical datasets</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>

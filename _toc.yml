@@ -1,5 +1,5 @@
 format: jb-book
-root: index.html
+root: source/0_overview.ipynb
 parts:
 
   - caption: Latest
@@ -12,8 +12,9 @@ parts:
       - file: source/5_classifiers.ipynb
       - file: source/6_plots.ipynb
 
-  - caption: Previous 2022-2024
+  - caption: Previous
     chapters:
+      - file: source/6_plots_original.ipynb
       - file: v1/1_discovery_dataset.ipynb
       - file: v1/2_validation_dataset_v2.ipynb
       - file: v1/3_reclassification_strategy.ipynb
