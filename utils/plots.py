@@ -1168,15 +1168,14 @@ def draw_sankey_plot(df, col1, col2, colors, title, fontsize=10, fig_size=(10,10
 
 def plot_roc_auc(df, target, title=None, color_option='colors1'):
     """
-    Plots ROC AUC flexibly using Bokeh.
-
+    Plots ROC AUC flexibly using Bokeh, with legends sorted by ascending AUC.
     """
     if color_option == 'colors1':
-        colors = ['red','green','blue', 'orange', 'purple', 'brown', 'pink', 'gray', 'olive', 'cyan', 'black']
+        colors = ['red', 'green', 'blue', 'orange', 'purple', 'brown', 'pink', 'gray', 'olive', 'cyan', 'black']
     elif color_option == 'colors2':
-        colors = ['green','blue','red']
+        colors = ['green', 'blue', 'red']
     else:
-        colors = ['green','red','blue']
+        colors = ['green', 'red', 'blue']
     
     if title:
         title_ = title + ', n=' + str(len(df))
@@ -1188,18 +1187,26 @@ def plot_roc_auc(df, target, title=None, color_option='colors1'):
                y_axis_label='True Positive Rate',
                width=425, height=425,
                tools='save,reset,pan')
-    
+
     p.line([0, 1], [0, 1], line_dash="dashed", color="gray", line_width=1)
 
-    for column, color in zip(df.columns.difference([target]), colors):
+    # Calculate AUCs for each column and store them with their associated column name
+    aucs = []
+    for column in df.columns.difference([target]):
         fpr, tpr, _ = roc_curve(df[target], df[column])
         roc_auc = auc(fpr, tpr)
+        aucs.append((roc_auc, column, fpr, tpr))
+
+    # Sort by AUC in ascending order
+    aucs.sort(reverse=True)
+
+    # Plot each ROC curve using sorted AUCs
+    for (roc_auc, column, fpr, tpr), color in zip(aucs, colors):
         p.line(fpr, tpr, legend_label=f"{column} ({roc_auc:.2f})",
                color=color, line_width=2, alpha=0.8)
 
-
     p.legend.location = "bottom_right"
-    p.legend.click_policy="hide"
+    p.legend.click_policy = "hide"
     p.toolbar.logo = None
     p.legend.label_text_font_size = '8pt'
     p.legend.spacing = 2
