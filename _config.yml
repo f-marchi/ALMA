@@ -6,13 +6,12 @@
 #######################################################################################
 # Book settings
 title                       : Acute Leukemia Methylome Atlas Study  # The title of the book. Will be placed in the left navbar.
-author                      : Marchi et al. @ Lamba Lab @ University of Florida. # The author of the book
+author                      : Marchi et al. | Lamba Lab | University of Florida. # The author of the book
 copyright                   : "2024"  # Copyright year to be placed in the footer
 logo                        : ""  # A path to the book logo
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
-exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints", .venv,.venv_py37,.venv_py38,
-                               .venv_data_vizualization, .venv_pacmap, .venv_sklearn, Code_past, Benchmarking, 
-                               .past_code_files, .utils]
+exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints",.venv_py38,.venv_py310,
+                               .utils]
 
 # Auto-exclude files not in the toc
 only_build_toc_files        : true
@@ -22,8 +21,7 @@ only_build_toc_files        : true
 execute:
   execute_notebooks         : "off"  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
   cache                     : ""    # A path to the jupyter cache that will be used to store execution artifacts. Defaults to `_build/.jupyter_cache/`
-  exclude_patterns          : [.venv,.venv_py38, .venv_data_vizualization, .venv_pacmap, 
-                               .venv_sklearn, Code_past, Benchmarking, .past_code_files, .utils]    # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
+  exclude_patterns          : [.venv,.venv_py38,.venv_py310, .utils, ]    # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
   timeout                   : 30    # The maximum time (in seconds) each notebook cell is allowed to run.
   run_in_temp               : false # If `True`, then a temporary directory will be created and used as the command working directory (cwd),
                                     # otherwise the notebook's parent directory will be the cwd.
@@ -83,9 +81,9 @@ launch_buttons:
   colab_url                 : "" # The URL of Google Colab (https://colab.research.google.com)
 
 repository:
-  url                       : https://github.com/executablebooks/jupyter-book  # The URL to your book's repository
+  url                       : https://github.com/f-marchi/ALMA  # The URL to your book's repository
   path_to_book              : ""  # A path to your book's folder, relative to the repository root.
-  branch                    : master  # Which branch of the repository should be used when creating links
+  branch                    : main  # Which branch of the repository should be used when creating links
 
 #######################################################################################
 # Advanced and power-user settings
