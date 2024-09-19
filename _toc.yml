@@ -14,7 +14,7 @@ parts:
 
   - caption: Previous
     chapters:
-      - file: source/6_plots_original.ipynb
+      - file: v1/6_plots_8-2024.ipynb
       - file: v1/1_discovery_dataset.ipynb
       - file: v1/2_validation_dataset_v2.ipynb
       - file: v1/3_reclassification_strategy.ipynb
