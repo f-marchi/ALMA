@@ -1,4 +1,4 @@
-# Acute Leukemia Methylome Atlas Study - Notebooks
+# Acute Leukemia Methylome Atlas Study Notebooks
 
 This project is organized as a Jupyter Book with various sections covering datasets, models, and figures. Below is an overview of the contents.
 
@@ -11,8 +11,8 @@ This project is organized as a Jupyter Book with various sections covering datas
 ### Datasets
 
 - [Discovery](source/1_discovery.ipynb)
-- [Validation](source/2_validation.ipynb)
-- [Test](source/3_test.ipynb)
+- [Test](source/2_test.ipynb)
+- [Nanopore Test](source/3_nanopore_test.ipynb)
 - [Clinical Data](source/4_clinical_data.ipynb)
 
 ### Models

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
@@ -61,7 +61,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'source/5_classifiers';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data Visualization" href="6_plots.html" />
+    <link rel="next" title="Plots" href="6_plots.html" />
     <link rel="prev" title="38-CpG AML Signature" href="5_signature.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -177,8 +177,8 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Datasets</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_discovery.html">Discovery Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2_validation.html">Validation Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_test.html">Test Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_test.html">Test Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_nanopore_test.html">Nanopore Test Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4_clinical_data.html">Clinical Data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Models</span></p>
@@ -188,7 +188,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Figures</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="6_plots.html">Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_plots.html">Plots</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://f-marchi.github.io/ALMA-app/">Run Interactive App</a></li>
 </ul>
 
@@ -405,26 +405,25 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read df_discovery and df_validation</span>
-<span class="n">df_discovery</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_discovery</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span>
     <span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;3314samples_331556cpgs_withbatchcorrection_bvalues.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span>
 
-<span class="n">df_validation</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span>
+<span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span>
     <span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;201samples_331556cpgs_nobatchcorrection_bvalues.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()[</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
 
-<span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span>
+<span class="n">df_nanopore_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span>
     <span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;12samples_331556cpgs_nanoporeseq_bvalues.pkl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()[</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span>
-<span class="sa">f</span><span class="s1">&#39;Discovery:  </span><span class="si">{</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples.</span><span class="se">\n</span><span class="s1">Validation:  </span><span class="si">{</span><span class="n">df_validation</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples.</span><span class="se">\n</span><span class="s1">Test:         </span><span class="si">{</span><span class="n">df_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples.&#39;</span><span class="p">)</span>
+<span class="sa">f</span><span class="s1">&#39;Discovery:  </span><span class="si">{</span><span class="n">df_discovery</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples.</span><span class="se">\n</span><span class="s1">Test:        </span><span class="si">{</span><span class="n">df_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples.</span><span class="se">\n</span><span class="s1">Nanopore:     </span><span class="si">{</span><span class="n">df_nanopore_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> samples.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Discovery:  3314 samples.
-Validation:  201 samples.
-Test:         12 samples.
+Test:        201 samples.
+Nanopore:     12 samples.
 </pre></div>
 </div>
 </div>
@@ -516,12 +515,12 @@ Test:         12 samples.
 <span class="n">train_5d</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">output_path</span><span class="o">+</span><span class="s1">&#39;pacmap/pacmap_5d_embedding.pkl&#39;</span><span class="p">)</span>
 
 <span class="c1"># Apply pacmap model to validation dataset</span>
-<span class="n">val_2d</span> <span class="o">=</span> <span class="n">apply_pacmap_model_to_new_data</span><span class="p">(</span><span class="n">df_validation</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">val_5d</span> <span class="o">=</span> <span class="n">apply_pacmap_model_to_new_data</span><span class="p">(</span><span class="n">df_validation</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-
-<span class="c1"># Apply pacmap model to test dataset</span>
 <span class="n">test_2d</span> <span class="o">=</span> <span class="n">apply_pacmap_model_to_new_data</span><span class="p">(</span><span class="n">df_test</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">test_5d</span> <span class="o">=</span> <span class="n">apply_pacmap_model_to_new_data</span><span class="p">(</span><span class="n">df_test</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Apply pacmap model to test dataset</span>
+<span class="n">test_nano_2d</span> <span class="o">=</span> <span class="n">apply_pacmap_model_to_new_data</span><span class="p">(</span><span class="n">df_nanopore_test</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">test_nano_5d</span> <span class="o">=</span> <span class="n">apply_pacmap_model_to_new_data</span><span class="p">(</span><span class="n">df_nanopore_test</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -539,11 +538,11 @@ Test:         12 samples.
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Join 2d and 5d</span>
 <span class="n">train</span> <span class="o">=</span> <span class="n">train_2d</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">train_5d</span><span class="p">)</span>
-<span class="n">val</span> <span class="o">=</span> <span class="n">val_2d</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">val_5d</span><span class="p">)</span>
 <span class="n">test</span> <span class="o">=</span> <span class="n">test_2d</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">test_5d</span><span class="p">)</span>
+<span class="n">test_nano</span> <span class="o">=</span> <span class="n">test_nano_2d</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">test_nano_5d</span><span class="p">)</span>
 
 <span class="c1"># Concatenate train and test</span>
-<span class="n">train_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">train</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">test</span><span class="p">])</span>
+<span class="n">train_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">test_nano</span><span class="p">])</span>
 
 <span class="c1"># Read clinical data</span>
 <span class="n">clinical_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">input_path</span><span class="o">+</span><span class="s1">&#39;clinical_data.xlsx&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -597,7 +596,7 @@ Test:         12 samples.
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2386 samples removed. 1146 samples remaining.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2381 samples removed. 1146 samples remaining.
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train-Test
@@ -647,12 +646,12 @@ Name: count, dtype: int64
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>954 samples removed. 2578 samples remaining.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>950 samples removed. 2577 samples remaining.
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train-Test
 Train Sample    2471
-Test Sample      107
+Test Sample      106
 Name: count, dtype: int64
 </pre></div>
 </div>
@@ -691,7 +690,7 @@ Name: count, dtype: int64
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X_train shape: (2471, 5) X_test shape: (107, 5)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>X_train shape: (2471, 5) X_test shape: (106, 5)
 X_train shape: (946, 5) X_test shape: (200, 5)
 </pre></div>
 </div>
@@ -753,8 +752,8 @@ X_train shape: (946, 5) X_test shape: (200, 5)
 <span class="n">lgbm_px_model</span> <span class="o">=</span> <span class="n">benchmark_classifier</span><span class="p">(</span><span class="n">X_train_px</span><span class="p">,</span> <span class="n">y_train_px</span><span class="p">)</span>
 
 <span class="c1"># Save models</span>
-<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">lgbm_px_model</span><span class="p">,</span> <span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;lgbm/lgbm_px_model.pkl&#39;</span><span class="p">)</span>
-<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">lgbm_dx_model</span><span class="p">,</span> <span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;lgbm/lgbm_dx_model.pkl&#39;</span><span class="p">)</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">lgbm_px_model</span><span class="p">,</span> <span class="s1">&#39;../models/lgbm_px_model.pkl&#39;</span><span class="p">)</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">lgbm_dx_model</span><span class="p">,</span> <span class="s1">&#39;../models/lgbm_dx_model.pkl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -764,7 +763,7 @@ X_train shape: (946, 5) X_test shape: (200, 5)
 Best parameters: {&#39;class_weight&#39;: &#39;balanced&#39;, &#39;reg_alpha&#39;: 8, &#39;reg_lambda&#39;: 4}
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/mnt/e/ALMA/Processed_Files/lgbm/lgbm_dx_model.pkl&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;../models/lgbm_dx_model.pkl&#39;]
 </pre></div>
 </div>
 </div>
@@ -790,8 +789,8 @@ Best parameters: {&#39;class_weight&#39;: &#39;balanced&#39;, &#39;reg_alpha&#39
 <span class="kn">import</span> <span class="nn">joblib</span>
 
 <span class="c1"># Load models</span>
-<span class="n">lgbm_px_model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;lgbm/lgbm_px_model.pkl&#39;</span><span class="p">)</span>
-<span class="n">lgbm_dx_model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">output_path</span> <span class="o">+</span> <span class="s1">&#39;lgbm/lgbm_dx_model.pkl&#39;</span><span class="p">)</span>
+<span class="n">lgbm_px_model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../models/lgbm_px_model.pkl&#39;</span><span class="p">)</span>
+<span class="n">lgbm_dx_model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../models/lgbm_dx_model.pkl&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">save_predictions</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">classifier</span><span class="p">,</span> <span class="n">model_name</span><span class="p">):</span>
     <span class="c1"># ignore sklearn warnings</span>
@@ -878,7 +877,7 @@ Best parameters: {&#39;class_weight&#39;: &#39;balanced&#39;, &#39;reg_alpha&#39
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Author: Francisco_Marchi@Lamba_Lab_UF
 
-Last updated: 2024-09-14
+Last updated: 2024-09-20
 
 Python implementation: CPython
 Python version       : 3.8.18
@@ -950,7 +949,7 @@ Git repo: git@github.com:f-marchi/ALMA.git
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data Visualization</p>
+        <p class="prev-next-title">Plots</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -5,8 +5,8 @@ parts:
   - caption: Datasets
     chapters:
       - file: source/1_discovery.ipynb
-      - file: source/2_validation.ipynb
-      - file: source/3_test.ipynb
+      - file: source/2_test.ipynb
+      - file: source/3_nanopore_test.ipynb
       - file: source/4_clinical_data.ipynb
   - caption: Models
     chapters:
