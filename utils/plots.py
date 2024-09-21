@@ -1124,9 +1124,13 @@ def draw_sankey_plot(df, col1, col2, colors, title, fontsize=10, fig_size=(10,10
     # Create color dictionary for unique values in the specified columns
     color_dict = create_color_dict(df, [col1, col2], colors)
 
-    if nan_action == 'drop':
+    if nan_action == 'drop1':
         df = df.dropna(subset=[col1])
         df[col2] = df[col2].fillna('Not confident')
+
+    elif nan_action == 'drop2':
+        df = df.dropna(subset=[col1,col2])
+
     elif nan_action == 'include':
         df[col1] = df[col1].fillna('Unknown')
         df[col2] = df[col2].fillna('Not confident')
