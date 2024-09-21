@@ -1119,28 +1119,30 @@ def draw_sankey_plot(df, col1, col2, colors, title, fontsize=10, fig_size=(10,10
     nan_action (str): What to do with NaN values. Options are 'drop', 'include', or 'keep only'. Default is 'drop'.
 
     """
-
+    df = df.copy()
+    
     # Create color dictionary for unique values in the specified columns
     color_dict = create_color_dict(df, [col1, col2], colors)
 
     if nan_action == 'drop':
-        df = df.dropna(subset=[col1, col2])
-
+        df = df.dropna(subset=[col1])
+        df[col2] = df[col2].fillna('Not confident')
     elif nan_action == 'include':
         df[col1] = df[col1].fillna('Unknown')
-        df[col2] = df[col2].fillna('Unknown')
+        df[col2] = df[col2].fillna('Not confident')
 
     elif nan_action == 'keep only':
         df = df[df[col1].isna()]
         # Fill NaN values with 'Unknown'
         df[col1] = df[col1].fillna('Unknown')
-        df[col2] = df[col2].fillna('Unknown')
+        df[col2] = df[col2].fillna('Not confident')
 
     else:
         raise ValueError('Invalid value for nan_action. Options are "drop", "include", or "keep only".')
 
     # Add the unknown class
     color_dict['Unknown'] = colors[-1]
+    color_dict['Not confident'] = colors[-1]
 
     # Create the sankey plot
     sankey(left=df[col1], right=df[col2], aspect=20, colorDict=color_dict, fontsize=fontsize)
@@ -1228,7 +1230,7 @@ def get_custom_color_palette():
     ]
 
 
-def plot_multiclass_roc_auc(df, target_columns, title=None):
+def plot_multiclass_roc_auc(df, target_columns, title=None, width=350, height=800, fontsize='10pt'):
     """
     Plots ROC AUC for multiple classes using Bokeh, targeting multiple classes,
     with legend below the plot.
@@ -1245,7 +1247,7 @@ def plot_multiclass_roc_auc(df, target_columns, title=None):
     p = figure(title=title_,
                x_axis_label='False Positive Rate',
                y_axis_label='True Positive Rate',
-               width=350, height=800,
+               width=width, height=height,
                tools='save,reset,pan')
 
     p.line([0, 1], [0, 1], line_dash="dashed", color="gray", line_width=1)
@@ -1264,7 +1266,7 @@ def plot_multiclass_roc_auc(df, target_columns, title=None):
 
     # Create a Legend with the collected items and add it below the plot
     legend = Legend(items=legend_items, spacing=0, location="left",
-                    label_text_font_size='7pt', click_policy="hide",
+                    label_text_font_size=fontsize, click_policy="hide",
                     background_fill_alpha=0.8)
     p.add_layout(legend, 'below')
 
@@ -1272,9 +1274,9 @@ def plot_multiclass_roc_auc(df, target_columns, title=None):
     p.toolbar.logo = None
     p.xaxis.axis_label_text_font_style = "normal"
     p.yaxis.axis_label_text_font_style = "normal"
-    p.xaxis.axis_label_text_font_size = '8pt'
-    p.yaxis.axis_label_text_font_size = '8pt'
-    p.title.text_font_size = '10pt'
+    p.xaxis.axis_label_text_font_size = fontsize
+    p.yaxis.axis_label_text_font_size = fontsize
+    p.title.text_font_size = fontsize
 
     return p
 

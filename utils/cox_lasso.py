@@ -148,7 +148,9 @@ def plot_nonzero_coef_freq(raw_coefs, mean_coefs, threshold=0.85, savefig=False,
     plt.show()
 
 
-def generate_coxph_score(coef_mean, x, df, score_name, cutoff='quantile', cutoff_value=None, rpart_outcome=None):
+def generate_coxph_score(coef_mean, x, df, cont_model_name, cat_model_name, cutoff='quantile',
+                         cutoff_value=None, rpart_outcome=None):
+    
     """Generates a dataframe with score/Cox PH predictions and a cutoff value for binarization."""
 
     # Calculate score in test(validation) data
@@ -163,14 +165,14 @@ def generate_coxph_score(coef_mean, x, df, score_name, cutoff='quantile', cutoff
     df3 = df2.iloc[:, (df2.shape[1] - coef_mean.shape[0]):df2.shape[1]]
 
     # Save calculated score as a separate column of the original dataframe
-    df[score_name] = df3.sum(axis=1)
+    df[cont_model_name] = df3.sum(axis=1)
 
     # Determine cutoff
     if cutoff == 'rpart':
         
         from sklearn.tree import DecisionTreeRegressor
 
-        X = df[[score_name]]
+        X = df[[cont_model_name]]
         y = df[rpart_outcome]
 
         # Build a decision tree
@@ -181,7 +183,7 @@ def generate_coxph_score(coef_mean, x, df, score_name, cutoff='quantile', cutoff
         i = tree.tree_.threshold[0]
 
     if cutoff == 'quantile':
-        i = df[score_name].quantile(cutoff_value)
+        i = df[cont_model_name].quantile(cutoff_value)
 
     else:
         i = cutoff
@@ -189,11 +191,11 @@ def generate_coxph_score(coef_mean, x, df, score_name, cutoff='quantile', cutoff
     print(f"Continuous score cut at the value of {round(i,4)}")
 
     # Binarize score
-    df[score_name + ' Categorical'] = pd.cut(df[score_name],
+    df[cat_model_name] = pd.cut(df[cont_model_name],
                                              bins=[-np.inf, i, np.inf],
                                              labels=['Low', 'High'])
 
-    df[score_name + '_cat_bin'] = pd.cut(df[score_name],
+    df[cat_model_name + '_int'] = pd.cut(df[cont_model_name],
                                          bins=[-np.inf, i, np.inf],
                                          labels=[0, 1])
 
