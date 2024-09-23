@@ -1,5 +1,9 @@
 # Acute Leukemia Methylome Atlas Study Notebooks
 
+## Notice
+
+This is a pre-publication repository! Please consider all information here confidential and do not use any of the data or code until it has been peer-reviewed and published.
+
 ## Overview
 
 The Acute Leukemia Methylome Atlas (ALMA) is an open-source project aimed at defining clinical subtypes and risk profiles of acute leukemias through epigenomics. This project provides a comprehensive tool for researchers and clinicians to explore and analyze methylation patterns in acute leukemia samples.
