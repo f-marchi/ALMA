@@ -566,7 +566,7 @@ def plot_confusion_matrix_stacked(train_df, test_df, true_col, pred_col, classes
     fig.subplots_adjust(wspace=0.05)
 
     metrics_dict = {}
-    for ax, df, subset in zip(axs, [train_df, test_df], ['Train', 'Validation']):
+    for ax, df, subset in zip(axs, [train_df, test_df], ['Train 5-fold CV', 'Test']):
         y_true, y_pred = map(convert_to_int, [df[true_col], df[pred_col]])
         
         metrics = compute_metrics(y_true, y_pred, is_binary)
@@ -886,16 +886,21 @@ def draw_sankey_plot(df, col1, col2, colors, title, fontsize=10, fig_size=(10,10
 
     elif nan_action == 'include':
         df[col1] = df[col1].fillna('Unknown')
-        df[col2] = df[col2].fillna('Not confident')
+        if col2 == 'AL Epigenomic Subtype':
+            df[col2] = df[col2].fillna('Not confident')
+        else:
+            df[col2] = df[col2].fillna('Unknown')
 
-    elif nan_action == 'keep only':
+    elif nan_action == 'keep-only':
         df = df[df[col1].isna()]
         # Fill NaN values with 'Unknown'
         df[col1] = df[col1].fillna('Unknown')
-        df[col2] = df[col2].fillna('Not confident')
-
+        if col2 == 'AL Epigenomic Subtype':
+            df[col2] = df[col2].fillna('Not confident')
+        else:
+            df[col2] = df[col2].fillna('Unknown')
     else:
-        raise ValueError('Invalid value for nan_action. Options are "drop", "include", or "keep only".')
+        raise ValueError('Invalid value for nan_action. Options are "drop1", "drop2" ,"include", or "keep only".')
 
     # Add the unknown class
     color_dict['Unknown'] = colors[-1]
