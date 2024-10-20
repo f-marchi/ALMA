@@ -15,5 +15,5 @@ parts:
   - caption: Figures
     chapters:
       - file: source/6_plots.ipynb
-      - url: https://f-marchi.github.io/ALMA-app/
+      - url: https://f-marchi.github.io/UF-LambaLab-ALMA-app/
         title: Run Interactive App
