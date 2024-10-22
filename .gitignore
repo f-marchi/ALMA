@@ -13,7 +13,7 @@
 .benchmarking
 *.drawio.bkp
 .utils
-# utils/__pycache__
+utils/__pycache__
 
 # Compiled source #
 ###################
