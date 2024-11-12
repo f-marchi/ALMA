@@ -886,7 +886,7 @@ def draw_sankey_plot(df, col1, col2, colors, title, fontsize=10, fig_size=(10,10
 
     elif nan_action == 'include':
         df[col1] = df[col1].fillna('Unknown')
-        if col2 == 'AL Epigenomic Subtype':
+        if col2 == 'ALMA Subtype':
             df[col2] = df[col2].fillna('Not confident')
         else:
             df[col2] = df[col2].fillna('Unknown')
@@ -895,7 +895,7 @@ def draw_sankey_plot(df, col1, col2, colors, title, fontsize=10, fig_size=(10,10
         df = df[df[col1].isna()]
         # Fill NaN values with 'Unknown'
         df[col1] = df[col1].fillna('Unknown')
-        if col2 == 'AL Epigenomic Subtype':
+        if col2 == 'ALMA Subtype':
             df[col2] = df[col2].fillna('Not confident')
         else:
             df[col2] = df[col2].fillna('Unknown')
