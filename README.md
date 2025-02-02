@@ -20,7 +20,7 @@ The Acute Leukemia Methylome Atlas (ALMA) is an open-source project aimed at def
 
 - [Documentation](https://f-marchi.github.io/ALMA/)
 
-- [Interactive App](https://f-marchi.github.io/ALMA-app/)
+- [Interactive App](https://f-marchi.github.io/UF-LambaLab-ALMA-app/)
 
 ## Contributing
 
@@ -40,11 +40,11 @@ The complete ALMA dataset is available for download [here](https://github.com/f-
 
 ## License
 
-TBD
+See license file.
 
 ## Citation
 
-TBD
+Francisco Marchi, Marieke Landwehr, Ann-Kathrin Schade et al. Long-read epigenomic diagnosis and prognosis of Acute Myeloid Leukemia, 12 December 2024, PREPRINT (Version 1) available at Research Square [https://doi.org/10.21203/rs.3.rs-5450972/v1]
 
 ## Acknowledgements
 
