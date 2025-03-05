@@ -14,95 +14,146 @@ from sklearn.metrics import (confusion_matrix, ConfusionMatrixDisplay, accuracy_
                                roc_curve, auc)
 
 
-def draw_kaplan_meier(df, model_name, save_plot=False, figsize=(8, 10), 
-                      add_risk_counts=False, save_survival_table=False,
-                      trialname=None, show_ci=False):
+def draw_kaplan_meier(df,
+                      model_name,
+                      trialname=None,
+                      plot_efs=True,
+                      plot_os=True,
+                      save_plot=False,
+                      figsize=(8, 10),
+                      add_risk_counts=False,
+                      save_survival_table=False,
+                      show_ci=False,
+                      suptitle=0.94):
+    """
+    Plot Kaplan-Meier curves for EFS, OS, or both. Preserves all original functionality.
 
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        DataFrame containing the survival data.
+    model_name : str
+        Name of the column in df used to define 'High'/'Low' groups.
+    trialname : str, optional
+        Name of the trial (for figure titles/filenames).
+    plot_efs : bool, optional
+        Whether to plot EFS curves.
+    plot_os : bool, optional
+        Whether to plot OS curves.
+    save_plot : bool, optional
+        Whether to save the resulting plot.
+    figsize : tuple, optional
+        Size of the figure.
+    add_risk_counts : bool, optional
+        Whether to add risk tables.
+    save_survival_table : bool, optional
+        Whether to save the survival tables as CSV.
+    show_ci : bool, optional
+        Whether to show confidence intervals in the Kaplan-Meier curves.
+    suptitle : float, optional
+        Y-coordinate of the main title.
+    """
+
+    sns.set_theme(style='white')
     # Import libraries for Kaplan Meier
     from lifelines.plotting import add_at_risk_counts
     from lifelines import KaplanMeierFitter
     from lifelines import CoxPHFitter
 
-    # Set up the matplotlib figure
-    sns.set_theme(style='white')
-    f, ax = plt.subplots(2, 1, sharex=True, figsize=figsize)
+    # Collect survival endpoints to plot
+    survival_info = []
+    if plot_efs:
+        survival_info.append(('efs.time at 5y', 'efs.evnt at 5y', 'Event-Free Survival'))
+    if plot_os:
+        survival_info.append(('os.time at 5y', 'os.evnt at 5y', 'Overall Survival'))
 
-    # Define survival curve categories
+    # If no endpoints specified, return
+    if not survival_info:
+        return
+
+    # Set up subplots
+    fig, axes = plt.subplots(nrows=len(survival_info), ncols=1,
+                             sharex=True, figsize=figsize)
+    # If only one subplot, axes is not a list
+    if len(survival_info) == 1:
+        axes = [axes]
+
     groups = df[model_name]
-    ix = (groups == 'High')
+    ix_high = (groups == 'High')
 
-    # Fit the Kaplan Meier to each category of groups (kmf1 and kmf2)
-    def surv_curves(i, t, e):
+    # Cox model requires numeric indicator
+    df[model_name + '_int'] = df[model_name].map({'High': 1, 'Low': 0})
 
-        T = df[t]
-        E = df[e]
-        kmf1 = KaplanMeierFitter()
-        kmf1.fit(T[~ix], E[~ix], label='Low ' + model_name + ', n=' +
-                 str(len(df[df[model_name].isin(['Low'])])))
-        ax = kmf1.plot_survival_function(
-            ax=i, show_censors=True, ci_show=show_ci)
+    def plot_surv(axis, time_col, event_col, title):
+        kmf_low = KaplanMeierFitter()
+        kmf_high = KaplanMeierFitter()
 
-        kmf2 = KaplanMeierFitter()
-        kmf2.fit(T[ix], E[ix], label='High ' + model_name + ', n=' +
-                 str(len(df[df[model_name].isin(['High'])])))
-        ax = kmf2.plot_survival_function(
-            ax=i, show_censors=True, ci_show=show_ci)
+        T = df[time_col]
+        E = df[event_col]
 
+        kmf_low.fit(T[~ix_high],
+                    E[~ix_high],
+                    label='Low ' + model_name + ', n=' + str((df[model_name] == 'Low').sum()))
+        kmf_high.fit(T[ix_high],
+                     E[ix_high],
+                     label='High ' + model_name + ', n=' + str((df[model_name] == 'High').sum()))
+
+        kmf_low.plot_survival_function(ax=axis, show_censors=True, ci_show=show_ci)
+        kmf_high.plot_survival_function(ax=axis, show_censors=True, ci_show=show_ci)
+
+        # CoxPHFitter for hazard ratio and p-value
         try:
-            # Calculate Hazard Ratio (HZ) and p-value (p)
-            df[model_name + '_int'] = df[model_name].map({'High':1, 'Low':0})
-            X_CPH = df[[model_name + '_int', t, e]]
+            X_cph = df[[model_name + '_int', time_col, event_col]].dropna()
             cph = CoxPHFitter()
-            HZ = cph.fit(X_CPH, t, event_col=e)
-            hz = HZ.hazard_ratios_[0]
-            p = HZ.summary['p'][0]
-            ci_lower = HZ.summary['exp(coef) lower 95%'][0]
-            ci_upper = HZ.summary['exp(coef) upper 95%'][0]
-
-            # Annotate HZ, CI, and p
-            i.annotate(f'HR: {hz:.4f} (95% CI: {ci_lower:.2f}, {ci_upper:.2f})\n p-value: {p:.4f}',
-               xy=(4.90, 0.1), xycoords='data',
-               ha='right', va='center', fontsize=11,
-               bbox={'boxstyle': 'round', 'facecolor': 'none',
-                     'edgecolor': 'lightgray'})
+            cph.fit(X_cph, time_col, event_col=event_col)
+            hz = cph.hazard_ratios_[model_name + '_int']
+            p = cph.summary.loc[model_name + '_int', 'p']
+            ci_lower = cph.summary.loc[model_name + '_int', 'exp(coef) lower 95%']
+            ci_upper = cph.summary.loc[model_name + '_int', 'exp(coef) upper 95%']
+            axis.annotate(
+                f'HR: {hz:.4f} (95% CI: {ci_lower:.2f}, {ci_upper:.2f})\n p-value: {p:.4f}',
+                xy=(4.90, 0.1),
+                xycoords='data',
+                ha='right', va='center', fontsize=11,
+                bbox={'boxstyle': 'round', 'facecolor': 'none', 'edgecolor': 'lightgray'})
         except:
             pass
 
+        # Add risk counts
+        if add_risk_counts:
+            add_at_risk_counts(kmf_low, kmf_high, ax=axis)
 
-        # Add risk counts below the graph
-        if add_risk_counts == True:
-            add_at_risk_counts(kmf1, kmf2, ax=i)
+        # Save survival table
+        if save_survival_table:
+            surv_low = kmf_low.survival_function_.join(kmf_low.confidence_interval_)
+            surv_high = kmf_high.survival_function_.join(kmf_high.confidence_interval_)
+            merged = surv_low.join(surv_high, how='outer', rsuffix='_High')
+            merged.to_csv(f'../../Figures/Kaplan_Meiers/KM_{time_col}_SurvivalTable_'
+                          f'{model_name}_{trialname}_{len(df)}.csv')
 
-        # Save Survival Function Table
-        if save_survival_table == True:
-            surv1 = kmf1.survival_function_.join(kmf1.confidence_interval_)
-            surv2 = kmf2.survival_function_.join(kmf2.confidence_interval_)
-            surv3 = surv1.join(surv2, how='outer')
-            surv3.to_csv('../../Figures/Kaplan_Meiers/KM_' + t + '_SurvivalTable_' +
-                         model_name + '_' + trialname + '_' + str(len(df)) + '.csv')
+        axis.set_title(title, loc='left', pad=10, fontweight='bold', fontsize=10)
+        axis.set_ylim(0, 1)
+        axis.set_xlim(0, 5)
+        axis.set_ylabel("est. probability of survival $\hat{S}(t)$")
 
-        i.set_ylim(0, 1)
-        i.set_ylabel("est. probability of survival $\hat{S}(t)$")
+    # Plot each requested endpoint
+    for (ax_i, (time_col, event_col, ttl)) in zip(axes, survival_info):
+        plot_surv(ax_i, time_col, event_col, ttl)
 
-    surv_curves(i=ax[0], t='efs.time at 5y', e='efs.evnt at 5y')
-    surv_curves(i=ax[1], t='os.time at 5y', e='os.evnt at 5y')
+    # Label the bottom axis
+    axes[-1].set_xlabel("time $t$ (years)")
 
-    ax[0].set_title('Event-Free Survival', loc='left',
-                    pad=10, fontweight='bold', fontsize=10)
-    ax[1].set_title('Overall Survival', loc='left', pad=10, fontweight='bold', fontsize=10)
-    # Define Plot Specs
+    # Main title
+    plt.suptitle(model_name + " in " + str(trialname) + ", n=" + str(len(df)),
+                 fontsize=11, y=suptitle, fontweight='bold')
     plt.subplots_adjust(wspace=0, hspace=0.2)
-    plt.suptitle(model_name + " in " + trialname + ", n=" + str(len(df)),
-                 fontsize=11, y=0.94, fontweight='bold')
-    plt.xlim(0, 5)
-    plt.xlabel("time $t$ (years)")
 
-    # Save plot figure
-    if save_plot == True:
-        plt.savefig('../Figures/Kaplan_Meiers/' + model_name + '_' + trialname + '_' + str(len(df)) + '.png',
+    # Save figure
+    if save_plot:
+        plt.savefig(f'../Figures/Kaplan_Meiers/{model_name}_{trialname}_{len(df)}.png',
                     bbox_inches='tight', dpi=300)
 
-    return (plt.show())
+    return plt.show()
 
 
 def draw_forest_plot(time, event, df, save_plot=False, trialname=None, model_name=None):
@@ -512,18 +563,37 @@ def draw_scatterplot(df_train, df_test, x, y, hue, s=25, save_plot=False, figsiz
     return (plt.show())
 
 
-def plot_confusion_matrix_stacked(train_df, test_df, true_col, pred_col, classes,
-                                  title='', tick_fontsize=10, label_fontsize=10,
-                                  figsize=(5, 3)):
-
-    def preprocess_data(df):
-        return df.dropna(subset=[true_col, pred_col])
+def plot_confusion_matrix_stacked(
+    df_dict,
+    true_col,
+    pred_col,
+    class_col,
+    title='',
+    tick_fontsize=10,
+    label_fontsize=10,
+    figsize_per_plot=(5, 3),
+    dropna=True
+):
+    """
+    Plots confusion matrices for 2 or 3 datasets side by side.
+    df_dict: dict of {subset_name: dataframe}
+    true_col: column name with true labels
+    pred_col: column name with predicted labels
+    class_col: column name that helps identify all class labels
+    title: overall figure title
+    tick_fontsize: font size for ticks
+    label_fontsize: font size for labels
+    figsize_per_plot: figure size per subplot (width, height)
+    dropna: whether to drop rows with missing values in true_col or pred_col
+    """
 
     def compute_metrics(y_true, y_pred, is_binary):
         metrics = {'Accuracy': accuracy_score(y_true, y_pred)}
         if is_binary:
             try:
-                precision, recall, f1, _ = precision_recall_fscore_support(y_true, y_pred, average='binary')
+                precision, recall, f1, _ = precision_recall_fscore_support(
+                    y_true, y_pred, average='binary'
+                )
                 tn, fp, fn, tp = confusion_matrix(y_true, y_pred).ravel()
                 specificity = tn / (tn + fp)
                 auc_roc = roc_auc_score(y_true, y_pred)
@@ -538,11 +608,11 @@ def plot_confusion_matrix_stacked(train_df, test_df, true_col, pred_col, classes
                 print(f"Error computing binary metrics: {str(e)}")
         else:
             try:
-                macro_f1 = precision_recall_fscore_support(y_true, y_pred, average='macro')[2]
-                weighted_f1 = precision_recall_fscore_support(y_true, y_pred, average='weighted')[2]
+                weighted_f1 = precision_recall_fscore_support(
+                    y_true, y_pred, average='weighted'
+                )[2]
                 kappa = cohen_kappa_score(y_true, y_pred)
                 metrics.update({
-                    'Macro F1': macro_f1,
                     'Weighted F1': weighted_f1,
                     "Cohen's Kappa": kappa
                 })
@@ -550,32 +620,44 @@ def plot_confusion_matrix_stacked(train_df, test_df, true_col, pred_col, classes
                 print(f"Error computing multiclass metrics: {str(e)}")
         return metrics
 
-    train_df, test_df = map(preprocess_data, [train_df, test_df])
+    # Preprocess data
+    df_dict = {name: df for name, df in df_dict.items()}
 
-    all_classes = sorted(set(train_df[classes].unique()) | set(test_df[classes].unique()) |
-                         set(train_df[pred_col].unique()) | set(test_df[pred_col].unique()))
+    # Collect all possible classes
+    all_labels = set()
+    for df in df_dict.values():
+        all_labels.update(df[class_col].dropna().unique())
+        all_labels.update(df[pred_col].dropna().unique())
+    all_classes = sorted(all_labels)
     all_classes = [cls for cls in all_classes if pd.notna(cls)]
 
-    is_binary = len(all_classes) == 2
+    # Check if it's a binary scenario
+    is_binary = (len(all_classes) == 2)
     display_labels = ["Alive", "Dead"] if is_binary else all_classes
 
+    # Map classes to integer if needed
     class_to_int = {cls: i for i, cls in enumerate(all_classes)}
-    convert_to_int = lambda series: series.map(class_to_int) if not is_binary else series
+    def convert_to_int(series):
+        return series.map(class_to_int) if not is_binary else series
 
-    fig, axs = plt.subplots(1, 2, figsize=figsize, sharey=True)
-    fig.subplots_adjust(wspace=0.05)
+    # Create subplots
+    n_plots = len(df_dict)
+    fig, axs = plt.subplots(1, n_plots, figsize=(figsize_per_plot[0] * n_plots, figsize_per_plot[1]))
+    if n_plots == 1:
+        axs = [axs]  # Ensure axs is iterable
 
     metrics_dict = {}
-    for ax, df, subset in zip(axs, [train_df, test_df], ['Train 5-fold CV', 'Test']):
-        y_true, y_pred = map(convert_to_int, [df[true_col], df[pred_col]])
-        
+    for ax, (subset, df) in zip(axs, df_dict.items()):
+        y_true, y_pred = convert_to_int(df[true_col]), convert_to_int(df[pred_col])
         metrics = compute_metrics(y_true, y_pred, is_binary)
         metrics_dict[subset] = metrics
-        
+
         cm = confusion_matrix(y_true, y_pred, labels=range(len(all_classes)), normalize='true')
         disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=display_labels)
-        disp.plot(cmap='Blues', values_format='.2f', xticks_rotation='vertical', colorbar=False, ax=ax)
-
+        disp.plot(cmap='Blues', values_format='.2f', xticks_rotation='vertical', 
+                  colorbar=False, ax=ax)
+        
+        # Adjust text sizes
         for texts in disp.text_:
             for text in texts:
                 text.set_fontsize(label_fontsize)

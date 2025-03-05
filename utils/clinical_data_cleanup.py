@@ -371,6 +371,27 @@ def merge_index_nordic_all():
 
     return meta
 
+# Nordic AML
+def merge_index_nordic_aml():
+
+    filepath1 = clinical_data_path + 'Nordic_AML/SupplementaryMaterial.xlsx'
+    filepath2 = clinical_data_path + 'Nordic_AML/Mutations_NOPHO_AML_n=142.csv'
+    filepath3 = clinical_data_path + 'Nordic_AML/NOPHO_AML_predictions.xlsx'
+
+    # Read the files
+    df1 = pd.read_excel(filepath1, index_col=0)
+    df2 = pd.read_csv(filepath2, index_col=0)
+    df3 = pd.read_excel(filepath3, index_col=0)
+
+    # Merge the dataframes
+    df = df1.join(df2).join(df3)
+
+    # Rename index from 'public_id' to 'Patient_ID'
+    df.index.name = 'Patient_ID'
+
+    return df
+
+
 # MDS_tAML
 def merge_index_mds_taml():
 
@@ -844,6 +865,31 @@ def clean_nordic_all(df):
     df['Karyotype'] = np.nan
     df['Gene Fusion'] = np.nan
     
+    return df
+
+
+def clean_nordic_aml(df):
+
+    df = df.rename(columns={'Age': 'Age (years)','Dead': 'os.evnt', 'Risk.Group04': 'Risk Group'})
+
+    df['os.time'] = df['OS'].astype(float).apply(lambda x: x/12)
+    df['Vital Status'] = df['os.evnt'].map({0: 'Alive', 1: 'Dead'})
+
+    df['Clinical Trial'] = 'NOPHO AML'
+    df['CEBPA mutation'] = df['CEBPA.mut'].replace({'CEBPA-double': 'Positive', 'CEBPA-single': 'Positive'})
+    df['NPM mutation'] = df['NPM1.mut'].replace({'NPM1': 'Positive'})
+    df['Karyotype'] = np.nan
+    df['Gene Fusion'] = df['Subtype']
+    df['Dx at Acquisition'] = df['Subtype'].replace({'mono 7': 'myelodysplasia-related changes'})
+
+    df['Train-Test'] = 'Test NOPHO AML Sample'
+    df['Batch'] = "NOPHO AML"
+    df['efs.evnt'] = np.nan
+    df['efs.time'] = np.nan
+
+    # Create a column "Sample Type" that takes in the index and looks for "_r" suffix. If found, it returns "Relapse" else "Diagnosis"
+    df['Sample Type'] = np.where(df.index.str.contains('_r'), 'Relapse', 'Diagnosis')
+
     return df
 
 
