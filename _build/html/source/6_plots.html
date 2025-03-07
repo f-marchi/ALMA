@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
@@ -478,7 +478,7 @@ document.write(`
     </style>
     <div>
         <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
-        <span id="dd0b77b2-7d6f-49b1-bbd9-34e119de0bf3">Loading BokehJS ...</span>
+        <span id="f6598805-f33c-4f4f-b292-9b4dcb3137a1">Loading BokehJS ...</span>
     </div>
 </div><script type="application/javascript">(function(root) {
   function now() {
@@ -642,7 +642,7 @@ const JS_MIME_TYPE = 'application/javascript';
      "</div>"}};
 
   function display_loaded() {
-    const el = document.getElementById("dd0b77b2-7d6f-49b1-bbd9-34e119de0bf3");
+    const el = document.getElementById("f6598805-f33c-4f4f-b292-9b4dcb3137a1");
     if (el != null) {
       el.textContent = "BokehJS is loading...";
     }
@@ -748,7 +748,7 @@ if (force === true) {
       console.log("Bokeh: BokehJS failed to load within specified timeout.");
       root._bokeh_failed_load = true;
     } else if (force !== true) {
-      const cell = $(document.getElementById("dd0b77b2-7d6f-49b1-bbd9-34e119de0bf3")).parents('.cell').data().cell;
+      const cell = $(document.getElementById("f6598805-f33c-4f4f-b292-9b4dcb3137a1")).parents('.cell').data().cell;
       cell.output_area.append_execute_result(NB_LOAD_WARNING)
     }
   }
@@ -2332,8 +2332,8 @@ if (force === true) {
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<img alt="../_images/3e183cb66100f23fe2896786dabfacde6edf41a84878c492ecfede5c788f35c0.png" src="../_images/3e183cb66100f23fe2896786dabfacde6edf41a84878c492ecfede5c788f35c0.png" />
-<img alt="../_images/f7eb8cd2d419809cbe93b2fc30b93126980f1be158fd8fcc9ee6d197725b03ca.png" src="../_images/f7eb8cd2d419809cbe93b2fc30b93126980f1be158fd8fcc9ee6d197725b03ca.png" />
+<img alt="../_images/5bfb1f1235c58d400500c466e6d4ace69bda4c7547250b136c0ba5a9634d2805.png" src="../_images/5bfb1f1235c58d400500c466e6d4ace69bda4c7547250b136c0ba5a9634d2805.png" />
+<img alt="../_images/1e50199927f1de0f84dc5012dd29edcb4a9e3283b275030da91b71286f883996.png" src="../_images/1e50199927f1de0f84dc5012dd29edcb4a9e3283b275030da91b71286f883996.png" />
 </div>
 </details>
 </div>
@@ -2468,13 +2468,13 @@ if (force === true) {
                  <span class="n">title</span><span class="o">=</span> <span class="s1">&#39;NOPHO AML independent test cohort&#39;</span><span class="p">,</span><span class="n">fig_size</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
                  <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">nan_action</span><span class="o">=</span><span class="s1">&#39;drop1&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
 
-<span class="n">draw_sankey_plot</span><span class="p">(</span><span class="n">nopho_aml2</span><span class="p">,</span> <span class="s1">&#39;Subtype&#39;</span><span class="p">,</span><span class="n">model_name1</span><span class="p">,</span>
-                 <span class="n">title</span><span class="o">=</span> <span class="s1">&#39;NOPHO AML independent test cohort&#39;</span><span class="p">,</span><span class="n">fig_size</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
-                 <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">nan_action</span><span class="o">=</span><span class="s1">&#39;drop1&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
-
 <span class="n">draw_sankey_plot</span><span class="p">(</span><span class="n">nopho_aml2</span><span class="p">,</span> <span class="s1">&#39;WHO 2022 Diagnosis&#39;</span><span class="p">,</span><span class="n">model_name1</span><span class="p">,</span>
                  <span class="n">title</span><span class="o">=</span> <span class="s1">&#39;NOPHO AML independent test cohort&#39;</span><span class="p">,</span><span class="n">fig_size</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
                  <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">nan_action</span><span class="o">=</span><span class="s1">&#39;keep-only&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+
+<span class="n">draw_sankey_plot</span><span class="p">(</span><span class="n">nopho_aml2</span><span class="p">,</span> <span class="s1">&#39;Original.Subtype&#39;</span><span class="p">,</span><span class="n">model_name1</span><span class="p">,</span>
+                 <span class="n">title</span><span class="o">=</span> <span class="s1">&#39;NOPHO AML independent test cohort&#39;</span><span class="p">,</span><span class="n">fig_size</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+                 <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">nan_action</span><span class="o">=</span><span class="s1">&#39;include&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2486,8 +2486,8 @@ if (force === true) {
 </summary>
 <div class="cell_output docutils container">
 <img alt="../_images/57795223c2a6540c84db6fcc6f8fcdd8b599a002342984aed4f469562fd2460f.png" src="../_images/57795223c2a6540c84db6fcc6f8fcdd8b599a002342984aed4f469562fd2460f.png" />
-<img alt="../_images/cf82e76b085ff71e1498d8d65e7414cb703aff65625195ed7ad878a647e0db15.png" src="../_images/cf82e76b085ff71e1498d8d65e7414cb703aff65625195ed7ad878a647e0db15.png" />
 <img alt="../_images/7c60d7bc2ed702f31b5cee90880071c4453877e97e8763f815a57d28767b1769.png" src="../_images/7c60d7bc2ed702f31b5cee90880071c4453877e97e8763f815a57d28767b1769.png" />
+<img alt="../_images/bd93025cee8105f547f8641677312c54c13d96c765224ab78b70f9883cd6d6d7.png" src="../_images/bd93025cee8105f547f8641677312c54c13d96c765224ab78b70f9883cd6d6d7.png" />
 </div>
 </details>
 </div>
