@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
@@ -362,22 +362,50 @@ document.write(`
 <h1>Nanopore Test Dataset<a class="headerlink" href="#nanopore-test-dataset" title="Link to this heading">#</a></h1>
 <ol class="arabic">
 <li><p>Basecall and align using Dorado and minimap2:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/dorado-0.7.3-linux-x64/bin/dorado<span class="w"> </span>basecaller<span class="w"> </span>hac,5mCG_5hmCG<span class="w"> </span>uf1848/20240905_1712_P2S-02395-A_PAW87958_2d796b97/pod5/<span class="w"> </span>--reference<span class="w"> </span>ref/hg38.fna
---trim<span class="w"> </span>adapters<span class="w"> </span>&gt;<span class="w"> </span>uf1848/uf1848_hac5_unsorted.bam
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dorado<span class="w"> </span>basecaller<span class="w"> </span><span class="se">\</span>
+sup,5mCG_5hmCG<span class="w"> </span><span class="se">\</span>
+/path/to/pod5/<span class="w"> </span><span class="se">\</span>
+--reference<span class="w"> </span>ref/hg38.fna<span class="w"> </span><span class="se">\</span>
+--trim<span class="w"> </span>adapters<span class="w"> </span><span class="se">\</span>
+--min-qscore<span class="w"> </span><span class="m">15</span><span class="w"> </span>&gt;<span class="w"> </span><span class="o">{</span><span class="nv">$SAMPLE</span><span class="o">}</span>_sup5_unsorted.bam
 </pre></div>
 </div>
 </li>
 <li><p>Sort and index bam:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>samtools<span class="w"> </span>sort<span class="w"> </span>--write-index<span class="w"> </span>-o<span class="w"> </span>uf1857_hac430.bam<span class="w"> </span>-O<span class="w"> </span>BAM<span class="w"> </span>--reference<span class="w"> </span>ref/hg38.fna<span class="w"> </span>uf1857/uf1857_hac430_unsorted.bam
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>samtools<span class="w"> </span>sort<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--threads<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--write-index<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-m<span class="w"> </span>8G<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span><span class="s2">&quot;bam/</span><span class="si">${</span><span class="nv">BASENAME</span><span class="si">}</span><span class="s2">.bam&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-O<span class="w"> </span>BAM<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--reference<span class="w"> </span>ref/hg38.fna<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">&quot;</span><span class="nv">$SAMPLE</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 </li>
-<li><p>Create a BedMethyl file with Modkit</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>modkit<span class="w"> </span>pileup<span class="w"> </span>bam/uf1829.bam<span class="w"> </span>bed/uf1829.bed<span class="w"> </span>-t<span class="w"> </span><span class="m">32</span><span class="w"> </span>--combine-strands<span class="w"> </span>--cpg<span class="w"> </span>--ignore<span class="w"> </span>h<span class="w"> </span>--ref<span class="w"> </span>ref/hg38.fna<span class="w"> </span>--no-filtering
+<li><p>Create a BedMethyl file with Modkit:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>modkit<span class="w"> </span>pileup<span class="w"> </span><span class="se">\</span>
+<span class="s2">&quot;</span><span class="nv">$bam_file</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="s2">&quot;</span><span class="nv">$bed_file</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+-t<span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="se">\</span>
+--combine-strands<span class="w"> </span><span class="se">\</span>
+--cpg<span class="w"> </span><span class="se">\</span>
+--ignore<span class="w"> </span>h<span class="w"> </span><span class="se">\</span>
+--ref<span class="w"> </span>ref/hg38.fna<span class="w"> </span><span class="se">\</span>
+--no-filtering
 </pre></div>
 </div>
 </li>
+<li><p>Combine one or more bed files into a pkl dataframe:</p></li>
 </ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>bed_to_pickle.py<span class="w"> </span><span class="se">\</span>
+--pacmap-reference<span class="w"> </span>ref/pacmap_reference.bed
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can find the <code class="docutils literal notranslate"><span class="pre">bed_to_pickle.py</span></code> file here: <a class="reference external" href="https://github.com/f-marchi/ALMA-classifier/blob/main/alma_classifier/bed_to_pickle.py">github.com/f-marchi/ALMA-classifier/</a></p>
+</div>
 <section id="where-the-data-at">
 <h2>Where the data at?<a class="headerlink" href="#where-the-data-at" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
