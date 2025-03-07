@@ -372,14 +372,14 @@ sup,5mCG_5hmCG<span class="w"> </span><span class="se">\</span>
 </div>
 </li>
 <li><p>Sort and index bam:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>samtools<span class="w"> </span>sort<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--threads<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--write-index<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-m<span class="w"> </span>8G<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-o<span class="w"> </span><span class="s2">&quot;bam/</span><span class="si">${</span><span class="nv">BASENAME</span><span class="si">}</span><span class="s2">.bam&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-O<span class="w"> </span>BAM<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--reference<span class="w"> </span>ref/hg38.fna<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s2">&quot;</span><span class="nv">$SAMPLE</span><span class="s2">&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>samtools<span class="w"> </span>sort<span class="w"> </span><span class="se">\</span>
+--threads<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="se">\</span>
+--write-index<span class="w"> </span><span class="se">\</span>
+-m<span class="w"> </span>8G<span class="w"> </span><span class="se">\</span>
+-o<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SAMPLE</span><span class="s2">.bam&quot;</span><span class="w"> </span><span class="se">\</span>
+-O<span class="w"> </span>BAM<span class="w"> </span><span class="se">\</span>
+--reference<span class="w"> </span>ref/hg38.fna<span class="w"> </span><span class="se">\</span>
+<span class="s2">&quot;</span><span class="nv">$SAMPLE</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 </li>
@@ -396,12 +396,13 @@ sup,5mCG_5hmCG<span class="w"> </span><span class="se">\</span>
 </pre></div>
 </div>
 </li>
-<li><p>Combine one or more bed files into a pkl dataframe:</p></li>
-</ol>
+<li><p>Combine one or more bed files into a pkl dataframe:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>bed_to_pickle.py<span class="w"> </span><span class="se">\</span>
 --pacmap-reference<span class="w"> </span>ref/pacmap_reference.bed
 </pre></div>
 </div>
+</li>
+</ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You can find the <code class="docutils literal notranslate"><span class="pre">bed_to_pickle.py</span></code> file here: <a class="reference external" href="https://github.com/f-marchi/ALMA-classifier/blob/main/alma_classifier/bed_to_pickle.py">github.com/f-marchi/ALMA-classifier/</a></p>
