@@ -572,83 +572,53 @@ def plot_confusion_matrix_stacked(
     tick_fontsize=10,
     label_fontsize=10,
     figsize_per_plot=(5, 3),
-    dropna=True
 ):
     """
-    Plots confusion matrices for 2 or 3 datasets side by side.
-    df_dict: dict of {subset_name: dataframe}
-    true_col: column name with true labels
-    pred_col: column name with predicted labels
-    class_col: column name that helps identify all class labels
-    title: overall figure title
-    tick_fontsize: font size for ticks
-    label_fontsize: font size for labels
-    figsize_per_plot: figure size per subplot (width, height)
-    dropna: whether to drop rows with missing values in true_col or pred_col
+    Plots confusion matrices for 2 or 3 datasets side by side with true labels accompanied by counts.
     """
 
     def compute_metrics(y_true, y_pred, is_binary):
         metrics = {'Accuracy': accuracy_score(y_true, y_pred)}
         if is_binary:
-            try:
-                precision, recall, f1, _ = precision_recall_fscore_support(
-                    y_true, y_pred, average='binary'
-                )
-                tn, fp, fn, tp = confusion_matrix(y_true, y_pred).ravel()
-                specificity = tn / (tn + fp)
-                auc_roc = roc_auc_score(y_true, y_pred)
-                metrics.update({
-                    'Sensitivity': recall,
-                    'Specificity': specificity,
-                    'Precision': precision,
-                    'F1-score': f1,
-                    'AUC-ROC': auc_roc
-                })
-            except Exception as e:
-                print(f"Error computing binary metrics: {str(e)}")
+            precision, recall, f1, _ = precision_recall_fscore_support(y_true, y_pred, average='binary')
+            tn, fp, fn, tp = confusion_matrix(y_true, y_pred).ravel()
+            specificity = tn / (tn + fp)
+            auc_roc = roc_auc_score(y_true, y_pred)
+            metrics.update({
+                'Sensitivity': recall,
+                'Specificity': specificity,
+                'Precision': precision,
+                'F1-score': f1,
+                'AUC-ROC': auc_roc
+            })
         else:
-            try:
-                weighted_f1 = precision_recall_fscore_support(
-                    y_true, y_pred, average='weighted'
-                )[2]
-                kappa = cohen_kappa_score(y_true, y_pred)
-                metrics.update({
-                    'Weighted F1': weighted_f1,
-                    "Cohen's Kappa": kappa
-                })
-            except Exception as e:
-                print(f"Error computing multiclass metrics: {str(e)}")
+            weighted_f1 = precision_recall_fscore_support(y_true, y_pred, average='weighted')[2]
+            kappa = cohen_kappa_score(y_true, y_pred)
+            metrics.update({
+                'Weighted F1': weighted_f1,
+                "Cohen's Kappa": kappa
+            })
         return metrics
 
-    # Preprocess data
-    df_dict = {name: df for name, df in df_dict.items()}
-
-    # Collect all possible classes
     all_labels = set()
     for df in df_dict.values():
         all_labels.update(df[class_col].dropna().unique())
         all_labels.update(df[pred_col].dropna().unique())
-    all_classes = sorted(all_labels)
-    all_classes = [cls for cls in all_classes if pd.notna(cls)]
+    all_classes = sorted([cls for cls in all_labels if pd.notna(cls)])
 
-    # Check if it's a binary scenario
-    is_binary = (len(all_classes) == 2)
+    is_binary = len(all_classes) == 2
     display_labels = ["Alive", "Dead"] if is_binary else all_classes
 
-    # Map classes to integer if needed
     class_to_int = {cls: i for i, cls in enumerate(all_classes)}
-    def convert_to_int(series):
-        return series.map(class_to_int) if not is_binary else series
 
-    # Create subplots
     n_plots = len(df_dict)
     fig, axs = plt.subplots(1, n_plots, figsize=(figsize_per_plot[0] * n_plots, figsize_per_plot[1]))
     if n_plots == 1:
-        axs = [axs]  # Ensure axs is iterable
+        axs = [axs]
 
     metrics_dict = {}
     for ax, (subset, df) in zip(axs, df_dict.items()):
-        y_true, y_pred = convert_to_int(df[true_col]), convert_to_int(df[pred_col])
+        y_true, y_pred = df[true_col].map(class_to_int), df[pred_col].map(class_to_int)
         metrics = compute_metrics(y_true, y_pred, is_binary)
         metrics_dict[subset] = metrics
 
@@ -656,8 +626,11 @@ def plot_confusion_matrix_stacked(
         disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=display_labels)
         disp.plot(cmap='Blues', values_format='.2f', xticks_rotation='vertical', 
                   colorbar=False, ax=ax)
-        
-        # Adjust text sizes
+
+        label_counts = df[true_col].map(lambda x: display_labels[x] if isinstance(x, int) else x).value_counts().to_dict()
+        y_tick_labels = [f'{label}, n={label_counts.get(label, 0)}' for label in display_labels]
+        ax.set_yticklabels(y_tick_labels, fontsize=label_fontsize)
+
         for texts in disp.text_:
             for text in texts:
                 text.set_fontsize(label_fontsize)
@@ -670,15 +643,15 @@ def plot_confusion_matrix_stacked(
 
     if title:
         fig.suptitle(title, fontsize=label_fontsize+2)
-    
+
     plt.tight_layout()
     plt.show()
 
-    # Create and display metrics table
     metrics_df = pd.DataFrame(metrics_dict).T
     metrics_df = metrics_df.applymap(lambda x: f"{x:.3f}" if isinstance(x, (int, float)) else x)
     print("\nMetrics:")
     print(metrics_df.to_markdown())
+
 
 
 def create_color_dict(df, columns, colors):
