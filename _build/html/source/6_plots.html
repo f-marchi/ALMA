@@ -352,6 +352,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-study-population">Overall study population</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-adult-aml">In adult AML</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nopho-aml-test">NOPHO AML test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#per-flt3-itd-status">Per FLT3-ITD status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#per-npm1-mutation">Per NPM1 mutation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#per-risk-group">Per risk group</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#per-risk-group-aaml1831-cog">Per risk group (AAML1831 COG)</a></li>
 </ul>
@@ -483,7 +485,7 @@ document.write(`
     </style>
     <div>
         <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
-        <span id="abb0c86a-606e-4171-bc35-e440633e973a">Loading BokehJS ...</span>
+        <span id="c67cc1b4-41a9-4ac0-bd08-919d710e8b3c">Loading BokehJS ...</span>
     </div>
 </div><script type="application/javascript">(function(root) {
   function now() {
@@ -647,7 +649,7 @@ const JS_MIME_TYPE = 'application/javascript';
      "</div>"}};
 
   function display_loaded() {
-    const el = document.getElementById("abb0c86a-606e-4171-bc35-e440633e973a");
+    const el = document.getElementById("c67cc1b4-41a9-4ac0-bd08-919d710e8b3c");
     if (el != null) {
       el.textContent = "BokehJS is loading...";
     }
@@ -753,7 +755,7 @@ if (force === true) {
       console.log("Bokeh: BokehJS failed to load within specified timeout.");
       root._bokeh_failed_load = true;
     } else if (force !== true) {
-      const cell = $(document.getElementById("abb0c86a-606e-4171-bc35-e440633e973a")).parents('.cell').data().cell;
+      const cell = $(document.getElementById("c67cc1b4-41a9-4ac0-bd08-919d710e8b3c")).parents('.cell').data().cell;
       cell.output_area.append_execute_result(NB_LOAD_WARNING)
     }
   }
@@ -869,8 +871,8 @@ if (force === true) {
 <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;Age (years)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;Age (years)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
 
 
-<span class="n">all_cohorts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_dx</span><span class="p">,</span> <span class="n">df_px2</span><span class="p">,</span> <span class="n">df_test</span><span class="p">],</span>
-                         <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Dx Discovery&#39;</span><span class="p">,</span><span class="s1">&#39;Px Discovery&#39;</span> <span class="p">,</span><span class="s1">&#39;AML02,08 Test &#39;</span><span class="p">],</span>
+<span class="n">all_cohorts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_dx</span><span class="p">,</span> <span class="n">df_px2</span><span class="p">],</span>
+                         <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="n">model_name1</span><span class="p">,</span><span class="n">model_name2</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span> <span class="o">+</span> <span class="n">model_name3</span><span class="p">],</span>
                          <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cohort&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 
 <span class="n">mytable_cog</span> <span class="o">=</span> <span class="n">TableOne</span><span class="p">(</span><span class="n">all_cohorts</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span>
@@ -905,47 +907,45 @@ if (force === true) {
 <div class="cell_output docutils container">
 <div class="output text_html"><table>
 <thead>
-<tr><th>                                      </th><th>                                </th><th>AML02,08 Test   </th><th>Dx Discovery  </th><th>Px Discovery  </th></tr>
+<tr><th>                                      </th><th>                                </th><th>ALMA Subtype  </th><th>AML Epigenomic Risk, 38CpG-AMLsignature  </th></tr>
 </thead>
 <tbody>
-<tr><td>n                                     </td><td>                                </td><td>200             </td><td>2471          </td><td>946           </td></tr>
-<tr><td>Age (years), mean (SD)                </td><td>                                </td><td>8.8 (6.0)       </td><td>19.2 (19.7)   </td><td>9.4 (6.3)     </td></tr>
-<tr><td>Age group (years), n (%)              </td><td>≥10                             </td><td>95 (48.0)       </td><td>528 (47.4)    </td><td>463 (48.9)    </td></tr>
-<tr><td>                                      </td><td>&lt;10                             </td><td>103 (52.0)      </td><td>586 (52.6)    </td><td>483 (51.1)    </td></tr>
-<tr><td>Sex, n (%)                            </td><td>Female                          </td><td>86 (43.0)       </td><td>711 (50.5)    </td><td>468 (49.5)    </td></tr>
-<tr><td>                                      </td><td>Male                            </td><td>114 (57.0)      </td><td>697 (49.5)    </td><td>478 (50.5)    </td></tr>
-<tr><td>Race or ethnic group, n (%)           </td><td>White                           </td><td>142 (71.7)      </td><td>1064 (80.5)   </td><td>697 (79.1)    </td></tr>
-<tr><td>                                      </td><td>Black or African American       </td><td>32 (16.2)       </td><td>131 (9.9)     </td><td>102 (11.6)    </td></tr>
-<tr><td>                                      </td><td>Asian                           </td><td>1 (0.5)         </td><td>65 (4.9)      </td><td>43 (4.9)      </td></tr>
-<tr><td>                                      </td><td>Other                           </td><td>21 (10.6)       </td><td>48 (3.6)      </td><td>28 (3.2)      </td></tr>
-<tr><td>                                      </td><td>Pacific Islander                </td><td>2 (1.0)         </td><td>7 (0.5)       </td><td>6 (0.7)       </td></tr>
-<tr><td>                                      </td><td>American Indian or Alaska Native</td><td>                </td><td>7 (0.5)       </td><td>5 (0.6)       </td></tr>
-<tr><td>Hispanic or Latino ethnic group, n (%)</td><td>Hispanic or Latino              </td><td>25 (12.6)       </td><td>209 (19.6)    </td><td>185 (20.2)    </td></tr>
-<tr><td>                                      </td><td>Not Hispanic or Latino          </td><td>173 (87.4)      </td><td>858 (80.4)    </td><td>731 (79.8)    </td></tr>
-<tr><td>MRD 1 Status, n (%)                   </td><td>Positive                        </td><td>76 (40.4)       </td><td>284 (29.6)    </td><td>260 (31.5)    </td></tr>
-<tr><td>                                      </td><td>Negative                        </td><td>112 (59.6)      </td><td>675 (70.4)    </td><td>566 (68.5)    </td></tr>
-<tr><td>Leucocyte counts (10⁹/L), n (%)       </td><td>≥30                             </td><td>87 (43.7)       </td><td>579 (52.4)    </td><td>467 (49.4)    </td></tr>
-<tr><td>                                      </td><td>&lt;30                             </td><td>112 (56.3)      </td><td>526 (47.6)    </td><td>479 (50.6)    </td></tr>
-<tr><td>BM leukemic blasts (%), mean (SD)     </td><td>                                </td><td>60.2 (25.6)     </td><td>65.7 (24.1)   </td><td>63.8 (24.5)   </td></tr>
-<tr><td>Risk Group, n (%)                     </td><td>High Risk                       </td><td>51 (25.5)       </td><td>198 (14.2)    </td><td>129 (13.8)    </td></tr>
-<tr><td>                                      </td><td>Standard Risk                   </td><td>86 (43.0)       </td><td>628 (45.0)    </td><td>454 (48.7)    </td></tr>
-<tr><td>                                      </td><td>Low Risk                        </td><td>63 (31.5)       </td><td>570 (40.8)    </td><td>349 (37.4)    </td></tr>
-<tr><td>FLT3 ITD, n (%)                       </td><td>Yes                             </td><td>31 (15.7)       </td><td>180 (16.2)    </td><td>165 (17.5)    </td></tr>
-<tr><td>                                      </td><td>No                              </td><td>167 (84.3)      </td><td>932 (83.8)    </td><td>779 (82.5)    </td></tr>
-<tr><td>Clinical Trial, n (%)                 </td><td>AML02                           </td><td>158 (79.0)      </td><td>              </td><td>              </td></tr>
-<tr><td>                                      </td><td>AML08                           </td><td>42 (21.0)       </td><td>              </td><td>              </td></tr>
-<tr><td>                                      </td><td>AAML03P1                        </td><td>                </td><td>62 (2.5)      </td><td>36 (3.8)      </td></tr>
-<tr><td>                                      </td><td>AAML0531                        </td><td>                </td><td>517 (20.9)    </td><td>507 (53.6)    </td></tr>
-<tr><td>                                      </td><td>AAML1031                        </td><td>                </td><td>495 (20.0)    </td><td>403 (42.6)    </td></tr>
-<tr><td>                                      </td><td>BM normal AAML0531              </td><td>                </td><td>41 (1.7)      </td><td>              </td></tr>
-<tr><td>                                      </td><td>Beat AML Consortium             </td><td>                </td><td>192 (7.8)     </td><td>              </td></tr>
-<tr><td>                                      </td><td>CCG2961                         </td><td>                </td><td>31 (1.3)      </td><td>              </td></tr>
-<tr><td>                                      </td><td>CETLAM SMD-09 (MDS-tAML)        </td><td>                </td><td>166 (6.7)     </td><td>              </td></tr>
-<tr><td>                                      </td><td>French GRAALL 2003–2005         </td><td>                </td><td>141 (5.7)     </td><td>              </td></tr>
-<tr><td>                                      </td><td>Japanese AML05                  </td><td>                </td><td>9 (0.4)       </td><td>              </td></tr>
-<tr><td>                                      </td><td>NOPHO ALL92-2000                </td><td>                </td><td>641 (25.9)    </td><td>              </td></tr>
-<tr><td>                                      </td><td>TARGET ALL                      </td><td>                </td><td>56 (2.3)      </td><td>              </td></tr>
-<tr><td>                                      </td><td>TCGA AML                        </td><td>                </td><td>120 (4.9)     </td><td>              </td></tr>
+<tr><td>n                                     </td><td>                                </td><td>2471          </td><td>946                                      </td></tr>
+<tr><td>Age (years), mean (SD)                </td><td>                                </td><td>19.2 (19.7)   </td><td>9.4 (6.3)                                </td></tr>
+<tr><td>Age group (years), n (%)              </td><td>≥10                             </td><td>528 (47.4)    </td><td>463 (48.9)                               </td></tr>
+<tr><td>                                      </td><td>&lt;10                             </td><td>586 (52.6)    </td><td>483 (51.1)                               </td></tr>
+<tr><td>Sex, n (%)                            </td><td>Female                          </td><td>711 (50.5)    </td><td>468 (49.5)                               </td></tr>
+<tr><td>                                      </td><td>Male                            </td><td>697 (49.5)    </td><td>478 (50.5)                               </td></tr>
+<tr><td>Race or ethnic group, n (%)           </td><td>White                           </td><td>1064 (80.5)   </td><td>697 (79.1)                               </td></tr>
+<tr><td>                                      </td><td>Black or African American       </td><td>131 (9.9)     </td><td>102 (11.6)                               </td></tr>
+<tr><td>                                      </td><td>Asian                           </td><td>65 (4.9)      </td><td>43 (4.9)                                 </td></tr>
+<tr><td>                                      </td><td>American Indian or Alaska Native</td><td>7 (0.5)       </td><td>5 (0.6)                                  </td></tr>
+<tr><td>                                      </td><td>Other                           </td><td>48 (3.6)      </td><td>28 (3.2)                                 </td></tr>
+<tr><td>                                      </td><td>Pacific Islander                </td><td>7 (0.5)       </td><td>6 (0.7)                                  </td></tr>
+<tr><td>Hispanic or Latino ethnic group, n (%)</td><td>Hispanic or Latino              </td><td>209 (19.6)    </td><td>185 (20.2)                               </td></tr>
+<tr><td>                                      </td><td>Not Hispanic or Latino          </td><td>858 (80.4)    </td><td>731 (79.8)                               </td></tr>
+<tr><td>MRD 1 Status, n (%)                   </td><td>Positive                        </td><td>284 (29.6)    </td><td>260 (31.5)                               </td></tr>
+<tr><td>                                      </td><td>Negative                        </td><td>675 (70.4)    </td><td>566 (68.5)                               </td></tr>
+<tr><td>Leucocyte counts (10⁹/L), n (%)       </td><td>≥30                             </td><td>579 (52.4)    </td><td>467 (49.4)                               </td></tr>
+<tr><td>                                      </td><td>&lt;30                             </td><td>526 (47.6)    </td><td>479 (50.6)                               </td></tr>
+<tr><td>BM leukemic blasts (%), mean (SD)     </td><td>                                </td><td>65.7 (24.1)   </td><td>63.8 (24.5)                              </td></tr>
+<tr><td>Risk Group, n (%)                     </td><td>High Risk                       </td><td>198 (14.2)    </td><td>129 (13.8)                               </td></tr>
+<tr><td>                                      </td><td>Standard Risk                   </td><td>628 (45.0)    </td><td>454 (48.7)                               </td></tr>
+<tr><td>                                      </td><td>Low Risk                        </td><td>570 (40.8)    </td><td>349 (37.4)                               </td></tr>
+<tr><td>FLT3 ITD, n (%)                       </td><td>Yes                             </td><td>180 (16.2)    </td><td>165 (17.5)                               </td></tr>
+<tr><td>                                      </td><td>No                              </td><td>932 (83.8)    </td><td>779 (82.5)                               </td></tr>
+<tr><td>Clinical Trial, n (%)                 </td><td>AAML03P1                        </td><td>62 (2.5)      </td><td>36 (3.8)                                 </td></tr>
+<tr><td>                                      </td><td>AAML0531                        </td><td>517 (20.9)    </td><td>507 (53.6)                               </td></tr>
+<tr><td>                                      </td><td>AAML1031                        </td><td>495 (20.0)    </td><td>403 (42.6)                               </td></tr>
+<tr><td>                                      </td><td>BM normal AAML0531              </td><td>41 (1.7)      </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>Beat AML Consortium             </td><td>192 (7.8)     </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>CCG2961                         </td><td>31 (1.3)      </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>CETLAM SMD-09 (MDS-tAML)        </td><td>166 (6.7)     </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>French GRAALL 2003–2005         </td><td>141 (5.7)     </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>Japanese AML05                  </td><td>9 (0.4)       </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>NOPHO ALL92-2000                </td><td>641 (25.9)    </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>TARGET ALL                      </td><td>56 (2.3)      </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>TCGA AML                        </td><td>120 (4.9)     </td><td>                                         </td></tr>
 </tbody>
 </table></div></div>
 </details>
@@ -1243,8 +1243,8 @@ if (force === true) {
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<img alt="../_images/5dff313c524bc0ca36774bb1371eb90c7691bbb17e265d1f6ae6980222c36bb4.png" src="../_images/5dff313c524bc0ca36774bb1371eb90c7691bbb17e265d1f6ae6980222c36bb4.png" />
-<img alt="../_images/9ea2aad5a2de0037b0aabdda4a3cf2c0d99d4b1ae92c9e35c6610472f3e4210a.png" src="../_images/9ea2aad5a2de0037b0aabdda4a3cf2c0d99d4b1ae92c9e35c6610472f3e4210a.png" />
+<img alt="../_images/930f49207ce5fd19be34cc97e32c91b48bc86a19958eac29bb3fd71d23a08893.png" src="../_images/930f49207ce5fd19be34cc97e32c91b48bc86a19958eac29bb3fd71d23a08893.png" />
+<img alt="../_images/b7e9a8ca6c7ac10bd8c46f914c231d76c7121664ee80fb8e80a9bba882004619.png" src="../_images/b7e9a8ca6c7ac10bd8c46f914c231d76c7121664ee80fb8e80a9bba882004619.png" />
 </div>
 </details>
 </div>
@@ -1277,8 +1277,8 @@ if (force === true) {
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<img alt="../_images/fd2ac8556aa2b782175b7f203313143a570a80e94f201cdfead31dfc7acae9d1.png" src="../_images/fd2ac8556aa2b782175b7f203313143a570a80e94f201cdfead31dfc7acae9d1.png" />
-<img alt="../_images/9c4f2e6650738e15dbf5952db5c27c75a3ef2648ea204275fb337e91576ff28e.png" src="../_images/9c4f2e6650738e15dbf5952db5c27c75a3ef2648ea204275fb337e91576ff28e.png" />
+<img alt="../_images/fe827f405eabdfdfd8651f3c6a3a7584c1da1d9519d254072b14548fc0d16bac.png" src="../_images/fe827f405eabdfdfd8651f3c6a3a7584c1da1d9519d254072b14548fc0d16bac.png" />
+<img alt="../_images/918543b947757525fb2acb105eb42bc1ff47b6eab9b009194e1087b94cce5816.png" src="../_images/918543b947757525fb2acb105eb42bc1ff47b6eab9b009194e1087b94cce5816.png" />
 </div>
 </details>
 </div>
@@ -1395,11 +1395,116 @@ if (force === true) {
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<img alt="../_images/5632a4c6000caa9964e6f8c6d3c8912844bd5ad26723feb6ed8d394436d52dc9.png" src="../_images/5632a4c6000caa9964e6f8c6d3c8912844bd5ad26723feb6ed8d394436d52dc9.png" />
-<img alt="../_images/4b971cfb1b104c2bd831d3b6369bc6bd6cf5bc3045f7f5a70d9ffe1c34a3ffb2.png" src="../_images/4b971cfb1b104c2bd831d3b6369bc6bd6cf5bc3045f7f5a70d9ffe1c34a3ffb2.png" />
+<img alt="../_images/24635965894afaa2ff02459d53b3ea96eadaf89b5c2b4c7a5586c82a25a46860.png" src="../_images/24635965894afaa2ff02459d53b3ea96eadaf89b5c2b4c7a5586c82a25a46860.png" />
+<img alt="../_images/db3393ac299af2d4df2e8eebbfa4352428074c6009d23603ff8a5e6572020fa7.png" src="../_images/db3393ac299af2d4df2e8eebbfa4352428074c6009d23603ff8a5e6572020fa7.png" />
 </div>
 </details>
 </div>
+</section>
+<section id="per-flt3-itd-status">
+<h3>Per FLT3-ITD status<a class="headerlink" href="#per-flt3-itd-status" title="Link to this heading">#</a></h3>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="n">df_px2</span><span class="p">,</span> <span class="n">df_test</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Discovery&#39;</span><span class="p">,</span> <span class="s1">&#39;AML02,08 Trials&#39;</span><span class="p">]):</span>
+
+    <span class="n">flt3_statuses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Yes&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">status</span> <span class="ow">in</span> <span class="n">flt3_statuses</span><span class="p">:</span>
+
+        <span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">model_name2</span><span class="p">,</span>
+                        <span class="n">df</span><span class="o">=</span><span class="n">dataset</span><span class="p">[</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">status</span><span class="p">],</span>
+                        <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">plot_efs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">trialname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s1">, FLT3 ITD positive&#39;</span><span class="p">,</span>
+                        <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span><span class="mf">4.2</span><span class="p">),</span>
+                        <span class="n">suptitle</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        
+        <span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">model_name3</span><span class="p">,</span>
+                        <span class="n">df</span><span class="o">=</span><span class="n">dataset</span><span class="p">[</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">status</span><span class="p">],</span>
+                        <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">plot_efs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">trialname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s1">, FLT3 ITD positive&#39;</span><span class="p">,</span>
+                        <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span><span class="mf">4.2</span><span class="p">),</span>
+                        <span class="n">suptitle</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<img alt="../_images/5c6268f38ded08f6f7d84041d619bf6b9aea98f7f375eddad141788f56c6f17e.png" src="../_images/5c6268f38ded08f6f7d84041d619bf6b9aea98f7f375eddad141788f56c6f17e.png" />
+<img alt="../_images/3c4a0f2bda746c23a7e347ce8cbcb4331bf64407e7980288323c86fccc27009c.png" src="../_images/3c4a0f2bda746c23a7e347ce8cbcb4331bf64407e7980288323c86fccc27009c.png" />
+<img alt="../_images/63a40cffe5178867b640070f83e51e2aa2118c2bb99a3ff134d7489bbc133957.png" src="../_images/63a40cffe5178867b640070f83e51e2aa2118c2bb99a3ff134d7489bbc133957.png" />
+<img alt="../_images/c8d02fb3abe82d9011b22100ef45dcf07197b6effa2ef80d610864e64d543774.png" src="../_images/c8d02fb3abe82d9011b22100ef45dcf07197b6effa2ef80d610864e64d543774.png" />
+</div>
+</details>
+</div>
+</section>
+<section id="per-npm1-mutation">
+<h3>Per NPM1 mutation<a class="headerlink" href="#per-npm1-mutation" title="Link to this heading">#</a></h3>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="n">df_px2</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Discovery&#39;</span><span class="p">]):</span>
+
+    <span class="n">statuses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Yes&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">status</span> <span class="ow">in</span> <span class="n">statuses</span><span class="p">:</span>
+
+        <span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">model_name2</span><span class="p">,</span>
+                        <span class="n">df</span><span class="o">=</span><span class="n">dataset</span><span class="p">[</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;NPM mutation&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">status</span><span class="p">],</span>
+                        <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">plot_efs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">trialname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s1">, NPM1 positive&#39;</span><span class="p">,</span>
+                        <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span><span class="mf">4.2</span><span class="p">),</span>
+                        <span class="n">suptitle</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        
+        <span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">model_name3</span><span class="p">,</span>
+                        <span class="n">df</span><span class="o">=</span><span class="n">dataset</span><span class="p">[</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;NPM mutation&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">status</span><span class="p">],</span>
+                        <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">plot_efs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">trialname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s1">, NPM1 positive&#39;</span><span class="p">,</span>
+                        <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span><span class="mf">4.2</span><span class="p">),</span>
+                        <span class="n">suptitle</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<img alt="../_images/32aa692d990bafc4f02c0b0d742db1c20e9c992a0fbf0641e74e91444f7be0e9.png" src="../_images/32aa692d990bafc4f02c0b0d742db1c20e9c992a0fbf0641e74e91444f7be0e9.png" />
+<img alt="../_images/ac1f004e34321e18fcb10844598473b2b217f327284fde83123acef7d3b760d0.png" src="../_images/ac1f004e34321e18fcb10844598473b2b217f327284fde83123acef7d3b760d0.png" />
+</div>
+</details>
+</div>
+<p>No NPM1 mutation status determined by pathology was available for the AML02,08 test cohort.</p>
 </section>
 <section id="per-risk-group">
 <h3>Per risk group<a class="headerlink" href="#per-risk-group" title="Link to this heading">#</a></h3>
@@ -2979,7 +3084,7 @@ if (force === true) {
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Author: Francisco_Marchi@Lamba_Lab_UF
 
-Last updated: 2025-03-13
+Last updated: 2025-03-14
 
 Python implementation: CPython
 Python version       : 3.10.13
@@ -3079,6 +3184,8 @@ Git repo: git@github.com:f-marchi/ALMA.git
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-study-population">Overall study population</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-adult-aml">In adult AML</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nopho-aml-test">NOPHO AML test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#per-flt3-itd-status">Per FLT3-ITD status</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#per-npm1-mutation">Per NPM1 mutation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#per-risk-group">Per risk group</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#per-risk-group-aaml1831-cog">Per risk group (AAML1831 COG)</a></li>
 </ul>
