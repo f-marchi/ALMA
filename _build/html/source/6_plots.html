@@ -394,16 +394,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagnosis">Diagnosis</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#box-plots">Box plots</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aml-epigenomic-risk">AML Epigenomic Risk</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cpg-amlsignature">38CpG-AMLsignature</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacked-bar-plots">Stacked bar plots</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">AML Epigenomic Risk</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">38CpG-AMLsignature</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacked-bar-plots">Stacked bar plots</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
 </ul>
             </nav>
@@ -487,7 +478,7 @@ document.write(`
     </style>
     <div>
         <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
-        <span id="d6771ed4-2b2f-49fe-b8ab-4e640e6bfa04">Loading BokehJS ...</span>
+        <span id="d1e69296-7cc0-4f80-91e5-3a369b17fe56">Loading BokehJS ...</span>
     </div>
 </div><script type="application/javascript">(function(root) {
   function now() {
@@ -651,7 +642,7 @@ const JS_MIME_TYPE = 'application/javascript';
      "</div>"}};
 
   function display_loaded() {
-    const el = document.getElementById("d6771ed4-2b2f-49fe-b8ab-4e640e6bfa04");
+    const el = document.getElementById("d1e69296-7cc0-4f80-91e5-3a369b17fe56");
     if (el != null) {
       el.textContent = "BokehJS is loading...";
     }
@@ -757,7 +748,7 @@ if (force === true) {
       console.log("Bokeh: BokehJS failed to load within specified timeout.");
       root._bokeh_failed_load = true;
     } else if (force !== true) {
-      const cell = $(document.getElementById("d6771ed4-2b2f-49fe-b8ab-4e640e6bfa04")).parents('.cell').data().cell;
+      const cell = $(document.getElementById("d1e69296-7cc0-4f80-91e5-3a369b17fe56")).parents('.cell').data().cell;
       cell.output_area.append_execute_result(NB_LOAD_WARNING)
     }
   }
@@ -1745,15 +1736,13 @@ if (force === true) {
                         <span class="n">event</span><span class="o">=</span><span class="s1">&#39;os_evnt_5y&#39;</span><span class="p">,</span>
                         <span class="n">df</span><span class="o">=</span><span class="n">df_</span><span class="p">,</span>
                         <span class="n">trialname</span><span class="o">=</span><span class="n">trial</span><span class="p">,</span>
-                        <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;AML_Epigenomic_Risk&#39;</span><span class="p">,</span>
-                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                        <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;AML_Epigenomic_Risk&#39;</span><span class="p">)</span>
 
     <span class="n">draw_forest_plot</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;efs_time_5y&#39;</span><span class="p">,</span>
                         <span class="n">event</span><span class="o">=</span><span class="s1">&#39;efs_evnt_5y&#39;</span><span class="p">,</span>
                         <span class="n">df</span><span class="o">=</span><span class="n">df_</span><span class="p">,</span>
                         <span class="n">trialname</span><span class="o">=</span><span class="n">trial</span><span class="p">,</span>
-                        <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;AML_Epigenomic_Risk&#39;</span><span class="p">,</span>
-                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                        <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;AML_Epigenomic_Risk&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1795,15 +1784,13 @@ if (force === true) {
                         <span class="n">event</span><span class="o">=</span><span class="s1">&#39;os_evnt_5y&#39;</span><span class="p">,</span>
                         <span class="n">df</span><span class="o">=</span><span class="n">df_</span><span class="p">,</span>
                         <span class="n">trialname</span><span class="o">=</span><span class="n">trial</span><span class="p">,</span>
-                        <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;AMLsignature_38CpG&#39;</span><span class="p">,</span>
-                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                        <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;AMLsignature_38CpG&#39;</span><span class="p">)</span>
 
     <span class="n">draw_forest_plot</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;efs_time_5y&#39;</span><span class="p">,</span>
                         <span class="n">event</span><span class="o">=</span><span class="s1">&#39;efs_evnt_5y&#39;</span><span class="p">,</span>
                         <span class="n">df</span><span class="o">=</span><span class="n">df_</span><span class="p">,</span>
                         <span class="n">trialname</span><span class="o">=</span><span class="n">trial</span><span class="p">,</span>
-                        <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;AMLsignature_38CpG&#39;</span><span class="p">,</span>
-                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                        <span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;AMLsignature_38CpG&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2626,146 +2613,148 @@ Our gene expression file contained 29 matching genes.</p>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rna_seq</span> <span class="o">=</span> <span class="s2">&quot;../.utils/cibersortx_inputdataset_cog_1696samples_FM_11_15_2022.txt&quot;</span>
-<span class="n">rna_seq</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">rna_seq</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># rna_seq = &quot;../.utils/cibersortx_inputdataset_cog_1696samples_FM_11_15_2022.txt&quot;</span>
+<span class="c1"># rna_seq = pd.read_csv(rna_seq, sep=&quot;\t&quot;, index_col=0).T.reset_index()</span>
 
-<span class="c1"># if &quot;21&quot; present as value in index, remove row</span>
-<span class="n">rna_seq</span> <span class="o">=</span> <span class="n">rna_seq</span><span class="p">[</span><span class="o">~</span><span class="n">rna_seq</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;21&quot;</span><span class="p">)]</span>
-<span class="c1"># expand the index by &quot;-&quot;</span>
-<span class="n">rna_seq</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rna_seq</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="c1"># raname the index to &quot;Patient_ID&quot; and set it as index</span>
-<span class="n">rna_seq</span> <span class="o">=</span> <span class="n">rna_seq</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;Patient_ID&#39;</span><span class="p">})</span>
-<span class="c1"># set the index to &quot;Patient_ID&quot;</span>
-<span class="n">rna_seq</span> <span class="o">=</span> <span class="n">rna_seq</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Patient_ID&#39;</span><span class="p">)</span>
+<span class="c1"># # if &quot;21&quot; present as value in index, remove row</span>
+<span class="c1"># rna_seq = rna_seq[~rna_seq[&#39;index&#39;].str.contains(&quot;21&quot;)]</span>
+<span class="c1"># # expand the index by &quot;-&quot;</span>
+<span class="c1"># rna_seq[&#39;index&#39;] = rna_seq[&#39;index&#39;].str.split(&quot;-&quot;).str[2]</span>
+<span class="c1"># # raname the index to &quot;Patient_ID&quot; and set it as index</span>
+<span class="c1"># rna_seq = rna_seq.rename(columns={&#39;index&#39;: &#39;Patient_ID&#39;})</span>
+<span class="c1"># # set the index to &quot;Patient_ID&quot;</span>
+<span class="c1"># rna_seq = rna_seq.set_index(&#39;Patient_ID&#39;)</span>
 
-<span class="c1"># load list of genes from &#39;../.utils/38cpg_signature_genes.txt&#39;</span>
-<span class="n">genes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../.utils/38cpg_signature_genes.txt&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">genes</span> <span class="o">=</span> <span class="n">genes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-<span class="c1"># filter rna_seq to only include genes in the list and print any genes not present in the dataframe</span>
-<span class="n">missing_genes</span> <span class="o">=</span> <span class="p">[</span><span class="n">gene</span> <span class="k">for</span> <span class="n">gene</span> <span class="ow">in</span> <span class="n">genes</span> <span class="k">if</span> <span class="n">gene</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">rna_seq</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
-<span class="k">if</span> <span class="n">missing_genes</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Missing genes from RNA seq file: </span><span class="si">{</span><span class="n">missing_genes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># # load list of genes from &#39;../.utils/38cpg_signature_genes.txt&#39;</span>
+<span class="c1"># genes = pd.read_csv(&#39;../.utils/38cpg_signature_genes.txt&#39;, sep=&quot;\t&quot;, header=None)</span>
+<span class="c1"># genes = genes[0].tolist()</span>
+<span class="c1"># # filter rna_seq to only include genes in the list and print any genes not present in the dataframe</span>
+<span class="c1"># missing_genes = [gene for gene in genes if gene not in rna_seq.columns]</span>
+<span class="c1"># if missing_genes:</span>
+<span class="c1">#     print(f&quot;Missing genes from RNA seq file: {missing_genes}&quot;)</span>
 
-<span class="c1"># remove missing genes from the list</span>
-<span class="n">genes</span> <span class="o">=</span> <span class="p">[</span><span class="n">gene</span> <span class="k">for</span> <span class="n">gene</span> <span class="ow">in</span> <span class="n">genes</span> <span class="k">if</span> <span class="n">gene</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">missing_genes</span><span class="p">]</span>
-<span class="c1"># filter rna_seq to only include genes in the list</span>
-<span class="n">rna_seq</span> <span class="o">=</span> <span class="n">rna_seq</span><span class="p">[</span><span class="n">genes</span><span class="p">]</span>
+<span class="c1"># # remove missing genes from the list</span>
+<span class="c1"># genes = [gene for gene in genes if gene not in missing_genes]</span>
+<span class="c1"># # filter rna_seq to only include genes in the list</span>
+<span class="c1"># rna_seq = rna_seq[genes]</span>
 
-<span class="n">signature_cpgs</span> <span class="o">=</span> <span class="s2">&quot;/mnt/e/ALMA/Processed_Files/ewas_dmr/ewas_top_cpgs_os_2025-03-14.csv&quot;</span>
-<span class="n">signature_cpgs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">signature_cpgs</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="c1"># join with df_px2 on Patient_ID</span>
-<span class="n">signature_cpgs</span> <span class="o">=</span> <span class="n">signature_cpgs</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df_px2</span><span class="p">[[</span><span class="s1">&#39;Patient_ID&#39;</span><span class="p">]])</span>
-<span class="n">signature_cpgs</span> <span class="o">=</span> <span class="n">signature_cpgs</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Patient_ID&#39;</span><span class="p">)</span>
+<span class="c1"># signature_cpgs = &quot;/mnt/e/ALMA/Processed_Files/ewas_dmr/ewas_top_cpgs_os_2025-03-14.csv&quot;</span>
+<span class="c1"># signature_cpgs = pd.read_csv(signature_cpgs, index_col=0)</span>
+<span class="c1"># # join with df_px2 on Patient_ID</span>
+<span class="c1"># signature_cpgs = signature_cpgs.join(df_px2[[&#39;Patient_ID&#39;]])</span>
+<span class="c1"># signature_cpgs = signature_cpgs.set_index(&#39;Patient_ID&#39;)</span>
 
-<span class="n">signature_cpgs</span> <span class="o">=</span> <span class="n">signature_cpgs</span><span class="p">[[</span><span class="s1">&#39;cg17099306&#39;</span><span class="p">,</span> <span class="s1">&#39;cg14978242&#39;</span><span class="p">,</span> <span class="s1">&#39;cg10089193&#39;</span><span class="p">,</span> <span class="s1">&#39;cg02678414&#39;</span><span class="p">,</span> <span class="s1">&#39;cg14882966&#39;</span><span class="p">,</span> <span class="s1">&#39;cg09890699&#39;</span><span class="p">,</span>
-                                 <span class="s1">&#39;cg14458815&#39;</span><span class="p">,</span> <span class="s1">&#39;cg05800336&#39;</span><span class="p">,</span> <span class="s1">&#39;cg00151914&#39;</span><span class="p">,</span> <span class="s1">&#39;cg19706516&#39;</span><span class="p">,</span> <span class="s1">&#39;cg11817631&#39;</span><span class="p">,</span> <span class="s1">&#39;cg00532502&#39;</span><span class="p">,</span>
-                                 <span class="s1">&#39;cg05348324&#39;</span><span class="p">,</span> <span class="s1">&#39;cg04663203&#39;</span><span class="p">,</span> <span class="s1">&#39;cg10591771&#39;</span><span class="p">,</span> <span class="s1">&#39;cg19357999&#39;</span><span class="p">,</span> <span class="s1">&#39;cg16721321&#39;</span><span class="p">,</span> <span class="s1">&#39;cg01543603&#39;</span><span class="p">,</span>
-                                 <span class="s1">&#39;cg04713531&#39;</span><span class="p">,</span> <span class="s1">&#39;cg06748884&#39;</span><span class="p">,</span> <span class="s1">&#39;cg08900363&#39;</span><span class="p">,</span> <span class="s1">&#39;cg03762237&#39;</span><span class="p">,</span> <span class="s1">&#39;cg00059652&#39;</span><span class="p">,</span> <span class="s1">&#39;cg09041251&#39;</span><span class="p">,</span>
-                                 <span class="s1">&#39;cg17632028&#39;</span><span class="p">,</span> <span class="s1">&#39;cg01052291&#39;</span><span class="p">,</span> <span class="s1">&#39;cg08480739&#39;</span><span class="p">,</span> <span class="s1">&#39;cg05480169&#39;</span><span class="p">,</span> <span class="s1">&#39;cg18964582&#39;</span><span class="p">,</span> <span class="s1">&#39;cg10280339&#39;</span><span class="p">,</span>
-                                 <span class="s1">&#39;cg07080653&#39;</span><span class="p">,</span> <span class="s1">&#39;cg04839706&#39;</span><span class="p">,</span> <span class="s1">&#39;cg14928764&#39;</span><span class="p">,</span> <span class="s1">&#39;cg24355048&#39;</span><span class="p">,</span> <span class="s1">&#39;cg02312559&#39;</span><span class="p">,</span> <span class="s1">&#39;cg06339275&#39;</span><span class="p">,</span>
-                                 <span class="s1">&#39;cg02905663&#39;</span><span class="p">,</span> <span class="s1">&#39;cg00521620&#39;</span><span class="p">]]</span>
+<span class="c1"># signature_cpgs = signature_cpgs[[&#39;cg17099306&#39;, &#39;cg14978242&#39;, &#39;cg10089193&#39;, &#39;cg02678414&#39;, &#39;cg14882966&#39;, &#39;cg09890699&#39;,</span>
+<span class="c1">#                                  &#39;cg14458815&#39;, &#39;cg05800336&#39;, &#39;cg00151914&#39;, &#39;cg19706516&#39;, &#39;cg11817631&#39;, &#39;cg00532502&#39;,</span>
+<span class="c1">#                                  &#39;cg05348324&#39;, &#39;cg04663203&#39;, &#39;cg10591771&#39;, &#39;cg19357999&#39;, &#39;cg16721321&#39;, &#39;cg01543603&#39;,</span>
+<span class="c1">#                                  &#39;cg04713531&#39;, &#39;cg06748884&#39;, &#39;cg08900363&#39;, &#39;cg03762237&#39;, &#39;cg00059652&#39;, &#39;cg09041251&#39;,</span>
+<span class="c1">#                                  &#39;cg17632028&#39;, &#39;cg01052291&#39;, &#39;cg08480739&#39;, &#39;cg05480169&#39;, &#39;cg18964582&#39;, &#39;cg10280339&#39;,</span>
+<span class="c1">#                                  &#39;cg07080653&#39;, &#39;cg04839706&#39;, &#39;cg14928764&#39;, &#39;cg24355048&#39;, &#39;cg02312559&#39;, &#39;cg06339275&#39;,</span>
+<span class="c1">#                                  &#39;cg02905663&#39;, &#39;cg00521620&#39;]]</span>
 
-<span class="n">cpgs_genes</span> <span class="o">=</span> <span class="n">signature_cpgs</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rna_seq</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;Patient_ID&#39;</span><span class="p">)</span>
-<span class="n">cpgs_genes</span> <span class="o">=</span> <span class="n">cpgs_genes</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="c1"># cpgs_genes = signature_cpgs.join(rna_seq, on=&#39;Patient_ID&#39;)</span>
+<span class="c1"># cpgs_genes = cpgs_genes.dropna()</span>
 
-<span class="n">cpgs</span> <span class="o">=</span> <span class="n">cpgs_genes</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">38</span><span class="p">]</span>
-<span class="n">genes</span> <span class="o">=</span> <span class="n">cpgs_genes</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">38</span><span class="p">:]</span>
+<span class="c1"># cpgs = cpgs_genes.iloc[:,:38]</span>
+<span class="c1"># genes = cpgs_genes.iloc[:,38:]</span>
 
-<span class="k">def</span> <span class="nf">compute_correlation</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Computes the correlation between columns of two dataframes.</span>
-<span class="sd">    Returns a dataframe with the correlation values.</span>
+<span class="c1"># def compute_correlation(df1, df2):</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     Computes the correlation between columns of two dataframes.</span>
+<span class="c1">#     Returns a dataframe with the correlation values.</span>
 
-<span class="sd">    Parameters:</span>
-<span class="sd">        df1 (pandas.DataFrame): First dataframe.</span>
-<span class="sd">        df2 (pandas.DataFrame): Second dataframe.</span>
+<span class="c1">#     Parameters:</span>
+<span class="c1">#         df1 (pandas.DataFrame): First dataframe.</span>
+<span class="c1">#         df2 (pandas.DataFrame): Second dataframe.</span>
 
-<span class="sd">    Returns:</span>
-<span class="sd">        pandas.DataFrame: Dataframe with correlation values.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="c1">#     Returns:</span>
+<span class="c1">#         pandas.DataFrame: Dataframe with correlation values.</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
     
-    <span class="c1"># Compute the number of columns in each dataframe</span>
-    <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="c1">#     # Compute the number of columns in each dataframe</span>
+<span class="c1">#     n1, n2 = len(df1.columns), len(df2.columns)</span>
 
-    <span class="c1"># Initialize an empty dataframe to store correlation values</span>
-    <span class="n">corr_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">df1</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">df2</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="c1">#     # Initialize an empty dataframe to store correlation values</span>
+<span class="c1">#     corr_df = pd.DataFrame(index=df1.columns, columns=df2.columns)</span>
 
-    <span class="c1"># Loop over the columns of each dataframe</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n1</span><span class="p">):</span>
-        <span class="n">col1</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n2</span><span class="p">):</span>
-            <span class="n">col2</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span>
+<span class="c1">#     # Loop over the columns of each dataframe</span>
+<span class="c1">#     for i in range(n1):</span>
+<span class="c1">#         col1 = df1.iloc[:, i]</span>
+<span class="c1">#         for j in range(n2):</span>
+<span class="c1">#             col2 = df2.iloc[:, j]</span>
 
-            <span class="c1"># Compute the correlation between the two columns</span>
-            <span class="n">corr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="c1">#             # Compute the correlation between the two columns</span>
+<span class="c1">#             corr = np.corrcoef(col1, col2)[0, 1]</span>
 
-            <span class="c1"># Store the correlation value in the appropriate position in the output dataframe</span>
-            <span class="n">corr_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">corr</span>
+<span class="c1">#             # Store the correlation value in the appropriate position in the output dataframe</span>
+<span class="c1">#             corr_df.iloc[i, j] = corr</span>
 
-    <span class="k">return</span> <span class="n">corr_df</span>
+<span class="c1">#     return corr_df</span>
 
-<span class="c1"># Compute the correlation between the two dataframes</span>
-<span class="n">corr_df</span> <span class="o">=</span> <span class="n">compute_correlation</span><span class="p">(</span><span class="n">cpgs</span><span class="p">,</span> <span class="n">genes</span><span class="p">)</span>
+<span class="c1"># # Compute the correlation between the two dataframes</span>
+<span class="c1"># corr_df = compute_correlation(cpgs, genes)</span>
 
-<span class="k">def</span> <span class="nf">plot_correlation_matrix</span><span class="p">(</span><span class="n">df_corr</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">,</span> <span class="n">fig_title</span><span class="p">):</span>
+<span class="c1"># def plot_correlation_matrix(df_corr, num_samples, fig_title):</span>
 
-    <span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
+<span class="c1">#     sns.set_theme(style=&quot;white&quot;)</span>
     
-    <span class="c1"># Compute the correlation matrix</span>
-    <span class="n">corr</span> <span class="o">=</span> <span class="n">df_corr</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="c1">#     # Compute the correlation matrix</span>
+<span class="c1">#     corr = df_corr.astype(float)</span>
     
-    <span class="c1"># Set up the matplotlib figure</span>
-    <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">18</span><span class="p">))</span>
+<span class="c1">#     # Set up the matplotlib figure</span>
+<span class="c1">#     f, ax = plt.subplots(figsize=(18, 18))</span>
     
-    <span class="c1"># Generate a custom diverging colormap</span>
-    <span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">diverging_palette</span><span class="p">(</span><span class="mi">230</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1">#     # Generate a custom diverging colormap</span>
+<span class="c1">#     cmap = sns.diverging_palette(230, 20, as_cmap=True)</span>
     
-    <span class="c1"># Draw the heatmap with the mask and correct aspect ratio</span>
-    <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;shrink&quot;</span><span class="p">:</span> <span class="mf">.4</span><span class="p">},</span>
-                <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fontsize&quot;</span><span class="p">:</span><span class="mi">8</span><span class="p">},</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.2f&#39;</span><span class="p">)</span>
+<span class="c1">#     # Draw the heatmap with the mask and correct aspect ratio</span>
+<span class="c1">#     sns.heatmap(corr, cmap=cmap, vmax=1, vmin=-1, center=0, annot=True,</span>
+<span class="c1">#                 square=True, linewidths=1, cbar_kws={&quot;shrink&quot;: .4},</span>
+<span class="c1">#                 annot_kws={&quot;fontsize&quot;:8}, fmt=&#39;.2f&#39;)</span>
     
-    <span class="c1"># Adjust colorbar font size</span>
-    <span class="n">cbar</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">colorbar</span>
-    <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="c1">#     # Adjust colorbar font size</span>
+<span class="c1">#     cbar = ax.collections[0].colorbar</span>
+<span class="c1">#     cbar.ax.tick_params(labelsize=8)</span>
     
-    <span class="c1"># Adjust xticks text</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">)</span>
+<span class="c1">#     # Adjust xticks text</span>
+<span class="c1">#     plt.xticks(rotation=45, ha=&#39;right&#39;, fontsize=&#39;medium&#39;)</span>
     
-    <span class="c1"># Set plot specs</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">fig_title</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;, n=</span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-              <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1">#     # Set plot specs</span>
+<span class="c1">#     plt.title(fig_title + f&#39;, n={num_samples}&#39;,</span>
+<span class="c1">#               fontsize=&#39;medium&#39;, y=1, fontweight=&#39;bold&#39;, pad=15)</span>
+<span class="c1">#     ax.tick_params(axis=&#39;both&#39;, which=&#39;major&#39;, labelsize=10)</span>
     
-    <span class="c1"># Add axis labels</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Genes&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;38 CpGs&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="c1">#     # Add axis labels</span>
+<span class="c1">#     plt.ylabel(&#39;Gene expression (RNA-seq, RPKM)&#39;, fontsize=&#39;medium&#39;, fontweight=&#39;bold&#39;)</span>
+<span class="c1">#     plt.xlabel(&#39;38 CpGs (DNA methylation, m-values)&#39;, fontsize=&#39;medium&#39;, fontweight=&#39;bold&#39;)</span>
 
 
-<span class="n">plot_correlation_matrix</span><span class="p">(</span><span class="n">corr_df</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">cpgs_genes</span><span class="p">),</span>
-                        <span class="n">fig_title</span><span class="o">=</span><span class="s1">&#39;Correlation matrix of 38 CpGs and their genes&#39;</span><span class="p">)</span>
+<span class="c1"># plot_correlation_matrix(corr_df.T, num_samples=len(cpgs_genes),</span>
+<span class="c1">#                         fig_title=&#39;Correlation matrix of 38 CpGs with corresponding gene expression&#39;)</span>
 
 
 
-<span class="n">cpg_gene_pairs</span> <span class="o">=</span> <span class="s2">&quot;../data/ewas_top_cpgs_os_aml_signature.xlsx&quot;</span>
-<span class="n">cpg_gene_pairs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">cpg_gene_pairs</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="c1"># pick rows where first column is not nan</span>
-<span class="n">cpg_gene_pairs</span> <span class="o">=</span> <span class="n">cpg_gene_pairs</span><span class="p">[</span><span class="n">cpg_gene_pairs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()]</span>
-<span class="n">cpg_gene_pairs</span> <span class="o">=</span> <span class="n">cpg_gene_pairs</span><span class="p">[[</span><span class="s1">&#39;GeneNames&#39;</span><span class="p">]]</span>
+<span class="c1"># cpg_gene_pairs = &quot;../data/ewas_top_cpgs_os_aml_signature.xlsx&quot;</span>
+<span class="c1"># cpg_gene_pairs = pd.read_excel(cpg_gene_pairs, index_col=0)</span>
+<span class="c1"># # pick rows where first column is not nan</span>
+<span class="c1"># cpg_gene_pairs = cpg_gene_pairs[cpg_gene_pairs.iloc[:,0].notna()]</span>
+<span class="c1"># cpg_gene_pairs = cpg_gene_pairs[[&#39;GeneNames&#39;]]</span>
 
-<span class="c1"># if row contains &quot;.&quot;, remove it</span>
-<span class="n">cpg_gene_pairs</span> <span class="o">=</span> <span class="n">cpg_gene_pairs</span><span class="p">[</span><span class="o">~</span><span class="n">cpg_gene_pairs</span><span class="p">[</span><span class="s1">&#39;GeneNames&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;\.&quot;</span><span class="p">)]</span>
-<span class="c1"># Split GeneNames by &quot;;&quot; and explode the dataframe</span>
-<span class="n">cpg_gene_pairs</span> <span class="o">=</span> <span class="n">cpg_gene_pairs</span><span class="p">[</span><span class="s1">&#39;GeneNames&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span>
+<span class="c1"># # if row contains &quot;.&quot;, remove it</span>
+<span class="c1"># cpg_gene_pairs = cpg_gene_pairs[~cpg_gene_pairs[&#39;GeneNames&#39;].str.contains(&quot;\.&quot;)]</span>
+<span class="c1"># # Split GeneNames by &quot;;&quot; and explode the dataframe</span>
+<span class="c1"># cpg_gene_pairs = cpg_gene_pairs[&#39;GeneNames&#39;].str.split(&quot;;&quot;).explode()</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cpg_gene_pairs</span><span class="p">)):</span>
-    <span class="n">x_col</span> <span class="o">=</span> <span class="n">cpg_gene_pairs</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">y_col</span> <span class="o">=</span> <span class="n">cpg_gene_pairs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">x_col</span> <span class="ow">in</span> <span class="n">cpgs_genes</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="n">y_col</span> <span class="ow">in</span> <span class="n">cpgs_genes</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">draw_scatter_pearson</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">cpgs_genes</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x_col</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_col</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-            <span class="k">continue</span>
+<span class="c1"># for i in range(len(cpg_gene_pairs)):</span>
+<span class="c1">#     x_col = cpg_gene_pairs.index[i]</span>
+<span class="c1">#     y_col = cpg_gene_pairs[i]</span>
+<span class="c1">#     if x_col in cpgs_genes.columns and y_col in cpgs_genes.columns:</span>
+<span class="c1">#         try:</span>
+<span class="c1">#             draw_scatter_pearson(df=cpgs_genes, x=x_col, y=y_col, s=10,</span>
+<span class="c1">#                                  x_label= &#39; methylation&#39;,</span>
+<span class="c1">#                                  y_label= &#39; expression&#39;)</span>
+<span class="c1">#         except Exception:</span>
+<span class="c1">#             continue</span>
 </pre></div>
 </div>
 </div>
@@ -2779,30 +2768,30 @@ Our gene expression file contained 29 matching genes.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Missing genes from RNA seq file: [&#39;C1QTNF8&#39;, &#39;RSPH14&#39;, &#39;RASL10B&#39;, &#39;TAF15&#39;, &#39;LINC01483&#39;, &#39;LINC00698&#39;, &#39;UBDP1&#39;]
 </pre></div>
 </div>
-<img alt="../_images/90af42adf821c8adcd6c585376a92ca47f5dadeafa523482edfdd306d56cd380.png" src="../_images/90af42adf821c8adcd6c585376a92ca47f5dadeafa523482edfdd306d56cd380.png" />
-<img alt="../_images/399a6ab182de721706400c26b4ddadce2baebca37f2c010eba8dc3f1e504941a.png" src="../_images/399a6ab182de721706400c26b4ddadce2baebca37f2c010eba8dc3f1e504941a.png" />
-<img alt="../_images/ce17bd279aa60c176e90cad198271943fc6eb88cfc774ba86638792d77d3ad64.png" src="../_images/ce17bd279aa60c176e90cad198271943fc6eb88cfc774ba86638792d77d3ad64.png" />
-<img alt="../_images/2b8d09d4d8f37ef02d13f88c7b850d6b0e092c817ff19eb0c30fbb9073b54c97.png" src="../_images/2b8d09d4d8f37ef02d13f88c7b850d6b0e092c817ff19eb0c30fbb9073b54c97.png" />
-<img alt="../_images/a593af1e9cee33b53b8eb14c5b24d736b2e6e1a338b158d288138005840260d7.png" src="../_images/a593af1e9cee33b53b8eb14c5b24d736b2e6e1a338b158d288138005840260d7.png" />
-<img alt="../_images/a0bc0f207327cae9e77fa591cbf0abfc0a0ca360765a28b28756d8531a30284e.png" src="../_images/a0bc0f207327cae9e77fa591cbf0abfc0a0ca360765a28b28756d8531a30284e.png" />
-<img alt="../_images/e426c443ab44b9cf675ee2d023620e099faeedcb2c3878ea6bffe8cac5098147.png" src="../_images/e426c443ab44b9cf675ee2d023620e099faeedcb2c3878ea6bffe8cac5098147.png" />
-<img alt="../_images/7b96a7351d3e5d750dd39aed1a030258bebaffe2739105af789d29658c3008b7.png" src="../_images/7b96a7351d3e5d750dd39aed1a030258bebaffe2739105af789d29658c3008b7.png" />
-<img alt="../_images/b23a380155fbb20e6b0b75b0930b17fecfc05d6ab3c0f66a2a89dd5d59156d97.png" src="../_images/b23a380155fbb20e6b0b75b0930b17fecfc05d6ab3c0f66a2a89dd5d59156d97.png" />
-<img alt="../_images/25770ad5845e7612f33fa7359a7a272b18d70bf4f6efe132b77e99e22958b277.png" src="../_images/25770ad5845e7612f33fa7359a7a272b18d70bf4f6efe132b77e99e22958b277.png" />
-<img alt="../_images/9b8a8a258c30793fefff3918e2e7c61c94f045584d926e72d36a9414ea90ccf7.png" src="../_images/9b8a8a258c30793fefff3918e2e7c61c94f045584d926e72d36a9414ea90ccf7.png" />
-<img alt="../_images/de399d1cec7a09911bb75653e6eda00df75998e3594ddb7cdea48a1a080bbab9.png" src="../_images/de399d1cec7a09911bb75653e6eda00df75998e3594ddb7cdea48a1a080bbab9.png" />
-<img alt="../_images/da9ebfe18e6889103c94dce4bbbb0aeba3b5d86ce52c01f119cdf6a850f30d76.png" src="../_images/da9ebfe18e6889103c94dce4bbbb0aeba3b5d86ce52c01f119cdf6a850f30d76.png" />
-<img alt="../_images/e52a396f15b668d525749d1360fcacd865367455aa05905b57af2801b8bf088c.png" src="../_images/e52a396f15b668d525749d1360fcacd865367455aa05905b57af2801b8bf088c.png" />
-<img alt="../_images/e34dd61c5b7c03e791cf16330b92cda4b34f98afcc9854ee3b2eed4454530acf.png" src="../_images/e34dd61c5b7c03e791cf16330b92cda4b34f98afcc9854ee3b2eed4454530acf.png" />
-<img alt="../_images/5e8c93315045f9ab18f14b18de0685e33d6ec0eece9c0656b8450e1db7a22b39.png" src="../_images/5e8c93315045f9ab18f14b18de0685e33d6ec0eece9c0656b8450e1db7a22b39.png" />
-<img alt="../_images/fed28ddc981d0c4cefb7d16801da9ab597eea6f5f875ce87b756bfe51b5af8c6.png" src="../_images/fed28ddc981d0c4cefb7d16801da9ab597eea6f5f875ce87b756bfe51b5af8c6.png" />
-<img alt="../_images/819e0836d0f332e258eed9b409f453417801e75f53e4af9dd7dfa52a8011e936.png" src="../_images/819e0836d0f332e258eed9b409f453417801e75f53e4af9dd7dfa52a8011e936.png" />
-<img alt="../_images/49f21bc174b5147bf48bccbc754170906ee5d5dc7d1b13a7c44226317a03c113.png" src="../_images/49f21bc174b5147bf48bccbc754170906ee5d5dc7d1b13a7c44226317a03c113.png" />
-<img alt="../_images/646424be9e7e18ee0af93885a4308cbb9654553e70b1fee0b516240a21f56113.png" src="../_images/646424be9e7e18ee0af93885a4308cbb9654553e70b1fee0b516240a21f56113.png" />
-<img alt="../_images/6d3b786525f53876c5dc3148d2b1246e828cc7c8c270cafb8f55a50fccd429ed.png" src="../_images/6d3b786525f53876c5dc3148d2b1246e828cc7c8c270cafb8f55a50fccd429ed.png" />
-<img alt="../_images/bd11fe699c8fa1f40d326ac5bc979b93b8b8cf9a256272ef7b40541f0f1f4544.png" src="../_images/bd11fe699c8fa1f40d326ac5bc979b93b8b8cf9a256272ef7b40541f0f1f4544.png" />
-<img alt="../_images/4134b4f8312140e163bdee1d4e539c6bc43c745bb9b84d16850442acec833043.png" src="../_images/4134b4f8312140e163bdee1d4e539c6bc43c745bb9b84d16850442acec833043.png" />
-<img alt="../_images/30919cbd1c1303e4631ac607fd6e262a7629a7f4ee0c52f134b52fbc42c05ffb.png" src="../_images/30919cbd1c1303e4631ac607fd6e262a7629a7f4ee0c52f134b52fbc42c05ffb.png" />
+<img alt="../_images/3a2443d81eed66d4a079471ddfa0ef82add8cd9fbb9916e7244ccf07881ae8f3.png" src="../_images/3a2443d81eed66d4a079471ddfa0ef82add8cd9fbb9916e7244ccf07881ae8f3.png" />
+<img alt="../_images/53a19a916065342a4c62ffc9040acd08dc36ee2c34fcae274505e8da5b81df71.png" src="../_images/53a19a916065342a4c62ffc9040acd08dc36ee2c34fcae274505e8da5b81df71.png" />
+<img alt="../_images/3f906e811db839c1906bdc306b3c68a82b4724ad9df907d895baeafc7e31a3f1.png" src="../_images/3f906e811db839c1906bdc306b3c68a82b4724ad9df907d895baeafc7e31a3f1.png" />
+<img alt="../_images/c5a6cc1592d83c4b85355fafb3f861bf8a4af112b10d6a6d572b0a6dac4dea5f.png" src="../_images/c5a6cc1592d83c4b85355fafb3f861bf8a4af112b10d6a6d572b0a6dac4dea5f.png" />
+<img alt="../_images/8accb510f401bef7799fc5fd2f1642f06f2fa859f6f60347edab37e3b14ed117.png" src="../_images/8accb510f401bef7799fc5fd2f1642f06f2fa859f6f60347edab37e3b14ed117.png" />
+<img alt="../_images/35433faa6cf77755142642c4c2949e297103c151d1c902b52f5b507c83042d89.png" src="../_images/35433faa6cf77755142642c4c2949e297103c151d1c902b52f5b507c83042d89.png" />
+<img alt="../_images/2d61ef5240683a551a8e39d3b8980bcfec4ad970f3837b5bcc5846e8e9c16adb.png" src="../_images/2d61ef5240683a551a8e39d3b8980bcfec4ad970f3837b5bcc5846e8e9c16adb.png" />
+<img alt="../_images/8214fe4577aabb2579faac3e7ab88b330c7cb208cc6d6827e74b87ce58e38434.png" src="../_images/8214fe4577aabb2579faac3e7ab88b330c7cb208cc6d6827e74b87ce58e38434.png" />
+<img alt="../_images/1f2396183a958a7d2048e7ab3a5e7d1af6462ac2120669689d15bdf7ef54c122.png" src="../_images/1f2396183a958a7d2048e7ab3a5e7d1af6462ac2120669689d15bdf7ef54c122.png" />
+<img alt="../_images/50d0b59d19ebb72ffc7e39296126662616331e5cd8b4304e74b7deaf56b8edec.png" src="../_images/50d0b59d19ebb72ffc7e39296126662616331e5cd8b4304e74b7deaf56b8edec.png" />
+<img alt="../_images/f0321785622c71213cbbae916ef59d655179e21692aafebd2727585de339a876.png" src="../_images/f0321785622c71213cbbae916ef59d655179e21692aafebd2727585de339a876.png" />
+<img alt="../_images/d9752c7021713122b71cea06b6422ed28bf1e4f2a431ad8c387595ce21e41a4c.png" src="../_images/d9752c7021713122b71cea06b6422ed28bf1e4f2a431ad8c387595ce21e41a4c.png" />
+<img alt="../_images/9129cf82d878fea6b0638067d08800e9dcd3f89b0eed5b0757ca76bb25dedef6.png" src="../_images/9129cf82d878fea6b0638067d08800e9dcd3f89b0eed5b0757ca76bb25dedef6.png" />
+<img alt="../_images/69662f7f7522bb3781bc472653affeb00b46f115c3c9ca252fcead4586aa6c25.png" src="../_images/69662f7f7522bb3781bc472653affeb00b46f115c3c9ca252fcead4586aa6c25.png" />
+<img alt="../_images/11c21adf1390cfa288226ca30ea03beb08f1a6d06a09a3da6a95b7bceb9fcba2.png" src="../_images/11c21adf1390cfa288226ca30ea03beb08f1a6d06a09a3da6a95b7bceb9fcba2.png" />
+<img alt="../_images/711100f5f3471392a0f88a60c0d47166fb21c53e05e130fe2aea0b5154bc7f3f.png" src="../_images/711100f5f3471392a0f88a60c0d47166fb21c53e05e130fe2aea0b5154bc7f3f.png" />
+<img alt="../_images/02185f598e5f82961b811762c4a45c513147e6b19cddf86fbb0830918ce557cf.png" src="../_images/02185f598e5f82961b811762c4a45c513147e6b19cddf86fbb0830918ce557cf.png" />
+<img alt="../_images/e503aa921135d580c20dbc18f9143a7f84f32b37b8bb0ea9307161b66a0e260a.png" src="../_images/e503aa921135d580c20dbc18f9143a7f84f32b37b8bb0ea9307161b66a0e260a.png" />
+<img alt="../_images/8d81b9468e060374aabdd8f21fa20d9531e1ee8781cdb31cad77409a3dd296c1.png" src="../_images/8d81b9468e060374aabdd8f21fa20d9531e1ee8781cdb31cad77409a3dd296c1.png" />
+<img alt="../_images/85decac7ce5f3dbbd9460daaaf04ce35369cd210ed8f17e7ee4c8bd5d09e7497.png" src="../_images/85decac7ce5f3dbbd9460daaaf04ce35369cd210ed8f17e7ee4c8bd5d09e7497.png" />
+<img alt="../_images/a53b3de903cd96d2f61ce9ccb196e9e669970e92ca167d52b23edf3d8ebca9b9.png" src="../_images/a53b3de903cd96d2f61ce9ccb196e9e669970e92ca167d52b23edf3d8ebca9b9.png" />
+<img alt="../_images/d3d4689baa8c4392143948b494e2db13607f699cb4daffdaa23ea053e30b0ad1.png" src="../_images/d3d4689baa8c4392143948b494e2db13607f699cb4daffdaa23ea053e30b0ad1.png" />
+<img alt="../_images/22d7334dace16a6017aa9f15486b97f4bef0e6d2dfbbdc1f5d1af76d0f936506.png" src="../_images/22d7334dace16a6017aa9f15486b97f4bef0e6d2dfbbdc1f5d1af76d0f936506.png" />
+<img alt="../_images/55fe429492ef8eab8318997acb8e1cfc2b20f6ab44b68c6fc4a95ccd53d130cb.png" src="../_images/55fe429492ef8eab8318997acb8e1cfc2b20f6ab44b68c6fc4a95ccd53d130cb.png" />
 </div>
 </details>
 </div>
@@ -3159,93 +3148,8 @@ Our gene expression file contained 29 matching genes.</p>
 </div>
 </section>
 </section>
-<section id="box-plots">
-<h2>Box plots<a class="headerlink" href="#box-plots" title="Link to this heading">#</a></h2>
-<section id="aml-epigenomic-risk">
-<h3>AML Epigenomic Risk<a class="headerlink" href="#aml-epigenomic-risk" title="Link to this heading">#</a></h3>
-<div class="cell tag_hide-input tag_hide-output docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_boxplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;P(Death) at 5y&#39;</span><span class="p">,</span>
-                <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;High Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Low Risk&#39;</span><span class="p">],</span>
-                <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">model_name2</span><span class="p">,</span>
-                <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-
-<span class="n">draw_boxplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;P(Death) at 5y&#39;</span><span class="p">,</span>
-                <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Positive&#39;</span><span class="p">,</span><span class="s1">&#39;Negative&#39;</span><span class="p">],</span>
-                <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">model_name2</span><span class="p">,</span>
-                <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-
-<span class="n">draw_boxplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Primary Cytogenetic Code&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;P(Death) at 5y&#39;</span><span class="p">,</span>
-                <span class="n">order</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
-                <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">model_name2</span><span class="p">,</span>
-                <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</details>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
-<div class="cell_output docutils container">
-<img alt="../_images/a035da7bd4e688a77a694a502ecc82cf1e54ae04be9aedf2f4353bd138d996f7.png" src="../_images/a035da7bd4e688a77a694a502ecc82cf1e54ae04be9aedf2f4353bd138d996f7.png" />
-<img alt="../_images/c4097018983af9d1f02ef1913bd5fc36e50447af66fa039bf85d305056c9ff33.png" src="../_images/c4097018983af9d1f02ef1913bd5fc36e50447af66fa039bf85d305056c9ff33.png" />
-<img alt="../_images/cea32f57adf59549de6dea0afea01d014129e6c89b87001f0795ca69d484bb46.png" src="../_images/cea32f57adf59549de6dea0afea01d014129e6c89b87001f0795ca69d484bb46.png" />
-</div>
-</details>
-</div>
-</section>
-<section id="cpg-amlsignature">
-<h3>38CpG-AMLsignature<a class="headerlink" href="#cpg-amlsignature" title="Link to this heading">#</a></h3>
-<div class="cell tag_hide-input tag_hide-output docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_boxplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;38CpG-HazardScore&#39;</span><span class="p">,</span>
-                <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;High Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Low Risk&#39;</span><span class="p">],</span>
-                <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;test cohort&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">model_name3</span><span class="p">,</span>
-                <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-
-<span class="n">draw_boxplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;38CpG-HazardScore&#39;</span><span class="p">,</span>
-                <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Positive&#39;</span><span class="p">,</span><span class="s1">&#39;Negative&#39;</span><span class="p">],</span>
-                <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;test cohort&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">model_name3</span><span class="p">,</span>
-                <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-
-<span class="n">draw_boxplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Primary Cytogenetic Code&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;38CpG-HazardScore&#39;</span><span class="p">,</span>
-                <span class="n">order</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
-                <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;test cohort&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">model_name3</span><span class="p">,</span>
-                <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</details>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
-<div class="cell_output docutils container">
-<img alt="../_images/1e84aa1b1e4187f6fe0a872d5589654026a16677fa77e1d14d779957c666dabc.png" src="../_images/1e84aa1b1e4187f6fe0a872d5589654026a16677fa77e1d14d779957c666dabc.png" />
-<img alt="../_images/98a1de793575a71ef8ed6c57663bd45318ee06d0584962e3bd82d87368bfe10f.png" src="../_images/98a1de793575a71ef8ed6c57663bd45318ee06d0584962e3bd82d87368bfe10f.png" />
-<img alt="../_images/1f7ee5fc9ef86c9691f6e65efac28f7818a52d9f017a4f023d89740e08fa8ed9.png" src="../_images/1f7ee5fc9ef86c9691f6e65efac28f7818a52d9f017a4f023d89740e08fa8ed9.png" />
-</div>
-</details>
-</div>
-</section>
-</section>
 <section id="stacked-bar-plots">
 <h2>Stacked bar plots<a class="headerlink" href="#stacked-bar-plots" title="Link to this heading">#</a></h2>
-<section id="id5">
-<h3>AML Epigenomic Risk<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <div class="cell tag_hide-input tag_hide-output docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -3253,20 +3157,37 @@ Our gene expression file contained 29 matching genes.</p>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_stacked_barplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">model_name2</span><span class="p">,</span>
-             <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Positive&#39;</span><span class="p">,</span><span class="s1">&#39;Negative&#39;</span><span class="p">],</span>
-             <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;test cohort&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">model_name2</span><span class="p">,</span>
-             <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_multiple_bars</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model_names</span><span class="p">,</span> <span class="n">orders</span><span class="p">,</span> <span class="n">trialname</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">palette</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#ff7f0e&#39;</span><span class="p">,</span> <span class="s1">&#39;#1f77b4&#39;</span><span class="p">],</span> <span class="n">fontsize_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">model_names</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+            <span class="n">fontsize</span> <span class="o">=</span> <span class="n">fontsize_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="k">if</span> <span class="n">fontsize_dict</span> <span class="k">else</span> <span class="kc">None</span>
+            <span class="n">draw_stacked_barplot</span><span class="p">(</span>
+                <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+                <span class="n">x</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span>
+                <span class="n">y</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+                <span class="n">order</span><span class="o">=</span><span class="n">orders</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">),</span>
+                <span class="n">trialname</span><span class="o">=</span><span class="n">trialname</span><span class="p">,</span>
+                <span class="n">hue</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+                <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">,</span>
+                <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span>
+                <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span>
+            <span class="p">)</span>
 
-<span class="n">draw_stacked_barplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">model_name2</span><span class="p">,</span>
-                <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;High Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Low Risk&#39;</span><span class="p">],</span>
-                <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;test cohort&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">model_name2</span><span class="p">,</span>
-                <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="c1"># Usage</span>
+<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">,</span> <span class="s1">&#39;Risk Group&#39;</span><span class="p">,</span> <span class="s1">&#39;Primary Cytogenetic Code&#39;</span><span class="p">]</span>
+<span class="n">orders</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Positive&#39;</span><span class="p">,</span> <span class="s1">&#39;Negative&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Risk Group&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;High Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Low Risk&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Primary Cytogenetic Code&#39;</span><span class="p">:</span> <span class="s1">&#39;auto&#39;</span>
+<span class="p">}</span>
+<span class="n">fontsize_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;Primary Cytogenetic Code&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">}</span>
 
-<span class="n">draw_stacked_barplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Primary Cytogenetic Code&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">model_name2</span><span class="p">,</span>
-                <span class="n">order</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
-                <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;test cohort&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">model_name2</span><span class="p">,</span>
-                <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">plot_multiple_bars</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span>
+                   <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
+                   <span class="n">model_names</span><span class="o">=</span><span class="p">[</span><span class="n">model_name2</span><span class="p">,</span> <span class="n">model_name3</span><span class="p">],</span>
+                   <span class="n">orders</span><span class="o">=</span><span class="n">orders</span><span class="p">,</span>
+                   <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;AML02,08 test&#39;</span><span class="p">,</span>
+                   <span class="n">fontsize_dict</span><span class="o">=</span><span class="n">fontsize_dict</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3277,53 +3198,15 @@ Our gene expression file contained 29 matching genes.</p>
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<img alt="../_images/222c562926c2c8feb50d5c305e08e5596349b3ee36e4cd16bea51c340a9e3d1a.png" src="../_images/222c562926c2c8feb50d5c305e08e5596349b3ee36e4cd16bea51c340a9e3d1a.png" />
-<img alt="../_images/4a49ff6695d4cd10e93f8fa326aa12b9a8a0b774b78ddb61554e4e34b89bfe5c.png" src="../_images/4a49ff6695d4cd10e93f8fa326aa12b9a8a0b774b78ddb61554e4e34b89bfe5c.png" />
-<img alt="../_images/f889ef140c2617f800d178e4236c16c4439605e812fb1d0e1e878cb1fc1897de.png" src="../_images/f889ef140c2617f800d178e4236c16c4439605e812fb1d0e1e878cb1fc1897de.png" />
+<img alt="../_images/76577e5570cf1464d7e81294e0d1e6ec9b2bfbddd7d9b174bac78bf6da955b78.png" src="../_images/76577e5570cf1464d7e81294e0d1e6ec9b2bfbddd7d9b174bac78bf6da955b78.png" />
+<img alt="../_images/2c106e34d3a473bab13a35b4eb805bb2f03a0811a114323620bca6d14957d8be.png" src="../_images/2c106e34d3a473bab13a35b4eb805bb2f03a0811a114323620bca6d14957d8be.png" />
+<img alt="../_images/7b1027bbec7c996016bb4a3769e866f8938a07d196cb0951d83434f74fcdb145.png" src="../_images/7b1027bbec7c996016bb4a3769e866f8938a07d196cb0951d83434f74fcdb145.png" />
+<img alt="../_images/36cf1bca7061d059fc58b0659d95b5de3999a12d3d93a9e7049ba452b0564aef.png" src="../_images/36cf1bca7061d059fc58b0659d95b5de3999a12d3d93a9e7049ba452b0564aef.png" />
+<img alt="../_images/5a0389eb6b6055e6d075fd25511a37f360d96cb84737de8aa37fe016caaa8d90.png" src="../_images/5a0389eb6b6055e6d075fd25511a37f360d96cb84737de8aa37fe016caaa8d90.png" />
+<img alt="../_images/909126d16c70b7d02b2043a64b73e05b5e1a9849310d5c2d619a4981ca5a0d78.png" src="../_images/909126d16c70b7d02b2043a64b73e05b5e1a9849310d5c2d619a4981ca5a0d78.png" />
 </div>
 </details>
 </div>
-</section>
-<section id="id6">
-<h3>38CpG-AMLsignature<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
-<div class="cell tag_hide-input tag_hide-output docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_stacked_barplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">model_name3</span><span class="p">,</span>
-             <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Positive&#39;</span><span class="p">,</span><span class="s1">&#39;Negative&#39;</span><span class="p">],</span>
-             <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;test cohort&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">model_name3</span><span class="p">,</span>
-             <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-
-<span class="n">draw_stacked_barplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">model_name3</span><span class="p">,</span>
-                <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;High Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Low Risk&#39;</span><span class="p">],</span>
-                <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;test cohort&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">model_name3</span><span class="p">,</span>
-                <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
-
-<span class="n">draw_stacked_barplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Primary Cytogenetic Code&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">model_name3</span><span class="p">,</span>
-                <span class="n">order</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
-                <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;test cohort&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">model_name3</span><span class="p">,</span>
-                <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</details>
-<details class="hide below-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
-</summary>
-<div class="cell_output docutils container">
-<img alt="../_images/d8f0d64fbcde184722b481348f42381ea0b7d96a7f554e8686483e9efd8f3eb1.png" src="../_images/d8f0d64fbcde184722b481348f42381ea0b7d96a7f554e8686483e9efd8f3eb1.png" />
-<img alt="../_images/115089ad85cc715ce411e537cf548b8062f6e9ece4685e93d211ebb6a22cc5d0.png" src="../_images/115089ad85cc715ce411e537cf548b8062f6e9ece4685e93d211ebb6a22cc5d0.png" />
-<img alt="../_images/c2790de338754105a6b1befe7212125460258d4a43f4557f8e407ecb502ca9f1.png" src="../_images/c2790de338754105a6b1befe7212125460258d4a43f4557f8e407ecb502ca9f1.png" />
-</div>
-</details>
-</div>
-</section>
 </section>
 <section id="watermark">
 <h2>Watermark<a class="headerlink" href="#watermark" title="Link to this heading">#</a></h2>
@@ -3331,7 +3214,7 @@ Our gene expression file contained 29 matching genes.</p>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Author: Francisco_Marchi@Lamba_Lab_UF
 
-Last updated: 2025-03-14
+Last updated: 2025-04-02
 
 Python implementation: CPython
 Python version       : 3.10.13
@@ -3473,16 +3356,7 @@ Git repo: git@github.com:f-marchi/ALMA.git
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagnosis">Diagnosis</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#box-plots">Box plots</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aml-epigenomic-risk">AML Epigenomic Risk</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cpg-amlsignature">38CpG-AMLsignature</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacked-bar-plots">Stacked bar plots</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">AML Epigenomic Risk</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">38CpG-AMLsignature</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacked-bar-plots">Stacked bar plots</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
 </ul>
   </nav></div>
