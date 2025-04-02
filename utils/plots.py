@@ -5,6 +5,7 @@ This module implements custom plotting functions for data visualization.
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
+import matplotlib.ticker as mticker
 import pandas as pd
 from bokeh.plotting import figure, show, output_notebook, gridplot
 from bokeh.models import Legend, LegendItem
@@ -19,7 +20,6 @@ def draw_kaplan_meier(df,
                       trialname=None,
                       plot_efs=True,
                       plot_os=True,
-                      save_plot=False,
                       figsize=(8, 10),
                       add_risk_counts=False,
                       save_survival_table=False,
@@ -148,15 +148,10 @@ def draw_kaplan_meier(df,
                  fontsize=11, y=suptitle, fontweight='bold')
     plt.subplots_adjust(wspace=0, hspace=0.2)
 
-    # Save figure
-    if save_plot:
-        plt.savefig(f'../Figures/Kaplan_Meiers/{model_name}_{trialname}_{len(df)}.png',
-                    bbox_inches='tight', dpi=300)
-
     return plt.show()
 
 
-def draw_forest_plot(time, event, df, save_plot=False, trialname=None, model_name=None):
+def draw_forest_plot(time, event, df, trialname=None, model_name=None):
     """
     Generates a custom forest plot. The code in this function is not pretty but it just gets the job done.
 
@@ -277,153 +272,67 @@ def draw_forest_plot(time, event, df, save_plot=False, trialname=None, model_nam
     fp.horizontal_variable_separators()
     fp.draw_outer_marker(log_scale=False, scale=0.008, index=2)
 
-    # Save plot figure
-    if save_plot == True:
-        plt.savefig('../Figures/Forest_Plots/' + model_name + '_' + trialname + '_' + str(len(df)) + '_' + event3 + '.png',
-                    bbox_inches='tight', dpi=300)
-
     return (plt.show())
 
 
-def draw_boxplot(df, x, y, order, trialname, hue=None, save_plot=False, figsize=None):
-    """
-    Generates a custom box plot.
+def draw_boxplot(df, x, y, order, trialname, hue=None, palette=None, figsize=None):
 
-    Parameters:
-    ----------
-    df: object
-        A dataframe containing the columns x, y,and hue.
-    x: str
-        Categorical variable for the x-axis of the plot.
-    y: str
-        Continuous variable for the y-axis of the plot.
-    hue: str, default=None
-        Optional variable to be used as hue.
-    save_plot: bool, default=False
-        Set to True if you wish to save the plot.It will be saved under "../Figures/Box_Plots/"
-    figsize: tuple, default=None
-        Tuple containing the figsize. Select None for automatic size selection.
-
-
-    Returns:
-    --------
-        A magnificent box plot.
-
-    """
-    # from statannotations.Annotator import Annotator
-
-    # Set up the matplotlib figure
     sns.set_theme(style='white')
     plt.subplots(figsize=figsize)
 
     if order == 'auto':
-        order2 = list(df[x].value_counts().index)
+        order2 = df[x].value_counts().index.tolist()
     else:
         order2 = order.copy()
 
     ax = sns.boxplot(y=y, x=x, data=df,
                      whis=[0, 100], width=.6, orient='v', order=order2, color='white')
 
-    # Add in points to show each observation
-    sns.stripplot(y=y, x=x, data=df, size=4, color=".3", linewidth=0, orient='v',
-                  order=order2, hue=hue, palette='bright')
+    sns.stripplot(y=y, x=x, data=df, size=4, linewidth=0, orient='v',
+                  order=order2, hue=hue, palette=palette or 'bright', dodge=True)
 
-    # Tweak the visual presentation
     ax.xaxis.grid(False)
 
     sns.despine(trim=True, left=True)
-    plt.title(y + ' by ' + x + ' in ' + trialname, fontsize='medium', y=1,
-              fontweight='bold')
-    plt.legend(loc='center right', bbox_to_anchor=(1.25, 0.5))
+    plt.title(f'{y} by {x} in {trialname}', fontsize='medium', y=1, fontweight='bold')
 
-    if len(order2) <= 3:
-        if len(order2) == 2:
-            pairs = [(order2[0], order2[1])]
-        elif len(order2) == 3:
-            pairs = [(order2[0], order2[1]), (order2[0],
-                                              order2[2]), (order2[1], order2[2])]
+    if hue:
+        plt.legend(loc='center right', bbox_to_anchor=(1.25, 0.5))
 
-        # # Annotate figure
-        # annotator = Annotator(ax, pairs, data=df, x=x, y=y, order=order2)
-        # annotator.configure(test='Kruskal', text_format='star', loc='inside',
-        #                     comparisons_correction='bonf').apply_and_annotate()
-
-        # Save plot figure
-    if save_plot == True:
-        plt.savefig('../Figures/Box_Plots/' + hue + '_' + trialname + '_' + str(len(df)) + '_' + x + '.png',
-                    bbox_inches='tight', dpi=300)
-    return (plt.show())
+    return plt.show()
 
 
-def draw_stacked_barplot(df, x, y, order, trialname, hue=None, save_plot=False, figsize=None, fontsize=10):
-    """
-    Generates a custom stacked bar plot.
+def draw_stacked_barplot(df, x, y, order, trialname, hue=None, palette=None, figsize=None, fontsize=10):
 
-    Parameters:
-    ----------
-    df: object
-        A dataframe containing the columns x, y,and hue.
-    x: str
-        Categorical variable for the x-axis of the plot.
-    y: str
-        Continuous variable for the y-axis of the plot.
-    hue: str, default=None
-        Optional variable to be used as hue.
-    save_plot: bool, default=False
-        Set to True if you wish to save the plot. It will be saved under "../Figures/Bar_Plots/"
-    figsize: tuple, default=None
-        Tuple containing the figsize. Select None for automatic size selection.
-
-
-    Returns:
-    --------
-        A magnificent bar plot.
-
-    """
-    import seaborn as sns
-    import matplotlib.pyplot as plt
-    import matplotlib.ticker as mticker
-    import numpy as np
-    import pandas as pd
-
-    # Set up the matplotlib figure
     sns.set_theme(style='white')
     plt.subplots(figsize=figsize)
 
     if order == 'auto':
-        order2 = list(df[x].value_counts().index)
+        order2 = df[x].value_counts().index.tolist()
     else:
         order2 = order.copy()
 
-    # Count the occurrences of each hue within each x value
     hue_counts = df.groupby([x, hue])[y].count().unstack(fill_value=0)
-    # Convert these counts to proportions
     hue_props = hue_counts.divide(hue_counts.sum(axis=1), axis=0)
-    
-    # Generate a stacked bar plot
-    hue_props.loc[order2, :].plot(kind='bar', stacked=True, ax=plt.gca())
 
-    # Annotate the bars with their percentage values
+    # Apply custom palette
+    colors = palette if palette else sns.color_palette('bright', n_colors=hue_props.shape[1])
+
+    hue_props.loc[order2, :].plot(kind='bar', stacked=True, ax=plt.gca(), color=colors)
+
     for rect in plt.gca().patches:
         height = rect.get_height()
-        plt.gca().text(rect.get_x() + rect.get_width() / 2, rect.get_y() + height / 2,
-                       '{:.1f}%'.format(height * 100), ha='center', va='center', color='white', fontsize=fontsize)
+        if height > 0:
+            plt.gca().text(rect.get_x() + rect.get_width() / 2, rect.get_y() + height / 2,
+                           '{:.1f}%'.format(height * 100), ha='center', va='center', color='white', fontsize=fontsize)
 
     plt.gca().yaxis.set_major_formatter(mticker.PercentFormatter(1))
-
-    # Tweak the visual presentation
     plt.gca().xaxis.grid(False)
 
-    # Turn tick labels 90 degrees
-    plt.xticks(rotation=0,ha='center')
+    plt.xticks(rotation=0, ha='center')
 
-    plt.title(y + ' by ' + x + ' in ' + trialname, fontsize='medium', y=1)
+    plt.title(f'{y} by {x} in {trialname}, n={len(df)}', y=1)
     plt.legend(loc='center right', bbox_to_anchor=(1.25, 0.5))
-
-    # Save plot figure
-    if save_plot == True:
-        plt.savefig('../Figures/Bar_Plots/' + '_'.join(hue_props.columns.tolist()) + '_' + trialname + '_' + str(len(df)) + '_' + x + '.png',
-                    bbox_inches='tight', dpi=300)
 
     return plt.show()
 
@@ -651,7 +560,6 @@ def plot_confusion_matrix_stacked(
     metrics_df = metrics_df.applymap(lambda x: f"{x:.3f}" if isinstance(x, (int, float)) else x)
     print("\nMetrics:")
     print(metrics_df.to_markdown())
-
 
 
 def create_color_dict(df, columns, colors):
@@ -1098,7 +1006,7 @@ def plot_multiclass_roc_auc(df, target_columns, title=None, width=350, height=80
     return p
 
 
-def draw_scatter_pearson(df,x,y,s):
+def draw_scatter_pearson(df, x, y, s, x_label, y_label):
 
     sns.set_theme(style="white")
     f, ax = plt.subplots(figsize=(3, 3))
@@ -1127,8 +1035,8 @@ def draw_scatter_pearson(df,x,y,s):
 
     # Define plot specs
 
-    plt.xlabel(x, fontsize = 10)
-    plt.ylabel(y, fontsize = 10)
+    plt.xlabel(x + x_label, fontsize = 10)
+    plt.ylabel(y + y_label, fontsize = 10)
     plt.title(r"Pearson's correlation ($\rho$) in " + str(len(df)) + " samples",
                fontsize = 10) 
 
