@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
@@ -443,6 +443,12 @@ document.write(`
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sig_results</span><span class="p">)</span>
 
+<span class="c1"># # Create mastersheet</span>
+<span class="c1"># nopho_aml[&#39;Clinical Trial&#39;] = &#39;NOPHO AML&#39;</span>
+<span class="c1"># nopho_aml[&#39;Train-Test&#39;] = &#39;Test Sample&#39;</span>
+<span class="c1"># nopho_aml[&#39;Batch&#39;] = &#39;NOPHO AML&#39;</span>
+<span class="c1"># master_df = pd.concat([df, nopho_aml], axis=0,).to_excel(&#39;master_df.xlsx&#39;)</span>
+
 <span class="c1"># Define train and test samples</span>
 <span class="n">df_train</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Train-Test&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Train Sample&#39;</span><span class="p">]</span>
 <span class="n">df_test</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Train-Test&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Test Sample&#39;</span><span class="p">]</span>
@@ -478,7 +484,7 @@ document.write(`
     </style>
     <div>
         <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
-        <span id="d1e69296-7cc0-4f80-91e5-3a369b17fe56">Loading BokehJS ...</span>
+        <span id="d596f25c-16d8-4e54-ac05-eede47f8411c">Loading BokehJS ...</span>
     </div>
 </div><script type="application/javascript">(function(root) {
   function now() {
@@ -642,7 +648,7 @@ const JS_MIME_TYPE = 'application/javascript';
      "</div>"}};
 
   function display_loaded() {
-    const el = document.getElementById("d1e69296-7cc0-4f80-91e5-3a369b17fe56");
+    const el = document.getElementById("d596f25c-16d8-4e54-ac05-eede47f8411c");
     if (el != null) {
       el.textContent = "BokehJS is loading...";
     }
@@ -748,7 +754,7 @@ if (force === true) {
       console.log("Bokeh: BokehJS failed to load within specified timeout.");
       root._bokeh_failed_load = true;
     } else if (force !== true) {
-      const cell = $(document.getElementById("d1e69296-7cc0-4f80-91e5-3a369b17fe56")).parents('.cell').data().cell;
+      const cell = $(document.getElementById("d596f25c-16d8-4e54-ac05-eede47f8411c")).parents('.cell').data().cell;
       cell.output_area.append_execute_result(NB_LOAD_WARNING)
     }
   }
@@ -1221,7 +1227,6 @@ if (force === true) {
     <span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">model_name2</span><span class="p">,</span>
                         <span class="n">df</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
                         <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">trialname</span><span class="o">=</span><span class="n">trial</span><span class="p">,</span>
@@ -1236,8 +1241,8 @@ if (force === true) {
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<img alt="../_images/930f49207ce5fd19be34cc97e32c91b48bc86a19958eac29bb3fd71d23a08893.png" src="../_images/930f49207ce5fd19be34cc97e32c91b48bc86a19958eac29bb3fd71d23a08893.png" />
-<img alt="../_images/b7e9a8ca6c7ac10bd8c46f914c231d76c7121664ee80fb8e80a9bba882004619.png" src="../_images/b7e9a8ca6c7ac10bd8c46f914c231d76c7121664ee80fb8e80a9bba882004619.png" />
+<img alt="../_images/5dff313c524bc0ca36774bb1371eb90c7691bbb17e265d1f6ae6980222c36bb4.png" src="../_images/5dff313c524bc0ca36774bb1371eb90c7691bbb17e265d1f6ae6980222c36bb4.png" />
+<img alt="../_images/9ea2aad5a2de0037b0aabdda4a3cf2c0d99d4b1ae92c9e35c6610472f3e4210a.png" src="../_images/9ea2aad5a2de0037b0aabdda4a3cf2c0d99d4b1ae92c9e35c6610472f3e4210a.png" />
 </div>
 </details>
 </div>
@@ -1255,7 +1260,6 @@ if (force === true) {
     <span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">model_name3</span><span class="p">,</span>
                         <span class="n">df</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
                         <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">trialname</span><span class="o">=</span><span class="n">trial</span><span class="p">,</span>
@@ -1270,8 +1274,8 @@ if (force === true) {
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<img alt="../_images/fe827f405eabdfdfd8651f3c6a3a7584c1da1d9519d254072b14548fc0d16bac.png" src="../_images/fe827f405eabdfdfd8651f3c6a3a7584c1da1d9519d254072b14548fc0d16bac.png" />
-<img alt="../_images/918543b947757525fb2acb105eb42bc1ff47b6eab9b009194e1087b94cce5816.png" src="../_images/918543b947757525fb2acb105eb42bc1ff47b6eab9b009194e1087b94cce5816.png" />
+<img alt="../_images/fd2ac8556aa2b782175b7f203313143a570a80e94f201cdfead31dfc7acae9d1.png" src="../_images/fd2ac8556aa2b782175b7f203313143a570a80e94f201cdfead31dfc7acae9d1.png" />
+<img alt="../_images/9c4f2e6650738e15dbf5952db5c27c75a3ef2648ea204275fb337e91576ff28e.png" src="../_images/9c4f2e6650738e15dbf5952db5c27c75a3ef2648ea204275fb337e91576ff28e.png" />
 </div>
 </details>
 </div>
@@ -1306,7 +1310,6 @@ if (force === true) {
                         <span class="n">df</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
                         <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">plot_efs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                         <span class="n">trialname</span><span class="o">=</span><span class="n">trial</span><span class="p">,</span>
@@ -1317,7 +1320,6 @@ if (force === true) {
                         <span class="n">df</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
                         <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">plot_efs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                         <span class="n">trialname</span><span class="o">=</span><span class="n">trial</span><span class="p">,</span>
@@ -1361,7 +1363,6 @@ if (force === true) {
                         <span class="n">df</span><span class="o">=</span><span class="n">nopho_aml2</span><span class="p">,</span>
                         <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">plot_efs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                         <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;NOPHO AML&#39;</span><span class="p">,</span>
@@ -1372,7 +1373,6 @@ if (force === true) {
                         <span class="n">df</span><span class="o">=</span><span class="n">nopho_aml2</span><span class="p">,</span>
                         <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">plot_efs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                         <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;NOPHO AML&#39;</span><span class="p">,</span>
@@ -1388,8 +1388,8 @@ if (force === true) {
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<img alt="../_images/24635965894afaa2ff02459d53b3ea96eadaf89b5c2b4c7a5586c82a25a46860.png" src="../_images/24635965894afaa2ff02459d53b3ea96eadaf89b5c2b4c7a5586c82a25a46860.png" />
-<img alt="../_images/db3393ac299af2d4df2e8eebbfa4352428074c6009d23603ff8a5e6572020fa7.png" src="../_images/db3393ac299af2d4df2e8eebbfa4352428074c6009d23603ff8a5e6572020fa7.png" />
+<img alt="../_images/5632a4c6000caa9964e6f8c6d3c8912844bd5ad26723feb6ed8d394436d52dc9.png" src="../_images/5632a4c6000caa9964e6f8c6d3c8912844bd5ad26723feb6ed8d394436d52dc9.png" />
+<img alt="../_images/4b971cfb1b104c2bd831d3b6369bc6bd6cf5bc3045f7f5a70d9ffe1c34a3ffb2.png" src="../_images/4b971cfb1b104c2bd831d3b6369bc6bd6cf5bc3045f7f5a70d9ffe1c34a3ffb2.png" />
 </div>
 </details>
 </div>
@@ -1405,17 +1405,21 @@ if (force === true) {
 <div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="n">df_px2</span><span class="p">,</span> <span class="n">df_test</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Discovery&#39;</span><span class="p">,</span> <span class="s1">&#39;AML02,08 Trials&#39;</span><span class="p">]):</span>
 
-    <span class="n">flt3_statuses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Yes&#39;</span><span class="p">]</span>
+    <span class="n">flt3_statuses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Yes&#39;</span><span class="p">,</span> <span class="s1">&#39;No&#39;</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">status</span> <span class="ow">in</span> <span class="n">flt3_statuses</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s1">&#39;Yes&#39;</span><span class="p">:</span>
+            <span class="n">status_</span> <span class="o">=</span> <span class="s1">&#39;positive&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">status_</span> <span class="o">=</span> <span class="s1">&#39;negative&#39;</span>
 
         <span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">model_name2</span><span class="p">,</span>
                         <span class="n">df</span><span class="o">=</span><span class="n">dataset</span><span class="p">[</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">status</span><span class="p">],</span>
                         <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">plot_efs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                        <span class="n">trialname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s1">, FLT3 ITD positive&#39;</span><span class="p">,</span>
+                        <span class="n">trialname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s1">, FLT3 ITD </span><span class="si">{</span><span class="n">status_</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
                         <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span><span class="mf">4.2</span><span class="p">),</span>
                         <span class="n">suptitle</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         
@@ -1423,10 +1427,9 @@ if (force === true) {
                         <span class="n">df</span><span class="o">=</span><span class="n">dataset</span><span class="p">[</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">status</span><span class="p">],</span>
                         <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">plot_efs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                        <span class="n">trialname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s1">, FLT3 ITD positive&#39;</span><span class="p">,</span>
+                        <span class="n">trialname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s1">, FLT3 ITD </span><span class="si">{</span><span class="n">status_</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
                         <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span><span class="mf">4.2</span><span class="p">),</span>
                         <span class="n">suptitle</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -1439,10 +1442,14 @@ if (force === true) {
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<img alt="../_images/5c6268f38ded08f6f7d84041d619bf6b9aea98f7f375eddad141788f56c6f17e.png" src="../_images/5c6268f38ded08f6f7d84041d619bf6b9aea98f7f375eddad141788f56c6f17e.png" />
-<img alt="../_images/3c4a0f2bda746c23a7e347ce8cbcb4331bf64407e7980288323c86fccc27009c.png" src="../_images/3c4a0f2bda746c23a7e347ce8cbcb4331bf64407e7980288323c86fccc27009c.png" />
-<img alt="../_images/63a40cffe5178867b640070f83e51e2aa2118c2bb99a3ff134d7489bbc133957.png" src="../_images/63a40cffe5178867b640070f83e51e2aa2118c2bb99a3ff134d7489bbc133957.png" />
-<img alt="../_images/c8d02fb3abe82d9011b22100ef45dcf07197b6effa2ef80d610864e64d543774.png" src="../_images/c8d02fb3abe82d9011b22100ef45dcf07197b6effa2ef80d610864e64d543774.png" />
+<img alt="../_images/8cd92308c450a3dc817ae48f9f7513fac35f13e3ef875b3714840376f363a458.png" src="../_images/8cd92308c450a3dc817ae48f9f7513fac35f13e3ef875b3714840376f363a458.png" />
+<img alt="../_images/a07474cfee2cd968d19b1756b6a8cc33e4bc87706d421a8cc27d05d1628070e0.png" src="../_images/a07474cfee2cd968d19b1756b6a8cc33e4bc87706d421a8cc27d05d1628070e0.png" />
+<img alt="../_images/1b4097c53914ef849f45689a2fe5691a10719260d1e0880db571791f750acc0d.png" src="../_images/1b4097c53914ef849f45689a2fe5691a10719260d1e0880db571791f750acc0d.png" />
+<img alt="../_images/698bd9ac3e76f55d3cad3b994acdb5a70156d6e3d1aa79291066df198da3a3f7.png" src="../_images/698bd9ac3e76f55d3cad3b994acdb5a70156d6e3d1aa79291066df198da3a3f7.png" />
+<img alt="../_images/05fd94ec047049eae008da902966272697454d8191551e3ad7a94b7bf2ecf8fc.png" src="../_images/05fd94ec047049eae008da902966272697454d8191551e3ad7a94b7bf2ecf8fc.png" />
+<img alt="../_images/0bbb2c6bf3c5c4f0e2eb5fd7b518532fe4fda5012c5d96e10e65fdf9783c6abc.png" src="../_images/0bbb2c6bf3c5c4f0e2eb5fd7b518532fe4fda5012c5d96e10e65fdf9783c6abc.png" />
+<img alt="../_images/9e341453fe7257415108cd0f605be519e6b27dc5927d4eb7d0857492d882476d.png" src="../_images/9e341453fe7257415108cd0f605be519e6b27dc5927d4eb7d0857492d882476d.png" />
+<img alt="../_images/374c58953571cdf806cf0b49174c3156a2992c05b913401c8c727eee1b22c6c0.png" src="../_images/374c58953571cdf806cf0b49174c3156a2992c05b913401c8c727eee1b22c6c0.png" />
 </div>
 </details>
 </div>
@@ -1458,17 +1465,21 @@ if (force === true) {
 <div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="n">df_px2</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Discovery&#39;</span><span class="p">]):</span>
 
-    <span class="n">statuses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Yes&#39;</span><span class="p">]</span>
+    <span class="n">statuses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Yes&#39;</span><span class="p">,</span> <span class="s1">&#39;No&#39;</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">status</span> <span class="ow">in</span> <span class="n">statuses</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s1">&#39;Yes&#39;</span><span class="p">:</span>
+            <span class="n">status_</span> <span class="o">=</span> <span class="s1">&#39;positive&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">status_</span> <span class="o">=</span> <span class="s1">&#39;negative&#39;</span>
 
         <span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">model_name2</span><span class="p">,</span>
                         <span class="n">df</span><span class="o">=</span><span class="n">dataset</span><span class="p">[</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;NPM mutation&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">status</span><span class="p">],</span>
                         <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">plot_efs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                        <span class="n">trialname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s1">, NPM1 positive&#39;</span><span class="p">,</span>
+                        <span class="n">trialname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s1">, NPM1 </span><span class="si">{</span><span class="n">status_</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
                         <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span><span class="mf">4.2</span><span class="p">),</span>
                         <span class="n">suptitle</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         
@@ -1476,10 +1487,9 @@ if (force === true) {
                         <span class="n">df</span><span class="o">=</span><span class="n">dataset</span><span class="p">[</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;NPM mutation&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">status</span><span class="p">],</span>
                         <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">plot_efs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                        <span class="n">trialname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s1">, NPM1 positive&#39;</span><span class="p">,</span>
+                        <span class="n">trialname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s1">, NPM1 </span><span class="si">{</span><span class="n">status_</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
                         <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span><span class="mf">4.2</span><span class="p">),</span>
                         <span class="n">suptitle</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -1492,8 +1502,10 @@ if (force === true) {
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<img alt="../_images/32aa692d990bafc4f02c0b0d742db1c20e9c992a0fbf0641e74e91444f7be0e9.png" src="../_images/32aa692d990bafc4f02c0b0d742db1c20e9c992a0fbf0641e74e91444f7be0e9.png" />
-<img alt="../_images/ac1f004e34321e18fcb10844598473b2b217f327284fde83123acef7d3b760d0.png" src="../_images/ac1f004e34321e18fcb10844598473b2b217f327284fde83123acef7d3b760d0.png" />
+<img alt="../_images/9cb9ed52b44bd40559b2cd78cd15684276dddb7d510abbbc5368709805ec7afc.png" src="../_images/9cb9ed52b44bd40559b2cd78cd15684276dddb7d510abbbc5368709805ec7afc.png" />
+<img alt="../_images/1a30347d52fe6457b28f6acdb430d5704bbadc91c32c6ccc202bf1484ff76079.png" src="../_images/1a30347d52fe6457b28f6acdb430d5704bbadc91c32c6ccc202bf1484ff76079.png" />
+<img alt="../_images/9003030a5dd4de195f73b79f1eb2f4a5f84f46e16ea65f54146918266a6d4d69.png" src="../_images/9003030a5dd4de195f73b79f1eb2f4a5f84f46e16ea65f54146918266a6d4d69.png" />
+<img alt="../_images/60c69fb9064e3a695534c30105f3ef380ea0cfb2635d900d0a6cd7ba6f02f505.png" src="../_images/60c69fb9064e3a695534c30105f3ef380ea0cfb2635d900d0a6cd7ba6f02f505.png" />
 </div>
 </details>
 </div>
@@ -1510,17 +1522,33 @@ if (force === true) {
 <div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="n">df_px2</span><span class="p">,</span> <span class="n">df_test</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Discovery&#39;</span><span class="p">,</span> <span class="s1">&#39;AML02,08 Trials&#39;</span><span class="p">]):</span>
 
-    <span class="n">statuses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Positive&#39;</span><span class="p">]</span>
+
+    <span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">,</span>
+                        <span class="n">df</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
+                        <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">plot_efs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">trialname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s1">, overall&#39;</span><span class="p">,</span>
+                        <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span><span class="mf">4.2</span><span class="p">),</span>
+                        <span class="n">suptitle</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">status1</span><span class="o">=</span><span class="s1">&#39;Positive&#39;</span><span class="p">,</span>
+                        <span class="n">status2</span><span class="o">=</span><span class="s1">&#39;Negative&#39;</span><span class="p">)</span>
+
+    <span class="n">statuses</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Positive&#39;</span><span class="p">,</span> <span class="s1">&#39;Negative&#39;</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">status</span> <span class="ow">in</span> <span class="n">statuses</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s1">&#39;Positive&#39;</span><span class="p">:</span>
+            <span class="n">status_</span> <span class="o">=</span> <span class="s1">&#39;positive&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">status_</span> <span class="o">=</span> <span class="s1">&#39;negative&#39;</span>
 
         <span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">model_name2</span><span class="p">,</span>
                         <span class="n">df</span><span class="o">=</span><span class="n">dataset</span><span class="p">[</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">status</span><span class="p">],</span>
                         <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">plot_efs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                        <span class="n">trialname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s1">, MRD 1 positive&#39;</span><span class="p">,</span>
+                        <span class="n">trialname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s1">, MRD 1 </span><span class="si">{</span><span class="n">status_</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
                         <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span><span class="mf">4.2</span><span class="p">),</span>
                         <span class="n">suptitle</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         
@@ -1528,10 +1556,9 @@ if (force === true) {
                         <span class="n">df</span><span class="o">=</span><span class="n">dataset</span><span class="p">[</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">status</span><span class="p">],</span>
                         <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">plot_efs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">show_ci</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                        <span class="n">trialname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s1">, MRD 1 positive&#39;</span><span class="p">,</span>
+                        <span class="n">trialname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s1">, MRD 1 </span><span class="si">{</span><span class="n">status_</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
                         <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">7.5</span><span class="p">,</span><span class="mf">4.2</span><span class="p">),</span>
                         <span class="n">suptitle</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -1544,10 +1571,16 @@ if (force === true) {
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
+<img alt="../_images/9cf5963093daf381e1511a9f89cc85097f1a3a16f53788dbc42a2f4e4755a06f.png" src="../_images/9cf5963093daf381e1511a9f89cc85097f1a3a16f53788dbc42a2f4e4755a06f.png" />
 <img alt="../_images/28b7739e7210c981f151de9bf8837573fcbd4131ba8d66d84388f03038669196.png" src="../_images/28b7739e7210c981f151de9bf8837573fcbd4131ba8d66d84388f03038669196.png" />
 <img alt="../_images/be156cdabb14d1aaf7b9007fb52dfa3a20bf77b507909bb1f57181dfbe98ae47.png" src="../_images/be156cdabb14d1aaf7b9007fb52dfa3a20bf77b507909bb1f57181dfbe98ae47.png" />
+<img alt="../_images/7d2d07434adb7fa6e2f64989057005133dbdf19fdf26294454e2b7c2e193392f.png" src="../_images/7d2d07434adb7fa6e2f64989057005133dbdf19fdf26294454e2b7c2e193392f.png" />
+<img alt="../_images/ac4edb422f3740701f4dfcd9684d493de5f3a0c605e3c580f3d9928eb30942df.png" src="../_images/ac4edb422f3740701f4dfcd9684d493de5f3a0c605e3c580f3d9928eb30942df.png" />
+<img alt="../_images/6824d4127a2b6cb4e253a6be65eaeb7625e30aff4e90429c7b65decee766eddf.png" src="../_images/6824d4127a2b6cb4e253a6be65eaeb7625e30aff4e90429c7b65decee766eddf.png" />
 <img alt="../_images/c10fd3cecf0fd965c94be21428313c6a98b16f3c2982848f107209a511651638.png" src="../_images/c10fd3cecf0fd965c94be21428313c6a98b16f3c2982848f107209a511651638.png" />
 <img alt="../_images/8e2c3a9ad9229f752f763c6d242499455b49b96f80e66a4086ba9c7c7aa0459f.png" src="../_images/8e2c3a9ad9229f752f763c6d242499455b49b96f80e66a4086ba9c7c7aa0459f.png" />
+<img alt="../_images/4022925310c047c5cce89f9b9ad164832b9373b5766926a08b1027a94fde9b49.png" src="../_images/4022925310c047c5cce89f9b9ad164832b9373b5766926a08b1027a94fde9b49.png" />
+<img alt="../_images/30e9de5133f83825d3073e5e06587b10b3775b9198a6d98d2407ef19aa214a9b.png" src="../_images/30e9de5133f83825d3073e5e06587b10b3775b9198a6d98d2407ef19aa214a9b.png" />
 </div>
 </details>
 </div>
@@ -1569,7 +1602,6 @@ if (force === true) {
         <span class="n">draw_kaplan_meier</span><span class="p">(</span>
             <span class="n">model_name</span><span class="o">=</span><span class="n">model_name2</span><span class="p">,</span>
             <span class="n">df</span><span class="o">=</span><span class="n">dataset</span><span class="p">[</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">risk_group</span><span class="p">],</span>
-            <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">trialname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">risk_group</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
@@ -1608,7 +1640,6 @@ if (force === true) {
         <span class="n">draw_kaplan_meier</span><span class="p">(</span>
             <span class="n">model_name</span><span class="o">=</span> <span class="n">model_name3</span><span class="p">,</span>
             <span class="n">df</span><span class="o">=</span><span class="n">dataset</span><span class="p">[</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">risk_group</span><span class="p">],</span>
-            <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">trialname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">risk_group</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
@@ -1650,7 +1681,6 @@ if (force === true) {
         <span class="n">draw_kaplan_meier</span><span class="p">(</span>
             <span class="n">model_name</span><span class="o">=</span><span class="n">model_name2</span><span class="p">,</span>
             <span class="n">df</span><span class="o">=</span><span class="n">dataset</span><span class="p">[</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;Risk Group AAML1831&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">risk_group</span><span class="p">],</span>
-            <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">trialname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">risk_group</span><span class="si">}</span><span class="s1"> AAML1831 Risk&#39;</span><span class="p">,</span>
@@ -1686,7 +1716,6 @@ if (force === true) {
         <span class="n">draw_kaplan_meier</span><span class="p">(</span>
             <span class="n">model_name</span><span class="o">=</span><span class="n">model_name3</span><span class="p">,</span>
             <span class="n">df</span><span class="o">=</span><span class="n">dataset</span><span class="p">[</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;Risk Group AAML1831&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">risk_group</span><span class="p">],</span>
-            <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">save_survival_table</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">trialname</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">risk_group</span><span class="si">}</span><span class="s1"> AAML1831 Risk&#39;</span><span class="p">,</span>
