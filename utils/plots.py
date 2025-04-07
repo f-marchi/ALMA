@@ -24,7 +24,9 @@ def draw_kaplan_meier(df,
                       add_risk_counts=False,
                       save_survival_table=False,
                       show_ci=False,
-                      suptitle=0.94):
+                      suptitle=0.94,
+                      status1= 'High',
+                      status2= 'Low',):
     """
     Plot Kaplan-Meier curves for EFS, OS, or both. Preserves all original functionality.
 
@@ -52,6 +54,10 @@ def draw_kaplan_meier(df,
         Whether to show confidence intervals in the Kaplan-Meier curves.
     suptitle : float, optional
         Y-coordinate of the main title.
+    status1 : str, optional
+        Label for the 'High' or 'positive' group in the Kaplan-Meier plot.
+    status2 : str, optional
+            Label for the 'Low' or "negative" group in the Kaplan-Meier plot.
     """
 
     sns.set_theme(style='white')
@@ -79,10 +85,10 @@ def draw_kaplan_meier(df,
         axes = [axes]
 
     groups = df[model_name]
-    ix_high = (groups == 'High')
+    ix_high = (groups == status1)
 
     # Cox model requires numeric indicator
-    df[model_name + '_int'] = df[model_name].map({'High': 1, 'Low': 0})
+    df[model_name + '_int'] = df[model_name].map({status1: 1, status2: 0})
 
     def plot_surv(axis, time_col, event_col, title):
         kmf_low = KaplanMeierFitter()
@@ -93,10 +99,10 @@ def draw_kaplan_meier(df,
 
         kmf_low.fit(T[~ix_high],
                     E[~ix_high],
-                    label='Low ' + model_name + ', n=' + str((df[model_name] == 'Low').sum()))
+                    label= status2 + ' ' + model_name + ', n=' + str((df[model_name] == status2).sum()))
         kmf_high.fit(T[ix_high],
                      E[ix_high],
-                     label='High ' + model_name + ', n=' + str((df[model_name] == 'High').sum()))
+                     label=status1 + ' ' + model_name + ', n=' + str((df[model_name] == status1).sum()))
 
         kmf_low.plot_survival_function(ax=axis, show_censors=True, ci_show=show_ci)
         kmf_high.plot_survival_function(ax=axis, show_censors=True, ci_show=show_ci)
@@ -127,8 +133,8 @@ def draw_kaplan_meier(df,
         if save_survival_table:
             surv_low = kmf_low.survival_function_.join(kmf_low.confidence_interval_)
             surv_high = kmf_high.survival_function_.join(kmf_high.confidence_interval_)
-            merged = surv_low.join(surv_high, how='outer', rsuffix='_High')
-            merged.to_csv(f'../../Figures/Kaplan_Meiers/KM_{time_col}_SurvivalTable_'
+            merged = surv_low.join(surv_high, how='outer', rsuffix=f'_{status1}')
+            merged.to_csv(f'KM_{time_col}_SurvivalTable_'
                           f'{model_name}_{trialname}_{len(df)}.csv')
 
         axis.set_title(title, loc='left', pad=10, fontweight='bold', fontsize=10)
