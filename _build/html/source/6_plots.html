@@ -484,7 +484,7 @@ document.write(`
     </style>
     <div>
         <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
-        <span id="d596f25c-16d8-4e54-ac05-eede47f8411c">Loading BokehJS ...</span>
+        <span id="d7937c0f-1fc7-4579-b143-5b813d9773eb">Loading BokehJS ...</span>
     </div>
 </div><script type="application/javascript">(function(root) {
   function now() {
@@ -648,7 +648,7 @@ const JS_MIME_TYPE = 'application/javascript';
      "</div>"}};
 
   function display_loaded() {
-    const el = document.getElementById("d596f25c-16d8-4e54-ac05-eede47f8411c");
+    const el = document.getElementById("d7937c0f-1fc7-4579-b143-5b813d9773eb");
     if (el != null) {
       el.textContent = "BokehJS is loading...";
     }
@@ -754,7 +754,7 @@ if (force === true) {
       console.log("Bokeh: BokehJS failed to load within specified timeout.");
       root._bokeh_failed_load = true;
     } else if (force !== true) {
-      const cell = $(document.getElementById("d596f25c-16d8-4e54-ac05-eede47f8411c")).parents('.cell').data().cell;
+      const cell = $(document.getElementById("d7937c0f-1fc7-4579-b143-5b813d9773eb")).parents('.cell').data().cell;
       cell.output_area.append_execute_result(NB_LOAD_WARNING)
     }
   }
@@ -1521,6 +1521,8 @@ if (force === true) {
 </summary>
 <div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="n">df_px2</span><span class="p">,</span> <span class="n">df_test</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Discovery&#39;</span><span class="p">,</span> <span class="s1">&#39;AML02,08 Trials&#39;</span><span class="p">]):</span>
+    <span class="c1"># filter dataset by removing nans from &#39;MRD 1 Status&#39;</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="o">~</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
 
 
     <span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">,</span>
@@ -1571,12 +1573,12 @@ if (force === true) {
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<img alt="../_images/9cf5963093daf381e1511a9f89cc85097f1a3a16f53788dbc42a2f4e4755a06f.png" src="../_images/9cf5963093daf381e1511a9f89cc85097f1a3a16f53788dbc42a2f4e4755a06f.png" />
+<img alt="../_images/31fd8db449c4b2fc883dfaf45492ce72b89671f22d817c72286ad3327281a534.png" src="../_images/31fd8db449c4b2fc883dfaf45492ce72b89671f22d817c72286ad3327281a534.png" />
 <img alt="../_images/28b7739e7210c981f151de9bf8837573fcbd4131ba8d66d84388f03038669196.png" src="../_images/28b7739e7210c981f151de9bf8837573fcbd4131ba8d66d84388f03038669196.png" />
 <img alt="../_images/be156cdabb14d1aaf7b9007fb52dfa3a20bf77b507909bb1f57181dfbe98ae47.png" src="../_images/be156cdabb14d1aaf7b9007fb52dfa3a20bf77b507909bb1f57181dfbe98ae47.png" />
 <img alt="../_images/7d2d07434adb7fa6e2f64989057005133dbdf19fdf26294454e2b7c2e193392f.png" src="../_images/7d2d07434adb7fa6e2f64989057005133dbdf19fdf26294454e2b7c2e193392f.png" />
 <img alt="../_images/ac4edb422f3740701f4dfcd9684d493de5f3a0c605e3c580f3d9928eb30942df.png" src="../_images/ac4edb422f3740701f4dfcd9684d493de5f3a0c605e3c580f3d9928eb30942df.png" />
-<img alt="../_images/6824d4127a2b6cb4e253a6be65eaeb7625e30aff4e90429c7b65decee766eddf.png" src="../_images/6824d4127a2b6cb4e253a6be65eaeb7625e30aff4e90429c7b65decee766eddf.png" />
+<img alt="../_images/1d72ccb90c324f9c5189d37c53a4fe5a3304102991302827f75e2945a3a8d24b.png" src="../_images/1d72ccb90c324f9c5189d37c53a4fe5a3304102991302827f75e2945a3a8d24b.png" />
 <img alt="../_images/c10fd3cecf0fd965c94be21428313c6a98b16f3c2982848f107209a511651638.png" src="../_images/c10fd3cecf0fd965c94be21428313c6a98b16f3c2982848f107209a511651638.png" />
 <img alt="../_images/8e2c3a9ad9229f752f763c6d242499455b49b96f80e66a4086ba9c7c7aa0459f.png" src="../_images/8e2c3a9ad9229f752f763c6d242499455b49b96f80e66a4086ba9c7c7aa0459f.png" />
 <img alt="../_images/4022925310c047c5cce89f9b9ad164832b9373b5766926a08b1027a94fde9b49.png" src="../_images/4022925310c047c5cce89f9b9ad164832b9373b5766926a08b1027a94fde9b49.png" />
@@ -3203,7 +3205,10 @@ Our gene expression file contained 29 matching genes.</p>
             <span class="p">)</span>
 
 <span class="c1"># Usage</span>
-<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">,</span> <span class="s1">&#39;Risk Group&#39;</span><span class="p">,</span> <span class="s1">&#39;Primary Cytogenetic Code&#39;</span><span class="p">]</span>
+<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">,</span>
+            <span class="c1"># &#39;Risk Group&#39;, </span>
+            <span class="c1"># &#39;Primary Cytogenetic Code&#39;</span>
+            <span class="p">]</span>
 <span class="n">orders</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Positive&#39;</span><span class="p">,</span> <span class="s1">&#39;Negative&#39;</span><span class="p">],</span>
     <span class="s1">&#39;Risk Group&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;High Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Low Risk&#39;</span><span class="p">],</span>
@@ -3211,11 +3216,15 @@ Our gene expression file contained 29 matching genes.</p>
 <span class="p">}</span>
 <span class="n">fontsize_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;Primary Cytogenetic Code&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">}</span>
 
-<span class="n">plot_multiple_bars</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span>
+<span class="k">for</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="n">df_px2</span><span class="p">,</span> <span class="n">df_test</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Discovery&#39;</span><span class="p">,</span> <span class="s1">&#39;AML02,08 Trials&#39;</span><span class="p">]):</span>
+    <span class="c1"># filter dataset by removing nans from &#39;MRD 1 Status&#39;</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="o">~</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+
+    <span class="n">plot_multiple_bars</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
                    <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
                    <span class="n">model_names</span><span class="o">=</span><span class="p">[</span><span class="n">model_name2</span><span class="p">,</span> <span class="n">model_name3</span><span class="p">],</span>
                    <span class="n">orders</span><span class="o">=</span><span class="n">orders</span><span class="p">,</span>
-                   <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;AML02,08 test&#39;</span><span class="p">,</span>
+                   <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
                    <span class="n">fontsize_dict</span><span class="o">=</span><span class="n">fontsize_dict</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -3227,12 +3236,10 @@ Our gene expression file contained 29 matching genes.</p>
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<img alt="../_images/76577e5570cf1464d7e81294e0d1e6ec9b2bfbddd7d9b174bac78bf6da955b78.png" src="../_images/76577e5570cf1464d7e81294e0d1e6ec9b2bfbddd7d9b174bac78bf6da955b78.png" />
-<img alt="../_images/2c106e34d3a473bab13a35b4eb805bb2f03a0811a114323620bca6d14957d8be.png" src="../_images/2c106e34d3a473bab13a35b4eb805bb2f03a0811a114323620bca6d14957d8be.png" />
-<img alt="../_images/7b1027bbec7c996016bb4a3769e866f8938a07d196cb0951d83434f74fcdb145.png" src="../_images/7b1027bbec7c996016bb4a3769e866f8938a07d196cb0951d83434f74fcdb145.png" />
-<img alt="../_images/36cf1bca7061d059fc58b0659d95b5de3999a12d3d93a9e7049ba452b0564aef.png" src="../_images/36cf1bca7061d059fc58b0659d95b5de3999a12d3d93a9e7049ba452b0564aef.png" />
-<img alt="../_images/5a0389eb6b6055e6d075fd25511a37f360d96cb84737de8aa37fe016caaa8d90.png" src="../_images/5a0389eb6b6055e6d075fd25511a37f360d96cb84737de8aa37fe016caaa8d90.png" />
-<img alt="../_images/909126d16c70b7d02b2043a64b73e05b5e1a9849310d5c2d619a4981ca5a0d78.png" src="../_images/909126d16c70b7d02b2043a64b73e05b5e1a9849310d5c2d619a4981ca5a0d78.png" />
+<img alt="../_images/6e8938ce0819f3f3f28c687856d9991e8a53a33e960cf27c97e282006d6ee78b.png" src="../_images/6e8938ce0819f3f3f28c687856d9991e8a53a33e960cf27c97e282006d6ee78b.png" />
+<img alt="../_images/14baed6690184848b78efe7f20560d54efb0ef02d3b487b853519a0b3590f8b1.png" src="../_images/14baed6690184848b78efe7f20560d54efb0ef02d3b487b853519a0b3590f8b1.png" />
+<img alt="../_images/ad9e6226e0ca5839233065f437915ceadc4e1a06d3cda7c91ec1305ec92a0ab5.png" src="../_images/ad9e6226e0ca5839233065f437915ceadc4e1a06d3cda7c91ec1305ec92a0ab5.png" />
+<img alt="../_images/d4c29ac345d8e5057b62edfc632047d729f66790128ea54f91051d8ab4f66419.png" src="../_images/d4c29ac345d8e5057b62edfc632047d729f66790128ea54f91051d8ab4f66419.png" />
 </div>
 </details>
 </div>
