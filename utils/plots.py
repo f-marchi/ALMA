@@ -10,6 +10,7 @@ import pandas as pd
 from bokeh.plotting import figure, show, output_notebook, gridplot
 from bokeh.models import Legend, LegendItem
 import scipy.stats as stats
+from scipy.stats import fisher_exact, chi2_contingency
 from sklearn.metrics import (confusion_matrix, ConfusionMatrixDisplay, accuracy_score,
                              precision_recall_fscore_support, roc_auc_score, cohen_kappa_score,
                                roc_curve, auc)
@@ -308,7 +309,7 @@ def draw_boxplot(df, x, y, order, trialname, hue=None, palette=None, figsize=Non
     return plt.show()
 
 
-def draw_stacked_barplot(df, x, y, order, trialname, hue=None, palette=None, figsize=None, fontsize=10):
+def draw_stacked_barplot(df, x, y, order, trialname, hue=None, palette=None, figsize=None, fontsize=10, annotate_p=True):
 
     sns.set_theme(style='white')
     plt.subplots(figsize=figsize)
@@ -321,24 +322,37 @@ def draw_stacked_barplot(df, x, y, order, trialname, hue=None, palette=None, fig
     hue_counts = df.groupby([x, hue])[y].count().unstack(fill_value=0)
     hue_props = hue_counts.divide(hue_counts.sum(axis=1), axis=0)
 
-    # Apply custom palette
     colors = palette if palette else sns.color_palette('bright', n_colors=hue_props.shape[1])
-
     hue_props.loc[order2, :].plot(kind='bar', stacked=True, ax=plt.gca(), color=colors)
 
     for rect in plt.gca().patches:
         height = rect.get_height()
         if height > 0:
-            plt.gca().text(rect.get_x() + rect.get_width() / 2, rect.get_y() + height / 2,
-                           '{:.1f}%'.format(height * 100), ha='center', va='center', color='white', fontsize=fontsize)
+            plt.gca().text(rect.get_x() + rect.get_width() / 2,
+                           rect.get_y() + height / 2,
+                           '{:.1f}%'.format(height * 100),
+                           ha='center', va='center', color='white', fontsize=fontsize)
 
     plt.gca().yaxis.set_major_formatter(mticker.PercentFormatter(1))
     plt.gca().xaxis.grid(False)
-
     plt.xticks(rotation=0, ha='center')
-
-    plt.title(f'{y} by {x} in {trialname}, n={len(df)}', y=1)
+    plt.title(f'{y} by {x}{trialname}, n={len(df)}', y=1)
     plt.legend(loc='center right', bbox_to_anchor=(1.25, 0.5))
+
+    # Add p-value and test name if binary
+    if annotate_p and hue_counts.shape == (2, 2):
+        table = hue_counts.loc[order2].values
+        if (table < 5).any():
+            stat_test = "Fisher's exact"
+            _, p = fisher_exact(table)
+        else:
+            stat_test = 'Chi-squared'
+            _, p, _, _ = chi2_contingency(table)
+
+        plt.text(0.4, -0.3,
+                 f'{stat_test}, p={p:.4f}',
+                 ha='left', va='center', transform=plt.gca().transAxes, fontsize=fontsize)
+
 
     return plt.show()
 
