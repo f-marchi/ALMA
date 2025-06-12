@@ -1,0 +1,1149 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Data Visualization &#8212; Acute Leukemia Methylome Atlas Study</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '.past_code_files/3_Data_Visualization_AML02score';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../overview.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Acute Leukemia Methylome Atlas Study</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../overview.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Datasets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../source/1_discovery.html">Discovery Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/2_test.html">Test Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/3_nanopore_test.html">Nanopore Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/4_clinical_data.html">Clinical Data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../source/5_signature.html">38-CpG AML Signature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../source/5_classifiers.html">Classifiers</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Figures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../source/6_plots.html">Plots</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://f-marchi.github.io/UF-LambaLab-ALMA-app/">Run Interactive App</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/.past_code_files/3_Data_Visualization_AML02score.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data Visualization</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-the-data-at">Where the data at?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#which-score-is-this">Which score is this?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-datasets">Load Datasets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-bm-and-pb-only-dataframes">Save BM- and PB-only dataframes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kaplan-meiers">Kaplan Meiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forest-plots">Forest Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#patient-characteristics-table">Patient Characteristics Table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-plots">Bar Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heatmaps">Heatmaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#box-plots">Box Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scatterplots">Scatterplots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-plots">Correlation Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#end">End</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="data-visualization">
+<h1>Data Visualization<a class="headerlink" href="#data-visualization" title="Link to this heading">#</a></h1>
+<section id="where-the-data-at">
+<h2>Where the data at?<a class="headerlink" href="#where-the-data-at" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aml02_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/AML02_clinicaldata_ciberscore_FMcleaned.csv&#39;</span>
+<span class="n">cog_path</span> <span class="o">=</span> <span class="s1">&#39;../Data/COG_clinicaldata_ciberscore_FMcleaned.csv&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="which-score-is-this">
+<h2>Which score is this?<a class="headerlink" href="#which-score-is-this" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">score_name</span> <span class="o">=</span> <span class="s1">&#39;AML02_CS_5&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="import-libraries">
+<h2>Import Libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># Set theme</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+
+<span class="c1"># Import Plotting Functions</span>
+<span class="kn">from</span> <span class="nn">FM_Functions.Data_Visualization</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-datasets">
+<h2>Load Datasets<a class="headerlink" href="#load-datasets" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_aml02</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">aml02_path</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df_cog</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">cog_path</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="save-bm-and-pb-only-dataframes">
+<h3>Save BM- and PB-only dataframes<a class="headerlink" href="#save-bm-and-pb-only-dataframes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cog_bm</span> <span class="o">=</span> <span class="n">df_cog</span><span class="p">[</span><span class="n">df_cog</span><span class="p">[</span><span class="s1">&#39;Tissue Code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;09A - Primary blood derived cancer - bone marrow&#39;</span><span class="p">]</span>
+<span class="n">cog_pb</span> <span class="o">=</span> <span class="n">df_cog</span><span class="p">[</span><span class="n">df_cog</span><span class="p">[</span><span class="s1">&#39;Tissue Code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;09A - Primary blood derived cancer - bone marrow&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="kaplan-meiers">
+<h2>Kaplan Meiers<a class="headerlink" href="#kaplan-meiers" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">scorename</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                        <span class="n">df</span><span class="o">=</span><span class="n">df_aml02</span><span class="p">,</span>
+                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;AML02&#39;</span><span class="p">)</span>
+
+<span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">scorename</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                        <span class="n">df</span><span class="o">=</span><span class="n">df_cog</span><span class="p">,</span>
+                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;COG&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7111925d3f79753a1d70b9f32253f55d1efe0ecb5820ee36108b55d9937f5e1e.png" src="../_images/7111925d3f79753a1d70b9f32253f55d1efe0ecb5820ee36108b55d9937f5e1e.png" />
+<img alt="../_images/96a412370c6d17d25bc459a3d744ce4795aef7f77cf9add60a11951a3dfb3724.png" src="../_images/96a412370c6d17d25bc459a3d744ce4795aef7f77cf9add60a11951a3dfb3724.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">scorename</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                        <span class="n">df</span><span class="o">=</span><span class="n">cog_bm</span><span class="p">,</span>
+                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;bone marrow samples from COG&#39;</span><span class="p">)</span>
+<span class="n">draw_kaplan_meier</span><span class="p">(</span><span class="n">scorename</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                        <span class="n">df</span><span class="o">=</span><span class="n">cog_pb</span><span class="p">,</span>
+                        <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">add_risk_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;peripheral blood samples from COG&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/848a2df021c690cd5ea8ed552a7d7078698ef08100843c0009a60d72f64a401e.png" src="../_images/848a2df021c690cd5ea8ed552a7d7078698ef08100843c0009a60d72f64a401e.png" />
+<img alt="../_images/d5e9732da61703e911c92de412136b4d7533a6c3e5f50926abf559bdc5e1c31d.png" src="../_images/d5e9732da61703e911c92de412136b4d7533a6c3e5f50926abf559bdc5e1c31d.png" />
+</div>
+</div>
+</section>
+<section id="forest-plots">
+<h2>Forest Plots<a class="headerlink" href="#forest-plots" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_forest_plot</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;os.time&#39;</span><span class="p">,</span>
+                    <span class="n">event</span><span class="o">=</span><span class="s1">&#39;os.evnt&#39;</span><span class="p">,</span>
+                    <span class="n">df</span><span class="o">=</span><span class="n">df_aml02</span><span class="p">,</span>
+                    <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;AML02&#39;</span><span class="p">,</span>
+                    <span class="n">scorename</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                    <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">draw_forest_plot</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;efs.time&#39;</span><span class="p">,</span>
+                    <span class="n">event</span><span class="o">=</span><span class="s1">&#39;efs.evnt&#39;</span><span class="p">,</span>
+                    <span class="n">df</span><span class="o">=</span><span class="n">df_aml02</span><span class="p">,</span>
+                    <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;AML02&#39;</span><span class="p">,</span>
+                    <span class="n">scorename</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                    <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/abae14f63c4536c6b47adcfd461a2dca2f587644629cabbfc7f25f484384b26d.png" src="../_images/abae14f63c4536c6b47adcfd461a2dca2f587644629cabbfc7f25f484384b26d.png" />
+<img alt="../_images/bd93cbc00583fe4b3e4f256b8e2d6c184c59209cdfcaff3e35b016a635b8cd15.png" src="../_images/bd93cbc00583fe4b3e4f256b8e2d6c184c59209cdfcaff3e35b016a635b8cd15.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_forest_plot</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;os.time&#39;</span><span class="p">,</span>
+                    <span class="n">event</span><span class="o">=</span><span class="s1">&#39;os.evnt&#39;</span><span class="p">,</span>
+                    <span class="n">df</span><span class="o">=</span><span class="n">df_cog</span><span class="p">,</span>
+                    <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;COG&#39;</span><span class="p">,</span>
+                    <span class="n">scorename</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                    <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">draw_forest_plot</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;efs.time&#39;</span><span class="p">,</span>
+                    <span class="n">event</span><span class="o">=</span><span class="s1">&#39;efs.evnt&#39;</span><span class="p">,</span>
+                    <span class="n">df</span><span class="o">=</span><span class="n">df_cog</span><span class="p">,</span>
+                    <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;COG&#39;</span><span class="p">,</span>
+                    <span class="n">scorename</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                    <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f8f75fc6ceaba5eb91248b422a49ae74a4cc01eb9df5c2755c985f9c250b4897.png" src="../_images/f8f75fc6ceaba5eb91248b422a49ae74a4cc01eb9df5c2755c985f9c250b4897.png" />
+<img alt="../_images/f097677f00b44bdb1725690feca9086546489d0245794605fbe358132b1c36d3.png" src="../_images/f097677f00b44bdb1725690feca9086546489d0245794605fbe358132b1c36d3.png" />
+</div>
+</div>
+</section>
+<section id="patient-characteristics-table">
+<h2>Patient Characteristics Table<a class="headerlink" href="#patient-characteristics-table" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tableone</span> <span class="kn">import</span> <span class="n">TableOne</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_aml02</span><span class="p">,</span><span class="n">df_cog</span><span class="p">],</span> <span class="n">join</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;StJude (Discovery)&#39;</span><span class="p">,</span><span class="s1">&#39;COG (Validation)&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;cohort&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Age (years)&#39;</span><span class="p">,</span><span class="s1">&#39;Age group (years)&#39;</span><span class="p">,</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span><span class="s1">&#39;Race or ethnic group&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Hispanic or Latinx ethnic group&#39;</span><span class="p">,</span> <span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Vital Status&#39;</span><span class="p">,</span> <span class="s1">&#39;Leucocyte counts (10⁹/L)&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Risk Group&#39;</span><span class="p">,</span><span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">,</span> <span class="s1">&#39;Tissue Type&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mytable_all</span> <span class="o">=</span> <span class="n">TableOne</span><span class="p">(</span><span class="n">df_all</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span><span class="n">overall</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">missing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">pval</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">order</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">:[</span><span class="s1">&#39;Yes&#39;</span><span class="p">,</span><span class="s1">&#39;No&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Race or ethnic group&#39;</span><span class="p">:[</span><span class="s1">&#39;White&#39;</span><span class="p">,</span><span class="s1">&#39;Black or African American&#39;</span><span class="p">,</span><span class="s1">&#39;Asian&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Positive&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Risk Group&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;High Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard Risk&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Yes&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Leucocyte counts (10⁹/L)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;≥30&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Age group (years)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;≥10&#39;</span><span class="p">]},</span>
+                        <span class="n">groupby</span><span class="o">=</span><span class="s1">&#39;cohort&#39;</span><span class="p">)</span>
+<span class="n">mytable_all</span><span class="o">.</span><span class="n">tabulate</span><span class="p">(</span><span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;html&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">[</span><span class="n">score_name</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s1">&#39;COG (Validation)&#39;</span><span class="p">,</span><span class="s1">&#39;StJude (Discovery)&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead>
+<tr><th>AML02_CS_5                            </th><th>                                         </th><th>COG (Validation)  </th><th>StJude (Discovery)  </th></tr>
+</thead>
+<tbody>
+<tr><td>n                                     </td><td>                                         </td><td>1696              </td><td>163                 </td></tr>
+<tr><td>Age (years), mean (SD)                </td><td>                                         </td><td>9.7 (6.4)         </td><td>8.8 (6.1)           </td></tr>
+<tr><td>Age group (years), n (%)              </td><td>≥10                                      </td><td>850 (50.1)        </td><td>80 (49.1)           </td></tr>
+<tr><td>                                      </td><td>&lt;10                                      </td><td>846 (49.9)        </td><td>83 (50.9)           </td></tr>
+<tr><td>Sex, n (%)                            </td><td>Female                                   </td><td>815 (48.1)        </td><td>74 (45.4)           </td></tr>
+<tr><td>                                      </td><td>Male                                     </td><td>881 (51.9)        </td><td>89 (54.6)           </td></tr>
+<tr><td>Race or ethnic group, n (%)           </td><td>White                                    </td><td>1237 (80.7)       </td><td>115 (71.0)          </td></tr>
+<tr><td>                                      </td><td>Black or African American                </td><td>195 (12.7)        </td><td>31 (19.1)           </td></tr>
+<tr><td>                                      </td><td>Asian                                    </td><td>74 (4.8)          </td><td>                    </td></tr>
+<tr><td>                                      </td><td>American Indian or Alaska Native         </td><td>10 (0.7)          </td><td>                    </td></tr>
+<tr><td>                                      </td><td>Native Hawaiian or other Pacific Islander</td><td>8 (0.5)           </td><td>                    </td></tr>
+<tr><td>                                      </td><td>Other                                    </td><td>9 (0.6)           </td><td>16 (9.9)            </td></tr>
+<tr><td>Hispanic or Latinx ethnic group, n (%)</td><td>Hispanic or Latinx                       </td><td>316 (19.2)        </td><td>19 (11.7)           </td></tr>
+<tr><td>                                      </td><td>Not Hispanic or Latinx                   </td><td>1328 (80.8)       </td><td>143 (88.3)          </td></tr>
+<tr><td>MRD 1 Status, n (%)                   </td><td>Positive                                 </td><td>445 (29.3)        </td><td>62 (40.0)           </td></tr>
+<tr><td>                                      </td><td>Negative                                 </td><td>1076 (70.7)       </td><td>93 (60.0)           </td></tr>
+<tr><td>Vital Status, n (%)                   </td><td>Alive                                    </td><td>1086 (64.0)       </td><td>116 (71.2)          </td></tr>
+<tr><td>                                      </td><td>Dead                                     </td><td>610 (36.0)        </td><td>47 (28.8)           </td></tr>
+<tr><td>Leucocyte counts (10⁹/L), n (%)       </td><td>≥30                                      </td><td>821 (48.4)        </td><td>72 (44.2)           </td></tr>
+<tr><td>                                      </td><td>&lt;30                                      </td><td>874 (51.6)        </td><td>91 (55.8)           </td></tr>
+<tr><td>Risk Group, n (%)                     </td><td>High Risk                                </td><td>216 (13.0)        </td><td>43 (26.4)           </td></tr>
+<tr><td>                                      </td><td>Standard Risk                            </td><td>821 (49.3)        </td><td>65 (39.9)           </td></tr>
+<tr><td>                                      </td><td>Low Risk                                 </td><td>630 (37.8)        </td><td>55 (33.7)           </td></tr>
+<tr><td>FLT3 ITD, n (%)                       </td><td>Yes                                      </td><td>285 (16.8)        </td><td>25 (15.4)           </td></tr>
+<tr><td>                                      </td><td>No                                       </td><td>1410 (83.2)       </td><td>137 (84.6)          </td></tr>
+<tr><td>Tissue Type, n (%)                    </td><td>Bone Marrow                              </td><td>1430 (84.3)       </td><td>163 (100.0)         </td></tr>
+<tr><td>                                      </td><td>Peripheral Blood                         </td><td>266 (15.7)        </td><td>                    </td></tr>
+</tbody>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Age (years)&#39;</span><span class="p">,</span><span class="s1">&#39;Age group (years)&#39;</span><span class="p">,</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span><span class="s1">&#39;Race or ethnic group&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Hispanic or Latinx ethnic group&#39;</span><span class="p">,</span> <span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Leucocyte counts (10⁹/L)&#39;</span><span class="p">,</span> <span class="s1">&#39;BM Leukemic blasts (%)&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Risk Group&#39;</span><span class="p">,</span> <span class="s1">&#39;Clinical Trial&#39;</span><span class="p">,</span><span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">,</span><span class="s1">&#39;Tissue Type&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mytable_cog</span> <span class="o">=</span> <span class="n">TableOne</span><span class="p">(</span><span class="n">df_cog</span><span class="p">,</span> <span class="n">columns2</span><span class="p">,</span>
+                        <span class="n">overall</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">pval</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">pval_adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">htest_name</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dip_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">tukey_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">normal_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+
+                        <span class="n">order</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">:[</span><span class="s1">&#39;Yes&#39;</span><span class="p">,</span><span class="s1">&#39;No&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Race or ethnic group&#39;</span><span class="p">:[</span><span class="s1">&#39;White&#39;</span><span class="p">,</span><span class="s1">&#39;Black or African American&#39;</span><span class="p">,</span><span class="s1">&#39;Asian&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Positive&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Risk Group&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;High Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard Risk&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Yes&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Leucocyte counts (10⁹/L)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;≥30&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Age group (years)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;≥10&#39;</span><span class="p">]},</span>
+                        <span class="n">groupby</span><span class="o">=</span><span class="n">score_name</span> <span class="o">+</span> <span class="s1">&#39; Categorical&#39;</span><span class="p">)</span>
+<span class="n">mytable_cog</span><span class="o">.</span><span class="n">tabulate</span><span class="p">(</span><span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;html&quot;</span><span class="p">,</span> 
+                        <span class="n">headers</span><span class="o">=</span><span class="p">[</span><span class="n">score_name</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s1">&#39;Missing&#39;</span><span class="p">,</span><span class="s1">&#39;High&#39;</span><span class="p">,</span><span class="s1">&#39;Low&#39;</span><span class="p">,</span><span class="s1">&#39;p-value&#39;</span><span class="p">,</span><span class="s1">&#39;Statistical Test&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead>
+<tr><th>AML02_CS_5                            </th><th>                                         </th><th>Missing  </th><th>High       </th><th>Low        </th><th>p-value  </th><th>Statistical Test                         </th></tr>
+</thead>
+<tbody>
+<tr><td>n                                     </td><td>                                         </td><td>         </td><td>558        </td><td>1138       </td><td>         </td><td>                                         </td></tr>
+<tr><td>Age (years), mean (SD)                </td><td>                                         </td><td>0        </td><td>8.9 (6.6)  </td><td>10.1 (6.3) </td><td>0.001    </td><td>Two Sample T-test                        </td></tr>
+<tr><td>Age group (years), n (%)              </td><td>≥10                                      </td><td>0        </td><td>260 (46.6) </td><td>590 (51.8) </td><td>0.048    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>&lt;10                                      </td><td>         </td><td>298 (53.4) </td><td>548 (48.2) </td><td>         </td><td>                                         </td></tr>
+<tr><td>Sex, n (%)                            </td><td>Female                                   </td><td>0        </td><td>278 (49.8) </td><td>537 (47.2) </td><td>0.333    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>Male                                     </td><td>         </td><td>280 (50.2) </td><td>601 (52.8) </td><td>         </td><td>                                         </td></tr>
+<tr><td>Race or ethnic group, n (%)           </td><td>White                                    </td><td>163      </td><td>410 (80.2) </td><td>827 (80.9) </td><td>0.070    </td><td>Chi-squared (warning: expected count &lt; 5)</td></tr>
+<tr><td>                                      </td><td>Black or African American                </td><td>         </td><td>71 (13.9)  </td><td>124 (12.1) </td><td>         </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>Asian                                    </td><td>         </td><td>27 (5.3)   </td><td>47 (4.6)   </td><td>         </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>Other                                    </td><td>         </td><td>3 (0.6)    </td><td>6 (0.6)    </td><td>         </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>American Indian or Alaska Native         </td><td>         </td><td>           </td><td>10 (1.0)   </td><td>         </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>Native Hawaiian or other Pacific Islander</td><td>         </td><td>           </td><td>8 (0.8)    </td><td>         </td><td>                                         </td></tr>
+<tr><td>Hispanic or Latinx ethnic group, n (%)</td><td>Hispanic or Latinx                       </td><td>52       </td><td>98 (18.2)  </td><td>218 (19.7) </td><td>0.512    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>Not Hispanic or Latinx                   </td><td>         </td><td>440 (81.8) </td><td>888 (80.3) </td><td>         </td><td>                                         </td></tr>
+<tr><td>MRD 1 Status, n (%)                   </td><td>Positive                                 </td><td>175      </td><td>184 (36.4) </td><td>261 (25.7) </td><td>&lt;0.001   </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>Negative                                 </td><td>         </td><td>321 (63.6) </td><td>755 (74.3) </td><td>         </td><td>                                         </td></tr>
+<tr><td>Leucocyte counts (10⁹/L), n (%)       </td><td>≥30                                      </td><td>1        </td><td>212 (38.0) </td><td>609 (53.6) </td><td>&lt;0.001   </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>&lt;30                                      </td><td>         </td><td>346 (62.0) </td><td>528 (46.4) </td><td>         </td><td>                                         </td></tr>
+<tr><td>BM Leukemic blasts (%), mean (SD)     </td><td>                                         </td><td>121      </td><td>63.9 (24.8)</td><td>63.9 (24.7)</td><td>0.974    </td><td>Two Sample T-test                        </td></tr>
+<tr><td>Risk Group, n (%)                     </td><td>High Risk                                </td><td>29       </td><td>70 (12.9)  </td><td>146 (13.0) </td><td>&lt;0.001   </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>Standard Risk                            </td><td>         </td><td>342 (63.0) </td><td>479 (42.6) </td><td>         </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>Low Risk                                 </td><td>         </td><td>131 (24.1) </td><td>499 (44.4) </td><td>         </td><td>                                         </td></tr>
+<tr><td>Clinical Trial, n (%)                 </td><td>AAML03P1                                 </td><td>0        </td><td>34 (6.1)   </td><td>47 (4.1)   </td><td>0.167    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>AAML0531                                 </td><td>         </td><td>193 (34.6) </td><td>384 (33.7) </td><td>         </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>AAML1031                                 </td><td>         </td><td>331 (59.3) </td><td>707 (62.1) </td><td>         </td><td>                                         </td></tr>
+<tr><td>FLT3 ITD, n (%)                       </td><td>Yes                                      </td><td>1        </td><td>80 (14.3)  </td><td>205 (18.0) </td><td>0.066    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>No                                       </td><td>         </td><td>478 (85.7) </td><td>932 (82.0) </td><td>         </td><td>                                         </td></tr>
+<tr><td>Tissue Type, n (%)                    </td><td>Bone Marrow                              </td><td>0        </td><td>453 (81.2) </td><td>977 (85.9) </td><td>0.016    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>Peripheral Blood                         </td><td>         </td><td>105 (18.8) </td><td>161 (14.1) </td><td>         </td><td>                                         </td></tr>
+</tbody>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns3</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Age (years)&#39;</span><span class="p">,</span><span class="s1">&#39;Age group (years)&#39;</span><span class="p">,</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span><span class="s1">&#39;Race or ethnic group&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Hispanic or Latinx ethnic group&#39;</span><span class="p">,</span> <span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Leucocyte counts (10⁹/L)&#39;</span><span class="p">,</span> <span class="s1">&#39;BM Leukemic blasts (%)&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Risk Group&#39;</span><span class="p">,</span><span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Treatment Arm&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mytable_aml02</span> <span class="o">=</span> <span class="n">TableOne</span><span class="p">(</span><span class="n">df_aml02</span><span class="p">,</span> <span class="n">columns3</span><span class="p">,</span>
+                        <span class="n">overall</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">pval</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">pval_adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">htest_name</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dip_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">tukey_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">normal_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+
+                        <span class="n">order</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">:[</span><span class="s1">&#39;Yes&#39;</span><span class="p">,</span><span class="s1">&#39;No&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Race or ethnic group&#39;</span><span class="p">:[</span><span class="s1">&#39;White&#39;</span><span class="p">,</span><span class="s1">&#39;Black or African American&#39;</span><span class="p">,</span><span class="s1">&#39;Asian&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Positive&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Risk Group&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;High Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard Risk&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Yes&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Leucocyte counts (10⁹/L)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;≥30&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Age group (years)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;≥10&#39;</span><span class="p">]},</span>
+                        <span class="n">groupby</span><span class="o">=</span> <span class="n">score_name</span> <span class="o">+</span> <span class="s1">&#39; Categorical&#39;</span><span class="p">)</span>
+<span class="n">mytable_aml02</span><span class="o">.</span><span class="n">tabulate</span><span class="p">(</span><span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;html&quot;</span><span class="p">,</span>
+                        <span class="n">headers</span><span class="o">=</span><span class="p">[</span><span class="n">score_name</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s1">&#39;Missing&#39;</span><span class="p">,</span><span class="s1">&#39;High&#39;</span><span class="p">,</span><span class="s1">&#39;Low&#39;</span><span class="p">,</span><span class="s1">&#39;p-value&#39;</span><span class="p">,</span><span class="s1">&#39;Statistical Test&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead>
+<tr><th>AML02_CS_5                            </th><th>                         </th><th>Missing  </th><th>High       </th><th>Low        </th><th>p-value  </th><th>Statistical Test                         </th></tr>
+</thead>
+<tbody>
+<tr><td>n                                     </td><td>                         </td><td>         </td><td>41         </td><td>122        </td><td>         </td><td>                                         </td></tr>
+<tr><td>Age (years), mean (SD)                </td><td>                         </td><td>0        </td><td>9.6 (6.3)  </td><td>8.5 (6.0)  </td><td>0.338    </td><td>Two Sample T-test                        </td></tr>
+<tr><td>Age group (years), n (%)              </td><td>≥10                      </td><td>0        </td><td>22 (53.7)  </td><td>58 (47.5)  </td><td>0.619    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>&lt;10                      </td><td>         </td><td>19 (46.3)  </td><td>64 (52.5)  </td><td>         </td><td>                                         </td></tr>
+<tr><td>Sex, n (%)                            </td><td>Female                   </td><td>0        </td><td>16 (39.0)  </td><td>58 (47.5)  </td><td>0.443    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>Male                     </td><td>         </td><td>25 (61.0)  </td><td>64 (52.5)  </td><td>         </td><td>                                         </td></tr>
+<tr><td>Race or ethnic group, n (%)           </td><td>White                    </td><td>1        </td><td>30 (73.2)  </td><td>85 (70.2)  </td><td>0.142    </td><td>Chi-squared (warning: expected count &lt; 5)</td></tr>
+<tr><td>                                      </td><td>Black or African American</td><td>         </td><td>10 (24.4)  </td><td>21 (17.4)  </td><td>         </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>Other                    </td><td>         </td><td>1 (2.4)    </td><td>15 (12.4)  </td><td>         </td><td>                                         </td></tr>
+<tr><td>Hispanic or Latinx ethnic group, n (%)</td><td>Hispanic or Latinx       </td><td>1        </td><td>7 (17.5)   </td><td>12 (9.8)   </td><td>0.255    </td><td>Fisher&#x27;s exact                           </td></tr>
+<tr><td>                                      </td><td>Not Hispanic or Latinx   </td><td>         </td><td>33 (82.5)  </td><td>110 (90.2) </td><td>         </td><td>                                         </td></tr>
+<tr><td>MRD 1 Status, n (%)                   </td><td>Positive                 </td><td>8        </td><td>23 (57.5)  </td><td>39 (33.9)  </td><td>0.015    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>Negative                 </td><td>         </td><td>17 (42.5)  </td><td>76 (66.1)  </td><td>         </td><td>                                         </td></tr>
+<tr><td>Leucocyte counts (10⁹/L), n (%)       </td><td>≥30                      </td><td>0        </td><td>17 (41.5)  </td><td>55 (45.1)  </td><td>0.824    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>&lt;30                      </td><td>         </td><td>24 (58.5)  </td><td>67 (54.9)  </td><td>         </td><td>                                         </td></tr>
+<tr><td>BM Leukemic blasts (%), mean (SD)     </td><td>                         </td><td>13       </td><td>64.9 (22.8)</td><td>56.9 (24.8)</td><td>0.069    </td><td>Two Sample T-test                        </td></tr>
+<tr><td>Risk Group, n (%)                     </td><td>High Risk                </td><td>0        </td><td>11 (26.8)  </td><td>32 (26.2)  </td><td>0.992    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>Standard Risk            </td><td>         </td><td>16 (39.0)  </td><td>49 (40.2)  </td><td>         </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>Low Risk                 </td><td>         </td><td>14 (34.1)  </td><td>41 (33.6)  </td><td>         </td><td>                                         </td></tr>
+<tr><td>FLT3 ITD, n (%)                       </td><td>Yes                      </td><td>1        </td><td>5 (12.5)   </td><td>20 (16.4)  </td><td>0.734    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>No                       </td><td>         </td><td>35 (87.5)  </td><td>102 (83.6) </td><td>         </td><td>                                         </td></tr>
+<tr><td>Treatment Arm, n (%)                  </td><td>Arm A                    </td><td>2        </td><td>26 (65.0)  </td><td>61 (50.4)  </td><td>0.155    </td><td>Chi-squared                              </td></tr>
+<tr><td>                                      </td><td>Arm B                    </td><td>         </td><td>14 (35.0)  </td><td>60 (49.6)  </td><td>         </td><td>                                         </td></tr>
+</tbody>
+</table></div></div>
+</div>
+</section>
+<section id="bar-plots">
+<h2>Bar Plots<a class="headerlink" href="#bar-plots" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up the matplotlib figure</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+
+<span class="c1"># Define plots</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_aml02</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">score_name</span> <span class="o">+</span> <span class="s1">&#39; Categorical&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_cog</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">score_name</span> <span class="o">+</span> <span class="s1">&#39; Categorical&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># Set specs</span>
+<span class="n">cutoff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">df_aml02</span><span class="p">[</span><span class="n">score_name</span><span class="p">],</span><span class="mf">0.75</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">cutoff</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;AML02 3ʳᵈ Quartile (&#39;</span><span class="o">+</span> <span class="nb">round</span><span class="p">(</span><span class="n">cutoff</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39; Discovery (AML02 trial)&#39;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39; Validation (COG trials)&#39;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="c1"># Define Plot Specs</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">score_name</span> <span class="o">+</span> <span class="s1">&#39; Classifier Strategy: AML02 3ʳᵈ Quartile (&#39;</span><span class="o">+</span> <span class="nb">round</span><span class="p">(</span><span class="n">cutoff</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">,</span>
+                 <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span>
+                 <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../Figures/Bar_Plots/&#39;</span><span class="o">+</span><span class="n">score_name</span><span class="o">+</span><span class="s1">&#39;_Classifier_Strategy.png&#39;</span><span class="p">,</span>
+                    <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/23090f9c77c9310d8affdbc838b9b665dbafd1db7a28d6d8e5ba7179392b204e.png" src="../_images/23090f9c77c9310d8affdbc838b9b665dbafd1db7a28d6d8e5ba7179392b204e.png" />
+</div>
+</div>
+</section>
+<section id="heatmaps">
+<h2>Heatmaps<a class="headerlink" href="#heatmaps" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_heatmaps</span><span class="p">(</span><span class="n">fig_title</span> <span class="o">=</span> <span class="s1">&#39;Proportion of immune cell types in AML samples&#39;</span><span class="p">,</span>
+            <span class="n">t1</span><span class="o">=</span><span class="s1">&#39;St. Jude AML02 trial&#39;</span><span class="p">,</span> <span class="n">t2</span><span class="o">=</span> <span class="s1">&#39;COG AAML1031, 0531, 03P1 trials&#39;</span><span class="p">,</span>
+            <span class="n">df1</span> <span class="o">=</span> <span class="n">df_aml02</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">22</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">df2</span> <span class="o">=</span> <span class="n">df_cog</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">22</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+            <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fig_number</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1b0645249efba3d7328da4b3201469e0745c917349a820740cda88eca57c0780.png" src="../_images/1b0645249efba3d7328da4b3201469e0745c917349a820740cda88eca57c0780.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_heatmaps</span><span class="p">(</span><span class="n">fig_title</span> <span class="o">=</span> <span class="s1">&#39;Proportion of immune cell types by tissue type in COG trials&#39;</span><span class="p">,</span>
+            <span class="n">t1</span><span class="o">=</span><span class="s1">&#39;Bone Marrow&#39;</span><span class="p">,</span> <span class="n">t2</span><span class="o">=</span> <span class="s1">&#39;Peripheral Blood&#39;</span><span class="p">,</span>
+            <span class="n">df1</span> <span class="o">=</span> <span class="n">cog_bm</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">22</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">df2</span> <span class="o">=</span> <span class="n">cog_pb</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">22</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+            <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fig_number</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8359fa8d9eca8ae069f7e3a43237dffbe01cff364120c10f9bb42d1aa9117208.png" src="../_images/8359fa8d9eca8ae069f7e3a43237dffbe01cff364120c10f9bb42d1aa9117208.png" />
+</div>
+</div>
+</section>
+<section id="box-plots">
+<h2>Box Plots<a class="headerlink" href="#box-plots" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_boxplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_aml02</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;High Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Low Risk&#39;</span><span class="p">],</span>
+                <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;AML02&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">score_name</span> <span class="o">+</span><span class="s1">&#39; Categorical&#39;</span><span class="p">,</span>
+                <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">draw_boxplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_cog</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Risk Group&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;High Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Low Risk&#39;</span><span class="p">],</span>
+                <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;COG&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">score_name</span> <span class="o">+</span> <span class="s1">&#39; Categorical&#39;</span><span class="p">,</span>
+                <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p-value annotation legend:
+      ns: p &lt;= 1.00e+00
+       *: 1.00e-02 &lt; p &lt;= 5.00e-02
+      **: 1.00e-03 &lt; p &lt;= 1.00e-02
+     ***: 1.00e-04 &lt; p &lt;= 1.00e-03
+    ****: p &lt;= 1.00e-04
+
+High Risk vs. Standard Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:1.000e+00 Stat=2.216e-03
+Standard Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:3.228e-01 Stat=2.589e+00
+High Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:2.021e-01 Stat=3.346e+00
+</pre></div>
+</div>
+<img alt="../_images/9fafbbd49f1f8e925a9659589247ea10069c15842cae6251f31ad20f7f3bf853.png" src="../_images/9fafbbd49f1f8e925a9659589247ea10069c15842cae6251f31ad20f7f3bf853.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p-value annotation legend:
+      ns: p &lt;= 1.00e+00
+       *: 1.00e-02 &lt; p &lt;= 5.00e-02
+      **: 1.00e-03 &lt; p &lt;= 1.00e-02
+     ***: 1.00e-04 &lt; p &lt;= 1.00e-03
+    ****: p &lt;= 1.00e-04
+
+High Risk vs. Standard Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:6.868e-03 Stat=9.302e+00
+Standard Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:6.841e-31 Stat=1.357e+02
+High Risk vs. Low Risk: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:4.143e-06 Stat=2.331e+01
+</pre></div>
+</div>
+<img alt="../_images/eb28971fbfea3224e07cd464f7b5927e3c1d1805b6692f79de6e4274ee23b508.png" src="../_images/eb28971fbfea3224e07cd464f7b5927e3c1d1805b6692f79de6e4274ee23b508.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_boxplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_aml02</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Positive&#39;</span><span class="p">,</span><span class="s1">&#39;Negative&#39;</span><span class="p">],</span>
+                <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;AML02&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">score_name</span> <span class="o">+</span> <span class="s1">&#39; Categorical&#39;</span><span class="p">,</span>
+                <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">draw_boxplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_cog</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                <span class="n">order</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Positive&#39;</span><span class="p">,</span><span class="s1">&#39;Negative&#39;</span><span class="p">],</span>
+                <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;COG&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">score_name</span> <span class="o">+</span> <span class="s1">&#39; Categorical&#39;</span><span class="p">,</span>
+                <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p-value annotation legend:
+      ns: p &lt;= 1.00e+00
+       *: 1.00e-02 &lt; p &lt;= 5.00e-02
+      **: 1.00e-03 &lt; p &lt;= 1.00e-02
+     ***: 1.00e-04 &lt; p &lt;= 1.00e-03
+    ****: p &lt;= 1.00e-04
+
+Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:1.300e-02 Stat=6.169e+00
+</pre></div>
+</div>
+<img alt="../_images/889de607a6a544f5c626a4b65919165c2ff9eb8d1e793e743a70a316c8e8a3ef.png" src="../_images/889de607a6a544f5c626a4b65919165c2ff9eb8d1e793e743a70a316c8e8a3ef.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>p-value annotation legend:
+      ns: p &lt;= 1.00e+00
+       *: 1.00e-02 &lt; p &lt;= 5.00e-02
+      **: 1.00e-03 &lt; p &lt;= 1.00e-02
+     ***: 1.00e-04 &lt; p &lt;= 1.00e-03
+    ****: p &lt;= 1.00e-04
+
+Positive vs. Negative: Kruskal-Wallis independent samples (pairwise between groups) with Bonferroni correction, P_val:3.498e-06 Stat=2.152e+01
+</pre></div>
+</div>
+<img alt="../_images/cdc26f5bd5cae43e2b944518ec9c8b03cd6d91fd2c598b5dfdf53943b0d44120.png" src="../_images/cdc26f5bd5cae43e2b944518ec9c8b03cd6d91fd2c598b5dfdf53943b0d44120.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_boxplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_aml02</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Primary Cytogenetic Code&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                <span class="n">order</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+                <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;AML02&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">score_name</span> <span class="o">+</span> <span class="s1">&#39; Categorical&#39;</span><span class="p">,</span>
+                <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">draw_boxplot</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_cog</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Primary Cytogenetic Code&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span>
+                <span class="n">order</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+                <span class="n">trialname</span><span class="o">=</span><span class="s1">&#39;COG&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">score_name</span> <span class="o">+</span> <span class="s1">&#39; Categorical&#39;</span><span class="p">,</span>
+                <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0a1f38595725538df09f694ae9d64e2589fe93014e81a932d3b05094b1f1b2b9.png" src="../_images/0a1f38595725538df09f694ae9d64e2589fe93014e81a932d3b05094b1f1b2b9.png" />
+<img alt="../_images/da3251692f05ccc062cdc1025ac67aba102b3e02b931d73b0267825e8388b1fe.png" src="../_images/da3251692f05ccc062cdc1025ac67aba102b3e02b931d73b0267825e8388b1fe.png" />
+</div>
+</div>
+</section>
+<section id="scatterplots">
+<h2>Scatterplots<a class="headerlink" href="#scatterplots" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_coefs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;NK cells activated&#39;</span><span class="p">,</span> <span class="s1">&#39;Dendritic cells activated&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;T cells CD4 memory resting&#39;</span><span class="p">,</span><span class="s1">&#39;Mast cells activated&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;Mast cells resting&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mean_coefs</span><span class="p">)):</span>
+    <span class="n">draw_scatterplot</span><span class="p">(</span><span class="n">df_train</span><span class="o">=</span><span class="n">df_aml02</span><span class="p">,</span><span class="n">df_test</span><span class="o">=</span><span class="n">df_cog</span><span class="p">,</span>
+                <span class="n">x</span><span class="o">=</span><span class="n">mean_coefs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;BM Leukemic blasts (%)&#39;</span><span class="p">,</span>
+                <span class="n">hue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">save_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/654436858a67e028857b74f3f72f8f55c6a7519b8d2b13f35f52b6e4e01eaad9.png" src="../_images/654436858a67e028857b74f3f72f8f55c6a7519b8d2b13f35f52b6e4e01eaad9.png" />
+<img alt="../_images/f1011a3e809956be703b6b5efa339e35c24a64237354fce68afbc31e8a3f85c0.png" src="../_images/f1011a3e809956be703b6b5efa339e35c24a64237354fce68afbc31e8a3f85c0.png" />
+<img alt="../_images/33445a2ddab0519abb8b08ac0deba7716045cee0d7e74e9721e577b8d18a9aa5.png" src="../_images/33445a2ddab0519abb8b08ac0deba7716045cee0d7e74e9721e577b8d18a9aa5.png" />
+<img alt="../_images/9c74c3c05a5d64a36a819530b87217cbde8689386c215a239ba62c63544aef68.png" src="../_images/9c74c3c05a5d64a36a819530b87217cbde8689386c215a239ba62c63544aef68.png" />
+<img alt="../_images/8072b87466b0c9acfdc5145a14481c36735a54bafb1493b243095fb05f6b130e.png" src="../_images/8072b87466b0c9acfdc5145a14481c36735a54bafb1493b243095fb05f6b130e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_scatterplot</span><span class="p">(</span><span class="n">df_train</span><span class="o">=</span><span class="n">df_aml02</span><span class="p">,</span><span class="n">df_test</span><span class="o">=</span><span class="n">df_cog</span><span class="p">,</span>
+                <span class="n">x</span><span class="o">=</span><span class="n">score_name</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;Age (years)&#39;</span><span class="p">,</span>
+                <span class="n">hue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">save_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7bc6b9c311aa9932d0dc47035aee35bf78699665d3494706e5f62164286154a6.png" src="../_images/7bc6b9c311aa9932d0dc47035aee35bf78699665d3494706e5f62164286154a6.png" />
+</div>
+</div>
+</section>
+<section id="correlation-plots">
+<h2>Correlation Plots<a class="headerlink" href="#correlation-plots" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute the correlation matrix</span>
+<span class="n">corr</span> <span class="o">=</span> <span class="n">df_aml02</span><span class="p">[</span><span class="n">mean_coefs</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+
+<span class="c1"># Generate a mask for the upper triangle</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">))</span>
+
+<span class="c1"># Set up the matplotlib figure</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Generate a custom diverging colormap</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">diverging_palette</span><span class="p">(</span><span class="mi">230</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Draw the heatmap with the mask and correct aspect ratio</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;shrink&quot;</span><span class="p">:</span> <span class="mf">.5</span><span class="p">},</span> <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fontsize&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">})</span>
+
+<span class="c1"># Set plot specs</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Correlation Matrix of CiberScore Cell Fractions, n=1696&#39;</span><span class="p">,</span>
+            <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Save</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../Figures/Correlation_Plots/ciberscore_cell_fractions.png&#39;</span><span class="p">,</span>
+                   <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d8b384cc82d45a4093d8c273614005a0349a3688f7e5e3abbc5b6011cbb1ebb6.png" src="../_images/d8b384cc82d45a4093d8c273614005a0349a3688f7e5e3abbc5b6011cbb1ebb6.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute the correlation matrix</span>
+<span class="n">corr</span> <span class="o">=</span> <span class="n">df_cog</span><span class="p">[[</span><span class="n">score_name</span><span class="p">,</span><span class="s1">&#39;LSC6&#39;</span><span class="p">,</span><span class="s1">&#39;LSC17&#39;</span><span class="p">,</span><span class="s1">&#39;LSC PEDS NO FILTER&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+
+<span class="c1"># Generate a mask for the upper triangle</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">))</span>
+
+<span class="c1"># Set up the matplotlib figure</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Generate a custom diverging colormap</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">diverging_palette</span><span class="p">(</span><span class="mi">230</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Draw the heatmap with the mask and correct aspect ratio</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;shrink&quot;</span><span class="p">:</span> <span class="mf">.5</span><span class="p">},</span> <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fontsize&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">})</span>
+
+<span class="c1"># Set plot specs</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Correlation Matrix of &#39;</span><span class="o">+</span><span class="n">score_name</span><span class="o">+</span><span class="s1">&#39; vs. LSCs on COG Trials, n=1696&#39;</span><span class="p">,</span>
+            <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1">#plt.tight_layout()</span>
+
+<span class="c1"># Save</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../Figures/Correlation_Plots/&#39;</span><span class="o">+</span><span class="n">score_name</span><span class="o">+</span><span class="s1">&#39;_LSCs.png&#39;</span><span class="p">,</span>
+                  <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/feb6c6c0c05cf34e4ff4605ac730793c4ac4213d66d3b885b7bb8d3f35504352.png" src="../_images/feb6c6c0c05cf34e4ff4605ac730793c4ac4213d66d3b885b7bb8d3f35504352.png" />
+</div>
+</div>
+</section>
+<section id="end">
+<h2>End<a class="headerlink" href="#end" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./.past_code_files"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-the-data-at">Where the data at?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#which-score-is-this">Which score is this?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-datasets">Load Datasets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-bm-and-pb-only-dataframes">Save BM- and PB-only dataframes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kaplan-meiers">Kaplan Meiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forest-plots">Forest Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#patient-characteristics-table">Patient Characteristics Table</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-plots">Bar Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heatmaps">Heatmaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#box-plots">Box Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scatterplots">Scatterplots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-plots">Correlation Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#end">End</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marchi et al. | Lamba Lab | University of Florida.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
