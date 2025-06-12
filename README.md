@@ -1,5 +1,7 @@
 # Acute Leukemia Methylome Atlas
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15653263.svg)](https://doi.org/10.5281/zenodo.15653263)
+
 ## Notice
 
 This is a pre-publication repository! Please consider all information here confidential and do not use any of the data or code until it has been peer-reviewed and published.
