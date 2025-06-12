@@ -371,12 +371,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-final-sample-size-by-batch">Evaluate final sample size by batch</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-1-how-to-download-data-from-geo-or-gdc">Appendix 1. How to download data from GEO or GDC</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gene-expression-omnibus-geo">Gene Expression Omnibus (GEO)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genomic-data-commons-gdc">Genomic Data Commons (GDC)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-2-how-to-create-this-electronic-notebook">Appendix 2. How to create this electronic notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-how-to-create-this-electronic-notebook">Appendix. How to create this electronic notebook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
 </ul>
             </nav>
@@ -1211,66 +1206,8 @@ Name: count, dtype: int64
 </div>
 </section>
 </section>
-<section id="appendix-1-how-to-download-data-from-geo-or-gdc">
-<h2>Appendix 1. How to download data from GEO or GDC<a class="headerlink" href="#appendix-1-how-to-download-data-from-geo-or-gdc" title="Link to this heading">#</a></h2>
-<section id="gene-expression-omnibus-geo">
-<h3>Gene Expression Omnibus (GEO)<a class="headerlink" href="#gene-expression-omnibus-geo" title="Link to this heading">#</a></h3>
-<ol class="arabic">
-<li><p>Install Python3.7</p>
-<ul class="simple">
-<li><p>Go to <a class="reference external" href="https://www.python.org/downloads/release/python-379/">python.org</a> and download python according to your operating system</p></li>
-<li><p>During install, click on the box to enable it on PATH</p></li>
-</ul>
-</li>
-<li><p>Open a terminal (Windows: git bash, Linux/Mac: terminal)</p>
-<ul class="simple">
-<li><p>Write the following commands to install methylprep:</p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
-pip<span class="w"> </span>install<span class="w"> </span><span class="nv">methylprep</span><span class="o">==</span><span class="m">1</span>.7.1
-</pre></div>
-</div>
-</li>
-<li><p>Download dataset of interest directly from GEO:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>methylprep<span class="w"> </span>beta_bake<span class="w"> </span>-z<span class="w"> </span>-i<span class="w"> </span>&lt;GEO<span class="w"> </span>series<span class="w"> </span>ID&gt;<span class="w"> </span>-d<span class="w"> </span>&lt;directory&gt;<span class="w"> </span>
-</pre></div>
-</div>
-</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">methylprep</span></code> API can be found <a class="reference external" href="https://www.life-epigenetics-methylprep.readthedocs-hosted.com/en/latest/docs/cli.html">here</a>.</p>
-</div>
-</section>
-<section id="genomic-data-commons-gdc">
-<h3>Genomic Data Commons (GDC)<a class="headerlink" href="#genomic-data-commons-gdc" title="Link to this heading">#</a></h3>
-<ol class="arabic">
-<li><p>Go to <a class="reference external" href="https://www.portal.gdc.cancer.gov/repository">GDC Repository</a>.</p></li>
-<li><p>Select the right filtering criteria for you (or click on one of the links from the table above).</p></li>
-<li><p>Once you have a selection of your samples, download the <em>Manisfest</em> file by clicking on the <em>Manifest</em> button.</p></li>
-<li><p>Load them samples into your cart, go to cart page and download the <em>Sample Sheet</em>. This step is crucial to link sample IDs to the .idat files.</p></li>
-<li><p>To download the data, you will need the GDC Data Transfer Tool (command-line) that you can find <a class="reference external" href="https://www.gdc.cancer.gov/access-data/gdc-data-transfer-tool">here</a>.</p></li>
-<li><p>Follow the instructions on the link about how to download the file and use it.</p></li>
-<li><p>As an example, on Windows, download the file and extract it to your data folder, then run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span>\<span class="n">gdc</span><span class="o">-</span><span class="n">client</span> <span class="n">download</span> <span class="o">-</span><span class="n">m</span> <span class="o">&lt;</span><span class="n">path</span> <span class="n">to</span> <span class="n">the</span> <span class="n">manisfest</span> <span class="n">file</span> <span class="n">you</span> <span class="n">downloaded</span><span class="o">&gt;.</span><span class="n">txt</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">related</span><span class="o">-</span><span class="n">files</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">annotations</span> <span class="o">--</span><span class="n">latest</span>
-</pre></div>
-</div>
-</li>
-<li><p>When the .idat files are downloaded, move them to Linux file system (to be used with WSL). If working on a Mac or native Linux, ignore this step.</p></li>
-<li><p>Save the sample sheet file as <em>samplesheet.csv</em> in the directory where the data are located.</p></li>
-<li><p>Extract .idat files from folders and remove .parcel files and empty folders:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">mindepth</span> <span class="mi">2</span> <span class="o">-</span><span class="nb">type</span> <span class="n">f</span> <span class="o">-</span><span class="n">exec</span> <span class="n">mv</span> <span class="o">-</span><span class="n">t</span> <span class="o">.</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span> <span class="o">+</span><span class="p">;</span>
-<span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="nb">type</span> <span class="n">f</span> <span class="o">-</span><span class="n">name</span> <span class="s2">&quot;*.parcel&quot;</span> <span class="o">-</span><span class="n">exec</span> <span class="n">rm</span> <span class="o">-</span><span class="n">f</span> <span class="p">{}</span> \<span class="p">;</span>
-<span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">mindepth</span> <span class="mi">1</span> <span class="o">-</span><span class="nb">type</span> <span class="n">d</span> <span class="o">-</span><span class="n">exec</span> <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="p">{}</span> \<span class="p">;</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<p>Congrats! You are ready to process the files using <code class="docutils literal notranslate"><span class="pre">methylprep</span></code>.</p>
-</section>
-</section>
-<section id="appendix-2-how-to-create-this-electronic-notebook">
-<h2>Appendix 2. How to create this electronic notebook<a class="headerlink" href="#appendix-2-how-to-create-this-electronic-notebook" title="Link to this heading">#</a></h2>
+<section id="appendix-how-to-create-this-electronic-notebook">
+<h2>Appendix. How to create this electronic notebook<a class="headerlink" href="#appendix-how-to-create-this-electronic-notebook" title="Link to this heading">#</a></h2>
 <ol class="arabic">
 <li><p>Use Jupyter Book</p>
 <ul class="simple">
@@ -1433,12 +1370,7 @@ Git repo: git@github.com:f-marchi/ALMA.git
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-final-sample-size-by-batch">Evaluate final sample size by batch</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-1-how-to-download-data-from-geo-or-gdc">Appendix 1. How to download data from GEO or GDC</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gene-expression-omnibus-geo">Gene Expression Omnibus (GEO)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genomic-data-commons-gdc">Genomic Data Commons (GDC)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-2-how-to-create-this-electronic-notebook">Appendix 2. How to create this electronic notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-how-to-create-this-electronic-notebook">Appendix. How to create this electronic notebook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
 </ul>
   </nav></div>
