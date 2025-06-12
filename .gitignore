@@ -15,6 +15,7 @@
 .utils
 utils/__pycache__
 data/
+models/
 
 # Compiled source #
 ###################
