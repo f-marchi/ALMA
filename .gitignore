@@ -14,6 +14,7 @@
 *.drawio.bkp
 .utils
 utils/__pycache__
+data/
 
 # Compiled source #
 ###################
