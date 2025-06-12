@@ -1,4 +1,4 @@
-# Acute Leukemia Methylome Atlas Study Notebooks
+# Acute Leukemia Methylome Atlas
 
 ## Notice
 
@@ -23,18 +23,6 @@ The Acute Leukemia Methylome Atlas (ALMA) is an open-source project aimed at def
 - [Interactive Map](https://f-marchi.github.io/UF-LambaLab-ALMA-app/)
 
 - [Classifiers](https://github.com/f-marchi/ALMA-classifier)
-
-## Contributing
-
-We welcome contributions to ALMA! If you'd like to contribute improvements, please follow these steps:
-
-1. Fork the repository
-2. Create a new branch for your feature
-3. Commit your changes
-4. Push to your branch
-5. Create a new Pull Request
-
-For new datasets, models, requests, or otherwise constructive feedback, open an issue and we look forward to assist.
 
 ## Dataset
 
