@@ -2,21 +2,10 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15653263.svg)](https://doi.org/10.5281/zenodo.15653263)
 
-## Notice
-
-This is a pre-publication repository! Please consider all information here confidential and do not use any of the data or code until it has been peer-reviewed and published.
-
 ## Overview
 
 The Acute Leukemia Methylome Atlas (ALMA) is an open-source project aimed at defining clinical subtypes and risk profiles of acute leukemias through epigenomics. This project provides a comprehensive tool for researchers and clinicians to explore and analyze methylation patterns in acute leukemia samples.
 
-## Features
-
-- Interactive visualization of acute leukemia methylation data
-- Clustering and classification of leukemia subtypes based on methylation profiles
-- Integration with clinical data for improved diagnostic and prognostic insights
-- User-friendly web interface for easy data exploration
-- Harmonized epigenomic and clinical dataset of >3000 high-quality patient samples
 
 ## Links
 
@@ -28,7 +17,7 @@ The Acute Leukemia Methylome Atlas (ALMA) is an open-source project aimed at def
 
 ## Dataset
 
-The complete ALMA dataset is available for download [here](https://github.com/f-marchi/ALMA/raw/refs/heads/main/data/alma_main_results.xlsx). If you use it, please cite our work.
+The complete ALMA training dataset and nanopore test dataset are available for download [with release v0.2.0](https://github.com/f-marchi/ALMA/releases/tag/v0.2.0). See our paper for details.
 
 ## License
 
