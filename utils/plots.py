@@ -508,6 +508,7 @@ def plot_confusion_matrix_stacked(
 
     def compute_metrics(y_true, y_pred, is_binary):
         metrics = {'Accuracy': accuracy_score(y_true, y_pred)}
+        
         if is_binary:
             precision, recall, f1, _ = precision_recall_fscore_support(y_true, y_pred, average='binary')
             tn, fp, fn, tp = confusion_matrix(y_true, y_pred).ravel()
@@ -523,9 +524,23 @@ def plot_confusion_matrix_stacked(
         else:
             weighted_f1 = precision_recall_fscore_support(y_true, y_pred, average='weighted')[2]
             kappa = cohen_kappa_score(y_true, y_pred)
+            
+            # Micro-averaged sensitivity and specificity for multi-class
+            cm = confusion_matrix(y_true, y_pred)
+            
+            # Micro-averaged sensitivity (recall)
+            micro_sensitivity = np.sum(np.diag(cm)) / np.sum(cm)
+            
+            # Micro-averaged specificity
+            fp = cm.sum(axis=0) - np.diag(cm)
+            tn = cm.sum() - (cm.sum(axis=1) + cm.sum(axis=0) - np.diag(cm))
+            micro_specificity = np.sum(tn) / (np.sum(tn) + np.sum(fp))
+            
             metrics.update({
                 'Weighted F1': weighted_f1,
-                "Cohen's Kappa": kappa
+                "Cohen's Kappa": kappa,
+                'Micro Sensitivity': micro_sensitivity,
+                'Micro Specificity': micro_specificity
             })
         return metrics
 
@@ -537,7 +552,6 @@ def plot_confusion_matrix_stacked(
 
     is_binary = len(all_classes) == 2
     display_labels = ["Alive", "Dead"] if is_binary else all_classes
-
     class_to_int = {cls: i for i, cls in enumerate(all_classes)}
 
     n_plots = len(df_dict)
@@ -554,7 +568,7 @@ def plot_confusion_matrix_stacked(
         cm = confusion_matrix(y_true, y_pred, labels=range(len(all_classes)), normalize='true')
         disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=display_labels)
         disp.plot(cmap='Blues', values_format='.2f', xticks_rotation='vertical', 
-                  colorbar=False, ax=ax)
+                colorbar=False, ax=ax)
 
         label_counts = df[true_col].map(lambda x: display_labels[x] if isinstance(x, int) else x).value_counts().to_dict()
         y_tick_labels = [f'{label}, n={label_counts.get(label, 0)}' for label in display_labels]
