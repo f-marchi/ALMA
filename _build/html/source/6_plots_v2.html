@@ -1,0 +1,1193 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Plots (ALMA Subtype v2) &#8212; Acute Leukemia Methylome Atlas Study</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css?v=564be945" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/6_plots_v2';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Plots" href="6_plots.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../overview.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Acute Leukemia Methylome Atlas Study</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../overview.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Datasets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_discovery.html">Discovery Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_test.html">Test Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_nanopore_test.html">Nanopore Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_clinical_data.html">Clinical Data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="5_signature.html">38-CpG AML Signature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_classifiers.html">Classifiers</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Figures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="6_plots.html">Plots</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Plots (ALMA Subtype v2)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://f-marchi.github.io/UF-LambaLab-ALMA-app/">Run Interactive App</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/source/6_plots_v2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Plots (ALMA Subtype v2)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#patient-characteristics">Patient Characteristics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alma-unsupervised">ALMA (unsupervised)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fine-tuned-supervised-dx-and-px-models">Fine-tuned (supervised) Dx and Px models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sankey-plots">Sankey plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#samples-with-annotated-diagnosis-info">Samples with annotated diagnosis info</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predictions-in-samples-for-which-no-who-22-dx-data-was-available">Predictions in samples for which no WHO 22 Dx data was available</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-metrics">Performance metrics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagnosis">Diagnosis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="plots-alma-subtype-v2">
+<h1>Plots (ALMA Subtype v2)<a class="headerlink" href="#plots-alma-subtype-v2" title="Link to this heading">#</a></h1>
+<section id="load-data">
+<h2>Load data<a class="headerlink" href="#load-data" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">utils.plots</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">output_notebook</span><span class="p">()</span>
+
+<span class="n">model_name1</span> <span class="o">=</span> <span class="s1">&#39;ALMA Subtype v2&#39;</span>
+<span class="n">model_name2</span> <span class="o">=</span> <span class="s1">&#39;AML Epigenomic Risk&#39;</span>
+<span class="n">model_name3</span> <span class="o">=</span> <span class="s1">&#39;38CpG-AMLsignature&#39;</span>
+
+
+<span class="n">clinical_data</span> <span class="o">=</span> <span class="s1">&#39;/mnt/f/ALMA/Intermediate_Files/clinical_data.xlsx&#39;</span>
+<span class="n">prediction_data_train</span> <span class="o">=</span> <span class="s1">&#39;../../alma-transformer/results/3314samples_331556cpgs_withbatchcorrection_bvalues_predictions.csv&#39;</span>
+<span class="n">prediction_data_test</span> <span class="o">=</span> <span class="s1">&#39;../../alma-transformer/results/201samples_331556cpgs_nobatchcorrection_bvalues_predictions.csv&#39;</span>
+
+<span class="c1"># Create df by first concat prediction data train and test, then join with clinical data</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">prediction_data_train</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">prediction_data_test</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">clinical_data</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="c1"># Read ONT hematopathology test cohort</span>
+<span class="n">nanopore</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/mnt/f/ALMA/Intermediate_Files/nanoporeseq_epigenomic_predictions_clinicaldata_FM_v5_11-27-2025.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Concat with df</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">nanopore</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="c1"># Define train and test samples</span>
+<span class="n">df_train</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Train-Test&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Train Sample&#39;</span><span class="p">]</span>
+<span class="n">df_test</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Train-Test&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Test Sample&#39;</span><span class="p">]</span>
+
+<span class="c1"># remove duplicates from the test cohort</span>
+<span class="n">df_test</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="o">~</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;Patient_ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">)]</span>
+
+<span class="c1"># Prognostic model samples</span>
+<span class="n">df_px</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Vital Status at 5y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+<span class="n">df_px2</span> <span class="o">=</span> <span class="n">df_px</span><span class="p">[</span><span class="n">df_px</span><span class="p">[</span><span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;AAML0531&#39;</span><span class="p">,</span> <span class="s1">&#39;AAML1031&#39;</span><span class="p">,</span> <span class="s1">&#39;AAML03P1&#39;</span><span class="p">])]</span>
+<span class="n">df_px2</span> <span class="o">=</span> <span class="n">df_px2</span><span class="p">[</span><span class="n">df_px2</span><span class="p">[</span><span class="s1">&#39;Sample Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;Diagnosis&#39;</span><span class="p">,</span> <span class="s1">&#39;Primary Blood Derived Cancer - Bone Marrow&#39;</span><span class="p">,</span> <span class="s1">&#39;Primary Blood Derived Cancer - Peripheral Blood&#39;</span><span class="p">])]</span>
+<span class="n">df_px2</span> <span class="o">=</span> <span class="n">df_px2</span><span class="p">[</span><span class="o">~</span><span class="n">df_px2</span><span class="p">[</span><span class="s1">&#39;Patient_ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">)]</span>
+
+<span class="c1"># drop the samples with missing labels for the ELN AML 2022 Diagnosis</span>
+<span class="n">df_dx</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="o">~</span><span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;WHO 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+
+<span class="c1"># exclude the classes with fewer than 5 samples</span>
+<span class="n">df_dx</span> <span class="o">=</span> <span class="n">df_dx</span><span class="p">[</span><span class="o">~</span><span class="n">df_dx</span><span class="p">[</span><span class="s1">&#39;WHO 2022 Diagnosis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;AML with t(9;22); BCR::ABL1&#39;</span><span class="p">])]</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">    <style>
+        .bk-notebook-logo {
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAOkSURBVDiNjZRtaJVlGMd/1/08zzln5zjP1LWcU9N0NkN8m2CYjpgQYQXqSs0I84OLIC0hkEKoPtiH3gmKoiJDU7QpLgoLjLIQCpEsNJ1vqUOdO7ppbuec5+V+rj4ctwzd8IIbbi6u+8f1539dt3A78eXC7QizUF7gyV1fD1Yqg4JWz84yffhm0qkFqBogB9rM8tZdtwVsPUhWhGcFJngGeWrPzHm5oaMmkfEg1usvLFyc8jLRqDOMru7AyC8saQr7GG7f5fvDeH7Ej8CM66nIF+8yngt6HWaKh7k49Soy9nXurCi1o3qUbS3zWfrYeQDTB/Qj6kX6Ybhw4B+bOYoLKCC9H3Nu/leUTZ1JdRWkkn2ldcCamzrcf47KKXdAJllSlxAOkRgyHsGC/zRday5Qld9DyoM4/q/rUoy/CXh3jzOu3bHUVZeU+DEn8FInkPBFlu3+nW3Nw0mk6vCDiWg8CeJaxEwuHS3+z5RgY+YBR6V1Z1nxSOfoaPa4LASWxxdNp+VWTk7+4vzaou8v8PN+xo+KY2xsw6une2frhw05CTYOmQvsEhjhWjn0bmXPjpE1+kplmmkP3suftwTubK9Vq22qKmrBhpY4jvd5afdRA3wGjFAgcnTK2s4hY0/GPNIb0nErGMCRxWOOX64Z8RAC4oCXdklmEvcL8o0BfkNK4lUg9HTl+oPlQxdNo3Mg4Nv175e/1LDGzZen30MEjRUtmXSfiTVu1kK8W4txyV6BMKlbgk3lMwYCiusNy9fVfvvwMxv8Ynl6vxoByANLTWplvuj/nF9m2+PDtt1eiHPBr1oIfhCChQMBw6Aw0UulqTKZdfVvfG7VcfIqLG9bcldL/+pdWTLxLUy8Qq38heUIjh4XlzZxzQm19lLFlr8vdQ97rjZVOLf8nclzckbcD4wxXMidpX30sFd37Fv/GtwwhzhxGVAprjbg0gCAEeIgwCZyTV2Z1REEW8O4py0wsjeloKoMr6iCY6dP92H6Vw/oTyICIthibxjm/DfN9lVz8IqtqKYLUXfoKVMVQVVJOElGjrnnUt9T9wbgp8AyYKaGlqingHZU/uG2NTZSVqwHQTWkx9hxjkpWDaCg6Ckj5qebgBVbT3V3NNXMSiWSDdGV3hrtzla7J+duwPOToIg42ChPQOQjspnSlp1V+Gjdged7+8UN5CRAV7a5EdFNwCjEaBR27b3W890TE7g24NAP/mMDXRWrGoFPQI9ls/MWO2dWFAar/xcOIImbbpA3zgAAAABJRU5ErkJggg==);
+        }
+    </style>
+    <div>
+        <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
+        <span id="c4a182b6-242c-4652-8fba-91ac01512854">Loading BokehJS ...</span>
+    </div>
+</div><script type="application/javascript">(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  const force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+const JS_MIME_TYPE = 'application/javascript';
+  const HTML_MIME_TYPE = 'text/html';
+  const EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  const CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    const script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    function drop(id) {
+      const view = Bokeh.index.get_by_id(id)
+      if (view != null) {
+        view.model.document.clear()
+        Bokeh.index.delete(view)
+      }
+    }
+
+    const cell = handle.cell;
+
+    const id = cell.output_area._bokeh_element_id;
+    const server_id = cell.output_area._bokeh_server_id;
+
+    // Clean up Bokeh references
+    if (id != null) {
+      drop(id)
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      const cmd_clean = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd_clean, {
+        iopub: {
+          output: function(msg) {
+            const id = msg.content.text.trim()
+            drop(id)
+          }
+        }
+      });
+      // Destroy server and session
+      const cmd_destroy = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd_destroy);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    const output_area = handle.output_area;
+    const output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!Object.prototype.hasOwnProperty.call(output.data, EXEC_MIME_TYPE))) {
+      return
+    }
+
+    const toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      const bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      const script_attrs = bk_div.children[0].attributes;
+      for (let i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+        toinsert[toinsert.length - 1].firstChild.textContent = bk_div.children[0].textContent
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      const toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      const props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    const events = require('base/js/events');
+    const OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  const NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded() {
+    const el = document.getElementById("c4a182b6-242c-4652-8fba-91ac01512854");
+    if (el != null) {
+      el.textContent = "BokehJS is loading...";
+    }
+    if (root.Bokeh !== undefined) {
+      if (el != null) {
+        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(display_loaded, 100)
+    }
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error(url) {
+      console.error("failed to load " + url);
+    }
+
+    for (let i = 0; i < css_urls.length; i++) {
+      const url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    for (let i = 0; i < js_urls.length; i++) {
+      const url = js_urls[i];
+      const element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.3.4.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.3.4.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.3.4.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.3.4.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.3.4.min.js"];
+  const css_urls = [];
+
+  const inline_js = [    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+function(Bokeh) {
+    }
+  ];
+
+  function run_inline_js() {
+    if (root.Bokeh !== undefined || force === true) {
+          for (let i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+if (force === true) {
+        display_loaded();
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      const cell = $(document.getElementById("c4a182b6-242c-4652-8fba-91ac01512854")).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));</script></div>
+</div>
+</section>
+<section id="patient-characteristics">
+<h2>Patient Characteristics<a class="headerlink" href="#patient-characteristics" title="Link to this heading">#</a></h2>
+<section id="alma-unsupervised">
+<h3>ALMA (unsupervised)<a class="headerlink" href="#alma-unsupervised" title="Link to this heading">#</a></h3>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tableone</span> <span class="kn">import</span> <span class="n">TableOne</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+
+<span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Hematopoietic Entity&#39;</span><span class="p">,</span><span class="s1">&#39;Age (group years)&#39;</span><span class="p">,</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Clinical Trial&#39;</span><span class="p">,]</span>
+
+<span class="n">mytable_cog</span> <span class="o">=</span> <span class="n">TableOne</span><span class="p">(</span><span class="n">df_train</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="n">columns</span><span class="p">,</span>
+                        <span class="n">overall</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">pval</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pval_adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">htest_name</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dip_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">tukey_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">normal_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+
+                        <span class="n">order</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">:[</span><span class="s1">&#39;Yes&#39;</span><span class="p">,</span><span class="s1">&#39;No&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Age (group years)&#39;</span><span class="p">:[</span><span class="s1">&#39;0-5&#39;</span><span class="p">,</span><span class="s1">&#39;5-13&#39;</span><span class="p">,</span><span class="s1">&#39;13-39&#39;</span><span class="p">,</span><span class="s1">&#39;39-60&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Positive&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Risk Group&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;High Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard Risk&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Yes&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Leucocyte counts (10⁹/L)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;≥30&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Age group (years)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;≥10&#39;</span><span class="p">]})</span>
+
+<span class="c1"># mytable_cog.to_excel(&#39;../data/pt_characteristics_alma_model_&#39; + str(date.today()) +&#39;.xlsx&#39;)</span>
+
+<span class="n">mytable_cog</span><span class="o">.</span><span class="n">tabulate</span><span class="p">(</span><span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;html&quot;</span><span class="p">,</span> 
+                        <span class="c1"># headers=[score_name,&quot;&quot;,&#39;Missing&#39;,&#39;Discovery&#39;,&#39;Validation&#39;,&#39;p-value&#39;,&#39;Statistical Test&#39;]</span>
+                        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead>
+<tr><th>                           </th><th>                                          </th><th>Overall    </th></tr>
+</thead>
+<tbody>
+<tr><td>n                          </td><td>                                          </td><td>3314       </td></tr>
+<tr><td>Hematopoietic Entity, n (%)</td><td>Acute lymphoblastic leukemia (ALL)        </td><td>700 (28.3) </td></tr>
+<tr><td>                           </td><td>Acute myeloid leukemia (AML)              </td><td>1221 (49.4)</td></tr>
+<tr><td>                           </td><td>Acute promyelocytic leukemia (APL)        </td><td>31 (1.3)   </td></tr>
+<tr><td>                           </td><td>Mixed phenotype acute leukemia (MPAL)     </td><td>48 (1.9)   </td></tr>
+<tr><td>                           </td><td>Myelodysplastic syndrome (MDS or MDS-like)</td><td>223 (9.0)  </td></tr>
+<tr><td>                           </td><td>Otherwise-Normal (Control)                </td><td>251 (10.1) </td></tr>
+<tr><td>Age (group years), n (%)   </td><td>0-5                                       </td><td>480 (24.1) </td></tr>
+<tr><td>                           </td><td>5-13                                      </td><td>483 (24.2) </td></tr>
+<tr><td>                           </td><td>13-39                                     </td><td>663 (33.2) </td></tr>
+<tr><td>                           </td><td>39-60                                     </td><td>165 (8.3)  </td></tr>
+<tr><td>                           </td><td>60+                                       </td><td>203 (10.2) </td></tr>
+<tr><td>Sex, n (%)                 </td><td>Female                                    </td><td>885 (49.1) </td></tr>
+<tr><td>                           </td><td>Male                                      </td><td>918 (50.9) </td></tr>
+<tr><td>Clinical Trial, n (%)      </td><td>AAML03P1                                  </td><td>72 (2.2)   </td></tr>
+<tr><td>                           </td><td>AAML0531                                  </td><td>628 (18.9) </td></tr>
+<tr><td>                           </td><td>AAML1031                                  </td><td>587 (17.7) </td></tr>
+<tr><td>                           </td><td>BM normal AAML0531                        </td><td>41 (1.2)   </td></tr>
+<tr><td>                           </td><td>Beat AML Consortium                       </td><td>316 (9.5)  </td></tr>
+<tr><td>                           </td><td>CCG2961                                   </td><td>41 (1.2)   </td></tr>
+<tr><td>                           </td><td>CETLAM SMD-09 (MDS-tAML)                  </td><td>166 (5.0)  </td></tr>
+<tr><td>                           </td><td>French GRAALL 2003–2005                   </td><td>141 (4.3)  </td></tr>
+<tr><td>                           </td><td>Japanese AML05                            </td><td>64 (1.9)   </td></tr>
+<tr><td>                           </td><td>NOPHO ALL92-2000                          </td><td>933 (28.2) </td></tr>
+<tr><td>                           </td><td>TARGET ALL                                </td><td>131 (4.0)  </td></tr>
+<tr><td>                           </td><td>TCGA AML                                  </td><td>194 (5.9)  </td></tr>
+</tbody>
+</table></div></div>
+</details>
+</div>
+</section>
+<section id="fine-tuned-supervised-dx-and-px-models">
+<h3>Fine-tuned (supervised) Dx and Px models<a class="headerlink" href="#fine-tuned-supervised-dx-and-px-models" title="Link to this heading">#</a></h3>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Age (years)&#39;</span><span class="p">,</span><span class="s1">&#39;Age group (years)&#39;</span><span class="p">,</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span><span class="s1">&#39;Race or ethnic group&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Hispanic or Latino ethnic group&#39;</span><span class="p">,</span> <span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Leucocyte counts (10⁹/L)&#39;</span><span class="p">,</span> <span class="s1">&#39;BM leukemic blasts (%)&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Risk Group&#39;</span><span class="p">,</span><span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">,</span> <span class="s1">&#39;Clinical Trial&#39;</span><span class="p">]</span>
+
+<span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;Age (years)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;Age (years)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+
+<span class="n">all_cohorts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_dx</span><span class="p">,</span> <span class="n">df_px2</span><span class="p">],</span>
+                         <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="n">model_name1</span><span class="p">,</span><span class="n">model_name2</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span> <span class="o">+</span> <span class="n">model_name3</span><span class="p">],</span>
+                         <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cohort&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">mytable_cog</span> <span class="o">=</span> <span class="n">TableOne</span><span class="p">(</span><span class="n">all_cohorts</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span>
+                        <span class="n">overall</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">missing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">pval</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pval_adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">htest_name</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dip_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">tukey_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">normal_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+
+                        <span class="n">order</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">:[</span><span class="s1">&#39;Yes&#39;</span><span class="p">,</span><span class="s1">&#39;No&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Race or ethnic group&#39;</span><span class="p">:[</span><span class="s1">&#39;White&#39;</span><span class="p">,</span><span class="s1">&#39;Black or African American&#39;</span><span class="p">,</span><span class="s1">&#39;Asian&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;MRD 1 Status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Positive&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Risk Group&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;High Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Standard Risk&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;FLT3 ITD&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Yes&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Leucocyte counts (10⁹/L)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;≥30&#39;</span><span class="p">],</span>
+                                <span class="s1">&#39;Age group (years)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;≥10&#39;</span><span class="p">]},</span>
+                                <span class="n">groupby</span><span class="o">=</span><span class="s1">&#39;cohort&#39;</span><span class="p">)</span>
+
+<span class="c1"># mytable_cog.to_excel(&#39;../data/pt_characteristics_fine-tuned_models_&#39; + str(date.today()) +&#39;.xlsx&#39;)</span>
+
+<span class="n">mytable_cog</span><span class="o">.</span><span class="n">tabulate</span><span class="p">(</span><span class="n">tablefmt</span><span class="o">=</span><span class="s2">&quot;html&quot;</span><span class="p">,</span> 
+                        <span class="c1"># headers=[score_name,&quot;&quot;,score_name,&#39;Validation&#39;,&#39;p-value&#39;,&#39;Statistical Test&#39;]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead>
+<tr><th>                                      </th><th>                                </th><th>ALMA Subtype v2  </th><th>AML Epigenomic Risk, 38CpG-AMLsignature  </th></tr>
+</thead>
+<tbody>
+<tr><td>n                                     </td><td>                                </td><td>2471             </td><td>946                                      </td></tr>
+<tr><td>Age (years), mean (SD)                </td><td>                                </td><td>19.2 (19.7)      </td><td>9.4 (6.3)                                </td></tr>
+<tr><td>Age group (years), n (%)              </td><td>≥10                             </td><td>528 (47.4)       </td><td>463 (48.9)                               </td></tr>
+<tr><td>                                      </td><td>&lt;10                             </td><td>586 (52.6)       </td><td>483 (51.1)                               </td></tr>
+<tr><td>Sex, n (%)                            </td><td>Female                          </td><td>711 (50.5)       </td><td>468 (49.5)                               </td></tr>
+<tr><td>                                      </td><td>Male                            </td><td>697 (49.5)       </td><td>478 (50.5)                               </td></tr>
+<tr><td>Race or ethnic group, n (%)           </td><td>White                           </td><td>1064 (80.5)      </td><td>697 (79.1)                               </td></tr>
+<tr><td>                                      </td><td>Black or African American       </td><td>131 (9.9)        </td><td>102 (11.6)                               </td></tr>
+<tr><td>                                      </td><td>Asian                           </td><td>65 (4.9)         </td><td>43 (4.9)                                 </td></tr>
+<tr><td>                                      </td><td>American Indian or Alaska Native</td><td>7 (0.5)          </td><td>5 (0.6)                                  </td></tr>
+<tr><td>                                      </td><td>Other                           </td><td>48 (3.6)         </td><td>28 (3.2)                                 </td></tr>
+<tr><td>                                      </td><td>Pacific Islander                </td><td>7 (0.5)          </td><td>6 (0.7)                                  </td></tr>
+<tr><td>Hispanic or Latino ethnic group, n (%)</td><td>Hispanic or Latino              </td><td>209 (19.6)       </td><td>185 (20.2)                               </td></tr>
+<tr><td>                                      </td><td>Not Hispanic or Latino          </td><td>858 (80.4)       </td><td>731 (79.8)                               </td></tr>
+<tr><td>MRD 1 Status, n (%)                   </td><td>Positive                        </td><td>284 (29.6)       </td><td>260 (31.5)                               </td></tr>
+<tr><td>                                      </td><td>Negative                        </td><td>675 (70.4)       </td><td>566 (68.5)                               </td></tr>
+<tr><td>Leucocyte counts (10⁹/L), n (%)       </td><td>≥30                             </td><td>579 (52.4)       </td><td>467 (49.4)                               </td></tr>
+<tr><td>                                      </td><td>&lt;30                             </td><td>526 (47.6)       </td><td>479 (50.6)                               </td></tr>
+<tr><td>BM leukemic blasts (%), mean (SD)     </td><td>                                </td><td>65.7 (24.1)      </td><td>63.8 (24.5)                              </td></tr>
+<tr><td>Risk Group, n (%)                     </td><td>High Risk                       </td><td>198 (14.2)       </td><td>129 (13.8)                               </td></tr>
+<tr><td>                                      </td><td>Standard Risk                   </td><td>628 (45.0)       </td><td>454 (48.7)                               </td></tr>
+<tr><td>                                      </td><td>Low Risk                        </td><td>570 (40.8)       </td><td>349 (37.4)                               </td></tr>
+<tr><td>FLT3 ITD, n (%)                       </td><td>Yes                             </td><td>180 (16.2)       </td><td>165 (17.5)                               </td></tr>
+<tr><td>                                      </td><td>No                              </td><td>932 (83.8)       </td><td>779 (82.5)                               </td></tr>
+<tr><td>Clinical Trial, n (%)                 </td><td>AAML03P1                        </td><td>62 (2.5)         </td><td>36 (3.8)                                 </td></tr>
+<tr><td>                                      </td><td>AAML0531                        </td><td>517 (20.9)       </td><td>507 (53.6)                               </td></tr>
+<tr><td>                                      </td><td>AAML1031                        </td><td>495 (20.0)       </td><td>403 (42.6)                               </td></tr>
+<tr><td>                                      </td><td>BM normal AAML0531              </td><td>41 (1.7)         </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>Beat AML Consortium             </td><td>192 (7.8)        </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>CCG2961                         </td><td>31 (1.3)         </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>CETLAM SMD-09 (MDS-tAML)        </td><td>166 (6.7)        </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>French GRAALL 2003–2005         </td><td>141 (5.7)        </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>Japanese AML05                  </td><td>9 (0.4)          </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>NOPHO ALL92-2000                </td><td>641 (25.9)       </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>TARGET ALL                      </td><td>56 (2.3)         </td><td>                                         </td></tr>
+<tr><td>                                      </td><td>TCGA AML                        </td><td>120 (4.9)        </td><td>                                         </td></tr>
+</tbody>
+</table></div></div>
+</details>
+</div>
+</section>
+</section>
+<section id="sankey-plots">
+<h2>Sankey plots<a class="headerlink" href="#sankey-plots" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sankey plots below compare the distribution of categories. The width of the lines is proportional to the number of patients in each group.</p>
+</div>
+<section id="samples-with-annotated-diagnosis-info">
+<h3>Samples with annotated diagnosis info<a class="headerlink" href="#samples-with-annotated-diagnosis-info" title="Link to this heading">#</a></h3>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="n">get_custom_color_palette</span><span class="p">()</span>
+
+
+<span class="n">draw_sankey_plot</span><span class="p">(</span><span class="n">df_dx</span><span class="p">,</span> <span class="s1">&#39;WHO 2022 Diagnosis&#39;</span><span class="p">,</span> <span class="n">model_name1</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span>
+                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Discovery cohort&#39;</span><span class="p">,</span> <span class="n">fig_size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+                 <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">nan_action</span><span class="o">=</span><span class="s1">&#39;drop1&#39;</span><span class="p">)</span>
+
+<span class="n">draw_sankey_plot</span><span class="p">(</span><span class="n">df_test</span><span class="p">,</span> <span class="s1">&#39;WHO 2022 Diagnosis&#39;</span><span class="p">,</span> <span class="n">model_name1</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span>
+                 <span class="n">title</span><span class="o">=</span> <span class="s1">&#39;AML02,08 trials + UF HemBank ONT LR-WGS&#39;</span><span class="p">,</span><span class="n">fig_size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+                 <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">nan_action</span><span class="o">=</span><span class="s1">&#39;drop1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<img alt="../_images/83b773016f6cd39e36efd495f61f1eac59356799a570f98e1328dc31773e6a3a.png" src="../_images/83b773016f6cd39e36efd495f61f1eac59356799a570f98e1328dc31773e6a3a.png" />
+<img alt="../_images/f4a3b326c5a68e87e2577c1df79bdd3c30f24be90b89b94d26d77d7875cd2552.png" src="../_images/f4a3b326c5a68e87e2577c1df79bdd3c30f24be90b89b94d26d77d7875cd2552.png" />
+</div>
+</details>
+</div>
+</section>
+<section id="predictions-in-samples-for-which-no-who-22-dx-data-was-available">
+<h3>Predictions in samples for which no WHO 22 Dx data was available<a class="headerlink" href="#predictions-in-samples-for-which-no-who-22-dx-data-was-available" title="Link to this heading">#</a></h3>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_sankey_plot</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="s1">&#39;WHO 2022 Diagnosis&#39;</span><span class="p">,</span> <span class="n">model_name1</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span>
+                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Discovery cohort&#39;</span><span class="p">,</span> <span class="n">fig_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span>
+                 <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">nan_action</span><span class="o">=</span><span class="s1">&#39;keep-only&#39;</span><span class="p">)</span>
+
+<span class="n">draw_sankey_plot</span><span class="p">(</span><span class="n">df_test</span><span class="p">,</span> <span class="s1">&#39;WHO 2022 Diagnosis&#39;</span><span class="p">,</span> <span class="n">model_name1</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span>
+                 <span class="n">title</span><span class="o">=</span> <span class="s1">&#39;AML02,08 trials + UF HemBank ONT LR-WGS&#39;</span><span class="p">,</span><span class="n">fig_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+                 <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">nan_action</span><span class="o">=</span><span class="s1">&#39;keep-only&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<img alt="../_images/c9acf1ff13501f7c588154bfd92b0d7b3502c6c32457004ea0ce05c9d1395712.png" src="../_images/c9acf1ff13501f7c588154bfd92b0d7b3502c6c32457004ea0ce05c9d1395712.png" />
+<img alt="../_images/6020bc70d6fb8a808b56f3cf00aee4ff5067ba2bf4a6b3abdfab4d32a9ccc5af.png" src="../_images/6020bc70d6fb8a808b56f3cf00aee4ff5067ba2bf4a6b3abdfab4d32a9ccc5af.png" />
+</div>
+</details>
+</div>
+</section>
+</section>
+<section id="performance-metrics">
+<h2>Performance metrics<a class="headerlink" href="#performance-metrics" title="Link to this heading">#</a></h2>
+<section id="diagnosis">
+<h3>Diagnosis<a class="headerlink" href="#diagnosis" title="Link to this heading">#</a></h3>
+<div class="cell tag_hide-output tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop nans from df_test[&#39;WHO 2022 Diagnosis&#39;]</span>
+<span class="n">df_test2</span> <span class="o">=</span> <span class="n">df_test</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;WHO 2022 Diagnosis&#39;</span><span class="p">])</span>
+
+<span class="n">df_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Train 5-fold CV&#39;</span><span class="p">:</span> <span class="n">df_dx</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;Not confident&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;Test AML02,08 trials + UF HemBank ONT LR-WGS&#39;</span><span class="p">:</span> <span class="n">df_test2</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;Not confident&#39;</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="n">plot_confusion_matrix_stacked</span><span class="p">(</span>
+    <span class="n">df_dict</span><span class="o">=</span><span class="n">df_dict</span><span class="p">,</span>
+    <span class="n">true_col</span><span class="o">=</span><span class="s1">&#39;WHO 2022 Diagnosis&#39;</span><span class="p">,</span>
+    <span class="n">pred_col</span><span class="o">=</span><span class="n">model_name1</span><span class="p">,</span>
+    <span class="n">class_col</span><span class="o">=</span><span class="s1">&#39;WHO 2022 Diagnosis&#39;</span><span class="p">,</span>  
+    <span class="n">title</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">model_name1</span><span class="p">),</span>
+    <span class="n">figsize_per_plot</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+    
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<img alt="../_images/355cbdf5aad8413a071e4cb6ce3bacf79908e60ae0b23b15d6e167611fff3986.png" src="../_images/355cbdf5aad8413a071e4cb6ce3bacf79908e60ae0b23b15d6e167611fff3986.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Metrics:
+|                                              |   Accuracy |   Weighted F1 |   Cohen&#39;s Kappa |   Micro Sensitivity |   Micro Specificity |
+|:---------------------------------------------|-----------:|--------------:|----------------:|--------------------:|--------------------:|
+| Train 5-fold CV                              |      0.994 |         0.994 |           0.993 |               0.994 |               1     |
+| Test AML02,08 trials + UF HemBank ONT LR-WGS |      0.946 |         0.958 |           0.929 |               0.946 |               0.996 |
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+</section>
+<section id="watermark">
+<h2>Watermark<a class="headerlink" href="#watermark" title="Link to this heading">#</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Author: Francisco_Marchi@Lamba_Lab_UF
+
+Last updated: 2025-11-28
+
+Python implementation: CPython
+Python version       : 3.10.13
+IPython version      : 8.27.0
+
+pandas    : 2.2.2
+seaborn   : 0.13.2
+matplotlib: 3.9.2
+tableone  : 0.8.0
+sklearn   : 1.5.2
+lifelines : 0.28.0
+scipy     : 1.12.0
+
+Compiler    : GCC 11.4.0
+OS          : Linux
+Release     : 6.6.87.1-microsoft-standard-WSL2
+Machine     : x86_64
+Processor   : x86_64
+CPU cores   : 32
+Architecture: 64bit
+
+Git repo: git@github.com:f-marchi/ALMA.git
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./source"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="6_plots.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Plots</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data">Load data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#patient-characteristics">Patient Characteristics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alma-unsupervised">ALMA (unsupervised)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fine-tuned-supervised-dx-and-px-models">Fine-tuned (supervised) Dx and Px models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sankey-plots">Sankey plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#samples-with-annotated-diagnosis-info">Samples with annotated diagnosis info</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predictions-in-samples-for-which-no-who-22-dx-data-was-available">Predictions in samples for which no WHO 22 Dx data was available</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-metrics">Performance metrics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diagnosis">Diagnosis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#watermark">Watermark</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marchi et al. | Lamba Lab | University of Florida.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
